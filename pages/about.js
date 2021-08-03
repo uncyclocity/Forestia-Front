@@ -56,16 +56,6 @@ const Styles = styled.div`
 
 export default function About() {
   const animate = useReducerState().animate.about;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const dispatchForm = {
-      type: "/about",
-      isAnimate: false,
-    };
-
-    dispatch(dispatchForm);
-  }, [dispatch]);
 
   return (
     <Animation animate={animate}>

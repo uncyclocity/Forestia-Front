@@ -37,16 +37,6 @@ const Styles = styled.div`
 
 export default function Comuin() {
   const animate = useReducerState().animate.comuin;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const dispatchForm = {
-      type: "/comuin",
-      isAnimate: false,
-    };
-
-    dispatch(dispatchForm);
-  }, [dispatch]);
 
   return (
     <Animation animate={animate}>

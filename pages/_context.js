@@ -20,19 +20,19 @@ const initState = {
         0: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트1/댓글1 입니다."
+          content: "자게/테스트1/댓글1 입니다.",
         },
         1: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트1/댓글2 입니다."
+          content: "자게/테스트1/댓글2 입니다.",
         },
         2: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트1/댓글3 입니다."
-        }
-      }
+          content: "자게/테스트1/댓글3 입니다.",
+        },
+      },
     },
     1: {
       author: "백괴",
@@ -43,19 +43,19 @@ const initState = {
         0: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트2/댓글1 입니다."
+          content: "자게/테스트2/댓글1 입니다.",
         },
         1: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트2/댓글2 입니다."
+          content: "자게/테스트2/댓글2 입니다.",
         },
         2: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트2/댓글3 입니다."
-        }
-      }
+          content: "자게/테스트2/댓글3 입니다.",
+        },
+      },
     },
     2: {
       author: "백괴",
@@ -66,20 +66,20 @@ const initState = {
         0: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트3/댓글1 입니다."
+          content: "자게/테스트3/댓글1 입니다.",
         },
         1: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트3/댓글2 입니다."
+          content: "자게/테스트3/댓글2 입니다.",
         },
         2: {
           author: "백괴",
           date: "2021-08-02 22:39:08",
-          content: "자게/테스트3/댓글3 입니다."
-        }
-      }
-    }
+          content: "자게/테스트3/댓글3 입니다.",
+        },
+      },
+    },
   },
   PhotoBoard: {
     author: "백괴",
@@ -90,19 +90,19 @@ const initState = {
       0: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트1/댓글1 입니다."
+        content: "자게/테스트1/댓글1 입니다.",
       },
       1: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트1/댓글2 입니다."
+        content: "자게/테스트1/댓글2 입니다.",
       },
       2: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트1/댓글3 입니다."
-      }
-    }
+        content: "자게/테스트1/댓글3 입니다.",
+      },
+    },
   },
   1: {
     author: "백괴",
@@ -113,19 +113,19 @@ const initState = {
       0: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트2/댓글1 입니다."
+        content: "자게/테스트2/댓글1 입니다.",
       },
       1: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트2/댓글2 입니다."
+        content: "자게/테스트2/댓글2 입니다.",
       },
       2: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트2/댓글3 입니다."
-      }
-    }
+        content: "자게/테스트2/댓글3 입니다.",
+      },
+    },
   },
   2: {
     author: "백괴",
@@ -136,21 +136,20 @@ const initState = {
       0: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트3/댓글1 입니다."
+        content: "자게/테스트3/댓글1 입니다.",
       },
       1: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트3/댓글2 입니다."
+        content: "자게/테스트3/댓글2 입니다.",
       },
       2: {
         author: "백괴",
         date: "2021-08-02 22:39:08",
-        content: "자게/테스트3/댓글3 입니다."
-      }
-    }
-  
-  }
+        content: "자게/테스트3/댓글3 입니다.",
+      },
+    },
+  },
 };
 
 const reducer = (state, action) => {
@@ -179,7 +178,7 @@ const reducer = (state, action) => {
           comuin: action.isAnimate,
         },
       };
-    case "/":
+    case "/home":
       return {
         nowPage: action.type,
         animate: initState.animate,

@@ -37,16 +37,6 @@ const Styles = styled.div`
 
 export default function Free() {
   const animate = useReducerState().animate.free;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const dispatchForm = {
-      type: "/free",
-      isAnimate: false,
-    };
-
-    dispatch(dispatchForm);
-  }, [dispatch]);
 
   return (
     <Animation animate={animate}>

@@ -8,7 +8,7 @@ import {
   AiOutlineCamera,
 } from "react-icons/ai";
 import Box from "../components/box";
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 
 const BoxStyles = styled.div`
   height: 80px;
@@ -55,25 +55,24 @@ const MenuBtnStyles = styled.span`
     }
 `;
 
-const unMountAni = (dispatch, nowPage, timer, URL) => {
-  if (nowPage !== "/") {
+const unMountAni = (dispatch, nowPage, URL) => {
+  dispatch({
+    type: nowPage,
+    isAnimate: true,
+  });
+
+  setTimeout(() => {
     dispatch({
-      type: nowPage,
-      isAnimate: true,
+      type: URL,
+      isAnimate: false,
     });
-
-    clearTimeout(timer.current);
-
-    timer.current = setTimeout(() => {
-      Router.push(URL);
-    }, 100);
-  } else Router.push(URL);
+    Router.push(URL);
+  }, 100);
 };
 
 export default function Header() {
   const nowPage = useReducerState().nowPage;
   const dispatch = useDispatch();
-  const timer = useRef();
 
   return (
     <Box>
@@ -82,14 +81,12 @@ export default function Header() {
           <ul>
             <li>
               <a>
-                {nowPage === "/" ? (
+                {nowPage === "/home" ? (
                   <div className="selected">
                     <AiOutlineHome />
                   </div>
                 ) : (
-                  <div
-                    onClick={() => unMountAni(dispatch, nowPage, timer, "/")}
-                  >
+                  <div onClick={() => unMountAni(dispatch, nowPage, "/home")}>
                     <AiOutlineHome />
                   </div>
                 )}
@@ -104,11 +101,7 @@ export default function Header() {
                     <AiOutlineInfoCircle />
                   </div>
                 ) : (
-                  <div
-                    onClick={() =>
-                      unMountAni(dispatch, nowPage, timer, "/about")
-                    }
-                  >
+                  <div onClick={() => unMountAni(dispatch, nowPage, "/about")}>
                     <AiOutlineInfoCircle />
                   </div>
                 )}
@@ -125,11 +118,7 @@ export default function Header() {
                     <AiOutlineCloud />
                   </div>
                 ) : (
-                  <div
-                    onClick={() =>
-                      unMountAni(dispatch, nowPage, timer, "/free")
-                    }
-                  >
+                  <div onClick={() => unMountAni(dispatch, nowPage, "/free")}>
                     <AiOutlineCloud />
                   </div>
                 )}
@@ -144,11 +133,7 @@ export default function Header() {
                     <AiOutlineCamera />
                   </div>
                 ) : (
-                  <div
-                    onClick={() =>
-                      unMountAni(dispatch, nowPage, timer, "/comuin")
-                    }
-                  >
+                  <div onClick={() => unMountAni(dispatch, nowPage, "/comuin")}>
                     <AiOutlineCamera />
                   </div>
                 )}
