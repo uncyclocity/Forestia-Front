@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Title from "../components/title";
+import Title from "./title";
 import styled from "styled-components";
 import { AiOutlineCloud, AiOutlineCamera } from "react-icons/ai";
+import { useReducerState } from "../pages/_context";
 
 const Styles = styled.div`
   .content {
@@ -49,14 +50,14 @@ const Styles = styled.div`
   }
 `;
 
-export default function Home() {
+export default function FixedHome() {
+  const freeBoard = useReducerState().freeBoard;
+
+  console.log("FixedHome() rendering\n" + freeBoard);
+
   return (
     <Styles>
-      <Title>
-        풀내음이 함께하는
-        <br />
-        자취 이야기를 들려주세요
-      </Title>
+      <Title />
       <div className="content">
         <div className="board_title">
           <div className="board_icon">
@@ -64,25 +65,21 @@ export default function Home() {
           </div>
           &nbsp;자게
         </div>
-        <ul>
-          <div className="content_list">
-            <li>
-              <Link href="/free/[post_title]" as="/free/테스트1/">
-                <a>테스트1</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/free/[post_title]" as="/free/테스트2/">
-                <a>테스트2</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/free/[post_title]" as="/free/테스트3/">
-                <a>테스트3</a>
-              </Link>
-            </li>
-          </div>
-        </ul>
+
+        <div className="content_list">
+          <ul>
+            {freeBoard &&
+              freeBoard.map((post, index) => {
+                return (
+                  <li key={index}>
+                    <Link href="/free/[post_title]" as={"/free/" + post.title}>
+                      <a>{post.title}</a>
+                    </Link>
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
       </div>
       <div className="content">
         <div className="board_title">

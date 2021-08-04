@@ -10,31 +10,31 @@ const initState = {
     free: false,
     comuin: false,
   },
-  freeBoard: {
-    0: {
+  freeBoard: [
+    {
       author: "백괴",
       date: "2021-08-02 22:39:08",
       title: "테스트1",
       content: "자게/테스트1 입니다.",
-      comment: {
-        0: {
+      comment: [
+        {
           author: "백괴",
           date: "2021-08-02 22:39:08",
           content: "자게/테스트1/댓글1 입니다.",
         },
-        1: {
+        {
           author: "백괴",
           date: "2021-08-02 22:39:08",
           content: "자게/테스트1/댓글2 입니다.",
         },
-        2: {
+        {
           author: "백괴",
           date: "2021-08-02 22:39:08",
           content: "자게/테스트1/댓글3 입니다.",
         },
-      },
+      ],
     },
-    1: {
+    {
       author: "백괴",
       date: "2021-08-02 22:39:08",
       title: "테스트2",
@@ -57,7 +57,7 @@ const initState = {
         },
       },
     },
-    2: {
+    {
       author: "백괴",
       date: "2021-08-02 22:39:08",
       title: "테스트3",
@@ -80,7 +80,7 @@ const initState = {
         },
       },
     },
-  },
+  ],
   PhotoBoard: {
     author: "백괴",
     date: "2021-08-02 22:39:08",

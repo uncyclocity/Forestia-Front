@@ -30,6 +30,8 @@ export default function Post() {
 
   const dispatch = useDispatch();
 
+  console.log("Free() rendering");
+
   useEffect(() => {
     const dispatchForm = {
       type: "/free",

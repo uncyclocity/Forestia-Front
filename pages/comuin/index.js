@@ -37,6 +37,8 @@ const Styles = styled.div`
 export default function Comuin() {
   const animate = useReducerState().animate.comuin;
 
+  console.log("Comuin() rendering");
+
   return (
     <Animation animate={animate}>
       <Box>

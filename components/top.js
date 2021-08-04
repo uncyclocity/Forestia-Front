@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CgTrees } from "react-icons/cg";
-import { RiShieldKeyholeLine } from "react-icons/ri";
+import { HiOutlineKey } from "react-icons/hi";
 
 const LayoutStyles = styled.div`
   width: 700px;
@@ -31,6 +31,17 @@ const LayoutStyles = styled.div`
     justify-content: center;
     font-weight: bold;
     font-size: 30px;
+    box-shadow: 0px 6px 10px #9aefd6;
+
+    &:hover {
+      transition: 0.25s all ease-in;
+      box-shadow: 0px 6px 10px #36deac;
+      cursor: pointer;
+    }
+
+    &:not(:hover) {
+      transition: 0.25s all ease-in;
+    }
   }
 `;
 
@@ -43,7 +54,7 @@ export default function Top() {
       </div>
       <div className="profile">
         <div className="signin_btn">
-          <RiShieldKeyholeLine />
+          <HiOutlineKey />
         </div>
       </div>
     </LayoutStyles>

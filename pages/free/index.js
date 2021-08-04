@@ -37,6 +37,8 @@ const Styles = styled.div`
 export default function Free() {
   const animate = useReducerState().animate.free;
 
+  console.log("Free() rendering");
+
   return (
     <Animation animate={animate}>
       <Box>

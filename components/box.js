@@ -9,6 +9,8 @@ const BoxStyles = styled.div`
 
   background: white;
   border-radius: 15px;
+
+  box-shadow: 0px 6px 15px #dedede;
 `;
 
 export default function Box({ children }) {

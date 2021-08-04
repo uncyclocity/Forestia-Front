@@ -1,7 +1,7 @@
 import Box from "../components/box";
 import Header from "../components/Header";
 import CenterAlign from "../components/centerAlign";
-import Home from "../components/home";
+import FixedHome from "../components/fixedHome";
 import styled from "styled-components";
 import Context from "./_context";
 import { slideUp } from "../styles/keyframes/slide";
@@ -28,7 +28,7 @@ export default function MyApp({ Component, pageProps }) {
         <Animation>
           <Box>
             <BoxStyles>
-              <Home />
+              <FixedHome />
             </BoxStyles>
           </Box>
         </Animation>
