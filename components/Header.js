@@ -8,7 +8,7 @@ import {
   AiOutlineCamera,
 } from "react-icons/ai";
 import Box from "../components/box";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const BoxStyles = styled.div`
   height: 80px;
@@ -73,6 +73,16 @@ const unMountAni = (dispatch, nowPage, URL) => {
 export default function Header() {
   const nowPage = useReducerState().nowPage;
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const partName = "/" + location.pathname.split("/")[1];
+    dispatch({
+      type: "initiate",
+      nowPage: partName,
+    });
+  }, [dispatch]);
+
+  console.log(nowPage);
 
   return (
     <Box>

@@ -1,9 +1,8 @@
 import { AiOutlineCamera } from "react-icons/ai";
 import styled, { css } from "styled-components";
-import { useReducerState, useDispatch } from "../_context";
+import { useReducerState } from "../_context";
 import Link from "next/link";
 import Board_title from "../../components/board_title";
-import { useEffect } from "react";
 import Box from "../../components/box";
 import { slideUp, slideDown } from "../../styles/keyframes/slide";
 

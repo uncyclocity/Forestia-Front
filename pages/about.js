@@ -1,11 +1,11 @@
-import { useReducerState, useDispatch } from "./_context";
-import { useEffect } from "react";
+import { useDispatch, useReducerState } from "./_context";
 import Box from "../components/box";
-import styled, { keyframes, css } from "styled-components";
+import styled, { css } from "styled-components";
 import Board_title from "../components/board_title";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { SiNextDotJs } from "react-icons/si";
 import { slideUp, slideDown } from "../styles/keyframes/slide";
+import { useEffect } from "react";
 
 const Animation = styled.div`
   animation: 0.35s ease 0s ${slideUp};

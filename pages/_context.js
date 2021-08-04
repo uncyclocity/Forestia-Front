@@ -181,8 +181,14 @@ const reducer = (state, action) => {
     case "/home":
       return {
         nowPage: action.type,
-        animate: initState.animate,
+        animate: state.animate,
       };
+    case "initiate": {
+      return {
+        ...state,
+        nowPage: action.nowPage,
+      };
+    }
     default:
       return state;
   }
