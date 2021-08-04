@@ -2,7 +2,6 @@ import Link from "next/link";
 import Title from "../components/title";
 import styled from "styled-components";
 import { AiOutlineCloud, AiOutlineCamera } from "react-icons/ai";
-import { CgTrees } from "react-icons/cg";
 
 const Styles = styled.div`
   .content {
@@ -54,7 +53,9 @@ export default function Home() {
   return (
     <Styles>
       <Title>
-        <CgTrees />
+        풀내음이 함께하는
+        <br />
+        자취 이야기를 들려주세요
       </Title>
       <div className="content">
         <div className="board_title">
