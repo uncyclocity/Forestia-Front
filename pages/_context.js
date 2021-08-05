@@ -158,6 +158,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "/about":
       return {
+        ...state,
         nowPage: action.type,
         animate: {
           ...state.animate,
@@ -166,6 +167,7 @@ const reducer = (state, action) => {
       };
     case "/free":
       return {
+        ...state,
         nowPage: action.type,
         animate: {
           ...state.animate,
@@ -174,6 +176,7 @@ const reducer = (state, action) => {
       };
     case "/comuin":
       return {
+        ...state,
         nowPage: action.type,
         animate: {
           ...state.animate,
@@ -182,6 +185,7 @@ const reducer = (state, action) => {
       };
     case "/home":
       return {
+        ...state,
         nowPage: action.type,
         animate: state.animate,
       };

@@ -55,7 +55,7 @@ export default function FixedHome() {
   const freeBoard = state.freeBoard;
   const photoBoard = state.photoBoard;
 
-  console.log("FixedHome() rendering\n" + freeBoard);
+  console.log(state);
 
   return (
     <Styles>
