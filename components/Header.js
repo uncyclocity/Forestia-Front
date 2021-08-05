@@ -82,8 +82,6 @@ export default function Header() {
     });
   }, [dispatch]);
 
-  console.log(nowPage);
-
   return (
     <Box>
       <BoxStyles>

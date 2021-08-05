@@ -5,6 +5,8 @@ import Link from "next/link";
 import Board_title from "../../components/board_title";
 import Box from "../../components/box";
 import { slideUp, slideDown } from "../../styles/keyframes/slide";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Animation = styled.div`
   animation: 0.35s ease 0s ${slideUp};
@@ -35,9 +37,11 @@ const Styles = styled.div`
 `;
 
 export default function Free() {
-  const animate = useReducerState().animate.free;
+  const state = useReducerState();
+  const animate = state.animate.free;
+  const freeBoard = state.freeBoard;
 
-  console.log("Free() rendering");
+  const [freeTop3] = useState([freeBoard[0], freeBoard[1], freeBoard[2]]);
 
   return (
     <Animation animate={animate}>
@@ -51,21 +55,19 @@ export default function Free() {
           </Board_title>
           <div className="content_list">
             <ul>
-              <li>
-                <Link href="/free/[post_title]" as="/free/테스트1/">
-                  <a>테스트1</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/free/[post_title]" as="/free/테스트2/">
-                  <a>테스트2</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/free/[post_title]" as="/free/테스트3/">
-                  <a>테스트3</a>
-                </Link>
-              </li>
+              {freeTop3 &&
+                freeTop3.map((post, index) => {
+                  return (
+                    <li key={index}>
+                      <Link
+                        as={`/free/${post.id}`}
+                        href={`/free/posts?id=${post.id}`}
+                      >
+                        <a>{post.title}</a>
+                      </Link>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
         </Styles>

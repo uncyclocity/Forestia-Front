@@ -37,3 +37,7 @@ export default function MyApp({ Component, pageProps }) {
     </Context>
   );
 }
+
+MyApp.getInitialProps = () => {
+  return true;
+};

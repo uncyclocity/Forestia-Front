@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Board_title from "../../../components/board_title";
-import { useDispatch } from "../../_context";
-import { AiOutlineCloud } from "react-icons/ai";
+import { useDispatch, useReducerState } from "../../_context";
+import { AiOutlineCamera } from "react-icons/ai";
 import styled from "styled-components";
 import { useEffect } from "react";
 import Box from "../../../components/box";
@@ -26,15 +26,18 @@ const Styles = styled.div`
 
 export default function Post() {
   const router = useRouter();
-  const { post_title } = router.query;
+  const { id } = router.query;
+
+  console.log(router);
+
+  const photoBoard = useReducerState().photoBoard;
+  const nowPost = photoBoard[id];
 
   const dispatch = useDispatch();
 
-  console.log("Free() rendering");
-
   useEffect(() => {
     const dispatchForm = {
-      type: "/free",
+      type: "/comuin",
     };
 
     dispatch(dispatchForm);
@@ -45,28 +48,25 @@ export default function Post() {
       <Styles>
         <Board_title>
           <div className="icon">
-            <AiOutlineCloud />
+            <AiOutlineCamera />
           </div>
-          자게/{post_title}
+          짤게/{nowPost.title}
         </Board_title>
+        {nowPost.content}
         <div className="content_list">
           <ul>
-            <li>
-              <Link
-                href="/free/[post_title]/[comment]"
-                as={`/free/${post_title}/first-comment`}
-              >
-                <a>First comment</a>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/free/[post_title]/[comment]"
-                as={`/free/${post_title}/second-comment`}
-              >
-                <a>Second comment</a>
-              </Link>
-            </li>
+            {nowPost.comments.map((comment, index) => {
+              return (
+                <li key={index}>
+                  <Link
+                    href="/comuin/[id]/[comment]"
+                    as={`/comuin/${id}/${comment.id}`}
+                  >
+                    <a>{comment.content}</a>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </Styles>

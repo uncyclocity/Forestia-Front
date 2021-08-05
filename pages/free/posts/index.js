@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Board_title from "../../../components/board_title";
-import { useDispatch } from "../../_context";
-import { AiOutlineCamera } from "react-icons/ai";
+import { useDispatch, useReducerState } from "../../_context";
+import { AiOutlineCloud } from "react-icons/ai";
 import styled from "styled-components";
 import { useEffect } from "react";
 import Box from "../../../components/box";
@@ -10,7 +10,11 @@ import Box from "../../../components/box";
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
 
-  .content_list {
+  .post_content {
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .comment_list {
     transform: translateX(-6.5%);
     li {
       list-style-type: none;
@@ -26,13 +30,16 @@ const Styles = styled.div`
 
 export default function Post() {
   const router = useRouter();
-  const { post_title } = router.query;
+  const { id } = router.query;
+
+  const freeBoard = useReducerState().freeBoard;
+  const nowPost = freeBoard[id];
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     const dispatchForm = {
-      type: "/comuin",
+      type: "/free",
     };
 
     dispatch(dispatchForm);
@@ -43,28 +50,25 @@ export default function Post() {
       <Styles>
         <Board_title>
           <div className="icon">
-            <AiOutlineCamera />
+            <AiOutlineCloud />
           </div>
-          짤게/{post_title}
+          자게/{nowPost.title}
         </Board_title>
-        <div className="content_list">
+        {nowPost.content}
+        <div className="comment_list">
           <ul>
-            <li>
-              <Link
-                href="/comuin/[post_title]/[comment]"
-                as={`/comuin/${post_title}/first-comment`}
-              >
-                <a>First comment</a>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/comuin/[post_title]/[comment]"
-                as={`/comuin/${post_title}/second-comment`}
-              >
-                <a>Second comment</a>
-              </Link>
-            </li>
+            {nowPost.comments.map((comment, index) => {
+              return (
+                <li key={index}>
+                  <Link
+                    href="/free/[post_id]/[comment]"
+                    as={`/free/${id}/${comment.id}`}
+                  >
+                    <a>{comment.content}</a>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </Styles>

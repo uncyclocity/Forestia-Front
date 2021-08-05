@@ -5,6 +5,7 @@ import Link from "next/link";
 import Board_title from "../../components/board_title";
 import Box from "../../components/box";
 import { slideUp, slideDown } from "../../styles/keyframes/slide";
+import { useState } from "react";
 
 const Animation = styled.div`
   animation: 0.35s ease 0s ${slideUp};
@@ -35,9 +36,11 @@ const Styles = styled.div`
 `;
 
 export default function Comuin() {
-  const animate = useReducerState().animate.comuin;
+  const state = useReducerState();
+  const animate = state.animate.comuin;
+  const photoBoard = state.photoBoard;
 
-  console.log("Comuin() rendering");
+  const [photoTop3] = useState([photoBoard[0], photoBoard[1], photoBoard[2]]);
 
   return (
     <Animation animate={animate}>
@@ -51,21 +54,19 @@ export default function Comuin() {
           </Board_title>
           <div className="content_list">
             <ul>
-              <li>
-                <Link href="/comuin/[post_title]" as="/comuin/테스트1/">
-                  <a>테스트1</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/comuin/[post_title]" as="/comuin/테스트2/">
-                  <a>테스트2</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/comuin/[post_title]" as="/comuin/테스트3/">
-                  <a>테스트3</a>
-                </Link>
-              </li>
+              {photoTop3 &&
+                photoTop3.map((post, index) => {
+                  return (
+                    <li key={index}>
+                      <Link
+                        as={`/comuin/${post.id}`}
+                        href={`/comuin/posts?_id=${post.id}`}
+                      >
+                        <a>{post.title}</a>
+                      </Link>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
         </Styles>

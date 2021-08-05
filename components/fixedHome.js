@@ -3,6 +3,7 @@ import Title from "./title";
 import styled from "styled-components";
 import { AiOutlineCloud, AiOutlineCamera } from "react-icons/ai";
 import { useReducerState } from "../pages/_context";
+import { useState } from "react";
 
 const Styles = styled.div`
   .content {
@@ -55,7 +56,8 @@ export default function FixedHome() {
   const freeBoard = state.freeBoard;
   const photoBoard = state.photoBoard;
 
-  console.log(state);
+  const [freeTop3] = useState([freeBoard[0], freeBoard[1], freeBoard[2]]);
+  const [photoTop3] = useState([photoBoard[0], photoBoard[1], photoBoard[2]]);
 
   return (
     <Styles>
@@ -70,11 +72,14 @@ export default function FixedHome() {
 
         <div className="content_list">
           <ul>
-            {freeBoard &&
-              freeBoard.map((post, index) => {
+            {freeTop3 &&
+              freeTop3.map((post, index) => {
                 return (
                   <li key={index}>
-                    <Link href="/free/[post_title]" as={"/free/" + post.title}>
+                    <Link
+                      as={`/free/${post.id}`}
+                      href={`/free/posts?id=${post.id}`}
+                    >
                       <a>{post.title}</a>
                     </Link>
                   </li>
@@ -92,11 +97,14 @@ export default function FixedHome() {
         </div>
         <div className="content_list">
           <ul>
-            {photoBoard &&
-              photoBoard.map((post, index) => {
+            {photoTop3 &&
+              photoTop3.map((post, index) => {
                 return (
                   <li key={index}>
-                    <Link href="/free/[post_title]" as={"/free/" + post.title}>
+                    <Link
+                      as={`/comuin/${post.id}`}
+                      href={`/comuin/posts/?id=${post.id}`}
+                    >
                       <a>{post.title}</a>
                     </Link>
                   </li>
