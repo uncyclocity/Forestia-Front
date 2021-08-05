@@ -51,7 +51,9 @@ const Styles = styled.div`
 `;
 
 export default function FixedHome() {
-  const freeBoard = useReducerState().freeBoard;
+  const state = useReducerState();
+  const freeBoard = state.freeBoard;
+  const photoBoard = state.photoBoard;
 
   console.log("FixedHome() rendering\n" + freeBoard);
 
@@ -88,25 +90,20 @@ export default function FixedHome() {
           </div>
           &nbsp;짤게
         </div>
-        <ul>
-          <div className="content_list">
-            <li>
-              <Link href="/comuin/[post_title]" as="/comuin/테스트1/">
-                <a>테스트1</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/comuin/[post_title]" as="/comuin/테스트2/">
-                <a>테스트2</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/comuin/[post_title]" as="/comuin/테스트3/">
-                <a>테스트3</a>
-              </Link>
-            </li>
-          </div>
-        </ul>
+        <div className="content_list">
+          <ul>
+            {photoBoard &&
+              photoBoard.map((post, index) => {
+                return (
+                  <li key={index}>
+                    <Link href="/free/[post_title]" as={"/free/" + post.title}>
+                      <a>{post.title}</a>
+                    </Link>
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
       </div>
     </Styles>
   );
