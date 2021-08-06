@@ -16,7 +16,7 @@ const initState = {
       id: 0,
       author: "백괴",
       date: "2021-08-02 22:39:08",
-      title: "테스트1",
+      title: "존나긴제목존나긴제목존나긴제목존나긴제목존나긴제목",
       content: "자게/테스트1 입니다.",
       comments: [
         {
