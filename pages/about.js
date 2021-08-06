@@ -1,21 +1,10 @@
 import { useReducerState } from "./_context";
 import Box from "../components/box";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Board_title from "../components/board_title";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { SiNextDotJs } from "react-icons/si";
-import { slideUp, slideDown } from "../styles/keyframes/slide";
-
-const Animation = styled.div`
-  animation: 0.35s ease 0s ${slideUp};
-  animation-fill-mode: forwards;
-  ${({ animate }) =>
-    animate &&
-    css`
-      animation-name: ${slideDown};
-      animation-duration: 0.1s;
-    `}
-`;
+import { BoxAnimation } from "../styles/animation";
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -57,7 +46,7 @@ export default function About() {
   const animate = useReducerState().animate.about;
 
   return (
-    <Animation animate={animate}>
+    <BoxAnimation animate={animate}>
       <Box>
         <Styles>
           <Board_title>
@@ -85,6 +74,6 @@ export default function About() {
           </div>
         </Styles>
       </Box>
-    </Animation>
+    </BoxAnimation>
   );
 }

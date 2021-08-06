@@ -1,23 +1,11 @@
 import { AiOutlineCloud } from "react-icons/ai";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useReducerState } from "../_context";
 import Link from "next/link";
 import Board_title from "../../components/board_title";
 import Box from "../../components/box";
-import { slideUp, slideDown } from "../../styles/keyframes/slide";
 import { useState } from "react";
-import { useRouter } from "next/router";
-
-const Animation = styled.div`
-  animation: 0.35s ease 0s ${slideUp};
-  animation-fill-mode: forwards;
-  ${({ animate }) =>
-    animate &&
-    css`
-      animation-name: ${slideDown};
-      animation-duration: 0.1s;
-    `}
-`;
+import { BoxAnimation } from "../../styles/animation";
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -44,7 +32,7 @@ export default function Free() {
   const [freeTop3] = useState([freeBoard[0], freeBoard[1], freeBoard[2]]);
 
   return (
-    <Animation animate={animate}>
+    <BoxAnimation animate={animate}>
       <Box>
         <Styles>
           <Board_title>
@@ -72,6 +60,6 @@ export default function Free() {
           </div>
         </Styles>
       </Box>
-    </Animation>
+    </BoxAnimation>
   );
 }

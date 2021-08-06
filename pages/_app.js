@@ -4,34 +4,26 @@ import CenterAlign from "../components/centerAlign";
 import FixedHome from "../components/fixedHome";
 import styled from "styled-components";
 import Context from "./_context";
-import { slideUp } from "../styles/keyframes/slide";
 import Top from "../components/top";
+import { AppAnimation } from "../styles/animation";
 
 const BoxStyles = styled.div`
   height: 310px;
-`;
-
-const Animation = styled.div`
-  animation: 0.35s ease 0s ${slideUp};
 `;
 
 export default function MyApp({ Component, pageProps }) {
   return (
     <Context>
       <CenterAlign>
-        <Animation>
+        <AppAnimation>
           <Top />
-        </Animation>
-        <Animation>
           <Header />
-        </Animation>
-        <Animation>
           <Box>
             <BoxStyles>
               <FixedHome />
             </BoxStyles>
           </Box>
-        </Animation>
+        </AppAnimation>
         <Component {...pageProps} />
       </CenterAlign>
     </Context>
