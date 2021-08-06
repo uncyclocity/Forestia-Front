@@ -9,6 +9,7 @@ const initState = {
     about: false,
     free: false,
     comuin: false,
+    notFound: false,
   },
   freeBoard: [
     {
@@ -205,6 +206,15 @@ const reducer = (state, action) => {
         animate: {
           ...state.animate,
           comuin: action.isAnimate,
+        },
+      };
+    case "/404":
+      return {
+        ...state,
+        nowPage: action.type,
+        animate: {
+          ...state.animate,
+          notFound: action.isAnimate,
         },
       };
     case "/home":

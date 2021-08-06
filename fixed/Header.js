@@ -1,4 +1,3 @@
-import Router from "next/router";
 import { useReducerState, useDispatch } from "../pages/_context";
 import styled from "styled-components";
 import {
@@ -8,7 +7,8 @@ import {
   AiOutlineCamera,
 } from "react-icons/ai";
 import Box from "../styles/box";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import UnMountAnimation from "./unMountAnimation";
 
 const BoxStyles = styled.div`
   height: 80px;
@@ -55,21 +55,6 @@ const MenuBtnStyles = styled.span`
     }
 `;
 
-const unMountAni = (dispatch, nowPage, URL) => {
-  dispatch({
-    type: nowPage,
-    isAnimate: true,
-  });
-
-  setTimeout(() => {
-    dispatch({
-      type: URL,
-      isAnimate: false,
-    });
-    Router.push(URL);
-  }, 100);
-};
-
 export default function Header() {
   const nowPage = useReducerState().nowPage;
   const dispatch = useDispatch();
@@ -78,11 +63,9 @@ export default function Header() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setPathName("/" + location.pathname.split("/")[1]);
-    console.log("안");
   });
 
   useEffect(() => {
-    console.log("녕");
     dispatch({
       type: "initiate",
       nowPage: pathName,
@@ -101,7 +84,9 @@ export default function Header() {
                     <AiOutlineHome />
                   </div>
                 ) : (
-                  <div onClick={() => unMountAni(dispatch, nowPage, "/home")}>
+                  <div
+                    onClick={() => UnMountAnimation(dispatch, nowPage, "/home")}
+                  >
                     <AiOutlineHome />
                   </div>
                 )}
@@ -116,7 +101,11 @@ export default function Header() {
                     <AiOutlineInfoCircle />
                   </div>
                 ) : (
-                  <div onClick={() => unMountAni(dispatch, nowPage, "/about")}>
+                  <div
+                    onClick={() =>
+                      UnMountAnimation(dispatch, nowPage, "/about")
+                    }
+                  >
                     <AiOutlineInfoCircle />
                   </div>
                 )}
@@ -133,7 +122,9 @@ export default function Header() {
                     <AiOutlineCloud />
                   </div>
                 ) : (
-                  <div onClick={() => unMountAni(dispatch, nowPage, "/free")}>
+                  <div
+                    onClick={() => UnMountAnimation(dispatch, nowPage, "/free")}
+                  >
                     <AiOutlineCloud />
                   </div>
                 )}
@@ -148,7 +139,11 @@ export default function Header() {
                     <AiOutlineCamera />
                   </div>
                 ) : (
-                  <div onClick={() => unMountAni(dispatch, nowPage, "/comuin")}>
+                  <div
+                    onClick={() =>
+                      UnMountAnimation(dispatch, nowPage, "/comuin")
+                    }
+                  >
                     <AiOutlineCamera />
                   </div>
                 )}

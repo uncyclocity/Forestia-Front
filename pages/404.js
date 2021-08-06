@@ -2,6 +2,10 @@ import Box from "../styles/box";
 import styled from "styled-components";
 import { VscError } from "react-icons/vsc";
 import router from "next/router";
+import { useDispatch, useReducerState } from "./_context";
+import { BoxAnimation } from "../styles/animation";
+import UnMountAnimation from "../fixed/unMountAnimation";
+import { useEffect } from "react";
 
 const BoxStyles = styled.div`
   display: flex;
@@ -94,24 +98,39 @@ const BoxStyles = styled.div`
 `;
 
 export default function NotFoundPage() {
+  const dispatch = useDispatch();
+  const animate = useReducerState().animate.notFound;
+
+  useEffect(() => {
+    dispatch({
+      type: "initiate",
+      nowPage: "/404",
+    });
+  }, [dispatch]);
+
   return (
-    <Box>
-      <BoxStyles>
-        <div className="errorcode">
-          <div className="error_icon">
-            <VscError />
+    <BoxAnimation animate={animate}>
+      <Box>
+        <BoxStyles>
+          <div className="errorcode">
+            <div className="error_icon">
+              <VscError />
+            </div>
+            &nbsp;404 Error
           </div>
-          &nbsp;404 Error
-        </div>
-        <div className="btns">
-          <div className="back_btn" onClick={() => router.back()}>
-            뒤로
+          <div className="btns">
+            <div className="back_btn" onClick={() => router.back()}>
+              뒤로
+            </div>
+            <div
+              className="home_btn"
+              onClick={() => UnMountAnimation(dispatch, "/404", "/home")}
+            >
+              메인
+            </div>
           </div>
-          <div className="home_btn" onClick={() => router.push("/home")}>
-            메인
-          </div>
-        </div>
-      </BoxStyles>
-    </Box>
+        </BoxStyles>
+      </Box>
+    </BoxAnimation>
   );
 }
