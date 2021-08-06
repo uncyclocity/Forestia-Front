@@ -1,4 +1,4 @@
-import Box from "../components/box";
+import Box from "../styles/box";
 import styled from "styled-components";
 import { VscError } from "react-icons/vsc";
 import router from "next/router";

@@ -7,8 +7,8 @@ import {
   AiOutlineCloud,
   AiOutlineCamera,
 } from "react-icons/ai";
-import Box from "../components/box";
-import { useEffect } from "react";
+import Box from "../styles/box";
+import { useEffect, useRef, useState } from "react";
 
 const BoxStyles = styled.div`
   height: 80px;
@@ -73,14 +73,21 @@ const unMountAni = (dispatch, nowPage, URL) => {
 export default function Header() {
   const nowPage = useReducerState().nowPage;
   const dispatch = useDispatch();
+  const [pathName, setPathName] = useState();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    setPathName("/" + location.pathname.split("/")[1]);
+    console.log("안");
+  });
 
   useEffect(() => {
-    const partName = "/" + location.pathname.split("/")[1];
+    console.log("녕");
     dispatch({
       type: "initiate",
-      nowPage: partName,
+      nowPage: pathName,
     });
-  }, [dispatch]);
+  }, [dispatch, pathName]);
 
   return (
     <Box>

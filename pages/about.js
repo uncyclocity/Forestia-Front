@@ -1,7 +1,7 @@
 import { useReducerState } from "./_context";
-import Box from "../components/box";
+import Box from "../styles/box";
 import styled from "styled-components";
-import Board_title from "../components/board_title";
+import Board_title from "../styles/board_title";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { SiNextDotJs } from "react-icons/si";
 import { BoxAnimation } from "../styles/animation";
