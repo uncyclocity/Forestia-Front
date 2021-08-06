@@ -29,8 +29,6 @@ export default function Comuin() {
   const animate = state.animate.comuin;
   const photoBoard = state.photoBoard;
 
-  const [photoTop3] = useState([photoBoard[0], photoBoard[1], photoBoard[2]]);
-
   return (
     <BoxAnimation animate={animate}>
       <Box>
@@ -43,8 +41,8 @@ export default function Comuin() {
           </Board_title>
           <div className="content_list">
             <ul>
-              {photoTop3 &&
-                photoTop3.map((post, index) => {
+              {photoBoard &&
+                photoBoard.map((post, index) => {
                   return (
                     <li key={index}>
                       <Link

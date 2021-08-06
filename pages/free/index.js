@@ -29,8 +29,6 @@ export default function Free() {
   const animate = state.animate.free;
   const freeBoard = state.freeBoard;
 
-  const [freeTop3] = useState([freeBoard[0], freeBoard[1], freeBoard[2]]);
-
   return (
     <BoxAnimation animate={animate}>
       <Box>
@@ -43,8 +41,8 @@ export default function Free() {
           </Board_title>
           <div className="content_list">
             <ul>
-              {freeTop3 &&
-                freeTop3.map((post, index) => {
+                {freeBoard && 
+                  freeBoard.map((post, index) => {
                   return (
                     <li key={index}>
                       <Link
