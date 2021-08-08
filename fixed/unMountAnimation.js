@@ -3,14 +3,14 @@ import Router from "next/router";
 export default function unMountAnimation(routerSW, dispatch, slideDown, URL=undefined, asURL=undefined) {
   dispatch({
     type: "change_animation",
-    animation: slideDown,
+    animation: 3,
   });
 
   setTimeout(() => {
     dispatch({
       type: "change_animation",
-      animation: null,
-    });
+      animation: 4,
+    }, 150);
 
     // sw 0 = push(), 1 = back()
     switch(routerSW) {

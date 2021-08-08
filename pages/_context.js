@@ -5,7 +5,7 @@ export const DispatchCtx = createContext(null);
 
 const initState = {
   nowPage: null,
-  animation: null,
+  animation: 4,
   freeBoard: [
     {
       id: 0,

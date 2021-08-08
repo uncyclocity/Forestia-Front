@@ -6,7 +6,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { SiNextDotJs } from "react-icons/si";
 import { BoxAnimation } from "../styles/animation";
 import { useEffect } from "react";
-import { slideUp, slideDown } from "../styles/keyframes/slide";
+import { slideUp } from "../styles/keyframes/slide";
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -52,12 +52,12 @@ export default function About() {
     dispatch({
       type: "initiate",
       nowPage: "/about",
-      animation: slideUp
+      animation: 1
     });
     setTimeout(() => {
       dispatch({
         type: "change_animation",
-        animation: ""
+        animation: 2
       });
     }, 350)
   }, [dispatch])

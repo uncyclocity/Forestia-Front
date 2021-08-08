@@ -36,26 +36,14 @@ export default function Free() {
     dispatch({
       type: "initiate",
       nowPage: "/free",
-      animation: slideUp
+      animation: 1
     });
     setTimeout(() => {
       dispatch({
         type: "change_animation",
-        animation: null
+        animation: 2
       });
     }, 350)
-    return function cleanup() {
-      dispatch({
-        type: "change_animation",
-        animation: slideDown
-      });
-      setTimeout(() => {
-        dispatch({
-          type: "change_animation",
-          animation: null
-        });
-      }, 350)
-    }
   }, [dispatch])
 
   return (
