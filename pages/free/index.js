@@ -4,7 +4,6 @@ import { useReducerState } from "../_context";
 import Link from "next/link";
 import Board_title from "../../styles/board_title";
 import Box from "../../styles/box";
-import { useState } from "react";
 import { BoxAnimation } from "../../styles/animation";
 
 const Styles = styled.div`

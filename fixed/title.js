@@ -26,7 +26,7 @@ const Styles = styled.div`
     width: 80px;
 
     display: flex;
-    justify-content: right;
+    justify-content: center;
 
     padding: 5px 15px;
     margin-right: 20px;

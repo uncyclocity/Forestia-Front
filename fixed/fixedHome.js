@@ -31,13 +31,16 @@ const Styles = styled.div`
 
     .content_list {
       li {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         width: 300px;
-
         list-style-type: none;
         transform: translateX(-13.5%);
+
+        a {
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
 
         &:not(:first-child) {
           margin-top: 10px;
