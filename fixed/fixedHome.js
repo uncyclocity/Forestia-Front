@@ -2,8 +2,9 @@ import Link from "next/link";
 import Title from "./title";
 import styled from "styled-components";
 import { AiOutlineCloud, AiOutlineCamera } from "react-icons/ai";
-import { useReducerState } from "../pages/_context";
+import { useDispatch, useReducerState } from "../pages/_context";
 import { useState } from "react";
+import unMountAnimation from "./unMountAnimation";
 
 const Styles = styled.div`
   .content {
@@ -60,9 +61,14 @@ export default function FixedHome() {
   const state = useReducerState();
   const freeBoard = state.freeBoard;
   const photoBoard = state.photoBoard;
+  const nowPage = state.nowPage;
+
+  const dispatch = useDispatch();
 
   const [freeTop3] = useState([freeBoard[0], freeBoard[1], freeBoard[2]]);
   const [photoTop3] = useState([photoBoard[0], photoBoard[1], photoBoard[2]]);
+
+  console.log(freeTop3)
 
   return (
     <Styles>
@@ -81,15 +87,14 @@ export default function FixedHome() {
               freeTop3.map((post, index) => {
                 return (
                   <li key={index}>
-                    <Link
-                      as={`/free/${post.id}`}
-                      href={`/free/posts?id=${post.id}`}
+                    <div
+                      onClick={() => unMountAnimation(dispatch, nowPage, `/free/posts?id=${post.id}`, `/free/${post.id}`)}
                     >
                       <a>{post.title}</a>
-                    </Link>
+                    </div>
                   </li>
                 );
-              })}
+            })}
           </ul>
         </div>
       </div>
@@ -106,12 +111,11 @@ export default function FixedHome() {
               photoTop3.map((post, index) => {
                 return (
                   <li key={index}>
-                    <Link
-                      as={`/comuin/${post.id}`}
-                      href={`/comuin/posts/?id=${post.id}`}
+                    <div
+                      onClick={() => unMountAnimation(dispatch, nowPage, `/comuin/posts?id=${post.id}`, `/comuin/${post.id}`)}
                     >
                       <a>{post.title}</a>
-                    </Link>
+                    </div>
                   </li>
                 );
               })}

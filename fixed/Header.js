@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import Box from "../styles/box";
 import { useEffect, useState } from "react";
-import UnMountAnimation from "./unMountAnimation";
+import unMountAnimation from "./unMountAnimation";
 
 const BoxStyles = styled.div`
   height: 80px;
@@ -85,7 +85,7 @@ export default function Header() {
                   </div>
                 ) : (
                   <div
-                    onClick={() => UnMountAnimation(dispatch, nowPage, "/home")}
+                    onClick={() => unMountAnimation(dispatch, nowPage, "/home")}
                   >
                     <AiOutlineHome />
                   </div>
@@ -103,7 +103,7 @@ export default function Header() {
                 ) : (
                   <div
                     onClick={() =>
-                      UnMountAnimation(dispatch, nowPage, "/about")
+                      unMountAnimation(dispatch, nowPage, "/about")
                     }
                   >
                     <AiOutlineInfoCircle />
@@ -123,7 +123,7 @@ export default function Header() {
                   </div>
                 ) : (
                   <div
-                    onClick={() => UnMountAnimation(dispatch, nowPage, "/free")}
+                    onClick={() => unMountAnimation(dispatch, nowPage, "/free")}
                   >
                     <AiOutlineCloud />
                   </div>
@@ -141,7 +141,7 @@ export default function Header() {
                 ) : (
                   <div
                     onClick={() =>
-                      UnMountAnimation(dispatch, nowPage, "/comuin")
+                      unMountAnimation(dispatch, nowPage, "/comuin")
                     }
                   >
                     <AiOutlineCamera />

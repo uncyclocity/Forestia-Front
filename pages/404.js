@@ -4,7 +4,7 @@ import { VscError } from "react-icons/vsc";
 import router from "next/router";
 import { useDispatch, useReducerState } from "./_context";
 import { BoxAnimation } from "../styles/animation";
-import UnMountAnimation from "../fixed/unMountAnimation";
+import unMountAnimation from "../fixed/unMountAnimation";
 import { useEffect } from "react";
 
 const BoxStyles = styled.div`
@@ -124,7 +124,7 @@ export default function NotFoundPage() {
             </div>
             <div
               className="home_btn"
-              onClick={() => UnMountAnimation(dispatch, "/404", "/home")}
+              onClick={() => unMountAnimation(dispatch, "/404", "/home")}
             >
               메인
             </div>

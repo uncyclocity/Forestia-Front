@@ -1,6 +1,6 @@
 import Router from "next/router";
 
-export default function unMountAnimation(dispatch, nowPage, URL) {
+export default function unMountAnimation(dispatch, nowPage, URL, asURL=undefined) {
   dispatch({
     type: nowPage,
     isAnimate: true,
@@ -11,6 +11,7 @@ export default function unMountAnimation(dispatch, nowPage, URL) {
       type: URL,
       isAnimate: false,
     });
-    Router.push(URL);
+
+    asURL ? Router.push(URL, asURL) : Router.push(URL)
   }, 100);
 }

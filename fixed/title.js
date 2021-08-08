@@ -23,7 +23,7 @@ const Styles = styled.div`
   }
 
   .posting_btn {
-    width: 75px;
+    width: 80px;
 
     display: flex;
     justify-content: right;
