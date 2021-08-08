@@ -7,8 +7,10 @@ import {
   AiOutlineCamera,
 } from "react-icons/ai";
 import Box from "../styles/box";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Router from "next/router";
 import unMountAnimation from "./unMountAnimation";
+import { slideDown } from "../styles/keyframes/slide";
 
 const BoxStyles = styled.div`
   height: 80px;
@@ -58,19 +60,6 @@ const MenuBtnStyles = styled.span`
 export default function Header() {
   const nowPage = useReducerState().nowPage;
   const dispatch = useDispatch();
-  const [pathName, setPathName] = useState();
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    setPathName("/" + location.pathname.split("/")[1]);
-  });
-
-  useEffect(() => {
-    dispatch({
-      type: "initiate",
-      nowPage: pathName,
-    });
-  }, [dispatch, pathName]);
 
   return (
     <Box>
@@ -85,7 +74,7 @@ export default function Header() {
                   </div>
                 ) : (
                   <div
-                    onClick={() => unMountAnimation(dispatch, nowPage, "/home")}
+                    onClick={() => unMountAnimation(0, dispatch, slideDown, "/home")}
                   >
                     <AiOutlineHome />
                   </div>
@@ -103,7 +92,7 @@ export default function Header() {
                 ) : (
                   <div
                     onClick={() =>
-                      unMountAnimation(dispatch, nowPage, "/about")
+                      unMountAnimation(0, dispatch, slideDown, "/about")
                     }
                   >
                     <AiOutlineInfoCircle />
@@ -123,7 +112,7 @@ export default function Header() {
                   </div>
                 ) : (
                   <div
-                    onClick={() => unMountAnimation(dispatch, nowPage, "/free")}
+                    onClick={() => unMountAnimation(0, dispatch, slideDown, "/free")}
                   >
                     <AiOutlineCloud />
                   </div>
@@ -141,7 +130,7 @@ export default function Header() {
                 ) : (
                   <div
                     onClick={() =>
-                      unMountAnimation(dispatch, nowPage, "/comuin")
+                      unMountAnimation(0, dispatch, slideDown, "/comuin")
                     }
                   >
                     <AiOutlineCamera />

@@ -1,11 +1,12 @@
 import { AiOutlineCamera } from "react-icons/ai";
 import styled from "styled-components";
-import { useReducerState } from "../_context";
+import { useDispatch, useReducerState } from "../_context";
 import Link from "next/link";
 import Board_title from "../../styles/board_title";
 import Box from "../../styles/box";
-import { useState } from "react";
+import { useEffect } from "react";
 import { BoxAnimation } from "../../styles/animation";
+import { slideUp, slideDown } from "../../styles/keyframes/slide";
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -26,11 +27,41 @@ const Styles = styled.div`
 
 export default function Comuin() {
   const state = useReducerState();
-  const animate = state.animate.comuin;
+  const dispatch = useDispatch();
+
+  const animation = state.animation;
   const photoBoard = state.photoBoard;
 
+  
+
+  useEffect(() => {
+    dispatch({
+      type: "initiate",
+      nowPage: "/comuin",
+      animation: slideUp
+    })
+    setTimeout(() => {
+      dispatch({
+        type: "change_animation",
+        animation: null
+      });
+    }, 350)
+    return function cleanup() {
+      dispatch({
+        type: "change_animation",
+        animation: slideDown
+      });
+      setTimeout(() => {
+        dispatch({
+          type: "change_animation",
+          animation: null
+        });
+      }, 350)
+    }
+  }, [dispatch])
+
   return (
-    <BoxAnimation animate={animate}>
+    <BoxAnimation animation={animation}>
       <Box>
         <Styles>
           <Board_title>

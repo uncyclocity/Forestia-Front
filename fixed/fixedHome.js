@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { AiOutlineCloud, AiOutlineCamera } from "react-icons/ai";
 import { useDispatch, useReducerState } from "../pages/_context";
 import { useState } from "react";
+import { Router } from "next/router";
 import unMountAnimation from "./unMountAnimation";
+import { slideDown } from "../styles/keyframes/slide";
 
 const Styles = styled.div`
   .content {
@@ -62,16 +64,13 @@ const Styles = styled.div`
 
 export default function FixedHome() {
   const state = useReducerState();
+  const dispatch = useDispatch();
+
   const freeBoard = state.freeBoard;
   const photoBoard = state.photoBoard;
-  const nowPage = state.nowPage;
-
-  const dispatch = useDispatch();
 
   const [freeTop3] = useState([freeBoard[0], freeBoard[1], freeBoard[2]]);
   const [photoTop3] = useState([photoBoard[0], photoBoard[1], photoBoard[2]]);
-
-  console.log(freeTop3)
 
   return (
     <Styles>
@@ -91,7 +90,7 @@ export default function FixedHome() {
                 return (
                   <li key={index}>
                     <div
-                      onClick={() => unMountAnimation(dispatch, nowPage, `/free/posts?id=${post.id}`, `/free/${post.id}`)}
+                      onClick={() => unMountAnimation(0, dispatch, slideDown, `/free/posts?id=${post.id}`, `/free/${post.id}`)}
                     >
                       <a>{post.title}</a>
                     </div>
@@ -115,7 +114,7 @@ export default function FixedHome() {
                 return (
                   <li key={index}>
                     <div
-                      onClick={() => unMountAnimation(dispatch, nowPage, `/comuin/posts?id=${post.id}`, `/comuin/${post.id}`)}
+                      onClick={() => unMountAnimation(0, dispatch, slideDown, `/comuin/posts?id=${post.id}`, `/comuin/${post.id}`)}
                     >
                       <a>{post.title}</a>
                     </div>

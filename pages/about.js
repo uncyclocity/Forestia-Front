@@ -1,10 +1,12 @@
-import { useReducerState } from "./_context";
+import { useDispatch, useReducerState } from "./_context";
 import Box from "../styles/box";
 import styled from "styled-components";
 import Board_title from "../styles/board_title";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { SiNextDotJs } from "react-icons/si";
 import { BoxAnimation } from "../styles/animation";
+import { useEffect } from "react";
+import { slideUp, slideDown } from "../styles/keyframes/slide";
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -43,10 +45,25 @@ const Styles = styled.div`
 `;
 
 export default function About() {
-  const animate = useReducerState().animate.about;
+  const animation = useReducerState().animation;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: "initiate",
+      nowPage: "/about",
+      animation: slideUp
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "change_animation",
+        animation: ""
+      });
+    }, 350)
+  }, [dispatch])
 
   return (
-    <BoxAnimation animate={animate}>
+    <BoxAnimation animation={animation}>
       <Box>
         <Styles>
           <Board_title>

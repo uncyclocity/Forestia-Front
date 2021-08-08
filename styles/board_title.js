@@ -37,7 +37,6 @@ const Styles = styled.div`
 
 export default function Board_title({ children }) {
   const router = useRouter();
-  console.log(router)
 
   return (
     <Styles>

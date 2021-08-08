@@ -28,8 +28,6 @@ export default function Post() {
   const router = useRouter();
   const { id } = router.query;
 
-  console.log(router);
-
   const photoBoard = useReducerState().photoBoard;
   const nowPost = photoBoard[id];
 

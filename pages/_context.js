@@ -5,12 +5,7 @@ export const DispatchCtx = createContext(null);
 
 const initState = {
   nowPage: null,
-  animate: {
-    about: false,
-    free: false,
-    comuin: false,
-    notFound: false,
-  },
+  animation: null,
   freeBoard: [
     {
       id: 0,
@@ -181,52 +176,17 @@ const initState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "/about":
-      return {
-        ...state,
-        nowPage: action.type,
-        animate: {
-          ...state.animate,
-          about: action.isAnimate,
-        },
-      };
-    case "/free":
-      return {
-        ...state,
-        nowPage: action.type,
-        animate: {
-          ...state.animate,
-          free: action.isAnimate,
-        },
-      };
-    case "/comuin":
-      return {
-        ...state,
-        nowPage: action.type,
-        animate: {
-          ...state.animate,
-          comuin: action.isAnimate,
-        },
-      };
-    case "/404":
-      return {
-        ...state,
-        nowPage: action.type,
-        animate: {
-          ...state.animate,
-          notFound: action.isAnimate,
-        },
-      };
-    case "/home":
-      return {
-        ...state,
-        nowPage: action.type,
-        animate: state.animate,
-      };
     case "initiate": {
       return {
         ...state,
         nowPage: action.nowPage,
+        animation: action.animation
+      };
+    }
+    case "change_animation": {
+      return {
+        ...state,
+        animation: action.animation
       };
     }
     default:

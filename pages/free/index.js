@@ -1,10 +1,12 @@
 import { AiOutlineCloud } from "react-icons/ai";
 import styled from "styled-components";
-import { useReducerState } from "../_context";
+import { useDispatch, useReducerState } from "../_context";
 import Link from "next/link";
 import Board_title from "../../styles/board_title";
 import Box from "../../styles/box";
 import { BoxAnimation } from "../../styles/animation";
+import { useEffect } from "react";
+import { slideUp, slideDown } from "../../styles/keyframes/slide";
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -25,11 +27,39 @@ const Styles = styled.div`
 
 export default function Free() {
   const state = useReducerState();
-  const animate = state.animate.free;
+  const dispatch = useDispatch();
+
+  const animation = state.animation;
   const freeBoard = state.freeBoard;
 
+  useEffect(() => {
+    dispatch({
+      type: "initiate",
+      nowPage: "/free",
+      animation: slideUp
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "change_animation",
+        animation: null
+      });
+    }, 350)
+    return function cleanup() {
+      dispatch({
+        type: "change_animation",
+        animation: slideDown
+      });
+      setTimeout(() => {
+        dispatch({
+          type: "change_animation",
+          animation: null
+        });
+      }, 350)
+    }
+  }, [dispatch])
+
   return (
-    <BoxAnimation animate={animate}>
+    <BoxAnimation animation={animation}>
       <Box>
         <Styles>
           <Board_title>

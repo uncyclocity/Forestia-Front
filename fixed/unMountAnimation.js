@@ -1,17 +1,25 @@
 import Router from "next/router";
 
-export default function unMountAnimation(dispatch, nowPage, URL, asURL=undefined) {
+export default function unMountAnimation(routerSW, dispatch, slideDown, URL=undefined, asURL=undefined) {
   dispatch({
-    type: nowPage,
-    isAnimate: true,
+    type: "change_animation",
+    animation: slideDown,
   });
 
   setTimeout(() => {
     dispatch({
-      type: URL,
-      isAnimate: false,
+      type: "change_animation",
+      animation: null,
     });
 
-    asURL ? Router.push(URL, asURL) : Router.push(URL)
-  }, 100);
+    // sw 0 = push(), 1 = back()
+    switch(routerSW) {
+      case 0:
+        asURL ? Router.push(URL, asURL) : Router.push(URL);
+        break;
+      case 1:
+        Router.back();    
+    }
+    
+  }, 350);
 }
