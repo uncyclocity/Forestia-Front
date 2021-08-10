@@ -1,12 +1,13 @@
-import { useDispatch, useReducerState } from "./_context";
-import Box from "../styles/box";
-import styled from "styled-components";
-import Board_title from "../styles/board_title";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { SiNextDotJs } from "react-icons/si";
-import { BoxAnimation } from "../styles/animation";
-import { useEffect } from "react";
-import { slideUp } from "../styles/keyframes/slide";
+import { useDispatch, useReducerState } from './_context';
+import Box from '../styles/box';
+import styled from 'styled-components';
+import Board_title from '../styles/board_title';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+import { SiNextDotJs } from 'react-icons/si';
+import { BoxAnimation } from '../styles/animation';
+import { useEffect } from 'react';
+import { slideUp } from '../styles/keyframes/slide';
+import { mountAnimation } from '../fixed/unMountAnimation';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -49,18 +50,8 @@ export default function About() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: "initiate",
-      nowPage: "/about",
-      animation: 1
-    });
-    setTimeout(() => {
-      dispatch({
-        type: "change_animation",
-        animation: 2
-      });
-    }, 350)
-  }, [dispatch])
+    mountAnimation(dispatch, '/about');
+  }, [dispatch]);
 
   return (
     <BoxAnimation animation={animation}>

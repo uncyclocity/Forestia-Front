@@ -1,5 +1,5 @@
-import Document, { Html, Main, Head, NextScript } from "next/document";
-import { ServerStyleSheet, createGlobalStyle } from "styled-components";
+import Document, { Html, Main, Head, NextScript } from 'next/document';
+import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   html, body {
@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     padding: 0;
     margin: 0;
-    overflow-y: hidden;
   }
 
   * {
@@ -36,8 +35,8 @@ export default class MyDocument extends Document {
           <>
             <GlobalStyles />
             <App {...props} />
-          </>
-        )
+          </>,
+        ),
     );
 
     // 3단계 : style 태그 역할을 하는 변수를 선언하고, 검색한 스타일들을 넣어준다.

@@ -1,12 +1,12 @@
-import Box from "../styles/box";
-import styled from "styled-components";
-import { VscError } from "react-icons/vsc";
-import { useDispatch, useReducerState } from "./_context";
-import { BoxAnimation } from "../styles/animation";
-import { useEffect } from "react";
-import Router from "next/router";
-import { slideUp, slideDown } from "../styles/keyframes/slide";
-import unMountAnimation from "../fixed/unMountAnimation";
+import Box from '../styles/box';
+import styled from 'styled-components';
+import { VscError } from 'react-icons/vsc';
+import { useDispatch, useReducerState } from './_context';
+import { BoxAnimation } from '../styles/animation';
+import { useEffect } from 'react';
+import Router from 'next/router';
+import { slideUp, slideDown } from '../styles/keyframes/slide';
+import unMountAnimation, { mountAnimation } from '../fixed/unMountAnimation';
 
 const BoxStyles = styled.div`
   display: flex;
@@ -100,35 +100,11 @@ const BoxStyles = styled.div`
 
 export default function NotFoundPage() {
   const dispatch = useDispatch();
-  const animation = useReducerState().animation
-
-  
+  const animation = useReducerState().animation;
 
   useEffect(() => {
-    dispatch({
-      type: "initiate",
-      nowPage: "/404",
-      animation: slideUp
-    });
-    setTimeout(() => {
-      dispatch({
-        type: "change_animation",
-        animation: null
-      });
-    }, 350)
-    return function cleanup() {
-      dispatch({
-        type: "change_animation",
-        animation: slideDown
-      });
-      setTimeout(() => {
-        dispatch({
-          type: "change_animation",
-          animation: null
-        });
-      }, 350)
-    }
-  }, [dispatch])
+    mountAnimation(dispatch, '/404');
+  }, [dispatch]);
 
   return (
     <BoxAnimation animation={animation}>
@@ -141,12 +117,15 @@ export default function NotFoundPage() {
             &nbsp;404 Error
           </div>
           <div className="btns">
-            <div className="back_btn" onClick={() => unMountAnimation(1, dispatch, slideDown)}>
+            <div
+              className="back_btn"
+              onClick={() => unMountAnimation(1, dispatch, slideDown)}
+            >
               뒤로
             </div>
             <div
               className="home_btn"
-              onClick={() => unMountAnimation(0, dispatch, slideDown, "/home")}
+              onClick={() => unMountAnimation(0, dispatch, slideDown, '/home')}
             >
               메인
             </div>

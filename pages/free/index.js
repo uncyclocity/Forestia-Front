@@ -1,12 +1,13 @@
-import { AiOutlineCloud } from "react-icons/ai";
-import styled from "styled-components";
-import { useDispatch, useReducerState } from "../_context";
-import Link from "next/link";
-import Board_title from "../../styles/board_title";
-import Box from "../../styles/box";
-import { BoxAnimation } from "../../styles/animation";
-import { useEffect } from "react";
-import { slideUp, slideDown } from "../../styles/keyframes/slide";
+import { AiOutlineCloud } from 'react-icons/ai';
+import styled from 'styled-components';
+import { useDispatch, useReducerState } from '../_context';
+import Link from 'next/link';
+import Board_title from '../../styles/board_title';
+import Box from '../../styles/box';
+import { BoxAnimation } from '../../styles/animation';
+import { useEffect } from 'react';
+import { slideUp, slideDown } from '../../styles/keyframes/slide';
+import { mountAnimation } from '../../fixed/unMountAnimation';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -33,18 +34,8 @@ export default function Free() {
   const freeBoard = state.freeBoard;
 
   useEffect(() => {
-    dispatch({
-      type: "initiate",
-      nowPage: "/free",
-      animation: 1
-    });
-    setTimeout(() => {
-      dispatch({
-        type: "change_animation",
-        animation: 2
-      });
-    }, 350)
-  }, [dispatch])
+    mountAnimation(dispatch, '/free');
+  }, [dispatch]);
 
   return (
     <BoxAnimation animation={animation}>
@@ -58,8 +49,8 @@ export default function Free() {
           </Board_title>
           <div className="content_list">
             <ul>
-                {freeBoard && 
-                  freeBoard.map((post, index) => {
+              {freeBoard &&
+                freeBoard.map((post, index) => {
                   return (
                     <li key={index}>
                       <Link

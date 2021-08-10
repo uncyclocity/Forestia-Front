@@ -1,12 +1,13 @@
-import { AiOutlineCamera } from "react-icons/ai";
-import styled from "styled-components";
-import { useDispatch, useReducerState } from "../_context";
-import Link from "next/link";
-import Board_title from "../../styles/board_title";
-import Box from "../../styles/box";
-import { useEffect } from "react";
-import { BoxAnimation } from "../../styles/animation";
-import { slideUp, slideDown } from "../../styles/keyframes/slide";
+import { AiOutlineCamera } from 'react-icons/ai';
+import styled from 'styled-components';
+import { useDispatch, useReducerState } from '../_context';
+import Link from 'next/link';
+import Board_title from '../../styles/board_title';
+import Box from '../../styles/box';
+import { useEffect } from 'react';
+import { BoxAnimation } from '../../styles/animation';
+import { slideUp, slideDown } from '../../styles/keyframes/slide';
+import { mountAnimation } from '../../fixed/unMountAnimation';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -32,21 +33,9 @@ export default function Comuin() {
   const animation = state.animation;
   const photoBoard = state.photoBoard;
 
-  
-
   useEffect(() => {
-    dispatch({
-      type: "initiate",
-      nowPage: "/comuin",
-      animation: 1
-    })
-    setTimeout(() => {
-      dispatch({
-        type: "change_animation",
-        animation: 2
-      });
-    }, 350)
-  }, [dispatch])
+    mountAnimation(dispatch, '/comuin');
+  }, [dispatch]);
 
   return (
     <BoxAnimation animation={animation}>
