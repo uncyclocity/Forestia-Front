@@ -5,9 +5,9 @@ import Link from 'next/link';
 import Board_title from '../../styles/board_title';
 import Box from '../../styles/box';
 import { useEffect } from 'react';
-import { BoxAnimation } from '../../styles/animation';
+import { BoxUdAnimation } from '../../styles/animation';
 import { slideUp, slideDown } from '../../styles/keyframes/slide';
-import { mountAnimation } from '../../fixed/unmountAnimation';
+import { mountAnimation } from '../../fixed/AnimationController';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -38,7 +38,7 @@ export default function Comuin() {
   }, [dispatch]);
 
   return (
-    <BoxAnimation animation={animation}>
+    <BoxUdAnimation animation={animation}>
       <Box>
         <Styles>
           <Board_title>
@@ -66,6 +66,6 @@ export default function Comuin() {
           </div>
         </Styles>
       </Box>
-    </BoxAnimation>
+    </BoxUdAnimation>
   );
 }

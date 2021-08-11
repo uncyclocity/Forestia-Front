@@ -9,7 +9,7 @@ import {
 import Box from '../styles/box';
 import { useState } from 'react';
 import Router from 'next/router';
-import { unmountAnimation } from './unmountAnimation';
+import { unmountAnimation } from './AnimationController';
 import { slideDown } from '../styles/keyframes/slide';
 
 const BoxStyles = styled.div`

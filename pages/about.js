@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import Board_title from '../styles/board_title';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { SiNextDotJs } from 'react-icons/si';
-import { BoxAnimation } from '../styles/animation';
+import { BoxUdAnimation } from '../styles/animation';
 import { useEffect } from 'react';
 import { slideUp } from '../styles/keyframes/slide';
-import { mountAnimation } from '../fixed/unmountAnimation';
+import { mountAnimation } from '../fixed/AnimationController';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -54,7 +54,7 @@ export default function About() {
   }, [dispatch]);
 
   return (
-    <BoxAnimation animation={animation}>
+    <BoxUdAnimation animation={animation}>
       <Box>
         <Styles>
           <Board_title>
@@ -82,6 +82,6 @@ export default function About() {
           </div>
         </Styles>
       </Box>
-    </BoxAnimation>
+    </BoxUdAnimation>
   );
 }

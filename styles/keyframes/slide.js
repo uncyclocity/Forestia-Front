@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { keyframes } from 'styled-components';
 
 export const slideUp = keyframes`
   from { 
@@ -18,6 +18,28 @@ export const slideDown = keyframes`
    }
   to { 
     transform: translateY(5px);
+    opacity: 0;
+   }
+`;
+
+export const slideLeft = keyframes`
+  from { 
+    transform: translateX(10px);
+    opacity: 0;
+   }
+  to { 
+    transform: translateX(0px);
+    opacity: 1;
+   }
+`;
+
+export const slideRight = keyframes`
+  from { 
+    transform: translateX(0px);
+    opacity: 1;
+   }
+  to { 
+    transform: translateX(10px);
     opacity: 0;
    }
 `;

@@ -1,11 +1,13 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Board_title from "../../../styles/board_title";
-import { useDispatch, useReducerState } from "../../_context";
-import { AiOutlineCloud } from "react-icons/ai";
-import styled from "styled-components";
-import { useEffect } from "react";
-import Box from "../../../styles/box";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Board_title from '../../../styles/board_title';
+import { useDispatch, useReducerState } from '../../_context';
+import { AiOutlineCloud } from 'react-icons/ai';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import Box from '../../../styles/box';
+import { BoxLrAnimation, BoxUdAnimation } from '../../../styles/animation';
+import { mountAnimation } from '../../../fixed/AnimationController';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -28,50 +30,62 @@ const Styles = styled.div`
   }
 `;
 
+const BeforeSetAnimation = styled.div`
+  opacity: 0;
+`;
+
 export default function Post() {
   const router = useRouter();
   const { id } = router.query;
 
-  const freeBoard = useReducerState().freeBoard;
+  const state = useReducerState();
+  const freeBoard = state.freeBoard;
+  const nowPage = state.nowPage;
   const nowPost = freeBoard[id];
+  const animation = state.animation;
+
+  const [Animation, setAnimation] = useState(BeforeSetAnimation);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const dispatchForm = {
-      type: "/free",
-    };
-
-    dispatch(dispatchForm);
+    if (nowPage === '/free') {
+      setAnimation(BoxLrAnimation);
+    } else {
+      setAnimation(BoxUdAnimation);
+    }
+    mountAnimation(dispatch, '/free');
   }, [dispatch]);
 
   return (
-    <Box>
-      <Styles>
-        <Board_title>
-          <div className="icon">
-            <AiOutlineCloud />
+    <Animation animation={animation}>
+      <Box>
+        <Styles>
+          <Board_title>
+            <div className="icon">
+              <AiOutlineCloud />
+            </div>
+            자게/{nowPost.title}
+          </Board_title>
+          {nowPost.content}
+          <div className="comment_list">
+            <ul>
+              {nowPost.comments.map((comment, index) => {
+                return (
+                  <li key={index}>
+                    <Link
+                      href="/free/[post_id]/[comment]"
+                      as={`/free/${id}/${comment.id}`}
+                    >
+                      <a>{comment.content}</a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-          자게/{nowPost.title}
-        </Board_title>
-        {nowPost.content}
-        <div className="comment_list">
-          <ul>
-            {nowPost.comments.map((comment, index) => {
-              return (
-                <li key={index}>
-                  <Link
-                    href="/free/[post_id]/[comment]"
-                    as={`/free/${id}/${comment.id}`}
-                  >
-                    <a>{comment.content}</a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </Styles>
-    </Box>
+        </Styles>
+      </Box>
+    </Animation>
   );
 }

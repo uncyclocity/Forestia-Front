@@ -2,7 +2,7 @@ import Box from '../styles/box';
 import styled from 'styled-components';
 import { VscError } from 'react-icons/vsc';
 import { useDispatch, useReducerState } from './_context';
-import { BoxAnimation } from '../styles/animation';
+import { BoxUdAnimation } from '../styles/animation';
 import { useEffect } from 'react';
 import { slideDown } from '../styles/keyframes/slide';
 import { unmountAnimation, mountAnimation } from '../fixed/AnimationController';
@@ -106,7 +106,7 @@ export default function NotFoundPage() {
   }, [dispatch]);
 
   return (
-    <BoxAnimation animation={animation}>
+    <BoxUdAnimation animation={animation}>
       <Box>
         <BoxStyles>
           <div className="errorcode">
@@ -131,6 +131,6 @@ export default function NotFoundPage() {
           </div>
         </BoxStyles>
       </Box>
-    </BoxAnimation>
+    </BoxUdAnimation>
   );
 }

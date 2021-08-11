@@ -1,10 +1,12 @@
-import { useRouter } from "next/router";
-import Board_title from "../../../styles/board_title";
-import { AiOutlineCamera } from "react-icons/ai";
-import { useDispatch } from "../../_context";
-import styled from "styled-components";
-import { useEffect } from "react";
-import Box from "../../../styles/box";
+import { useRouter } from 'next/router';
+import Board_title from '../../../styles/board_title';
+import { AiOutlineCamera } from 'react-icons/ai';
+import { useDispatch, useReducerState } from '../../_context';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import Box from '../../../styles/box';
+import { BoxLrAnimation, BoxUdAnimation } from '../../../styles/animation';
+import { mountAnimation } from '../../../fixed/AnimationController';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -20,27 +22,36 @@ export default function Comment() {
   const router = useRouter();
   const { post_title, comment } = router.query;
 
+  const state = useReducerState();
+  const nowPage = state.nowPage;
+  const animation = state.animation;
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const dispatchForm = {
-      type: "/comuin",
-    };
+  const [Animation, setAnimation] = useState(null);
 
-    dispatch(dispatchForm);
+  useEffect(() => {
+    if (nowPage === '/comuin') {
+      setAnimation(BoxLrAnimation);
+    } else {
+      setAnimation(BoxUdAnimation);
+    }
+    mountAnimation(dispatch, '/comuin');
   }, [dispatch]);
 
   return (
-    <Box>
-      <Styles>
-        <Board_title>
-          <div className="icon">
-            <AiOutlineCamera />
-          </div>
-          {post_title}
-        </Board_title>
-        <div className="comment_content">{comment}</div>
-      </Styles>
-    </Box>
+    <Animation animation={animation}>
+      <Box>
+        <Styles>
+          <Board_title>
+            <div className="icon">
+              <AiOutlineCamera />
+            </div>
+            {post_title}
+          </Board_title>
+          <div className="comment_content">{comment}</div>
+        </Styles>
+      </Box>
+    </Animation>
   );
 }
