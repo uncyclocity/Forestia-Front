@@ -6,8 +6,7 @@ import Board_title from '../../styles/board_title';
 import Box from '../../styles/box';
 import { BoxAnimation } from '../../styles/animation';
 import { useEffect } from 'react';
-import { slideUp, slideDown } from '../../styles/keyframes/slide';
-import { mountAnimation } from '../../fixed/unMountAnimation';
+import { mountAnimation } from '../../fixed/AnimationController';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;

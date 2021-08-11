@@ -1,12 +1,12 @@
-import Link from "next/link";
-import Title from "./title";
-import styled from "styled-components";
-import { AiOutlineCloud, AiOutlineCamera } from "react-icons/ai";
-import { useDispatch, useReducerState } from "../pages/_context";
-import { useState } from "react";
-import { Router } from "next/router";
-import unMountAnimation from "./unMountAnimation";
-import { slideDown } from "../styles/keyframes/slide";
+import Link from 'next/link';
+import Title from './title';
+import styled from 'styled-components';
+import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
+import { useDispatch, useReducerState } from '../pages/_context';
+import { useState } from 'react';
+import { Router } from 'next/router';
+import { unMountAnimation } from './unMountAnimation';
+import { slideDown } from '../styles/keyframes/slide';
 
 const Styles = styled.div`
   .content {
@@ -90,13 +90,21 @@ export default function FixedHome() {
                 return (
                   <li key={index}>
                     <div
-                      onClick={() => unMountAnimation(0, dispatch, slideDown, `/free/posts?id=${post.id}`, `/free/${post.id}`)}
+                      onClick={() =>
+                        unMountAnimation(
+                          0,
+                          dispatch,
+                          slideDown,
+                          `/free/posts?id=${post.id}`,
+                          `/free/${post.id}`,
+                        )
+                      }
                     >
                       <a>{post.title}</a>
                     </div>
                   </li>
                 );
-            })}
+              })}
           </ul>
         </div>
       </div>
@@ -114,7 +122,15 @@ export default function FixedHome() {
                 return (
                   <li key={index}>
                     <div
-                      onClick={() => unMountAnimation(0, dispatch, slideDown, `/comuin/posts?id=${post.id}`, `/comuin/${post.id}`)}
+                      onClick={() =>
+                        unMountAnimation(
+                          0,
+                          dispatch,
+                          slideDown,
+                          `/comuin/posts?id=${post.id}`,
+                          `/comuin/${post.id}`,
+                        )
+                      }
                     >
                       <a>{post.title}</a>
                     </div>

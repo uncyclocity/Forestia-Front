@@ -1,16 +1,16 @@
-import { useReducerState, useDispatch } from "../pages/_context";
-import styled from "styled-components";
+import { useReducerState, useDispatch } from '../pages/_context';
+import styled from 'styled-components';
 import {
   AiOutlineHome,
   AiOutlineInfoCircle,
   AiOutlineCloud,
   AiOutlineCamera,
-} from "react-icons/ai";
-import Box from "../styles/box";
-import { useState } from "react";
-import Router from "next/router";
-import unMountAnimation from "./unMountAnimation";
-import { slideDown } from "../styles/keyframes/slide";
+} from 'react-icons/ai';
+import Box from '../styles/box';
+import { useState } from 'react';
+import Router from 'next/router';
+import { unMountAnimation } from './unMountAnimation';
+import { slideDown } from '../styles/keyframes/slide';
 
 const BoxStyles = styled.div`
   height: 80px;
@@ -68,13 +68,15 @@ export default function Header() {
           <ul>
             <li>
               <a>
-                {nowPage === "/home" ? (
+                {nowPage === '/home' ? (
                   <div className="selected">
                     <AiOutlineHome />
                   </div>
                 ) : (
                   <div
-                    onClick={() => unMountAnimation(0, dispatch, slideDown, "/home")}
+                    onClick={() =>
+                      unMountAnimation(0, dispatch, slideDown, '/home')
+                    }
                   >
                     <AiOutlineHome />
                   </div>
@@ -85,14 +87,14 @@ export default function Header() {
           <ul>
             <li>
               <a>
-                {nowPage === "/about" ? (
+                {nowPage === '/about' ? (
                   <div className="selected">
                     <AiOutlineInfoCircle />
                   </div>
                 ) : (
                   <div
                     onClick={() =>
-                      unMountAnimation(0, dispatch, slideDown, "/about")
+                      unMountAnimation(0, dispatch, slideDown, '/about')
                     }
                   >
                     <AiOutlineInfoCircle />
@@ -106,13 +108,15 @@ export default function Header() {
               {/* as : 해당 Link 클릭 시 이동 될 URL을 명시해주는 속성 */}
 
               <a>
-                {nowPage === "/free" ? (
+                {nowPage === '/free' ? (
                   <div className="selected">
                     <AiOutlineCloud />
                   </div>
                 ) : (
                   <div
-                    onClick={() => unMountAnimation(0, dispatch, slideDown, "/free")}
+                    onClick={() =>
+                      unMountAnimation(0, dispatch, slideDown, '/free')
+                    }
                   >
                     <AiOutlineCloud />
                   </div>
@@ -123,14 +127,14 @@ export default function Header() {
           <ul>
             <li>
               <a>
-                {nowPage === "/comuin" ? (
+                {nowPage === '/comuin' ? (
                   <div className="selected">
                     <AiOutlineCamera />
                   </div>
                 ) : (
                   <div
                     onClick={() =>
-                      unMountAnimation(0, dispatch, slideDown, "/comuin")
+                      unMountAnimation(0, dispatch, slideDown, '/comuin')
                     }
                   >
                     <AiOutlineCamera />

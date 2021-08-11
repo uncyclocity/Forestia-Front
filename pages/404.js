@@ -4,9 +4,8 @@ import { VscError } from 'react-icons/vsc';
 import { useDispatch, useReducerState } from './_context';
 import { BoxAnimation } from '../styles/animation';
 import { useEffect } from 'react';
-import Router from 'next/router';
-import { slideUp, slideDown } from '../styles/keyframes/slide';
-import unMountAnimation, { mountAnimation } from '../fixed/unMountAnimation';
+import { slideDown } from '../styles/keyframes/slide';
+import { unMountAnimation, mountAnimation } from '../fixed/AnimationController';
 
 const BoxStyles = styled.div`
   display: flex;
