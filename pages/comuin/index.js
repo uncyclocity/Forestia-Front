@@ -7,7 +7,7 @@ import Box from '../../styles/box';
 import { useEffect } from 'react';
 import { BoxAnimation } from '../../styles/animation';
 import { slideUp, slideDown } from '../../styles/keyframes/slide';
-import { mountAnimation } from '../../fixed/unMountAnimation';
+import { mountAnimation } from '../../fixed/unmountAnimation';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;

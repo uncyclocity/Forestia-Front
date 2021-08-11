@@ -5,7 +5,7 @@ import { useDispatch, useReducerState } from './_context';
 import { BoxAnimation } from '../styles/animation';
 import { useEffect } from 'react';
 import { slideDown } from '../styles/keyframes/slide';
-import { unMountAnimation, mountAnimation } from '../fixed/AnimationController';
+import { unmountAnimation, mountAnimation } from '../fixed/AnimationController';
 
 const BoxStyles = styled.div`
   display: flex;
@@ -118,13 +118,13 @@ export default function NotFoundPage() {
           <div className="btns">
             <div
               className="back_btn"
-              onClick={() => unMountAnimation(1, dispatch, slideDown)}
+              onClick={() => unmountAnimation(1, dispatch, slideDown)}
             >
               뒤로
             </div>
             <div
               className="home_btn"
-              onClick={() => unMountAnimation(0, dispatch, slideDown, '/home')}
+              onClick={() => unmountAnimation(0, dispatch, slideDown, '/home')}
             >
               메인
             </div>

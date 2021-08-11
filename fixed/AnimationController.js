@@ -1,6 +1,6 @@
 import Router from 'next/router';
 
-export function unMountAnimation(
+export function unmountAnimation(
   routerSW,
   dispatch,
   slideDown,

@@ -5,7 +5,7 @@ import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
 import { Router } from 'next/router';
-import { unMountAnimation } from './unMountAnimation';
+import { unmountAnimation } from './unmountAnimation';
 import { slideDown } from '../styles/keyframes/slide';
 
 const Styles = styled.div`
@@ -91,7 +91,7 @@ export default function FixedHome() {
                   <li key={index}>
                     <div
                       onClick={() =>
-                        unMountAnimation(
+                        unmountAnimation(
                           0,
                           dispatch,
                           slideDown,
@@ -123,7 +123,7 @@ export default function FixedHome() {
                   <li key={index}>
                     <div
                       onClick={() =>
-                        unMountAnimation(
+                        unmountAnimation(
                           0,
                           dispatch,
                           slideDown,

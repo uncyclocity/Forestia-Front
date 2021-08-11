@@ -9,7 +9,7 @@ import {
 import Box from '../styles/box';
 import { useState } from 'react';
 import Router from 'next/router';
-import { unMountAnimation } from './unMountAnimation';
+import { unmountAnimation } from './unmountAnimation';
 import { slideDown } from '../styles/keyframes/slide';
 
 const BoxStyles = styled.div`
@@ -75,7 +75,7 @@ export default function Header() {
                 ) : (
                   <div
                     onClick={() =>
-                      unMountAnimation(0, dispatch, slideDown, '/home')
+                      unmountAnimation(0, dispatch, slideDown, '/home')
                     }
                   >
                     <AiOutlineHome />
@@ -94,7 +94,7 @@ export default function Header() {
                 ) : (
                   <div
                     onClick={() =>
-                      unMountAnimation(0, dispatch, slideDown, '/about')
+                      unmountAnimation(0, dispatch, slideDown, '/about')
                     }
                   >
                     <AiOutlineInfoCircle />
@@ -115,7 +115,7 @@ export default function Header() {
                 ) : (
                   <div
                     onClick={() =>
-                      unMountAnimation(0, dispatch, slideDown, '/free')
+                      unmountAnimation(0, dispatch, slideDown, '/free')
                     }
                   >
                     <AiOutlineCloud />
@@ -134,7 +134,7 @@ export default function Header() {
                 ) : (
                   <div
                     onClick={() =>
-                      unMountAnimation(0, dispatch, slideDown, '/comuin')
+                      unmountAnimation(0, dispatch, slideDown, '/comuin')
                     }
                   >
                     <AiOutlineCamera />

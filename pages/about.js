@@ -7,7 +7,7 @@ import { SiNextDotJs } from 'react-icons/si';
 import { BoxAnimation } from '../styles/animation';
 import { useEffect } from 'react';
 import { slideUp } from '../styles/keyframes/slide';
-import { mountAnimation } from '../fixed/unMountAnimation';
+import { mountAnimation } from '../fixed/unmountAnimation';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
