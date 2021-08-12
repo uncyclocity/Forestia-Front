@@ -3,7 +3,6 @@ import Router from 'next/router';
 export function unmountAnimation(
   routerSW,
   dispatch,
-  slideDown,
   URL = undefined,
   asURL = undefined,
 ) {

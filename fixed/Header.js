@@ -73,11 +73,7 @@ export default function Header() {
                     <AiOutlineHome />
                   </div>
                 ) : (
-                  <div
-                    onClick={() =>
-                      unmountAnimation(0, dispatch, slideDown, '/home')
-                    }
-                  >
+                  <div onClick={() => unmountAnimation(0, dispatch, '/home')}>
                     <AiOutlineHome />
                   </div>
                 )}
@@ -92,11 +88,7 @@ export default function Header() {
                     <AiOutlineInfoCircle />
                   </div>
                 ) : (
-                  <div
-                    onClick={() =>
-                      unmountAnimation(0, dispatch, slideDown, '/about')
-                    }
-                  >
+                  <div onClick={() => unmountAnimation(0, dispatch, '/about')}>
                     <AiOutlineInfoCircle />
                   </div>
                 )}
@@ -113,11 +105,7 @@ export default function Header() {
                     <AiOutlineCloud />
                   </div>
                 ) : (
-                  <div
-                    onClick={() =>
-                      unmountAnimation(0, dispatch, slideDown, '/free')
-                    }
-                  >
+                  <div onClick={() => unmountAnimation(0, dispatch, '/free')}>
                     <AiOutlineCloud />
                   </div>
                 )}
@@ -132,11 +120,7 @@ export default function Header() {
                     <AiOutlineCamera />
                   </div>
                 ) : (
-                  <div
-                    onClick={() =>
-                      unmountAnimation(0, dispatch, slideDown, '/comuin')
-                    }
-                  >
+                  <div onClick={() => unmountAnimation(0, dispatch, '/comuin')}>
                     <AiOutlineCamera />
                   </div>
                 )}

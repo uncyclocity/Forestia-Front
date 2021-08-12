@@ -4,7 +4,13 @@ import { useDispatch, useReducerState } from '../_context';
 import Link from 'next/link';
 import Board_title from '../../styles/board_title';
 import Box from '../../styles/box';
-import { BoxUdAnimation } from '../../styles/animation';
+import {
+  BoxAnimation,
+  box_empty,
+  box_slide_down,
+  box_slide_up,
+  box_zero_opacity,
+} from '../../styles/animation';
 import { useEffect } from 'react';
 import { mountAnimation } from '../../fixed/AnimationController';
 
@@ -37,7 +43,13 @@ export default function Free() {
   }, [dispatch]);
 
   return (
-    <BoxUdAnimation animation={animation}>
+    <BoxAnimation
+      animation={animation}
+      sw1={box_slide_up}
+      sw2={box_empty}
+      sw3={box_slide_down}
+      sw4={box_zero_opacity}
+    >
       <Box>
         <Styles>
           <Board_title>
@@ -65,6 +77,6 @@ export default function Free() {
           </div>
         </Styles>
       </Box>
-    </BoxUdAnimation>
+    </BoxAnimation>
   );
 }

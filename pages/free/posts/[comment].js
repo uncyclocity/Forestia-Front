@@ -5,7 +5,15 @@ import { useDispatch, useReducerState } from '../../_context';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Box from '../../../styles/box';
-import { BoxLrAnimation, BoxUdAnimation } from '../../../styles/animation';
+import {
+  BoxAnimation,
+  box_empty,
+  box_slide_down,
+  box_slide_left,
+  box_slide_right,
+  box_slide_up,
+  box_zero_opacity,
+} from '../../../styles/animation';
 import { mountAnimation } from '../../../fixed/AnimationController';
 
 const Styles = styled.div`
@@ -28,19 +36,40 @@ export default function Comment() {
 
   const dispatch = useDispatch();
 
-  const [Animation, setAnimation] = useState(null);
+  const [animationSW, setAnimationSW] = useState({
+    sw1: box_zero_opacity,
+    sw2: box_zero_opacity,
+    sw3: box_zero_opacity,
+    sw4: box_zero_opacity,
+  });
 
   useEffect(() => {
     if (nowPage === '/free') {
-      setAnimation(BoxLrAnimation);
+      setAnimationSW({
+        sw1: box_slide_left,
+        sw2: box_empty,
+        sw3: box_slide_right,
+        sw4: box_zero_opacity,
+      });
     } else {
-      setAnimation(BoxUdAnimation);
+      setAnimationSW({
+        sw1: box_slide_up,
+        sw2: box_empty,
+        sw3: box_slide_down,
+        sw4: box_zero_opacity,
+      });
     }
     mountAnimation(dispatch, '/free');
   }, [dispatch, comment, nowPage]);
 
   return (
-    <Animation animation={animation}>
+    <BoxAnimation
+      animation={animation}
+      sw1={animationSW.sw1}
+      sw2={animationSW.sw2}
+      sw3={animationSW.sw3}
+      sw4={animationSW.sw4}
+    >
       <Box>
         <Styles>
           <Board_title>
@@ -52,6 +81,6 @@ export default function Comment() {
           <div className="comment_content">{comment}</div>
         </Styles>
       </Box>
-    </Animation>
+    </BoxAnimation>
   );
 }

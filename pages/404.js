@@ -2,9 +2,14 @@ import Box from '../styles/box';
 import styled from 'styled-components';
 import { VscError } from 'react-icons/vsc';
 import { useDispatch, useReducerState } from './_context';
-import { BoxUdAnimation } from '../styles/animation';
+import {
+  BoxAnimation,
+  box_empty,
+  box_slide_down,
+  box_slide_up,
+  box_zero_opacity,
+} from '../styles/animation';
 import { useEffect } from 'react';
-import { slideDown } from '../styles/keyframes/slide';
 import { unmountAnimation, mountAnimation } from '../fixed/AnimationController';
 
 const BoxStyles = styled.div`
@@ -106,7 +111,13 @@ export default function NotFoundPage() {
   }, [dispatch]);
 
   return (
-    <BoxUdAnimation animation={animation}>
+    <BoxAnimation
+      animation={animation}
+      sw1={box_slide_up}
+      sw2={box_empty}
+      sw3={box_slide_down}
+      sw4={box_zero_opacity}
+    >
       <Box>
         <BoxStyles>
           <div className="errorcode">
@@ -118,19 +129,19 @@ export default function NotFoundPage() {
           <div className="btns">
             <div
               className="back_btn"
-              onClick={() => unmountAnimation(1, dispatch, slideDown)}
+              onClick={() => unmountAnimation(1, dispatch)}
             >
               뒤로
             </div>
             <div
               className="home_btn"
-              onClick={() => unmountAnimation(0, dispatch, slideDown, '/home')}
+              onClick={() => unmountAnimation(0, dispatch, '/home')}
             >
               메인
             </div>
           </div>
         </BoxStyles>
       </Box>
-    </BoxUdAnimation>
+    </BoxAnimation>
   );
 }

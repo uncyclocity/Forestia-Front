@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack } from 'react-icons/io';
 import { useRouter } from 'next/router';
+import { unmountAnimation } from '../fixed/AnimationController';
+import { useDispatch } from '../pages/_context';
 
 const Styles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-
 
   font-size: 20px;
   font-weight: bold;
@@ -37,16 +38,15 @@ const Styles = styled.div`
 
 export default function Board_title({ children }) {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   return (
     <Styles>
-      <div className="lr_btn" onClick={() => router.back()}>
+      <div className="lr_btn" onClick={() => unmountAnimation(1, dispatch)}>
         <IoIosArrowBack />
       </div>
-      <div className="board_info">
-        {children}
-      </div>
-      <div className="lr_btn"/>
+      <div className="board_info">{children}</div>
+      <div className="lr_btn" />
     </Styles>
   );
 }

@@ -94,7 +94,6 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          slideDown,
                           `/free/posts?id=${post.id}`,
                           `/free/${post.id}`,
                         )
@@ -126,7 +125,6 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          slideDown,
                           `/comuin/posts?id=${post.id}`,
                           `/comuin/${post.id}`,
                         )

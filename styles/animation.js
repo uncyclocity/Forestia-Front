@@ -1,79 +1,64 @@
 import styled, { css } from 'styled-components';
 import { slideUp, slideDown, slideLeft, slideRight } from './keyframes/slide';
 
+/* 박스 애니메이션 셋팅
+1. 마운트
+2. 마운트 직후
+3. 언마운트
+4. 언마운트 직후 */
+export const BoxAnimation = styled.div`
+  ${({ animation, sw1, sw2, sw3, sw4 }) => {
+    if (animation) {
+      switch (animation) {
+        case 1:
+          return sw1;
+        case 2:
+          return sw2;
+        case 3:
+          return sw3;
+        case 4:
+          return sw4;
+        default:
+          break;
+      }
+    }
+  }}
+`;
+
 // 첫 렌더링 시 애니메이션
 export const AppAnimation = styled.div`
   animation: 0.35s ease 0s ${slideUp};
 `;
 
+// 박스 빈 렌더링
+export const box_empty = css``;
+
+// 박스 투명 렌더링 - 언마운트 이후
+export const box_zero_opacity = css`
+  opacity: 0;
+`;
+
 // 박스 업다운 슬라이드 렌더링 (home, about, free, comuin)
-const box_ud_sw0 = css`
+export const box_slide_up = css`
   animation: 0.35s ease 0s;
   animation-fill-mode: forwards;
   animation-name: ${slideUp};
 `;
 
-const box_ud_sw2 = css`
+export const box_slide_down = css`
   animation: 0.15s ease 0s;
   animation-fill-mode: forwards;
   animation-name: ${slideDown};
 `;
 
-const box_ud_sw3 = css`
-  opacity: 0;
-`;
-
-export const BoxUdAnimation = styled.div`
-  ${({ animation }) => {
-    if (animation) {
-      switch (animation) {
-        case 1:
-          return box_ud_sw0;
-        case 2:
-          return;
-        case 3:
-          return box_ud_sw2;
-        case 4:
-          return box_ud_sw3;
-        default:
-          break;
-      }
-    }
-  }}
-`;
-
-// 박스 LR 슬라이드 렌더링 (home, about, free, comuin)
-const box_lr_sw0 = css`
+export const box_slide_left = css`
   animation: 0.35s ease 0s;
   animation-fill-mode: forwards;
   animation-name: ${slideLeft};
 `;
 
-const box_lr_sw2 = css`
+export const box_slide_right = css`
   animation: 0.15s ease 0s;
   animation-fill-mode: forwards;
   animation-name: ${slideRight};
-`;
-
-const box_lr_sw3 = css`
-  opacity: 0;
-`;
-
-export const BoxLrAnimation = styled.div`
-  ${({ animation }) => {
-    if (animation) {
-      switch (animation) {
-        case 1:
-          return box_lr_sw0;
-        case 2:
-          return;
-        case 3:
-          return box_lr_sw2;
-        case 4:
-          return box_lr_sw3;
-        default:
-          break;
-      }
-    }
-  }}
 `;
