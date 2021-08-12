@@ -37,7 +37,7 @@ export default function Comment() {
       setAnimation(BoxUdAnimation);
     }
     mountAnimation(dispatch, '/free');
-  }, [dispatch]);
+  }, [dispatch, comment]);
 
   return (
     <Animation animation={animation}>
