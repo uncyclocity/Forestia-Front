@@ -55,7 +55,7 @@ export default function Post() {
       setAnimation(BoxUdAnimation);
     }
     mountAnimation(dispatch, '/free');
-  }, [dispatch, id]);
+  }, [dispatch, id, nowPage]);
 
   return (
     <Animation animation={animation}>

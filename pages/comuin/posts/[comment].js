@@ -37,7 +37,7 @@ export default function Comment() {
       setAnimation(BoxUdAnimation);
     }
     mountAnimation(dispatch, '/comuin');
-  }, [dispatch, comment]);
+  }, [dispatch, comment, nowPage]);
 
   return (
     <Animation animation={animation}>

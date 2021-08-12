@@ -51,7 +51,7 @@ export default function Post() {
       setAnimation(BoxUdAnimation);
     }
     mountAnimation(dispatch, '/comuin');
-  }, [dispatch, id]);
+  }, [dispatch, id, nowPage]);
 
   return (
     <Animation animation={animation}>
