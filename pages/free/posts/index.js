@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Board_title from '../../../styles/board_title';
 import { useDispatch, useReducerState } from '../../_context';
 import { AiOutlineCloud } from 'react-icons/ai';
-import styled from 'styled-components';
+import { BiTime } from 'react-icons/bi';
+import { RiMailSendLine } from 'react-icons/ri';
 import { useEffect } from 'react';
 import Box from '../../../styles/box';
 import {
@@ -14,27 +14,7 @@ import {
   box_zero_opacity,
 } from '../../../styles/animation';
 import { mountAnimation } from '../../../fixed/AnimationController';
-
-const Styles = styled.div`
-  padding: 20px 30px 5px 30px;
-
-  .post_content {
-    border-bottom: 1px solid #e9ecef;
-  }
-
-  .comment_list {
-    transform: translateX(-6.5%);
-    li {
-      list-style-type: none;
-      &:not(:first-child) {
-        margin-top: 10px;
-      }
-      &:hover {
-        color: #20c997;
-      }
-    }
-  }
-`;
+import PostAndComment from '../../../styles/PostAndComment';
 
 export default function Post() {
   const router = useRouter();
@@ -49,7 +29,7 @@ export default function Post() {
 
   useEffect(() => {
     mountAnimation(dispatch, '/free');
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <BoxAnimation
@@ -60,31 +40,54 @@ export default function Post() {
       sw4={box_zero_opacity}
     >
       <Box>
-        <Styles>
+        <PostAndComment>
           <Board_title>
             <div className="icon">
               <AiOutlineCloud />
             </div>
-            {nowPost.title}
+            <div className="title_name">{nowPost.title}</div>
+            <div className="author_and_date">
+              <div className="author">{nowPost.author}</div>
+              <div className="date">
+                <div className="date_icon">
+                  <BiTime />
+                </div>
+                {nowPost.date}
+              </div>
+            </div>
           </Board_title>
-          {nowPost.content}
+          <div className="post_content">{nowPost.content}</div>
           <div className="comment_list">
+            <div className="comment_amount">
+              댓글&nbsp;·&nbsp;
+              <div className="amount">{nowPost.comments.length}</div>
+            </div>
             <ul>
               {nowPost.comments.map((comment, index) => {
                 return (
                   <li key={index}>
-                    <Link
-                      href="/free/[post_id]/[comment]"
-                      as={`/free/${id}/${comment.id}`}
-                    >
+                    <div className="comment_author_and_date">
+                      <div className="cand_author">{comment.author}</div>
+                      <div className="cand_date">{comment.date}</div>
+                    </div>
+                    <div className="comment_content">
                       <a>{comment.content}</a>
-                    </Link>
+                    </div>
                   </li>
                 );
               })}
             </ul>
           </div>
-        </Styles>
+          <div className="comment_input">
+            <textarea
+              className="comment_input_box"
+              style={{ resize: 'none' }}
+            />
+            <div className="comment_post_btn">
+              <RiMailSendLine />
+            </div>
+          </div>
+        </PostAndComment>
       </Box>
     </BoxAnimation>
   );
