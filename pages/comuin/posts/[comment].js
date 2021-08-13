@@ -9,8 +9,7 @@ import {
   BoxAnimation,
   box_empty,
   box_slide_down,
-  box_slide_left,
-  box_slide_right,
+  box_slide_up,
   box_zero_opacity,
 } from '../../../styles/animation';
 import { mountAnimation } from '../../../fixed/AnimationController';
@@ -38,21 +37,12 @@ export default function Comment() {
   const [animationSW, setAnimationSW] = useState(null);
 
   useEffect(() => {
-    if (nowPage === '/comuin') {
-      setAnimationSW({
-        sw1: box_slide_left,
-        sw2: box_empty,
-        sw3: box_slide_right,
-        sw4: box_zero_opacity,
-      });
-    } else {
-      setAnimationSW({
-        sw1: box_slide_up,
-        sw2: box_empty,
-        sw3: box_slide_down,
-        sw4: box_zero_opacity,
-      });
-    }
+    setAnimationSW({
+      sw1: box_slide_up,
+      sw2: box_empty,
+      sw3: box_slide_down,
+      sw4: box_zero_opacity,
+    });
     mountAnimation(dispatch, '/comuin');
   }, [dispatch, comment, nowPage]);
 

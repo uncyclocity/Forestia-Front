@@ -51,14 +51,14 @@ export const box_slide_down = css`
   animation-name: ${slideDown};
 `;
 
-export const box_slide_left = css`
-  animation: 0.35s ease 0s;
-  animation-fill-mode: forwards;
-  animation-name: ${slideLeft};
-`;
+// export const box_slide_left = css`
+//   animation: 0.35s ease 0s;
+//   animation-fill-mode: forwards;
+//   animation-name: ${slideLeft};
+// `;
 
-export const box_slide_right = css`
-  animation: 0.15s ease 0s;
-  animation-fill-mode: forwards;
-  animation-name: ${slideRight};
-`;
+// export const box_slide_right = css`
+//   animation: 0.15s ease 0s;
+//   animation-fill-mode: forwards;
+//   animation-name: ${slideRight};
+// `;
