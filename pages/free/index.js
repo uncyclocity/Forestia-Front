@@ -1,4 +1,5 @@
 import { AiOutlineCloud } from 'react-icons/ai';
+import { FaRegCommentAlt } from 'react-icons/fa';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../_context';
 import Link from 'next/link';
@@ -12,7 +13,10 @@ import {
   box_zero_opacity,
 } from '../../styles/animation';
 import { useEffect } from 'react';
-import { mountAnimation } from '../../fixed/AnimationController';
+import {
+  mountAnimation,
+  unmountAnimation,
+} from '../../fixed/AnimationController';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -21,11 +25,37 @@ const Styles = styled.div`
     transform: translateX(-6.5%);
     li {
       list-style-type: none;
-      &:not(:first-child) {
-        margin-top: 10px;
-      }
-      &:hover {
-        color: #20c997;
+      margin-top: 10px;
+
+      a {
+        display: flex;
+        flex-direction: row;
+
+        .comment_amount {
+          display: flex;
+          justify-content: center;
+          color: #20c997;
+
+          .comment_icon {
+            transform: translateY(3px);
+            font-size: 13px;
+          }
+
+          .amount {
+            transform: translateX(2px);
+            font-size: 15px;
+          }
+        }
+
+        &:hover {
+          transition: 0.15s all ease-in;
+          color: #20c997;
+        }
+
+        &:not(:hover) {
+          transition: 0.15s all ease-in;
+          color: #525252;
+        }
       }
     }
   }
@@ -56,7 +86,7 @@ export default function Free() {
             <div className="icon">
               <AiOutlineCloud />
             </div>
-            자게
+            <div className="title_name">자게</div>
           </Board_title>
           <div className="content_list">
             <ul>
@@ -64,12 +94,26 @@ export default function Free() {
                 freeBoard.map((post, index) => {
                   return (
                     <li key={index}>
-                      <Link
-                        as={`/free/${post.id}`}
-                        href={`/free/posts?id=${post.id}`}
+                      <div
+                        onClick={() =>
+                          unmountAnimation(
+                            0,
+                            dispatch,
+                            `/free/posts?id=${post.id}`,
+                            `/free/${post.id}`,
+                          )
+                        }
                       >
-                        <a>{post.title}</a>
-                      </Link>
+                        <a>
+                          {post.title}&nbsp;
+                          <div className="comment_amount">
+                            <div className="comment_icon">
+                              <FaRegCommentAlt />
+                            </div>
+                            <div className="amount">{post.comments.length}</div>
+                          </div>
+                        </a>
+                      </div>
                     </li>
                   );
                 })}
