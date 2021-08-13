@@ -4,7 +4,7 @@ import Board_title from '../../../styles/board_title';
 import { useDispatch, useReducerState } from '../../_context';
 import { AiOutlineCloud } from 'react-icons/ai';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Box from '../../../styles/box';
 import {
   BoxAnimation,
@@ -42,36 +42,22 @@ export default function Post() {
 
   const state = useReducerState();
   const freeBoard = state.freeBoard;
-  const nowPage = state.nowPage;
   const nowPost = freeBoard[id];
   const animation = state.animation;
-
-  const [animationSW, setAnimationSW] = useState({
-    sw1: box_zero_opacity,
-    sw2: box_zero_opacity,
-    sw3: box_zero_opacity,
-    sw4: box_zero_opacity,
-  });
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setAnimationSW({
-      sw1: box_slide_up,
-      sw2: box_empty,
-      sw3: box_slide_down,
-      sw4: box_zero_opacity,
-    });
     mountAnimation(dispatch, '/free');
-  }, [dispatch, id, nowPage]);
+  }, [dispatch]);
 
   return (
     <BoxAnimation
       animation={animation}
-      sw1={animationSW.sw1}
-      sw2={animation.sw2}
-      sw3={animation.sw3}
-      sw4={animation.sw4}
+      sw1={box_slide_up}
+      sw2={box_empty}
+      sw3={box_slide_down}
+      sw4={box_zero_opacity}
     >
       <Box>
         <Styles>
@@ -79,7 +65,7 @@ export default function Post() {
             <div className="icon">
               <AiOutlineCloud />
             </div>
-            자게/{nowPost.title}
+            {nowPost.title}
           </Board_title>
           {nowPost.content}
           <div className="comment_list">

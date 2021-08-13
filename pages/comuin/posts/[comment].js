@@ -3,7 +3,7 @@ import Board_title from '../../../styles/board_title';
 import { AiOutlineCamera } from 'react-icons/ai';
 import { useDispatch, useReducerState } from '../../_context';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Box from '../../../styles/box';
 import {
   BoxAnimation,
@@ -29,30 +29,21 @@ export default function Comment() {
   const { post_title, comment } = router.query;
 
   const state = useReducerState();
-  const nowPage = state.nowPage;
   const animation = state.animation;
 
   const dispatch = useDispatch();
 
-  const [animationSW, setAnimationSW] = useState(null);
-
   useEffect(() => {
-    setAnimationSW({
-      sw1: box_slide_up,
-      sw2: box_empty,
-      sw3: box_slide_down,
-      sw4: box_zero_opacity,
-    });
     mountAnimation(dispatch, '/comuin');
-  }, [dispatch, comment, nowPage]);
+  }, [dispatch]);
 
   return (
     <BoxAnimation
       animation={animation}
-      sw1={animationSW.sw1}
-      sw2={animationSW.sw2}
-      sw3={animationSW.sw3}
-      sw4={animationSW.sw4}
+      sw1={box_slide_up}
+      sw2={box_empty}
+      sw3={box_slide_down}
+      sw4={box_zero_opacity}
     >
       <Box>
         <Styles>
