@@ -1,12 +1,9 @@
-import Link from 'next/link';
 import Title from './title';
 import styled from 'styled-components';
 import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
-import { Router } from 'next/router';
 import { unmountAnimation } from './AnimationController';
-import { slideDown } from '../styles/keyframes/slide';
 
 const Styles = styled.div`
   .content {
