@@ -107,7 +107,7 @@ export default function NotFoundPage() {
   const animation = useReducerState().animation;
 
   useEffect(() => {
-    mountAnimation(dispatch, '/404');
+    mountAnimation(dispatch, '404');
   }, [dispatch]);
 
   return (

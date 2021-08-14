@@ -4,7 +4,7 @@ import { useDispatch, useReducerState } from '../../_context';
 import { AiOutlineCloud } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Box from '../../../styles/box';
 import {
   BoxAnimation,
@@ -18,18 +18,30 @@ import PostAndComment from '../../../styles/PostAndComment';
 
 export default function Post() {
   const router = useRouter();
-  const { id } = router.query;
+  const { board, post_id } = router.query;
 
   const state = useReducerState();
-  const freeBoard = state.freeBoard;
-  const nowPost = freeBoard[id];
+  const boardType = useRef(null);
+
+  switch (board) {
+    case 'free':
+      boardType.current = state.freeBoard;
+      break;
+    case 'comuin':
+      boardType.current = state.photoBoard;
+      break;
+    default:
+      throw new Error('유효하지 않은 게시판입니다. board 쿼리 값을 확인하세요');
+  }
+
+  const nowPost = boardType.current[post_id];
   const animation = state.animation;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    mountAnimation(dispatch, '/free');
-  }, [dispatch, id]);
+    mountAnimation(dispatch, 'board');
+  }, [dispatch, post_id, boardType]);
 
   return (
     <BoxAnimation

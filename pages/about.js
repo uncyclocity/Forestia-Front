@@ -56,7 +56,7 @@ export default function About() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    mountAnimation(dispatch, '/about');
+    mountAnimation(dispatch, 'about');
   }, [dispatch]);
 
   return (

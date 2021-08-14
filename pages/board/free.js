@@ -2,7 +2,6 @@ import { AiOutlineCloud } from 'react-icons/ai';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../_context';
-import Link from 'next/link';
 import Board_title from '../../styles/board_title';
 import Box from '../../styles/box';
 import {
@@ -69,7 +68,7 @@ export default function Free() {
   const freeBoard = state.freeBoard;
 
   useEffect(() => {
-    mountAnimation(dispatch, '/free');
+    mountAnimation(dispatch, 'free');
   }, [dispatch]);
 
   return (
@@ -99,8 +98,8 @@ export default function Free() {
                           unmountAnimation(
                             0,
                             dispatch,
-                            `/free/posts?id=${post.id}`,
-                            `/free/${post.id}`,
+                            `/board/post?board=free&post_id=${post.id}`,
+                            `/board/free/${post.id}`,
                           )
                         }
                       >

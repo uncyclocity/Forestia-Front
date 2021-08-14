@@ -91,8 +91,8 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/free/posts?id=${post.id}`,
-                          `/free/${post.id}`,
+                          `/board/post?board=free&post_id=${post.id}`,
+                          `/board/free/${post.id}`,
                         )
                       }
                     >
@@ -122,8 +122,8 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/comuin/posts?id=${post.id}`,
-                          `/comuin/${post.id}`,
+                          `/board/post/?board=comuin&post_id=${post.id}`,
+                          `/board/comuin/${post.id}`,
                         )
                       }
                     >

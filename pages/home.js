@@ -1,16 +1,16 @@
-import { useDispatch } from "./_context";
-import { useEffect } from "react";
+import { useDispatch } from './_context';
+import { useEffect } from 'react';
 
 export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch({
-      type: "initiate",
-      nowPage: "/home",
-      animation: 4
+      type: 'initiate',
+      nowPage: 'home',
+      animation: 4,
     });
-  }, [dispatch])
+  }, [dispatch]);
 
   return null;
 }

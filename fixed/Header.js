@@ -7,10 +7,7 @@ import {
   AiOutlineCamera,
 } from 'react-icons/ai';
 import Box from '../styles/box';
-import { useState } from 'react';
-import Router from 'next/router';
 import { unmountAnimation } from './AnimationController';
-import { slideDown } from '../styles/keyframes/slide';
 
 const BoxStyles = styled.div`
   height: 80px;
@@ -60,7 +57,6 @@ const MenuBtnStyles = styled.span`
 export default function Header() {
   const nowPage = useReducerState().nowPage;
   const dispatch = useDispatch();
-
   return (
     <Box>
       <BoxStyles>
@@ -68,7 +64,7 @@ export default function Header() {
           <ul>
             <li>
               <a>
-                {nowPage === '/home' ? (
+                {nowPage === 'home' ? (
                   <div className="selected">
                     <AiOutlineHome />
                   </div>
@@ -83,7 +79,7 @@ export default function Header() {
           <ul>
             <li>
               <a>
-                {nowPage === '/about' ? (
+                {nowPage === 'about' ? (
                   <div className="selected">
                     <AiOutlineInfoCircle />
                   </div>
@@ -97,15 +93,15 @@ export default function Header() {
           </ul>
           <ul>
             <li>
-              {/* as : 해당 Link 클릭 시 이동 될 URL을 명시해주는 속성 */}
-
               <a>
-                {nowPage === '/free' ? (
+                {nowPage === 'free' ? (
                   <div className="selected">
                     <AiOutlineCloud />
                   </div>
                 ) : (
-                  <div onClick={() => unmountAnimation(0, dispatch, '/free')}>
+                  <div
+                    onClick={() => unmountAnimation(0, dispatch, '/board/free')}
+                  >
                     <AiOutlineCloud />
                   </div>
                 )}
@@ -115,12 +111,16 @@ export default function Header() {
           <ul>
             <li>
               <a>
-                {nowPage === '/comuin' ? (
+                {nowPage === 'comuin' ? (
                   <div className="selected">
                     <AiOutlineCamera />
                   </div>
                 ) : (
-                  <div onClick={() => unmountAnimation(0, dispatch, '/comuin')}>
+                  <div
+                    onClick={() =>
+                      unmountAnimation(0, dispatch, '/board/comuin')
+                    }
+                  >
                     <AiOutlineCamera />
                   </div>
                 )}
