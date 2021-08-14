@@ -1,62 +1,12 @@
 import { useReducerState, useDispatch } from '../pages/_context';
-import styled from 'styled-components';
 import {
   AiOutlineHome,
   AiOutlineInfoCircle,
   AiOutlineCloud,
   AiOutlineCamera,
 } from 'react-icons/ai';
-import Box from '../styles/box';
 import { unmountAnimation } from './AnimationController';
-
-const BoxStyles = styled.div`
-  height: 80px;
-  padding: 10px 0 5px 0;
-`;
-
-const MenuBtnStyles = styled.span`
-  display: flex;
-  justify-content: center;
-
-  ul {
-    padding-right: 40px;
-    li {
-      list-style-type: none;
-      float: left;
-      font-size: 26px;
-
-      &:not(:last-child) {
-        padding-right: 80px;
-      }
-    }
-
-    a {
-      .selected {
-        color: #20c997;
-        font-weight: bold;
-
-        &:hover {
-          transition: 0.15s all ease-in;
-          color: #6debac;
-        }
-
-        &:not(:hover) {
-          transition: 0.15s all ease-in;
-          color: #20c997;
-        }
-      }
-
-      &:hover {
-        transition: 0.15s all ease-in;
-        color: #6debac;
-      }
-  
-      &:not(:hover) {
-        transition: 0.15s all ease-in;
-        color: #828c99;
-      }
-    }
-`;
+import St_Header from '../styles/fixed/St_Header';
 
 export default function Header() {
   const nowPage = useReducerState().nowPage;
@@ -82,34 +32,28 @@ export default function Header() {
   };
 
   return (
-    <Box>
-      <BoxStyles>
-        <MenuBtnStyles>
-          <ul>
-            {headerMenuArr.map((headerMenu, index) => {
-              return (
-                <li key={index}>
-                  <a>
-                    {nowPage === headerMenu ? (
-                      <div className="selected">
-                        {menuIconReturner(headerMenu)}
-                      </div>
-                    ) : (
-                      <div
-                        onClick={() =>
-                          unmountAnimation(0, dispatch, HMUrlArr[index])
-                        }
-                      >
-                        {menuIconReturner(headerMenu)}
-                      </div>
-                    )}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </MenuBtnStyles>
-      </BoxStyles>
-    </Box>
+    <St_Header>
+      <ul>
+        {headerMenuArr.map((headerMenu, index) => {
+          return (
+            <li key={index}>
+              <a>
+                {nowPage === headerMenu ? (
+                  <div className="selected">{menuIconReturner(headerMenu)}</div>
+                ) : (
+                  <div
+                    onClick={() =>
+                      unmountAnimation(0, dispatch, HMUrlArr[index])
+                    }
+                  >
+                    {menuIconReturner(headerMenu)}
+                  </div>
+                )}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </St_Header>
   );
 }

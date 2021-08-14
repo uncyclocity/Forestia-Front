@@ -1,63 +1,9 @@
 import Title from './title';
-import styled from 'styled-components';
 import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
 import { unmountAnimation } from './AnimationController';
-
-const Styles = styled.div`
-  .content {
-    width: 350px;
-    padding: 5px 30px;
-    color: #525252;
-    float: left;
-
-    .board_title {
-      color: #20c997;
-      font-weight: bold;
-      border-bottom: 1px solid #e9ecef;
-
-      margin-top: 15px;
-      display: flex;
-      flex-direction: row;
-      font-size: 20px;
-
-      .board_icon {
-        font-size: 30px;
-        transform: translateY(-7%);
-      }
-    }
-
-    .content_list {
-      li {
-        width: 300px;
-        list-style-type: none;
-        transform: translateX(-13.5%);
-
-        a {
-          display: block;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        &:not(:first-child) {
-          margin-top: 10px;
-        }
-
-        &:hover {
-          transition: 0.15s all ease-in;
-          color: #20c997;
-        }
-
-        &:not(:hover) {
-          transition: 0.15s all ease-in;
-          color: #525252;
-        }
-      }
-    }
-  }
-`;
+import St_fixedHome from '../styles/fixed/St_fixedHome';
 
 export default function FixedHome() {
   const state = useReducerState();
@@ -70,7 +16,7 @@ export default function FixedHome() {
   const [photoTop3] = useState([photoBoard[0], photoBoard[1], photoBoard[2]]);
 
   return (
-    <Styles>
+    <St_fixedHome>
       <Title />
       <div className="content">
         <div className="board_title">
@@ -135,6 +81,6 @@ export default function FixedHome() {
           </ul>
         </div>
       </div>
-    </Styles>
+    </St_fixedHome>
   );
 }
