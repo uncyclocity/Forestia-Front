@@ -24,6 +24,10 @@ const MenuBtnStyles = styled.span`
       list-style-type: none;
       float: left;
       font-size: 26px;
+
+      &:not(:last-child) {
+        padding-right: 80px;
+      }
     }
 
     a {
@@ -57,75 +61,52 @@ const MenuBtnStyles = styled.span`
 export default function Header() {
   const nowPage = useReducerState().nowPage;
   const dispatch = useDispatch();
+
+  const headerMenuArr = ['home', 'about', 'free', 'comuin'];
+
+  const HMUrlArr = ['/home', '/about', '/board/free', '/board/comuin'];
+
+  const menuIconReturner = (headerMenu) => {
+    switch (headerMenu) {
+      case headerMenuArr[0]:
+        return <AiOutlineHome />;
+      case headerMenuArr[1]:
+        return <AiOutlineInfoCircle />;
+      case headerMenuArr[2]:
+        return <AiOutlineCloud />;
+      case headerMenuArr[3]:
+        return <AiOutlineCamera />;
+      default:
+        throw new Error('headerMenuArr에 존재하는 메뉴 이름이 아닙니다.');
+    }
+  };
+
   return (
     <Box>
       <BoxStyles>
         <MenuBtnStyles>
           <ul>
-            <li>
-              <a>
-                {nowPage === 'home' ? (
-                  <div className="selected">
-                    <AiOutlineHome />
-                  </div>
-                ) : (
-                  <div onClick={() => unmountAnimation(0, dispatch, '/home')}>
-                    <AiOutlineHome />
-                  </div>
-                )}
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a>
-                {nowPage === 'about' ? (
-                  <div className="selected">
-                    <AiOutlineInfoCircle />
-                  </div>
-                ) : (
-                  <div onClick={() => unmountAnimation(0, dispatch, '/about')}>
-                    <AiOutlineInfoCircle />
-                  </div>
-                )}
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a>
-                {nowPage === 'free' ? (
-                  <div className="selected">
-                    <AiOutlineCloud />
-                  </div>
-                ) : (
-                  <div
-                    onClick={() => unmountAnimation(0, dispatch, '/board/free')}
-                  >
-                    <AiOutlineCloud />
-                  </div>
-                )}
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a>
-                {nowPage === 'comuin' ? (
-                  <div className="selected">
-                    <AiOutlineCamera />
-                  </div>
-                ) : (
-                  <div
-                    onClick={() =>
-                      unmountAnimation(0, dispatch, '/board/comuin')
-                    }
-                  >
-                    <AiOutlineCamera />
-                  </div>
-                )}
-              </a>
-            </li>
+            {headerMenuArr.map((headerMenu, index) => {
+              return (
+                <li key={index}>
+                  <a>
+                    {nowPage === headerMenu ? (
+                      <div className="selected">
+                        {menuIconReturner(headerMenu)}
+                      </div>
+                    ) : (
+                      <div
+                        onClick={() =>
+                          unmountAnimation(0, dispatch, HMUrlArr[index])
+                        }
+                      >
+                        {menuIconReturner(headerMenu)}
+                      </div>
+                    )}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </MenuBtnStyles>
       </BoxStyles>
