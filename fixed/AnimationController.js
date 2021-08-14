@@ -27,6 +27,11 @@ export function unmountAnimation(
         break;
       case 1:
         Router.back();
+        break;
+      default:
+        throw new Error(
+          '존재하지 않는 routerSW입니다. unmountAnimation()에 넘기는 routerSW를 확인하세요',
+        );
     }
   }, 350);
 }
