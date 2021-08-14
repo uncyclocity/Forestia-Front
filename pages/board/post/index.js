@@ -31,7 +31,7 @@ export default function Post() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    mountAnimation(dispatch, 'board');
+    mountAnimation(dispatch, board);
   }, [dispatch, post_id, boardType]);
 
   return (
