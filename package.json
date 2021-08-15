@@ -24,5 +24,17 @@
     "babel-plugin-styled-components": "^1.13.2",
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1"
-  }
+  },
+  "description": "**숲세권 자취방**을 갈망하는 자취러들을 위한 정보 공유 커뮤니티",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uncyclocity/Forestia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uncyclocity/Forestia/issues"
+  },
+  "homepage": "https://github.com/uncyclocity/Forestia#readme"
 }
