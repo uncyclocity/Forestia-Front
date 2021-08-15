@@ -32,7 +32,7 @@ export default function Post() {
 
   useEffect(() => {
     mountAnimation(dispatch, board);
-  }, [dispatch, post_id, boardType]);
+  }, [dispatch, post_id, boardType, board]);
 
   return (
     <St_post>
@@ -54,7 +54,8 @@ export default function Post() {
       <div className="post_content">{nowPost.content}</div>
       <div className="comment_list">
         <div className="comment_amount">
-          댓글&nbsp;·&nbsp;
+          <div>댓글</div>
+          <div>&nbsp;·&nbsp;</div>
           <div className="amount">{nowPost.comments.length}</div>
         </div>
         <ul>

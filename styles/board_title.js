@@ -46,7 +46,7 @@ const Styles = styled.div`
         padding: 0 5px;
 
         .date_icon {
-          transform: translateY(2px);
+          transform: translateY(1px);
         }
       }
     }

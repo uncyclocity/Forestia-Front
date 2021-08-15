@@ -16,6 +16,7 @@ const Styles = styled.div`
     font-family: Helvetica;
     font-size: 50px;
     font-weight: bold;
+    cursor: pointer;
   }
 
   .profile .signin_btn {
