@@ -1,9 +1,23 @@
 const express = require('express');
 const next = require('next');
 
+require('dotenv').config();
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
+const { CONNECT_URI } = process.env;
+
+const mongoose = require('mongoose');
+mongoose
+  .connect(CONNECT_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+  })
+  .then(() => console.log('MongoDB Connected...'))
+  .catch((err) => console.log(err));
 
 app
   .prepare()
