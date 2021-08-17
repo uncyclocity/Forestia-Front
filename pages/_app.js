@@ -1,12 +1,12 @@
-import CenterAlign from "../styles/centerAlign";
-import Footer from "../fixed/footer";
-import Context from "./_context";
+import CenterAlign from '../styles/centerAlign';
+import Header from '../fixed/Header';
+import Context from './_context';
 
 export default function MyApp({ Component, pageProps }) {
   return (
     <Context>
       <CenterAlign>
-        <Footer />
+        <Header />
         <Component {...pageProps} />
       </CenterAlign>
     </Context>
