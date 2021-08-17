@@ -50,7 +50,7 @@ const MenuBtnAreaStyles = styled.span`
     }
 `;
 
-export default function St_Header({ children }) {
+export default function St_HeaderBar({ children }) {
   return (
     <Box>
       <BoxStyles>
