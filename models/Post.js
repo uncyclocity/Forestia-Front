@@ -3,14 +3,20 @@ const mongoose = require('mongoose');
 const PostSchema = mongoose.Schema({
   id: String,
   author: String,
-  date: String,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
   title: String,
   content: String,
   comments: [
     {
       id: String,
       author: String,
-      date: String,
+      date: {
+        type: Date,
+        default: Date.now,
+      },
       content: String,
     },
   ],
