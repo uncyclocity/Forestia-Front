@@ -5,8 +5,7 @@ const handler = async (req, res) => {
   console.log(req);
   if (req.method === 'GET') {
     try {
-      return Post.find().then((postsArr) => {
-        console.log(postsArr);
+      return await Post.find().then((postsArr) => {
         return res.status(200).send(postsArr);
       });
     } catch (error) {
