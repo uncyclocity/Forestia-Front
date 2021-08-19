@@ -1,0 +1,1 @@
+mongosh "mongodb+srv://cluster0.y40qz.mongodb.net/myFirstDatabase" --username first_user
