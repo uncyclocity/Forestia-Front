@@ -4,21 +4,6 @@ require('dotenv').config();
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const Post = require('./models/post');
-const { CONNECT_URI } = process.env;
-const mongoose = require('mongoose');
-
-mongoose
-  .connect(CONNECT_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
-  })
-  .then((client) => {
-    console.log('MongoDB Connected...');
-  })
-  .catch((err) => console.log(err));
 
 app
   .prepare()
@@ -26,7 +11,7 @@ app
     const server = express();
 
     server.get('/board/free/:id', async (req, res) => {
-      app.render(req, res, '/board/post', {
+      await app.render(req, res, '/board/post', {
         board: 'free',
         post_id: req.params.id,
       });
