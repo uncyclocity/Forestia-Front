@@ -2,7 +2,6 @@ import connectDB from '../../middleware/mongodb';
 import Post from '../../models/post';
 
 const handler = async (req, res) => {
-  console.log(req);
   if (req.method === 'POST') {
     // Check if name, email or password is provided
     const { id, author, date, title, content, comments } = req.body;

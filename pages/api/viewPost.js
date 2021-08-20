@@ -2,7 +2,6 @@ import connectDB from '../../middleware/mongodb';
 import Post from '../../models/post';
 
 const handler = async (req, res) => {
-  console.log(req);
   if (req.method === 'GET') {
     try {
       return await Post.find().then((postsArr) => {
