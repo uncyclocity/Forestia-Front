@@ -1,9 +1,23 @@
 import Title from './title';
 import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { useDispatch, useReducerState } from '../pages/_context';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { unmountAnimation } from './AnimationController';
 import St_fixedHome from '../styles/fixed/St_fixedHome';
+
+const setTop3 = (board, bak, i = 0) => {
+  bak.current = [];
+  if (board.length >= 3) {
+    for (i = 0; i < 3; i++) {
+      bak.current = bak.current.concat(board[i]);
+    }
+  } else if (board.length < 3) {
+    for (i = 0; i < board.length; i++) {
+      bak.current = bak.current.concat(board[i]);
+    }
+  }
+  return bak.current;
+}
 
 export default function FixedHome() {
   const state = useReducerState();
@@ -12,8 +26,10 @@ export default function FixedHome() {
   const freeBoard = state.freeBoard;
   const photoBoard = state.photoBoard;
 
-  const [freeTop3] = useState([freeBoard[0], freeBoard[1], freeBoard[2]]);
-  const [photoTop3] = useState([photoBoard[0], photoBoard[1], photoBoard[2]]);
+  const bak = useRef([]);
+
+  const [freeTop3] = useState(setTop3(freeBoard, bak));
+  const [photoTop3] = useState(setTop3(photoBoard, bak));
 
   return (
     <St_fixedHome>
