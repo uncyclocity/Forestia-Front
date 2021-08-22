@@ -9,7 +9,12 @@ export default function Title({ children }) {
         자취 이야기를 들려주세요
       </div>
       <div className="btn_area">
-        <div className="posting_btn">포스팅</div>
+        <div
+          className="posting_btn"
+          onClick={() => fetch('http://localhost:3000/api/tmpPosting')}
+        >
+          포스팅
+        </div>
       </div>
     </St_title>
   );

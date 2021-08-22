@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const post = new Schema({
+const photo = new Schema({
+  _id: Schema.Types.ObjectId,
+
   id: String,
 
   author: String,
@@ -28,4 +30,4 @@ const post = new Schema({
   ],
 });
 
-module.exports = mongoose.models.Post || mongoose.model('Post', post);
+module.exports = mongoose.models.Photo || mongoose.model('Photo', photo);

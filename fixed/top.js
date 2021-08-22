@@ -9,7 +9,10 @@ export default function Top() {
 
   return (
     <St_top>
-      <div className="forestia_logo" onClick={() => unmountAnimation(0, dispatch, "/home")}>
+      <div
+        className="forestia_logo"
+        onClick={() => unmountAnimation(0, dispatch, '/home')}
+      >
         <CgTrees />
         &nbsp;Forestia.
       </div>

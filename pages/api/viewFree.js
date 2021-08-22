@@ -1,11 +1,11 @@
 import connectDB from '../../middleware/mongodb';
-import Post from '../../models/post';
+import Free from '../../models/Free';
 
 const handler = async (req, res) => {
   if (req.method === 'GET') {
     try {
-      return await Post.find().then((postsArr) => {
-        return res.status(200).send(postsArr);
+      return await Free.find().then((data) => {
+        return res.status(200).send(data);
       });
     } catch (error) {
       return res.status(500).send(error.message);

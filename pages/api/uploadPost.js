@@ -1,22 +1,26 @@
 import connectDB from '../../middleware/mongodb';
-import Post from '../../models/post';
+import Free from '../../models/Free';
+import Photo from '../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
     // Check if name, email or password is provided
-    const { id, author, date, title, content, comments } = req.body;
+    const { boardType, id, author, date, title, content, comments } = req.body;
     if (id && author && date && title && content && comments) {
       try {
-        // Hash password to store it in DB
-        var post = new Post({
+        var post_obj = {
           id,
           author,
           date,
           title,
           content,
           comments,
-        });
-        // Create new user
+        };
+        if (boardType === 'Free') {
+          var post = new Free(post_obj);
+        } else if (boardType === 'Photo') {
+          var post = new Photo(post_obj);
+        }
         var postcreated = await post.save();
         return res.status(200).send(postcreated);
       } catch (error) {
