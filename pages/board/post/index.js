@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Board_title from '../../../styles/board_title';
 import { useDispatch, useReducerState } from '../../_context';
-import { AiOutlineCloud } from 'react-icons/ai';
+import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
 import { useEffect, useRef } from 'react';
@@ -38,7 +38,8 @@ export default function Post() {
     <St_post>
       <Board_title>
         <div className="icon">
-          <AiOutlineCloud />
+          {board === 'free' && <AiOutlineCloud />}
+          {board === 'comuin' && <AiOutlineCamera />}
         </div>
         <div className="title_name">{nowPost.title}</div>
         <div className="author_and_date">
