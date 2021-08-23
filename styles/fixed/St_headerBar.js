@@ -23,6 +23,7 @@ const MenuBtnAreaStyles = styled.span`
     }
 
     a {
+      cursor: pointer;
       .selected {
         color: #20c997;
         font-weight: bold;

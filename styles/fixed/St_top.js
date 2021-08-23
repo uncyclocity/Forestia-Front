@@ -9,8 +9,8 @@ const Styles = styled.div`
   justify-content: center;
 
   .forestia_logo {
-    width: 100%;
     display: flex;
+    margin-right: auto;
     flex-direction: row;
     color: #20c997;
     font-family: Helvetica;

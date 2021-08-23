@@ -32,6 +32,7 @@ const Styles = styled.div`
         a {
           display: block;
           overflow: hidden;
+          cursor: pointer;
           text-overflow: ellipsis;
           white-space: nowrap;
         }

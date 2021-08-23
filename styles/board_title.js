@@ -53,6 +53,7 @@ const Styles = styled.div`
   }
 
   .lr_btn {
+    cursor: pointer;
     width: 35px;
     font-size: 30px;
   }
