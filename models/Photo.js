@@ -9,7 +9,7 @@ const photo = new Schema({
   author: String,
 
   date: {
-    type: Date,
+    type: String,
     default: Date.now,
   },
 
