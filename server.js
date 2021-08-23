@@ -1,7 +1,8 @@
 const express = require('express');
 const next = require('next');
-require('dotenv').config();
+
 const dev = process.env.NODE_ENV !== 'production';
+
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -11,7 +12,7 @@ app
     const server = express();
 
     server.get('/board/free/:id', async (req, res) => {
-      await app.render(req, res, '/board/post', {
+      app.render(req, res, '/board/post', {
         board: 'free',
         post_id: req.params.id,
       });
