@@ -24,9 +24,11 @@ const Styles = styled.div`
 
   .posting_btn {
     width: 80px;
+    height: 35px;
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
     padding: 5px 15px;
     margin-right: 20px;
@@ -38,13 +40,75 @@ const Styles = styled.div`
 
     &:hover {
       transition: 0.2s all ease-in;
-      border: 2px solid #a2f2ca;
-      color: #a2f2ca;
+      background: white;
+      color: #20c997;
       cursor: pointer;
     }
 
     &:not(:hover) {
       transition: 0.2s all ease-in;
+    }
+  }
+
+  .free_photo_btn {
+    width: 80px;
+    height: 35px;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-right: 20px;
+
+    .free_btn {
+      width: 100%;
+      height: 35px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 20px;
+
+      border: 2px solid white;
+      border-right: 1px solid white;
+      border-radius: 7px 0 0 7px;
+
+      &:hover {
+        transition: 0.2s all ease-in;
+        background: white;
+        color: #20c997;
+        cursor: pointer;
+      }
+
+      &:not(:hover) {
+        transition: 0.2s all ease-in;
+      }
+    }
+
+    .photo_btn {
+      width: 100%;
+      height: 35px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 20px;
+
+      border: 2px solid white;
+      border-left: 1px solid white;
+      border-radius: 0 7px 7px 0;
+
+      &:hover {
+        transition: 0.2s all ease-in;
+        background: white;
+        color: #20c997;
+        cursor: pointer;
+      }
+
+      &:not(:hover) {
+        transition: 0.2s all ease-in;
+      }
     }
   }
 `;
