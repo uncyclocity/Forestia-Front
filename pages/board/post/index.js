@@ -36,7 +36,7 @@ export default function Post() {
 
   return (
     <St_post>
-      <Board_title>
+      <Board_title backURL={`/board/${board}`}>
         <div className="icon">
           {board === 'free' && <AiOutlineCloud />}
           {board === 'photo' && <AiOutlineCamera />}

@@ -17,7 +17,7 @@ export default function Post() {
 
   return (
     <St_posting>
-      <Board_title>
+      <Board_title backURL="/home">
         <div className="icon">
           <AiOutlineEdit />
         </div>

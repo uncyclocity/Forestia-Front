@@ -19,7 +19,7 @@ export default function Photo() {
 
   return (
     <St_photo>
-      <Board_title>
+      <Board_title backURL="/home">
         <div className="icon">
           <AiOutlineCamera />
         </div>

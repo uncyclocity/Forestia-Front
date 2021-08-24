@@ -59,11 +59,14 @@ const Styles = styled.div`
   }
 `;
 
-export default function Board_title({ children }) {
+export default function Board_title({ backURL, children }) {
   const dispatch = useDispatch();
   return (
     <Styles>
-      <div className="lr_btn" onClick={() => unmountAnimation(1, dispatch)}>
+      <div
+        className="lr_btn"
+        onClick={() => unmountAnimation(0, dispatch, backURL)}
+      >
         <IoIosArrowBack />
       </div>
       <div className="board_info">{children}</div>

@@ -19,7 +19,7 @@ export default function Free() {
 
   return (
     <St_free>
-      <Board_title>
+      <Board_title backURL="/home">
         <div className="icon">
           <AiOutlineCloud />
         </div>

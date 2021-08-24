@@ -15,7 +15,7 @@ export default function About() {
 
   return (
     <St_about>
-      <Board_title>
+      <Board_title backURL="/home">
         <div className="icon">
           <AiOutlineInfoCircle />
         </div>
