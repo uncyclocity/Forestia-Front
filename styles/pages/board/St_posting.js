@@ -16,8 +16,7 @@ const Styles = styled.div`
   .content_input {
     flex-direction: column;
 
-    margin-top: 20px;
-    margin-bottom: 15px;
+    margin: 20px 0 15px 0;
 
     .content_title_input_box {
       width: 100%;
@@ -40,7 +39,7 @@ const Styles = styled.div`
 
     .content_input_box {
       width: 625px;
-      height: 600px;
+      height: 400px;
 
       margin-right: 15px;
       margin-bottom: 10px;
@@ -84,11 +83,7 @@ const Styles = styled.div`
     }
   }
   .free_photo_btn_area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 48px;
+    color: #20c997;
 
     .free_photo_btn {
       width: 130px;
@@ -96,6 +91,8 @@ const Styles = styled.div`
 
       display: flex;
       flex-direction: row;
+
+      margin: 0 0 20px 2px;
 
       .free_btn {
         width: 100%;
@@ -111,15 +108,7 @@ const Styles = styled.div`
         border-right: 1px solid #20c997;
         border-radius: 7px 0 0 7px;
 
-        &:hover {
-          transition: 0.2s all ease-in;
-          background: #d8faef;
-          cursor: pointer;
-        }
-
-        &:not(:hover) {
-          transition: 0.2s all ease-in;
-        }
+        cursor: pointer;
       }
 
       .free_btn_act {
@@ -155,15 +144,7 @@ const Styles = styled.div`
         border-left: 1px solid #20c997;
         border-radius: 0 7px 7px 0;
 
-        &:hover {
-          transition: 0.2s all ease-in;
-          background: #d8faef;
-          cursor: pointer;
-        }
-
-        &:not(:hover) {
-          transition: 0.2s all ease-in;
-        }
+        cursor: pointer;
       }
 
       .photo_btn_act {

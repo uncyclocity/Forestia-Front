@@ -23,54 +23,24 @@ const Styles = styled.div`
   }
 
   .posting_btn {
-    width: 80px;
+    width: 120px;
     height: 35px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    padding: 5px 15px;
-    margin-right: 20px;
-    border: 2px solid white;
-    border-radius: 7px;
-
-    font-size: 15px;
-    font-weight: bold;
+    flex-direction: column;
 
     cursor: pointer;
 
-    &:hover {
-      transition: 0.2s all ease-in;
-      background: white;
-      color: #20c997;
+    .posting_icon {
+      font-size: 30px;
     }
 
-    &:not(:hover) {
-      transition: 0.2s all ease-in;
+    .posting_text {
+      font-size: 16px;
+      font-weight: bold;
     }
-  }
-
-  .posting_btn_act {
-    width: 80px;
-    height: 35px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 5px 15px;
-    margin-right: 20px;
-    border: 2px solid white;
-    border-radius: 7px;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    background: white;
-    color: #20c997;
   }
 `;
 

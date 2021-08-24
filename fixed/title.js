@@ -1,32 +1,41 @@
+import { AiOutlineEdit } from 'react-icons/ai';
+import { RiLeafLine } from 'react-icons/ri';
 import { useDispatch, useReducerState } from '../pages/_context';
 import St_title from '../styles/fixed/St_title';
 import { unmountAnimation } from './AnimationController';
 
-export default function Title({ children }) {
+export default function Title() {
   const dispatch = useDispatch();
-  const posting = useReducerState().posting;
+  const nowPage = useReducerState().nowPage;
 
   return (
     <St_title>
       <div className="catchphrase">
         풀내음이 함께하는
         <br />
-        자취 이야기를 들려주세요
+        자취 이야기를 들려주세요&nbsp;
+        <RiLeafLine />
       </div>
       <div className="btn_area">
-        {posting ? (
+        {nowPage === 'posting' ? (
           <div
-            className="posting_btn_act"
+            className="posting_btn"
             onClick={() => unmountAnimation(1, dispatch)}
           >
-            포스팅
+            <div className="posting_icon">
+              <AiOutlineEdit />
+            </div>
+            <div className="posting_text">포스팅 취소</div>
           </div>
         ) : (
           <div
             className="posting_btn"
             onClick={() => unmountAnimation(0, dispatch, `/board/posting`)}
           >
-            포스팅
+            <div className="posting_icon">
+              <AiOutlineEdit />
+            </div>
+            <div className="posting_text">포스팅</div>
           </div>
         )}
       </div>
