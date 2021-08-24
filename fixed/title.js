@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useDispatch, useReducerState } from '../pages/_context';
 import St_title from '../styles/fixed/St_title';
-import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
+import { unmountAnimation } from './AnimationController';
 
 export default function Title({ children }) {
-  const [isClicked, setIsClicked] = useState(false);
+  const dispatch = useDispatch();
+  const posting = useReducerState().posting;
 
   return (
     <St_title>
@@ -13,26 +14,18 @@ export default function Title({ children }) {
         자취 이야기를 들려주세요
       </div>
       <div className="btn_area">
-        {isClicked ? (
+        {posting ? (
           <div
-            className="free_photo_btn"
-            onClick={() => setIsClicked(!isClicked)}
+            className="posting_btn_act"
+            onClick={() => unmountAnimation(1, dispatch)}
           >
-            <div
-              className="free_btn"
-              onClick={() => fetch('http://localhost:3000/api/tmpPosting')}
-            >
-              <AiOutlineCloud />
-            </div>
-            <div
-              className="photo_btn"
-              onClick={() => fetch('http://localhost:3000/api/tmpPosting')}
-            >
-              <AiOutlineCamera />
-            </div>
+            포스팅
           </div>
         ) : (
-          <div className="posting_btn" onClick={() => setIsClicked(!isClicked)}>
+          <div
+            className="posting_btn"
+            onClick={() => unmountAnimation(0, dispatch, `/board/posting`)}
+          >
             포스팅
           </div>
         )}

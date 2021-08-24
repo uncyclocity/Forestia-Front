@@ -3,7 +3,7 @@ import Box from '../box';
 
 const BoxStyles = styled.div`
   height: 80px;
-  padding: 10px 0 5px 0;
+  padding: 0 0 5px 0;
 `;
 
 const MenuBtnAreaStyles = styled.span`
@@ -24,9 +24,20 @@ const MenuBtnAreaStyles = styled.span`
 
     a {
       cursor: pointer;
+
+      .menu_icon {
+        height: 30px;
+        margin-bottom: 3px;
+      }
+
+      .menu_name {
+        display: flex;
+        justify-content: center;
+        font-size: 13px;
+      }
+
       .selected {
         color: #20c997;
-        font-weight: bold;
 
         &:hover {
           transition: 0.15s all ease-in;

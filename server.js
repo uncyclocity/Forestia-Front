@@ -18,9 +18,9 @@ app
       });
     });
 
-    server.get('/board/comuin/:id', async (req, res) => {
+    server.get('/board/photo/:id', async (req, res) => {
       app.render(req, res, '/board/post', {
-        board: 'comuin',
+        board: 'photo',
         post_id: req.params.id,
       });
     });

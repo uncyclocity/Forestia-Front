@@ -7,18 +7,18 @@ import {
   mountAnimation,
   unmountAnimation,
 } from '../../fixed/AnimationController';
-import St_comuin from '../../styles/pages/board/St_comuin';
+import St_photo from '../../styles/pages/board/St_photo';
 
-export default function Comuin() {
+export default function Photo() {
   const dispatch = useDispatch();
   const photoBoard = useReducerState().photoBoard;
 
   useEffect(() => {
-    mountAnimation(dispatch, 'comuin');
+    mountAnimation(dispatch, 'photo');
   }, [dispatch]);
 
   return (
-    <St_comuin>
+    <St_photo>
       <Board_title>
         <div className="icon">
           <AiOutlineCamera />
@@ -36,8 +36,8 @@ export default function Comuin() {
                       unmountAnimation(
                         0,
                         dispatch,
-                        `/board/post/?board=comuin&post_id=${post.id}`,
-                        `/board/comuin/${post.id}`,
+                        `/board/post/?board=photo&post_id=${post.id}`,
+                        `/board/photo/${post.id}`,
                       )
                     }
                   >
@@ -56,6 +56,6 @@ export default function Comuin() {
             })}
         </ul>
       </div>
-    </St_comuin>
+    </St_photo>
   );
 }

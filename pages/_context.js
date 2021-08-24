@@ -9,6 +9,7 @@ export default function Context({ children, freeBoard, photoBoard }) {
     animation: 5,
     freeBoard,
     photoBoard,
+    posting: false,
   };
 
   const reducer = (state, action) => {
@@ -24,6 +25,12 @@ export default function Context({ children, freeBoard, photoBoard }) {
         return {
           ...state,
           animation: action.animation,
+        };
+      }
+      case 'change_posting_state': {
+        return {
+          ...state,
+          posting: !state.posting,
         };
       }
       default:

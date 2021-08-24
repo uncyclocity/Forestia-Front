@@ -80,6 +80,8 @@ const Styles = styled.div`
       border: none;
       border-radius: 10px;
 
+      font-family: inherit;
+
       &:focus {
         outline: none;
         transition: 0.25s all ease-in;

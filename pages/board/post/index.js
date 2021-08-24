@@ -19,7 +19,7 @@ export default function Post() {
     case 'free':
       boardType.current = state.freeBoard;
       break;
-    case 'comuin':
+    case 'photo':
       boardType.current = state.photoBoard;
       break;
     default:
@@ -39,7 +39,7 @@ export default function Post() {
       <Board_title>
         <div className="icon">
           {board === 'free' && <AiOutlineCloud />}
-          {board === 'comuin' && <AiOutlineCamera />}
+          {board === 'photo' && <AiOutlineCamera />}
         </div>
         <div className="title_name">{nowPost.title}</div>
         <div className="author_and_date">

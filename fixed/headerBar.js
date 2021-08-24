@@ -12,20 +12,48 @@ export default function HeaderBar() {
   const nowPage = useReducerState().nowPage;
   const dispatch = useDispatch();
 
-  const headerMenuArr = ['home', 'about', 'free', 'comuin'];
+  const headerMenuArr = ['home', 'about', 'free', 'photo'];
 
-  const HMUrlArr = ['/home', '/about', '/board/free', '/board/comuin'];
+  const HMUrlArr = ['/home', '/about', '/board/free', '/board/photo'];
 
   const menuIconReturner = (headerMenu) => {
     switch (headerMenu) {
       case headerMenuArr[0]:
-        return <AiOutlineHome />;
+        return (
+          <>
+            <div className="menu_icon">
+              <AiOutlineHome />
+            </div>
+            <div className="menu_name">홈</div>
+          </>
+        );
       case headerMenuArr[1]:
-        return <AiOutlineInfoCircle />;
+        return (
+          <>
+            <div className="menu_icon">
+              <AiOutlineInfoCircle />
+            </div>
+            <div className="menu_name">정보</div>
+          </>
+        );
       case headerMenuArr[2]:
-        return <AiOutlineCloud />;
+        return (
+          <>
+            <div className="menu_icon">
+              <AiOutlineCloud />
+            </div>
+            <div className="menu_name">자게</div>
+          </>
+        );
       case headerMenuArr[3]:
-        return <AiOutlineCamera />;
+        return (
+          <>
+            <div className="menu_icon">
+              <AiOutlineCamera />
+            </div>
+            <div className="menu_name">짤게</div>
+          </>
+        );
       default:
         throw new Error('headerMenuArr에 존재하는 메뉴 이름이 아닙니다.');
     }

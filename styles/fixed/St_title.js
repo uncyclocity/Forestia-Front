@@ -38,11 +38,12 @@ const Styles = styled.div`
     font-size: 15px;
     font-weight: bold;
 
+    cursor: pointer;
+
     &:hover {
       transition: 0.2s all ease-in;
       background: white;
       color: #20c997;
-      cursor: pointer;
     }
 
     &:not(:hover) {
@@ -50,66 +51,26 @@ const Styles = styled.div`
     }
   }
 
-  .free_photo_btn {
+  .posting_btn_act {
     width: 80px;
     height: 35px;
 
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
+    padding: 5px 15px;
     margin-right: 20px;
+    border: 2px solid white;
+    border-radius: 7px;
 
-    .free_btn {
-      width: 100%;
-      height: 35px;
+    font-size: 15px;
+    font-weight: bold;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    cursor: pointer;
 
-      font-size: 20px;
-
-      border: 2px solid white;
-      border-right: 1px solid white;
-      border-radius: 7px 0 0 7px;
-
-      &:hover {
-        transition: 0.2s all ease-in;
-        background: white;
-        color: #20c997;
-        cursor: pointer;
-      }
-
-      &:not(:hover) {
-        transition: 0.2s all ease-in;
-      }
-    }
-
-    .photo_btn {
-      width: 100%;
-      height: 35px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      font-size: 20px;
-
-      border: 2px solid white;
-      border-left: 1px solid white;
-      border-radius: 0 7px 7px 0;
-
-      &:hover {
-        transition: 0.2s all ease-in;
-        background: white;
-        color: #20c997;
-        cursor: pointer;
-      }
-
-      &:not(:hover) {
-        transition: 0.2s all ease-in;
-      }
-    }
+    background: white;
+    color: #20c997;
   }
 `;
 

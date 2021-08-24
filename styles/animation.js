@@ -38,7 +38,7 @@ export const box_zero_opacity = css`
   opacity: 0;
 `;
 
-// 박스 업다운 슬라이드 렌더링 (home, about, free, comuin)
+// 박스 업다운 슬라이드 렌더링 (home, about, free, photo)
 export const box_slide_up = css`
   animation: 0.35s ease 0s;
   animation-fill-mode: forwards;

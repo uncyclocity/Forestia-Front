@@ -52,7 +52,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function St_comuin({ children }) {
+export default function St_photo({ children }) {
   const animation = useReducerState().animation;
 
   return (

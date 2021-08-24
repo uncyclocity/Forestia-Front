@@ -86,8 +86,8 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/board/post/?board=comuin&post_id=${post.id}`,
-                          `/board/comuin/${post.id}`,
+                          `/board/post/?board=photo&post_id=${post.id}`,
+                          `/board/photo/${post.id}`,
                         )
                       }
                     >
