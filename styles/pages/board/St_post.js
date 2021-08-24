@@ -78,19 +78,14 @@ const Styles = styled.div`
       margin-right: 15px;
 
       border: none;
-      border-radius: 10px;
+      border-radius: 5px;
 
       font-family: inherit;
 
+      border: 1px solid #e9ecef;
+
       &:focus {
         outline: none;
-        transition: 0.25s all ease-in;
-        box-shadow: 0px 0px 15px #9aefd6;
-      }
-
-      &:not(:focus) {
-        transition: 0.25s all ease-in;
-        box-shadow: 0px 0px 15px #dedede;
       }
     }
 

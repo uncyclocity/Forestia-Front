@@ -22,7 +22,7 @@ const free = new Schema({
       id: String,
       author: String,
       date: {
-        type: Date,
+        type: String,
         default: Date.now,
       },
       content: String,
