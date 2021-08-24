@@ -7,6 +7,25 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     padding: 0;
     margin: 0;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      height: 17%;
+      background: #20c997;
+      border-radius: 12px;
+
+      &:active {
+        background: #1db486;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      opacity: 0;
+    }
   }
 
   * {

@@ -19,13 +19,12 @@ const Styles = styled.div`
     margin: 20px 0 15px 0;
 
     .content_title_input_box {
-      width: 100%;
+      width: 640px;
       font-size: 25px;
       font-weight: bold;
       color: #464646;
       border: none;
       outline: none;
-
       &::placeholder {
         color: #aaaaaa;
       }
@@ -38,10 +37,9 @@ const Styles = styled.div`
     }
 
     .content_input_box {
-      width: 625px;
-      height: 400px;
+      width: 640px;
+      height: 300px;
 
-      margin-right: 15px;
       margin-bottom: 10px;
 
       border: none;
@@ -61,24 +59,35 @@ const Styles = styled.div`
     .content_post_btn {
       background: #20c997;
       color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50px;
+
+      width: 80px;
+      height: 35px;
+
+      border-radius: 5px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
-      margin-left: 90%;
 
-      &:hover {
-        transition: 0.25s all ease-in;
-        box-shadow: 0px 0px 15px #36deac;
-        cursor: pointer;
+      font-size: 30px;
+
+      margin-left: 87%;
+
+      cursor: pointer;
+
+      .post_icon {
+        height: 23px;
+        font-size: 20px;
+        margin-right: 5px;
       }
 
-      &:not(:hover) {
-        transition: 0.25s all ease-in;
-        box-shadow: 0px 0px 15px #9aefd6;
+      .post_text {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      &:hover {
+        background: #37dfad;
       }
     }
   }

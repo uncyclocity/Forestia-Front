@@ -62,7 +62,7 @@ export default function Post() {
           placeholder="내용을 입력하세요"
         />
         <div className="content_post_btn">
-          <RiMailSendLine />
+          <div className="post_text">업로드</div>
         </div>
       </div>
     </St_posting>

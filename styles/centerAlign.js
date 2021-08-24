@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Styles = styled.div`
   display: flex;
@@ -7,6 +7,10 @@ const Styles = styled.div`
   flex-direction: column;
   margin: 0 auto;
   height: 100%;
+
+  &:last-child {
+    margin-bottom: 30px;
+  }
 `;
 
 export default function CenterAlign({ children }) {

@@ -1,4 +1,4 @@
-import { AiOutlineEdit } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
 import { RiLeafLine } from 'react-icons/ri';
 import { useDispatch, useReducerState } from '../pages/_context';
 import St_title from '../styles/fixed/St_title';
@@ -20,10 +20,10 @@ export default function Title() {
         {nowPage === 'posting' ? (
           <div
             className="posting_btn"
-            onClick={() => unmountAnimation(1, dispatch)}
+            onClick={() => unmountAnimation(0, dispatch, `/home`)}
           >
             <div className="posting_icon">
-              <AiOutlineEdit />
+              <AiOutlineClose />
             </div>
             <div className="posting_text">포스팅 취소</div>
           </div>
