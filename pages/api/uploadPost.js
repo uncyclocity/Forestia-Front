@@ -15,9 +15,9 @@ const handler = async (req, res) => {
           content,
           comments,
         };
-        if (boardType === 'Free') {
+        if (boardType === 'free') {
           var post = new Free(post_obj);
-        } else if (boardType === 'Photo') {
+        } else if (boardType === 'photo') {
           var post = new Photo(post_obj);
         }
         var postcreated = await post.save();

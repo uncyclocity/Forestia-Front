@@ -3,7 +3,10 @@ import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
 import St_posting from '../../styles/pages/board/St_posting';
 import { useDispatch, useReducerState } from '../_context';
 import { useEffect, useRef, useState } from 'react';
-import { mountAnimation } from '../../fixed/AnimationController';
+import {
+  mountAnimation,
+  unmountAnimation,
+} from '../../fixed/AnimationController';
 import axios from 'axios';
 
 export default function Post() {
@@ -11,7 +14,7 @@ export default function Post() {
   const state = useReducerState();
 
   const [selBoard, setSelBoard] = useState('free');
-  const [boardLen, setBoardLen] = useState(null);
+  const [boardLen, setBoardLen] = useState(state.freeBoard.length);
 
   const title = useRef(null);
   const content = useRef(null);
@@ -20,31 +23,46 @@ export default function Post() {
     mountAnimation(dispatch, 'posting');
   }, [dispatch]);
 
-  const postPost = async () => {
-    if (selBoard === 'free') {
-      setBoardLen(state.freeBoard.length);
-    } else {
-      setBoardLen(state.photoBoard.length);
-    }
+  const switchToFree = () => {
+    setSelBoard('free');
+    setBoardLen(state.freeBoard.length);
+  };
 
-    const res = await axios('http://localhost:3000/api/uploadPost', {
-      boadType: selBoard,
-      id: boardLen,
-      author: '백괴',
-      date: Date.now(),
-      title: title.current.value,
-      content: content.current.value,
-      comments: [],
-    });
+  const switchToPhoto = () => {
+    setSelBoard('photo');
+    setBoardLen(state.photoBoard.length);
+  };
 
-    console.log(res.data);
+  const postPost = () => {
+    // const instance = axios.create({
+    //   baseURL: 'baseUrl/api/',
+    //   timeout: 1000,
+    //   headers: { 'Content-Type': 'application/json' },
+    //   withCredentials: true,
+    // });
 
-    unmountAnimation(
-      0,
-      dispatch,
-      `/board/post?board=${selBoard}&post_id=${BoardLen}`,
-      `/board/${selBoard}/${BoardLen}`,
-    );
+    axios
+      .post(
+        '/api/uploadPost',
+        JSON.stringify({
+          boardType: selBoard,
+          id: boardLen,
+          author: '백괴',
+          date: Date.now(),
+          title: title.current.value,
+          content: content.current.value,
+          comments: [],
+        }),
+      )
+      .then((res) => {
+        console.log(res);
+        unmountAnimation(
+          0,
+          dispatch,
+          `/board/post?board=${selBoard}&post_id=${boardLen}`,
+          `/board/${selBoard}/${boardLen}`,
+        );
+      });
   };
 
   return (
@@ -63,7 +81,7 @@ export default function Post() {
                 <AiOutlineCloud />
                 <div className="board_name">자게</div>
               </div>
-              <div className="photo_btn" onClick={() => setSelBoard('photo')}>
+              <div className="photo_btn" onClick={switchToPhoto}>
                 <AiOutlineCamera />
                 <div className="board_name">짤게</div>
               </div>
@@ -71,7 +89,7 @@ export default function Post() {
           )}
           {selBoard === 'photo' && (
             <div className="free_photo_btn">
-              <div className="free_btn" onClick={() => setSelBoard('free')}>
+              <div className="free_btn" onClick={switchToFree}>
                 <AiOutlineCloud />
                 <div className="board_name">자게</div>
               </div>
@@ -95,7 +113,7 @@ export default function Post() {
           placeholder="내용을 입력하세요"
           ref={content}
         />
-        <div className="content_post_btn" onClick={postPost}>
+        <div className="content_post_btn" onClick={() => postPost()}>
           <div className="post_text">업로드</div>
         </div>
       </div>
