@@ -34,13 +34,6 @@ export default function Posting() {
   };
 
   const postPost = () => {
-    // const instance = axios.create({
-    //   baseURL: 'baseUrl/api/',
-    //   timeout: 1000,
-    //   headers: { 'Content-Type': 'application/json' },
-    //   withCredentials: true,
-    // });
-
     axios({
       method: 'POST',
       url: 'http://localhost:3000/api/uploadPost',
