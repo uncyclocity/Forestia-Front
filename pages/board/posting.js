@@ -1,19 +1,51 @@
 import Board_title from '../../styles/board_title';
 import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
-import { RiMailSendLine } from 'react-icons/ri';
 import St_posting from '../../styles/pages/board/St_posting';
-import { useDispatch } from '../_context';
-import { useEffect, useState } from 'react';
+import { useDispatch, useReducerState } from '../_context';
+import { useEffect, useRef, useState } from 'react';
 import { mountAnimation } from '../../fixed/AnimationController';
+import axios from 'axios';
 
 export default function Post() {
   const dispatch = useDispatch();
+  const state = useReducerState();
 
   const [selBoard, setSelBoard] = useState('free');
+  const [boardLen, setBoardLen] = useState(null);
+
+  const title = useRef(null);
+  const content = useRef(null);
 
   useEffect(() => {
     mountAnimation(dispatch, 'posting');
   }, [dispatch]);
+
+  const postPost = async () => {
+    if (selBoard === 'free') {
+      setBoardLen(state.freeBoard.length);
+    } else {
+      setBoardLen(state.photoBoard.length);
+    }
+
+    const res = await axios('http://localhost:3000/api/uploadPost', {
+      boadType: selBoard,
+      id: boardLen,
+      author: '백괴',
+      date: Date.now(),
+      title: title.current.value,
+      content: content.current.value,
+      comments: [],
+    });
+
+    console.log(res.data);
+
+    unmountAnimation(
+      0,
+      dispatch,
+      `/board/post?board=${selBoard}&post_id=${BoardLen}`,
+      `/board/${selBoard}/${BoardLen}`,
+    );
+  };
 
   return (
     <St_posting>
@@ -54,14 +86,16 @@ export default function Post() {
           type="text"
           className="content_title_input_box"
           placeholder="제목을 입력하세요"
+          ref={title}
         />
         <hr className="title_content_line" align="left" />
         <textarea
           className="content_input_box"
           style={{ resize: 'none' }}
           placeholder="내용을 입력하세요"
+          ref={content}
         />
-        <div className="content_post_btn">
+        <div className="content_post_btn" onClick={postPost}>
           <div className="post_text">업로드</div>
         </div>
       </div>

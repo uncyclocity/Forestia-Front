@@ -4,7 +4,6 @@ import Photo from '../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    // Check if name, email or password is provided
     const { boardType, id, author, date, title, content, comments } = req.body;
     if (id && author && date && title && content && comments) {
       try {
