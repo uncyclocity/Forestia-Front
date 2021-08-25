@@ -9,7 +9,7 @@ import {
 } from '../../fixed/AnimationController';
 import axios from 'axios';
 
-export default function Post() {
+export default function Posting() {
   const dispatch = useDispatch();
   const state = useReducerState();
 
@@ -41,28 +41,27 @@ export default function Post() {
     //   withCredentials: true,
     // });
 
-    axios
-      .post(
-        '/api/uploadPost',
-        JSON.stringify({
-          boardType: selBoard,
-          id: boardLen,
-          author: '백괴',
-          date: Date.now(),
-          title: title.current.value,
-          content: content.current.value,
-          comments: [],
-        }),
-      )
-      .then((res) => {
-        console.log(res);
-        unmountAnimation(
-          0,
-          dispatch,
-          `/board/post?board=${selBoard}&post_id=${boardLen}`,
-          `/board/${selBoard}/${boardLen}`,
-        );
-      });
+    axios({
+      method: 'POST',
+      url: 'http://localhost:3000/api/uploadPost',
+      data: {
+        boardType: selBoard,
+        id: boardLen,
+        author: '백괴',
+        date: Date.now(),
+        title: title.current.value,
+        content: content.current.value,
+        comments: [],
+      },
+    }).then((res) => {
+      console.log(res);
+      unmountAnimation(
+        0,
+        dispatch,
+        `/board/post?board=${selBoard}&post_id=${boardLen}`,
+        `/board/${selBoard}/${boardLen}`,
+      );
+    });
   };
 
   return (
