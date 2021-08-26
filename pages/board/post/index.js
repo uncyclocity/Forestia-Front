@@ -5,8 +5,13 @@ import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
 import { useEffect, useRef } from 'react';
-import { mountAnimation } from '../../../fixed/AnimationController';
+import {
+  mountAnimation,
+  unmountAnimation,
+} from '../../../fixed/AnimationController';
 import St_post from '../../../styles/pages/board/St_post';
+import moment from 'moment';
+import instance from '../../api/api';
 
 export default function Post() {
   const router = useRouter();
@@ -28,11 +33,36 @@ export default function Post() {
 
   const nowPost = boardType.current[post_id];
 
+  const content = useRef(null);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     mountAnimation(dispatch, board);
   }, [dispatch, post_id, boardType, board]);
+
+  const postComment = () => {
+    instance({
+      method: 'POST',
+      url: '/api/uploadComment',
+      data: {
+        boardType: board,
+        postid: post_id,
+        id: nowPost.comments.length,
+        author: '백괴',
+        date: moment().format('YYYY-MM-DD HH:mm:ss'),
+        content: content.current.value,
+        comments: nowPost.comments,
+      },
+    }).then(() => {
+      unmountAnimation(0, dispatch, `/home`);
+      unmountAnimation(
+        0,
+        dispatch,
+        `/board/post?board=${board}&post_id=${post_id}`,
+      );
+    });
+  };
 
   return (
     <St_post>
@@ -76,8 +106,12 @@ export default function Post() {
         </ul>
       </div>
       <div className="comment_input">
-        <textarea className="comment_input_box" style={{ resize: 'none' }} />
-        <div className="comment_post_btn">
+        <textarea
+          className="comment_input_box"
+          style={{ resize: 'none' }}
+          ref={content}
+        />
+        <div className="comment_post_btn" onClick={() => postComment()}>
           <RiMailSendLine />
         </div>
       </div>

@@ -1,29 +1,28 @@
 import connectDB from '../../middleware/mongodb';
 import Free from '../../models/Free';
 import Photo from '../../models/Photo';
-import mongoose from 'mongoose';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { boardType, id, author, date, title, content, comments } = req.body;
-    if (id >= 0 && author && date && title && content && comments) {
+    const { boardType, postid, id, author, date, content, comments } = req.body;
+    if (id >= 0 && author && date && content) {
       try {
-        var post_obj = {
-          _id: new mongoose.Types.ObjectId(),
-          id,
-          author,
-          date,
-          title,
-          content,
-          comments,
-        };
+        var newComments = [
+          ...comments,
+          {
+            id,
+            author,
+            date,
+            content,
+          },
+        ];
+        console.log(newComments);
         if (boardType === 'free') {
-          var post = new Free(post_obj);
+          var post = Free.updateOne({ id: postid }, { newComments });
         } else if (boardType === 'photo') {
-          var post = new Photo(post_obj);
+          var post = Photo.updateOne({ id: postid }, { newComments });
         }
-        var postcreated = await post.save();
-        return res.status(200).send(postcreated);
+        return res.status(200).send(post);
       } catch (error) {
         return res.status(500).send(error.message);
       }
