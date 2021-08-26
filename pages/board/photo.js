@@ -37,7 +37,6 @@ export default function Photo() {
                         0,
                         dispatch,
                         `/board/post/?board=photo&post_id=${post.id}`,
-                        `/board/photo/${post.id}`,
                       )
                     }
                   >

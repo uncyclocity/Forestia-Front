@@ -56,7 +56,6 @@ export default function FixedHome() {
                           0,
                           dispatch,
                           `/board/post?board=free&post_id=${post.id}`,
-                          `/board/free/${post.id}`,
                         )
                       }
                     >
@@ -87,7 +86,6 @@ export default function FixedHome() {
                           0,
                           dispatch,
                           `/board/post/?board=photo&post_id=${post.id}`,
-                          `/board/photo/${post.id}`,
                         )
                       }
                     >

@@ -37,7 +37,6 @@ export default function Free() {
                         0,
                         dispatch,
                         `/board/post?board=free&post_id=${post.id}`,
-                        `/board/free/${post.id}`,
                       )
                     }
                   >

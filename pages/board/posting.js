@@ -7,9 +7,8 @@ import {
   mountAnimation,
   unmountAnimation,
 } from '../../fixed/AnimationController';
-import axios from 'axios';
 import instance from '../api/api';
-import mongoose from 'mongoose';
+import moment from 'moment';
 
 export default function Posting() {
   const dispatch = useDispatch();
@@ -43,17 +42,16 @@ export default function Posting() {
         boardType: selBoard,
         id: boardLen,
         author: '백괴',
-        date: Date.now(),
+        date: moment().format('YYYY-MM-DD HH:mm:ss'),
         title: title.current.value,
         content: content.current.value,
         comments: [],
       },
-    }).then((res) => {
+    }).then(() => {
       unmountAnimation(
         0,
         dispatch,
         `/board/post?board=${selBoard}&post_id=${boardLen}`,
-        `/board/${selBoard}/${boardLen}`,
       );
     });
   };
