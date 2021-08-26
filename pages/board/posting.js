@@ -8,6 +8,8 @@ import {
   unmountAnimation,
 } from '../../fixed/AnimationController';
 import axios from 'axios';
+import instance from '../api/api';
+import mongoose from 'mongoose';
 
 export default function Posting() {
   const dispatch = useDispatch();
@@ -34,9 +36,9 @@ export default function Posting() {
   };
 
   const postPost = () => {
-    axios({
+    instance({
       method: 'POST',
-      url: 'http://localhost:3000/api/uploadPost',
+      url: '/api/uploadPost',
       data: {
         boardType: selBoard,
         id: boardLen,
@@ -47,7 +49,6 @@ export default function Posting() {
         comments: [],
       },
     }).then((res) => {
-      console.log(res);
       unmountAnimation(
         0,
         dispatch,

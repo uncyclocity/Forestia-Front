@@ -1,7 +1,7 @@
 import CenterAlign from '../styles/centerAlign';
 import Header from '../fixed/Header';
 import Context from './_context';
-import axios from 'axios';
+import instance from './api/api';
 
 export default function MyApp({ Component, pageProps, freeBoard, photoBoard }) {
   return (
@@ -15,9 +15,9 @@ export default function MyApp({ Component, pageProps, freeBoard, photoBoard }) {
 }
 
 MyApp.getInitialProps = async () => {
-  const free_res = await axios.get('http://localhost:3000/api/viewFree');
+  const free_res = await instance.get('/api/viewFree');
   const free_data = await free_res.data;
-  const photo_res = await axios.get('http://localhost:3000/api/viewPhoto');
+  const photo_res = await instance.get('/api/viewPhoto');
   const photo_data = await photo_res.data;
   return { freeBoard: free_data, photoBoard: photo_data };
 };

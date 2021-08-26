@@ -1,6 +1,7 @@
 import connectDB from '../../middleware/mongodb';
 import Free from '../../models/Free';
 import Photo from '../../models/Photo';
+import mongoose from 'mongoose';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
@@ -8,6 +9,7 @@ const handler = async (req, res) => {
     if (id && author && date && title && content && comments) {
       try {
         var post_obj = {
+          _id: new mongoose.Types.ObjectId(),
           id,
           author,
           date,
