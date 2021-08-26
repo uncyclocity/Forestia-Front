@@ -12,6 +12,7 @@ import {
 import St_post from '../../../styles/pages/board/St_post';
 import moment from 'moment';
 import instance from '../../api/api';
+import getData from '../../../fixed/getData';
 
 export default function Post() {
   const router = useRouter();
@@ -52,10 +53,9 @@ export default function Post() {
         author: '백괴',
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
         content: content.current.value,
-        comments: nowPost.comments,
       },
-    }).then(() => {
-      unmountAnimation(0, dispatch, `/home`);
+    }).then(async () => {
+      await getData();
       unmountAnimation(
         0,
         dispatch,

@@ -9,6 +9,7 @@ import {
 } from '../../fixed/AnimationController';
 import instance from '../api/api';
 import moment from 'moment';
+import getData from '../../fixed/getData';
 
 export default function Posting() {
   const dispatch = useDispatch();
@@ -47,7 +48,8 @@ export default function Posting() {
         content: content.current.value,
         comments: [],
       },
-    }).then(() => {
+    }).then(async () => {
+      await getData();
       unmountAnimation(
         0,
         dispatch,
