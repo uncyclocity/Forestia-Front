@@ -33,7 +33,7 @@ export default function FixedHome() {
   const [photoTop3] = useState(setTop3(photoBoard, bak));
 
   useEffect(() => {
-    mountAnimation(dispatch, 'Home');
+    mountAnimation(dispatch, 'home');
   }, [dispatch]);
 
   return (
