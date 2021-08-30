@@ -15,7 +15,6 @@ const handler = async (req, res) => {
         };
         if (boardType === 'free') {
           var post = await Free.findOne({ id: postid });
-          console.log(post);
         } else if (boardType === 'photo') {
           var post = await Photo.findOne({ id: postid });
         }
