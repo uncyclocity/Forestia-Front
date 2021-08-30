@@ -6,6 +6,7 @@ import { unmountAnimation } from '../fixed/AnimationController';
 import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
+import instance from '../pages/api/api';
 
 const Styles = styled.div`
   display: flex;
@@ -150,8 +151,21 @@ export default function Board_title({ backURL, editData, children }) {
                 </li>
                 <li
                   onClick={() => {
-                    dispatch({ type: 'editpost_data', editData });
-                    unmountAnimation(0, dispatch, `/board/editing`);
+                    instance({
+                      method: 'POST',
+                      url: '/api/deletePost',
+                      data: {
+                        boardType: editData.boardType,
+                        id: editData.id,
+                      },
+                    }).then(async () => {
+                      await getData(dispatch);
+                      unmountAnimation(
+                        0,
+                        dispatch,
+                        `/board/post?board=${boardType}`,
+                      );
+                    });
                   }}
                 >
                   <div className="ctx_icon">
