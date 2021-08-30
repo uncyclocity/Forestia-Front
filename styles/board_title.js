@@ -152,6 +152,11 @@ export default function Board_title({ backURL, editData, children }) {
                 </li>
                 <li
                   onClick={() => {
+                    unmountAnimation(
+                      0,
+                      dispatch,
+                      `/board/${editData.boardType}`,
+                    );
                     instance({
                       method: 'POST',
                       url: '/api/deletePost',
@@ -161,11 +166,6 @@ export default function Board_title({ backURL, editData, children }) {
                       },
                     }).then(async () => {
                       await getData(dispatch);
-                      unmountAnimation(
-                        0,
-                        dispatch,
-                        `/board/post?board=${boardType}`,
-                      );
                     });
                   }}
                 >
