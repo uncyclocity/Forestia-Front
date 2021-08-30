@@ -49,7 +49,7 @@ export default function Posting() {
         comments: [],
       },
     }).then(async () => {
-      await getData();
+      await getData(dispatch);
       unmountAnimation(
         0,
         dispatch,

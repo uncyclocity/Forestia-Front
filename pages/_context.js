@@ -26,6 +26,13 @@ export default function Context({ children, freeBoard, photoBoard }) {
           animation: action.animation,
         };
       }
+      case 'update_post': {
+        return {
+          ...state,
+          freeBoard: action.freeBoard,
+          photoBoard: action.photoBoard,
+        };
+      }
       default:
         return state;
     }

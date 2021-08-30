@@ -49,6 +49,8 @@ const Styles = styled.div`
       }
 
       .cand_date {
+        position: relative;
+        top: 1px;
         color: #828c99;
         font-size: 14px;
       }

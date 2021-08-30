@@ -1,9 +1,13 @@
 import instance from '../pages/api/api';
 
-export default async function getData() {
+export default async function getData(dispatch) {
   const free_res = await instance.get('/api/viewFree');
-  const free_data = await free_res.data;
+  const freeBoard = free_res.data;
   const photo_res = await instance.get('/api/viewPhoto');
-  const photo_data = await photo_res.data;
-  return { freeBoard: free_data, photoBoard: photo_data };
+  const photoBoard = photo_res.data;
+  dispatch({
+    type: 'update_post',
+    freeBoard,
+    photoBoard,
+  });
 }

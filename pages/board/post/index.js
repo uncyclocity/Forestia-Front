@@ -55,12 +55,7 @@ export default function Post() {
         content: content.current.value,
       },
     }).then(async () => {
-      await getData();
-      unmountAnimation(
-        0,
-        dispatch,
-        `/board/post?board=${board}&post_id=${post_id}`,
-      );
+      await getData(dispatch);
     });
   };
 
@@ -85,8 +80,7 @@ export default function Post() {
       <div className="post_content">{nowPost.content}</div>
       <div className="comment_list">
         <div className="comment_amount">
-          <div>댓글</div>
-          <div>&nbsp;·&nbsp;</div>
+          <div>댓글&nbsp;</div>
           <div className="amount">{nowPost.comments.length}</div>
         </div>
         <ul>
