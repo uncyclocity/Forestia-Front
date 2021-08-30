@@ -28,12 +28,6 @@ export function unmountAnimation(
       case 1:
         Router.back();
         break;
-      case 2:
-        Router.push({
-          pathname: URL,
-          query,
-        });
-        break;
       default:
         throw new Error(
           '존재하지 않는 routerSW입니다. unmountAnimation()에 넘기는 routerSW를 확인하세요',

@@ -4,22 +4,17 @@ import Photo from '../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { boardType, postid, commentid, author, date, content } = req.body;
-    if (commentid >= 0 && author && date && content) {
+    const { boardType, id, title, content } = req.body;
+    if (boardType && id >= 0 && title && content) {
       try {
-        var newComment = {
-          id: commentid,
-          author,
-          date,
-          content,
-        };
         if (boardType === 'free') {
-          var post = await Free.findOne({ id: postid });
+          var post = await Free.findOne({ id });
           console.log(post);
         } else if (boardType === 'photo') {
-          var post = await Photo.findOne({ id: postid });
+          var post = await Photo.findOne({ id });
         }
-        post.comments.push(newComment);
+        post.title = title;
+        post.content = content;
         var postupdated = await post.save();
         return res.status(200).send(postupdated);
       } catch (error) {

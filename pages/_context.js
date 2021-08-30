@@ -11,6 +11,12 @@ export default function Context({ children, freeBoard, photoBoard }) {
     freeBoard,
     photoBoard,
     isPostPage: false,
+    editData: {
+      boardType: null,
+      id: null,
+      title: null,
+      content: null,
+    },
   };
 
   const reducer = (state, action) => {
@@ -39,6 +45,12 @@ export default function Context({ children, freeBoard, photoBoard }) {
         return {
           ...state,
           isPostPage: action.isPostPage,
+        };
+      }
+      case 'editpost_data': {
+        return {
+          ...state,
+          editData: action.editData,
         };
       }
       default:

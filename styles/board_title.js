@@ -109,7 +109,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function Board_title({ backURL, query, children }) {
+export default function Board_title({ backURL, editData, children }) {
   const dispatch = useDispatch();
   const state = useReducerState();
 
@@ -138,9 +138,10 @@ export default function Board_title({ backURL, query, children }) {
             <div className="ctxmenu">
               <ul>
                 <li
-                  onClick={() =>
-                    unmountAnimation(2, dispatch, `/board/editing`, query)
-                  }
+                  onClick={() => {
+                    dispatch({ type: 'editpost_data', editData });
+                    unmountAnimation(0, dispatch, `/board/editing`);
+                  }}
                 >
                   <div className="ctx_icon">
                     <FiEdit />
@@ -148,9 +149,10 @@ export default function Board_title({ backURL, query, children }) {
                   <div className="ctx_text">수정</div>
                 </li>
                 <li
-                  onClick={() =>
-                    unmountAnimation(2, dispatch, `/board/editing`, query)
-                  }
+                  onClick={() => {
+                    dispatch({ type: 'editpost_data', editData });
+                    unmountAnimation(0, dispatch, `/board/editing`);
+                  }}
                 >
                   <div className="ctx_icon">
                     <RiDeleteBin7Line />

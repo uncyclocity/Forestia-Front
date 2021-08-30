@@ -1,7 +1,7 @@
 import Board_title from '../../styles/board_title';
 import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
 import St_posting from '../../styles/pages/board/St_posting';
-import { useDispatch } from '../_context';
+import { useDispatch, useReducerState } from '../_context';
 import { useEffect, useRef } from 'react';
 import {
   mountAnimation,
@@ -9,15 +9,10 @@ import {
 } from '../../fixed/AnimationController';
 import instance from '../api/api';
 import getData from '../../fixed/getData';
-import { useRouter } from 'next/router';
 
 export default function Editing() {
-  const router = useRouter();
-
-  const { boardType, id, author, date, title, content, comments } =
-    router.query;
-
   const dispatch = useDispatch();
+  const { boardType, id, title, content } = useReducerState().editData;
 
   const newTitle = useRef(null);
   const newContent = useRef(null);
@@ -26,6 +21,9 @@ export default function Editing() {
     mountAnimation(dispatch, 'editing');
     newTitle.current.value = title;
     newContent.current.value = content;
+    return () => {
+      dispatch({ type: 'editpost_data', editData: {} });
+    };
   }, [content, dispatch, title]);
 
   const postCreate = () => {
@@ -35,11 +33,8 @@ export default function Editing() {
       data: {
         boardType,
         id,
-        author,
-        date,
         title: newTitle.current.value,
         content: newContent.current.value,
-        comments,
       },
     }).then(async () => {
       await getData(dispatch);

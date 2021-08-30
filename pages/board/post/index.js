@@ -32,14 +32,11 @@ export default function Post() {
 
   const nowPost = boardType.current[post_id];
 
-  const query = {
+  const editData = {
     boardType: board,
     id: nowPost.id,
-    author: nowPost.author,
-    date: nowPost.date,
     title: nowPost.title,
     content: nowPost.content,
-    comments: nowPost.comments,
   };
 
   const content = useRef(null);
@@ -67,7 +64,7 @@ export default function Post() {
       data: {
         boardType: board,
         postid: post_id,
-        id: nowPost.comments.length,
+        commentid: nowPost.comments.length,
         author: '백괴',
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
         content: content.current.value,
@@ -79,7 +76,7 @@ export default function Post() {
 
   return (
     <St_post>
-      <Board_title backURL={`/board/${board}`} query={query}>
+      <Board_title backURL={`/board/${board}`} editData={editData}>
         <div className="icon">
           {board === 'free' && <AiOutlineCloud />}
           {board === 'photo' && <AiOutlineCamera />}
