@@ -35,7 +35,7 @@ export default function Posting() {
     setBoardLen(state.photoBoard.length);
   };
 
-  const postPost = () => {
+  const postCreate = () => {
     instance({
       method: 'POST',
       url: '/api/uploadPost',
@@ -106,7 +106,7 @@ export default function Posting() {
           placeholder="내용을 입력하세요"
           ref={content}
         />
-        <div className="content_post_btn" onClick={() => postPost()}>
+        <div className="content_post_btn" onClick={() => postCreate()}>
           <div className="post_text">업로드</div>
         </div>
       </div>

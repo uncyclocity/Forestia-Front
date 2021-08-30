@@ -16,6 +16,7 @@ export default function Post() {
   const { board, post_id } = router.query;
 
   const state = useReducerState();
+
   const boardType = useRef(null);
 
   switch (board) {
@@ -30,6 +31,16 @@ export default function Post() {
   }
 
   const nowPost = boardType.current[post_id];
+
+  const query = {
+    boardType: board,
+    id: nowPost.id,
+    author: nowPost.author,
+    date: nowPost.date,
+    title: nowPost.title,
+    content: nowPost.content,
+    comments: nowPost.comments,
+  };
 
   const content = useRef(null);
 
@@ -68,7 +79,7 @@ export default function Post() {
 
   return (
     <St_post>
-      <Board_title backURL={`/board/${board}`}>
+      <Board_title backURL={`/board/${board}`} query={query}>
         <div className="icon">
           {board === 'free' && <AiOutlineCloud />}
           {board === 'photo' && <AiOutlineCamera />}

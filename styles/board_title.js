@@ -109,7 +109,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function Board_title({ backURL, children }) {
+export default function Board_title({ backURL, query, children }) {
   const dispatch = useDispatch();
   const state = useReducerState();
 
@@ -137,13 +137,21 @@ export default function Board_title({ backURL, children }) {
           {isOpenMore && (
             <div className="ctxmenu">
               <ul>
-                <li>
+                <li
+                  onClick={() =>
+                    unmountAnimation(2, dispatch, `/board/editing`, query)
+                  }
+                >
                   <div className="ctx_icon">
                     <FiEdit />
                   </div>
                   <div className="ctx_text">수정</div>
                 </li>
-                <li>
+                <li
+                  onClick={() =>
+                    unmountAnimation(2, dispatch, `/board/editing`, query)
+                  }
+                >
                   <div className="ctx_icon">
                     <RiDeleteBin7Line />
                   </div>

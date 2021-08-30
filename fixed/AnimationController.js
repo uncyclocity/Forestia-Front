@@ -4,7 +4,7 @@ export function unmountAnimation(
   routerSW,
   dispatch,
   URL = undefined,
-  asURL = undefined,
+  query = {},
 ) {
   dispatch({
     type: 'change_animation',
@@ -23,10 +23,16 @@ export function unmountAnimation(
     // sw 0 = push(), 1 = back()
     switch (routerSW) {
       case 0:
-        asURL ? Router.push(URL, asURL) : Router.push(URL);
+        Router.push(URL);
         break;
       case 1:
         Router.back();
+        break;
+      case 2:
+        Router.push({
+          pathname: URL,
+          query,
+        });
         break;
       default:
         throw new Error(
