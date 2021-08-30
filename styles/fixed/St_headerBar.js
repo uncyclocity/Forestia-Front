@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Title from '../../fixed/title';
 import Box from '../box';
 
 const BoxStyles = styled.div`
@@ -65,6 +66,7 @@ const MenuBtnAreaStyles = styled.span`
 export default function St_HeaderBar({ children }) {
   return (
     <Box>
+      <Title />
       <BoxStyles>
         <MenuBtnAreaStyles>{children}</MenuBtnAreaStyles>
       </BoxStyles>

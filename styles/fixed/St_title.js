@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Box from '../box';
 
 const Styles = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ const Styles = styled.div`
   justify-content: center;
   flex-direction: row;
 
-  height: 120px;
+  height: 110px;
   padding: 30px 20px 20px 20px;
   color: white;
   background: #20c997;

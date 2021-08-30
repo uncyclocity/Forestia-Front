@@ -35,7 +35,6 @@ export default function FixedHome() {
 
   return (
     <St_fixedHome>
-      <Title />
       <div className="content">
         <div className="board_title">
           <div className="board_icon">

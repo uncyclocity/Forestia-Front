@@ -6,7 +6,7 @@ import Top from './top';
 import FixedHome from './fixedHome';
 
 const BoxStyles = styled.div`
-  height: 310px;
+  height: 200px;
 `;
 
 export default function Header() {
