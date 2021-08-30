@@ -1,6 +1,16 @@
 import styled from 'styled-components';
+import { useReducerState } from '../../pages/_context';
+import {
+  BoxAnimation,
+  box_empty,
+  box_slide_down,
+  box_slide_up,
+  box_zero_opacity,
+} from '../animation';
+import Box from '../box';
 
 const Styles = styled.div`
+  height: 200px;
   .content {
     width: 350px;
     padding: 5px 30px;
@@ -56,5 +66,18 @@ const Styles = styled.div`
 `;
 
 export default function St_fixedHome({ children }) {
-  return <Styles>{children}</Styles>;
+  const animation = useReducerState().animation;
+  return (
+    <BoxAnimation
+      animation={animation}
+      sw1={box_slide_up}
+      sw2={box_empty}
+      sw3={box_slide_down}
+      sw4={box_zero_opacity}
+    >
+      <Box>
+        <Styles>{children}</Styles>
+      </Box>
+    </BoxAnimation>
+  );
 }
