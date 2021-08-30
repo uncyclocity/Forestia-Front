@@ -5,10 +5,7 @@ import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
 import { useEffect, useRef } from 'react';
-import {
-  mountAnimation,
-  unmountAnimation,
-} from '../../../fixed/AnimationController';
+import { mountAnimation } from '../../../fixed/AnimationController';
 import St_post from '../../../styles/pages/board/St_post';
 import moment from 'moment';
 import instance from '../../api/api';
@@ -40,6 +37,16 @@ export default function Post() {
 
   useEffect(() => {
     mountAnimation(dispatch, board);
+    dispatch({
+      type: 'postPageSwitcher',
+      isPostPage: true,
+    });
+    return () => {
+      dispatch({
+        type: 'postPageSwitcher',
+        isPostPage: false,
+      });
+    };
   }, [dispatch, post_id, boardType, board]);
 
   const postComment = () => {

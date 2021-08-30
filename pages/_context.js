@@ -5,10 +5,12 @@ export const DispatchCtx = createContext(null);
 
 export default function Context({ children, freeBoard, photoBoard }) {
   const initState = {
+    user: '백괴',
     nowPage: null,
     animation: 5,
     freeBoard,
     photoBoard,
+    isPostPage: false,
   };
 
   const reducer = (state, action) => {
@@ -31,6 +33,12 @@ export default function Context({ children, freeBoard, photoBoard }) {
           ...state,
           freeBoard: action.freeBoard,
           photoBoard: action.photoBoard,
+        };
+      }
+      case 'postPageSwitcher': {
+        return {
+          ...state,
+          isPostPage: action.isPostPage,
         };
       }
       default:

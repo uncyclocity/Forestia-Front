@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { IoIosArrowBack } from 'react-icons/io';
+import { FiMoreHorizontal } from 'react-icons/fi';
 import { unmountAnimation } from '../fixed/AnimationController';
-import { useDispatch } from '../pages/_context';
+import { useDispatch, useReducerState } from '../pages/_context';
+import { useState } from 'react';
 
 const Styles = styled.div`
   display: flex;
@@ -61,6 +63,13 @@ const Styles = styled.div`
 
 export default function Board_title({ backURL, children }) {
   const dispatch = useDispatch();
+  const state = useReducerState();
+
+  const isPostPage = state.isPostPage;
+  const user = state.user;
+
+  const [isOpenMore, setIsOpenMore] = useState(false);
+
   return (
     <Styles>
       <div
@@ -70,7 +79,9 @@ export default function Board_title({ backURL, children }) {
         <IoIosArrowBack />
       </div>
       <div className="board_info">{children}</div>
-      <div className="lr_btn" />
+      <div className="lr_btn">
+        {isPostPage && user === '백괴' && <FiMoreHorizontal />}
+      </div>
     </Styles>
   );
 }
