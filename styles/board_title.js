@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import { FiEdit } from 'react-icons/fi';
 import { unmountAnimation } from '../fixed/AnimationController';
 import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
+import { RiDeleteBin7Line } from 'react-icons/ri';
 
 const Styles = styled.div`
   display: flex;
@@ -55,9 +57,55 @@ const Styles = styled.div`
   }
 
   .lr_btn {
+    position: relative;
     cursor: pointer;
     width: 35px;
     font-size: 30px;
+  }
+
+  .more {
+    cursor: default;
+    position: absolute;
+    height: 68px;
+    top: -50px;
+    left: 70px;
+
+    .ctxmenu {
+      width: 70px;
+      ul {
+        padding-left: 0;
+        height: 100%;
+        li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: 15px;
+          background: #20c997;
+          color: white;
+          box-shadow: 0 0 20px #dedede;
+          list-style-type: none;
+
+          padding: 5px;
+
+          &:not(:last-child) {
+            margin-bottom: 8px;
+          }
+
+          .ctx_icon {
+            position: relative;
+            top: 2px;
+
+            font-size: 20px;
+          }
+
+          .ctx_text {
+            margin-left: 3px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -80,7 +128,31 @@ export default function Board_title({ backURL, children }) {
       </div>
       <div className="board_info">{children}</div>
       <div className="lr_btn">
-        {isPostPage && user === '백괴' && <FiMoreHorizontal />}
+        {isPostPage && user === '백괴' && (
+          <div onClick={() => setIsOpenMore(!isOpenMore)}>
+            <FiMoreHorizontal />
+          </div>
+        )}
+        <div className="more">
+          {isOpenMore && (
+            <div className="ctxmenu">
+              <ul>
+                <li>
+                  <div className="ctx_icon">
+                    <FiEdit />
+                  </div>
+                  <div className="ctx_text">수정</div>
+                </li>
+                <li>
+                  <div className="ctx_icon">
+                    <RiDeleteBin7Line />
+                  </div>
+                  <div className="ctx_text">삭제</div>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </Styles>
   );
