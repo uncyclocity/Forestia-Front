@@ -8,12 +8,11 @@ const handler = async (req, res) => {
     if (boardType && id >= 0) {
       try {
         if (boardType === 'free') {
-          var post = await Free.deleteOne({ id });
-          console.log(post);
+          await Free.deleteOne({ id });
         } else if (boardType === 'photo') {
-          var post = await Photo.deleteOne({ id });
+          await Photo.deleteOne({ id });
         }
-        return res.status(200);
+        return res.status(200).send();
       } catch (error) {
         return res.status(500).send(error.message);
       }

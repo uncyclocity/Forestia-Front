@@ -30,7 +30,8 @@ export default function Post() {
       throw new Error('유효하지 않은 게시판입니다. board 쿼리 값을 확인하세요');
   }
 
-  const nowPost = boardType.current[post_id];
+  const postIndex = boardType.current.findIndex((data) => data.id === post_id);
+  const nowPost = boardType.current[postIndex];
 
   const editData = {
     boardType: board,
