@@ -16,6 +16,7 @@ export default function Posting() {
   const state = useReducerState();
 
   const [selBoard, setSelBoard] = useState('free');
+  const [board, setBoard] = useState(state.freeBoard);
   const [boardLen, setBoardLen] = useState(state.freeBoard.length);
 
   const title = useRef(null);
@@ -27,21 +28,25 @@ export default function Posting() {
 
   const switchToFree = () => {
     setSelBoard('free');
+    setBoard(state.freeBoard);
     setBoardLen(state.freeBoard.length);
   };
 
   const switchToPhoto = () => {
     setSelBoard('photo');
+    setBoard(state.photoBoard);
     setBoardLen(state.photoBoard.length);
   };
 
   const postCreate = () => {
+    const id = boardLen > 0 ? parseInt(board[boardLen - 1].id) + 1 : 0;
+
     instance({
       method: 'POST',
       url: '/api/uploadPost',
       data: {
         boardType: selBoard,
-        id: boardLen,
+        id,
         author: '백괴',
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
         title: title.current.value,
@@ -53,7 +58,7 @@ export default function Posting() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/post?board=${selBoard}&post_id=${boardLen}`,
+        `/board/post?board=${selBoard}&post_id=${id}`,
       );
     });
   };

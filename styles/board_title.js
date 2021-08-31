@@ -151,22 +151,25 @@ export default function Board_title({ backURL, editData, children }) {
                   <div className="ctx_text">수정</div>
                 </li>
                 <li
-                  onClick={() => {
-                    unmountAnimation(
-                      0,
-                      dispatch,
-                      `/board/${editData.boardType}`,
-                    );
-                    instance({
+                  onClick={async () => {
+                    await instance({
                       method: 'POST',
                       url: '/api/deletePost',
                       data: {
                         boardType: editData.boardType,
                         id: editData.id,
                       },
-                    }).then(async () => {
-                      await getData(dispatch);
-                    });
+                    })
+                      .then(
+                        unmountAnimation(
+                          0,
+                          dispatch,
+                          `/board/${editData.boardType}`,
+                        ),
+                      )
+                      .then(async () => {
+                        await getData(dispatch);
+                      });
                   }}
                 >
                   <div className="ctx_icon">
