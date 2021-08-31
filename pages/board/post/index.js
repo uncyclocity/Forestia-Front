@@ -5,7 +5,10 @@ import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
 import { useEffect, useRef } from 'react';
-import { mountAnimation } from '../../../fixed/AnimationController';
+import {
+  mountAnimation,
+  unmountAnimation,
+} from '../../../fixed/AnimationController';
 import St_post from '../../../styles/pages/board/St_post';
 import moment from 'moment';
 import instance from '../../api/instance';
@@ -112,7 +115,21 @@ export default function Post() {
                   {user === '백괴' && (
                     <>
                       <div className="cand_edit_und_del">수정</div>
-                      <div className="cand_edit_und_del">삭제</div>
+                      <div
+                        className="cand_edit_und_del"
+                        onClick={() => {
+                          if (confirm('정말로 삭제하시겠습니까')) {
+                            dispatch({ type: 'editpost_data', editData });
+                            unmountAnimation(
+                              0,
+                              dispatch,
+                              `/board/commDeleting?boardType=${board}&post_id=${post_id}&comment_id=${comment.id}`,
+                            );
+                          }
+                        }}
+                      >
+                        삭제
+                      </div>
                     </>
                   )}
                 </div>
