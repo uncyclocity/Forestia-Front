@@ -152,8 +152,10 @@ export default function Board_title({ backURL, editData, children }) {
                 </li>
                 <li
                   onClick={() => {
-                    dispatch({ type: 'editpost_data', editData });
-                    unmountAnimation(0, dispatch, `/board/deleting`);
+                    if (confirm('정말로 삭제하시겠습니까')) {
+                      dispatch({ type: 'editpost_data', editData });
+                      unmountAnimation(0, dispatch, `/board/deleting`);
+                    }
                   }}
                 >
                   <div className="ctx_icon">

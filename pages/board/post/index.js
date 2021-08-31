@@ -71,6 +71,7 @@ export default function Post() {
         content: content.current.value,
       },
     }).then(async () => {
+      content.current.value = '';
       await getData(dispatch);
     });
   };
@@ -121,7 +122,12 @@ export default function Post() {
           style={{ resize: 'none' }}
           ref={content}
         />
-        <div className="comment_post_btn" onClick={() => postComment()}>
+        <div
+          className="comment_post_btn"
+          onClick={() => {
+            postComment();
+          }}
+        >
           <RiMailSendLine />
         </div>
       </div>
