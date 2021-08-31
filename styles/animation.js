@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { slideUp, slideDown, slideLeft, slideRight } from './keyframes/slide';
+import { slideUp, slideDown } from './keyframes/slide';
 
 /* 박스 애니메이션 셋팅
 1. 마운트
@@ -28,6 +28,7 @@ export const BoxAnimation = styled.div`
 // 첫 렌더링 시 애니메이션
 export const AppAnimation = styled.div`
   animation: 0.35s ease 0s ${slideUp};
+  animation-fill-mode: forwards;
 `;
 
 // 박스 빈 렌더링
@@ -50,15 +51,3 @@ export const box_slide_down = css`
   animation-fill-mode: forwards;
   animation-name: ${slideDown};
 `;
-
-// export const box_slide_left = css`
-//   animation: 0.35s ease 0s;
-//   animation-fill-mode: forwards;
-//   animation-name: ${slideLeft};
-// `;
-
-// export const box_slide_right = css`
-//   animation: 0.15s ease 0s;
-//   animation-fill-mode: forwards;
-//   animation-name: ${slideRight};
-// `;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { FiEdit } from 'react-icons/fi';
@@ -6,8 +6,7 @@ import { unmountAnimation } from '../fixed/AnimationController';
 import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
-import instance from '../pages/api/instance';
-import getData from '../fixed/getData';
+import { slideLeft, slideRight } from './keyframes/slide';
 
 const Styles = styled.div`
   display: flex;
@@ -73,6 +72,15 @@ const Styles = styled.div`
     left: 70px;
 
     .ctxmenu {
+      ${({ isOMAnimation }) =>
+        isOMAnimation
+          ? css`
+              animation: 0.25s ease 0s ${slideRight};
+            `
+          : css`
+              animation: 0.25s ease 0s ${slideLeft};
+            `}
+      animation-fill-mode: forwards;
       width: 70px;
       ul {
         padding-left: 0;
@@ -119,9 +127,10 @@ export default function Board_title({ backURL, editData, children }) {
   const user = state.user;
 
   const [isOpenMore, setIsOpenMore] = useState(false);
+  const [isOMAnimation, setIsOMAnimation] = useState(false);
 
   return (
-    <Styles>
+    <Styles isOMAnimation={isOMAnimation}>
       <div
         className="lr_btn"
         onClick={() => unmountAnimation(0, dispatch, backURL)}
@@ -131,7 +140,18 @@ export default function Board_title({ backURL, editData, children }) {
       <div className="board_info">{children}</div>
       <div className="lr_btn">
         {isPostPage && user === '백괴' && (
-          <div onClick={() => setIsOpenMore(!isOpenMore)}>
+          <div
+            onClick={() => {
+              if (isOMAnimation) {
+                setTimeout(() => {
+                  setIsOpenMore(!isOpenMore);
+                }, 250);
+              } else {
+                setIsOpenMore(!isOpenMore);
+              }
+              setIsOMAnimation(!isOMAnimation);
+            }}
+          >
             <FiMoreHorizontal />
           </div>
         )}

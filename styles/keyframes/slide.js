@@ -22,24 +22,24 @@ export const slideDown = keyframes`
    }
 `;
 
-// export const slideLeft = keyframes`
-//   from {
-//     transform: translateX(10px);
-//     opacity: 0;
-//    }
-//   to {
-//     transform: translateX(0px);
-//     opacity: 1;
-//    }
-// `;
+export const slideLeft = keyframes`
+  from {
+    transform: translateX(0px);
+    opacity: 1;
+   }
+  to {
+    transform: translateX(-8px);
+    opacity: 0;
+   }
+`;
 
-// export const slideRight = keyframes`
-//   from {
-//     transform: translateX(0px);
-//     opacity: 1;
-//    }
-//   to {
-//     transform: translateX(10px);
-//     opacity: 0;
-//    }
-// `;
+export const slideRight = keyframes`
+  from {
+    transform: translateX(-8px);
+    opacity: 0;
+   }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+   }
+`;
