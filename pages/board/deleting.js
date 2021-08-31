@@ -35,7 +35,7 @@ export default function Deleting() {
 
   return (
     <St_crud>
-      <Board_title backURL={`/board/post?board=${boardType}&post_id=${id}`}>
+      <Board_title backURL={``}>
         <div className="icon">
           <RiDeleteBin7Line />
         </div>

@@ -37,7 +37,7 @@ export default function Photo() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/board/post/?board=photo&post_id=${post.id}`,
+                          `/board/post?board_type=photo&post_id=${post.id}`,
                         )
                       }
                     >

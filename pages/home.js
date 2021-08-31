@@ -57,7 +57,7 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/board/post?board=free&post_id=${post.id}`,
+                          `/board/post?board_type=free&post_id=${post.id}`,
                         )
                       }
                     >
@@ -87,7 +87,7 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/board/post/?board=photo&post_id=${post.id}`,
+                          `/board/post?board_type=photo&post_id=${post.id}`,
                         )
                       }
                     >

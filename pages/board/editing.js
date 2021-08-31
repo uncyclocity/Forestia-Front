@@ -41,14 +41,16 @@ export default function Editing() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/post?board=${boardType}&post_id=${id}`,
+        `/board/post?board_type=${boardType}&post_id=${id}`,
       );
     });
   };
 
   return (
     <St_crud>
-      <Board_title backURL={`/board/post?board=${boardType}&post_id=${id}`}>
+      <Board_title
+        backURL={`/board/post?board_type=${boardType}&post_id=${id}`}
+      >
         <div className="icon">
           <AiOutlineEdit />
         </div>

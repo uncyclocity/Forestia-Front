@@ -33,16 +33,14 @@ export default function CommDeleting() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/post?board=${boardType}&post_id=${post_id}`,
+        `/board/post?board_type=${boardType}&post_id=${post_id}`,
       );
     });
   }, [boardType, comment_id, dispatch, post_id]);
 
   return (
     <St_crud>
-      <Board_title
-        backURL={`/board/post?board=${boardType}&post_id=${post_id}`}
-      >
+      <Board_title backURL={``}>
         <div className="icon">
           <RiDeleteBin7Line />
         </div>

@@ -41,7 +41,7 @@ export default function Context({ children, freeBoard, photoBoard }) {
           photoBoard: action.photoBoard,
         };
       }
-      case 'postPageSwitcher': {
+      case 'postpage_switcher': {
         return {
           ...state,
           isPostPage: action.isPostPage,

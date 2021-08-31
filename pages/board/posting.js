@@ -58,7 +58,7 @@ export default function Posting() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/post?board=${selBoard}&post_id=${id}`,
+        `/board/post?board_type=${selBoard}&post_id=${id}`,
       );
     });
   };

@@ -14,99 +14,120 @@ import moment from 'moment';
 import instance from '../../api/instance';
 import getData from '../../../fixed/getData';
 
-export default function Post() {
-  const router = useRouter();
-  const { board, post_id } = router.query;
+const postPageOn = {
+  type: 'postpage_switcher',
+  isPostPage: true,
+};
 
-  const state = useReducerState();
+const postPageOff = {
+  type: 'postpage_switcher',
+  isPostPage: false,
+};
 
-  const user = state.user;
-
-  const boardType = useRef(null);
-
-  switch (board) {
+const getBoardObj = (state, boardType) => {
+  switch (boardType) {
     case 'free':
-      boardType.current = state.freeBoard;
-      break;
+      return state.freeBoard;
     case 'photo':
-      boardType.current = state.photoBoard;
-      break;
+      return state.photoBoard;
     default:
-      throw new Error('유효하지 않은 게시판입니다. board 쿼리 값을 확인하세요');
+      throw new Error(
+        '유효하지 않은 게시판입니다. board/post/index.js에서 board_type 쿼리 값을 확인하세요',
+      );
   }
+};
 
-  const postIndex = boardType.current.findIndex((data) => data.id === post_id);
-  const nowPost = boardType.current[postIndex];
+const getPostIndex = (boardAllArr, post_id) => {
+  return boardAllArr.findIndex((data) => data.id === post_id);
+};
 
-  const editData = {
-    boardType: board,
-    id: nowPost.id,
-    title: nowPost.title,
-    content: nowPost.content,
-  };
-
-  const content = useRef(null);
+export default function Post() {
+  const state = useReducerState();
+  const router = useRouter();
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    mountAnimation(dispatch, board);
-    dispatch({
-      type: 'postPageSwitcher',
-      isPostPage: true,
-    });
-    return () => {
-      dispatch({
-        type: 'postPageSwitcher',
-        isPostPage: false,
-      });
-    };
-  }, [dispatch, post_id, boardType, board]);
+  const { board_type, post_id } = router.query;
 
-  const postComment = () => {
+  const user = state.user;
+
+  const boardAllArr = getBoardObj(state, board_type);
+
+  const postIndexNum = getPostIndex(boardAllArr, post_id);
+
+  const nowPostObj = boardAllArr[postIndexNum];
+
+  const editData = {
+    boardType: board_type,
+    id: nowPostObj.id,
+    title: nowPostObj.title,
+    content: nowPostObj.content,
+  };
+
+  const commentContent = useRef(null);
+
+  useEffect(() => {
+    mountAnimation(dispatch, board_type);
+    dispatch(postPageOn);
+    return () => {
+      dispatch(postPageOff);
+    };
+  }, [board_type, dispatch]);
+
+  const doUploadComment = () => {
     instance({
       method: 'POST',
       url: '/api/post_comment/uploadComment',
       data: {
-        boardType: board,
+        boardType: board_type,
         postid: post_id,
-        commentid: nowPost.comments.length,
+        commentid: nowPostObj.comments.length,
         author: '백괴',
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
-        content: content.current.value,
+        content: commentContent.current.value,
       },
     }).then(async () => {
-      content.current.value = '';
+      commentContent.current.value = '';
       await getData(dispatch);
     });
   };
 
+  const doDeleteComment = (comment_id) => {
+    if (confirm('정말로 삭제하시겠습니까')) {
+      unmountAnimation(
+        0,
+        dispatch,
+        `/board/commDeleting?boardType=${board_type}&post_id=${post_id}&comment_id=${comment_id}`,
+      );
+    }
+  };
+
   return (
     <St_post>
-      <Board_title backURL={`/board/${board}`} editData={editData}>
+      <Board_title backURL={`/board/${board_type}`} editData={editData}>
         <div className="icon">
-          {board === 'free' && <AiOutlineCloud />}
-          {board === 'photo' && <AiOutlineCamera />}
+          {board_type === 'free' && <AiOutlineCloud />}
+          {board_type === 'photo' && <AiOutlineCamera />}
         </div>
-        <div className="title_name">{nowPost.title}</div>
+        <div className="title_name">{nowPostObj.title}</div>
         <div className="author_and_date">
-          <div className="author">{nowPost.author}</div>
+          <div className="author">{nowPostObj.author}</div>
           <div className="date">
             <div className="date_icon">
               <BiTime />
             </div>
-            {nowPost.date}
+            {nowPostObj.date}
           </div>
         </div>
       </Board_title>
-      <div className="post_content">{nowPost.content}</div>
+      <div className="post_content">{nowPostObj.content}</div>
       <div className="comment_list">
         <div className="comment_amount">
           <div>댓글</div>
-          <div className="amount">{nowPost.comments.length}</div>
+          <div className="amount">{nowPostObj.comments.length}</div>
         </div>
         <ul>
-          {nowPost.comments.map((comment, index) => {
+          {nowPostObj.comments.map((comment, index) => {
             return (
               <li key={index}>
                 <div className="comment_author_and_date">
@@ -117,16 +138,7 @@ export default function Post() {
                       <div className="cand_edit_und_del">수정</div>
                       <div
                         className="cand_edit_und_del"
-                        onClick={() => {
-                          if (confirm('정말로 삭제하시겠습니까')) {
-                            dispatch({ type: 'editpost_data', editData });
-                            unmountAnimation(
-                              0,
-                              dispatch,
-                              `/board/commDeleting?boardType=${board}&post_id=${post_id}&comment_id=${comment.id}`,
-                            );
-                          }
-                        }}
+                        onClick={() => doDeleteComment(comment.id)}
                       >
                         삭제
                       </div>
@@ -145,14 +157,9 @@ export default function Post() {
         <textarea
           className="comment_input_box"
           style={{ resize: 'none' }}
-          ref={content}
+          ref={commentContent}
         />
-        <div
-          className="comment_post_btn"
-          onClick={() => {
-            postComment();
-          }}
-        >
+        <div className="comment_post_btn" onClick={doUploadComment}>
           <RiMailSendLine />
         </div>
       </div>
