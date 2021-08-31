@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { AiOutlineCamera, AiOutlineCloud } from 'react-icons/ai';
-import { mountAnimation, unmountAnimation } from '../src/animationController';
-import St_fixedHome from '../styles/fixed/St_fixedHome';
-import { useDispatch, useReducerState } from './_context';
+import {
+  mountAnimation,
+  unmountAnimation,
+} from '../../src/animationController';
+import St_fixedHome from '../../styles/fixed/St_fixedHome';
+import { useDispatch, useReducerState } from '../../src/_context';
 
 const setTop3 = (board, bak, i = 0) => {
   bak.current = [];
@@ -57,7 +60,7 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/board/post?board_type=free&post_id=${post.id}`,
+                          `/board/posting?board_type=free&post_id=${post.id}`,
                         )
                       }
                     >
@@ -87,7 +90,7 @@ export default function FixedHome() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/board/post?board_type=photo&post_id=${post.id}`,
+                          `/board/posting?board_type=photo&post_id=${post.id}`,
                         )
                       }
                     >

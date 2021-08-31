@@ -1,4 +1,3 @@
-import { useReducerState, useDispatch } from '../pages/_context';
 import {
   AiOutlineHome,
   AiOutlineInfoCircle,
@@ -7,6 +6,7 @@ import {
 } from 'react-icons/ai';
 import { unmountAnimation } from './animationController';
 import St_HeaderBar from '../styles/fixed/St_headerBar';
+import { useDispatch, useReducerState } from './_context';
 
 export default function HeaderBar() {
   const nowPage = useReducerState().nowPage;
@@ -14,7 +14,12 @@ export default function HeaderBar() {
 
   const headerMenuArr = ['home', 'about', 'free', 'photo'];
 
-  const HMUrlArr = ['/home', '/about', '/board/free', '/board/photo'];
+  const HMUrlArr = [
+    '/home',
+    '/about',
+    '/board/board_list/free',
+    '/board/board_list/photo',
+  ];
 
   const menuIconReturner = (headerMenu) => {
     switch (headerMenu) {

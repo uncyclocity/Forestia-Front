@@ -1,6 +1,6 @@
 import CenterAlign from '../styles/centerAlign';
 import Header from '../src/header';
-import Context from './_context';
+import Context from '../src/_context';
 import instance from '../src/instance';
 
 export default function MyApp({ Component, pageProps, freeBoard, photoBoard }) {

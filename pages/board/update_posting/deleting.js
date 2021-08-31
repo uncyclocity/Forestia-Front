@@ -1,6 +1,5 @@
 import Board_title from '../../../styles/board_title';
 import St_crud from '../../../styles/pages/board/St_crud';
-import { useDispatch, useReducerState } from '../../_context';
 import { useEffect } from 'react';
 import {
   mountAnimation,
@@ -10,6 +9,7 @@ import getData from '../../../src/getData';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import instance from '../../../src/instance';
+import { useDispatch, useReducerState } from '../../../src/_context';
 
 export default function Deleting() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function Deleting() {
       },
     }).then(async () => {
       await getData(dispatch);
-      unmountAnimation(0, dispatch, `/board/${boardType}`);
+      unmountAnimation(0, dispatch, `/board/board_list/${boardType}`);
     });
     return () => {
       dispatch({ type: 'editpost_data', editData: {} });

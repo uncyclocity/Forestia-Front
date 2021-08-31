@@ -1,7 +1,6 @@
 import Board_title from '../../../styles/board_title';
 import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
 import St_crud from '../../../styles/pages/board/St_crud';
-import { useDispatch, useReducerState } from '../../_context';
 import { useEffect, useRef } from 'react';
 import {
   mountAnimation,
@@ -9,6 +8,7 @@ import {
 } from '../../../src/animationController';
 import getData from '../../../src/getData';
 import instance from '../../../src/instance';
+import { useDispatch, useReducerState } from '../../../src/_context';
 
 export default function Editing() {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export default function Editing() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/post?board_type=${boardType}&post_id=${id}`,
+        `/board/posting?board_type=${boardType}&post_id=${id}`,
       );
     });
   };
@@ -49,7 +49,7 @@ export default function Editing() {
   return (
     <St_crud>
       <Board_title
-        backURL={`/board/post?board_type=${boardType}&post_id=${id}`}
+        backURL={`/board/posting?board_type=${boardType}&post_id=${id}`}
       >
         <div className="icon">
           <AiOutlineEdit />

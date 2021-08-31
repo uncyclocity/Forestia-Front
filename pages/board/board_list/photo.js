@@ -1,35 +1,35 @@
-import { AiOutlineCloud, AiOutlineSmile } from 'react-icons/ai';
+import { AiOutlineCamera, AiOutlineSmile } from 'react-icons/ai';
 import { FaRegCommentAlt } from 'react-icons/fa';
-import { useDispatch, useReducerState } from '../_context';
-import Board_title from '../../styles/board_title';
+import Board_title from '../../../styles/board_title';
 import { useEffect } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../src/animationController';
-import St_free from '../../styles/pages/board/St_free';
+} from '../../../src/animationController';
+import St_photo from '../../../styles/pages/board/St_photo';
+import { useDispatch, useReducerState } from '../../../src/_context';
 
-export default function Free() {
+export default function Photo() {
   const dispatch = useDispatch();
-  const freeBoard = useReducerState().freeBoard;
+  const photoBoard = useReducerState().photoBoard;
 
   useEffect(() => {
-    mountAnimation(dispatch, 'free');
+    mountAnimation(dispatch, 'photo');
   }, [dispatch]);
 
   return (
-    <St_free>
+    <St_photo>
       <Board_title backURL="/home">
         <div className="icon">
-          <AiOutlineCloud />
+          <AiOutlineCamera />
         </div>
-        <div className="title_name">자게</div>
+        <div className="title_name">짤게</div>
       </Board_title>
       <div className="content_list">
-        {freeBoard.length > 0 ? (
+        {photoBoard.length > 0 ? (
           <ul>
-            {freeBoard &&
-              freeBoard.map((post, index) => {
+            {photoBoard &&
+              photoBoard.map((post, index) => {
                 return (
                   <li key={index}>
                     <div
@@ -37,7 +37,7 @@ export default function Free() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/board/post?board_type=free&post_id=${post.id}`,
+                          `/board/posting?board_type=photo&post_id=${post.id}`,
                         )
                       }
                     >
@@ -64,6 +64,6 @@ export default function Free() {
           </div>
         )}
       </div>
-    </St_free>
+    </St_photo>
   );
 }

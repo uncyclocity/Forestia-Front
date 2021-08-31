@@ -1,10 +1,10 @@
-import { useDispatch } from './_context';
-import Board_title from '../styles/board_title';
+import Board_title from '../../styles/board_title';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { SiNextDotJs } from 'react-icons/si';
 import { useEffect } from 'react';
-import { mountAnimation } from '../src/animationController';
-import St_about from '../styles/pages/St_about';
+import { mountAnimation } from '../../src/animationController';
+import St_about from '../../styles/pages/St_about';
+import { useDispatch } from '../../src/_context';
 
 export default function About() {
   const dispatch = useDispatch();

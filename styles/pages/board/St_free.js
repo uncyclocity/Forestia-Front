@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useReducerState } from '../../../pages/_context';
 import {
   BoxAnimation,
   box_empty,
@@ -8,6 +7,7 @@ import {
   box_zero_opacity,
 } from '../../boxAnimation';
 import Box from '../../box';
+import { useReducerState } from '../../../src/_context';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;

@@ -1,7 +1,6 @@
 import Board_title from '../../../styles/board_title';
 import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
 import St_crud from '../../../styles/pages/board/St_crud';
-import { useDispatch, useReducerState } from '../../_context';
 import { useEffect, useRef, useState } from 'react';
 import {
   mountAnimation,
@@ -10,6 +9,7 @@ import {
 import moment from 'moment';
 import getData from '../../../src/getData';
 import instance from '../../../src/instance';
+import { useDispatch, useReducerState } from '../../../src/_context';
 
 export default function Posting() {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ export default function Posting() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/post?board_type=${selBoard}&post_id=${id}`,
+        `/board/posting?board_type=${selBoard}&post_id=${id}`,
       );
     });
   };

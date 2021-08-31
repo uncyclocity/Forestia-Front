@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Board_title from '../../../styles/board_title';
-import { useDispatch, useReducerState } from '../../_context';
+import { useDispatch, useReducerState } from '../../../src/_context';
 import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
@@ -32,7 +32,7 @@ const getBoardObj = (state, boardType) => {
       return state.photoBoard;
     default:
       throw new Error(
-        '유효하지 않은 게시판입니다. board/post/index.js에서 board_type 쿼리 값을 확인하세요',
+        '유효하지 않은 게시판입니다. board/posting/index.js에서 board_type 쿼리 값을 확인하세요',
       );
   }
 };
@@ -104,7 +104,10 @@ export default function Post() {
 
   return (
     <St_post>
-      <Board_title backURL={`/board/${board_type}`} editData={editData}>
+      <Board_title
+        backURL={`/board/board_list/${board_type}`}
+        editData={editData}
+      >
         <div className="icon">
           {board_type === 'free' && <AiOutlineCloud />}
           {board_type === 'photo' && <AiOutlineCamera />}

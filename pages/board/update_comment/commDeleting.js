@@ -1,6 +1,5 @@
 import Board_title from '../../../styles/board_title';
 import St_crud from '../../../styles/pages/board/St_crud';
-import { useDispatch } from '../../_context';
 import { useEffect } from 'react';
 import {
   mountAnimation,
@@ -11,6 +10,7 @@ import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import instance from '../../../src/instance';
+import { useDispatch } from '../../../src/_context';
 
 export default function CommDeleting() {
   const router = useRouter();
@@ -33,7 +33,7 @@ export default function CommDeleting() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/post?board_type=${boardType}&post_id=${post_id}`,
+        `/board/posting?board_type=${boardType}&post_id=${post_id}`,
       );
     });
   }, [boardType, comment_id, dispatch, post_id]);

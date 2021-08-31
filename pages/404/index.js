@@ -1,8 +1,11 @@
 import { VscError } from 'react-icons/vsc';
-import { useDispatch } from './_context';
+import { useDispatch } from '../../src/_context';
 import { useEffect } from 'react';
-import { unmountAnimation, mountAnimation } from '../src/animationController';
-import St_404 from '../styles/pages/St_404';
+import {
+  unmountAnimation,
+  mountAnimation,
+} from '../../src/animationController';
+import St_404 from '../../styles/pages/St_404';
 
 export default function NotFoundPage() {
   const dispatch = useDispatch();

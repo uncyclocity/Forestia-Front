@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useReducerState } from '../../../pages/_context';
+import { useReducerState } from '../../../src/_context';
 import {
   BoxAnimation,
   box_empty,
