@@ -218,7 +218,7 @@ const Styles = styled.div`
       height: 70px;
       font-size: 70px;
       color: #20c997;
-      animation: ${_360} infinite 5s linear;
+      animation: ${spin_360} infinite 5s linear;
     }
   }
 `;
