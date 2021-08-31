@@ -7,6 +7,7 @@ import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { slideLeft, slideRight } from './keyframes/slide';
+import { spin_90, spin_90_r } from './keyframes/spin';
 
 const Styles = styled.div`
   display: flex;
@@ -62,56 +63,72 @@ const Styles = styled.div`
     cursor: pointer;
     width: 35px;
     font-size: 30px;
-  }
 
-  .more {
-    cursor: default;
-    position: absolute;
-    height: 68px;
-    top: -50px;
-    left: 70px;
+    .more_icon {
+      width: 30px;
+      height: 30px;
 
-    .ctxmenu {
       ${({ isOMAnimation }) =>
         isOMAnimation
           ? css`
-              animation: 0.25s ease 0s ${slideRight};
+              animation: ${spin_90} 0.25s ease 0s 1 normal forwards;
             `
           : css`
-              animation: 0.25s ease 0s ${slideLeft};
+              animation: ${spin_90_r} 0.25s ease 0s 1 normal forwards;
             `}
-      animation-fill-mode: forwards;
-      width: 70px;
-      ul {
-        padding-left: 0;
-        height: 100%;
-        li {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+    }
 
-          border-radius: 15px;
-          background: #20c997;
-          color: white;
-          box-shadow: 0 0 20px #dedede;
-          list-style-type: none;
+    .more {
+      cursor: default;
+      position: absolute;
+      height: 68px;
+      top: -50px;
+      left: 70px;
 
-          padding: 5px;
+      .ctxmenu {
+        ${({ isOMAnimation }) =>
+          isOMAnimation
+            ? css`
+                animation: 0.25s ease 0s ${slideRight};
+              `
+            : css`
+                animation: 0.25s ease 0s ${slideLeft};
+              `}
+        animation-fill-mode: forwards;
+        width: 70px;
+        ul {
+          padding-left: 0;
+          height: 100%;
+          li {
+            cursor: pointer;
 
-          &:not(:last-child) {
-            margin-bottom: 8px;
-          }
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-          .ctx_icon {
-            position: relative;
-            top: 2px;
+            border-radius: 10px;
+            background: #20c997;
+            color: white;
+            box-shadow: 0 0 5px #dedede;
+            list-style-type: none;
 
-            font-size: 20px;
-          }
+            padding: 5px;
 
-          .ctx_text {
-            margin-left: 3px;
-            font-size: 18px;
+            &:not(:last-child) {
+              margin-bottom: 8px;
+            }
+
+            .ctx_icon {
+              position: relative;
+              top: 2px;
+
+              font-size: 20px;
+            }
+
+            .ctx_text {
+              margin-left: 3px;
+              font-size: 18px;
+            }
           }
         }
       }
@@ -141,6 +158,7 @@ export default function Board_title({ backURL, editData, children }) {
       <div className="lr_btn">
         {isPostPage && user === '백괴' && (
           <div
+            className="more_icon"
             onClick={() => {
               if (isOMAnimation) {
                 setTimeout(() => {

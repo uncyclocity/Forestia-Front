@@ -8,7 +8,7 @@ import {
   box_zero_opacity,
 } from '../../animation';
 import Box from '../../box';
-import { spin } from '../../keyframes/spin';
+import { spin_360 } from '../../keyframes/spin';
 
 const Styles = styled.div`
   color: #525252;
@@ -218,7 +218,7 @@ const Styles = styled.div`
       height: 70px;
       font-size: 70px;
       color: #20c997;
-      animation: ${spin} infinite 5s linear;
+      animation: ${_360} infinite 5s linear;
     }
   }
 `;
