@@ -28,14 +28,14 @@ export const slideLeft = keyframes`
     opacity: 1;
    }
   to {
-    transform: translateX(-8px);
+    transform: translateX(-5px);
     opacity: 0;
    }
 `;
 
 export const slideRight = keyframes`
   from {
-    transform: translateX(-8px);
+    transform: translateX(-5px);
     opacity: 0;
    }
   to {

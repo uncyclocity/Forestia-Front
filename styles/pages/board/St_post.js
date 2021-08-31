@@ -33,6 +33,7 @@ const Styles = styled.div`
       border-bottom: 1px solid #e9ecef;
 
       .amount {
+        margin-left: 7px;
         color: #20c997;
       }
     }
@@ -43,16 +44,26 @@ const Styles = styled.div`
       margin-bottom: 5px;
 
       .cand_author {
-        font-weight: bold;
         margin-right: 10px;
+        font-weight: bold;
         font-size: 15px;
       }
 
       .cand_date {
+        margin-right: 10px;
         position: relative;
         top: 1px;
         color: #828c99;
         font-size: 14px;
+      }
+
+      .cand_edit_und_del {
+        color: #20c997;
+        font-size: 14px;
+        cursor: pointer;
+        &:not(:last-child) {
+          margin-right: 7px;
+        }
       }
     }
 

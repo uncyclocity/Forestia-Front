@@ -17,6 +17,8 @@ export default function Post() {
 
   const state = useReducerState();
 
+  const user = state.user;
+
   const boardType = useRef(null);
 
   switch (board) {
@@ -97,7 +99,7 @@ export default function Post() {
       <div className="post_content">{nowPost.content}</div>
       <div className="comment_list">
         <div className="comment_amount">
-          <div>댓글&nbsp;</div>
+          <div>댓글</div>
           <div className="amount">{nowPost.comments.length}</div>
         </div>
         <ul>
@@ -107,6 +109,12 @@ export default function Post() {
                 <div className="comment_author_and_date">
                   <div className="cand_author">{comment.author}</div>
                   <div className="cand_date">{comment.date}</div>
+                  {user === '백괴' && (
+                    <>
+                      <div className="cand_edit_und_del">수정</div>
+                      <div className="cand_edit_und_del">삭제</div>
+                    </>
+                  )}
                 </div>
                 <div className="comment_content">
                   <a>{comment.content}</a>
