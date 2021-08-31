@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 import { mountAnimation } from '../../../fixed/AnimationController';
 import St_post from '../../../styles/pages/board/St_post';
 import moment from 'moment';
-import instance from '../../api/api';
+import instance from '../../api/instance';
 import getData from '../../../fixed/getData';
 
 export default function Post() {
@@ -61,7 +61,7 @@ export default function Post() {
   const postComment = () => {
     instance({
       method: 'POST',
-      url: '/api/uploadComment',
+      url: '/api/post_comment/uploadComment',
       data: {
         boardType: board,
         postid: post_id,

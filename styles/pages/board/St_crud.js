@@ -223,7 +223,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function St_posting({ children }) {
+export default function St_crud({ children }) {
   const animation = useReducerState().animation;
 
   return (

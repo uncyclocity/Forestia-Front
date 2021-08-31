@@ -6,7 +6,7 @@ import { unmountAnimation } from '../fixed/AnimationController';
 import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
-import instance from '../pages/api/api';
+import instance from '../pages/api/instance';
 import getData from '../fixed/getData';
 
 const Styles = styled.div`

@@ -1,6 +1,6 @@
-import connectDB from '../../middleware/mongodb';
-import Free from '../../models/Free';
-import Photo from '../../models/Photo';
+import connectDB from '../../../middleware/mongodb';
+import Free from '../../../models/Free';
+import Photo from '../../../models/Photo';
 import mongoose from 'mongoose';
 
 const handler = async (req, res) => {

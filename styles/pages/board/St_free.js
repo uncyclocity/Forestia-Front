@@ -49,6 +49,26 @@ const Styles = styled.div`
         }
       }
     }
+
+    .list_empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 20px 0;
+      color: #babfc7;
+
+      .empty_icon {
+        width: 80px;
+        height: 80px;
+        font-size: 80px;
+      }
+
+      .empty_text {
+        margin-top: 20px;
+        font-size: 20px;
+      }
+    }
   }
 `;
 

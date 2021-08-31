@@ -1,12 +1,12 @@
 import Board_title from '../../styles/board_title';
-import St_posting from '../../styles/pages/board/St_crud';
+import St_crud from '../../styles/pages/board/St_crud';
 import { useDispatch, useReducerState } from '../_context';
 import { useEffect } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
 } from '../../fixed/AnimationController';
-import instance from '../api/api';
+import instance from '../api/instance';
 import getData from '../../fixed/getData';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
@@ -19,7 +19,7 @@ export default function Deleting() {
     mountAnimation(dispatch, 'deleting');
     instance({
       method: 'POST',
-      url: '/api/deletePost',
+      url: '/api/post_posting/deletePost',
       data: {
         boardType: boardType,
         id: id,
@@ -34,7 +34,7 @@ export default function Deleting() {
   }, [boardType, dispatch, id]);
 
   return (
-    <St_posting>
+    <St_crud>
       <Board_title backURL={`/board/post?board=${boardType}&post_id=${id}`}>
         <div className="icon">
           <RiDeleteBin7Line />
@@ -46,6 +46,6 @@ export default function Deleting() {
           <AiOutlineLoading3Quarters />
         </div>
       </div>
-    </St_posting>
+    </St_crud>
   );
 }

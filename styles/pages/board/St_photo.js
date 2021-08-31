@@ -13,8 +13,8 @@ const Styles = styled.div`
   padding: 20px 30px 5px 30px;
 
   .content_list {
-    transform: translateX(-6.5%);
     li {
+      transform: translateX(-6.5%);
       list-style-type: none;
       margin-top: 10px;
 
@@ -47,6 +47,26 @@ const Styles = styled.div`
           transition: 0.15s all ease-in;
           color: #525252;
         }
+      }
+    }
+
+    .list_empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 20px 0;
+      color: #babfc7;
+
+      .empty_icon {
+        width: 80px;
+        height: 80px;
+        font-size: 80px;
+      }
+
+      .empty_text {
+        margin-top: 20px;
+        font-size: 20px;
       }
     }
   }

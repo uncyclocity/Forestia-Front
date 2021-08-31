@@ -1,6 +1,6 @@
-import connectDB from '../../middleware/mongodb';
-import Free from '../../models/Free';
-import Photo from '../../models/Photo';
+import connectDB from '../../../middleware/mongodb';
+import Free from '../../../models/Free';
+import Photo from '../../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {

@@ -1,4 +1,4 @@
-import { AiOutlineCamera } from 'react-icons/ai';
+import { AiOutlineCamera, AiOutlineSmile } from 'react-icons/ai';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { useDispatch, useReducerState } from '../_context';
 import Board_title from '../../styles/board_title';
@@ -26,34 +26,43 @@ export default function Photo() {
         <div className="title_name">짤게</div>
       </Board_title>
       <div className="content_list">
-        <ul>
-          {photoBoard &&
-            photoBoard.map((post, index) => {
-              return (
-                <li key={index}>
-                  <div
-                    onClick={() =>
-                      unmountAnimation(
-                        0,
-                        dispatch,
-                        `/board/post/?board=photo&post_id=${post.id}`,
-                      )
-                    }
-                  >
-                    <a>
-                      {post.title}&nbsp;
-                      <div className="comment_amount">
-                        <div className="comment_icon">
-                          <FaRegCommentAlt />
+        {photoBoard.length > 0 ? (
+          <ul>
+            {photoBoard &&
+              photoBoard.map((post, index) => {
+                return (
+                  <li key={index}>
+                    <div
+                      onClick={() =>
+                        unmountAnimation(
+                          0,
+                          dispatch,
+                          `/board/post/?board=photo&post_id=${post.id}`,
+                        )
+                      }
+                    >
+                      <a>
+                        {post.title}&nbsp;
+                        <div className="comment_amount">
+                          <div className="comment_icon">
+                            <FaRegCommentAlt />
+                          </div>
+                          <div className="amount">{post.comments.length}</div>
                         </div>
-                        <div className="amount">{post.comments.length}</div>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-              );
-            })}
-        </ul>
+                      </a>
+                    </div>
+                  </li>
+                );
+              })}
+          </ul>
+        ) : (
+          <div className="list_empty">
+            <div className="empty_icon">
+              <AiOutlineSmile />
+            </div>
+            <div className="empty_text">아직 게시판이 비어 있어요</div>
+          </div>
+        )}
       </div>
     </St_photo>
   );

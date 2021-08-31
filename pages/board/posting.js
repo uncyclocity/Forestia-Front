@@ -1,13 +1,13 @@
 import Board_title from '../../styles/board_title';
 import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
-import St_posting from '../../styles/pages/board/St_crud';
+import St_crud from '../../styles/pages/board/St_crud';
 import { useDispatch, useReducerState } from '../_context';
 import { useEffect, useRef, useState } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
 } from '../../fixed/AnimationController';
-import instance from '../api/api';
+import instance from '../api/instance';
 import moment from 'moment';
 import getData from '../../fixed/getData';
 
@@ -43,7 +43,7 @@ export default function Posting() {
 
     instance({
       method: 'POST',
-      url: '/api/uploadPost',
+      url: '/api/post_posting/uploadPost',
       data: {
         boardType: selBoard,
         id,
@@ -64,7 +64,7 @@ export default function Posting() {
   };
 
   return (
-    <St_posting>
+    <St_crud>
       <Board_title backURL="/home">
         <div className="icon">
           <AiOutlineEdit />
@@ -115,6 +115,6 @@ export default function Posting() {
           <div className="post_text">업로드</div>
         </div>
       </div>
-    </St_posting>
+    </St_crud>
   );
 }

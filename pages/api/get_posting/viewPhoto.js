@@ -1,10 +1,10 @@
-import connectDB from '../../middleware/mongodb';
-import Free from '../../models/Free';
+import connectDB from '../../../middleware/mongodb';
+import Photo from '../../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'GET') {
     try {
-      return await Free.find().then((data) => {
+      return await Photo.find().then((data) => {
         return res.status(200).send(data);
       });
     } catch (error) {

@@ -1,13 +1,13 @@
 import Board_title from '../../styles/board_title';
 import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
-import St_posting from '../../styles/pages/board/St_crud';
+import St_crud from '../../styles/pages/board/St_crud';
 import { useDispatch, useReducerState } from '../_context';
 import { useEffect, useRef } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
 } from '../../fixed/AnimationController';
-import instance from '../api/api';
+import instance from '../api/instance';
 import getData from '../../fixed/getData';
 
 export default function Editing() {
@@ -29,7 +29,7 @@ export default function Editing() {
   const postCreate = () => {
     instance({
       method: 'POST',
-      url: '/api/editPost',
+      url: '/api/post_posting/editPost',
       data: {
         boardType,
         id,
@@ -47,7 +47,7 @@ export default function Editing() {
   };
 
   return (
-    <St_posting>
+    <St_crud>
       <Board_title backURL={`/board/post?board=${boardType}&post_id=${id}`}>
         <div className="icon">
           <AiOutlineEdit />
@@ -86,6 +86,6 @@ export default function Editing() {
           <div className="post_text">수정</div>
         </div>
       </div>
-    </St_posting>
+    </St_crud>
   );
 }
