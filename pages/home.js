@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { AiOutlineCamera, AiOutlineCloud } from 'react-icons/ai';
-import { mountAnimation, unmountAnimation } from '../fixed/AnimationController';
+import { mountAnimation, unmountAnimation } from '../src/animationController';
 import St_fixedHome from '../styles/fixed/St_fixedHome';
 import { useDispatch, useReducerState } from './_context';
 

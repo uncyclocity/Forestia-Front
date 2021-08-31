@@ -5,7 +5,7 @@ import {
   AiOutlineCloud,
   AiOutlineCamera,
 } from 'react-icons/ai';
-import { unmountAnimation } from './AnimationController';
+import { unmountAnimation } from './animationController';
 import St_HeaderBar from '../styles/fixed/St_headerBar';
 
 export default function HeaderBar() {

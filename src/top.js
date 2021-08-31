@@ -2,7 +2,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { CgTrees } from 'react-icons/cg';
 import { useDispatch } from '../pages/_context';
 import St_top from '../styles/fixed/St_top';
-import { unmountAnimation } from './AnimationController';
+import { unmountAnimation } from './animationController';
 
 export default function Top() {
   const dispatch = useDispatch();

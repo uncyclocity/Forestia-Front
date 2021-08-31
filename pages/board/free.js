@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../fixed/AnimationController';
+} from '../../src/animationController';
 import St_free from '../../styles/pages/board/St_free';
 
 export default function Free() {

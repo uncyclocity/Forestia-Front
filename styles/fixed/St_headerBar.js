@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Title from '../../fixed/title';
+import Title from '../../src/title';
 import Box from '../box';
 
 const BoxStyles = styled.div`

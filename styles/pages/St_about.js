@@ -6,7 +6,7 @@ import {
   box_slide_down,
   box_slide_up,
   box_zero_opacity,
-} from '../animation';
+} from '../boxAnimation';
 import Box from '../box';
 
 const Styles = styled.div`

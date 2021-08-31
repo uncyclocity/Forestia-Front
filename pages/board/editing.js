@@ -6,9 +6,9 @@ import { useEffect, useRef } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../fixed/AnimationController';
+} from '../../src/animationController';
 import instance from '../api/instance';
-import getData from '../../fixed/getData';
+import getData from '../../src/getData';
 
 export default function Editing() {
   const dispatch = useDispatch();

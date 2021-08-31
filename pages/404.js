@@ -1,7 +1,7 @@
 import { VscError } from 'react-icons/vsc';
 import { useDispatch } from './_context';
 import { useEffect } from 'react';
-import { unmountAnimation, mountAnimation } from '../fixed/AnimationController';
+import { unmountAnimation, mountAnimation } from '../src/animationController';
 import St_404 from '../styles/pages/St_404';
 
 export default function NotFoundPage() {

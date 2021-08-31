@@ -3,7 +3,7 @@ import Board_title from '../styles/board_title';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { SiNextDotJs } from 'react-icons/si';
 import { useEffect } from 'react';
-import { mountAnimation } from '../fixed/AnimationController';
+import { mountAnimation } from '../src/animationController';
 import St_about from '../styles/pages/St_about';
 
 export default function About() {

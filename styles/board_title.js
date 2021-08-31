@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { FiEdit } from 'react-icons/fi';
-import { unmountAnimation } from '../fixed/AnimationController';
+import { unmountAnimation } from '../src/animationController';
 import { useDispatch, useReducerState } from '../pages/_context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';

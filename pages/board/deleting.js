@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../fixed/AnimationController';
+} from '../../src/animationController';
 import instance from '../api/instance';
-import getData from '../../fixed/getData';
+import getData from '../../src/getData';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 

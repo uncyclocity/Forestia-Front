@@ -6,10 +6,10 @@ import { useEffect, useRef, useState } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../fixed/AnimationController';
+} from '../../src/animationController';
 import instance from '../api/instance';
 import moment from 'moment';
-import getData from '../../fixed/getData';
+import getData from '../../src/getData';
 
 export default function Posting() {
   const dispatch = useDispatch();

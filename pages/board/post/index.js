@@ -8,11 +8,11 @@ import { useEffect, useRef } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../../fixed/AnimationController';
+} from '../../../src/animationController';
 import St_post from '../../../styles/pages/board/St_post';
 import moment from 'moment';
 import instance from '../../api/instance';
-import getData from '../../../fixed/getData';
+import getData from '../../../src/getData';
 
 const postPageOn = {
   type: 'postpage_switcher',

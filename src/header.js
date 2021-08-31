@@ -1,4 +1,4 @@
-import { AppAnimation } from '../styles/animation';
+import { AppAnimation } from '../styles/boxAnimation';
 import HeaderBar from './headerbar';
 import Top from './top';
 
