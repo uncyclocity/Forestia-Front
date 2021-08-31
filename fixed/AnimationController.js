@@ -1,11 +1,6 @@
 import Router from 'next/router';
 
-export function unmountAnimation(
-  routerSW,
-  dispatch,
-  URL = undefined,
-  query = {},
-) {
+export function unmountAnimation(routerSW, dispatch, URL = undefined) {
   dispatch({
     type: 'change_animation',
     animation: 3,

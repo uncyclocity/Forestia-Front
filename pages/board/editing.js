@@ -1,6 +1,6 @@
 import Board_title from '../../styles/board_title';
 import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
-import St_posting from '../../styles/pages/board/St_posting';
+import St_posting from '../../styles/pages/board/St_crud';
 import { useDispatch, useReducerState } from '../_context';
 import { useEffect, useRef } from 'react';
 import {
