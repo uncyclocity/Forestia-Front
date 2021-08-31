@@ -30,7 +30,9 @@ export default function Title() {
         ) : (
           <div
             className="posting_btn"
-            onClick={() => unmountAnimation(0, dispatch, `/board/posting`)}
+            onClick={() =>
+              unmountAnimation(0, dispatch, `/board/update_posting/creating`)
+            }
           >
             <div className="posting_icon">
               <AiOutlineEdit />

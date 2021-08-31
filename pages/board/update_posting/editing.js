@@ -1,14 +1,14 @@
-import Board_title from '../../styles/board_title';
+import Board_title from '../../../styles/board_title';
 import { AiOutlineCloud, AiOutlineCamera, AiOutlineEdit } from 'react-icons/ai';
-import St_crud from '../../styles/pages/board/St_crud';
-import { useDispatch, useReducerState } from '../_context';
+import St_crud from '../../../styles/pages/board/St_crud';
+import { useDispatch, useReducerState } from '../../_context';
 import { useEffect, useRef } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../src/animationController';
-import instance from '../api/instance';
-import getData from '../../src/getData';
+} from '../../../src/animationController';
+import getData from '../../../src/getData';
+import instance from '../../../src/instance';
 
 export default function Editing() {
   const dispatch = useDispatch();

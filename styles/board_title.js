@@ -180,7 +180,11 @@ export default function Board_title({ backURL, editData, children }) {
                 <li
                   onClick={() => {
                     dispatch({ type: 'editpost_data', editData });
-                    unmountAnimation(0, dispatch, `/board/editing`);
+                    unmountAnimation(
+                      0,
+                      dispatch,
+                      `/board/update_posting/editing`,
+                    );
                   }}
                 >
                   <div className="ctx_icon">
@@ -192,7 +196,11 @@ export default function Board_title({ backURL, editData, children }) {
                   onClick={() => {
                     if (confirm('정말로 삭제하시겠습니까')) {
                       dispatch({ type: 'editpost_data', editData });
-                      unmountAnimation(0, dispatch, `/board/deleting`);
+                      unmountAnimation(
+                        0,
+                        dispatch,
+                        `/board/update_posting/deleting`,
+                      );
                     }
                   }}
                 >

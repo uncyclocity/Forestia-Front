@@ -11,8 +11,8 @@ import {
 } from '../../../src/animationController';
 import St_post from '../../../styles/pages/board/St_post';
 import moment from 'moment';
-import instance from '../../api/instance';
 import getData from '../../../src/getData';
+import instance from '../../../src/instance';
 
 const postPageOn = {
   type: 'postpage_switcher',
@@ -97,7 +97,7 @@ export default function Post() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/commDeleting?boardType=${board_type}&post_id=${post_id}&comment_id=${comment_id}`,
+        `/board/update_comment/commDeleting?boardType=${board_type}&post_id=${post_id}&comment_id=${comment_id}`,
       );
     }
   };

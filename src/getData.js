@@ -1,4 +1,4 @@
-import instance from '../pages/api/instance';
+import instance from './instance';
 
 export default async function getData(dispatch) {
   const free_res = await instance.get('/api/get_posting/viewFree');

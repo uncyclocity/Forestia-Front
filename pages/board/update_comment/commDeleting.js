@@ -1,16 +1,16 @@
-import Board_title from '../../styles/board_title';
-import St_crud from '../../styles/pages/board/St_crud';
-import { useDispatch } from '../_context';
+import Board_title from '../../../styles/board_title';
+import St_crud from '../../../styles/pages/board/St_crud';
+import { useDispatch } from '../../_context';
 import { useEffect } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../src/animationController';
-import instance from '../api/instance';
-import getData from '../../src/getData';
+} from '../../../src/animationController';
+import getData from '../../../src/getData';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useRouter } from 'next/router';
+import instance from '../../../src/instance';
 
 export default function CommDeleting() {
   const router = useRouter();
