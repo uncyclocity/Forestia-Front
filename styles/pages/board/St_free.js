@@ -13,8 +13,8 @@ const Styles = styled.div`
   padding: 20px 30px 5px 30px;
 
   .content_list {
-    transform: translateX(-6.5%);
     li {
+      transform: translateX(-6.5%);
       list-style-type: none;
       margin-top: 10px;
 
