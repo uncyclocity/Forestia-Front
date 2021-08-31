@@ -37,7 +37,7 @@ export default function Free() {
                         unmountAnimation(
                           0,
                           dispatch,
-                          `/board/post?board_type=free&post_post_id=${post.id}`,
+                          `/board/post?board_type=free&post_id=${post.id}`,
                         )
                       }
                     >

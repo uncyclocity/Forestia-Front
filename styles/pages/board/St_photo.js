@@ -19,6 +19,7 @@ const Styles = styled.div`
       margin-top: 10px;
 
       a {
+        cursor: pointer;
         display: flex;
         flex-direction: row;
 
