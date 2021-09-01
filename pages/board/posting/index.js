@@ -59,6 +59,7 @@ export default function Post() {
   const postIndexNum = getPostIndex(boardAllArr, post_id);
 
   const nowPostObj = boardAllArr[postIndexNum];
+  const nowPostCommArr = nowPostObj.comments;
 
   const editData = {
     boardType: board_type,
@@ -78,18 +79,39 @@ export default function Post() {
   }, [board_type, dispatch]);
 
   const doUploadComment = () => {
+    const commentsLen = nowPostCommArr.length;
+    const comment_id =
+      commentsLen > 0 ? parseInt(nowPostCommArr[commentsLen - 1].id) + 1 : 0;
+
     instance({
       method: 'POST',
       url: '/api/post_comment/uploadComment',
       data: {
         boardType: board_type,
         post_id,
-        comment_id: nowPostObj.comments.length,
+        comment_id,
         author: '백괴',
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
         content: commentContent.current.value,
       },
     }).then(async () => {
+      commentContent.current.value = '';
+      await getData(dispatch);
+    });
+  };
+
+  const doEditComment = () => {
+    instance({
+      method: 'POST',
+      url: '/api/post_comment/editComment',
+      data: {
+        boardType: board_type,
+        post_id,
+        comment_id: editComm.id,
+        content: editComm.content,
+      },
+    }).then(async () => {
+      setEditComm(false);
       commentContent.current.value = '';
       await getData(dispatch);
     });
@@ -142,7 +164,7 @@ export default function Post() {
                   <div className="cand_date">{comment.date}</div>
                   {user === '백괴' && (
                     <>
-                      {editComm.index === index ? (
+                      {editComm.id === comment.id ? (
                         <div
                           className="cand_edit_und_del"
                           onClick={() => setEditComm(false)}
@@ -153,7 +175,10 @@ export default function Post() {
                         <div
                           className="cand_edit_und_del"
                           onClick={() =>
-                            setEditComm({ index, content: comment.content })
+                            setEditComm({
+                              id: comment.id,
+                              content: comment.content,
+                            })
                           }
                         >
                           수정
@@ -170,7 +195,7 @@ export default function Post() {
                   )}
                 </div>
                 <div className="comment_content">
-                  {editComm.index === index ? (
+                  {editComm.id === comment.id ? (
                     <div className="comm_edit_area">
                       <textarea
                         style={{ resize: 'none' }}
@@ -182,7 +207,7 @@ export default function Post() {
                       />
                       <div
                         className="comm_edit_post_btn"
-                        onClick={doUploadComment}
+                        onClick={doEditComment}
                       >
                         <FiSend />
                       </div>
