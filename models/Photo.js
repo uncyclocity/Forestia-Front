@@ -17,6 +17,10 @@ const photo = new Schema({
 
   content: String,
 
+  up: Int32Array,
+
+  down: Int32Array,
+
   comments: [
     {
       id: String,
@@ -26,6 +30,22 @@ const photo = new Schema({
         default: Date.now,
       },
       content: String,
+      up: Int32Array,
+      down: Int32Array,
+      reply: [
+        {
+          id: String,
+          author: String,
+          to: String,
+          date: {
+            type: String,
+            default: Date.now,
+          },
+          content: String,
+          up: Int32Array,
+          down: Int32Array,
+        },
+      ],
     },
   ],
 });
