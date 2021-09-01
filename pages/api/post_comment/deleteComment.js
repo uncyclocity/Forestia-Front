@@ -15,8 +15,8 @@ const handler = async (req, res) => {
         post.comments = post.comments.filter(
           (comment) => comment.id !== comment_id,
         );
-        var postupdated = await post.save();
-        return res.status(200).send(postupdated);
+        var postUpdated = await post.save();
+        return res.status(200).send(postUpdated);
       } catch (error) {
         return res.status(500).send(error.message);
       }

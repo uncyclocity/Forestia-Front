@@ -69,12 +69,63 @@ const Styles = styled.div`
 
     .comment_content {
       font-size: 15px;
+
+      .comm_edit_area {
+        display: flex;
+        flex-direction: row;
+
+        .comm_edit_input_box {
+          width: 570px;
+          height: 50px;
+
+          margin-right: 15px;
+
+          border: none;
+          border-radius: 5px;
+
+          font-family: inherit;
+          font-size: 15px;
+
+          border: 1px solid #e9ecef;
+          color: #525252;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .comm_edit_post_btn {
+          background: #20c997;
+          color: white;
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          font-size: 25px;
+
+          &:hover {
+            transition: 0.25s all ease-in;
+            box-shadow: 0px 0px 15px #36deac;
+            cursor: pointer;
+          }
+
+          &:not(:hover) {
+            transition: 0.25s all ease-in;
+            box-shadow: 0px 0px 15px #9aefd6;
+          }
+        }
+      }
     }
 
-    li {
-      transform: translateX(-6.5%);
-      list-style-type: none;
-      margin-bottom: 15px;
+    ul {
+      padding-left: 0;
+      li {
+        list-style-type: none;
+        margin-bottom: 15px;
+      }
     }
   }
 
@@ -93,9 +144,12 @@ const Styles = styled.div`
       border: none;
       border-radius: 5px;
 
+      font-size: 15px;
+
       font-family: inherit;
 
       border: 1px solid #e9ecef;
+      color: #525252;
 
       &:focus {
         outline: none;

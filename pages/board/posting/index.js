@@ -4,7 +4,7 @@ import { useDispatch, useReducerState } from '../../../src/_context';
 import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
@@ -13,6 +13,7 @@ import St_post from '../../../styles/pages/board/St_post';
 import moment from 'moment';
 import getData from '../../../src/getData';
 import instance from '../../../src/instance';
+import { FiSend } from 'react-icons/fi';
 
 const postPageOn = {
   type: 'postpage_switcher',
@@ -47,6 +48,8 @@ export default function Post() {
 
   const dispatch = useDispatch();
 
+  const [editComm, setEditComm] = useState(false);
+
   const { board_type, post_id } = router.query;
 
   const user = state.user;
@@ -80,8 +83,8 @@ export default function Post() {
       url: '/api/post_comment/uploadComment',
       data: {
         boardType: board_type,
-        postid: post_id,
-        commentid: nowPostObj.comments.length,
+        post_id,
+        comment_id: nowPostObj.comments.length,
         author: '백괴',
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
         content: commentContent.current.value,
@@ -94,6 +97,7 @@ export default function Post() {
 
   const doDeleteComment = (comment_id) => {
     if (confirm('정말로 삭제하시겠습니까')) {
+      setEditComm(false);
       unmountAnimation(
         0,
         dispatch,
@@ -138,7 +142,24 @@ export default function Post() {
                   <div className="cand_date">{comment.date}</div>
                   {user === '백괴' && (
                     <>
-                      <div className="cand_edit_und_del">수정</div>
+                      {editComm.index === index ? (
+                        <div
+                          className="cand_edit_und_del"
+                          onClick={() => setEditComm(false)}
+                        >
+                          수정취소
+                        </div>
+                      ) : (
+                        <div
+                          className="cand_edit_und_del"
+                          onClick={() =>
+                            setEditComm({ index, content: comment.content })
+                          }
+                        >
+                          수정
+                        </div>
+                      )}
+
                       <div
                         className="cand_edit_und_del"
                         onClick={() => doDeleteComment(comment.id)}
@@ -149,7 +170,26 @@ export default function Post() {
                   )}
                 </div>
                 <div className="comment_content">
-                  <a>{comment.content}</a>
+                  {editComm.index === index ? (
+                    <div className="comm_edit_area">
+                      <textarea
+                        style={{ resize: 'none' }}
+                        value={editComm.content}
+                        onChange={(e) =>
+                          setEditComm({ ...editComm, content: e.target.value })
+                        }
+                        className="comm_edit_input_box"
+                      />
+                      <div
+                        className="comm_edit_post_btn"
+                        onClick={doUploadComment}
+                      >
+                        <FiSend />
+                      </div>
+                    </div>
+                  ) : (
+                    <a>{comment.content}</a>
+                  )}
                 </div>
               </li>
             );
