@@ -1,7 +1,14 @@
 import { useRouter } from 'next/router';
 import Board_title from '../../../styles/board_title';
 import { useDispatch, useReducerState } from '../../../src/_context';
-import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
+import {
+  AiOutlineCloud,
+  AiOutlineCamera,
+  AiOutlineLike,
+  AiOutlineDislike,
+  AiFillLike,
+  AiFillDislike,
+} from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
 import { useEffect, useRef, useState } from 'react';
@@ -44,6 +51,7 @@ const getPostIndex = (boardAllArr, post_id) => {
 
 export default function Post() {
   const state = useReducerState();
+
   const router = useRouter();
 
   const dispatch = useDispatch();
@@ -117,6 +125,50 @@ export default function Post() {
     });
   };
 
+  const doUpDown = (udType, revUdType, udObj, revUdObj, user) => {
+    if (udObj.clicker.find((clickUser) => clickUser === user)) {
+      const data = {
+        board_type,
+        post_id,
+        ud_type: udType,
+        operation: 'sub',
+        user,
+      };
+      doUpDownInst(data);
+    } else if (revUdObj.clicker.find((clickUser) => clickUser === user)) {
+      const data = {
+        board_type,
+        post_id,
+        ud_type: udType,
+        rev_ud_type: revUdType,
+        operation: 'addsub',
+        user,
+      };
+      doUpDownInst(data);
+    } else {
+      const data = {
+        board_type,
+        post_id,
+        ud_type: udType,
+        operation: 'add',
+        user,
+      };
+      doUpDownInst(data);
+    }
+  };
+
+  const doUpDownInst = (data) => {
+    instance({
+      method: 'POST',
+      url: '/api/post_posting/editUD',
+      data,
+    }).then(async () => {
+      setEditComm(false);
+      commentContent.current.value = '';
+      await getData(dispatch);
+    });
+  };
+
   const doDeleteComment = (comment_id) => {
     if (confirm('정말로 삭제하시겠습니까')) {
       setEditComm(false);
@@ -150,6 +202,48 @@ export default function Post() {
         </div>
       </Board_title>
       <div className="post_content">{nowPostObj.content}</div>
+      <div className="up_and_down">
+        <div
+          className="ud_btn_area"
+          onClick={() =>
+            doUpDown('up', 'down', nowPostObj.up, nowPostObj.down, user)
+          }
+        >
+          <div className="icon">
+            <div className="up">
+              {nowPostObj.up.clicker.find((clickUser) => clickUser === user) ? (
+                <AiFillLike />
+              ) : (
+                <AiOutlineLike />
+              )}
+            </div>
+          </div>
+          <div className="amount">
+            <div className="up">{nowPostObj.up.amount}</div>
+          </div>
+        </div>
+        <div
+          className="ud_btn_area"
+          onClick={() =>
+            doUpDown('down', 'up', nowPostObj.down, nowPostObj.up, user)
+          }
+        >
+          <div className="icon">
+            <div className="down">
+              {nowPostObj.down.clicker.find(
+                (clickUser) => clickUser === user,
+              ) ? (
+                <AiFillDislike />
+              ) : (
+                <AiOutlineDislike />
+              )}
+            </div>
+          </div>
+          <div className="amount">
+            <div className="down">{nowPostObj.down.amount}</div>
+          </div>
+        </div>
+      </div>
       <div className="comment_list">
         <div className="comment_amount">
           <div>댓글</div>

@@ -15,6 +15,8 @@ const handler = async (req, res) => {
           date,
           title,
           content,
+          up: { amount: 0, clicker: [] },
+          down: { amount: 0, clicker: [] },
           comments,
         };
         if (boardType === 'free') {

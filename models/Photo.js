@@ -17,9 +17,15 @@ const photo = new Schema({
 
   content: String,
 
-  up: Int32Array,
+  up: {
+    amount: Number,
+    clicker: Array,
+  },
 
-  down: Int32Array,
+  down: {
+    amount: Number,
+    clicker: Array,
+  },
 
   comments: [
     {
@@ -30,8 +36,15 @@ const photo = new Schema({
         default: Date.now,
       },
       content: String,
-      up: Int32Array,
-      down: Int32Array,
+      up: {
+        amount: Number,
+        clicker: Array,
+      },
+
+      down: {
+        amount: Number,
+        clicker: Array,
+      },
       reply: [
         {
           id: String,
@@ -42,8 +55,15 @@ const photo = new Schema({
             default: Date.now,
           },
           content: String,
-          up: Int32Array,
-          down: Int32Array,
+          up: {
+            amount: Number,
+            clicker: Array,
+          },
+
+          down: {
+            amount: Number,
+            clicker: Array,
+          },
         },
       ],
     },

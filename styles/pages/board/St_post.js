@@ -18,6 +18,39 @@ const Styles = styled.div`
     color: #525252;
   }
 
+  .up_and_down {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #20c997;
+
+    .ud_btn_area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+
+      width: 45px;
+
+      &:last-child {
+        margin-left: 20px;
+      }
+
+      .icon {
+        font-size: 30px;
+        height: 30px;
+      }
+
+      .amount {
+        font-size: 20px;
+      }
+    }
+  }
+
   .comment_list {
     margin-bottom: 5px;
 
