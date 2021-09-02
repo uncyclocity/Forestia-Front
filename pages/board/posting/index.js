@@ -17,161 +17,40 @@ import {
   unmountAnimation,
 } from '../../../src/animationController';
 import St_post from '../../../styles/pages/board/St_post';
-import moment from 'moment';
-import getData from '../../../src/getData';
-import instance from '../../../src/instance';
 import { FiSend } from 'react-icons/fi';
-
-const postPageOn = {
-  type: 'postpage_switcher',
-  isPostPage: true,
-};
-
-const postPageOff = {
-  type: 'postpage_switcher',
-  isPostPage: false,
-};
-
-const getBoardObj = (state, boardType) => {
-  switch (boardType) {
-    case 'free':
-      return state.freeBoard;
-    case 'photo':
-      return state.photoBoard;
-    default:
-      throw new Error(
-        '유효하지 않은 게시판입니다. board/posting/index.js에서 board_type 쿼리 값을 확인하세요',
-      );
-  }
-};
-
-const getPostIndex = (boardAllArr, post_id) => {
-  return boardAllArr.findIndex((data) => data.id === post_id);
-};
+import {
+  postPageSwitchOff,
+  postPageSwitchOn,
+} from '../../../src/posting/postpageSwitching';
+import { comm } from '../../../src/posting/doApi';
+import getPostingEleState from '../../../src/posting/getPostingEleState';
+import getEditPostingObj from '../../../src/posting/getEditPosting';
+import getDoUpdateUDdata from '../../../src/posting/getDoUpdateUDdata';
 
 export default function Post() {
   const state = useReducerState();
-
   const router = useRouter();
-
   const dispatch = useDispatch();
 
-  const [editComm, setEditComm] = useState(false);
-
-  const { board_type, post_id } = router.query;
-
-  const user = state.user;
-
-  const boardAllArr = getBoardObj(state, board_type);
-
-  const postIndexNum = getPostIndex(boardAllArr, post_id);
-
-  const nowPostObj = boardAllArr[postIndexNum];
-  const nowPostCommArr = nowPostObj.comments;
-
-  const editData = {
-    boardType: board_type,
-    id: nowPostObj.id,
-    title: nowPostObj.title,
-    content: nowPostObj.content,
-  };
-
+  const [editCommObj, setEditCommObj] = useState(false);
   const commentContent = useRef(null);
+  const { board_type, post_id } = router.query;
+  const userName = state.user;
+
+  const nowPostingEleObj = getPostingEleState(state, board_type, post_id);
+  const forEditObj = getEditPostingObj(board_type, nowPostingEleObj);
 
   useEffect(() => {
     mountAnimation(dispatch, board_type);
-    dispatch(postPageOn);
+    postPageSwitchOn(dispatch);
     return () => {
-      dispatch(postPageOff);
+      postPageSwitchOff(dispatch);
     };
   }, [board_type, dispatch]);
 
-  const doUploadComment = () => {
-    const commentsLen = nowPostCommArr.length;
-    const comment_id =
-      commentsLen > 0 ? parseInt(nowPostCommArr[commentsLen - 1].id) + 1 : 0;
-
-    instance({
-      method: 'POST',
-      url: '/api/post_comment/uploadComment',
-      data: {
-        boardType: board_type,
-        post_id,
-        comment_id,
-        author: '백괴',
-        date: moment().format('YYYY-MM-DD HH:mm:ss'),
-        content: commentContent.current.value,
-      },
-    }).then(async () => {
-      commentContent.current.value = '';
-      await getData(dispatch);
-    });
-  };
-
-  const doEditComment = () => {
-    instance({
-      method: 'POST',
-      url: '/api/post_comment/editComment',
-      data: {
-        boardType: board_type,
-        post_id,
-        comment_id: editComm.id,
-        content: editComm.content,
-      },
-    }).then(async () => {
-      setEditComm(false);
-      commentContent.current.value = '';
-      await getData(dispatch);
-    });
-  };
-
-  const doUpDown = (udType, revUdType, udObj, revUdObj, user) => {
-    if (udObj.clicker.find((clickUser) => clickUser === user)) {
-      const data = {
-        board_type,
-        post_id,
-        ud_type: udType,
-        operation: 'sub',
-        user,
-      };
-      doUpDownInst(data);
-    } else if (revUdObj.clicker.find((clickUser) => clickUser === user)) {
-      const data = {
-        board_type,
-        post_id,
-        ud_type: udType,
-        rev_ud_type: revUdType,
-        operation: 'addsub',
-        user,
-      };
-      doUpDownInst(data);
-    } else {
-      const data = {
-        board_type,
-        post_id,
-        ud_type: udType,
-        operation: 'add',
-        user,
-      };
-      doUpDownInst(data);
-    }
-  };
-
-  const doUpDownInst = (data) => {
-    instance({
-      method: 'POST',
-      url: '/api/post_posting/editUD',
-      data,
-    }).then(async () => {
-      setEditComm(false);
-      commentContent.current.value = '';
-      await getData(dispatch);
-    });
-  };
-
   const doDeleteComment = (comment_id) => {
     if (confirm('정말로 삭제하시겠습니까')) {
-      setEditComm(false);
+      setEditCommObj(false);
       unmountAnimation(
         0,
         dispatch,
@@ -184,34 +63,46 @@ export default function Post() {
     <St_post>
       <Board_title
         backURL={`/board/board_list/${board_type}`}
-        editData={editData}
+        editData={forEditObj}
       >
         <div className="icon">
           {board_type === 'free' && <AiOutlineCloud />}
           {board_type === 'photo' && <AiOutlineCamera />}
         </div>
-        <div className="title_name">{nowPostObj.title}</div>
+        <div className="title_name">{nowPostingEleObj.title}</div>
         <div className="author_and_date">
-          <div className="author">{nowPostObj.author}</div>
+          <div className="author">{nowPostingEleObj.author}</div>
           <div className="date">
             <div className="date_icon">
               <BiTime />
             </div>
-            {nowPostObj.date}
+            {nowPostingEleObj.date}
           </div>
         </div>
       </Board_title>
-      <div className="post_content">{nowPostObj.content}</div>
+      <div className="post_content">{nowPostingEleObj.content}</div>
       <div className="up_and_down">
         <div
           className="ud_btn_area"
           onClick={() =>
-            doUpDown('up', 'down', nowPostObj.up, nowPostObj.down, user)
+            getDoUpdateUDdata(
+              'up',
+              'down',
+              nowPostingEleObj.up.clicker,
+              nowPostingEleObj.down.clicker,
+              board_type,
+              post_id,
+              userName,
+              dispatch,
+              setEditCommObj,
+            )
           }
         >
           <div className="icon">
             <div className="up">
-              {nowPostObj.up.clicker.find((clickUser) => clickUser === user) ? (
+              {nowPostingEleObj.up.clicker.find(
+                (clickUser) => clickUser === userName,
+              ) ? (
                 <AiFillLike />
               ) : (
                 <AiOutlineLike />
@@ -219,19 +110,29 @@ export default function Post() {
             </div>
           </div>
           <div className="amount">
-            <div className="up">{nowPostObj.up.amount}</div>
+            <div className="up">{nowPostingEleObj.up.amount}</div>
           </div>
         </div>
         <div
           className="ud_btn_area"
           onClick={() =>
-            doUpDown('down', 'up', nowPostObj.down, nowPostObj.up, user)
+            getDoUpdateUDdata(
+              'down',
+              'up',
+              nowPostingEleObj.down.clicker,
+              nowPostingEleObj.up.clicker,
+              board_type,
+              post_id,
+              userName,
+              dispatch,
+              setEditCommObj,
+            )
           }
         >
           <div className="icon">
             <div className="down">
-              {nowPostObj.down.clicker.find(
-                (clickUser) => clickUser === user,
+              {nowPostingEleObj.down.clicker.find(
+                (clickUser) => clickUser === userName,
               ) ? (
                 <AiFillDislike />
               ) : (
@@ -240,28 +141,28 @@ export default function Post() {
             </div>
           </div>
           <div className="amount">
-            <div className="down">{nowPostObj.down.amount}</div>
+            <div className="down">{nowPostingEleObj.down.amount}</div>
           </div>
         </div>
       </div>
       <div className="comment_list">
         <div className="comment_amount">
           <div>댓글</div>
-          <div className="amount">{nowPostObj.comments.length}</div>
+          <div className="amount">{nowPostingEleObj.comments.length}</div>
         </div>
         <ul>
-          {nowPostObj.comments.map((comment, index) => {
+          {nowPostingEleObj.comments.map((comment, index) => {
             return (
               <li key={index}>
                 <div className="comment_author_and_date">
                   <div className="cand_author">{comment.author}</div>
                   <div className="cand_date">{comment.date}</div>
-                  {user === '백괴' && (
+                  {userName === '백괴' && (
                     <>
-                      {editComm.id === comment.id ? (
+                      {editCommObj.id === comment.id ? (
                         <div
                           className="cand_edit_und_del"
-                          onClick={() => setEditComm(false)}
+                          onClick={() => setEditCommObj(false)}
                         >
                           수정취소
                         </div>
@@ -269,7 +170,7 @@ export default function Post() {
                         <div
                           className="cand_edit_und_del"
                           onClick={() =>
-                            setEditComm({
+                            setEditCommObj({
                               id: comment.id,
                               content: comment.content,
                             })
@@ -289,19 +190,30 @@ export default function Post() {
                   )}
                 </div>
                 <div className="comment_content">
-                  {editComm.id === comment.id ? (
+                  {editCommObj.id === comment.id ? (
                     <div className="comm_edit_area">
                       <textarea
                         style={{ resize: 'none' }}
-                        value={editComm.content}
+                        value={editCommObj.content}
                         onChange={(e) =>
-                          setEditComm({ ...editComm, content: e.target.value })
+                          setEditCommObj({
+                            ...editCommObj,
+                            content: e.target.value,
+                          })
                         }
                         className="comm_edit_input_box"
                       />
                       <div
                         className="comm_edit_post_btn"
-                        onClick={doEditComment}
+                        onClick={() =>
+                          comm.doEditComment(
+                            board_type,
+                            post_id,
+                            editCommObj,
+                            setEditCommObj,
+                            dispatch,
+                          )
+                        }
                       >
                         <FiSend />
                       </div>
@@ -321,7 +233,19 @@ export default function Post() {
           style={{ resize: 'none' }}
           ref={commentContent}
         />
-        <div className="comment_post_btn" onClick={doUploadComment}>
+        <div
+          className="comment_post_btn"
+          onClick={() =>
+            comm.doUploadComment(
+              nowPostingEleObj,
+              board_type,
+              post_id,
+              commentContent,
+              userName,
+              dispatch,
+            )
+          }
+        >
           <RiMailSendLine />
         </div>
       </div>

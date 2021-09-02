@@ -12,7 +12,7 @@ export default function Context({ children, freeBoard, photoBoard }) {
     photoBoard,
     isPostPage: false,
     editData: {
-      boardType: null,
+      board_type: null,
       id: null,
       title: null,
       content: null,
