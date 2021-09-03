@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { RiMailSendLine } from 'react-icons/ri';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../_context';
-import { comm } from './doApi';
+import { useDispatch, useReducerState } from '../../_context';
+import { comm } from '../../doApi/doApi';
 
 const Styles = styled.div`
   display: flex;

@@ -1,4 +1,4 @@
-import { posting } from './doApi';
+import { posting } from '../../doApi/doApi';
 
 export default function getDoUpdateUDdata(
   udType,
@@ -10,7 +10,6 @@ export default function getDoUpdateUDdata(
   userName,
   dispatch,
 ) {
-  console.log(revUdClickerArr);
   if (udClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
       board_type,

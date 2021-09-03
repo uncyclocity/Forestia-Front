@@ -1,3 +1,7 @@
+import { AiOutlineUser } from 'react-icons/ai';
+import { CgTrees } from 'react-icons/cg';
+import { unmountAnimation } from '../../animationController';
+import { useDispatch } from '../../_context';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -44,6 +48,23 @@ const Styles = styled.div`
   }
 `;
 
-export default function St_top({ children }) {
-  return <Styles>{children}</Styles>;
+export default function Top() {
+  const dispatch = useDispatch();
+
+  return (
+    <Styles>
+      <div
+        className="forestia_logo"
+        onClick={() => unmountAnimation(0, dispatch, '/home')}
+      >
+        <CgTrees />
+        &nbsp;Forestia.
+      </div>
+      <div className="profile">
+        <div className="signin_btn">
+          <AiOutlineUser />
+        </div>
+      </div>
+    </Styles>
+  );
 }

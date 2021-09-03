@@ -1,5 +1,5 @@
 import CenterAlign from '../styles/centerAlign';
-import Header from '../src/header';
+import Header from '../src/header/header';
 import Context from '../src/_context';
 import instance from '../src/instance';
 

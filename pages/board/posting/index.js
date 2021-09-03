@@ -10,12 +10,12 @@ import St_post from '../../../styles/pages/board/St_post';
 import {
   postPageSwitchOff,
   postPageSwitchOn,
-} from '../../../src/posting/postpageSwitching';
-import getPostingEleState from '../../../src/posting/getPostingEleState';
-import UpAndDown from '../../../src/posting/upAndDown';
-import InBoardTitle from '../../../src/posting/inBoardTitle';
-import CommentInput from '../../../src/posting/commentInput';
-import CommentList from '../../../src/posting/commentList';
+} from '../../../src/posting/etcFunc/postpageSwitching';
+import getPostingEleState from '../../../src/posting/etcFunc/getPostingEleState';
+import UpAndDown from '../../../src/posting/pageEle/upAndDown';
+import InBoardTitle from '../../../src/posting/pageEle/inBoardTitle';
+import CommentInput from '../../../src/posting/pageEle/commentInput';
+import CommentList from '../../../src/posting/pageEle/commentList';
 
 export default function Post() {
   const state = useReducerState();

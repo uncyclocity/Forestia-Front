@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../_context';
-import { comm } from './doApi';
+import { useDispatch, useReducerState } from '../../_context';
+import { comm } from '../../doApi/doApi';
 
 const Styles = styled.div`
   margin-bottom: 5px;

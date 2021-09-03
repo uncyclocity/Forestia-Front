@@ -4,9 +4,65 @@ import {
   AiOutlineCloud,
   AiOutlineCamera,
 } from 'react-icons/ai';
-import { unmountAnimation } from './animationController';
-import St_HeaderBar from '../styles/fixed/St_headerBar';
-import { useDispatch, useReducerState } from './_context';
+import { unmountAnimation } from '../../animationController';
+import { useDispatch, useReducerState } from '../../_context';
+import styled from 'styled-components';
+
+const MenuBtnAreaStyles = styled.span`
+  display: flex;
+  justify-content: center;
+
+  ul {
+    padding-right: 40px;
+    li {
+      list-style-type: none;
+      float: left;
+      font-size: 26px;
+
+      &:not(:last-child) {
+        padding-right: 80px;
+      }
+    }
+
+    a {
+      cursor: pointer;
+
+      .menu_icon {
+        height: 30px;
+        margin-bottom: 3px;
+      }
+
+      .menu_name {
+        display: flex;
+        justify-content: center;
+        font-size: 13px;
+      }
+
+      .selected {
+        color: #20c997;
+
+        &:hover {
+          transition: 0.15s all ease-in;
+          color: #6debac;
+        }
+
+        &:not(:hover) {
+          transition: 0.15s all ease-in;
+          color: #20c997;
+        }
+      }
+
+      &:hover {
+        transition: 0.15s all ease-in;
+        color: #6debac;
+      }
+  
+      &:not(:hover) {
+        transition: 0.15s all ease-in;
+        color: #828c99;
+      }
+    }
+`;
 
 export default function HeaderBar() {
   const nowPage = useReducerState().nowPage;
@@ -65,7 +121,7 @@ export default function HeaderBar() {
   };
 
   return (
-    <St_HeaderBar>
+    <MenuBtnAreaStyles>
       <ul>
         {headerMenuArr.map((headerMenu, index) => {
           return (
@@ -87,6 +143,6 @@ export default function HeaderBar() {
           );
         })}
       </ul>
-    </St_HeaderBar>
+    </MenuBtnAreaStyles>
   );
 }
