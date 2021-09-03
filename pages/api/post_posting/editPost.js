@@ -4,12 +4,12 @@ import Photo from '../../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { boardType, id, title, content } = req.body;
-    if (boardType && id >= 0 && title && content) {
+    const { board_type, id, title, content } = req.body;
+    if (board_type && id >= 0 && title && content) {
       try {
-        if (boardType === 'free') {
+        if (board_type === 'free') {
           var post = await Free.findOne({ id });
-        } else if (boardType === 'photo') {
+        } else if (board_type === 'photo') {
           var post = await Photo.findOne({ id });
         }
         post.title = title;

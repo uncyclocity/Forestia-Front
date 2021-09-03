@@ -12,7 +12,7 @@ import { useDispatch, useReducerState } from '../../../src/_context';
 
 export default function Editing() {
   const dispatch = useDispatch();
-  const { boardType, id, title, content } = useReducerState().editData;
+  const { board_type, id, title, content } = useReducerState().nowPostingEleObj;
 
   const newTitle = useRef(null);
   const newContent = useRef(null);
@@ -31,7 +31,7 @@ export default function Editing() {
       method: 'POST',
       url: '/api/post_posting/editPost',
       data: {
-        boardType,
+        board_type,
         id,
         title: newTitle.current.value,
         content: newContent.current.value,
@@ -41,7 +41,7 @@ export default function Editing() {
       unmountAnimation(
         0,
         dispatch,
-        `/board/posting?board_type=${boardType}&post_id=${id}`,
+        `/board/posting?board_type=${board_type}&post_id=${id}`,
       );
     });
   };
@@ -49,7 +49,7 @@ export default function Editing() {
   return (
     <St_crud>
       <Board_title
-        backURL={`/board/posting?board_type=${boardType}&post_id=${id}`}
+        backURL={`/board/posting?board_type=${board_type}&post_id=${id}`}
       >
         <div className="icon">
           <AiOutlineEdit />
@@ -58,13 +58,13 @@ export default function Editing() {
       </Board_title>
       <div className="content_input">
         <div className="board_sign_area">
-          {boardType === 'free' && (
+          {board_type === 'free' && (
             <div className="board_sign">
               <AiOutlineCloud />
               <div className="board_name">자게</div>
             </div>
           )}
-          {boardType === 'photo' && (
+          {board_type === 'photo' && (
             <div className="board_sign">
               <AiOutlineCamera />
               <div className="board_name">짤게</div>
