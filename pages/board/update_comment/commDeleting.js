@@ -10,7 +10,7 @@ import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import instance from '../../../src/instance';
-import { useDispatch } from '../../../src/_context';
+import { useDispatch } from '../../../src/context';
 
 export default function CommDeleting() {
   const router = useRouter();

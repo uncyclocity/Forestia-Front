@@ -1,7 +1,7 @@
 import { AiOutlineUser } from 'react-icons/ai';
 import { CgTrees } from 'react-icons/cg';
 import { unmountAnimation } from '../../animationController';
-import { useDispatch } from '../../_context';
+import { useDispatch } from '../../context';
 import styled from 'styled-components';
 
 const Styles = styled.div`

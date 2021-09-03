@@ -9,7 +9,7 @@ import {
 import moment from 'moment';
 import getData from '../../../src/getData';
 import instance from '../../../src/instance';
-import { useDispatch, useReducerState } from '../../../src/_context';
+import { useDispatch, useReducerState } from '../../../src/context';
 
 export default function Posting() {
   const dispatch = useDispatch();

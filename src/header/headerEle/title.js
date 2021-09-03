@@ -1,6 +1,6 @@
 import { AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
 import { RiLeafLine } from 'react-icons/ri';
-import { useDispatch, useReducerState } from '../../_context';
+import { useDispatch, useReducerState } from '../../context';
 import styled from 'styled-components';
 import { unmountAnimation } from '../../animationController';
 

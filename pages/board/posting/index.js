@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Board_title from '../../../styles/board_title';
-import { useDispatch, useReducerState } from '../../../src/_context';
+import { useDispatch, useReducerState } from '../../../src/context';
 import { useEffect } from 'react';
 import { mountAnimation } from '../../../src/animationController';
 import {
@@ -26,6 +26,7 @@ export default function Post() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { board_type, post_id } = router.query;
+  const backURL = `/board/board_list/${board_type}`;
 
   const nowPostingEleObj = getPostingEleState(state, board_type, post_id);
 
@@ -40,10 +41,7 @@ export default function Post() {
   return (
     <FourAnimationedBox>
       <BoxStyles>
-        <Board_title
-          backURL={`/board/board_list/${board_type}`}
-          nowPostingEleObj={nowPostingEleObj}
-        >
+        <Board_title backURL={backURL} nowPostingEleObj={nowPostingEleObj}>
           <InBoardTitle nowPostingEleObj={nowPostingEleObj} />
         </Board_title>
         <ContentView nowPostingEleObj={nowPostingEleObj} />

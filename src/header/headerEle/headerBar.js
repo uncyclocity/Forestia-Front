@@ -5,7 +5,7 @@ import {
   AiOutlineCamera,
 } from 'react-icons/ai';
 import { unmountAnimation } from '../../animationController';
-import { useDispatch, useReducerState } from '../../_context';
+import { useDispatch, useReducerState } from '../../context';
 import styled from 'styled-components';
 
 const MenuBtnAreaStyles = styled.span`

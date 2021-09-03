@@ -1,5 +1,5 @@
 import { VscError } from 'react-icons/vsc';
-import { useDispatch } from '../../src/_context';
+import { useDispatch } from '../../src/context';
 import { useEffect } from 'react';
 import {
   unmountAnimation,

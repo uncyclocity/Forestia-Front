@@ -5,7 +5,7 @@ import {
   unmountAnimation,
 } from '../../src/animationController';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../src/_context';
+import { useDispatch, useReducerState } from '../../src/context';
 import Box from '../../styles/box';
 import {
   BoxAnimation,

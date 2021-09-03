@@ -9,7 +9,7 @@ import getData from '../../../src/getData';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import instance from '../../../src/instance';
-import { useDispatch, useReducerState } from '../../../src/_context';
+import { useDispatch, useReducerState } from '../../../src/context';
 
 export default function Deleting() {
   const dispatch = useDispatch();

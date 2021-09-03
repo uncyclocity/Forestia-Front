@@ -3,7 +3,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { FiEdit } from 'react-icons/fi';
 import { unmountAnimation } from '../src/animationController';
-import { useDispatch, useReducerState } from '../src/_context';
+import { useDispatch, useReducerState } from '../src/context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { slideLeft, slideRight } from './keyframes/slide';

@@ -4,7 +4,7 @@ import { SiNextDotJs } from 'react-icons/si';
 import { useEffect } from 'react';
 import { mountAnimation } from '../../src/animationController';
 import St_about from '../../styles/pages/St_about';
-import { useDispatch } from '../../src/_context';
+import { useDispatch } from '../../src/context';
 
 export default function About() {
   const dispatch = useDispatch();

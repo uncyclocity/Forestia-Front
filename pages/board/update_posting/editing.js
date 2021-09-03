@@ -8,7 +8,7 @@ import {
 } from '../../../src/animationController';
 import getData from '../../../src/getData';
 import instance from '../../../src/instance';
-import { useDispatch, useReducerState } from '../../../src/_context';
+import { useDispatch, useReducerState } from '../../../src/context';
 
 export default function Editing() {
   const dispatch = useDispatch();

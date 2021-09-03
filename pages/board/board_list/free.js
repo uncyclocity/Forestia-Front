@@ -7,7 +7,7 @@ import {
   unmountAnimation,
 } from '../../../src/animationController';
 import St_free from '../../../styles/pages/board/St_free';
-import { useDispatch, useReducerState } from '../../../src/_context';
+import { useDispatch, useReducerState } from '../../../src/context';
 
 export default function Free() {
   const dispatch = useDispatch();

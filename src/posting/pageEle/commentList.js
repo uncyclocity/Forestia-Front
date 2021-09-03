@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../_context';
+import { useDispatch, useReducerState } from '../../context';
 import { comm } from '../../doApi/doApi';
 import gotoPostingDelPage from '../etcFunc/gotoPostingDelPage';
 

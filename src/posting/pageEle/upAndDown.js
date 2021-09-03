@@ -5,7 +5,7 @@ import {
   AiOutlineLike,
 } from 'react-icons/ai';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../_context';
+import { useDispatch, useReducerState } from '../../context';
 import getDoUpdateUDdata from '../etcFunc/getDoUpdateUDdata';
 
 const Styles = styled.div`

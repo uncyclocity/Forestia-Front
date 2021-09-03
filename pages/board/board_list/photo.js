@@ -7,7 +7,7 @@ import {
   unmountAnimation,
 } from '../../../src/animationController';
 import St_photo from '../../../styles/pages/board/St_photo';
-import { useDispatch, useReducerState } from '../../../src/_context';
+import { useDispatch, useReducerState } from '../../../src/context';
 
 export default function Photo() {
   const dispatch = useDispatch();
