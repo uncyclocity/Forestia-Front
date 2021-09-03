@@ -1,10 +1,7 @@
 import { useRouter } from 'next/router';
 import Board_title from '../../../styles/board_title';
 import { useDispatch, useReducerState } from '../../../src/_context';
-import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
-import { BiTime } from 'react-icons/bi';
-import { RiMailSendLine } from 'react-icons/ri';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   mountAnimation,
   unmountAnimation,
@@ -19,6 +16,7 @@ import { comm } from '../../../src/posting/doApi';
 import getPostingEleState from '../../../src/posting/getPostingEleState';
 import UpAndDown from '../../../src/posting/upAndDown';
 import InBoardTitle from '../../../src/posting/inBoardTitle';
+import CommentInput from '../../../src/posting/commentInput';
 
 export default function Post() {
   const state = useReducerState();
@@ -26,7 +24,7 @@ export default function Post() {
   const dispatch = useDispatch();
 
   const [editCommObj, setEditCommObj] = useState(false);
-  const commentContent = useRef(null);
+
   const { board_type, post_id } = router.query;
   const userName = state.userName;
 
@@ -143,28 +141,7 @@ export default function Post() {
           })}
         </ul>
       </div>
-      <div className="comment_input">
-        <textarea
-          className="comment_input_box"
-          style={{ resize: 'none' }}
-          ref={commentContent}
-        />
-        <div
-          className="comment_post_btn"
-          onClick={() =>
-            comm.doUploadComment(
-              nowPostingEleObj,
-              board_type,
-              post_id,
-              commentContent,
-              userName,
-              dispatch,
-            )
-          }
-        >
-          <RiMailSendLine />
-        </div>
-      </div>
+      <CommentInput nowPostingEleObj={nowPostingEleObj} />
     </St_post>
   );
 }
