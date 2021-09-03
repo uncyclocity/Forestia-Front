@@ -1,14 +1,7 @@
 import { useRouter } from 'next/router';
 import Board_title from '../../../styles/board_title';
 import { useDispatch, useReducerState } from '../../../src/_context';
-import {
-  AiOutlineCloud,
-  AiOutlineCamera,
-  AiOutlineLike,
-  AiOutlineDislike,
-  AiFillLike,
-  AiFillDislike,
-} from 'react-icons/ai';
+import { AiOutlineCloud, AiOutlineCamera } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import { RiMailSendLine } from 'react-icons/ri';
 import { useEffect, useRef, useState } from 'react';
@@ -24,9 +17,8 @@ import {
 } from '../../../src/posting/postpageSwitching';
 import { comm } from '../../../src/posting/doApi';
 import getPostingEleState from '../../../src/posting/getPostingEleState';
-import getEditPostingObj from '../../../src/posting/getEditPosting';
-import getDoUpdateUDdata from '../../../src/posting/getDoUpdateUDdata';
 import UpAndDown from '../../../src/posting/upAndDown';
+import InBoardTitle from '../../../src/posting/inBoardTitle';
 
 export default function Post() {
   const state = useReducerState();
@@ -65,20 +57,7 @@ export default function Post() {
         backURL={`/board/board_list/${board_type}`}
         nowPostingEleObj={nowPostingEleObj}
       >
-        <div className="icon">
-          {board_type === 'free' && <AiOutlineCloud />}
-          {board_type === 'photo' && <AiOutlineCamera />}
-        </div>
-        <div className="title_name">{nowPostingEleObj.title}</div>
-        <div className="author_and_date">
-          <div className="author">{nowPostingEleObj.author}</div>
-          <div className="date">
-            <div className="date_icon">
-              <BiTime />
-            </div>
-            {nowPostingEleObj.date}
-          </div>
-        </div>
+        <InBoardTitle nowPostingEleObj={nowPostingEleObj} />
       </Board_title>
       <div className="post_content">{nowPostingEleObj.content}</div>
       <UpAndDown nowPostingEleObj={nowPostingEleObj} />

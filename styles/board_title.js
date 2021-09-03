@@ -34,28 +34,6 @@ const Styles = styled.div`
       font-size: 20px;
       font-weight: bold;
     }
-
-    .author_and_date {
-      display: flex;
-      flex-direction: row;
-
-      margin-top: 10px;
-
-      .author {
-        padding: 0 5px;
-        font-weight: bold;
-      }
-
-      .date {
-        display: flex;
-        flex-direction: row;
-        padding: 0 5px;
-
-        .date_icon {
-          transform: translateY(1px);
-        }
-      }
-    }
   }
 
   .lr_btn {
