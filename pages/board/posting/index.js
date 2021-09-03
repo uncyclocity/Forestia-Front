@@ -6,7 +6,6 @@ import {
   mountAnimation,
   unmountAnimation,
 } from '../../../src/animationController';
-import St_post from '../../../styles/pages/board/St_post';
 import {
   postPageSwitchOff,
   postPageSwitchOn,
@@ -16,6 +15,18 @@ import UpAndDown from '../../../src/posting/pageEle/upAndDown';
 import InBoardTitle from '../../../src/posting/pageEle/inBoardTitle';
 import CommentInput from '../../../src/posting/pageEle/commentInput';
 import CommentList from '../../../src/posting/pageEle/commentList';
+import styled from 'styled-components';
+import FourAnimationedBox from '../../../src/posting/boxEle/FourAnimationdBox';
+
+const Styles = styled.div`
+  color: #525252;
+  padding: 20px 30px 5px 30px;
+
+  .post_content {
+    padding: 20px 0 30px 0;
+    color: #525252;
+  }
+`;
 
 export default function Post() {
   const state = useReducerState();
@@ -44,20 +55,22 @@ export default function Post() {
   };
 
   return (
-    <St_post>
-      <Board_title
-        backURL={`/board/board_list/${board_type}`}
-        nowPostingEleObj={nowPostingEleObj}
-      >
-        <InBoardTitle nowPostingEleObj={nowPostingEleObj} />
-      </Board_title>
-      <div className="post_content">{nowPostingEleObj.content}</div>
-      <UpAndDown nowPostingEleObj={nowPostingEleObj} />
-      <CommentList
-        nowPostingEleObj={nowPostingEleObj}
-        doDeleteComment={doDeleteComment}
-      />
-      <CommentInput nowPostingEleObj={nowPostingEleObj} />
-    </St_post>
+    <FourAnimationedBox>
+      <Styles>
+        <Board_title
+          backURL={`/board/board_list/${board_type}`}
+          nowPostingEleObj={nowPostingEleObj}
+        >
+          <InBoardTitle nowPostingEleObj={nowPostingEleObj} />
+        </Board_title>
+        <div className="post_content">{nowPostingEleObj.content}</div>
+        <UpAndDown nowPostingEleObj={nowPostingEleObj} />
+        <CommentList
+          nowPostingEleObj={nowPostingEleObj}
+          doDeleteComment={doDeleteComment}
+        />
+        <CommentInput nowPostingEleObj={nowPostingEleObj} />
+      </Styles>
+    </FourAnimationedBox>
   );
 }

@@ -31,57 +31,58 @@ const setTop3 = (board, bak, i = 0) => {
   return bak.current;
 };
 
-const Styles = styled.div`
+const BoxStyle = styled.div`
   height: 200px;
-  .content {
-    width: 350px;
-    padding: 5px 30px;
-    color: #525252;
-    float: left;
+`;
 
-    .board_title {
-      color: #20c997;
-      font-weight: bold;
-      border-bottom: 1px solid #e9ecef;
+const BoardTop3Block = styled.div`
+  width: 350px;
+  padding: 5px 30px;
+  color: #525252;
+  float: left;
 
-      margin-top: 15px;
-      display: flex;
-      flex-direction: row;
-      font-size: 20px;
+  .board_title {
+    color: #20c997;
+    font-weight: bold;
+    border-bottom: 1px solid #e9ecef;
 
-      .board_icon {
-        font-size: 30px;
-        transform: translateY(-7%);
-      }
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+
+    .board_icon {
+      font-size: 30px;
+      transform: translateY(-7%);
     }
+  }
 
-    .content_list {
-      li {
-        width: 300px;
-        list-style-type: none;
-        transform: translateX(-13.5%);
+  .content_list {
+    li {
+      width: 300px;
+      list-style-type: none;
+      transform: translateX(-13.5%);
 
-        a {
-          display: block;
-          overflow: hidden;
-          cursor: pointer;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
+      a {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-        &:not(:first-child) {
-          margin-top: 10px;
-        }
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
 
-        &:hover {
-          transition: 0.15s all ease-in;
-          color: #20c997;
-        }
+      &:hover {
+        transition: 0.15s all ease-in;
+        color: #20c997;
+      }
 
-        &:not(:hover) {
-          transition: 0.15s all ease-in;
-          color: #525252;
-        }
+      &:not(:hover) {
+        transition: 0.15s all ease-in;
+        color: #525252;
       }
     }
   }
@@ -114,8 +115,8 @@ export default function Home() {
       sw4={box_zero_opacity}
     >
       <Box>
-        <Styles>
-          <div className="content">
+        <BoxStyle>
+          <BoardTop3Block>
             <div className="board_title">
               <div className="board_icon">
                 <AiOutlineCloud />
@@ -145,8 +146,8 @@ export default function Home() {
                   })}
               </ul>
             </div>
-          </div>
-          <div className="content">
+          </BoardTop3Block>
+          <BoardTop3Block>
             <div className="board_title">
               <div className="board_icon">
                 <AiOutlineCamera />
@@ -175,8 +176,8 @@ export default function Home() {
                   })}
               </ul>
             </div>
-          </div>
-        </Styles>
+          </BoardTop3Block>
+        </BoxStyle>
       </Box>
     </BoxAnimation>
   );
