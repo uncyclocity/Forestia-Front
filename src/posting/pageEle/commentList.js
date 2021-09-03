@@ -159,7 +159,9 @@ export default function CommentList({ nowPostingEleObj }) {
 
                     <div
                       className="cand_edit_und_del"
-                      onClick={() => gotoPostingDelPage(comment.id)}
+                      onClick={() =>
+                        gotoPostingDelPage(nowPostingEleObj, comment.id)
+                      }
                     >
                       삭제
                     </div>

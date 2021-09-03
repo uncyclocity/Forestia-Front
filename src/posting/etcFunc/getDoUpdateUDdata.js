@@ -10,32 +10,30 @@ export default function getDoUpdateUDdata(
   userName,
   dispatch,
 ) {
+  const defaultData = {
+    board_type,
+    post_id,
+    ud_type: udType,
+    userName,
+  };
+
   if (udClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
-      board_type,
-      post_id,
-      ud_type: udType,
+      ...defaultData,
       operation: 'sub',
-      userName,
     };
     posting.doUpdateUpDown(data, dispatch);
   } else if (revUdClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
-      board_type,
-      post_id,
-      ud_type: udType,
+      ...defaultData,
       rev_ud_type: revUdType,
       operation: 'addsub',
-      userName,
     };
     posting.doUpdateUpDown(data, dispatch);
   } else {
     const data = {
-      board_type,
-      post_id,
-      ud_type: udType,
+      ...defaultData,
       operation: 'add',
-      userName,
     };
     posting.doUpdateUpDown(data, dispatch);
   }
