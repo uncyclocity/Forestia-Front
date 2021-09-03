@@ -2,10 +2,7 @@ import { useRouter } from 'next/router';
 import Board_title from '../../../styles/board_title';
 import { useDispatch, useReducerState } from '../../../src/_context';
 import { useEffect } from 'react';
-import {
-  mountAnimation,
-  unmountAnimation,
-} from '../../../src/animationController';
+import { mountAnimation } from '../../../src/animationController';
 import {
   postPageSwitchOff,
   postPageSwitchOn,
@@ -19,7 +16,7 @@ import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import ContentView from '../../../src/posting/pageEle/contentView';
 
-const Styles = styled.div`
+const BoxStyles = styled.div`
   color: #525252;
   padding: 20px 30px 5px 30px;
 `;
@@ -40,19 +37,9 @@ export default function Post() {
     };
   }, [board_type, dispatch]);
 
-  const doDeleteComment = (comment_id) => {
-    if (confirm('정말로 삭제하시겠습니까')) {
-      unmountAnimation(
-        0,
-        dispatch,
-        `/board/update_comment/commDeleting?boardType=${board_type}&post_id=${post_id}&comment_id=${comment_id}`,
-      );
-    }
-  };
-
   return (
     <FourAnimationedBox>
-      <Styles>
+      <BoxStyles>
         <Board_title
           backURL={`/board/board_list/${board_type}`}
           nowPostingEleObj={nowPostingEleObj}
@@ -61,12 +48,9 @@ export default function Post() {
         </Board_title>
         <ContentView nowPostingEleObj={nowPostingEleObj} />
         <UpAndDown nowPostingEleObj={nowPostingEleObj} />
-        <CommentList
-          nowPostingEleObj={nowPostingEleObj}
-          doDeleteComment={doDeleteComment}
-        />
+        <CommentList nowPostingEleObj={nowPostingEleObj} />
         <CommentInput nowPostingEleObj={nowPostingEleObj} />
-      </Styles>
+      </BoxStyles>
     </FourAnimationedBox>
   );
 }

@@ -3,6 +3,7 @@ import { FiSend } from 'react-icons/fi';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../_context';
 import { comm } from '../../doApi/doApi';
+import gotoPostingDelPage from '../etcFunc/gotoPostingDelPage';
 
 const Styles = styled.div`
   margin-bottom: 5px;
@@ -119,7 +120,7 @@ const Styles = styled.div`
 
 `;
 
-export default function CommentList({ nowPostingEleObj, doDeleteComment }) {
+export default function CommentList({ nowPostingEleObj }) {
   const userName = useReducerState().userName;
   const dispatch = useDispatch();
   const [editCommObj, setEditCommObj] = useState(false);
@@ -163,7 +164,7 @@ export default function CommentList({ nowPostingEleObj, doDeleteComment }) {
 
                       <div
                         className="cand_edit_und_del"
-                        onClick={() => doDeleteComment(comment.id)}
+                        onClick={() => gotoPostingDelPage(comment.id)}
                       >
                         삭제
                       </div>
