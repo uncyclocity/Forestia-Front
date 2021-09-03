@@ -16,7 +16,7 @@ import InBoardTitle from '../../../src/posting/pageEle/inBoardTitle';
 import CommentInput from '../../../src/posting/pageEle/commentInput';
 import CommentList from '../../../src/posting/pageEle/commentList';
 import styled from 'styled-components';
-import FourAnimationedBox from '../../../src/posting/boxEle/FourAnimationdBox';
+import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 
 const Styles = styled.div`
   color: #525252;
