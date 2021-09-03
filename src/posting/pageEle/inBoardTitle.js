@@ -2,7 +2,7 @@ import { AiOutlineCamera, AiOutlineCloud } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import styled from 'styled-components';
 
-const AuthorAndDate = styled.div`
+const AuthorAndDateStyle = styled.div`
   display: flex;
   flex-direction: row;
 
@@ -32,7 +32,7 @@ export default function InBoardTitle({ nowPostingEleObj }) {
         {nowPostingEleObj.board_type === 'photo' && <AiOutlineCamera />}
       </div>
       <div className="title_name">{nowPostingEleObj.title}</div>
-      <AuthorAndDate>
+      <AuthorAndDateStyle>
         <div className="author">{nowPostingEleObj.author}</div>
         <div className="date">
           <div className="date_icon">
@@ -40,7 +40,7 @@ export default function InBoardTitle({ nowPostingEleObj }) {
           </div>
           {nowPostingEleObj.date}
         </div>
-      </AuthorAndDate>
+      </AuthorAndDateStyle>
     </>
   );
 }

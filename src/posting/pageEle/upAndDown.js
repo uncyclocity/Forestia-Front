@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../context';
 import getDoUpdateUDdata from '../etcFunc/getDoUpdateUDdata';
 
-const Styles = styled.div`
+const UpAndDownAreaStyle = styled.div`
   width: 100%;
 
   display: flex;
@@ -16,6 +16,11 @@ const Styles = styled.div`
   align-items: center;
 
   color: #20c997;
+`;
+
+const UpAndDownBtnStyle = styled.div`
+  display: flex;
+  flex-direction: row;
 
   .ud_btn_area {
     display: flex;
@@ -46,67 +51,70 @@ export default function UpAndDown({ nowPostingEleObj }) {
   const dispatch = useDispatch();
 
   return (
-    <Styles>
-      <div
-        className="ud_btn_area"
-        onClick={() =>
-          getDoUpdateUDdata(
-            'up',
-            'down',
-            nowPostingEleObj.up.clicker,
-            nowPostingEleObj.down.clicker,
-            nowPostingEleObj.board_type,
-            nowPostingEleObj.id,
-            userName,
-            dispatch,
-          )
-        }
-      >
-        <div className="icon">
-          <div className="up">
-            {nowPostingEleObj.up.clicker.find(
-              (clickUser) => clickUser === userName,
-            ) ? (
-              <AiFillLike />
-            ) : (
-              <AiOutlineLike />
-            )}
+    <UpAndDownAreaStyle>
+      <UpAndDownBtnStyle>
+        <div
+          className="ud_btn_area"
+          onClick={() =>
+            getDoUpdateUDdata(
+              'up',
+              'down',
+              nowPostingEleObj.up.clicker,
+              nowPostingEleObj.down.clicker,
+              nowPostingEleObj.board_type,
+              nowPostingEleObj.id,
+              userName,
+              dispatch,
+            )
+          }
+        >
+          <div className="icon">
+            <div className="up">
+              {nowPostingEleObj.up.clicker.find(
+                (clickUser) => clickUser === userName,
+              ) ? (
+                <AiFillLike />
+              ) : (
+                <AiOutlineLike />
+              )}
+            </div>
+          </div>
+          <div className="amount">
+            <div className="up">{nowPostingEleObj.up.amount}</div>
           </div>
         </div>
-        <div className="amount">
-          <div className="up">{nowPostingEleObj.up.amount}</div>
-        </div>
-      </div>
-      <div
-        className="ud_btn_area"
-        onClick={() =>
-          getDoUpdateUDdata(
-            'down',
-            'up',
-            nowPostingEleObj.down.clicker,
-            nowPostingEleObj.up.clicker,
-            nowPostingEleObj.board_type,
-            nowPostingEleObj.id,
-            userName,
-            dispatch,
-          )
-        }
-      >
-        <div className="icon">
-          <div className="down">
-            {nowPostingEleObj.down.clicker.find(
-              (clickUser) => clickUser === userName,
-            ) ? (
-              <AiFillDislike />
-            ) : (
-              <AiOutlineDislike />
-            )}
+
+        <div
+          className="ud_btn_area"
+          onClick={() =>
+            getDoUpdateUDdata(
+              'down',
+              'up',
+              nowPostingEleObj.down.clicker,
+              nowPostingEleObj.up.clicker,
+              nowPostingEleObj.board_type,
+              nowPostingEleObj.id,
+              userName,
+              dispatch,
+            )
+          }
+        >
+          <div className="icon">
+            <div className="down">
+              {nowPostingEleObj.down.clicker.find(
+                (clickUser) => clickUser === userName,
+              ) ? (
+                <AiFillDislike />
+              ) : (
+                <AiOutlineDislike />
+              )}
+            </div>
+          </div>
+          <div className="amount">
+            <div className="down">{nowPostingEleObj.down.amount}</div>
           </div>
         </div>
-        <div className="amount">
-          <div className="down">{nowPostingEleObj.down.amount}</div>
-        </div>
-      </div>
-    </Styles>
+      </UpAndDownBtnStyle>
+    </UpAndDownAreaStyle>
   );
 }

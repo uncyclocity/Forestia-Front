@@ -4,13 +4,15 @@ import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../context';
 import { comm } from '../../doApi/doApi';
 
-const Styles = styled.div`
+const CommInputAreaStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
+`;
 
-  .comment_input_box {
+const CommTextareaStyle = styled.div`
+  .commTextarea {
     width: 570px;
     height: 50px;
 
@@ -30,8 +32,10 @@ const Styles = styled.div`
       outline: none;
     }
   }
+`;
 
-  .comment_post_btn {
+const CommPostBtnStyle = styled.div`
+  .commPostBtn {
     background: #20c997;
     color: white;
     width: 50px;
@@ -53,7 +57,7 @@ const Styles = styled.div`
       transition: 0.25s all ease-in;
       box-shadow: 0px 0px 15px #9aefd6;
     }
-  
+  }
 `;
 
 export default function CommentInput({ nowPostingEleObj }) {
@@ -62,27 +66,31 @@ export default function CommentInput({ nowPostingEleObj }) {
   const userName = useReducerState().userName;
 
   return (
-    <Styles>
-      <textarea
-        className="comment_input_box"
-        style={{ resize: 'none' }}
-        ref={commentContent}
-      />
-      <div
-        className="comment_post_btn"
-        onClick={() =>
-          comm.doUploadComment(
-            nowPostingEleObj,
-            nowPostingEleObj.board_type,
-            nowPostingEleObj.id,
-            commentContent,
-            userName,
-            dispatch,
-          )
-        }
-      >
-        <RiMailSendLine />
-      </div>
-    </Styles>
+    <CommInputAreaStyle>
+      <CommTextareaStyle>
+        <textarea
+          style={{ resize: 'none' }}
+          className="commTextarea"
+          ref={commentContent}
+        />
+      </CommTextareaStyle>
+      <CommPostBtnStyle>
+        <div
+          className="commPostBtn"
+          onClick={() =>
+            comm.doUploadComment(
+              nowPostingEleObj,
+              nowPostingEleObj.board_type,
+              nowPostingEleObj.id,
+              commentContent,
+              userName,
+              dispatch,
+            )
+          }
+        >
+          <RiMailSendLine />
+        </div>
+      </CommPostBtnStyle>
+    </CommInputAreaStyle>
   );
 }
