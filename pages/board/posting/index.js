@@ -17,15 +17,11 @@ import CommentInput from '../../../src/posting/pageEle/commentInput';
 import CommentList from '../../../src/posting/pageEle/commentList';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import ContentView from '../../../src/posting/pageEle/contentView';
 
 const Styles = styled.div`
   color: #525252;
   padding: 20px 30px 5px 30px;
-
-  .post_content {
-    padding: 20px 0 30px 0;
-    color: #525252;
-  }
 `;
 
 export default function Post() {
@@ -63,7 +59,7 @@ export default function Post() {
         >
           <InBoardTitle nowPostingEleObj={nowPostingEleObj} />
         </Board_title>
-        <div className="post_content">{nowPostingEleObj.content}</div>
+        <ContentView nowPostingEleObj={nowPostingEleObj} />
         <UpAndDown nowPostingEleObj={nowPostingEleObj} />
         <CommentList
           nowPostingEleObj={nowPostingEleObj}
