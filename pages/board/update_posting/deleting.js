@@ -5,7 +5,7 @@ import {
   mountAnimation,
   unmountAnimation,
 } from '../../../src/animationController';
-import getData from '../../../src/getData';
+import getBoardData from '../../../src/getBoardData';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import instance from '../../../src/instance';
@@ -25,7 +25,7 @@ export default function Deleting() {
         id: id,
       },
     }).then(async () => {
-      await getData(dispatch);
+      await getBoardData(dispatch);
       unmountAnimation(0, dispatch, `/board/board_list/${board_type}`);
     });
     return () => {

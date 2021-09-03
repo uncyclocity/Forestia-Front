@@ -5,7 +5,7 @@ import {
   mountAnimation,
   unmountAnimation,
 } from '../../../src/animationController';
-import getData from '../../../src/getData';
+import getBoardData from '../../../src/getBoardData';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useRouter } from 'next/router';
@@ -29,7 +29,7 @@ export default function CommDeleting() {
         comment_id,
       },
     }).then(async () => {
-      await getData(dispatch);
+      await getBoardData(dispatch);
       unmountAnimation(
         0,
         dispatch,

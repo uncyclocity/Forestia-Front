@@ -1,5 +1,5 @@
 import moment from 'moment';
-import getData from '../getData';
+import getBoardData from '../getBoardData';
 import instance from '../instance';
 
 const getNewCommId = (nowPostingEleObj) => {
@@ -34,7 +34,7 @@ export const comm = {
       },
     }).then(async () => {
       contentRef.current.value = '';
-      await getData(dispatch);
+      await getBoardData(dispatch);
     });
   },
   doEditComment: (
@@ -56,7 +56,7 @@ export const comm = {
       },
     }).then(async () => {
       setEditCommObj(false);
-      await getData(dispatch);
+      await getBoardData(dispatch);
     });
   },
 };
@@ -69,7 +69,7 @@ export const posting = {
       url: apiUrl,
       data,
     }).then(async () => {
-      await getData(dispatch);
+      await getBoardData(dispatch);
     });
   },
 };

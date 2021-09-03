@@ -6,7 +6,7 @@ import {
   mountAnimation,
   unmountAnimation,
 } from '../../../src/animationController';
-import getData from '../../../src/getData';
+import getBoardData from '../../../src/getBoardData';
 import instance from '../../../src/instance';
 import { useDispatch, useReducerState } from '../../../src/context';
 
@@ -37,7 +37,7 @@ export default function Editing() {
         content: newContent.current.value,
       },
     }).then(async () => {
-      await getData(dispatch);
+      await getBoardData(dispatch);
       unmountAnimation(
         0,
         dispatch,

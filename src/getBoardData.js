@@ -1,6 +1,6 @@
 import instance from './instance';
 
-export default async function getData(dispatch) {
+export default async function getBoardData(dispatch) {
   const free_res = await instance.get('/api/get_posting/viewFree');
   const freeBoard = free_res.data;
   const photo_res = await instance.get('/api/get_posting/viewPhoto');
