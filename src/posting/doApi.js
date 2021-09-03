@@ -62,14 +62,13 @@ export const comm = {
 };
 
 export const posting = {
-  doUpdateUpDown: (data, setEditCommObj, dispatch) => {
+  doUpdateUpDown: (data, dispatch) => {
     const apiUrl = '/api/post_posting/editUD';
     instance({
       method: 'POST',
       url: apiUrl,
       data,
     }).then(async () => {
-      setEditCommObj(false);
       await getData(dispatch);
     });
   },

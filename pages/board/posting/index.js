@@ -26,6 +26,7 @@ import { comm } from '../../../src/posting/doApi';
 import getPostingEleState from '../../../src/posting/getPostingEleState';
 import getEditPostingObj from '../../../src/posting/getEditPosting';
 import getDoUpdateUDdata from '../../../src/posting/getDoUpdateUDdata';
+import UpAndDown from '../../../src/posting/upAndDown';
 
 export default function Post() {
   const state = useReducerState();
@@ -35,10 +36,9 @@ export default function Post() {
   const [editCommObj, setEditCommObj] = useState(false);
   const commentContent = useRef(null);
   const { board_type, post_id } = router.query;
-  const userName = state.user;
+  const userName = state.userName;
 
   const nowPostingEleObj = getPostingEleState(state, board_type, post_id);
-  const forEditObj = getEditPostingObj(board_type, nowPostingEleObj);
 
   useEffect(() => {
     mountAnimation(dispatch, board_type);
@@ -63,7 +63,7 @@ export default function Post() {
     <St_post>
       <Board_title
         backURL={`/board/board_list/${board_type}`}
-        editData={forEditObj}
+        nowPostingEleObj={nowPostingEleObj}
       >
         <div className="icon">
           {board_type === 'free' && <AiOutlineCloud />}
@@ -81,70 +81,7 @@ export default function Post() {
         </div>
       </Board_title>
       <div className="post_content">{nowPostingEleObj.content}</div>
-      <div className="up_and_down">
-        <div
-          className="ud_btn_area"
-          onClick={() =>
-            getDoUpdateUDdata(
-              'up',
-              'down',
-              nowPostingEleObj.up.clicker,
-              nowPostingEleObj.down.clicker,
-              board_type,
-              post_id,
-              userName,
-              dispatch,
-              setEditCommObj,
-            )
-          }
-        >
-          <div className="icon">
-            <div className="up">
-              {nowPostingEleObj.up.clicker.find(
-                (clickUser) => clickUser === userName,
-              ) ? (
-                <AiFillLike />
-              ) : (
-                <AiOutlineLike />
-              )}
-            </div>
-          </div>
-          <div className="amount">
-            <div className="up">{nowPostingEleObj.up.amount}</div>
-          </div>
-        </div>
-        <div
-          className="ud_btn_area"
-          onClick={() =>
-            getDoUpdateUDdata(
-              'down',
-              'up',
-              nowPostingEleObj.down.clicker,
-              nowPostingEleObj.up.clicker,
-              board_type,
-              post_id,
-              userName,
-              dispatch,
-              setEditCommObj,
-            )
-          }
-        >
-          <div className="icon">
-            <div className="down">
-              {nowPostingEleObj.down.clicker.find(
-                (clickUser) => clickUser === userName,
-              ) ? (
-                <AiFillDislike />
-              ) : (
-                <AiOutlineDislike />
-              )}
-            </div>
-          </div>
-          <div className="amount">
-            <div className="down">{nowPostingEleObj.down.amount}</div>
-          </div>
-        </div>
-      </div>
+      <UpAndDown nowPostingEleObj={nowPostingEleObj} />
       <div className="comment_list">
         <div className="comment_amount">
           <div>댓글</div>

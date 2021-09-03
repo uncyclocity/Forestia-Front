@@ -17,6 +17,7 @@ export default function getPostingEleState(state, board_type, posting_id) {
   const boardArr = getBoardArr(state, board_type);
   const postingIdx = getPostingIdx(boardArr, posting_id);
   const foundPosting = boardArr[postingIdx];
+  const boardTypeAdded = { ...foundPosting, board_type };
 
-  return foundPosting;
+  return boardTypeAdded;
 }

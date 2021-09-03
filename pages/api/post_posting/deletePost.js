@@ -4,12 +4,12 @@ import Photo from '../../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { boardType, id } = req.body;
-    if (boardType && id >= 0) {
+    const { board_type, id } = req.body;
+    if (board_type && id >= 0) {
       try {
-        if (boardType === 'free') {
+        if (board_type === 'free') {
           await Free.deleteOne({ id });
-        } else if (boardType === 'photo') {
+        } else if (board_type === 'photo') {
           await Photo.deleteOne({ id });
         }
         return res.status(200).send();

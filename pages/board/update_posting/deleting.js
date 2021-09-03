@@ -13,7 +13,7 @@ import { useDispatch, useReducerState } from '../../../src/_context';
 
 export default function Deleting() {
   const dispatch = useDispatch();
-  const { boardType, id } = useReducerState().editData;
+  const { board_type, id } = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     mountAnimation(dispatch, 'deleting');
@@ -21,17 +21,17 @@ export default function Deleting() {
       method: 'POST',
       url: '/api/post_posting/deletePost',
       data: {
-        boardType: boardType,
+        board_type: board_type,
         id: id,
       },
     }).then(async () => {
       await getData(dispatch);
-      unmountAnimation(0, dispatch, `/board/board_list/${boardType}`);
+      unmountAnimation(0, dispatch, `/board/board_list/${board_type}`);
     });
     return () => {
       dispatch({ type: 'editpost_data', editData: {} });
     };
-  }, [boardType, dispatch, id]);
+  }, [board_type, dispatch, id]);
 
   return (
     <St_crud>

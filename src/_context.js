@@ -5,18 +5,13 @@ export const DispatchCtx = createContext(null);
 
 export default function Context({ children, freeBoard, photoBoard }) {
   const initState = {
-    user: '백괴',
+    userName: '백괴',
     nowPage: null,
     animation: 5,
     freeBoard,
     photoBoard,
     isPostPage: false,
-    editData: {
-      board_type: null,
-      id: null,
-      title: null,
-      content: null,
-    },
+    nowPostingEleObj: {},
   };
 
   const reducer = (state, action) => {
@@ -50,7 +45,7 @@ export default function Context({ children, freeBoard, photoBoard }) {
       case 'editpost_data': {
         return {
           ...state,
-          editData: action.editData,
+          nowPostingEleObj: action.nowPostingEleObj,
         };
       }
       default:

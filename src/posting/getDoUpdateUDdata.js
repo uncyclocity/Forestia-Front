@@ -9,8 +9,8 @@ export default function getDoUpdateUDdata(
   post_id,
   userName,
   dispatch,
-  setEditCommObj,
 ) {
+  console.log(revUdClickerArr);
   if (udClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
       board_type,
@@ -19,7 +19,7 @@ export default function getDoUpdateUDdata(
       operation: 'sub',
       userName,
     };
-    posting.doUpdateUpDown(data, setEditCommObj, dispatch);
+    posting.doUpdateUpDown(data, dispatch);
   } else if (revUdClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
       board_type,
@@ -29,7 +29,7 @@ export default function getDoUpdateUDdata(
       operation: 'addsub',
       userName,
     };
-    posting.doUpdateUpDown(data, setEditCommObj, dispatch);
+    posting.doUpdateUpDown(data, dispatch);
   } else {
     const data = {
       board_type,
@@ -38,6 +38,6 @@ export default function getDoUpdateUDdata(
       operation: 'add',
       userName,
     };
-    posting.doUpdateUpDown(data, setEditCommObj, dispatch);
+    posting.doUpdateUpDown(data, dispatch);
   }
 }

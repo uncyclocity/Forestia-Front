@@ -136,12 +136,12 @@ const Styles = styled.div`
   }
 `;
 
-export default function Board_title({ backURL, editData, children }) {
+export default function Board_title({ backURL, nowPostingEleObj, children }) {
   const dispatch = useDispatch();
   const state = useReducerState();
 
   const isPostPage = state.isPostPage;
-  const user = state.user;
+  const user = state.userName;
 
   const [isOpenMore, setIsOpenMore] = useState(false);
   const [isOMAnimation, setIsOMAnimation] = useState(false);
@@ -179,7 +179,7 @@ export default function Board_title({ backURL, editData, children }) {
               <ul>
                 <li
                   onClick={() => {
-                    dispatch({ type: 'editpost_data', editData });
+                    dispatch({ type: 'editpost_data', nowPostingEleObj });
                     unmountAnimation(
                       0,
                       dispatch,
@@ -195,7 +195,7 @@ export default function Board_title({ backURL, editData, children }) {
                 <li
                   onClick={() => {
                     if (confirm('정말로 삭제하시겠습니까')) {
-                      dispatch({ type: 'editpost_data', editData });
+                      dispatch({ type: 'editpost_data', nowPostingEleObj });
                       unmountAnimation(
                         0,
                         dispatch,
