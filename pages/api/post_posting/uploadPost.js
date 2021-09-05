@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { boardType, id, author, date, title, content, comments } = req.body;
+    const { board_type, id, author, date, title, content, comments } = req.body;
     if (id >= 0 && author && date && title && content && comments) {
       try {
         var post_obj = {
@@ -19,9 +19,9 @@ const handler = async (req, res) => {
           down: { amount: 0, clicker: [] },
           comments,
         };
-        if (boardType === 'free') {
+        if (board_type === 'free') {
           var post = new Free(post_obj);
-        } else if (boardType === 'photo') {
+        } else if (board_type === 'photo') {
           var post = new Photo(post_obj);
         }
         var postcreated = await post.save();

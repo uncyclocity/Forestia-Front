@@ -1,15 +1,17 @@
 import BoardTitle from '../../../src/common/boardTitle';
-import St_crud from '../../../styles/pages/board/St_crud';
 import { useEffect } from 'react';
-import getBoardData from '../../../src/common/getBoardData';
-import { RiDeleteBin7Line } from 'react-icons/ri';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useDispatch, useReducerState } from '../../../src/common/context';
-import {
-  mountAnimation,
-  unmountAnimation,
-} from '../../../src/common/animationController';
-import instance from '../../../src/common/instance';
+import { mountAnimation } from '../../../src/common/animationController';
+import { posting } from '../../../src/doApi/doApi';
+import InDeletePostingBoardTitle from '../../../src/board.update_posting.deleting/pageEle/inDeletePostingBoardTitle';
+import DeleteSign from '../../../src/board.update_posting.deleting/pageEle/deleteSign';
+import styled from 'styled-components';
+import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+
+const BoxStyles = styled.div`
+  color: #525252;
+  padding: 20px 30px 5px 30px;
+`;
 
 export default function PostingDeleting() {
   const dispatch = useDispatch();
@@ -17,35 +19,20 @@ export default function PostingDeleting() {
 
   useEffect(() => {
     mountAnimation(dispatch, 'deleting');
-    instance({
-      method: 'POST',
-      url: '/api/post_posting/deletePost',
-      data: {
-        board_type: board_type,
-        id: id,
-      },
-    }).then(async () => {
-      await getBoardData(dispatch);
-      unmountAnimation(0, dispatch, `/board/board_list/${board_type}`);
-    });
+    posting.doDeletePosting(board_type, id, dispatch);
     return () => {
       dispatch({ type: 'editpost_data', editData: {} });
     };
   }, [board_type, dispatch, id]);
 
   return (
-    <St_crud>
-      <BoardTitle backURL={``}>
-        <div className="icon">
-          <RiDeleteBin7Line />
-        </div>
-        <div className="title_name">포스트 삭제 중</div>
-      </BoardTitle>
-      <div className="delete_sign_area">
-        <div className="icon">
-          <AiOutlineLoading3Quarters />
-        </div>
-      </div>
-    </St_crud>
+    <FourAnimationedBox>
+      <BoxStyles>
+        <BoardTitle backURL={``}>
+          <InDeletePostingBoardTitle />
+        </BoardTitle>
+        <DeleteSign />
+      </BoxStyles>
+    </FourAnimationedBox>
   );
 }

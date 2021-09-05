@@ -8,7 +8,6 @@ import {
   box_zero_opacity,
 } from '../../../src/boxEle/boxAnimation';
 import Box from '../../../src/boxEle/box';
-import { spin_360 } from '../../keyframes/spin';
 
 const Styles = styled.div`
   color: #525252;
@@ -205,20 +204,6 @@ const Styles = styled.div`
         margin-left: 5px;
         font-size: 15px;
       }
-    }
-  }
-
-  .delete_sign_area {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .icon {
-      width: 70px;
-      height: 70px;
-      font-size: 70px;
-      color: #20c997;
-      animation: ${spin_360} infinite 5s linear;
     }
   }
 `;

@@ -1,6 +1,7 @@
 import moment from 'moment';
 import instance from '../common/instance';
 import getBoardData from '../common/getBoardData';
+import { unmountAnimation } from '../common/animationController';
 
 const getNewCommId = (nowPostingEleObj) => {
   const commArr = nowPostingEleObj.comments;
@@ -57,6 +58,62 @@ export const posting = {
       data,
     }).then(async () => {
       await getBoardData(dispatch);
+    });
+  },
+  doCreatePosting: (board_type, id, title, content, dispatch) => {
+    const apiUrl = '/api/post_posting/uploadPost';
+    instance({
+      method: 'POST',
+      url: apiUrl,
+      data: {
+        board_type,
+        id,
+        author: '백괴',
+        date: moment().format('YYYY-MM-DD HH:mm:ss'),
+        title: title.current.value,
+        content: content.current.value,
+        comments: [],
+      },
+    }).then(async () => {
+      await getBoardData(dispatch);
+      unmountAnimation(
+        0,
+        dispatch,
+        `/board/posting?board_type=${board_type}&post_id=${id}`,
+      );
+    });
+  },
+  doDeletePosting: (board_type, id, dispatch) => {
+    const apiUrl = 'api/post_posting/deletePost';
+    instance({
+      method: 'POST',
+      url: apiUrl,
+      data: {
+        board_type,
+        id,
+      },
+    }).then(async () => {
+      await getBoardData(dispatch);
+      unmountAnimation(0, dispatch, `/board/board_list/${board_type}`);
+    });
+  },
+  doEditPosting: (board_type, id, newTitle, newContent, dispatch) => {
+    instance({
+      method: 'POST',
+      url: '/api/post_posting/editPost',
+      data: {
+        board_type,
+        id,
+        title: newTitle.current.value,
+        content: newContent.current.value,
+      },
+    }).then(async () => {
+      await getBoardData(dispatch);
+      unmountAnimation(
+        0,
+        dispatch,
+        `/board/posting?board_type=${board_type}&post_id=${id}`,
+      );
     });
   },
 };
