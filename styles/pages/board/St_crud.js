@@ -6,8 +6,8 @@ import {
   box_slide_down,
   box_slide_up,
   box_zero_opacity,
-} from '../../boxAnimation';
-import Box from '../../box';
+} from '../../../src/boxEle/boxAnimation';
+import Box from '../../../src/boxEle/box';
 import { spin_360 } from '../../keyframes/spin';
 
 const Styles = styled.div`

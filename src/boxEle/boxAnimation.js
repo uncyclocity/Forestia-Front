@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { slideUp, slideDown } from './keyframes/slide';
+import { slideUp, slideDown } from '../../styles/keyframes/slide';
 
 /* 박스 애니메이션 셋팅
 1. 마운트

@@ -6,14 +6,14 @@ import {
 } from '../../src/common/animationController';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../src/common/context';
-import Box from '../../styles/box';
+import Box from '../../src/boxEle/box';
 import {
   BoxAnimation,
   box_empty,
   box_slide_down,
   box_slide_up,
   box_zero_opacity,
-} from '../../styles/boxAnimation';
+} from '../../src/boxEle/boxAnimation';
 
 const setTop3 = (board, bak, i = 0) => {
   bak.current = [];

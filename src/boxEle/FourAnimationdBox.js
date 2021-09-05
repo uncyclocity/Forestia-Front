@@ -1,11 +1,11 @@
-import Box from '../../styles/box';
+import Box from './box';
 import {
   BoxAnimation,
   box_empty,
   box_slide_down,
   box_slide_up,
   box_zero_opacity,
-} from '../../styles/boxAnimation';
+} from '../../src/boxEle/boxAnimation';
 import { useReducerState } from '../common/context';
 
 export default function FourAnimationedBox({ children }) {

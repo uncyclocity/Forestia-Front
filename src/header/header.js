@@ -1,5 +1,5 @@
-import Box from '../../styles/box';
-import { AppAnimation } from '../../styles/boxAnimation';
+import Box from '../../src/boxEle/box';
+import { AppAnimation } from '../../src/boxEle/boxAnimation';
 import HeaderBar from './headerEle/headerBar';
 import Top from './headerEle/top';
 import Title from './headerEle/title';
