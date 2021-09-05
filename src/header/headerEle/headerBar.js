@@ -4,9 +4,9 @@ import {
   AiOutlineCloud,
   AiOutlineCamera,
 } from 'react-icons/ai';
-import { unmountAnimation } from '../../animationController';
-import { useDispatch, useReducerState } from '../../context';
+import { useDispatch, useReducerState } from '../../common/context';
 import styled from 'styled-components';
+import { unmountAnimation } from '../../common/animationController';
 
 const MenuBtnAreaStyles = styled.span`
   display: flex;

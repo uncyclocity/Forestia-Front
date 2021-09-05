@@ -1,12 +1,12 @@
 import { VscError } from 'react-icons/vsc';
-import { useDispatch } from '../../src/context';
+import { useDispatch } from '../../src/common/context';
 import { useEffect } from 'react';
-import {
-  unmountAnimation,
-  mountAnimation,
-} from '../../src/animationController';
 import FourAnimationedBox from '../../src/boxEle/FourAnimationdBox';
 import styled from 'styled-components';
+import {
+  mountAnimation,
+  unmountAnimation,
+} from '../../src/common/animationController';
 
 const Styles = styled.div`
   display: flex;

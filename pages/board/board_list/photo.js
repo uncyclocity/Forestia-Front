@@ -1,13 +1,13 @@
 import { AiOutlineCamera, AiOutlineSmile } from 'react-icons/ai';
 import { FaRegCommentAlt } from 'react-icons/fa';
-import Board_title from '../../../styles/board_title';
+import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect } from 'react';
+import St_photo from '../../../styles/pages/board/St_photo';
+import { useDispatch, useReducerState } from '../../../src/common/context';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../../src/animationController';
-import St_photo from '../../../styles/pages/board/St_photo';
-import { useDispatch, useReducerState } from '../../../src/context';
+} from '../../../src/common/animationController';
 
 export default function Photo() {
   const dispatch = useDispatch();
@@ -19,12 +19,12 @@ export default function Photo() {
 
   return (
     <St_photo>
-      <Board_title backURL="/home">
+      <BoardTitle backURL="/home">
         <div className="icon">
           <AiOutlineCamera />
         </div>
         <div className="title_name">짤게</div>
-      </Board_title>
+      </BoardTitle>
       <div className="content_list">
         {photoBoard.length > 0 ? (
           <ul>

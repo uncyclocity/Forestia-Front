@@ -7,7 +7,7 @@ import {
   box_zero_opacity,
 } from '../../boxAnimation';
 import Box from '../../box';
-import { useReducerState } from '../../../src/context';
+import { useReducerState } from '../../../src/common/context';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;

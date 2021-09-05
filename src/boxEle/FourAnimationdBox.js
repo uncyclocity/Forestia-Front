@@ -6,7 +6,7 @@ import {
   box_slide_up,
   box_zero_opacity,
 } from '../../styles/boxAnimation';
-import { useReducerState } from '../context';
+import { useReducerState } from '../common/context';
 
 export default function FourAnimationedBox({ children }) {
   const animation = useReducerState().animation;

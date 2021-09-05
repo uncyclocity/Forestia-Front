@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { RiMailSendLine } from 'react-icons/ri';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../context';
+import { useDispatch, useReducerState } from '../../common/context';
 import { comm } from '../../doApi/doApi';
 
 const CommInputAreaStyle = styled.div`

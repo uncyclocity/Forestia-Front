@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { FiEdit } from 'react-icons/fi';
-import { unmountAnimation } from '../src/animationController';
-import { useDispatch, useReducerState } from '../src/context';
+import { useDispatch, useReducerState } from './context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
-import { slideLeft, slideRight } from './keyframes/slide';
-import { spin_90, spin_90_r } from './keyframes/spin';
+import { slideLeft, slideRight } from '../../styles/keyframes/slide';
+import { spin_90, spin_90_r } from '../../styles/keyframes/spin';
+import { unmountAnimation } from './animationController';
 
 const Styles = styled.div`
   display: flex;
@@ -114,7 +114,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function Board_title({ backURL, nowPostingEleObj, children }) {
+export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
   const dispatch = useDispatch();
   const state = useReducerState();
 

@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
-import Board_title from '../../../styles/board_title';
-import { useDispatch, useReducerState } from '../../../src/context';
+import BoardTitle from '../../../src/common/boardTitle';
+import { useDispatch, useReducerState } from '../../../src/common/context';
 import { useEffect } from 'react';
-import { mountAnimation } from '../../../src/animationController';
 import {
   postPageSwitchOff,
   postPageSwitchOn,
@@ -15,6 +14,7 @@ import CommentList from '../../../src/posting/pageEle/commentList';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import ContentView from '../../../src/posting/pageEle/contentView';
+import { mountAnimation } from '../../../src/common/animationController';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -40,9 +40,9 @@ export default function Post() {
   return (
     <FourAnimationedBox>
       <BoxStyles>
-        <Board_title backURL={backURL} nowPostingEleObj={nowPostingEleObj}>
+        <BoardTitle backURL={backURL} nowPostingEleObj={nowPostingEleObj}>
           <InBoardTitle nowPostingEleObj={nowPostingEleObj} />
-        </Board_title>
+        </BoardTitle>
         <ContentView nowPostingEleObj={nowPostingEleObj} />
         <UpAndDown nowPostingEleObj={nowPostingEleObj} />
         <CommentList nowPostingEleObj={nowPostingEleObj} />

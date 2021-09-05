@@ -3,9 +3,9 @@ import { AiOutlineCamera, AiOutlineCloud } from 'react-icons/ai';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../src/animationController';
+} from '../../src/common/animationController';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../src/context';
+import { useDispatch, useReducerState } from '../../src/common/context';
 import Box from '../../styles/box';
 import {
   BoxAnimation,

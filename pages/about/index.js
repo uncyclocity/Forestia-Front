@@ -1,11 +1,11 @@
-import Board_title from '../../styles/board_title';
+import BoardTitle from '../../src/common/boardTitle';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { SiNextDotJs } from 'react-icons/si';
 import { useEffect } from 'react';
-import { mountAnimation } from '../../src/animationController';
-import { useDispatch } from '../../src/context';
+import { useDispatch } from '../../src/common/context';
 import FourAnimationedBox from '../../src/boxEle/FourAnimationdBox';
 import styled from 'styled-components';
+import { mountAnimation } from '../../src/common/animationController';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -53,12 +53,12 @@ export default function About() {
   return (
     <FourAnimationedBox>
       <Styles>
-        <Board_title backURL="/home">
+        <BoardTitle backURL="/home">
           <div className="icon">
             <AiOutlineInfoCircle />
           </div>
           게시판 소개
-        </Board_title>
+        </BoardTitle>
         <div className="content">
           <div className="next_logo">
             <SiNextDotJs />

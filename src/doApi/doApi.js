@@ -1,6 +1,6 @@
 import moment from 'moment';
-import getBoardData from '../getBoardData';
-import instance from '../instance';
+import instance from '../common/instance';
+import getBoardData from '../common/getBoardData';
 
 const getNewCommId = (nowPostingEleObj) => {
   const commArr = nowPostingEleObj.comments;

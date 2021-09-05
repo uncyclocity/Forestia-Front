@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../context';
+import { useDispatch, useReducerState } from '../../common/context';
 import { comm } from '../../doApi/doApi';
-import gotoPostingDelPage from '../etcFunc/gotoPostingDelPage';
+import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -160,7 +160,7 @@ export default function CommentList({ nowPostingEleObj }) {
                     <div
                       className="cand_edit_und_del"
                       onClick={() =>
-                        gotoPostingDelPage(nowPostingEleObj, comment.id)
+                        gotoCommDelPage(nowPostingEleObj, comment.id, dispatch)
                       }
                     >
                       삭제

@@ -1,15 +1,15 @@
-import Board_title from '../../../styles/board_title';
+import BoardTitle from '../../../src/common/boardTitle';
 import St_crud from '../../../styles/pages/board/St_crud';
 import { useEffect } from 'react';
+import getBoardData from '../../../src/common/getBoardData';
+import { RiDeleteBin7Line } from 'react-icons/ri';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { useDispatch, useReducerState } from '../../../src/common/context';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../../src/animationController';
-import getBoardData from '../../../src/getBoardData';
-import { RiDeleteBin7Line } from 'react-icons/ri';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import instance from '../../../src/instance';
-import { useDispatch, useReducerState } from '../../../src/context';
+} from '../../../src/common/animationController';
+import instance from '../../../src/common/instance';
 
 export default function Deleting() {
   const dispatch = useDispatch();
@@ -35,12 +35,12 @@ export default function Deleting() {
 
   return (
     <St_crud>
-      <Board_title backURL={``}>
+      <BoardTitle backURL={``}>
         <div className="icon">
           <RiDeleteBin7Line />
         </div>
         <div className="title_name">포스트 삭제 중</div>
-      </Board_title>
+      </BoardTitle>
       <div className="delete_sign_area">
         <div className="icon">
           <AiOutlineLoading3Quarters />

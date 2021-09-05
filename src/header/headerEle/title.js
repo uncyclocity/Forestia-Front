@@ -1,8 +1,8 @@
 import { AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
 import { RiLeafLine } from 'react-icons/ri';
-import { useDispatch, useReducerState } from '../../context';
+import { useDispatch, useReducerState } from '../../common/context';
 import styled from 'styled-components';
-import { unmountAnimation } from '../../animationController';
+import { unmountAnimation } from '../../common/animationController';
 
 const Styles = styled.div`
   display: flex;

@@ -1,13 +1,13 @@
 import { AiOutlineCloud, AiOutlineSmile } from 'react-icons/ai';
 import { FaRegCommentAlt } from 'react-icons/fa';
-import Board_title from '../../../styles/board_title';
+import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect } from 'react';
+import St_free from '../../../styles/pages/board/St_free';
+import { useDispatch, useReducerState } from '../../../src/common/context';
 import {
   mountAnimation,
   unmountAnimation,
-} from '../../../src/animationController';
-import St_free from '../../../styles/pages/board/St_free';
-import { useDispatch, useReducerState } from '../../../src/context';
+} from '../../../src/common/animationController';
 
 export default function Free() {
   const dispatch = useDispatch();
@@ -19,12 +19,12 @@ export default function Free() {
 
   return (
     <St_free>
-      <Board_title backURL="/home">
+      <BoardTitle backURL="/home">
         <div className="icon">
           <AiOutlineCloud />
         </div>
         <div className="title_name">자게</div>
-      </Board_title>
+      </BoardTitle>
       <div className="content_list">
         {freeBoard.length > 0 ? (
           <ul>

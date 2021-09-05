@@ -1,4 +1,10 @@
-export default function gotoPostingDelPage(nowPostingEleObj, comment_id) {
+import { unmountAnimation } from '../../common/animationController';
+
+export default function gotoCommDelPage(
+  nowPostingEleObj,
+  comment_id,
+  dispatch,
+) {
   if (confirm('정말로 삭제하시겠습니까')) {
     unmountAnimation(
       0,

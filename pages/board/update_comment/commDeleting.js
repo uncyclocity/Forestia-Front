@@ -1,16 +1,16 @@
-import Board_title from '../../../styles/board_title';
+import BoardTitle from '../../../src/common/boardTitle';
 import St_crud from '../../../styles/pages/board/St_crud';
 import { useEffect } from 'react';
-import {
-  mountAnimation,
-  unmountAnimation,
-} from '../../../src/animationController';
-import getBoardData from '../../../src/getBoardData';
+import getBoardData from '../../../src/common/getBoardData';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useRouter } from 'next/router';
-import instance from '../../../src/instance';
-import { useDispatch } from '../../../src/context';
+import { useDispatch } from '../../../src/common/context';
+import {
+  mountAnimation,
+  unmountAnimation,
+} from '../../../src/common/animationController';
+import instance from '../../../src/common/instance';
 
 export default function CommDeleting() {
   const router = useRouter();
@@ -40,12 +40,12 @@ export default function CommDeleting() {
 
   return (
     <St_crud>
-      <Board_title backURL={``}>
+      <BoardTitle backURL={``}>
         <div className="icon">
           <RiDeleteBin7Line />
         </div>
         <div className="title_name">댓글 삭제 중</div>
-      </Board_title>
+      </BoardTitle>
       <div className="delete_sign_area">
         <div className="icon">
           <AiOutlineLoading3Quarters />
