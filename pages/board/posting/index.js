@@ -8,7 +8,7 @@ import {
 } from '../../../src/board.posting/etcFunc/postpageSwitching';
 import getPostingEleState from '../../../src/board.posting/etcFunc/getPostingEleState';
 import UpAndDown from '../../../src/board.posting/pageEle/upAndDown';
-import InBoardTitle from '../../../src/board.posting/pageEle/inBoardTitle';
+import InPostingBoardTitle from '../../../src/board.posting/pageEle/inPostingBoardTitle';
 import CommentInput from '../../../src/board.posting/pageEle/commentInput';
 import CommentList from '../../../src/board.posting/pageEle/commentList';
 import styled from 'styled-components';
@@ -41,7 +41,7 @@ export default function Post() {
     <FourAnimationedBox>
       <BoxStyles>
         <BoardTitle backURL={backURL} nowPostingEleObj={nowPostingEleObj}>
-          <InBoardTitle nowPostingEleObj={nowPostingEleObj} />
+          <InPostingBoardTitle nowPostingEleObj={nowPostingEleObj} />
         </BoardTitle>
         <ContentView nowPostingEleObj={nowPostingEleObj} />
         <UpAndDown nowPostingEleObj={nowPostingEleObj} />

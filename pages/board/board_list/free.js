@@ -1,69 +1,91 @@
-import { AiOutlineCloud, AiOutlineSmile } from 'react-icons/ai';
-import { FaRegCommentAlt } from 'react-icons/fa';
 import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect } from 'react';
-import St_free from '../../../styles/pages/board/St_free';
-import { useDispatch, useReducerState } from '../../../src/common/context';
-import {
-  mountAnimation,
-  unmountAnimation,
-} from '../../../src/common/animationController';
+import { useDispatch } from '../../../src/common/context';
+import { mountAnimation } from '../../../src/common/animationController';
+import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import styled from 'styled-components';
+import InFreeListBoardTitle from '../../../src/board.board_list.free/pageEle/inFreeListBoardTitle';
+import FreeListPostingList from '../../../src/board.board_list.free/pageEle/freeListPostingList';
+
+const ListStyle = styled.div`
+  padding: 20px 30px 5px 30px;
+
+  .content_list {
+    li {
+      transform: translateX(-6.5%);
+      list-style-type: none;
+      margin-top: 10px;
+
+      a {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+
+        .comment_amount {
+          display: flex;
+          justify-content: center;
+          color: #20c997;
+
+          .comment_icon {
+            transform: translateY(3px);
+            font-size: 13px;
+          }
+
+          .amount {
+            transform: translateX(2px);
+            font-size: 15px;
+          }
+        }
+
+        &:hover {
+          transition: 0.15s all ease-in;
+          color: #20c997;
+        }
+
+        &:not(:hover) {
+          transition: 0.15s all ease-in;
+          color: #525252;
+        }
+      }
+    }
+
+    .list_empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 20px 0;
+      color: #babfc7;
+
+      .empty_icon {
+        width: 80px;
+        height: 80px;
+        font-size: 80px;
+      }
+
+      .empty_text {
+        margin-top: 20px;
+        font-size: 20px;
+      }
+    }
+  }
+`;
 
 export default function Free() {
   const dispatch = useDispatch();
-  const freeBoard = useReducerState().freeBoard;
 
   useEffect(() => {
     mountAnimation(dispatch, 'free');
   }, [dispatch]);
 
   return (
-    <St_free>
-      <BoardTitle backURL="/home">
-        <div className="icon">
-          <AiOutlineCloud />
-        </div>
-        <div className="title_name">자게</div>
-      </BoardTitle>
-      <div className="content_list">
-        {freeBoard.length > 0 ? (
-          <ul>
-            {freeBoard &&
-              freeBoard.map((post, index) => {
-                return (
-                  <li key={index}>
-                    <div
-                      onClick={() =>
-                        unmountAnimation(
-                          0,
-                          dispatch,
-                          `/board/posting?board_type=free&post_id=${post.id}`,
-                        )
-                      }
-                    >
-                      <a>
-                        {post.title}&nbsp;
-                        <div className="comment_amount">
-                          <div className="comment_icon">
-                            <FaRegCommentAlt />
-                          </div>
-                          <div className="amount">{post.comments.length}</div>
-                        </div>
-                      </a>
-                    </div>
-                  </li>
-                );
-              })}
-          </ul>
-        ) : (
-          <div className="list_empty">
-            <div className="empty_icon">
-              <AiOutlineSmile />
-            </div>
-            <div className="empty_text">아직 게시판이 비어 있어요</div>
-          </div>
-        )}
-      </div>
-    </St_free>
+    <FourAnimationedBox>
+      <ListStyle>
+        <BoardTitle backURL="/home">
+          <InFreeListBoardTitle />
+        </BoardTitle>
+        <FreeListPostingList />
+      </ListStyle>
+    </FourAnimationedBox>
   );
 }

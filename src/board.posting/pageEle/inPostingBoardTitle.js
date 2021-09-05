@@ -24,7 +24,7 @@ const AuthorAndDateStyle = styled.div`
   }
 `;
 
-export default function InBoardTitle({ nowPostingEleObj }) {
+export default function InPostingBoardTitle({ nowPostingEleObj }) {
   return (
     <>
       <div className="icon">
