@@ -10,7 +10,7 @@ import {
 } from '../../../src/common/animationController';
 import instance from '../../../src/common/instance';
 
-export default function Editing() {
+export default function PostingEditing() {
   const dispatch = useDispatch();
   const { board_type, id, title, content } = useReducerState().nowPostingEleObj;
 

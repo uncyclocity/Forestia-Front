@@ -161,7 +161,7 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
                     unmountAnimation(
                       0,
                       dispatch,
-                      `/board/update_posting/editing`,
+                      `/board/update_posting/postingEditing`,
                     );
                   }}
                 >
@@ -177,7 +177,7 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
                       unmountAnimation(
                         0,
                         dispatch,
-                        `/board/update_posting/deleting`,
+                        `/board/update_posting/postingDeleting`,
                       );
                     }
                   }}

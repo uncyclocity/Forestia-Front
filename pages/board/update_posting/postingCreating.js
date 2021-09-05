@@ -11,7 +11,7 @@ import {
   unmountAnimation,
 } from '../../../src/common/animationController';
 
-export default function Posting() {
+export default function PostingCreating() {
   const dispatch = useDispatch();
   const state = useReducerState();
 

@@ -75,7 +75,11 @@ export default function Title() {
           <div
             className="posting_btn"
             onClick={() =>
-              unmountAnimation(0, dispatch, `/board/update_posting/creating`)
+              unmountAnimation(
+                0,
+                dispatch,
+                `/board/update_posting/postingCreating`,
+              )
             }
           >
             <div className="posting_icon">

@@ -7,6 +7,8 @@ import {
   mountAnimation,
   unmountAnimation,
 } from '../../src/common/animationController';
+import NotFoundAlert from '../../src/404/pageEle/notFoundAlert';
+import Escape404Btns from '../../src/404/pageEle/escape404Btns';
 
 const Styles = styled.div`
   display: flex;
@@ -108,26 +110,8 @@ export default function NotFoundPage() {
   return (
     <FourAnimationedBox>
       <Styles>
-        <div className="errorcode">
-          <div className="error_icon">
-            <VscError />
-          </div>
-          &nbsp;404 Error
-        </div>
-        <div className="btns">
-          <div
-            className="back_btn"
-            onClick={() => unmountAnimation(1, dispatch)}
-          >
-            뒤로
-          </div>
-          <div
-            className="home_btn"
-            onClick={() => unmountAnimation(0, dispatch, '/home')}
-          >
-            메인
-          </div>
-        </div>
+        <NotFoundAlert />
+        <Escape404Btns />
       </Styles>
     </FourAnimationedBox>
   );

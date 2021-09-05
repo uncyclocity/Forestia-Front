@@ -11,7 +11,7 @@ import {
 } from '../../../src/common/animationController';
 import instance from '../../../src/common/instance';
 
-export default function Deleting() {
+export default function PostingDeleting() {
   const dispatch = useDispatch();
   const { board_type, id } = useReducerState().nowPostingEleObj;
 
