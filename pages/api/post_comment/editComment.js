@@ -4,12 +4,12 @@ import Photo from '../../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { boardType, post_id, comment_id, content } = req.body;
-    if (comment_id >= 0 && post_id >= 0 && boardType && content) {
+    const { board_type, post_id, comment_id, content } = req.body;
+    if (comment_id >= 0 && post_id >= 0 && board_type && content) {
       try {
-        if (boardType === 'free') {
+        if (board_type === 'free') {
           var post = await Free.findOne({ id: post_id });
-        } else if (boardType === 'photo') {
+        } else if (board_type === 'photo') {
           var post = await Photo.findOne({ id: post_id });
         }
         var commentIdx = post.comments.findIndex(

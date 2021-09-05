@@ -10,14 +10,7 @@ const getNewCommId = (nowPostingEleObj) => {
 };
 
 export const comm = {
-  doUploadComment: (
-    nowPostingEleObj,
-    board_type,
-    post_id,
-    contentRef,
-    userName,
-    dispatch,
-  ) => {
+  doUploadComment: (nowPostingEleObj, contentRef, userName, dispatch) => {
     const apiUrl = '/api/post_comment/uploadComment';
     const comment_id = getNewCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -25,8 +18,8 @@ export const comm = {
       method: 'POST',
       url: apiUrl,
       data: {
-        board_type,
-        post_id,
+        board_type: nowPostingEleObj.board_type,
+        post_id: nowPostingEleObj.id,
         comment_id,
         author: userName,
         date: nowDate,
@@ -37,20 +30,14 @@ export const comm = {
       await getBoardData(dispatch);
     });
   },
-  doEditComment: (
-    board_type,
-    post_id,
-    editCommObj,
-    setEditCommObj,
-    dispatch,
-  ) => {
+  doEditComment: (nowPostingEleObj, editCommObj, setEditCommObj, dispatch) => {
     const apiUrl = '/api/post_comment/editComment';
     instance({
       method: 'POST',
       url: apiUrl,
       data: {
-        boardType: board_type,
-        post_id,
+        boardType: nowPostingEleObj.board_type,
+        post_id: nowPostingEleObj.id,
         comment_id: editCommObj.id,
         content: editCommObj.content,
       },

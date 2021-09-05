@@ -59,10 +59,7 @@ export default function UpAndDown({ nowPostingEleObj }) {
             getDoUpdateUDdata(
               'up',
               'down',
-              nowPostingEleObj.up.clicker,
-              nowPostingEleObj.down.clicker,
-              nowPostingEleObj.board_type,
-              nowPostingEleObj.id,
+              nowPostingEleObj,
               userName,
               dispatch,
             )
@@ -90,10 +87,7 @@ export default function UpAndDown({ nowPostingEleObj }) {
             getDoUpdateUDdata(
               'down',
               'up',
-              nowPostingEleObj.down.clicker,
-              nowPostingEleObj.up.clicker,
-              nowPostingEleObj.board_type,
-              nowPostingEleObj.id,
+              nowPostingEleObj,
               userName,
               dispatch,
             )

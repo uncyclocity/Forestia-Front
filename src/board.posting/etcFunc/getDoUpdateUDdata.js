@@ -3,19 +3,19 @@ import { posting } from '../../doApi/doApi';
 export default function getDoUpdateUDdata(
   udType,
   revUdType,
-  udClickerArr,
-  revUdClickerArr,
-  board_type,
-  post_id,
+  nowPostingEleObj,
   userName,
   dispatch,
 ) {
   const defaultData = {
-    board_type,
-    post_id,
+    board_type: nowPostingEleObj.board_type,
+    post_id: nowPostingEleObj.id,
     ud_type: udType,
     userName,
   };
+
+  const udClickerArr = nowPostingEleObj[udType].clicker;
+  const revUdClickerArr = nowPostingEleObj[revUdType].clicker;
 
   if (udClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {

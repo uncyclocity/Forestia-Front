@@ -80,8 +80,6 @@ export default function CommentInput({ nowPostingEleObj }) {
           onClick={() =>
             comm.doUploadComment(
               nowPostingEleObj,
-              nowPostingEleObj.board_type,
-              nowPostingEleObj.id,
               commentContent,
               userName,
               dispatch,
