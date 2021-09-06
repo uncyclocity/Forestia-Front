@@ -5,12 +5,13 @@ import styled from 'styled-components';
 import { unmountAnimation } from '../../common/animationController';
 
 const Styles = styled.div`
-  width: 700px;
-  margin-top: 30px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 700px;
+  margin-top: 30px;
+  flex-direction: row;
 
   .forestia_logo {
     display: flex;
