@@ -117,7 +117,9 @@ const CommContentAreaStyle = styled.div`
 `;
 
 export default function CommentList({ nowPostingEleObj }) {
-  const userName = useReducerState().userName;
+  const state = useReducerState();
+  const userName = state.userName;
+  const postCnt = state.postCnt;
   const dispatch = useDispatch();
   const [editCommObj, setEditCommObj] = useState(false);
 
@@ -175,6 +177,7 @@ export default function CommentList({ nowPostingEleObj }) {
                       style={{ resize: 'none' }}
                       value={editCommObj.content}
                       onChange={(e) =>
+                        !postCnt &&
                         setEditCommObj({
                           ...editCommObj,
                           content: e.target.value,
@@ -185,6 +188,7 @@ export default function CommentList({ nowPostingEleObj }) {
                     <div
                       className="comm_edit_post_btn"
                       onClick={() =>
+                        !postCnt &&
                         comm.doEditComment(
                           nowPostingEleObj,
                           editCommObj,

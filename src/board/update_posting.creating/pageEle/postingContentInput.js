@@ -87,6 +87,8 @@ export default function PostingContentInput({ selBoard }) {
   const state = useReducerState();
   const dispatch = useDispatch();
 
+  const postCnt = state.postCnt;
+
   return (
     <ContentInputStyle>
       <input
@@ -104,11 +106,13 @@ export default function PostingContentInput({ selBoard }) {
       />
       <div
         className="content_post_btn"
-        onClick={() =>
-          content.current.value && title.current.value
-            ? letsDoUploadPosting(selBoard, state, title, content, dispatch)
-            : alert('제목 및 내용을 입력하세요')
-        }
+        onClick={() => {
+          if (!postCnt) {
+            content.current.value && title.current.value
+              ? letsDoUploadPosting(selBoard, state, title, content, dispatch)
+              : alert('제목 및 내용을 입력하세요');
+          }
+        }}
       >
         <div className="post_text">업로드</div>
       </div>

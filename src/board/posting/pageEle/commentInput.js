@@ -63,7 +63,9 @@ const CommPostBtnStyle = styled.div`
 export default function CommentInput({ nowPostingEleObj }) {
   const commentContent = useRef(null);
   const dispatch = useDispatch();
-  const userName = useReducerState().userName;
+  const state = useReducerState();
+  const userName = state.userName;
+  const postCnt = state.postCnt;
 
   return (
     <CommInputAreaStyle>
@@ -77,16 +79,18 @@ export default function CommentInput({ nowPostingEleObj }) {
       <CommPostBtnStyle>
         <div
           className="commPostBtn"
-          onClick={() =>
-            commentContent.current.value
-              ? comm.doUploadComment(
-                  nowPostingEleObj,
-                  commentContent,
-                  userName,
-                  dispatch,
-                )
-              : alert('댓글을 입력하세요')
-          }
+          onClick={() => {
+            if (!postCnt) {
+              commentContent.current.value
+                ? comm.doUploadComment(
+                    nowPostingEleObj,
+                    commentContent,
+                    userName,
+                    dispatch,
+                  )
+                : alert('댓글을 입력하세요');
+            }
+          }}
         >
           <RiMailSendLine />
         </div>

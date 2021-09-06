@@ -19,6 +19,7 @@ const getNewCommId = (nowPostingEleObj) => {
 
 export const comm = {
   doUploadComment: (nowPostingEleObj, contentRef, userName, dispatch) => {
+    postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_comment/uploadComment';
     const comment_id = getNewCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -36,9 +37,11 @@ export const comm = {
     }).then(async () => {
       contentRef.current.value = '';
       await getBoardData(dispatch);
+      postCntSwitcher(dispatch, false);
     });
   },
   doEditComment: (nowPostingEleObj, editCommObj, setEditCommObj, dispatch) => {
+    postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_comment/editComment';
     instance({
       method: 'POST',
@@ -52,9 +55,11 @@ export const comm = {
     }).then(async () => {
       setEditCommObj(false);
       await getBoardData(dispatch);
+      postCntSwitcher(dispatch, false);
     });
   },
   doDeleteComment: (board_type, post_id, comment_id, dispatch) => {
+    postCntSwitcher(dispatch, true);
     instance({
       method: 'POST',
       url: '/api/post_comment/deleteComment',
@@ -65,6 +70,7 @@ export const comm = {
       },
     }).then(async () => {
       await getBoardData(dispatch);
+      postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
         dispatch,
@@ -88,6 +94,7 @@ export const posting = {
     });
   },
   doCreatePosting: (board_type, id, title, content, dispatch) => {
+    postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_posting/uploadPost';
     instance({
       method: 'POST',
@@ -103,6 +110,7 @@ export const posting = {
       },
     }).then(async () => {
       await getBoardData(dispatch);
+      postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
         dispatch,
@@ -111,6 +119,7 @@ export const posting = {
     });
   },
   doDeletePosting: (board_type, id, dispatch) => {
+    postCntSwitcher(dispatch, true);
     const apiUrl = 'api/post_posting/deletePost';
     instance({
       method: 'POST',
@@ -121,10 +130,12 @@ export const posting = {
       },
     }).then(async () => {
       await getBoardData(dispatch);
+      postCntSwitcher(dispatch, false);
       unmountAnimation(0, dispatch, `/board/board_list/${board_type}`);
     });
   },
   doEditPosting: (board_type, id, newTitle, newContent, dispatch) => {
+    postCntSwitcher(dispatch, true);
     instance({
       method: 'POST',
       url: '/api/post_posting/editPost',
@@ -136,6 +147,7 @@ export const posting = {
       },
     }).then(async () => {
       await getBoardData(dispatch);
+      postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
         dispatch,

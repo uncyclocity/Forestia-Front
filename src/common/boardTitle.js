@@ -120,6 +120,7 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
 
   const isPostPage = state.isPostPage;
   const user = state.userName;
+  const postCnt = state.postCnt;
 
   const [isOpenMore, setIsOpenMore] = useState(false);
   const [isOMAnimation, setIsOMAnimation] = useState(false);
@@ -173,7 +174,7 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
                 </li>
                 <li
                   onClick={() => {
-                    if (confirm('정말로 삭제하시겠습니까')) {
+                    if (!postCnt && confirm('정말로 삭제하시겠습니까')) {
                       dispatch({ type: 'editpost_data', nowPostingEleObj });
                       unmountAnimation(
                         0,
