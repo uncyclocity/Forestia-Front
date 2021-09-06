@@ -3,17 +3,21 @@ import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   html, body {
-    background: #e9ecef;
+    background: #ebebeb;
     height: 100%;
     padding: 0;
     margin: 0;
     overflow-y: scroll;
 
+    /* FireFox Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #20c997 transparent;
+
+    /* Webkit Scrollbar */
     &::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
-
     &::-webkit-scrollbar-thumb {
       height: 17%;
       background: #20c997;
@@ -23,10 +27,10 @@ const GlobalStyles = createGlobalStyle`
         background: #1db486;
       }
     }
-
     &::-webkit-scrollbar-track {
       opacity: 0;
     }
+    
   }
 
   * {

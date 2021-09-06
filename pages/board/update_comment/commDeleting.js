@@ -28,7 +28,7 @@ export default function CommDeleting() {
   return (
     <FourAnimationedBox>
       <BoxStyles>
-        <BoardTitle backURL={``}>
+        <BoardTitle>
           <InCommDeletingBoardTitle />
         </BoardTitle>
         <CommDeleteSign />

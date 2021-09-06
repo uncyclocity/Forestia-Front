@@ -126,11 +126,12 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
 
   return (
     <Styles isOMAnimation={isOMAnimation}>
-      <div
-        className="lr_btn"
-        onClick={() => unmountAnimation(0, dispatch, backURL)}
-      >
-        <IoIosArrowBack />
+      <div className="lr_btn">
+        {backURL && (
+          <div onClick={() => unmountAnimation(0, dispatch, backURL)}>
+            <IoIosArrowBack />
+          </div>
+        )}
       </div>
       <div className="board_info">{children}</div>
       <div className="lr_btn">

@@ -28,7 +28,7 @@ export default function PostingDeleting() {
   return (
     <FourAnimationedBox>
       <BoxStyles>
-        <BoardTitle backURL={``}>
+        <BoardTitle>
           <InDeletePostingBoardTitle />
         </BoardTitle>
         <DeleteSign />
