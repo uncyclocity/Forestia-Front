@@ -186,8 +186,7 @@ export default function CommentList({ nowPostingEleObj }) {
                       className="comm_edit_post_btn"
                       onClick={() =>
                         comm.doEditComment(
-                          nowPostingEleObj.board_type,
-                          nowPostingEleObj.id,
+                          nowPostingEleObj,
                           editCommObj,
                           setEditCommObj,
                           dispatch,

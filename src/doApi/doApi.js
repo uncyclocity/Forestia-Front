@@ -37,7 +37,7 @@ export const comm = {
       method: 'POST',
       url: apiUrl,
       data: {
-        boardType: nowPostingEleObj.board_type,
+        board_type: nowPostingEleObj.board_type,
         post_id: nowPostingEleObj.id,
         comment_id: editCommObj.id,
         content: editCommObj.content,
@@ -45,6 +45,24 @@ export const comm = {
     }).then(async () => {
       setEditCommObj(false);
       await getBoardData(dispatch);
+    });
+  },
+  doDeleteComment: (board_type, post_id, comment_id, dispatch) => {
+    instance({
+      method: 'POST',
+      url: '/api/post_comment/deleteComment',
+      data: {
+        board_type,
+        post_id,
+        comment_id,
+      },
+    }).then(async () => {
+      await getBoardData(dispatch);
+      unmountAnimation(
+        0,
+        dispatch,
+        `/board/posting?board_type=${board_type}&post_id=${post_id}`,
+      );
     });
   },
 };

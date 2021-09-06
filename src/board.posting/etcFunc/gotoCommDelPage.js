@@ -9,7 +9,7 @@ export default function gotoCommDelPage(
     unmountAnimation(
       0,
       dispatch,
-      `/board/update_comment/commDeleting?boardType=${nowPostingEleObj.board_type}&post_id=${nowPostingEleObj.id}&comment_id=${comment_id}`,
+      `/board/update_comment/commDeleting?board_type=${nowPostingEleObj.board_type}&post_id=${nowPostingEleObj.id}&comment_id=${comment_id}`,
     );
   }
 }

@@ -1,56 +1,38 @@
 import BoardTitle from '../../../src/common/boardTitle';
-import St_crud from '../../../styles/pages/board/St_crud';
 import { useEffect } from 'react';
-import getBoardData from '../../../src/common/getBoardData';
-import { RiDeleteBin7Line } from 'react-icons/ri';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import { useDispatch } from '../../../src/common/context';
-import {
-  mountAnimation,
-  unmountAnimation,
-} from '../../../src/common/animationController';
-import instance from '../../../src/common/instance';
+import { mountAnimation } from '../../../src/common/animationController';
+import InCommDeletingBoardTitle from '../../../src/board.update_comment.deleting/pageEle/inCommDeletingBoardTitle';
+import CommDeleteSign from '../../../src/board.update_comment.deleting/pageEle/commDeleteSign';
+import styled from 'styled-components';
+import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import { comm } from '../../../src/doApi/doApi';
+
+const BoxStyles = styled.div`
+  color: #525252;
+  padding: 20px 30px 5px 30px;
+`;
 
 export default function CommDeleting() {
   const router = useRouter();
-  const { boardType, post_id, comment_id } = router.query;
+  const { board_type, post_id, comment_id } = router.query;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     mountAnimation(dispatch, 'commDeleting');
-    instance({
-      method: 'POST',
-      url: '/api/post_comment/deleteComment',
-      data: {
-        boardType,
-        post_id,
-        comment_id,
-      },
-    }).then(async () => {
-      await getBoardData(dispatch);
-      unmountAnimation(
-        0,
-        dispatch,
-        `/board/posting?board_type=${boardType}&post_id=${post_id}`,
-      );
-    });
-  }, [boardType, comment_id, dispatch, post_id]);
+    comm.doDeleteComment(board_type, comment_id, post_id, dispatch);
+  }, [board_type, comment_id, dispatch, post_id]);
 
   return (
-    <St_crud>
-      <BoardTitle backURL={``}>
-        <div className="icon">
-          <RiDeleteBin7Line />
-        </div>
-        <div className="title_name">댓글 삭제 중</div>
-      </BoardTitle>
-      <div className="delete_sign_area">
-        <div className="icon">
-          <AiOutlineLoading3Quarters />
-        </div>
-      </div>
-    </St_crud>
+    <FourAnimationedBox>
+      <BoxStyles>
+        <BoardTitle backURL={``}>
+          <InCommDeletingBoardTitle />
+        </BoardTitle>
+        <CommDeleteSign />
+      </BoxStyles>
+    </FourAnimationedBox>
   );
 }
