@@ -3,6 +3,13 @@ import instance from '../common/instance';
 import getBoardData from '../common/getBoardData';
 import { unmountAnimation } from '../common/animationController';
 
+const postCntSwitcher = (dispatch, sw) => {
+  dispatch({
+    type: 'postcnt_switcher',
+    sw,
+  });
+};
+
 const getNewCommId = (nowPostingEleObj) => {
   const commArr = nowPostingEleObj.comments;
   const commArrLen = commArr.length;
@@ -69,6 +76,7 @@ export const comm = {
 
 export const posting = {
   doUpdateUpDown: (data, dispatch) => {
+    postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_posting/editUD';
     instance({
       method: 'POST',
@@ -76,6 +84,7 @@ export const posting = {
       data,
     }).then(async () => {
       await getBoardData(dispatch);
+      postCntSwitcher(dispatch, false);
     });
   },
   doCreatePosting: (board_type, id, title, content, dispatch) => {

@@ -12,6 +12,7 @@ export default function Context({ children, freeBoard, photoBoard }) {
     photoBoard,
     isPostPage: false,
     nowPostingEleObj: {},
+    postCnt: false,
   };
 
   const reducer = (state, action) => {
@@ -46,6 +47,12 @@ export default function Context({ children, freeBoard, photoBoard }) {
         return {
           ...state,
           nowPostingEleObj: action.nowPostingEleObj,
+        };
+      }
+      case 'postcnt_switcher': {
+        return {
+          ...state,
+          postCnt: action.sw,
         };
       }
       default:

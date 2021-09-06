@@ -47,7 +47,9 @@ const UpAndDownBtnStyle = styled.div`
 `;
 
 export default function UpAndDown({ nowPostingEleObj }) {
-  const userName = useReducerState().userName;
+  const state = useReducerState();
+  const userName = state.userName;
+  const postCnt = state.postCnt;
   const dispatch = useDispatch();
 
   return (
@@ -55,15 +57,16 @@ export default function UpAndDown({ nowPostingEleObj }) {
       <UpAndDownBtnStyle>
         <div
           className="ud_btn_area"
-          onClick={() =>
-            getDoUpdateUDdata(
-              'up',
-              'down',
-              nowPostingEleObj,
-              userName,
-              dispatch,
-            )
-          }
+          onClick={() => {
+            !postCnt &&
+              getDoUpdateUDdata(
+                'up',
+                'down',
+                nowPostingEleObj,
+                userName,
+                dispatch,
+              );
+          }}
         >
           <div className="icon">
             <div className="up">
@@ -83,15 +86,16 @@ export default function UpAndDown({ nowPostingEleObj }) {
 
         <div
           className="ud_btn_area"
-          onClick={() =>
-            getDoUpdateUDdata(
-              'down',
-              'up',
-              nowPostingEleObj,
-              userName,
-              dispatch,
-            )
-          }
+          onClick={() => {
+            !postCnt &&
+              getDoUpdateUDdata(
+                'down',
+                'up',
+                nowPostingEleObj,
+                userName,
+                dispatch,
+              );
+          }}
         >
           <div className="icon">
             <div className="down">
