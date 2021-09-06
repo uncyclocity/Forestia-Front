@@ -1,6 +1,6 @@
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import styled from 'styled-components';
-import { spin_360 } from '../../../styles/keyframes/spin';
+import { spin_360 } from '../../../../styles/keyframes/spin';
 
 const DeleteSignStyle = styled.div`
   margin: 20px 0;

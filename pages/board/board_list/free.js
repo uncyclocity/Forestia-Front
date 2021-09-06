@@ -4,8 +4,8 @@ import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import styled from 'styled-components';
-import InFreeListBoardTitle from '../../../src/board.board_list.free/pageEle/inFreeListBoardTitle';
-import FreeListPostingList from '../../../src/board.board_list.free/pageEle/freeListPostingList';
+import InFreeListBoardTitle from '../../../src/board/list.free/pageEle/inFreeListBoardTitle';
+import FreeListPostingList from '../../../src/board/list.free/pageEle/freeListPostingList';
 
 const ListStyle = styled.div`
   padding: 20px 30px 5px 30px;

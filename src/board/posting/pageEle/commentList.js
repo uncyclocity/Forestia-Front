@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../common/context';
-import { comm } from '../../doApi/doApi';
+import { useDispatch, useReducerState } from '../../../common/context';
+import { comm } from '../../../doApi/doApi';
 import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
 
 const CommListAreaStyle = styled.div`

@@ -2,10 +2,10 @@ import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useReducerState } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
-import InEditPostingBoardTitle from '../../../src/board.update_posting.editing/pageEle/InEditPostingBoardTitle';
-import FreePhotoSign from '../../../src/board.update_posting.editing/pageEle/freePhotoSign';
+import InEditPostingBoardTitle from '../../../src/board/update_posting.editing/pageEle/InEditPostingBoardTitle';
+import FreePhotoSign from '../../../src/board/update_posting.editing/pageEle/freePhotoSign';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
-import PostingEditContentInput from '../../../src/board.update_posting.editing/pageEle/postingEditContentInput';
+import PostingEditContentInput from '../../../src/board/update_posting.editing/pageEle/postingEditContentInput';
 import styled from 'styled-components';
 
 const BoxStyles = styled.div`

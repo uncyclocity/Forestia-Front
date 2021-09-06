@@ -1,11 +1,10 @@
-import { useRef } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../common/context';
-import letsDoUploadPosting from '../etcFunc/letsDoUploadPosting';
+import { useDispatch } from '../../../common/context';
+import { posting } from '../../../doApi/doApi';
 
 const ContentInputStyle = styled.div`
   flex-direction: column;
-  margin-bottom: 15px;
+  margin: 20px 0 15px 0;
 
   .content_title_input_box {
     width: 640px;
@@ -81,34 +80,46 @@ const ContentInputStyle = styled.div`
   }
 `;
 
-export default function PostingContentInput({ selBoard }) {
-  const title = useRef(null);
-  const content = useRef(null);
-  const state = useReducerState();
+export default function PostingEditContentInput({
+  board_type,
+  id,
+  newTitle,
+  newContent,
+}) {
   const dispatch = useDispatch();
 
   return (
     <ContentInputStyle>
-      <input
-        type="text"
-        className="content_title_input_box"
-        placeholder="제목을 입력하세요"
-        ref={title}
-      />
-      <hr className="title_content_line" align="left" />
-      <textarea
-        className="content_input_box"
-        style={{ resize: 'none' }}
-        placeholder="내용을 입력하세요"
-        ref={content}
-      />
-      <div
-        className="content_post_btn"
-        onClick={() =>
-          letsDoUploadPosting(selBoard, state, title, content, dispatch)
-        }
-      >
-        <div className="post_text">업로드</div>
+      <div className="content_input">
+        <input
+          type="text"
+          className="content_title_input_box"
+          placeholder="제목을 입력하세요"
+          ref={newTitle}
+        />
+        <hr className="title_content_line" align="left" />
+        <textarea
+          className="content_input_box"
+          style={{ resize: 'none' }}
+          placeholder="내용을 입력하세요"
+          ref={newContent}
+        />
+        <div
+          className="content_post_btn"
+          onClick={() =>
+            newtitle.current.value && newContent.current.value
+              ? posting.doEditPosting(
+                  board_type,
+                  id,
+                  newTitle,
+                  newContent,
+                  dispatch,
+                )
+              : alert('제목 및 내용을 입력하세요')
+          }
+        >
+          <div className="post_text">수정</div>
+        </div>
       </div>
     </ContentInputStyle>
   );

@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useReducerState } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import { posting } from '../../../src/doApi/doApi';
-import InDeletePostingBoardTitle from '../../../src/board.update_posting.deleting/pageEle/inDeletePostingBoardTitle';
-import DeleteSign from '../../../src/board.update_posting.deleting/pageEle/deleteSign';
+import InDeletePostingBoardTitle from '../../../src/board/update_posting.deleting/pageEle/inDeletePostingBoardTitle';
+import DeleteSign from '../../../src/board/update_posting.deleting/pageEle/deleteSign';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 

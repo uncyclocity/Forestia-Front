@@ -1,4 +1,4 @@
-import { posting } from '../../doApi/doApi';
+import { posting } from '../../../doApi/doApi';
 
 export default function letsDoUploadPosting(
   selBoard,

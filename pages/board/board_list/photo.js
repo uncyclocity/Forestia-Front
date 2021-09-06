@@ -4,8 +4,8 @@ import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
-import InPhotoListBoardTitle from '../../../src/board.board_list.photo/pageEle/inPhotoListBoardTitle';
-import PhotoListPostingList from '../../../src/board.board_list.photo/pageEle/photoListPostingList';
+import InPhotoListBoardTitle from '../../../src/board/list.photo/pageEle/inPhotoListBoardTitle';
+import PhotoListPostingList from '../../../src/board/list.photo/pageEle/photoListPostingList';
 
 const ListStyle = styled.div`
   padding: 20px 30px 5px 30px;

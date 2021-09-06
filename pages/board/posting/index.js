@@ -5,15 +5,15 @@ import { useEffect } from 'react';
 import {
   postPageSwitchOff,
   postPageSwitchOn,
-} from '../../../src/board.posting/etcFunc/postpageSwitching';
-import getPostingEleState from '../../../src/board.posting/etcFunc/getPostingEleState';
-import UpAndDown from '../../../src/board.posting/pageEle/upAndDown';
-import InPostingBoardTitle from '../../../src/board.posting/pageEle/inPostingBoardTitle';
-import CommentInput from '../../../src/board.posting/pageEle/commentInput';
-import CommentList from '../../../src/board.posting/pageEle/commentList';
+} from '../../../src/board/posting/etcFunc/postpageSwitching';
+import getPostingEleState from '../../../src/board/posting/etcFunc/getPostingEleState';
+import UpAndDown from '../../../src/board/posting/pageEle/upAndDown';
+import InPostingBoardTitle from '../../../src/board/posting/pageEle/inPostingBoardTitle';
+import CommentInput from '../../../src/board/posting/pageEle/commentInput';
+import CommentList from '../../../src/board/posting/pageEle/commentList';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
-import ContentView from '../../../src/board.posting/pageEle/contentView';
+import ContentView from '../../../src/board/posting/pageEle/contentView';
 import { mountAnimation } from '../../../src/common/animationController';
 
 const BoxStyles = styled.div`

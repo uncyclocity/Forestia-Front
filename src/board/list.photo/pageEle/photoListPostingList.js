@@ -1,18 +1,18 @@
 import { AiOutlineSmile } from 'react-icons/ai';
 import { FaRegCommentAlt } from 'react-icons/fa';
-import { unmountAnimation } from '../../common/animationController';
-import { useDispatch, useReducerState } from '../../common/context';
+import { unmountAnimation } from '../../../common/animationController';
+import { useDispatch, useReducerState } from '../../../common/context';
 
-export default function FreeListPostingList() {
+export default function PhotoListPostingList() {
   const dispatch = useDispatch();
-  const freeBoard = useReducerState().freeBoard;
+  const photoBoard = useReducerState().photoBoard;
 
   return (
     <div className="content_list">
-      {freeBoard.length > 0 ? (
+      {photoBoard.length > 0 ? (
         <ul>
-          {freeBoard &&
-            freeBoard.map((posting, index) => {
+          {photoBoard &&
+            photoBoard.map((posting, index) => {
               return (
                 <li key={index}>
                   <div
@@ -20,7 +20,7 @@ export default function FreeListPostingList() {
                       unmountAnimation(
                         0,
                         dispatch,
-                        `/board/posting?board_type=free&post_id=${posting.id}`,
+                        `/board/posting?board_type=photo&post_id=${posting.id}`,
                       )
                     }
                   >

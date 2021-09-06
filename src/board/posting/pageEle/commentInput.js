@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { RiMailSendLine } from 'react-icons/ri';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../common/context';
-import { comm } from '../../doApi/doApi';
+import { useDispatch, useReducerState } from '../../../common/context';
+import { comm } from '../../../doApi/doApi';
 
 const CommInputAreaStyle = styled.div`
   display: flex;
@@ -78,12 +78,14 @@ export default function CommentInput({ nowPostingEleObj }) {
         <div
           className="commPostBtn"
           onClick={() =>
-            comm.doUploadComment(
-              nowPostingEleObj,
-              commentContent,
-              userName,
-              dispatch,
-            )
+            commentContent.current.value
+              ? comm.doUploadComment(
+                  nowPostingEleObj,
+                  commentContent,
+                  userName,
+                  dispatch,
+                )
+              : alert('댓글을 입력하세요')
           }
         >
           <RiMailSendLine />

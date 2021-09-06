@@ -4,9 +4,9 @@ import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
-import InCreatePostingBoardTitle from '../../../src/board.update_posting.creating/pageEle/InCreatePostingBoardTitle';
-import FreePhotoSwitch from '../../../src/board.update_posting.creating/pageEle/freePhotoSwitch';
-import PostingContentInput from '../../../src/board.update_posting.creating/pageEle/postingContentInput';
+import InCreatePostingBoardTitle from '../../../src/board/update_posting.creating/pageEle/InCreatePostingBoardTitle';
+import FreePhotoSwitch from '../../../src/board/update_posting.creating/pageEle/freePhotoSwitch';
+import PostingContentInput from '../../../src/board/update_posting.creating/pageEle/postingContentInput';
 
 const BoxStyles = styled.div`
   color: #525252;

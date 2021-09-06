@@ -1,4 +1,4 @@
-import { unmountAnimation } from '../../common/animationController';
+import { unmountAnimation } from '../../../common/animationController';
 
 export default function gotoCommDelPage(
   nowPostingEleObj,

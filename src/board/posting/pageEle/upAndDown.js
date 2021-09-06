@@ -5,7 +5,7 @@ import {
   AiOutlineLike,
 } from 'react-icons/ai';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../common/context';
+import { useDispatch, useReducerState } from '../../../common/context';
 import getDoUpdateUDdata from '../etcFunc/getDoUpdateUDdata';
 
 const UpAndDownAreaStyle = styled.div`
