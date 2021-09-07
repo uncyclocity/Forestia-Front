@@ -16,6 +16,6 @@ export default function letsDoUploadPosting(
   const formData = new FormData();
   formData.append('images', images.current.files[0]);
 
-  posting.doUploadImage(formData, selBoard, id, dispatch);
+  posting.doUploadImage(formData, selBoard, dispatch);
   posting.doCreatePosting(selBoard, id, title, content, dispatch);
 }

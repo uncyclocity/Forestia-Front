@@ -118,9 +118,9 @@ export const posting = {
       );
     });
   },
-  doUploadImage: async (formData, board_type, id, dispatch) => {
+  doUploadImage: async (formData, board_type, dispatch) => {
     postCntSwitcher(dispatch, true);
-    const apiUrl = `/api/post_posting/uploadImage?board_type=${board_type}&id=${id}`;
+    const apiUrl = `/api/post_posting/uploadImage?board_type=${board_type}`;
     await instance({
       method: 'POST',
       url: apiUrl,
