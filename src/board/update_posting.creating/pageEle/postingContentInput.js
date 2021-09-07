@@ -45,6 +45,28 @@ const ContentInputStyle = styled.div`
     }
   }
 
+  .upload_image_area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 10px;
+
+    .uploadimg_btn_area {
+      .uploadimg_text {
+        color: #20c997;
+        font-weight: bold;
+      }
+    }
+
+    .uploadimg_list {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
   .content_post_btn {
     background: #20c997;
     color: white;
@@ -84,6 +106,7 @@ const ContentInputStyle = styled.div`
 export default function PostingContentInput({ selBoard }) {
   const title = useRef(null);
   const content = useRef(null);
+  const images = useRef(null);
   const state = useReducerState();
   const dispatch = useDispatch();
 
@@ -104,12 +127,26 @@ export default function PostingContentInput({ selBoard }) {
         placeholder="내용을 입력하세요"
         ref={content}
       />
+      <div className="upload_image_area">
+        <div className="uploadimg_btn_area">
+          <div className="uploadimg_text">이미지 업로드</div>
+          <input type="file" ref={images} accept="image/*" multiple />
+        </div>
+        <div className="uploadedimg_list"></div>
+      </div>
       <div
         className="content_post_btn"
         onClick={() => {
           if (!postCnt) {
             content.current.value && title.current.value
-              ? letsDoUploadPosting(selBoard, state, title, content, dispatch)
+              ? letsDoUploadPosting(
+                  selBoard,
+                  state,
+                  title,
+                  content,
+                  images,
+                  dispatch,
+                )
               : alert('제목 및 내용을 입력하세요');
           }
         }}

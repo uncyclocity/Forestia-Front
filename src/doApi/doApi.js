@@ -93,10 +93,10 @@ export const posting = {
       postCntSwitcher(dispatch, false);
     });
   },
-  doCreatePosting: (board_type, id, title, content, dispatch) => {
+  doCreatePosting: async (board_type, id, title, content, dispatch) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_posting/uploadPost';
-    instance({
+    await instance({
       method: 'POST',
       url: apiUrl,
       data: {
@@ -116,6 +116,18 @@ export const posting = {
         dispatch,
         `/board/posting?board_type=${board_type}&post_id=${id}`,
       );
+    });
+  },
+  doUploadImage: async (formData, board_type, id, dispatch) => {
+    postCntSwitcher(dispatch, true);
+    const apiUrl = `/api/post_posting/uploadImage?board_type=${board_type}&id=${id}`;
+    await instance({
+      method: 'POST',
+      url: apiUrl,
+      header: { 'content-type': 'multipart/form-data' },
+      data: formData,
+    }).then(async () => {
+      postCntSwitcher(dispatch, false);
     });
   },
   doDeletePosting: (board_type, id, dispatch) => {
