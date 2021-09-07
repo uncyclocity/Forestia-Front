@@ -15,7 +15,9 @@ const upload = multer({ storage }).single('images');
 
 router.post('/', upload, (req, res) => {
   console.log(req.file);
-  res.json({ url: `/upload/${req.query.board_type}/${req.file.filename}` });
+  return res.json({
+    url: `/uploads/${req.query.board_type}/${req.file.filename}`,
+  });
 });
 
 module.exports = router;
