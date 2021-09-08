@@ -15,6 +15,7 @@ import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import ContentView from '../../../src/board/posting/pageEle/contentView';
 import { mountAnimation } from '../../../src/common/animationController';
+import ImageView from '../../../src/board/posting/pageEle/imageView';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -44,6 +45,7 @@ export default function Post() {
           <InPostingBoardTitle nowPostingEleObj={nowPostingEleObj} />
         </BoardTitle>
         <ContentView nowPostingEleObj={nowPostingEleObj} />
+        <ImageView nowPostingEleObj={nowPostingEleObj} />
         <UpAndDown nowPostingEleObj={nowPostingEleObj} />
         <CommentList nowPostingEleObj={nowPostingEleObj} />
         <CommentInput nowPostingEleObj={nowPostingEleObj} />
