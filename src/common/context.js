@@ -13,7 +13,6 @@ export default function Context({ children, freeBoard, photoBoard }) {
     isPostPage: false,
     nowPostingEleObj: {},
     postCnt: false,
-    pathArrTmp: [],
   };
 
   const reducer = (state, action) => {
@@ -54,12 +53,6 @@ export default function Context({ children, freeBoard, photoBoard }) {
         return {
           ...state,
           postCnt: action.sw,
-        };
-      }
-      case 'use_patharrtmp': {
-        return {
-          ...state,
-          pathArrTmp: action.pathArrTmp,
         };
       }
       default:

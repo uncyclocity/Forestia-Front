@@ -16,7 +16,7 @@ const upload = multer({ storage }).array('images');
 router.post('/', upload, (req, res) => {
   const pathArr = [];
   for (var i = 0; i < req.files.length; i++) {
-    pathArr.push(req.files[i].path);
+    pathArr.push(`uploads/${req.query.board_type}/${req.files[i].filename}`);
   }
   res.json(pathArr);
 });

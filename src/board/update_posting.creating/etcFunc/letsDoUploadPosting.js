@@ -19,6 +19,5 @@ export default async function letsDoUploadPosting(
   }
 
   const res = await posting.doUploadImage(formData, selBoard, dispatch);
-  console.log(res);
   posting.doCreatePosting(selBoard, id, title, content, res, dispatch);
 }
