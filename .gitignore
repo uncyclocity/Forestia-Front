@@ -34,4 +34,8 @@ yarn-error.log*
 # vercel
 .vercel
 
+# mongo bashfile
 mongosh.exe
+
+# image storage
+/public/uploads/
