@@ -11,12 +11,12 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage }).single('images');
+const upload = multer({ storage }).array('images');
 
 router.post('/', upload, (req, res) => {
-  console.log(req.file);
+  console.log(req.files);
   return res.json({
-    url: `/uploads/${req.query.board_type}/${req.file.filename}`,
+    url: `/uploads/${req.query.board_type}`,
   });
 });
 
