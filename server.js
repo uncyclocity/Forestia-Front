@@ -6,6 +6,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const imageRouter = require('./pages/api/post_posting/uploadImage');
+const imageDelRouter = require('./pages/api/post_posting/deleteImage');
 
 app
   .prepare()
@@ -13,6 +14,8 @@ app
     const server = express();
 
     server.use('/api/post_posting/uploadImage', imageRouter);
+
+    server.use('/api/post_posting/deleteImage', imageDelRouter);
 
     server.get('*', (req, res) => {
       return handle(req, res);

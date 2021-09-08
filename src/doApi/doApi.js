@@ -156,6 +156,15 @@ export const posting = {
       },
     }).then(async () => {
       await getBoardData(dispatch);
+    });
+  },
+  doDeleteImage: async (board_type, imagesUrl, dispatch) => {
+    const apiUrl = 'api/post_posting/deleteImage';
+    await instance({
+      method: 'POST',
+      url: apiUrl,
+      data: { imagesUrl },
+    }).then(async () => {
       postCntSwitcher(dispatch, false);
       unmountAnimation(0, dispatch, `/board/board_list/${board_type}`);
     });

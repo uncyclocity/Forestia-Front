@@ -15,15 +15,16 @@ const BoxStyles = styled.div`
 
 export default function PostingDeleting() {
   const dispatch = useDispatch();
-  const { board_type, id } = useReducerState().nowPostingEleObj;
+  const { board_type, id, imagesUrl } = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     mountAnimation(dispatch, 'deleting');
     posting.doDeletePosting(board_type, id, dispatch);
+    posting.doDeleteImage(board_type, imagesUrl, dispatch);
     return () => {
       dispatch({ type: 'editpost_data', editData: {} });
     };
-  }, [board_type, dispatch, id]);
+  }, [board_type, dispatch, id, imagesUrl]);
 
   return (
     <FourAnimationedBox>
