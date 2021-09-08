@@ -36,38 +36,10 @@ const free = new Schema({
         default: Date.now,
       },
       content: String,
-      up: {
-        amount: Number,
-        clicker: Array,
-      },
-
-      down: {
-        amount: Number,
-        clicker: Array,
-      },
-      reply: [
-        {
-          id: String,
-          author: String,
-          to: String,
-          date: {
-            type: String,
-            default: Date.now,
-          },
-          content: String,
-          up: {
-            amount: Number,
-            clicker: Array,
-          },
-
-          down: {
-            amount: Number,
-            clicker: Array,
-          },
-        },
-      ],
     },
   ],
+
+  imagesUrl: Array,
 });
 
 module.exports = mongoose.models.Free || mongoose.model('Free', free);

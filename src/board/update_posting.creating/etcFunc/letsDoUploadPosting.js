@@ -1,6 +1,6 @@
 import { posting } from '../../../doApi/doApi';
 
-export default function letsDoUploadPosting(
+export default async function letsDoUploadPosting(
   selBoard,
   state,
   title,
@@ -14,11 +14,11 @@ export default function letsDoUploadPosting(
     selBoardLen > 0 ? parseInt(selBoardArr[selBoardLen - 1].id) + 1 : 0;
 
   const formData = new FormData();
-  console.log(images.current.files.length);
   for (var i = 0; i < images.current.files.length; i++) {
     formData.append('images', images.current.files[i]);
   }
 
-  posting.doUploadImage(formData, selBoard, dispatch);
-  posting.doCreatePosting(selBoard, id, title, content, dispatch);
+  const res = await posting.doUploadImage(formData, selBoard, dispatch);
+  console.log(res);
+  posting.doCreatePosting(selBoard, id, title, content, res, dispatch);
 }

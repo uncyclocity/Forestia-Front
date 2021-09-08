@@ -93,7 +93,14 @@ export const posting = {
       postCntSwitcher(dispatch, false);
     });
   },
-  doCreatePosting: async (board_type, id, title, content, dispatch) => {
+  doCreatePosting: async (
+    board_type,
+    id,
+    title,
+    content,
+    pathArr,
+    dispatch,
+  ) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_posting/uploadPost';
     await instance({
@@ -107,6 +114,7 @@ export const posting = {
         title: title.current.value,
         content: content.current.value,
         comments: [],
+        imagesUrl: pathArr,
       },
     }).then(async () => {
       await getBoardData(dispatch);
@@ -121,14 +129,17 @@ export const posting = {
   doUploadImage: async (formData, board_type, dispatch) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = `/api/post_posting/uploadImage?board_type=${board_type}`;
+    var pathArr = [];
     await instance({
       method: 'POST',
       url: apiUrl,
       header: { 'content-type': 'multipart/form-data' },
       data: formData,
-    }).then(async () => {
+    }).then(async (resPathArr) => {
       postCntSwitcher(dispatch, false);
+      pathArr = resPathArr;
     });
+    return pathArr.data;
   },
   doDeletePosting: (board_type, id, dispatch) => {
     postCntSwitcher(dispatch, true);

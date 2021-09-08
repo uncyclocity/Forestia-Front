@@ -5,8 +5,25 @@ import mongoose from 'mongoose';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { board_type, id, author, date, title, content, comments } = req.body;
-    if (id >= 0 && author && date && title && content && comments) {
+    const {
+      board_type,
+      id,
+      author,
+      date,
+      title,
+      content,
+      comments,
+      imagesUrl,
+    } = req.body;
+    if (
+      id >= 0 &&
+      author &&
+      date &&
+      title &&
+      content &&
+      comments &&
+      imagesUrl
+    ) {
       try {
         var post_obj = {
           _id: new mongoose.Types.ObjectId(),
@@ -18,6 +35,7 @@ const handler = async (req, res) => {
           up: { amount: 0, clicker: [] },
           down: { amount: 0, clicker: [] },
           comments,
+          imagesUrl,
         };
         if (board_type === 'free') {
           var post = new Free(post_obj);
