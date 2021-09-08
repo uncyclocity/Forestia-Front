@@ -1,4 +1,11 @@
-import Image from 'next/image';
+import styled from 'styled-components';
+
+const ImageStyle = styled.div`
+  img {
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+  }
+`;
 
 export default function ImageView({ nowPostingEleObj }) {
   const imagesUrl = nowPostingEleObj.imagesUrl;
@@ -7,9 +14,9 @@ export default function ImageView({ nowPostingEleObj }) {
     <div className="imageview_area">
       {imagesUrl.map((imageUrl, index) => {
         return (
-          <div className="image" key={index}>
-            <Image src={imageUrl} alt={index} width={100} height={100} />
-          </div>
+          <ImageStyle key={index}>
+            <img src={imageUrl} alt={index} width="640px" />
+          </ImageStyle>
         );
       })}
     </div>

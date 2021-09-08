@@ -18,12 +18,12 @@ const getNewCommId = (nowPostingEleObj) => {
 };
 
 export const comm = {
-  doUploadComment: (nowPostingEleObj, contentRef, userName, dispatch) => {
+  doUploadComment: async (nowPostingEleObj, contentRef, userName, dispatch) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_comment/uploadComment';
     const comment_id = getNewCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
-    instance({
+    await instance({
       method: 'POST',
       url: apiUrl,
       data: {
@@ -40,10 +40,15 @@ export const comm = {
       postCntSwitcher(dispatch, false);
     });
   },
-  doEditComment: (nowPostingEleObj, editCommObj, setEditCommObj, dispatch) => {
+  doEditComment: async (
+    nowPostingEleObj,
+    editCommObj,
+    setEditCommObj,
+    dispatch,
+  ) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_comment/editComment';
-    instance({
+    await instance({
       method: 'POST',
       url: apiUrl,
       data: {
@@ -58,9 +63,9 @@ export const comm = {
       postCntSwitcher(dispatch, false);
     });
   },
-  doDeleteComment: (board_type, post_id, comment_id, dispatch) => {
+  doDeleteComment: async (board_type, post_id, comment_id, dispatch) => {
     postCntSwitcher(dispatch, true);
-    instance({
+    await instance({
       method: 'POST',
       url: '/api/post_comment/deleteComment',
       data: {
@@ -81,10 +86,10 @@ export const comm = {
 };
 
 export const posting = {
-  doUpdateUpDown: (data, dispatch) => {
+  doUpdateUpDown: async (data, dispatch) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_posting/editUD';
-    instance({
+    await instance({
       method: 'POST',
       url: apiUrl,
       data,
@@ -101,7 +106,6 @@ export const posting = {
     pathArr,
     dispatch,
   ) => {
-    postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_posting/uploadPost';
     await instance({
       method: 'POST',
@@ -135,16 +139,15 @@ export const posting = {
       url: apiUrl,
       header: { 'content-type': 'multipart/form-data' },
       data: formData,
-    }).then(async (resPathArr) => {
-      postCntSwitcher(dispatch, false);
+    }).then((resPathArr) => {
       pathArr = resPathArr;
     });
     return pathArr.data;
   },
-  doDeletePosting: (board_type, id, dispatch) => {
+  doDeletePosting: async (board_type, id, dispatch) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = 'api/post_posting/deletePost';
-    instance({
+    await instance({
       method: 'POST',
       url: apiUrl,
       data: {
@@ -157,9 +160,9 @@ export const posting = {
       unmountAnimation(0, dispatch, `/board/board_list/${board_type}`);
     });
   },
-  doEditPosting: (board_type, id, newTitle, newContent, dispatch) => {
+  doEditPosting: async (board_type, id, newTitle, newContent, dispatch) => {
     postCntSwitcher(dispatch, true);
-    instance({
+    await instance({
       method: 'POST',
       url: '/api/post_posting/editPost',
       data: {
