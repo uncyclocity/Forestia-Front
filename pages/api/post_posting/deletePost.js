@@ -12,7 +12,7 @@ const handler = async (req, res) => {
         } else if (board_type === 'photo') {
           await Photo.deleteOne({ id });
         }
-        return res.status(200).send();
+        return res.end();
       } catch (error) {
         return res.status(500).send(error.message);
       }

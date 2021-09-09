@@ -13,6 +13,8 @@ app
   .then(() => {
     const server = express();
 
+    server.use(express.json());
+
     server.use('/api/post_posting/uploadImage', imageRouter);
 
     server.use('/api/post_posting/deleteImage', imageDelRouter);

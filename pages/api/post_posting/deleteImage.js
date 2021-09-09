@@ -4,8 +4,7 @@ const fs = require('fs');
 
 router.post('/', (req, res) => {
   const { imagesUrl } = req.body;
-  console.log(req.body);
-  for (var i = 0; i <= imagesUrl.length; i++) {
+  for (var i = 0; i < imagesUrl.length; i++) {
     fs.unlink(`public${imagesUrl[i]}`, (error) => {
       if (error) {
         return res.status(500).send(error.message);
