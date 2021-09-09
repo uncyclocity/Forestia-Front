@@ -19,6 +19,8 @@ app
 
     server.use('/api/post_posting/deleteImage', imageDelRouter);
 
+    server.use('/uploads', express.static('public/uploads'));
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });
