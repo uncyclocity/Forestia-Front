@@ -62,9 +62,20 @@ const ContentInputStyle = styled.div`
       }
     }
 
-    .uploadimg_list {
+    .uploadedimg_list {
       display: flex;
-      flex-direction: row;
+      overflow-x: scroll;
+      scrollbar-width: thin;
+      border-radius: 3px;
+
+      img {
+        &:not(:last-child) {
+          margin-right: 7px;
+        }
+        border-radius: 3px;
+        border: 1px solid #d1d8de;
+        margin-bottom: 3px;
+      }
     }
   }
 
@@ -145,8 +156,10 @@ export default function PostingContentInput({ selBoard }) {
         <div className="uploadedimg_list">
           {imagesUrlArr.length > 0 &&
             imagesUrlArr.map((imageUrl, index) => {
-              // eslint-disable-next-line @next/next/no-img-element
-              return <img src={imageUrl} key={index} alt={index} height="44" />;
+              return (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={imageUrl} key={index} alt={index} height="44" />
+              );
             })}
         </div>
       </div>
