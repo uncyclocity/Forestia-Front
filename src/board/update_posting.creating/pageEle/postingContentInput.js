@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
+import getImagesUrlArr from '../etcFunc/getImagesUrlArr';
 import letsDoUploadPosting from '../etcFunc/letsDoUploadPosting';
 
 const ContentInputStyle = styled.div`
@@ -106,7 +107,8 @@ const ContentInputStyle = styled.div`
 export default function PostingContentInput({ selBoard }) {
   const title = useRef(null);
   const content = useRef(null);
-  const images = useRef(null);
+  const images = useRef({ files: [] });
+  const [imagesUrlArr, setImagesUrlArr] = useState([]);
   const state = useReducerState();
   const dispatch = useDispatch();
 
@@ -130,9 +132,23 @@ export default function PostingContentInput({ selBoard }) {
       <div className="upload_image_area">
         <div className="uploadimg_btn_area">
           <div className="uploadimg_text">이미지 업로드</div>
-          <input type="file" ref={images} accept="image/*" multiple />
+          <input
+            type="file"
+            ref={images}
+            accept="image/*"
+            onChange={() =>
+              setImagesUrlArr(getImagesUrlArr(images.current.files))
+            }
+            multiple
+          />
         </div>
-        <div className="uploadedimg_list"></div>
+        <div className="uploadedimg_list">
+          {imagesUrlArr.length > 0 &&
+            imagesUrlArr.map((imageUrl, index) => {
+              // eslint-disable-next-line @next/next/no-img-element
+              return <img src={imageUrl} key={index} alt={index} height="44" />;
+            })}
+        </div>
       </div>
       <div
         className="content_post_btn"
