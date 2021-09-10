@@ -1,11 +1,13 @@
 import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect } from 'react';
-import { useDispatch } from '../../../src/common/context';
+import { useDispatch, useReducerState } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import styled from 'styled-components';
 import InFreeListBoardTitle from '../../../src/board/list.free/pageEle/inFreeListBoardTitle';
 import FreeListPostingList from '../../../src/board/list.free/pageEle/freeListPostingList';
+import { useRouter } from 'next/router';
+import PageBtn from '../../../src/board/list.free/pageEle/pageBtn';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -76,7 +78,12 @@ const ListStyle = styled.div`
 `;
 
 export default function Free() {
+  const router = useRouter();
+  const { page } = router.query;
+
   const dispatch = useDispatch();
+
+  const freeBoard = useReducerState().freeBoard;
 
   useEffect(() => {
     mountAnimation(dispatch, 'free');
@@ -89,7 +96,8 @@ export default function Free() {
           <BoardTitle backURL="/home">
             <InFreeListBoardTitle />
           </BoardTitle>
-          <FreeListPostingList />
+          <FreeListPostingList page={page} freeBoard={freeBoard} />
+          <PageBtn freeBoard={freeBoard} page={page} />
         </ListStyle>
       </BoxStyles>
     </FourAnimationedBox>

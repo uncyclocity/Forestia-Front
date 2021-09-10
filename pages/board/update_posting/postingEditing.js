@@ -7,6 +7,7 @@ import FreePhotoSign from '../../../src/board/update_posting.editing/pageEle/fre
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import PostingEditContentInput from '../../../src/board/update_posting.editing/pageEle/postingEditContentInput';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 const BoxStyles = styled.div`
   color: #525252;

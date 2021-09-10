@@ -27,7 +27,7 @@ export default function Post() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { board_type, post_id } = router.query;
-  const backURL = `/board/board_list/${board_type}`;
+  const backURL = `/board/board_list/${board_type}?page=1`;
   const nowPostingEleObj = getPostingEleState(state, board_type, post_id);
 
   useEffect(() => {

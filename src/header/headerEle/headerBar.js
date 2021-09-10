@@ -73,7 +73,7 @@ export default function HeaderBar() {
   const HMUrlArr = [
     '/home',
     '/about',
-    '/board/board_list/free',
+    '/board/board_list/free?page=1',
     '/board/board_list/photo',
   ];
 
