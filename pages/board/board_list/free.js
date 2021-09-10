@@ -7,9 +7,13 @@ import styled from 'styled-components';
 import InFreeListBoardTitle from '../../../src/board/list.free/pageEle/inFreeListBoardTitle';
 import FreeListPostingList from '../../../src/board/list.free/pageEle/freeListPostingList';
 
-const ListStyle = styled.div`
+const BoxStyles = styled.div`
+  color: #525252;
   padding: 20px 30px 5px 30px;
+  max-height: 680px;
+`;
 
+const ListStyle = styled.div`
   .content_list {
     li {
       transform: translateX(-6.5%);
@@ -80,12 +84,14 @@ export default function Free() {
 
   return (
     <FourAnimationedBox>
-      <ListStyle>
-        <BoardTitle backURL="/home">
-          <InFreeListBoardTitle />
-        </BoardTitle>
-        <FreeListPostingList />
-      </ListStyle>
+      <BoxStyles>
+        <ListStyle>
+          <BoardTitle backURL="/home">
+            <InFreeListBoardTitle />
+          </BoardTitle>
+          <FreeListPostingList />
+        </ListStyle>
+      </BoxStyles>
     </FourAnimationedBox>
   );
 }
