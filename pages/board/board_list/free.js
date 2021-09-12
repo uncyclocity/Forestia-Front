@@ -96,7 +96,7 @@ export default function Free() {
           <BoardTitle backURL="/home">
             <InFreeListBoardTitle />
           </BoardTitle>
-          <FreeListPostingList page={page} freeBoard={freeBoard.reverse()} />
+          <FreeListPostingList page={page} freeBoard={freeBoard} />
           <PageBtn freeBoard={freeBoard} page={page} />
         </ListStyle>
       </BoxStyles>
