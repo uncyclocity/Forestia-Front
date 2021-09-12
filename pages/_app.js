@@ -13,8 +13,8 @@ export default function MyApp({ Component, pageProps, freeBoard, photoBoard }) {
 
 MyApp.getInitialProps = async () => {
   const free_res = await instance.get('/api/get_posting/viewFree');
-  const freeBoard = await free_res.data.reverse();
+  const freeBoard = await free_res.data;
   const photo_res = await instance.get('/api/get_posting/viewPhoto');
-  const photoBoard = await photo_res.data.reverse();
+  const photoBoard = await photo_res.data;
   return { freeBoard, photoBoard };
 };

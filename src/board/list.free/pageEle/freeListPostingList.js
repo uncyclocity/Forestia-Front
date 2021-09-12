@@ -28,13 +28,16 @@ export default function FreeListPostingList({ page, freeBoard }) {
                   }
                 >
                   <a>
-                    {posting.title}&nbsp;
-                    <div className="comment_amount">
-                      <div className="comment_icon">
-                        <FaRegCommentAlt />
+                    <div className="name_and_commamount">
+                      <div className="posting_name">{posting.title}</div>
+                      <div className="comment_amount">
+                        <div className="comment_icon">
+                          <FaRegCommentAlt />
+                        </div>
+                        <div className="amount">{posting.comments.length}</div>
                       </div>
-                      <div className="amount">{posting.comments.length}</div>
                     </div>
+                    <div className="posting_author">{posting.author}</div>
                   </a>
                 </div>
               </li>

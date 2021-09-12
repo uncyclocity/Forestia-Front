@@ -4,9 +4,11 @@ import Photo from '../../../models/Photo';
 const handler = async (req, res) => {
   if (req.method === 'GET') {
     try {
-      return await Photo.find().then((data) => {
-        return res.status(200).send(data);
-      });
+      return await Photo.find()
+        .sort({ _id: -1 })
+        .then((data) => {
+          return res.status(200).send(data);
+        });
     } catch (error) {
       return res.status(500).send(error.message);
     }

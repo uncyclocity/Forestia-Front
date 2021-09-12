@@ -17,40 +17,63 @@ const BoxStyles = styled.div`
 
 const ListStyle = styled.div`
   .content_list {
-    li {
-      transform: translateX(-6.5%);
-      list-style-type: none;
-      margin-top: 10px;
+    ul {
+      padding-left: 0;
+      li {
+        list-style-type: none;
+        margin-top: 10px;
 
-      a {
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-
-        .comment_amount {
+        a {
+          cursor: pointer;
           display: flex;
-          justify-content: center;
-          color: #20c997;
+          flex-direction: row;
+          border-bottom: 1px solid #e9ecef;
 
-          .comment_icon {
-            transform: translateY(3px);
-            font-size: 13px;
+          .name_and_commamount {
+            display: flex;
+            flex-direction: row;
+            .posting_name {
+              margin-right: 5px;
+            }
+
+            .comment_amount {
+              display: flex;
+              justify-content: center;
+              color: #20c997;
+
+              .comment_icon {
+                transform: translateY(3px);
+                font-size: 13px;
+              }
+
+              .amount {
+                transform: translateX(2px);
+                font-size: 15px;
+              }
+            }
           }
 
-          .amount {
-            transform: translateX(2px);
-            font-size: 15px;
+          .posting_author {
+            margin-left: auto;
+            width: 100px;
+            border-left: 1px solid #e9ecef;
+            font-size: 14px;
+            display: block;
+            overflow-x: hidden;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
-        }
 
-        &:hover {
-          transition: 0.15s all ease-in;
-          color: #20c997;
-        }
+          &:hover {
+            transition: 0.15s all ease-in;
+            color: #20c997;
+          }
 
-        &:not(:hover) {
-          transition: 0.15s all ease-in;
-          color: #525252;
+          &:not(:hover) {
+            transition: 0.15s all ease-in;
+            color: #525252;
+          }
         }
       }
     }

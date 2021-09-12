@@ -4,9 +4,11 @@ import Free from '../../../models/Free';
 const handler = async (req, res) => {
   if (req.method === 'GET') {
     try {
-      return await Free.find().then((data) => {
-        return res.status(200).send(data);
-      });
+      return await Free.find()
+        .sort({ _id: -1 })
+        .then((data) => {
+          return res.status(200).send(data);
+        });
     } catch (error) {
       return res.status(500).send(error.message);
     }
