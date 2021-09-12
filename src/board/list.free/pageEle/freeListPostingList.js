@@ -9,7 +9,7 @@ export default function FreeListPostingList({ page, freeBoard }) {
   const startIndex = (page - 1) * 15;
   const endIndex = startIndex + 14;
 
-  const thisPageList = freeBoard.reverse().slice(startIndex, endIndex);
+  const thisPageList = freeBoard.slice(startIndex, endIndex);
 
   return (
     <div className="content_list">
