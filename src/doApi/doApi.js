@@ -148,6 +148,8 @@ export const posting = {
         board_type,
         id,
       },
+    }).then(async () => {
+      postCntSwitcher(dispatch, false);
     });
   },
   doDeleteImage: async (board_type, imagesUrl, dispatch) => {
@@ -156,8 +158,6 @@ export const posting = {
       method: 'POST',
       url: apiUrl,
       data: { imagesUrl },
-    }).then(async () => {
-      postCntSwitcher(dispatch, false);
     });
   },
   doEditPosting: async (board_type, id, newTitle, newContent, dispatch) => {

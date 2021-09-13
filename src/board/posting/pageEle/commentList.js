@@ -200,7 +200,7 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                     <div
                       className="comm_edit_post_btn"
                       onClick={async () => {
-                        if (postCnt) {
+                        if (!postCnt) {
                           await comm.doEditComment(
                             nowPostingEleObj,
                             editCommObj,
