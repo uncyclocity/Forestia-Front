@@ -1,50 +1,78 @@
 import BoardTitle from '../../../src/common/boardTitle';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import InPhotoListBoardTitle from '../../../src/board/list.photo/pageEle/inPhotoListBoardTitle';
 import PhotoListPostingList from '../../../src/board/list.photo/pageEle/photoListPostingList';
+import PageBtn from '../../../src/board/list.photo/pageEle/pageBtn';
+import instance from '../../../src/common/instance';
+
+const BoxStyles = styled.div`
+  color: #525252;
+  padding: 20px 30px 5px 30px;
+`;
 
 const ListStyle = styled.div`
-  padding: 20px 30px 5px 30px;
-
   .content_list {
-    li {
-      transform: translateX(-6.5%);
-      list-style-type: none;
-      margin-top: 10px;
+    ul {
+      padding-left: 0;
+      li {
+        list-style-type: none;
+        margin-top: 10px;
 
-      a {
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-
-        .comment_amount {
+        a {
+          cursor: pointer;
           display: flex;
-          justify-content: center;
-          color: #20c997;
+          flex-direction: row;
+          border-bottom: 1px solid #e9ecef;
 
-          .comment_icon {
-            transform: translateY(3px);
-            font-size: 13px;
+          .name_and_commamount {
+            display: flex;
+            flex-direction: row;
+            .posting_name {
+              margin-right: 5px;
+            }
+
+            .comment_amount {
+              display: flex;
+              justify-content: center;
+              color: #20c997;
+
+              .comment_icon {
+                transform: translateY(3px);
+                font-size: 13px;
+              }
+
+              .amount {
+                transform: translateX(2px);
+                font-size: 15px;
+              }
+            }
           }
 
-          .amount {
-            transform: translateX(2px);
-            font-size: 15px;
+          .posting_author {
+            margin-left: auto;
+            width: 100px;
+            border-left: 1px solid #e9ecef;
+            font-size: 14px;
+            display: block;
+            overflow-x: hidden;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
-        }
 
-        &:hover {
-          transition: 0.15s all ease-in;
-          color: #20c997;
-        }
+          &:hover {
+            transition: 0.15s all ease-in;
+            color: #20c997;
+          }
 
-        &:not(:hover) {
-          transition: 0.15s all ease-in;
-          color: #525252;
+          &:not(:hover) {
+            transition: 0.15s all ease-in;
+            color: #525252;
+          }
         }
       }
     }
@@ -71,21 +99,47 @@ const ListStyle = styled.div`
   }
 `;
 
-export default function Photo() {
+export default function Photo({ photoBoard, page, photoLen }) {
   const dispatch = useDispatch();
+  const [nowPage, setNowPage] = useState(page);
+  const [nowList, setNowList] = useState(photoBoard);
+
+  const changeList = useCallback(async () => {
+    const photo_res = await instance.get(
+      `/api/get_posting/viewPhoto?page=${nowPage}`,
+    );
+    const photoBoard = await photo_res.data;
+    setNowList(photoBoard);
+  }, [nowPage]);
 
   useEffect(() => {
     mountAnimation(dispatch, 'photo');
   }, [dispatch]);
 
+  useEffect(() => {
+    changeList();
+  }, [changeList, nowPage]);
+
   return (
     <FourAnimationedBox>
-      <ListStyle>
-        <BoardTitle backURL="/home">
-          <InPhotoListBoardTitle />
-        </BoardTitle>
-        <PhotoListPostingList />
-      </ListStyle>
+      <BoxStyles>
+        <ListStyle>
+          <BoardTitle backURL="/home">
+            <InPhotoListBoardTitle />
+          </BoardTitle>
+          <PhotoListPostingList page={nowPage} photoBoard={nowList} />
+          <PageBtn photoLen={photoLen} page={nowPage} setNowPage={setNowPage} />
+        </ListStyle>
+      </BoxStyles>
     </FourAnimationedBox>
   );
 }
+
+Photo.getInitialProps = async () => {
+  const photo_res = await instance.get(`/api/get_posting/viewPhoto?page=1`);
+  const photoBoard = await photo_res.data;
+  const photolen_res = await instance.get(`/api/get_posting/viewphotoLen`);
+  const photoLen = await photolen_res.data;
+  const page = 1;
+  return { photoBoard, page, photoLen };
+};

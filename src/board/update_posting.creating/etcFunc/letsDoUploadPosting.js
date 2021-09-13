@@ -1,3 +1,4 @@
+import instance from '../../../common/instance';
 import { posting } from '../../../doApi/doApi';
 
 export default async function letsDoUploadPosting(
@@ -8,10 +9,20 @@ export default async function letsDoUploadPosting(
   images,
   dispatch,
 ) {
-  const selBoardArr = state[selBoard + 'Board'];
-  const selBoardLen = selBoardArr.length;
-  const id =
-    selBoardLen > 0 ? parseInt(selBoardArr[selBoardLen - 1].id) + 1 : 0;
+  const boardlen_res = await instance.get(
+    `/api/get_posting/view${selBoard}Len`,
+  );
+  const boardLen = boardlen_res.data;
+  var id = 0;
+
+  if (boardLen > 0) {
+    const maxId_res = await instance.get(
+      `/api/get_posting/view${selBoard}NextId`,
+    );
+    const maxId = maxId_res.data;
+    id = parseInt(maxId) + 1;
+    console.log(maxId);
+  }
 
   const formData = new FormData();
   for (var i = 0; i < images.current.files.length; i++) {

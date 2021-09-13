@@ -1,11 +1,10 @@
 import { AiOutlineSmile } from 'react-icons/ai';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { unmountAnimation } from '../../../common/animationController';
-import { useDispatch, useReducerState } from '../../../common/context';
+import { useDispatch } from '../../../common/context';
 
-export default function PhotoListPostingList() {
+export default function PhotoListPostingList({ photoBoard }) {
   const dispatch = useDispatch();
-  const photoBoard = useReducerState().photoBoard;
 
   return (
     <div className="content_list">
@@ -25,13 +24,18 @@ export default function PhotoListPostingList() {
                     }
                   >
                     <a>
-                      {posting.title}&nbsp;
-                      <div className="comment_amount">
-                        <div className="comment_icon">
-                          <FaRegCommentAlt />
+                      <div className="name_and_commamount">
+                        <div className="posting_name">{posting.title}</div>
+                        <div className="comment_amount">
+                          <div className="comment_icon">
+                            <FaRegCommentAlt />
+                          </div>
+                          <div className="amount">
+                            {posting.comments.length}
+                          </div>
                         </div>
-                        <div className="amount">{posting.comments.length}</div>
                       </div>
+                      <div className="posting_author">{posting.author}</div>
                     </a>
                   </div>
                 </li>

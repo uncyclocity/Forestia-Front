@@ -8,8 +8,6 @@ export default function Context({ children, freeBoard, photoBoard }) {
     userName: '백괴',
     nowPage: null,
     animation: 5,
-    freeBoard,
-    photoBoard,
     isPostPage: false,
     nowPostingEleObj: {},
     postCnt: false,
@@ -28,13 +26,6 @@ export default function Context({ children, freeBoard, photoBoard }) {
         return {
           ...state,
           animation: action.animation,
-        };
-      }
-      case 'update_post': {
-        return {
-          ...state,
-          freeBoard: action.freeBoard,
-          photoBoard: action.photoBoard,
         };
       }
       case 'postpage_switcher': {

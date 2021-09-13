@@ -23,8 +23,8 @@ const Styles = styled.div`
   }
 `;
 
-export default function PageBtn({ freeLen, page, setNowPage }) {
-  const postingAmountDivided = freeLen / 15;
+export default function PageBtn({ photoLen, page, setNowPage }) {
+  const postingAmountDivided = photoLen / 15;
   const padInt = parseInt(postingAmountDivided);
   const pageBtnAmount = padInt < postingAmountDivided ? padInt + 1 : padInt;
 

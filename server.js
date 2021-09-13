@@ -35,5 +35,5 @@ app
     });
   })
   .catch((ex) => {
-    console.error(ex.stack);
+    console.error();
   });

@@ -1,6 +1,5 @@
 import moment from 'moment';
 import instance from '../common/instance';
-import getBoardData from '../common/getBoardData';
 import { unmountAnimation } from '../common/animationController';
 
 const postCntSwitcher = (dispatch, sw) => {
@@ -36,7 +35,6 @@ export const comm = {
       },
     }).then(async () => {
       contentRef.current.value = '';
-      await getBoardData(dispatch);
       postCntSwitcher(dispatch, false);
     });
   },
@@ -59,7 +57,6 @@ export const comm = {
       },
     }).then(async () => {
       setEditCommObj(false);
-      await getBoardData(dispatch);
       postCntSwitcher(dispatch, false);
     });
   },
@@ -74,7 +71,6 @@ export const comm = {
         comment_id,
       },
     }).then(async () => {
-      await getBoardData(dispatch);
       postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
@@ -94,7 +90,6 @@ export const posting = {
       url: apiUrl,
       data,
     }).then(async () => {
-      await getBoardData(dispatch);
       postCntSwitcher(dispatch, false);
     });
   },
@@ -121,7 +116,6 @@ export const posting = {
         imagesUrl: pathArr,
       },
     }).then(async () => {
-      await getBoardData(dispatch);
       postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
@@ -154,9 +148,7 @@ export const posting = {
         board_type,
         id,
       },
-    }).then(async () => {
-      await getBoardData(dispatch);
-    });
+    }).then(async () => {});
   },
   doDeleteImage: async (board_type, imagesUrl, dispatch) => {
     const apiUrl = 'api/post_posting/deleteImage';
@@ -181,7 +173,6 @@ export const posting = {
         content: newContent.current.value,
       },
     }).then(async () => {
-      await getBoardData(dispatch);
       postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
