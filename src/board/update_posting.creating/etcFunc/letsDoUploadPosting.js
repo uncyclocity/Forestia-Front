@@ -3,12 +3,12 @@ import { posting } from '../../../doApi/doApi';
 
 export default async function letsDoUploadPosting(
   selBoard,
-  state,
   title,
   content,
   images,
   dispatch,
 ) {
+  console.log('ㅎㅇ');
   const boardlen_res = await instance.get(
     `/api/get_posting/getPostingsLen?board_type=${selBoard}`,
   );

@@ -168,14 +168,7 @@ export default function PostingContentInput({ selBoard }) {
         onClick={() => {
           if (!postCnt) {
             content.current.value && title.current.value
-              ? letsDoUploadPosting(
-                  selBoard,
-                  state,
-                  title,
-                  content,
-                  images,
-                  dispatch,
-                )
+              ? letsDoUploadPosting(selBoard, title, content, images, dispatch)
               : alert('제목 및 내용을 입력하세요');
           }
         }}

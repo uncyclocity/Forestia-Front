@@ -148,7 +148,7 @@ export const posting = {
         board_type,
         id,
       },
-    }).then(async () => {});
+    });
   },
   doDeleteImage: async (board_type, imagesUrl, dispatch) => {
     const apiUrl = 'api/post_posting/deleteImage';
@@ -158,7 +158,6 @@ export const posting = {
       data: { imagesUrl },
     }).then(async () => {
       postCntSwitcher(dispatch, false);
-      unmountAnimation(0, dispatch, `/board/board_list/${board_type}`);
     });
   },
   doEditPosting: async (board_type, id, newTitle, newContent, dispatch) => {
