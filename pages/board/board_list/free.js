@@ -128,7 +128,9 @@ export default function Free({ freeBoard, page, freeLen }) {
             <InFreeListBoardTitle />
           </BoardTitle>
           <FreeListPostingList page={nowPage} freeBoard={nowList} />
-          <PageBtn freeLen={freeLen} page={nowPage} setNowPage={setNowPage} />
+          {freeLen > 0 && (
+            <PageBtn freeLen={freeLen} page={nowPage} setNowPage={setNowPage} />
+          )}
         </ListStyle>
       </BoxStyles>
     </FourAnimationedBox>

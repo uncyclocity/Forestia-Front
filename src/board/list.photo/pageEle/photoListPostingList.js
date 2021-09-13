@@ -10,37 +10,34 @@ export default function PhotoListPostingList({ photoBoard }) {
     <div className="content_list">
       {photoBoard.length > 0 ? (
         <ul>
-          {photoBoard &&
-            photoBoard.map((posting, index) => {
-              return (
-                <li key={index}>
-                  <div
-                    onClick={() =>
-                      unmountAnimation(
-                        0,
-                        dispatch,
-                        `/board/posting?board_type=photo&post_id=${posting.id}`,
-                      )
-                    }
-                  >
-                    <a>
-                      <div className="name_and_commamount">
-                        <div className="posting_name">{posting.title}</div>
-                        <div className="comment_amount">
-                          <div className="comment_icon">
-                            <FaRegCommentAlt />
-                          </div>
-                          <div className="amount">
-                            {posting.comments.length}
-                          </div>
+          {photoBoard.map((posting, index) => {
+            return (
+              <li key={index}>
+                <div
+                  onClick={() =>
+                    unmountAnimation(
+                      0,
+                      dispatch,
+                      `/board/posting?board_type=photo&post_id=${posting.id}`,
+                    )
+                  }
+                >
+                  <a>
+                    <div className="name_and_commamount">
+                      <div className="posting_name">{posting.title}</div>
+                      <div className="comment_amount">
+                        <div className="comment_icon">
+                          <FaRegCommentAlt />
                         </div>
+                        <div className="amount">{posting.comments.length}</div>
                       </div>
-                      <div className="posting_author">{posting.author}</div>
-                    </a>
-                  </div>
-                </li>
-              );
-            })}
+                    </div>
+                    <div className="posting_author">{posting.author}</div>
+                  </a>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       ) : (
         <div className="list_empty">

@@ -106,7 +106,7 @@ export default function Photo({ photoBoard, page, photoLen }) {
 
   const changeList = useCallback(async () => {
     const photo_res = await instance.get(
-      `/api/get_posting/viewPhoto?page=${nowPage}`,
+      `/api/get_posting/getPostingsForList?page=${nowPage}&board_type=photo`,
     );
     const photoBoard = await photo_res.data;
     setNowList(photoBoard);
@@ -128,7 +128,13 @@ export default function Photo({ photoBoard, page, photoLen }) {
             <InPhotoListBoardTitle />
           </BoardTitle>
           <PhotoListPostingList page={nowPage} photoBoard={nowList} />
-          <PageBtn photoLen={photoLen} page={nowPage} setNowPage={setNowPage} />
+          {photoLen > 0 && (
+            <PageBtn
+              photoLen={photoLen}
+              page={nowPage}
+              setNowPage={setNowPage}
+            />
+          )}
         </ListStyle>
       </BoxStyles>
     </FourAnimationedBox>
@@ -136,9 +142,13 @@ export default function Photo({ photoBoard, page, photoLen }) {
 }
 
 Photo.getInitialProps = async () => {
-  const photo_res = await instance.get(`/api/get_posting/viewPhoto?page=1`);
+  const photo_res = await instance.get(
+    `/api/get_posting/getPostingsForList?page=1&board_type=photo`,
+  );
   const photoBoard = await photo_res.data;
-  const photolen_res = await instance.get(`/api/get_posting/viewphotoLen`);
+  const photolen_res = await instance.get(
+    `/api/get_posting/getPostingsLen?board_type=photo`,
+  );
   const photoLen = await photolen_res.data;
   const page = 1;
   return { photoBoard, page, photoLen };
