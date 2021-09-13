@@ -1,4 +1,5 @@
 import instance from '../../../common/instance';
+import postCntSwitcher from '../../../common/postCntSwitcher';
 import { posting } from '../../../doApi/doApi';
 
 export default async function getDoUpdateUDdata(
@@ -18,6 +19,8 @@ export default async function getDoUpdateUDdata(
 
   const udClickerArr = nowPostingEleObj[udType].clicker;
   const revUdClickerArr = nowPostingEleObj[revUdType].clicker;
+
+  postCntSwitcher(dispatch, true);
 
   if (udClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
@@ -48,4 +51,5 @@ export default async function getDoUpdateUDdata(
     board_type: nowPostingEleObj.board_type,
   };
   setNowPostingEleObj(nowPostingEleObjRaw);
+  postCntSwitcher(dispatch, false);
 }

@@ -1,13 +1,7 @@
 import moment from 'moment';
 import instance from '../common/instance';
 import { unmountAnimation } from '../common/animationController';
-
-const postCntSwitcher = (dispatch, sw) => {
-  dispatch({
-    type: 'postcnt_switcher',
-    sw,
-  });
-};
+import postCntSwitcher from '../common/postCntSwitcher';
 
 const getNewCommId = (nowPostingEleObj) => {
   const commArr = nowPostingEleObj.comments;
@@ -83,14 +77,11 @@ export const comm = {
 
 export const posting = {
   doUpdateUpDown: async (data, dispatch) => {
-    postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_posting/editUD';
     await instance({
       method: 'POST',
       url: apiUrl,
       data,
-    }).then(async () => {
-      postCntSwitcher(dispatch, false);
     });
   },
   doCreatePosting: async (
