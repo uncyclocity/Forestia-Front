@@ -182,9 +182,14 @@ export default function Home({ freeBoard, photoBoard }) {
 }
 
 Home.getInitialProps = async () => {
-  const free_res = await instance.get('/api/get_posting/viewFreeTop3');
+  const free_res = await instance.get(
+    '/api/get_posting/getPostingsTop3?board_type=free',
+  );
   const freeBoard = await free_res.data;
-  const photo_res = await instance.get('/api/get_posting/viewPhotoTop3');
+  const photo_res = await instance.get(
+    '/api/get_posting/getPostingsTop3?board_type=photo',
+  );
   const photoBoard = await photo_res.data;
+  console.log(freeBoard);
   return { freeBoard, photoBoard };
 };

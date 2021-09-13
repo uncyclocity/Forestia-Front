@@ -106,7 +106,7 @@ export default function Free({ freeBoard, page, freeLen }) {
 
   const changeList = useCallback(async () => {
     const free_res = await instance.get(
-      `/api/get_posting/viewFree?page=${nowPage}`,
+      `/api/get_posting/getPostingsForList?page=${nowPage}&board_type=free`,
     );
     const freeBoard = await free_res.data;
     setNowList(freeBoard);
@@ -136,9 +136,13 @@ export default function Free({ freeBoard, page, freeLen }) {
 }
 
 Free.getInitialProps = async () => {
-  const free_res = await instance.get(`/api/get_posting/viewFree?page=1`);
+  const free_res = await instance.get(
+    `/api/get_posting/getPostingsForList?page=1&board_type=free`,
+  );
   const freeBoard = await free_res.data;
-  const freelen_res = await instance.get(`/api/get_posting/viewfreeLen`);
+  const freelen_res = await instance.get(
+    `/api/get_posting/getPostingsLen?board_type=free`,
+  );
   const freeLen = await freelen_res.data;
   const page = 1;
   return { freeBoard, page, freeLen };

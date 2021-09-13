@@ -10,14 +10,14 @@ export default async function letsDoUploadPosting(
   dispatch,
 ) {
   const boardlen_res = await instance.get(
-    `/api/get_posting/view${selBoard}Len`,
+    `/api/get_posting/getPostingsLen?board_type=${selBoard}`,
   );
   const boardLen = boardlen_res.data;
   var id = 0;
 
   if (boardLen > 0) {
     const maxId_res = await instance.get(
-      `/api/get_posting/view${selBoard}NextId`,
+      `/api/get_posting/getLatestPostingId?board_type=${selBoard}`,
     );
     const maxId = maxId_res.data;
     id = parseInt(maxId) + 1;
