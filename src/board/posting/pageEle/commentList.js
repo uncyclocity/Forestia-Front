@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
+import instance from '../../../common/instance';
 import { comm } from '../../../doApi/doApi';
 import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
 
@@ -116,7 +117,18 @@ const CommContentAreaStyle = styled.div`
   }
 `;
 
-export default function CommentList({ nowPostingEleObj }) {
+const setNPEO = async (nowPostingEleObj, setNowPostingEleObj) => {
+  const getPostingEle_res = await instance.get(
+    `/api/get_posting/getPostingEle?id=${nowPostingEleObj.id}&board_type=${nowPostingEleObj.board_type}`,
+  );
+  const nowPostingEleObjRaw = {
+    ...getPostingEle_res.data,
+    board_type: nowPostingEleObj.board_type,
+  };
+  setNowPostingEleObj(nowPostingEleObjRaw);
+};
+
+export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
   const state = useReducerState();
   const userName = state.userName;
   const postCnt = state.postCnt;
@@ -187,15 +199,17 @@ export default function CommentList({ nowPostingEleObj }) {
                     />
                     <div
                       className="comm_edit_post_btn"
-                      onClick={() =>
-                        !postCnt &&
-                        comm.doEditComment(
-                          nowPostingEleObj,
-                          editCommObj,
-                          setEditCommObj,
-                          dispatch,
-                        )
-                      }
+                      onClick={async () => {
+                        if (postCnt) {
+                          await comm.doEditComment(
+                            nowPostingEleObj,
+                            editCommObj,
+                            setEditCommObj,
+                            dispatch,
+                          );
+                          setNPEO(nowPostingEleObj, setNowPostingEleObj);
+                        }
+                      }}
                     >
                       <FiSend />
                     </div>

@@ -47,7 +47,7 @@ const UpAndDownBtnStyle = styled.div`
   }
 `;
 
-export default function UpAndDown({ nowPostingEleObj }) {
+export default function UpAndDown({ nowPostingEleObj, setNowPostingEleObj }) {
   const state = useReducerState();
   const userName = state.userName;
   const postCnt = state.postCnt;
@@ -66,6 +66,7 @@ export default function UpAndDown({ nowPostingEleObj }) {
                 nowPostingEleObj,
                 userName,
                 dispatch,
+                setNowPostingEleObj,
               );
           }}
         >
@@ -95,6 +96,7 @@ export default function UpAndDown({ nowPostingEleObj }) {
                 nowPostingEleObj,
                 userName,
                 dispatch,
+                setNowPostingEleObj,
               );
           }}
         >

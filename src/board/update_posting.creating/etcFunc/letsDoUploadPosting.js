@@ -13,7 +13,7 @@ export default async function letsDoUploadPosting(
     `/api/get_posting/getPostingsLen?board_type=${selBoard}`,
   );
   const boardLen = boardlen_res.data;
-  var id = 0;
+  var id = '0';
 
   if (boardLen > 0) {
     const maxId_res = await instance.get(

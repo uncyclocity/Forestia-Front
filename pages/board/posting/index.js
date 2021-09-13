@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import BoardTitle from '../../../src/common/boardTitle';
 import { useDispatch, useReducerState } from '../../../src/common/context';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   postPageSwitchOff,
   postPageSwitchOn,
@@ -22,9 +22,10 @@ const BoxStyles = styled.div`
   padding: 20px 30px 5px 30px;
 `;
 
-export default function Post({ nowPostingEleObj, board_type }) {
+export default function Post({ nowPostingEleObjRaw, board_type }) {
   const dispatch = useDispatch();
   const backURL = `/board/board_list/${board_type}?page=1`;
+  const [nowPostingEleObj, setNowPostingEleObj] = useState(nowPostingEleObjRaw);
 
   useEffect(() => {
     mountAnimation(dispatch, board_type);
@@ -42,9 +43,18 @@ export default function Post({ nowPostingEleObj, board_type }) {
         </BoardTitle>
         <ContentView nowPostingEleObj={nowPostingEleObj} />
         <ImageView nowPostingEleObj={nowPostingEleObj} />
-        <UpAndDown nowPostingEleObj={nowPostingEleObj} />
-        <CommentList nowPostingEleObj={nowPostingEleObj} />
-        <CommentInput nowPostingEleObj={nowPostingEleObj} />
+        <UpAndDown
+          nowPostingEleObj={nowPostingEleObj}
+          setNowPostingEleObj={setNowPostingEleObj}
+        />
+        <CommentList
+          nowPostingEleObj={nowPostingEleObj}
+          setNowPostingEleObj={setNowPostingEleObj}
+        />
+        <CommentInput
+          nowPostingEleObj={nowPostingEleObj}
+          setNowPostingEleObj={setNowPostingEleObj}
+        />
       </BoxStyles>
     </FourAnimationedBox>
   );
@@ -55,6 +65,6 @@ Post.getInitialProps = async (ctx) => {
   const getPostingEle_res = await instance.get(
     `/api/get_posting/getPostingEle?id=${post_id}&board_type=${board_type}`,
   );
-  const nowPostingEleObj = { ...getPostingEle_res.data, board_type };
-  return { nowPostingEleObj, board_type };
+  const nowPostingEleObjRaw = { ...getPostingEle_res.data, board_type };
+  return { nowPostingEleObjRaw, board_type };
 };

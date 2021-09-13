@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { RiMailSendLine } from 'react-icons/ri';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
+import instance from '../../../common/instance';
 import { comm } from '../../../doApi/doApi';
 
 const CommInputAreaStyle = styled.div`
@@ -60,7 +61,21 @@ const CommPostBtnStyle = styled.div`
   }
 `;
 
-export default function CommentInput({ nowPostingEleObj }) {
+const setNPEO = async (nowPostingEleObj, setNowPostingEleObj) => {
+  const getPostingEle_res = await instance.get(
+    `/api/get_posting/getPostingEle?id=${nowPostingEleObj.id}&board_type=${nowPostingEleObj.board_type}`,
+  );
+  const nowPostingEleObjRaw = {
+    ...getPostingEle_res.data,
+    board_type: nowPostingEleObj.board_type,
+  };
+  setNowPostingEleObj(nowPostingEleObjRaw);
+};
+
+export default function CommentInput({
+  nowPostingEleObj,
+  setNowPostingEleObj,
+}) {
   const commentContent = useRef(null);
   const dispatch = useDispatch();
   const state = useReducerState();
@@ -79,16 +94,19 @@ export default function CommentInput({ nowPostingEleObj }) {
       <CommPostBtnStyle>
         <div
           className="commPostBtn"
-          onClick={() => {
+          onClick={async () => {
             if (!postCnt) {
-              commentContent.current.value
-                ? comm.doUploadComment(
-                    nowPostingEleObj,
-                    commentContent,
-                    userName,
-                    dispatch,
-                  )
-                : alert('댓글을 입력하세요');
+              if (commentContent.current.value) {
+                await comm.doUploadComment(
+                  nowPostingEleObj,
+                  commentContent,
+                  userName,
+                  dispatch,
+                );
+                setNPEO(nowPostingEleObj, setNowPostingEleObj);
+              } else {
+                alert('댓글을 입력하세요');
+              }
             }
           }}
         >

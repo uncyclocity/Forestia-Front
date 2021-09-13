@@ -1,11 +1,13 @@
+import instance from '../../../common/instance';
 import { posting } from '../../../doApi/doApi';
 
-export default function getDoUpdateUDdata(
+export default async function getDoUpdateUDdata(
   udType,
   revUdType,
   nowPostingEleObj,
   userName,
   dispatch,
+  setNowPostingEleObj,
 ) {
   const defaultData = {
     board_type: nowPostingEleObj.board_type,
@@ -22,19 +24,28 @@ export default function getDoUpdateUDdata(
       ...defaultData,
       operation: 'sub',
     };
-    posting.doUpdateUpDown(data, dispatch);
+    await posting.doUpdateUpDown(data, dispatch);
   } else if (revUdClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
       ...defaultData,
       rev_ud_type: revUdType,
       operation: 'addsub',
     };
-    posting.doUpdateUpDown(data, dispatch);
+    await posting.doUpdateUpDown(data, dispatch);
   } else {
     const data = {
       ...defaultData,
       operation: 'add',
     };
-    posting.doUpdateUpDown(data, dispatch);
+    await posting.doUpdateUpDown(data, dispatch);
   }
+
+  const getPostingEle_res = await instance.get(
+    `/api/get_posting/getPostingEle?id=${nowPostingEleObj.id}&board_type=${nowPostingEleObj.board_type}`,
+  );
+  const nowPostingEleObjRaw = {
+    ...getPostingEle_res.data,
+    board_type: nowPostingEleObj.board_type,
+  };
+  setNowPostingEleObj(nowPostingEleObjRaw);
 }
