@@ -14,6 +14,7 @@ import {
   box_slide_up,
   box_zero_opacity,
 } from '../../src/boxEle/boxAnimation';
+import instance from '../../src/common/instance';
 
 const setTop3 = (board, bak, i = 0) => {
   bak.current = [];
@@ -88,12 +89,9 @@ const BoardTop3Block = styled.div`
   }
 `;
 
-export default function Home() {
+export default function Home({ freeBoard, photoBoard }) {
   const state = useReducerState();
   const dispatch = useDispatch();
-
-  const freeBoard = state.freeBoard;
-  const photoBoard = state.photoBoard;
 
   const animation = state.animation;
 
@@ -182,3 +180,11 @@ export default function Home() {
     </BoxAnimation>
   );
 }
+
+Home.getInitialProps = async () => {
+  const free_res = await instance.get('/api/get_posting/viewFreeTop3');
+  const freeBoard = await free_res.data;
+  const photo_res = await instance.get('/api/get_posting/viewPhotoTop3');
+  const photoBoard = await photo_res.data;
+  return { freeBoard, photoBoard };
+};

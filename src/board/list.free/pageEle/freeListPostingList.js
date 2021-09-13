@@ -1,21 +1,16 @@
 import { AiOutlineSmile } from 'react-icons/ai';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { unmountAnimation } from '../../../common/animationController';
-import { useDispatch, useReducerState } from '../../../common/context';
+import { useDispatch } from '../../../common/context';
 
-export default function FreeListPostingList({ page, freeBoard }) {
+export default function FreeListPostingList({ freeBoard }) {
   const dispatch = useDispatch();
-
-  const startIndex = (page - 1) * 15;
-  const endIndex = startIndex + 14;
-
-  const thisPageList = freeBoard.slice(startIndex, endIndex);
 
   return (
     <div className="content_list">
-      {thisPageList.length > 0 ? (
+      {freeBoard.length > 0 ? (
         <ul>
-          {thisPageList.map((posting, index) => {
+          {freeBoard.map((posting, index) => {
             return (
               <li key={index}>
                 <div

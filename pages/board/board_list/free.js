@@ -1,5 +1,5 @@
 import BoardTitle from '../../../src/common/boardTitle';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useReducerState } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
@@ -8,11 +8,12 @@ import InFreeListBoardTitle from '../../../src/board/list.free/pageEle/inFreeLis
 import FreeListPostingList from '../../../src/board/list.free/pageEle/freeListPostingList';
 import { useRouter } from 'next/router';
 import PageBtn from '../../../src/board/list.free/pageEle/pageBtn';
+import instance from '../../../src/common/instance';
 
 const BoxStyles = styled.div`
   color: #525252;
   padding: 20px 30px 5px 30px;
-  max-height: 680px;
+  height: 680px;
 `;
 
 const ListStyle = styled.div`
@@ -100,17 +101,26 @@ const ListStyle = styled.div`
   }
 `;
 
-export default function Free() {
-  const router = useRouter();
-  const { page } = router.query;
-
+export default function Free({ freeBoard, page, freeLen }) {
   const dispatch = useDispatch();
-
-  const freeBoard = useReducerState().freeBoard;
+  const [nowPage, setNowPage] = useState(page);
+  const [nowList, setNowList] = useState(freeBoard);
 
   useEffect(() => {
     mountAnimation(dispatch, 'free');
   }, [dispatch]);
+
+  useEffect(() => {
+    changeList();
+  }, [changeList, nowPage]);
+
+  const changeList = useCallback(async () => {
+    const free_res = await instance.get(
+      `/api/get_posting/viewFree?page=${nowPage}`,
+    );
+    const freeBoard = await free_res.data;
+    setNowList(freeBoard);
+  }, [nowPage]);
 
   return (
     <FourAnimationedBox>
@@ -119,10 +129,21 @@ export default function Free() {
           <BoardTitle backURL="/home">
             <InFreeListBoardTitle />
           </BoardTitle>
-          <FreeListPostingList page={page} freeBoard={freeBoard} />
-          <PageBtn freeBoard={freeBoard} page={page} />
+          <FreeListPostingList page={nowPage} freeBoard={nowList} />
+          <PageBtn freeLen={freeLen} page={nowPage} setNowPage={setNowPage} />
         </ListStyle>
       </BoxStyles>
     </FourAnimationedBox>
   );
 }
+
+Free.getInitialProps = async ({ req }) => {
+  const free_res = await instance.get(
+    `/api/get_posting/viewFree?page=${req.query.page}`,
+  );
+  const freeBoard = await free_res.data;
+  const freelen_res = await instance.get(`/api/get_posting/viewFreeLen`);
+  const freeLen = await freelen_res.data;
+  const page = req.query.page;
+  return { freeBoard, page, freeLen };
+};

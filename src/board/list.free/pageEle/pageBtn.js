@@ -25,11 +25,10 @@ const Styles = styled.div`
   }
 `;
 
-export default function PageBtn({ freeBoard, page }) {
-  const postingAmountDivided = freeBoard.length / 15;
+export default function PageBtn({ freeLen, page, setNowPage }) {
+  const postingAmountDivided = freeLen / 15;
   const padInt = parseInt(postingAmountDivided);
   const pageBtnAmount = padInt < postingAmountDivided ? padInt + 1 : padInt;
-  const dispatch = useDispatch();
 
   return (
     <Styles>
@@ -50,15 +49,7 @@ export default function PageBtn({ freeBoard, page }) {
             <div
               className="page_btn"
               key={index}
-              onClick={() =>
-                unmountAnimation(
-                  0,
-                  dispatch,
-                  `http://localhost:3000/board/board_list/free?page=${
-                    index + 1
-                  }`,
-                )
-              }
+              onClick={() => setNowPage(index + 1)}
             >
               {index + 1}
             </div>
