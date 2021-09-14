@@ -190,6 +190,5 @@ Home.getInitialProps = async () => {
     '/api/get_posting/getPostingsTop3?board_type=photo',
   );
   const photoBoard = await photo_res.data;
-  console.log(freeBoard);
   return { freeBoard, photoBoard };
 };

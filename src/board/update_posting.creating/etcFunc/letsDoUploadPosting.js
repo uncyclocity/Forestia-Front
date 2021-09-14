@@ -8,7 +8,6 @@ export default async function letsDoUploadPosting(
   images,
   dispatch,
 ) {
-  console.log('ㅎㅇ');
   const boardlen_res = await instance.get(
     `/api/get_posting/getPostingsLen?board_type=${selBoard}`,
   );
@@ -21,7 +20,6 @@ export default async function letsDoUploadPosting(
     );
     const maxId = maxId_res.data;
     id = parseInt(maxId) + 1;
-    console.log(maxId);
   }
 
   const formData = new FormData();
@@ -29,6 +27,6 @@ export default async function letsDoUploadPosting(
     formData.append('images', images.current.files[i]);
   }
 
-  const res = await postPosting.doUploadImage(formData, selBoard, dispatch);
-  postPosting.doCreatePosting(selBoard, id, title, content, res, dispatch);
+  const res = await postPosting.doPostCreateImage(formData, selBoard, dispatch);
+  postPosting.doPostCreate(selBoard, id, title, content, res, dispatch);
 }

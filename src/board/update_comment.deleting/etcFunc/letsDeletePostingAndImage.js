@@ -6,7 +6,7 @@ export default async function letsDeletePostingAndImage(
   dispatch,
 ) {
   const { board_type, id, imagesUrl } = nowPostingEleObj;
-  await postPosting.doDeletePosting(board_type, id, dispatch);
-  postPosting.doDeleteImage(board_type, imagesUrl, dispatch);
+  await postPosting.doPostDelete(board_type, id, dispatch);
+  postPosting.doPostDeleteImage(board_type, imagesUrl, dispatch);
   unmountAnimation(0, dispatch, `/board/board_list/${board_type}?page=1`);
 }

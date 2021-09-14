@@ -110,7 +110,7 @@ export default function PostingEditContentInput({
           onClick={() => {
             if (!postCnt) {
               newTitle.current.value && newContent.current.value
-                ? postPosting.doEditPosting(
+                ? postPosting.doPostEdit(
                     board_type,
                     id,
                     newTitle,

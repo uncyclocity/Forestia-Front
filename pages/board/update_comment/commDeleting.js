@@ -22,7 +22,7 @@ export default function CommDeleting() {
 
   useEffect(() => {
     mountAnimation(dispatch, 'commDeleting');
-    postComm.doPostDelete(board_type, comment_id, post_id, dispatch);
+    postComm.doPostDelete(board_type, post_id, comment_id, dispatch);
   }, [board_type, comment_id, dispatch, post_id]);
 
   return (

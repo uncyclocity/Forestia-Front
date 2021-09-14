@@ -27,20 +27,20 @@ export default async function getDoUpdateUDdata(
       ...defaultData,
       operation: 'sub',
     };
-    await postPosting.doUpdateUpDown(data, dispatch);
+    await postPosting.doPostEditUpDown(data, dispatch);
   } else if (revUdClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
       ...defaultData,
       rev_ud_type: revUdType,
       operation: 'addsub',
     };
-    await postPosting.doUpdateUpDown(data, dispatch);
+    await postPosting.doPostEditUpDown(data, dispatch);
   } else {
     const data = {
       ...defaultData,
       operation: 'add',
     };
-    await postPosting.doUpdateUpDown(data, dispatch);
+    await postPosting.doPostEditUpDown(data, dispatch);
   }
 
   const getPostingEle_res = await instance.get(

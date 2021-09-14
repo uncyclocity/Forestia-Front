@@ -58,7 +58,7 @@ export const postComm = {
     postCntSwitcher(dispatch, true);
     await instance({
       method: 'POST',
-      url: '/api/post_comment/PostDeleteComm',
+      url: '/api/post_comment/postDeleteComm',
       data: {
         board_type,
         post_id,
@@ -76,7 +76,7 @@ export const postComm = {
 };
 
 export const postPosting = {
-  doUpdateUpDown: async (data, dispatch) => {
+  doPostEditUpDown: async (data, dispatch) => {
     const apiUrl = '/api/post_posting/postEditUpDown';
     await instance({
       method: 'POST',
@@ -84,14 +84,7 @@ export const postPosting = {
       data,
     });
   },
-  doCreatePosting: async (
-    board_type,
-    id,
-    title,
-    content,
-    pathArr,
-    dispatch,
-  ) => {
+  doPostCreate: async (board_type, id, title, content, pathArr, dispatch) => {
     const apiUrl = '/api/post_posting/postCreatePosting';
     await instance({
       method: 'POST',
@@ -115,9 +108,9 @@ export const postPosting = {
       );
     });
   },
-  doUploadImage: async (formData, board_type, dispatch) => {
+  doPostCreateImage: async (formData, board_type, dispatch) => {
     postCntSwitcher(dispatch, true);
-    const apiUrl = `/api/post_posting/uploadImage?board_type=${board_type}`;
+    const apiUrl = `/api/post_posting/postCreateImage?board_type=${board_type}`;
     var pathArr = [];
     await instance({
       method: 'POST',
@@ -129,7 +122,7 @@ export const postPosting = {
     });
     return pathArr.data;
   },
-  doDeletePosting: async (board_type, id, dispatch) => {
+  doPostDelete: async (board_type, id, dispatch) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = 'api/post_posting/postDeletePosting';
     await instance({
@@ -143,7 +136,7 @@ export const postPosting = {
       postCntSwitcher(dispatch, false);
     });
   },
-  doDeleteImage: async (board_type, imagesUrl, dispatch) => {
+  doPostDeleteImage: async (board_type, imagesUrl, dispatch) => {
     const apiUrl = 'api/post_posting/postDeleteImage';
     await instance({
       method: 'POST',
@@ -151,7 +144,7 @@ export const postPosting = {
       data: { imagesUrl },
     });
   },
-  doEditPosting: async (board_type, id, newTitle, newContent, dispatch) => {
+  doPostEdit: async (board_type, id, newTitle, newContent, dispatch) => {
     postCntSwitcher(dispatch, true);
     await instance({
       method: 'POST',
