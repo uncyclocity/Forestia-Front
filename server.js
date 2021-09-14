@@ -5,8 +5,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const imageRouter = require('./pages/api/post_posting/uploadImage');
-const imageDelRouter = require('./pages/api/post_posting/deleteImage');
+const imageCrRouter = require('./pages/api/post_posting/postCreateImage');
+const imageDelRouter = require('./pages/api/post_posting/postDeleteImage');
 
 app
   .prepare()
@@ -15,9 +15,9 @@ app
 
     server.use(express.json());
 
-    server.use('/api/post_posting/uploadImage', imageRouter);
+    server.use('/api/post_posting/postCreateImage', imageCrRouter);
 
-    server.use('/api/post_posting/deleteImage', imageDelRouter);
+    server.use('/api/post_posting/postDeleteImage', imageDelRouter);
 
     server.use('/uploads', express.static('public/uploads'));
 

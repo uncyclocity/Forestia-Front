@@ -13,7 +13,7 @@ const getNewCommId = (nowPostingEleObj) => {
 export const comm = {
   doUploadComment: async (nowPostingEleObj, contentRef, userName, dispatch) => {
     postCntSwitcher(dispatch, true);
-    const apiUrl = '/api/post_comment/uploadComment';
+    const apiUrl = '/api/post_comment/postCreateComm';
     const comment_id = getNewCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
     await instance({
@@ -39,7 +39,7 @@ export const comm = {
     dispatch,
   ) => {
     postCntSwitcher(dispatch, true);
-    const apiUrl = '/api/post_comment/editComment';
+    const apiUrl = '/api/post_comment/postEditComm';
     await instance({
       method: 'POST',
       url: apiUrl,
@@ -58,7 +58,7 @@ export const comm = {
     postCntSwitcher(dispatch, true);
     await instance({
       method: 'POST',
-      url: '/api/post_comment/deleteComment',
+      url: '/api/post_comment/PostDeleteComm',
       data: {
         board_type,
         post_id,
@@ -77,7 +77,7 @@ export const comm = {
 
 export const posting = {
   doUpdateUpDown: async (data, dispatch) => {
-    const apiUrl = '/api/post_posting/editUD';
+    const apiUrl = '/api/post_posting/postEditUpDown';
     await instance({
       method: 'POST',
       url: apiUrl,
@@ -92,7 +92,7 @@ export const posting = {
     pathArr,
     dispatch,
   ) => {
-    const apiUrl = '/api/post_posting/uploadPost';
+    const apiUrl = '/api/post_posting/postCreatePosting';
     await instance({
       method: 'POST',
       url: apiUrl,
@@ -131,7 +131,7 @@ export const posting = {
   },
   doDeletePosting: async (board_type, id, dispatch) => {
     postCntSwitcher(dispatch, true);
-    const apiUrl = 'api/post_posting/deletePost';
+    const apiUrl = 'api/post_posting/postDeletePosting';
     await instance({
       method: 'POST',
       url: apiUrl,
@@ -144,7 +144,7 @@ export const posting = {
     });
   },
   doDeleteImage: async (board_type, imagesUrl, dispatch) => {
-    const apiUrl = 'api/post_posting/deleteImage';
+    const apiUrl = 'api/post_posting/postDeleteImage';
     await instance({
       method: 'POST',
       url: apiUrl,
@@ -155,7 +155,7 @@ export const posting = {
     postCntSwitcher(dispatch, true);
     await instance({
       method: 'POST',
-      url: '/api/post_posting/editPost',
+      url: '/api/post_posting/postEditPosting',
       data: {
         board_type,
         id,
