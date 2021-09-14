@@ -1,5 +1,5 @@
 import instance from '../../../common/instance';
-import { posting } from '../../../doApi/doApi';
+import { postPosting } from '../../../doApi/doApi';
 
 export default async function letsDoUploadPosting(
   selBoard,
@@ -29,6 +29,6 @@ export default async function letsDoUploadPosting(
     formData.append('images', images.current.files[i]);
   }
 
-  const res = await posting.doUploadImage(formData, selBoard, dispatch);
-  posting.doCreatePosting(selBoard, id, title, content, res, dispatch);
+  const res = await postPosting.doUploadImage(formData, selBoard, dispatch);
+  postPosting.doCreatePosting(selBoard, id, title, content, res, dispatch);
 }

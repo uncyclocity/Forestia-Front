@@ -3,18 +3,18 @@ import instance from '../common/instance';
 import { unmountAnimation } from '../common/animationController';
 import postCntSwitcher from '../common/postCntSwitcher';
 
-const getNewCommId = (nowPostingEleObj) => {
+const newCommId = (nowPostingEleObj) => {
   const commArr = nowPostingEleObj.comments;
   const commArrLen = commArr.length;
   const commId = commArrLen > 0 ? parseInt(commArr[commArrLen - 1].id) + 1 : 0;
   return commId;
 };
 
-export const comm = {
-  doUploadComment: async (nowPostingEleObj, contentRef, userName, dispatch) => {
+export const postComm = {
+  doPostCreate: async (nowPostingEleObj, contentRef, userName, dispatch) => {
     postCntSwitcher(dispatch, true);
     const apiUrl = '/api/post_comment/postCreateComm';
-    const comment_id = getNewCommId(nowPostingEleObj);
+    const comment_id = newCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
     await instance({
       method: 'POST',
@@ -32,7 +32,7 @@ export const comm = {
       postCntSwitcher(dispatch, false);
     });
   },
-  doEditComment: async (
+  doPostEdit: async (
     nowPostingEleObj,
     editCommObj,
     setEditCommObj,
@@ -54,7 +54,7 @@ export const comm = {
       postCntSwitcher(dispatch, false);
     });
   },
-  doDeleteComment: async (board_type, post_id, comment_id, dispatch) => {
+  doPostDelete: async (board_type, post_id, comment_id, dispatch) => {
     postCntSwitcher(dispatch, true);
     await instance({
       method: 'POST',
@@ -75,7 +75,7 @@ export const comm = {
   },
 };
 
-export const posting = {
+export const postPosting = {
   doUpdateUpDown: async (data, dispatch) => {
     const apiUrl = '/api/post_posting/postEditUpDown';
     await instance({

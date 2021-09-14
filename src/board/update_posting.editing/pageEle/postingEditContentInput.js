@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
-import { posting } from '../../../doApi/doApi';
+import { postPosting } from '../../../doApi/doApi';
 
 const ContentInputStyle = styled.div`
   flex-direction: column;
@@ -110,7 +110,7 @@ export default function PostingEditContentInput({
           onClick={() => {
             if (!postCnt) {
               newTitle.current.value && newContent.current.value
-                ? posting.doEditPosting(
+                ? postPosting.doEditPosting(
                     board_type,
                     id,
                     newTitle,

@@ -7,7 +7,7 @@ import InCommDeletingBoardTitle from '../../../src/board/update_comment.deleting
 import CommDeleteSign from '../../../src/board/update_comment.deleting/pageEle/commDeleteSign';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
-import { comm } from '../../../src/doApi/doApi';
+import { postComm } from '../../../src/doApi/doApi';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -22,7 +22,7 @@ export default function CommDeleting() {
 
   useEffect(() => {
     mountAnimation(dispatch, 'commDeleting');
-    comm.doDeleteComment(board_type, comment_id, post_id, dispatch);
+    postComm.doPostDelete(board_type, comment_id, post_id, dispatch);
   }, [board_type, comment_id, dispatch, post_id]);
 
   return (

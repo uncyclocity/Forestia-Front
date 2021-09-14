@@ -3,7 +3,7 @@ import { RiMailSendLine } from 'react-icons/ri';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
 import instance from '../../../common/instance';
-import { comm } from '../../../doApi/doApi';
+import { postComm } from '../../../doApi/doApi';
 
 const CommInputAreaStyle = styled.div`
   display: flex;
@@ -97,7 +97,7 @@ export default function CommentInput({
           onClick={async () => {
             if (!postCnt) {
               if (commentContent.current.value) {
-                await comm.doUploadComment(
+                await postComm.doPostCreate(
                   nowPostingEleObj,
                   commentContent,
                   userName,

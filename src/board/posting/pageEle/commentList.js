@@ -3,7 +3,7 @@ import { FiSend } from 'react-icons/fi';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
 import instance from '../../../common/instance';
-import { comm } from '../../../doApi/doApi';
+import { postComm } from '../../../doApi/doApi';
 import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
 
 const CommListAreaStyle = styled.div`
@@ -201,7 +201,7 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                       className="comm_edit_post_btn"
                       onClick={async () => {
                         if (!postCnt) {
-                          await comm.doEditComment(
+                          await postComm.doPostEdit(
                             nowPostingEleObj,
                             editCommObj,
                             setEditCommObj,

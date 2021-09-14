@@ -1,6 +1,6 @@
 import instance from '../../../common/instance';
 import postCntSwitcher from '../../../common/postCntSwitcher';
-import { posting } from '../../../doApi/doApi';
+import { postPosting } from '../../../doApi/doApi';
 
 export default async function getDoUpdateUDdata(
   udType,
@@ -27,20 +27,20 @@ export default async function getDoUpdateUDdata(
       ...defaultData,
       operation: 'sub',
     };
-    await posting.doUpdateUpDown(data, dispatch);
+    await postPosting.doUpdateUpDown(data, dispatch);
   } else if (revUdClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
       ...defaultData,
       rev_ud_type: revUdType,
       operation: 'addsub',
     };
-    await posting.doUpdateUpDown(data, dispatch);
+    await postPosting.doUpdateUpDown(data, dispatch);
   } else {
     const data = {
       ...defaultData,
       operation: 'add',
     };
-    await posting.doUpdateUpDown(data, dispatch);
+    await postPosting.doUpdateUpDown(data, dispatch);
   }
 
   const getPostingEle_res = await instance.get(
