@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
+import postCntSwitcher from '../../../common/postCntSwitcher';
 import { postPosting } from '../../../doApi/doApi';
 
 const ContentInputStyle = styled.div`
@@ -107,17 +108,21 @@ export default function PostingEditContentInput({
         />
         <div
           className="content_post_btn"
-          onClick={() => {
+          onClick={async () => {
             if (!postCnt) {
-              newTitle.current.value && newContent.current.value
-                ? postPosting.doPostEdit(
-                    board_type,
-                    id,
-                    newTitle,
-                    newContent,
-                    dispatch,
-                  )
-                : alert('제목 및 내용을 입력하세요');
+              if (newTitle.current.value && newContent.current.value) {
+                postCntSwitcher(dispatch, true);
+                await postPosting.doPostEdit(
+                  board_type,
+                  id,
+                  newTitle,
+                  newContent,
+                  dispatch,
+                );
+                postCntSwitcher(dispatch, false);
+              } else {
+                alert('제목 및 내용을 입력하세요');
+              }
             }
           }}
         >

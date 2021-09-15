@@ -1,7 +1,6 @@
 import moment from 'moment';
 import instance from '../common/instance';
 import { unmountAnimation } from '../common/animationController';
-import postCntSwitcher from '../common/postCntSwitcher';
 
 const newCommId = (nowPostingEleObj) => {
   const commArr = nowPostingEleObj.comments;
@@ -11,8 +10,7 @@ const newCommId = (nowPostingEleObj) => {
 };
 
 export const postComm = {
-  doPostCreate: async (nowPostingEleObj, contentRef, userName, dispatch) => {
-    postCntSwitcher(dispatch, true);
+  doPostCreate: async (nowPostingEleObj, contentRef, userName) => {
     const apiUrl = '/api/post_comment/postCreateComm';
     const comment_id = newCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -29,16 +27,9 @@ export const postComm = {
       },
     }).then(async () => {
       contentRef.current.value = '';
-      postCntSwitcher(dispatch, false);
     });
   },
-  doPostEdit: async (
-    nowPostingEleObj,
-    editCommObj,
-    setEditCommObj,
-    dispatch,
-  ) => {
-    postCntSwitcher(dispatch, true);
+  doPostEdit: async (nowPostingEleObj, editCommObj, setEditCommObj) => {
     const apiUrl = '/api/post_comment/postEditComm';
     await instance({
       method: 'POST',
@@ -51,11 +42,9 @@ export const postComm = {
       },
     }).then(async () => {
       setEditCommObj(false);
-      postCntSwitcher(dispatch, false);
     });
   },
   doPostDelete: async (board_type, post_id, comment_id, dispatch) => {
-    postCntSwitcher(dispatch, true);
     await instance({
       method: 'POST',
       url: '/api/post_comment/postDeleteComm',
@@ -65,7 +54,6 @@ export const postComm = {
         comment_id,
       },
     }).then(async () => {
-      postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
         dispatch,
@@ -76,7 +64,7 @@ export const postComm = {
 };
 
 export const postPosting = {
-  doPostEditUpDown: async (data, dispatch) => {
+  doPostEditUpDown: async (data) => {
     const apiUrl = '/api/post_posting/postEditUpDown';
     await instance({
       method: 'POST',
@@ -100,7 +88,6 @@ export const postPosting = {
         imagesUrl: pathArr,
       },
     }).then(async () => {
-      postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
         dispatch,
@@ -108,8 +95,7 @@ export const postPosting = {
       );
     });
   },
-  doPostCreateImage: async (formData, board_type, dispatch) => {
-    postCntSwitcher(dispatch, true);
+  doPostCreateImage: async (formData, board_type) => {
     const apiUrl = `/api/post_posting/postCreateImage?board_type=${board_type}`;
     var pathArr = [];
     await instance({
@@ -122,8 +108,7 @@ export const postPosting = {
     });
     return pathArr.data;
   },
-  doPostDelete: async (board_type, id, dispatch) => {
-    postCntSwitcher(dispatch, true);
+  doPostDelete: async (board_type, id) => {
     const apiUrl = 'api/post_posting/postDeletePosting';
     await instance({
       method: 'POST',
@@ -132,11 +117,9 @@ export const postPosting = {
         board_type,
         id,
       },
-    }).then(async () => {
-      postCntSwitcher(dispatch, false);
     });
   },
-  doPostDeleteImage: async (board_type, imagesUrl, dispatch) => {
+  doPostDeleteImage: async (imagesUrl) => {
     const apiUrl = 'api/post_posting/postDeleteImage';
     await instance({
       method: 'POST',
@@ -145,7 +128,6 @@ export const postPosting = {
     });
   },
   doPostEdit: async (board_type, id, newTitle, newContent, dispatch) => {
-    postCntSwitcher(dispatch, true);
     await instance({
       method: 'POST',
       url: '/api/post_posting/postEditPosting',
@@ -156,12 +138,44 @@ export const postPosting = {
         content: newContent.current.value,
       },
     }).then(async () => {
-      postCntSwitcher(dispatch, false);
       unmountAnimation(
         0,
         dispatch,
         `/board/posting?board_type=${board_type}&post_id=${id}`,
       );
     });
+  },
+};
+
+export const getPosting = {
+  doGetForList: async (nowPage, boardType) => {
+    const res = await instance.get(
+      `/api/get_posting/getPostingsForList?page=${nowPage}&board_type=${boardType}`,
+    );
+    return res.data;
+  },
+  doGetLength: async (boardType) => {
+    const res = await instance.get(
+      `/api/get_posting/getPostingsLen?board_type=${boardType}`,
+    );
+    return res.data;
+  },
+  doGetNowPostingEleObj: async (boardType, id) => {
+    const res = await instance.get(
+      `/api/get_posting/getPostingEle?id=${id}&board_type=${boardType}`,
+    );
+    return res.data;
+  },
+  doGetTop3: async (boardType) => {
+    const res = await instance.get(
+      `/api/get_posting/getPostingsTop3?board_type=${boardType}`,
+    );
+    return res.data;
+  },
+  doGetLatestId: async (boardType) => {
+    const res = await instance.get(
+      `/api/get_posting/getLatestPostingId?board_type=${boardType}`,
+    );
+    return res.data;
   },
 };

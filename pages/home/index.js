@@ -14,7 +14,7 @@ import {
   box_slide_up,
   box_zero_opacity,
 } from '../../src/boxEle/boxAnimation';
-import instance from '../../src/common/instance';
+import { getPosting } from '../../src/doApi/doApi';
 
 const setTop3 = (board, bak, i = 0) => {
   bak.current = [];
@@ -182,13 +182,7 @@ export default function Home({ freeBoard, photoBoard }) {
 }
 
 Home.getInitialProps = async () => {
-  const free_res = await instance.get(
-    '/api/get_posting/getPostingsTop3?board_type=free',
-  );
-  const freeBoard = await free_res.data;
-  const photo_res = await instance.get(
-    '/api/get_posting/getPostingsTop3?board_type=photo',
-  );
-  const photoBoard = await photo_res.data;
+  const freeBoard = await getPosting.doGetTop3('free');
+  const photoBoard = await getPosting.doGetTop3('photo');
   return { freeBoard, photoBoard };
 };

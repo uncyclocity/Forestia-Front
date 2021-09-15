@@ -1,6 +1,5 @@
-import instance from '../../../common/instance';
 import postCntSwitcher from '../../../common/postCntSwitcher';
-import { postPosting } from '../../../doApi/doApi';
+import { getPosting, postPosting } from '../../../doApi/doApi';
 
 export default async function getDoUpdateUDdata(
   udType,
@@ -27,29 +26,33 @@ export default async function getDoUpdateUDdata(
       ...defaultData,
       operation: 'sub',
     };
-    await postPosting.doPostEditUpDown(data, dispatch);
+    await postPosting.doPostEditUpDown(data);
   } else if (revUdClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
       ...defaultData,
       rev_ud_type: revUdType,
       operation: 'addsub',
     };
-    await postPosting.doPostEditUpDown(data, dispatch);
+    await postPosting.doPostEditUpDown(data);
   } else {
     const data = {
       ...defaultData,
       operation: 'add',
     };
-    await postPosting.doPostEditUpDown(data, dispatch);
+    await postPosting.doPostEditUpDown(data);
   }
 
-  const getPostingEle_res = await instance.get(
-    `/api/get_posting/getPostingEle?id=${nowPostingEleObj.id}&board_type=${nowPostingEleObj.board_type}`,
+  const getPostingEle = await getPosting.doGetNowPostingEleObj(
+    nowPostingEleObj.board_type,
+    nowPostingEleObj.id,
   );
-  const nowPostingEleObjRaw = {
-    ...getPostingEle_res.data,
+
+  const nowPostingEleObjUpdated = {
+    ...getPostingEle,
     board_type: nowPostingEleObj.board_type,
   };
-  setNowPostingEleObj(nowPostingEleObjRaw);
+
+  setNowPostingEleObj(nowPostingEleObjUpdated);
+
   postCntSwitcher(dispatch, false);
 }

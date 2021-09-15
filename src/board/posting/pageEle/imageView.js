@@ -12,13 +12,14 @@ export default function ImageView({ nowPostingEleObj }) {
 
   return (
     <div className="imageview_area">
-      {imagesUrl.map((imageUrl, index) => {
-        return (
-          <ImageStyle key={index}>
-            <img src={imageUrl} alt={index} width="640px" />
-          </ImageStyle>
-        );
-      })}
+      {imagesUrl &&
+        imagesUrl.map((imageUrl, index) => {
+          return (
+            <ImageStyle key={index}>
+              <img src={imageUrl} alt={index} width="640px" />
+            </ImageStyle>
+          );
+        })}
     </div>
   );
 }

@@ -7,7 +7,7 @@ import InCommDeletingBoardTitle from '../../../src/board/update_comment.deleting
 import CommDeleteSign from '../../../src/board/update_comment.deleting/pageEle/commDeleteSign';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
-import { postComm } from '../../../src/doApi/doApi';
+import letsDeleteComm from '../../../src/board/update_comment.deleting/etcFunc/letsDeleteComm';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -16,14 +16,12 @@ const BoxStyles = styled.div`
 
 export default function CommDeleting() {
   const router = useRouter();
-  const { board_type, post_id, comment_id } = router.query;
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     mountAnimation(dispatch, 'commDeleting');
-    postComm.doPostDelete(board_type, post_id, comment_id, dispatch);
-  }, [board_type, comment_id, dispatch, post_id]);
+    letsDeleteComm(dispatch, router.query);
+  }, [dispatch, router.query]);
 
   return (
     <FourAnimationedBox>

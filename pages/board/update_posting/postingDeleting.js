@@ -16,7 +16,6 @@ const BoxStyles = styled.div`
 export default function PostingDeleting() {
   const dispatch = useDispatch();
   const nowPostingEleObj = useReducerState().nowPostingEleObj;
-
   useEffect(() => {
     mountAnimation(dispatch, 'deleting');
     letsDeletePostingAndImage(nowPostingEleObj, dispatch);

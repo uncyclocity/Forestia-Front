@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
-import instance from '../../../common/instance';
-import { postComm } from '../../../doApi/doApi';
+import postCntSwitcher from '../../../common/postCntSwitcher';
+import { getPosting, postComm } from '../../../doApi/doApi';
 import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
 
 const CommListAreaStyle = styled.div`
@@ -117,15 +117,22 @@ const CommContentAreaStyle = styled.div`
   }
 `;
 
-const setNPEO = async (nowPostingEleObj, setNowPostingEleObj) => {
-  const getPostingEle_res = await instance.get(
-    `/api/get_posting/getPostingEle?id=${nowPostingEleObj.id}&board_type=${nowPostingEleObj.board_type}`,
+const UpdateNowPostingEleObj = async (
+  nowPostingEleObj,
+  setNowPostingEleObj,
+  dispatch,
+) => {
+  postCntSwitcher(dispatch, true);
+  const getPostingEle = await getPosting.doGetNowPostingEleObj(
+    nowPostingEleObj.board_type,
+    nowPostingEleObj.id,
   );
-  const nowPostingEleObjRaw = {
-    ...getPostingEle_res.data,
+  const nowPostingEleObjUpdated = {
+    ...getPostingEle,
     board_type: nowPostingEleObj.board_type,
   };
-  setNowPostingEleObj(nowPostingEleObjRaw);
+  setNowPostingEleObj(nowPostingEleObjUpdated);
+  postCntSwitcher(dispatch, false);
 };
 
 export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
@@ -201,13 +208,18 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                       className="comm_edit_post_btn"
                       onClick={async () => {
                         if (!postCnt) {
+                          postCntSwitcher(dispatch, true);
                           await postComm.doPostEdit(
                             nowPostingEleObj,
                             editCommObj,
                             setEditCommObj,
+                          );
+                          await UpdateNowPostingEleObj(
+                            nowPostingEleObj,
+                            setNowPostingEleObj,
                             dispatch,
                           );
-                          setNPEO(nowPostingEleObj, setNowPostingEleObj);
+                          postCntSwitcher(dispatch, false);
                         }
                       }}
                     >

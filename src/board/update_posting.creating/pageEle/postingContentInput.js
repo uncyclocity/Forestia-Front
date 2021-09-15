@@ -156,10 +156,7 @@ export default function PostingContentInput({ selBoard }) {
         <div className="uploadedimg_list">
           {imagesUrlArr.length > 0 &&
             imagesUrlArr.map((imageUrl, index) => {
-              return (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={imageUrl} key={index} alt={index} height="44" />
-              );
+              return <img src={imageUrl} key={index} alt={index} height="44" />;
             })}
         </div>
       </div>

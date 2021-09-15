@@ -7,7 +7,8 @@ import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import InPhotoListBoardTitle from '../../../src/board/list.photo/pageEle/inPhotoListBoardTitle';
 import PhotoListPostingList from '../../../src/board/list.photo/pageEle/photoListPostingList';
 import PageBtn from '../../../src/board/list.photo/pageEle/pageBtn';
-import instance from '../../../src/common/instance';
+import postCntSwitcher from '../../../src/common/postCntSwitcher';
+import { getPosting } from '../../../src/doApi/doApi';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -105,12 +106,11 @@ export default function Photo({ photoBoard, page, photoLen }) {
   const [nowList, setNowList] = useState(photoBoard);
 
   const changeList = useCallback(async () => {
-    const photo_res = await instance.get(
-      `/api/get_posting/getPostingsForList?page=${nowPage}&board_type=photo`,
-    );
-    const photoBoard = await photo_res.data;
+    postCntSwitcher(dispatch, true);
+    const photoBoard = await getPosting.doGetForList(nowPage, 'photo');
     setNowList(photoBoard);
-  }, [nowPage]);
+    postCntSwitcher(dispatch, false);
+  }, [dispatch, nowPage]);
 
   useEffect(() => {
     mountAnimation(dispatch, 'photo');
@@ -142,14 +142,8 @@ export default function Photo({ photoBoard, page, photoLen }) {
 }
 
 Photo.getInitialProps = async () => {
-  const photo_res = await instance.get(
-    `/api/get_posting/getPostingsForList?page=1&board_type=photo`,
-  );
-  const photoBoard = await photo_res.data;
-  const photolen_res = await instance.get(
-    `/api/get_posting/getPostingsLen?board_type=photo`,
-  );
-  const photoLen = await photolen_res.data;
   const page = 1;
+  const photoBoard = await getPosting.doGetForList(page, 'photo');
+  const photoLen = await getPosting.doGetForList('photo');
   return { photoBoard, page, photoLen };
 };

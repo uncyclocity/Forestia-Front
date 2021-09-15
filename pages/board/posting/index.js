@@ -1,6 +1,5 @@
-import { useRouter } from 'next/router';
 import BoardTitle from '../../../src/common/boardTitle';
-import { useDispatch, useReducerState } from '../../../src/common/context';
+import { useDispatch } from '../../../src/common/context';
 import { useEffect, useState } from 'react';
 import {
   postPageSwitchOff,
@@ -15,7 +14,7 @@ import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import ContentView from '../../../src/board/posting/pageEle/contentView';
 import { mountAnimation } from '../../../src/common/animationController';
 import ImageView from '../../../src/board/posting/pageEle/imageView';
-import instance from '../../../src/common/instance';
+import { getPosting } from '../../../src/doApi/doApi';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -62,9 +61,10 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
 
 Post.getInitialProps = async (ctx) => {
   const { board_type, post_id } = ctx.query;
-  const getPostingEle_res = await instance.get(
-    `/api/get_posting/getPostingEle?id=${post_id}&board_type=${board_type}`,
+  const getPostingEle = await getPosting.doGetNowPostingEleObj(
+    board_type,
+    post_id,
   );
-  const nowPostingEleObjRaw = { ...getPostingEle_res.data, board_type };
+  const nowPostingEleObjRaw = { ...getPostingEle, board_type };
   return { nowPostingEleObjRaw, board_type };
 };

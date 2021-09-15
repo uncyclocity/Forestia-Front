@@ -1,5 +1,5 @@
-import instance from '../../../common/instance';
-import { postPosting } from '../../../doApi/doApi';
+import postCntSwitcher from '../../../common/postCntSwitcher';
+import { getPosting, postPosting } from '../../../doApi/doApi';
 
 export default async function letsDoUploadPosting(
   selBoard,
@@ -8,25 +8,23 @@ export default async function letsDoUploadPosting(
   images,
   dispatch,
 ) {
-  const boardlen_res = await instance.get(
-    `/api/get_posting/getPostingsLen?board_type=${selBoard}`,
-  );
-  const boardLen = boardlen_res.data;
+  postCntSwitcher(dispatch, true);
+  const boardLen = await getPosting.doGetLength(selBoard);
+
   var id = '0';
 
+  const formData = new FormData();
+
   if (boardLen > 0) {
-    const maxId_res = await instance.get(
-      `/api/get_posting/getLatestPostingId?board_type=${selBoard}`,
-    );
-    const maxId = maxId_res.data;
+    const maxId = await getPosting.doGetLatestId(selBoard);
     id = parseInt(maxId) + 1;
   }
 
-  const formData = new FormData();
   for (var i = 0; i < images.current.files.length; i++) {
     formData.append('images', images.current.files[i]);
   }
 
   const res = await postPosting.doPostCreateImage(formData, selBoard, dispatch);
-  postPosting.doPostCreate(selBoard, id, title, content, res, dispatch);
+  await postPosting.doPostCreate(selBoard, id, title, content, res, dispatch);
+  postCntSwitcher(dispatch, false);
 }

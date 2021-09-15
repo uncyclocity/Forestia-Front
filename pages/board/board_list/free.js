@@ -7,7 +7,8 @@ import styled from 'styled-components';
 import InFreeListBoardTitle from '../../../src/board/list.free/pageEle/inFreeListBoardTitle';
 import FreeListPostingList from '../../../src/board/list.free/pageEle/freeListPostingList';
 import PageBtn from '../../../src/board/list.free/pageEle/pageBtn';
-import instance from '../../../src/common/instance';
+import { getPosting } from '../../../src/doApi/doApi';
+import postCntSwitcher from '../../../src/common/postCntSwitcher';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -105,12 +106,11 @@ export default function Free({ freeBoard, page, freeLen }) {
   const [nowList, setNowList] = useState(freeBoard);
 
   const changeList = useCallback(async () => {
-    const free_res = await instance.get(
-      `/api/get_posting/getPostingsForList?page=${nowPage}&board_type=free`,
-    );
-    const freeBoard = await free_res.data;
+    postCntSwitcher(dispatch, true);
+    const freeBoard = await getPosting.doGetForList(nowPage, 'free');
     setNowList(freeBoard);
-  }, [nowPage]);
+    postCntSwitcher(dispatch, false);
+  }, [dispatch, nowPage]);
 
   useEffect(() => {
     mountAnimation(dispatch, 'free');
@@ -138,14 +138,8 @@ export default function Free({ freeBoard, page, freeLen }) {
 }
 
 Free.getInitialProps = async () => {
-  const free_res = await instance.get(
-    `/api/get_posting/getPostingsForList?page=1&board_type=free`,
-  );
-  const freeBoard = await free_res.data;
-  const freelen_res = await instance.get(
-    `/api/get_posting/getPostingsLen?board_type=free`,
-  );
-  const freeLen = await freelen_res.data;
   const page = 1;
+  const freeBoard = await getPosting.doGetForList(page, 'free');
+  const freeLen = await getPosting.doGetLength('free');
   return { freeBoard, page, freeLen };
 };
