@@ -6,7 +6,7 @@ import InDeletePostingBoardTitle from '../../../src/board/update_posting.deletin
 import DeleteSign from '../../../src/board/update_posting.deleting/pageEle/deleteSign';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
-import letsDeletePostingAndImage from '../../../src/board/update_comment.deleting/etcFunc/letsDeletePostingAndImage';
+import letsDeletePostingAndImage from '../../../src/board/update_posting.deleting/etcFunc/letsDeletePostingAndImage';
 
 const BoxStyles = styled.div`
   color: #525252;
