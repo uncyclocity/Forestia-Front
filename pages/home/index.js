@@ -20,6 +20,7 @@ import {
 } from '../../src/boxEle/boxAnimation';
 import { getPosting } from '../../src/doApi/doApi';
 import { BiChevronRight } from 'react-icons/bi';
+import { FaRegCommentAlt } from 'react-icons/fa';
 
 const setTop3 = (board, bak, i = 0) => {
   bak.current = [];
@@ -60,14 +61,14 @@ const BoxStyle1F = styled.div`
   display: flex;
   flex-direction: column;
   width: 335px;
-  height: 220px;
+  height: 165px;
 `;
 
 const BoxStyle2F = styled.div`
   display: flex;
   flex-direction: column;
   width: 700px;
-  height: 230px;
+  height: 240px;
 `;
 
 const FreeBox = styled.div`
@@ -82,7 +83,7 @@ const FreeBox = styled.div`
   .board_title {
     width: 100%;
     color: #20c997;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -97,6 +98,7 @@ const FreeBox = styled.div`
       margin-left: 5px;
       font-size: 20px;
       font-weight: bold;
+      width: 100%;
     }
 
     .goto_board {
@@ -108,7 +110,8 @@ const FreeBox = styled.div`
   .content_list {
     width: 100%;
     ul {
-      padding: 0 20px;
+      padding: 5px 20px;
+      margin: 0px;
       li {
         width: 300px;
         list-style-type: none;
@@ -171,10 +174,10 @@ const PhotoBox = styled.div`
   .board_title {
     width: 100%;
     color: #20c997;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     align-items: center;
-    flex-direction: row;
+
     font-size: 20px;
 
     .board_icon {
@@ -186,6 +189,7 @@ const PhotoBox = styled.div`
       margin-left: 5px;
       font-size: 20px;
       font-weight: bold;
+      width: 100%;
     }
 
     .goto_board {
@@ -197,30 +201,56 @@ const PhotoBox = styled.div`
   .content_list {
     width: 100%;
     ul {
-      padding: 0 20px;
+      padding: 0px;
+      margin: 5px 20px;
       li {
         float: left;
         list-style-type: none;
 
         .photo_posting {
+          cursor: pointer;
           .posting_thumbnail {
+            display: flex;
+            justify-content: center;
             border: 1px solid #e9ecef;
             border-radius: 5px;
-            max-width: 210px;
-            height: 100px;
+            width: 213px;
+            height: 120px;
             overflow: hidden;
+            background: #f4f4f4;
+
             img {
               max-width: initial;
-              height: 100px;
-              margin-left: -28%;
+              height: 120px;
             }
           }
 
-          .posting_name {
+          .name_and_content {
             display: flex;
-            justify-content: center;
+            flex-direction: row;
             align-items: center;
-            margin: 10px 0;
+            margin: 10px 0 0 2px;
+            width: 100%;
+
+            .posting_name {
+              display: ;
+            }
+
+            .comment_amount_area {
+              display: flex;
+              flex-direction: row;
+              color: #20c997;
+              margin-left: 70%;
+
+              .icon {
+                font-size: 12px;
+                margin-right: 5px;
+              }
+
+              .amount {
+                font-size: 12px;
+              }
+            }
           }
         }
 
@@ -402,7 +432,17 @@ export default function Home({ freeBoard, photoBoard }) {
                                   height="44"
                                 />
                               </div>
-                              <div className="posting_name">{post.title}</div>
+                              <div className="name_and_content">
+                                <div className="posting_name">{post.title}</div>
+                                <div className="comment_amount_area">
+                                  <div className="icon">
+                                    <FaRegCommentAlt />
+                                  </div>
+                                  <div className="amount">
+                                    {post.comments.length}
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </li>

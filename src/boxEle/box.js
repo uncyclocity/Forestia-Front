@@ -8,7 +8,7 @@ const BoxStyles = styled.div`
   margin-top: 30px;
 
   background: white;
-  border-radius: 20px;
+  border-radius: 25px;
 
   box-shadow: 0px 5px 5px #dedede;
 `;

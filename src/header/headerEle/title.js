@@ -14,7 +14,7 @@ const Styles = styled.div`
   padding: 30px 20px 20px 20px;
   color: white;
   background: #20c997;
-  border-radius: 15px 15px 0 0;
+  border-radius: 25px 25px 0 0;
 
   .catchphrase {
     width: 100%;
