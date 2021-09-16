@@ -9,11 +9,9 @@ const ListStyle = styled.div`
   max-width: 640px;
 
   .posting_list {
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-
+    width: 650px;
     .photo_posting {
+      display: inline-block;
       cursor: pointer;
 
       .posting_thumbnail {
@@ -67,8 +65,8 @@ const ListStyle = styled.div`
         white-space: nowrap;
       }
 
-      &:not(:first-child) {
-        margin-left: 10px;
+      &:not(:last-child) {
+        margin-right: 10px;
       }
 
       &:hover {
@@ -105,11 +103,6 @@ const ListStyle = styled.div`
 
 export default function PhotoListPostingList({ photoBoard }) {
   const dispatch = useDispatch();
-  const BoardLenDiv3Remain = photoBoard.length % 3;
-  const photo3Block =
-    BoardLenDiv3Remain > 0
-      ? parseInt(photoBoard.length / 3) + 1
-      : parseInt(photoBoard.length / 3);
 
   return (
     <ListStyle>
