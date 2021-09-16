@@ -3,7 +3,7 @@ import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   html, body {
-    background: #ebebeb;
+    background: #efefef;
     height: 100%;
     padding: 0;
     margin: 0;

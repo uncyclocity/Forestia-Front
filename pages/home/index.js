@@ -21,6 +21,9 @@ import {
 import { getPosting } from '../../src/doApi/doApi';
 import { BiChevronRight } from 'react-icons/bi';
 import { FaRegCommentAlt } from 'react-icons/fa';
+import { BsPerson } from 'react-icons/bs';
+import { FiImage } from 'react-icons/fi';
+import { CgFileDocument } from 'react-icons/cg';
 
 const setTop3 = (board, bak, i = 0) => {
   bak.current = [];
@@ -71,13 +74,58 @@ const BoxStyle2F = styled.div`
   height: 240px;
 `;
 
+const ProfileBox = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  .profile_photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 165px;
+    color: white;
+    background: #20c997;
+    border-radius: 25px 0 0 25px;
+    font-size: 70px;
+  }
+
+  .profile_name_area {
+    width: 50%;
+    height: 165px;
+    font-size: 20px;
+    color: #828c99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .profile_name_line {
+      display: flex;
+      flex-direction: row;
+      .profile_name {
+        color: #20c997;
+      }
+    }
+
+    .profile_logout {
+      border: 1px solid #20c997;
+      color: #20c997;
+      border-radius: 5px;
+      font-size: 12px;
+      margin-top: 10px;
+      padding: 5px;
+    }
+  }
+`;
+
 const FreeBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  color: #525252;
+  color: #828c99;
   float: left;
 
   .board_title {
@@ -102,6 +150,7 @@ const FreeBox = styled.div`
     }
 
     .goto_board {
+      cursor: pointer;
       height: 20px;
       margin-left: 5px;
     }
@@ -116,12 +165,34 @@ const FreeBox = styled.div`
         width: 300px;
         list-style-type: none;
 
-        a {
-          display: block;
-          overflow: hidden;
+        .posting_btn {
           cursor: pointer;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          display: flex;
+          flex-direction: row;
+
+          .posting_isImageExist {
+            color: #20c997;
+          }
+
+          .posting_name {
+            width: 90%;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          .comment_amount_area {
+            display: flex;
+            flex-direction: row;
+            color: #20c997;
+            height: 14px;
+            overflow: hidden;
+
+            .amount {
+              font-size: 12px;
+            }
+          }
         }
 
         &:not(:first-child) {
@@ -135,7 +206,7 @@ const FreeBox = styled.div`
 
         &:not(:hover) {
           transition: 0.15s all ease-in;
-          color: #525252;
+          color: #828c99;
         }
       }
     }
@@ -193,6 +264,7 @@ const PhotoBox = styled.div`
     }
 
     .goto_board {
+      cursor: pointer;
       height: 20px;
       margin-left: 5px;
     }
@@ -233,14 +305,13 @@ const PhotoBox = styled.div`
             width: 100%;
 
             .posting_name {
-              display: ;
+              width: 100%;
             }
 
             .comment_amount_area {
               display: flex;
               flex-direction: row;
               color: #20c997;
-              margin-left: 70%;
 
               .icon {
                 font-size: 12px;
@@ -273,7 +344,7 @@ const PhotoBox = styled.div`
 
         &:not(:hover) {
           transition: 0.15s all ease-in;
-          color: #525252;
+          color: #828c99;
         }
       }
     }
@@ -305,6 +376,7 @@ export default function Home({ freeBoard, photoBoard }) {
   const dispatch = useDispatch();
 
   const animation = state.animation;
+  const userName = state.userName;
 
   const bak = useRef([]);
 
@@ -326,7 +398,19 @@ export default function Home({ freeBoard, photoBoard }) {
           sw4={box_zero_opacity}
         >
           <Box>
-            <BoxStyle1F></BoxStyle1F>
+            <BoxStyle1F>
+              <ProfileBox>
+                <div className="profile_photo">
+                  <BsPerson />
+                </div>
+                <div className="profile_name_area">
+                  <div className="profile_name_line">
+                    <div className="profile_name">{userName}</div>님
+                  </div>
+                  <div className="profile_logout">로그아웃</div>
+                </div>
+              </ProfileBox>
+            </BoxStyle1F>
           </Box>
         </BoxAnimation>
 
@@ -347,7 +431,16 @@ export default function Home({ freeBoard, photoBoard }) {
                     <AiOutlineCloud />
                   </div>
                   <div className="board_name">자게</div>
-                  <div className="goto_board">
+                  <div
+                    className="goto_board"
+                    onClick={() =>
+                      unmountAnimation(
+                        0,
+                        dispatch,
+                        `/board/board_list/free?page=1`,
+                      )
+                    }
+                  >
                     <BiChevronRight />
                   </div>
                 </div>
@@ -366,8 +459,21 @@ export default function Home({ freeBoard, photoBoard }) {
                                   `/board/posting?board_type=free&post_id=${post.id}`,
                                 )
                               }
+                              className="posting_btn"
                             >
-                              <a>{post.title}</a>
+                              <div className="posting_isImageExist">
+                                {post.imagesUrl.length > 0 ? (
+                                  <FiImage />
+                                ) : (
+                                  <CgFileDocument />
+                                )}
+                              </div>
+                              <div className="posting_name">{post.title}</div>
+                              <div className="comment_amount_area">
+                                <div className="amount">
+                                  {post.comments.length}
+                                </div>
+                              </div>
                             </div>
                           </li>
                         );
@@ -405,7 +511,16 @@ export default function Home({ freeBoard, photoBoard }) {
                   <AiOutlineCamera />
                 </div>
                 <div className="board_name">짤게</div>
-                <div className="goto_board">
+                <div
+                  className="goto_board"
+                  onClick={() =>
+                    unmountAnimation(
+                      0,
+                      dispatch,
+                      `/board/board_list/photo?page=1`,
+                    )
+                  }
+                >
                   <BiChevronRight />
                 </div>
               </div>
