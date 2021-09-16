@@ -74,7 +74,7 @@ export default function HeaderBar() {
     '/home',
     '/about',
     '/board/board_list/free?page=1',
-    '/board/board_list/photo',
+    '/board/board_list/photo?page=1',
   ];
 
   const menuIconReturner = (headerMenu) => {

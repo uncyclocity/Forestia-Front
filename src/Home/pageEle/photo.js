@@ -59,6 +59,7 @@ const PhotoBoxStyle = styled.div`
 
         .photo_posting {
           cursor: pointer;
+
           .posting_thumbnail {
             display: flex;
             justify-content: center;

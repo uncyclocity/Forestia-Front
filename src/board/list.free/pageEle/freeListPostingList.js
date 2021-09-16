@@ -3,7 +3,6 @@ import { unmountAnimation } from '../../../common/animationController';
 import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
 import { FiImage } from 'react-icons/fi';
-import { CgFileDocument } from 'react-icons/cg';
 
 const ListStyle = styled.div`
   .content_list {
@@ -21,7 +20,7 @@ const ListStyle = styled.div`
           text-align: center;
           font-weight: bold;
           color: #828c99;
-          border-bottom: 1px solid #e9ecef;
+          border-bottom: 1px solid #20c997;
 
           .posting_name {
             width: 400px;
@@ -156,11 +155,7 @@ export default function FreeListPostingList({ freeBoard }) {
                       <div className="name_and_postingtype">
                         <div className="posting_name">{posting.title}</div>
                         <div className="posting_isImageExist">
-                          {posting.imagesUrl.length > 0 ? (
-                            <FiImage />
-                          ) : (
-                            <CgFileDocument />
-                          )}
+                          {posting.imagesUrl.length > 0 && <FiImage />}
                         </div>
                       </div>
                       <div className="comment_amount">
