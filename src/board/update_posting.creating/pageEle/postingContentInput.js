@@ -164,9 +164,15 @@ export default function PostingContentInput({ selBoard }) {
         className="content_post_btn"
         onClick={() => {
           if (!postCnt) {
-            content.current.value && title.current.value
-              ? letsDoUploadPosting(selBoard, title, content, images, dispatch)
-              : alert('제목 및 내용을 입력하세요');
+            if (content.current.value && title.current.value) {
+              if (selBoard === 'photo' && imagesUrlArr.length <= 0) {
+                alert('짤게는 이미지 업로드가 필수입니다.');
+              } else {
+                letsDoUploadPosting(selBoard, title, content, images, dispatch);
+              }
+            } else {
+              alert('제목 및 내용을 입력하세요');
+            }
           }
         }}
       >
