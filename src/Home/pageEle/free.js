@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { AiOutlineCloud, AiOutlineSmile } from 'react-icons/ai';
 import { BiChevronRight } from 'react-icons/bi';
-import { CgFileDocument } from 'react-icons/cg';
 import { FiImage } from 'react-icons/fi';
 import { unmountAnimation } from '../../common/animationController';
 import { useDispatch } from '../../common/context';
@@ -61,7 +60,7 @@ const FreeBoxStyle = styled.div`
           flex-direction: row;
 
           .posting_isImageExist {
-            margin: 0 auto 0 3px;
+            margin-left: 3px;
             color: #20c997;
           }
 
@@ -77,6 +76,7 @@ const FreeBoxStyle = styled.div`
             flex-direction: row;
             color: #20c997;
             height: 14px;
+            margin-left: auto;
 
             .icon {
               font-size: 12px;
@@ -84,6 +84,7 @@ const FreeBoxStyle = styled.div`
             }
 
             .amount {
+              width: 13px;
               font-size: 12px;
             }
           }
@@ -166,11 +167,7 @@ export default function FreeBox({ freeBoard }) {
                   >
                     <div className="posting_name">{post.title}</div>
                     <div className="posting_isImageExist">
-                      {post.imagesUrl.length > 0 ? (
-                        <FiImage />
-                      ) : (
-                        <CgFileDocument />
-                      )}
+                      {post.imagesUrl.length > 0 && <FiImage />}
                     </div>
                     <div className="comment_amount_area">
                       <div className="icon">

@@ -4,8 +4,7 @@ import styled from 'styled-components';
 const BoxStyles = styled.div`
   max-width: 700px;
 
-  margin: 0 auto;
-  margin-top: 30px;
+  margin: 15px auto;
 
   background: white;
   border-radius: 25px;

@@ -1,18 +1,19 @@
 import { AiOutlineSmile } from 'react-icons/ai';
-import { FaRegCommentAlt } from 'react-icons/fa';
 import { unmountAnimation } from '../../../common/animationController';
 import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
 
 const ListStyle = styled.div`
-  margin: 10px 0 10px 0;
+  margin: 15px 0 10px 0;
   max-width: 640px;
 
   .posting_list {
     width: 650px;
+
     .photo_posting {
       display: inline-block;
       cursor: pointer;
+      margin-bottom: 15px;
 
       .posting_thumbnail {
         display: flex;
@@ -30,39 +31,35 @@ const ListStyle = styled.div`
         }
       }
 
-      .name_and_content {
+      .name_and_comment {
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin: 10px 0 0 2px;
+        margin: 10px 0 5px 0;
+        border-bottom: 1px solid #e9ecef;
         width: 100%;
 
         .posting_name {
-          width: 100%;
+          width: 185px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
-        .comment_amount_area {
-          display: flex;
-          flex-direction: row;
+        .posting_comment_amount {
           color: #20c997;
-
-          .icon {
-            font-size: 12px;
-            margin-right: 3px;
-          }
-
-          .amount {
-            font-size: 12px;
-          }
+          font-size: 12px;
         }
       }
 
-      a {
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+      .date_and_author {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        font-size: 13px;
+        .posting_date {
+          margin-left: auto;
+        }
       }
 
       &:not(:last-child) {
@@ -124,13 +121,16 @@ export default function PhotoListPostingList({ photoBoard }) {
                 <div className="posting_thumbnail">
                   <img src={posting.imagesUrl[0]} alt={index} height="44" />
                 </div>
-                <div className="name_and_content">
+                <div className="name_and_comment">
                   <div className="posting_name">{posting.title}</div>
-                  <div className="comment_amount_area">
-                    <div className="icon">
-                      <FaRegCommentAlt />
-                    </div>
-                    <div className="amount">{posting.comments.length}</div>
+                  <div className="posting_comment_amount">
+                    [{posting.comments.length}]
+                  </div>
+                </div>
+                <div className="date_and_author">
+                  <div className="posting_author">{posting.author}</div>
+                  <div className="posting_date">
+                    {posting.date.substring(5, 16)}
                   </div>
                 </div>
               </div>

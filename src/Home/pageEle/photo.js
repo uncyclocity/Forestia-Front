@@ -84,7 +84,10 @@ const PhotoBoxStyle = styled.div`
             width: 100%;
 
             .posting_name {
-              width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              width: 188px;
             }
 
             .comment_amount_area {
@@ -102,14 +105,6 @@ const PhotoBoxStyle = styled.div`
               }
             }
           }
-        }
-
-        a {
-          display: block;
-          overflow: hidden;
-          cursor: pointer;
-          text-overflow: ellipsis;
-          white-space: nowrap;
         }
 
         &:not(:first-child) {
