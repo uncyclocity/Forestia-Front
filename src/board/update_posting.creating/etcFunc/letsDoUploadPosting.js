@@ -5,7 +5,7 @@ export default async function letsDoUploadPosting(
   selBoard,
   title,
   content,
-  images,
+  imagesArr,
   dispatch,
 ) {
   postCntSwitcher(dispatch, true);
@@ -20,8 +20,8 @@ export default async function letsDoUploadPosting(
     id = parseInt(maxId) + 1;
   }
 
-  for (var i = 0; i < images.current.files.length; i++) {
-    formData.append('images', images.current.files[i]);
+  for (var i = 0; i < imagesArr.length; i++) {
+    formData.append('images', imagesArr[i]);
   }
 
   const res = await postPosting.doPostCreateImage(formData, selBoard, dispatch);

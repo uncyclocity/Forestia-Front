@@ -47,6 +47,7 @@ const FreeBoxStyle = styled.div`
 
   .content_list {
     width: 100%;
+    height: 105px;
     ul {
       padding: 5px 20px;
       margin: 0px;

@@ -1,5 +1,9 @@
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
+import {
+  BtnFreePhotoSwitch,
+  BtnPostingCrud,
+} from '../../../../components/Atoms/Button';
 import { useDispatch, useReducerState } from '../../../common/context';
 import getImagesUrlArr from '../etcFunc/getImagesUrlArr';
 import letsDoUploadPosting from '../etcFunc/letsDoUploadPosting';
@@ -78,106 +82,95 @@ const ContentInputStyle = styled.div`
       }
     }
   }
-
-  .content_post_btn {
-    background: #20c997;
-    color: white;
-
-    width: 80px;
-    height: 35px;
-
-    border-radius: 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 30px;
-
-    margin-left: 87%;
-
-    cursor: pointer;
-
-    .post_icon {
-      height: 23px;
-      font-size: 20px;
-      margin-right: 5px;
-    }
-
-    .post_text {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    &:hover {
-      background: #37dfad;
-    }
-  }
 `;
 
-export default function PostingContentInput({ selBoard }) {
-  const title = useRef(null);
-  const content = useRef(null);
-  const images = useRef({ files: [] });
-  const [imagesUrlArr, setImagesUrlArr] = useState([]);
-  const state = useReducerState();
+export default function PostingContentInput() {
+  const postCnt = useReducerState().postCnt;
   const dispatch = useDispatch();
-
-  const postCnt = state.postCnt;
+  const [postingEle, setPostingEle] = useState({
+    title: '',
+    content: '',
+    imagesUrlArr: [],
+  });
+  const [selBoard, setSelBoard] = useState('free');
+  const images = useRef(null);
 
   return (
-    <ContentInputStyle>
-      <input
-        type="text"
-        className="content_title_input_box"
-        placeholder="제목을 입력하세요"
-        ref={title}
-      />
-      <hr className="title_content_line" align="left" />
-      <textarea
-        className="content_input_box"
-        style={{ resize: 'none' }}
-        placeholder="내용을 입력하세요"
-        ref={content}
-      />
-      <div className="upload_image_area">
-        <div className="uploadimg_btn_area">
-          <div className="uploadimg_text">이미지 업로드</div>
-          <input
-            type="file"
-            ref={images}
-            accept="image/*"
-            onChange={() =>
-              setImagesUrlArr(getImagesUrlArr(images.current.files))
-            }
-            multiple
-          />
-        </div>
-        <div className="uploadedimg_list">
-          {imagesUrlArr.length > 0 &&
-            imagesUrlArr.map((imageUrl, index) => {
-              return <img src={imageUrl} key={index} alt={index} height="44" />;
-            })}
-        </div>
-      </div>
-      <div
-        className="content_post_btn"
-        onClick={() => {
-          if (!postCnt) {
-            if (content.current.value && title.current.value) {
-              if (selBoard === 'photo' && imagesUrlArr.length <= 0) {
-                alert('짤게는 이미지 업로드가 필수입니다.');
-              } else {
-                letsDoUploadPosting(selBoard, title, content, images, dispatch);
-              }
-            } else {
-              alert('제목 및 내용을 입력하세요');
-            }
+    <>
+      <BtnFreePhotoSwitch selBoard={selBoard} setSelBoard={setSelBoard} />
+      <ContentInputStyle>
+        <input
+          type="text"
+          className="content_title_input_box"
+          placeholder="제목을 입력하세요"
+          value={postingEle.title}
+          onChange={(e) =>
+            setPostingEle({ ...postingEle, title: e.target.value })
           }
-        }}
-      >
-        <div className="post_text">업로드</div>
-      </div>
-    </ContentInputStyle>
+        />
+        <hr className="title_content_line" align="left" />
+        <textarea
+          className="content_input_box"
+          style={{ resize: 'none' }}
+          placeholder="내용을 입력하세요"
+          value={postingEle.content}
+          onChange={(e) =>
+            setPostingEle({ ...postingEle, content: e.target.value })
+          }
+        />
+        <div className="upload_image_area">
+          <div className="uploadimg_btn_area">
+            <div className="uploadimg_text">이미지 업로드</div>
+            <input
+              type="file"
+              ref={images}
+              accept="image/*"
+              onChange={() =>
+                setPostingEle({
+                  ...postingEle,
+                  imagesUrlArr: getImagesUrlArr(images.current.files),
+                })
+              }
+              multiple
+            />
+          </div>
+          <div className="uploadedimg_list">
+            {postingEle.imagesUrlArr.length > 0 &&
+              postingEle.imagesUrlArr.map((imageUrl, index) => {
+                return (
+                  <img src={imageUrl} key={index} alt={index} height="44" />
+                );
+              })}
+          </div>
+        </div>
+        <div
+          onClick={() => {
+            if (!postCnt) {
+              if (postingEle.content && postingEle.title) {
+                if (
+                  selBoard === 'photo' &&
+                  postingEle.imagesUrlArr.length <= 0
+                ) {
+                  alert('짤게는 이미지 업로드가 필수입니다.');
+                } else {
+                  console.log(images.current);
+                  letsDoUploadPosting(
+                    selBoard,
+                    postingEle.title,
+                    postingEle.content,
+                    images.current.files,
+                    dispatch,
+                  );
+                }
+              } else {
+                alert('제목 및 내용을 입력하세요');
+              }
+            }
+          }}
+        >
+          <BtnPostingCrud>업로드</BtnPostingCrud>
+        </div>
+      </ContentInputStyle>
+    </>
   );
 }

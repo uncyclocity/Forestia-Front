@@ -49,7 +49,7 @@ const PhotoBoxStyle = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: initial;
+    height: 180px;
     ul {
       padding: 0px;
       margin: 5px 20px;

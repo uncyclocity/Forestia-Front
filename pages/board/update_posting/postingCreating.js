@@ -1,11 +1,10 @@
 import BoardTitle from '../../../src/common/boardTitle';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import InCreatePostingBoardTitle from '../../../src/board/update_posting.creating/pageEle/InCreatePostingBoardTitle';
-import FreePhotoSwitch from '../../../src/board/update_posting.creating/pageEle/freePhotoSwitch';
 import PostingContentInput from '../../../src/board/update_posting.creating/pageEle/postingContentInput';
 
 const BoxStyles = styled.div`
@@ -15,7 +14,6 @@ const BoxStyles = styled.div`
 
 export default function PostingCreating() {
   const dispatch = useDispatch();
-  const [selBoard, setSelBoard] = useState('free');
 
   useEffect(() => {
     mountAnimation(dispatch, 'posting');
@@ -27,8 +25,7 @@ export default function PostingCreating() {
         <BoardTitle backURL="/home">
           <InCreatePostingBoardTitle />
         </BoardTitle>
-        <FreePhotoSwitch selBoard={selBoard} setSelBoard={setSelBoard} />
-        <PostingContentInput selBoard={selBoard} />
+        <PostingContentInput />
       </BoxStyles>
     </FourAnimationedBox>
   );

@@ -1,6 +1,7 @@
 import { BsPerson } from 'react-icons/bs';
 import { useReducerState } from '../../common/context';
 import styled from 'styled-components';
+import { BtnLogInOut } from '../../../components/Atoms/Button';
 
 const ProfileBoxStyle = styled.div`
   display: flex;
@@ -35,15 +36,6 @@ const ProfileBoxStyle = styled.div`
         color: #20c997;
       }
     }
-
-    .profile_logout {
-      border: 1px solid #20c997;
-      color: #20c997;
-      border-radius: 5px;
-      font-size: 12px;
-      margin-top: 10px;
-      padding: 5px;
-    }
   }
 `;
 
@@ -58,7 +50,7 @@ export default function ProfileBox() {
         <div className="profile_name_line">
           <div className="profile_name">{userName}</div>님
         </div>
-        <div className="profile_logout">로그아웃</div>
+        <BtnLogInOut>로그아웃</BtnLogInOut>
       </div>
     </ProfileBoxStyle>
   );

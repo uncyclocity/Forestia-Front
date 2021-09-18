@@ -1,4 +1,4 @@
-import Box from './box';
+import Box from '../../components/Atoms/box';
 import {
   BoxAnimation,
   box_empty,
