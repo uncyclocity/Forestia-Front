@@ -1,9 +1,7 @@
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
-import {
-  BtnFreePhotoSwitch,
-  BtnPostingCrud,
-} from '../../../../components/Atoms/Button';
+import { BtnFreePhotoSwitch } from '../../../../components/Atoms/BtnFreePhotoSwitch';
+import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
 import { useDispatch, useReducerState } from '../../../common/context';
 import getImagesUrlArr from '../etcFunc/getImagesUrlArr';
 import letsDoUploadPosting from '../etcFunc/letsDoUploadPosting';
@@ -153,7 +151,6 @@ export default function PostingContentInput() {
                 ) {
                   alert('짤게는 이미지 업로드가 필수입니다.');
                 } else {
-                  console.log(images.current);
                   letsDoUploadPosting(
                     selBoard,
                     postingEle.title,
@@ -168,7 +165,7 @@ export default function PostingContentInput() {
             }
           }}
         >
-          <BtnPostingCrud>업로드</BtnPostingCrud>
+          <BtnPosting>업로드</BtnPosting>
         </div>
       </ContentInputStyle>
     </>

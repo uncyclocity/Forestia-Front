@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
-import { RiMailSendLine } from 'react-icons/ri';
+import { useState } from 'react';
+import { IoIosSend } from 'react-icons/io';
 import styled from 'styled-components';
-import { BtnCommentCrud } from '../../../../components/Atoms/Button';
+import { BtnComment } from '../../../../components/Atoms/BtnComment';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';
@@ -32,32 +32,6 @@ const CommTextareaStyle = styled.div`
 
     &:focus {
       outline: none;
-    }
-  }
-`;
-
-const CommPostBtnStyle = styled.div`
-  .commPostBtn {
-    background: #20c997;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 30px;
-
-    &:hover {
-      transition: 0.25s all ease-in;
-      box-shadow: 0px 0px 15px #36deac;
-      cursor: pointer;
-    }
-
-    &:not(:hover) {
-      transition: 0.25s all ease-in;
-      box-shadow: 0px 0px 15px #9aefd6;
     }
   }
 `;
@@ -118,9 +92,9 @@ export default function CommentInput({
           }
         }}
       >
-        <BtnCommentCrud>
-          <RiMailSendLine />
-        </BtnCommentCrud>
+        <BtnComment>
+          <IoIosSend />
+        </BtnComment>
       </div>
     </CommInputAreaStyle>
   );

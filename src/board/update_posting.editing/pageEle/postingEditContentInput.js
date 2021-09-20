@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { BtnPostingCrud } from '../../../../components/Atoms/Button';
+import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { postPosting } from '../../../doApi/doApi';
@@ -91,7 +91,7 @@ export default function PostingEditContentInput() {
             }
           }}
         >
-          <BtnPostingCrud>업로드</BtnPostingCrud>
+          <BtnPosting>업로드</BtnPosting>
         </div>
       </div>
     </ContentInputStyle>

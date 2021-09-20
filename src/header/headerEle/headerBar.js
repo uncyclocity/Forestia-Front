@@ -7,6 +7,7 @@ import {
 import { useDispatch, useReducerState } from '../../common/context';
 import styled from 'styled-components';
 import { unmountAnimation } from '../../common/animationController';
+import BtnHeader from '../../../components/Atoms/BtnHeader';
 
 const MenuBtnAreaStyles = styled.span`
   display: flex;
@@ -77,43 +78,31 @@ export default function HeaderBar() {
     '/board/board_list/photo?page=1',
   ];
 
-  const menuIconReturner = (headerMenu) => {
+  const menuIconReturner = (headerMenu, isSelected) => {
     switch (headerMenu) {
       case headerMenuArr[0]:
         return (
-          <>
-            <div className="menu_icon">
-              <AiOutlineHome />
-            </div>
-            <div className="menu_name">홈</div>
-          </>
+          <BtnHeader btnText="홈" isSelected={isSelected}>
+            <AiOutlineHome />
+          </BtnHeader>
         );
       case headerMenuArr[1]:
         return (
-          <>
-            <div className="menu_icon">
-              <AiOutlineInfoCircle />
-            </div>
-            <div className="menu_name">정보</div>
-          </>
+          <BtnHeader btnText="정보" isSelected={isSelected}>
+            <AiOutlineInfoCircle />
+          </BtnHeader>
         );
       case headerMenuArr[2]:
         return (
-          <>
-            <div className="menu_icon">
-              <AiOutlineCloud />
-            </div>
-            <div className="menu_name">자게</div>
-          </>
+          <BtnHeader btnText="자게" isSelected={isSelected}>
+            <AiOutlineCloud />
+          </BtnHeader>
         );
       case headerMenuArr[3]:
         return (
-          <>
-            <div className="menu_icon">
-              <AiOutlineCamera />
-            </div>
-            <div className="menu_name">짤게</div>
-          </>
+          <BtnHeader btnText="짤게" isSelected={isSelected}>
+            <AiOutlineCamera />
+          </BtnHeader>
         );
       default:
         throw new Error('headerMenuArr에 존재하는 메뉴 이름이 아닙니다.');
@@ -126,19 +115,15 @@ export default function HeaderBar() {
         {headerMenuArr.map((headerMenu, index) => {
           return (
             <li key={index}>
-              <a>
-                {nowPage === headerMenu ? (
-                  <div className="selected">{menuIconReturner(headerMenu)}</div>
-                ) : (
-                  <div
-                    onClick={() =>
-                      unmountAnimation(0, dispatch, HMUrlArr[index])
-                    }
-                  >
-                    {menuIconReturner(headerMenu)}
-                  </div>
-                )}
-              </a>
+              {nowPage === headerMenu ? (
+                menuIconReturner(headerMenu, true)
+              ) : (
+                <div
+                  onClick={() => unmountAnimation(0, dispatch, HMUrlArr[index])}
+                >
+                  {menuIconReturner(headerMenu, false)}
+                </div>
+              )}
             </li>
           );
         })}

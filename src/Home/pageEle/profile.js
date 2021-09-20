@@ -1,7 +1,7 @@
 import { BsPerson } from 'react-icons/bs';
 import { useReducerState } from '../../common/context';
 import styled from 'styled-components';
-import { BtnLogInOut } from '../../../components/Atoms/Button';
+import { BtnLogInOut } from '../../../components/Atoms/BtnLogInOut';
 
 const ProfileBoxStyle = styled.div`
   display: flex;

@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { FiSend } from 'react-icons/fi';
+import { IoIosSend } from 'react-icons/io';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';
 import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
+import { BtnComment } from '../../../../components/Atoms/BtnComment';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -88,30 +89,6 @@ const CommContentAreaStyle = styled.div`
 
       &:focus {
         outline: none;
-      }
-    }
-
-    .comm_edit_post_btn {
-      background: #20c997;
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 25px;
-
-      &:hover {
-        transition: 0.25s all ease-in;
-        box-shadow: 0px 0px 15px #36deac;
-        cursor: pointer;
-      }
-
-      &:not(:hover) {
-        transition: 0.25s all ease-in;
-        box-shadow: 0px 0px 15px #9aefd6;
       }
     }
   }
@@ -205,7 +182,6 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                       className="comm_edit_input_box"
                     />
                     <div
-                      className="comm_edit_post_btn"
                       onClick={async () => {
                         if (!postCnt) {
                           postCntSwitcher(dispatch, true);
@@ -223,7 +199,9 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                         }
                       }}
                     >
-                      <FiSend />
+                      <BtnComment>
+                        <IoIosSend />
+                      </BtnComment>
                     </div>
                   </div>
                 ) : (

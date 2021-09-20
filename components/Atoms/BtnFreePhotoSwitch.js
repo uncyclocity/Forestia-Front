@@ -1,80 +1,9 @@
 import { AiOutlineCamera, AiOutlineCloud } from 'react-icons/ai';
 import styled, { css } from 'styled-components';
 
-export const BtnPostingCrud = ({ children }) => {
-  const Styles = styled.div`
-    background: #20c997;
-    color: white;
-    border-radius: 5px;
-    display: flex;
-    height: 35px;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    margin-left: 87%;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-
-    &:hover {
-      background: #37dfad;
-    }
-  `;
-
-  return <Styles>{children}</Styles>;
-};
-
-export const BtnCommentCrud = ({ children }) => {
-  const Styles = styled.div`
-    background: #20c997;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 30px;
-
-    &:hover {
-      transition: 0.25s all ease-in;
-      box-shadow: 0px 0px 15px #36deac;
-      cursor: pointer;
-    }
-
-    &:not(:hover) {
-      transition: 0.25s all ease-in;
-      box-shadow: 0px 0px 15px #9aefd6;
-    }
-  `;
-
-  return <Styles>{children}</Styles>;
-};
-
-export const BtnLogInOut = ({ children }) => {
-  const Styles = styled.div`
-    border: 1px solid #20c997;
-    border-radius: 5px;
-    padding: 5px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 12px;
-
-    &:hover {
-      transition: 0.3s all ease-out;
-      color: white;
-      background: #20c997;
-    }
-
-    &:not(:hover) {
-      transition: 0.3s all ease-out;
-      color: #20c997;
-    }
-  `;
-
-  return <Styles>{children}</Styles>;
-};
+// BtnFreePhotoSwitch
+// 분류 : 버튼
+// 설명 : 포스팅 작성 페이지에서 업로드를 원하는 게시판을 선택할 수 있도록 한다.
 
 export const BtnFreePhotoSwitch = ({ selBoard, setSelBoard }) => {
   const LayoutStyle = styled.div`
