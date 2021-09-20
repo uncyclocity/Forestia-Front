@@ -12,6 +12,8 @@ import IcoComment from '../../../components/Atoms/IcoComment';
 import TxtBoard from '../../../components/Atoms/TxtBoard';
 import IcoBoard from '../../../components/Atoms/IcoBoard';
 import IcoExistImg from '../../../components/Atoms/IcoExistImg';
+import IcoListEmpty from '../../../components/Atoms/IcoListEmpty';
+import TxtListEmpty from '../../../components/Atoms/TxtListEmpty';
 
 const BoardTitleLayoutStyle = styled.div`
   width: 100%;
@@ -65,22 +67,13 @@ const ContentListLayoutStyle = styled.div`
   }
 
   .list_empty {
+    height: 100%;
+    padding-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     color: #babfc7;
-
-    .empty_icon {
-      width: 60px;
-      height: 60px;
-      font-size: 60px;
-    }
-
-    .empty_text {
-      margin-top: 5px;
-      font-size: 18px;
-    }
   }
 `;
 
@@ -141,10 +134,8 @@ export default function FreeBox({ freeBoard }) {
           </ul>
         ) : (
           <div className="list_empty">
-            <div className="empty_icon">
-              <AiOutlineSmile />
-            </div>
-            <div className="empty_text">아직 게시판이 비어 있어요</div>
+            <IcoListEmpty />
+            <TxtListEmpty />
           </div>
         )}
       </ContentListLayoutStyle>

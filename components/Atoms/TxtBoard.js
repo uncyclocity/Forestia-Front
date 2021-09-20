@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+// TxtBoard
+// 분류 : 텍스트
+// 용도 : 홈 페이지에서의 각 게시판 이름을 나타냄
+
 export default function TxtBoard({ boardName }) {
   const Styles = styled.div`
     margin-left: 5px;
