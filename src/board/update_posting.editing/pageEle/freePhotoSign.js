@@ -1,5 +1,6 @@
 import { AiOutlineCamera, AiOutlineCloud } from 'react-icons/ai';
 import styled from 'styled-components';
+import { useReducerState } from '../../../common/context';
 
 const FreePhotoSignStyle = styled.div`
   margin: 20px 0;
@@ -26,7 +27,9 @@ const FreePhotoSignStyle = styled.div`
   }
 `;
 
-export default function FreePhotoSign({ board_type }) {
+export default function FreePhotoSign() {
+  const { board_type } = useReducerState().nowPostingEleObj;
+
   return (
     <FreePhotoSignStyle>
       {board_type === 'free' && (

@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { BtnPostingCrud } from '../../../../components/Atoms/Button';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { postPosting } from '../../../doApi/doApi';
@@ -44,51 +46,13 @@ const ContentInputStyle = styled.div`
       font-style: italic;
     }
   }
-
-  .content_post_btn {
-    background: #20c997;
-    color: white;
-
-    width: 80px;
-    height: 35px;
-
-    border-radius: 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 30px;
-
-    margin-left: 87%;
-
-    cursor: pointer;
-
-    .post_icon {
-      height: 23px;
-      font-size: 20px;
-      margin-right: 5px;
-    }
-
-    .post_text {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    &:hover {
-      background: #37dfad;
-    }
-  }
 `;
 
-export default function PostingEditContentInput({
-  board_type,
-  id,
-  newTitle,
-  newContent,
-}) {
+export default function PostingEditContentInput() {
   const dispatch = useDispatch();
   const postCnt = useReducerState().postCnt;
+  const { board_type, id, title, content } = useReducerState().nowPostingEleObj;
+  const [editEle, setEditEle] = useState({ title, content });
 
   return (
     <ContentInputStyle>
@@ -97,26 +61,27 @@ export default function PostingEditContentInput({
           type="text"
           className="content_title_input_box"
           placeholder="제목을 입력하세요"
-          ref={newTitle}
+          value={editEle.title}
+          onChange={(e) => setEditEle({ ...editEle, title: e.target.value })}
         />
         <hr className="title_content_line" align="left" />
         <textarea
           className="content_input_box"
           style={{ resize: 'none' }}
           placeholder="내용을 입력하세요"
-          ref={newContent}
+          value={editEle.content}
+          onChange={(e) => setEditEle({ ...editEle, content: e.target.value })}
         />
         <div
-          className="content_post_btn"
           onClick={async () => {
             if (!postCnt) {
-              if (newTitle.current.value && newContent.current.value) {
+              if (editEle.title && editEle.content) {
                 postCntSwitcher(dispatch, true);
                 await postPosting.doPostEdit(
                   board_type,
                   id,
-                  newTitle,
-                  newContent,
+                  editEle.title,
+                  editEle.content,
                   dispatch,
                 );
                 postCntSwitcher(dispatch, false);
@@ -126,7 +91,7 @@ export default function PostingEditContentInput({
             }
           }}
         >
-          <div className="post_text">수정</div>
+          <BtnPostingCrud>업로드</BtnPostingCrud>
         </div>
       </div>
     </ContentInputStyle>

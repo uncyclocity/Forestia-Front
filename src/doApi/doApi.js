@@ -127,15 +127,15 @@ export const postPosting = {
       data: { imagesUrl },
     });
   },
-  doPostEdit: async (board_type, id, newTitle, newContent, dispatch) => {
+  doPostEdit: async (board_type, id, title, content, dispatch) => {
     await instance({
       method: 'POST',
       url: '/api/post_posting/postEditPosting',
       data: {
         board_type,
         id,
-        title: newTitle.current.value,
-        content: newContent.current.value,
+        title,
+        content,
       },
     }).then(async () => {
       unmountAnimation(

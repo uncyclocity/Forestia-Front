@@ -1,5 +1,5 @@
 import BoardTitle from '../../../src/common/boardTitle';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useReducerState } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import InEditPostingBoardTitle from '../../../src/board/update_posting.editing/pageEle/InEditPostingBoardTitle';
@@ -7,7 +7,6 @@ import FreePhotoSign from '../../../src/board/update_posting.editing/pageEle/fre
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import PostingEditContentInput from '../../../src/board/update_posting.editing/pageEle/postingEditContentInput';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -16,19 +15,14 @@ const BoxStyles = styled.div`
 
 export default function PostingEditing() {
   const dispatch = useDispatch();
-  const { board_type, id, title, content } = useReducerState().nowPostingEleObj;
-
-  const newTitle = useRef(null);
-  const newContent = useRef(null);
+  const { board_type, id } = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     mountAnimation(dispatch, 'editing');
-    newTitle.current.value = title;
-    newContent.current.value = content;
     return () => {
       dispatch({ type: 'editpost_data', editData: {} });
     };
-  }, [content, dispatch, title]);
+  }, [dispatch]);
 
   return (
     <FourAnimationedBox>
@@ -38,13 +32,8 @@ export default function PostingEditing() {
         >
           <InEditPostingBoardTitle />
         </BoardTitle>
-        <FreePhotoSign board_type={board_type} />
-        <PostingEditContentInput
-          board_type={board_type}
-          id={id}
-          newTitle={newTitle}
-          newContent={newContent}
-        />
+        <FreePhotoSign />
+        <PostingEditContentInput />
       </BoxStyles>
     </FourAnimationedBox>
   );
