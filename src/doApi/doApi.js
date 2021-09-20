@@ -10,7 +10,7 @@ const newCommId = (nowPostingEleObj) => {
 };
 
 export const postComm = {
-  doPostCreate: async (nowPostingEleObj, contentRef, userName) => {
+  doPostCreate: async (nowPostingEleObj, comment, userName) => {
     const apiUrl = '/api/post_comment/postCreateComm';
     const comment_id = newCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -23,10 +23,8 @@ export const postComm = {
         comment_id,
         author: userName,
         date: nowDate,
-        content: contentRef.current.value,
+        content: comment,
       },
-    }).then(async () => {
-      contentRef.current.value = '';
     });
   },
   doPostEdit: async (nowPostingEleObj, editCommObj, setEditCommObj) => {

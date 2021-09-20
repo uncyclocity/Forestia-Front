@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { RiMailSendLine } from 'react-icons/ri';
 import styled from 'styled-components';
+import { BtnCommentCrud } from '../../../../components/Atoms/Button';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';
@@ -83,9 +84,9 @@ export default function CommentInput({
   nowPostingEleObj,
   setNowPostingEleObj,
 }) {
-  const commentContent = useRef(null);
   const dispatch = useDispatch();
   const state = useReducerState();
+  const [comment, setComment] = useState('');
   const userName = state.userName;
   const postCnt = state.postCnt;
 
@@ -95,36 +96,32 @@ export default function CommentInput({
         <textarea
           style={{ resize: 'none' }}
           className="commTextarea"
-          ref={commentContent}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
         />
       </CommTextareaStyle>
-      <CommPostBtnStyle>
-        <div
-          className="commPostBtn"
-          onClick={async () => {
-            if (!postCnt) {
-              if (commentContent.current.value) {
-                postCntSwitcher(dispatch, true);
-                await postComm.doPostCreate(
-                  nowPostingEleObj,
-                  commentContent,
-                  userName,
-                );
-                await UpdateNowPostingEleObj(
-                  nowPostingEleObj,
-                  setNowPostingEleObj,
-                  dispatch,
-                );
-                postCntSwitcher(dispatch, false);
-              } else {
-                alert('댓글을 입력하세요');
-              }
+      <div
+        onClick={async () => {
+          if (!postCnt) {
+            if (comment) {
+              postCntSwitcher(dispatch, true);
+              await postComm.doPostCreate(nowPostingEleObj, comment, userName);
+              await UpdateNowPostingEleObj(
+                nowPostingEleObj,
+                setNowPostingEleObj,
+                dispatch,
+              );
+              postCntSwitcher(dispatch, false);
+            } else {
+              alert('댓글을 입력하세요');
             }
-          }}
-        >
+          }
+        }}
+      >
+        <BtnCommentCrud>
           <RiMailSendLine />
-        </div>
-      </CommPostBtnStyle>
+        </BtnCommentCrud>
+      </div>
     </CommInputAreaStyle>
   );
 }
