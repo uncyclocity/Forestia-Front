@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export default function Box({ children }) {
+// CtnBox
+// 분류 : 컨테이너
+// 용도 : 박스 형태의 컨테이너
+
+export default function CtnBox({ children }) {
   const BoxStyles = styled.div`
     max-width: 700px;
 

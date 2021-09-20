@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IoIosSend } from 'react-icons/io';
 import styled from 'styled-components';
-import { BtnComment } from '../../../../components/Atoms/BtnComment';
+import { BtnComment } from '../../../../components/Atoms/BtnCommentPost';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';

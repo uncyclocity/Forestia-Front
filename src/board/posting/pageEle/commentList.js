@@ -5,7 +5,7 @@ import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';
 import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
-import { BtnComment } from '../../../../components/Atoms/BtnComment';
+import { BtnCommentPost } from '../../../../components/Atoms/BtnCommentPost';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -199,9 +199,9 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                         }
                       }}
                     >
-                      <BtnComment>
+                      <BtnCommentPost>
                         <IoIosSend />
-                      </BtnComment>
+                      </BtnCommentPost>
                     </div>
                   </div>
                 ) : (

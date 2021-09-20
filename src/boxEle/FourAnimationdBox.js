@@ -1,4 +1,4 @@
-import Box from '../../components/Atoms/box';
+import CtnBox from '../../components/Atoms/CtnBox';
 import {
   BoxAnimation,
   box_empty,
@@ -19,7 +19,7 @@ export default function FourAnimationedBox({ children }) {
       sw3={box_slide_down}
       sw4={box_zero_opacity}
     >
-      <Box>{children}</Box>
+      <CtnBox>{children}</CtnBox>
     </BoxAnimation>
   );
 }

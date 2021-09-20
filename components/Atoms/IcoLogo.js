@@ -1,7 +1,7 @@
 import { CgTrees } from 'react-icons/cg';
 import styled from 'styled-components';
 
-export default function LblLogo() {
+export default function IcoLogo() {
   const Styles = styled.div`
     display: flex;
     align-items: center;

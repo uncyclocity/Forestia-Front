@@ -1,4 +1,4 @@
-import Box from '../../components/Atoms/box';
+import CtnBox from '../../components/Atoms/CtnBox';
 import { AppAnimation } from '../../src/boxEle/boxAnimation';
 import HeaderBar from './headerEle/headerBar';
 import Top from './headerEle/top';
@@ -8,10 +8,10 @@ export default function Header() {
   return (
     <AppAnimation>
       <Top />
-      <Box>
+      <CtnBox>
         <Title />
         <HeaderBar />
-      </Box>
+      </CtnBox>
     </AppAnimation>
   );
 }

@@ -1,7 +1,7 @@
 import { useDispatch } from '../../common/context';
 import styled from 'styled-components';
 import { unmountAnimation } from '../../common/animationController';
-import LblLogo from '../../../components/Atoms/LblLogo';
+import IcoLogo from '../../../components/Atoms/IcoLogo';
 
 const Styles = styled.div`
   margin: 30px auto;
@@ -18,7 +18,7 @@ export default function Top() {
   return (
     <Styles>
       <div onClick={() => unmountAnimation(0, dispatch, homeUrl)}>
-        <LblLogo />
+        <IcoLogo />
       </div>
     </Styles>
   );
