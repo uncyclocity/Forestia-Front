@@ -62,6 +62,10 @@ const ContentInputStyle = styled.div`
         color: #20c997;
         font-weight: bold;
       }
+
+      .uploadimg_btn {
+        width: 200px;
+      }
     }
 
     .uploadedimg_list {
@@ -121,6 +125,7 @@ export default function PostingContentInput() {
             <div className="uploadimg_text">이미지 업로드</div>
             <input
               type="file"
+              className="uploadimg_btn"
               ref={images}
               accept="image/*"
               onChange={() =>
