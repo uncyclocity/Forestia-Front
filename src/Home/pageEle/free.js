@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { AiOutlineSmile } from 'react-icons/ai';
 import { unmountAnimation } from '../../common/animationController';
 import { useDispatch } from '../../common/context';
 import setTop3 from '../etcFunc/setTop3';
@@ -9,8 +8,8 @@ import TxtPostingTitle from '../../../components/Atoms/TxtPostingTitle';
 import isImgExist from '../etcFunc/isImgExist';
 import TxtCommentAmount from '../../../components/Atoms/TxtCommentAmount';
 import IcoComment from '../../../components/Atoms/IcoComment';
-import TxtBoard from '../../../components/Atoms/TxtBoard';
-import IcoBoard from '../../../components/Atoms/IcoBoard';
+import TxtBoard4Home from '../../../components/Atoms/TxtBoard4Home';
+import IcoBoard4Home from '../../../components/Atoms/IcoBoard4Home';
 import IcoExistImg from '../../../components/Atoms/IcoExistImg';
 import IcoListEmpty from '../../../components/Atoms/IcoListEmpty';
 import TxtListEmpty from '../../../components/Atoms/TxtListEmpty';
@@ -25,9 +24,20 @@ const BoardTitleLayoutStyle = styled.div`
   font-size: 20px;
 `;
 
+const FreeBoxStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #828c99;
+  float: left;
+`;
+
 const ContentListLayoutStyle = styled.div`
   width: 100%;
   height: 105px;
+
   ul {
     padding: 5px 20px;
     margin: 0px;
@@ -77,16 +87,6 @@ const ContentListLayoutStyle = styled.div`
   }
 `;
 
-const FreeBoxStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  color: #828c99;
-  float: left;
-`;
-
 export default function FreeBox({ freeBoard }) {
   const dispatch = useDispatch();
   const bak = useRef([]);
@@ -96,8 +96,8 @@ export default function FreeBox({ freeBoard }) {
   return (
     <FreeBoxStyle>
       <BoardTitleLayoutStyle>
-        <IcoBoard boardName="free" />
-        <TxtBoard boardName="free" />
+        <IcoBoard4Home boardName="free" />
+        <TxtBoard4Home boardName="free" />
         <div onClick={() => unmountAnimation(0, dispatch, freeListUrl)}>
           <BtnGotoBoard4Home />
         </div>
