@@ -18,13 +18,6 @@ const Styles = styled.div`
     justify-content: center;
     flex-direction: row;
 
-    .next_logo {
-      color: #20c997;
-      height: 100px;
-      margin: 30px 40px 20px 40px;
-      font-size: 90px;
-    }
-
     .text {
       border-left: 1px solid #e9ecef;
       padding-left: 40px;

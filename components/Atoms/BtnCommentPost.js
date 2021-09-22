@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // 분류 : 버튼
 // 용도 : 댓글 업데이트에 관련 된 POST 작업에서 사용된다.
 
-export const BtnComment = ({ children }) => {
+export const BtnCommentPost = ({ children }) => {
   const Styles = styled.div`
     background: #20c997;
     color: white;
