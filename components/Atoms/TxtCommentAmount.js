@@ -7,8 +7,12 @@ import styled from 'styled-components';
 export default function TxtCommentAmount({ children }) {
   const AmountStyle = styled.div`
     width: 13px;
+    height: auto;
+    display: flex;
+    align-items: center;
     font-size: 12px;
+    color: #20c997;
   `;
 
-  return <AmountStyle>{children}</AmountStyle>;
+  return <AmountStyle>[{children}]</AmountStyle>;
 }

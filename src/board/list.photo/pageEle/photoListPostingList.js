@@ -1,7 +1,13 @@
-import { AiOutlineSmile } from 'react-icons/ai';
 import { unmountAnimation } from '../../../common/animationController';
 import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
+import LblImgThumbnail from '../../../../components/Atoms/LblImgThumbnail';
+import TxtPostingTitle from '../../../../components/Atoms/TxtPostingTitle';
+import TxtCommentAmount from '../../../../components/Atoms/TxtCommentAmount';
+import TxtPostingAuthor4List from '../../../../components/Atoms/TxtPostingAuthor4List';
+import TxtPostingDate4List from '../../../../components/Atoms/TxtPostingDate4List';
+import IcoListEmpty from '../../../../components/Atoms/IcoListEmpty';
+import TxtListEmpty from '../../../../components/Atoms/TxtListEmpty';
 
 const ListStyle = styled.div`
   margin: 15px 0 10px 0;
@@ -49,6 +55,7 @@ const ListStyle = styled.div`
         .posting_comment_amount {
           color: #20c997;
           font-size: 12px;
+          margin-left: auto;
         }
       }
 
@@ -57,7 +64,7 @@ const ListStyle = styled.div`
         flex-direction: row;
         width: 100%;
         font-size: 13px;
-        .posting_date {
+        .posting_date_prototype {
           margin-left: auto;
         }
       }
@@ -81,7 +88,7 @@ const ListStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     margin: 20px 0;
     color: #babfc7;
 
@@ -118,19 +125,19 @@ export default function PhotoListPostingList({ photoBoard }) {
                 className="photo_posting"
                 key={index}
               >
-                <div className="posting_thumbnail">
-                  <img src={posting.imagesUrl[0]} alt={index} height="44" />
-                </div>
+                <LblImgThumbnail imageUrl={posting.imagesUrl[0]} />
                 <div className="name_and_comment">
-                  <div className="posting_name">{posting.title}</div>
+                  <TxtPostingTitle>{posting.title}</TxtPostingTitle>
                   <div className="posting_comment_amount">
-                    [{posting.comments.length}]
+                    <TxtCommentAmount>
+                      {posting.imagesUrl.length}
+                    </TxtCommentAmount>
                   </div>
                 </div>
                 <div className="date_and_author">
-                  <div className="posting_author">{posting.author}</div>
-                  <div className="posting_date">
-                    {posting.date.substring(5, 16)}
+                  <TxtPostingAuthor4List author={posting.author} />
+                  <div className="posting_date_prototype">
+                    <TxtPostingDate4List date={posting.date} />
                   </div>
                 </div>
               </div>
@@ -139,10 +146,8 @@ export default function PhotoListPostingList({ photoBoard }) {
         </div>
       ) : (
         <div className="list_empty">
-          <div className="empty_icon">
-            <AiOutlineSmile />
-          </div>
-          <div className="empty_text">아직 게시판이 비어 있어요</div>
+          <IcoListEmpty />
+          <TxtListEmpty />
         </div>
       )}
     </ListStyle>

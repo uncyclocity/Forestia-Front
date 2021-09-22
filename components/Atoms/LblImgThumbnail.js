@@ -10,7 +10,7 @@ export default function LblImgThumbnail({ imageUrl }) {
     justify-content: center;
     border: 1px solid #e9ecef;
     border-radius: 5px;
-    width: 213px;
+    width: 210px;
     height: 120px;
     overflow: hidden;
     background: #f4f4f4;

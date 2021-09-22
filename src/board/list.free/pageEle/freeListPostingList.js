@@ -1,8 +1,16 @@
-import { AiOutlineSmile } from 'react-icons/ai';
 import { unmountAnimation } from '../../../common/animationController';
 import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
 import { FiImage } from 'react-icons/fi';
+import IcoListEmpty from '../../../../components/Atoms/IcoListEmpty';
+import TxtListEmpty from '../../../../components/Atoms/TxtListEmpty';
+import TxtPostingTitle from '../../../../components/Atoms/TxtPostingTitle';
+import TxtCommentAmount from '../../../../components/Atoms/TxtCommentAmount';
+import TxtPostingAuthor4List from '../../../../components/Atoms/TxtPostingAuthor4List';
+import TxtPostingDate4List from '../../../../components/Atoms/TxtPostingDate4List';
+import TxtFreeGridTopName from '../../../../components/Atoms/TxtFreeGridTopName';
+import TxtFreeGridTopAuthor from '../../../../components/Atoms/TxtFreeGridTopAuthor';
+import TxtFreeGridTopDate from '../../../../components/Atoms/TxtFreeGridTopDate';
 
 const ListStyle = styled.div`
   .content_list {
@@ -21,19 +29,6 @@ const ListStyle = styled.div`
           font-weight: bold;
           color: #828c99;
           border-bottom: 1px solid #20c997;
-
-          .posting_name {
-            width: 400px;
-          }
-
-          .posting_author {
-            margin: 0 10px 0 auto;
-            width: 100px;
-          }
-
-          .posting_date {
-            width: 75px;
-          }
         }
 
         .posting_btn {
@@ -59,34 +54,12 @@ const ListStyle = styled.div`
             }
           }
 
-          .comment_amount {
-            display: inline-block;
-            width: 20px;
-            font-size: 12px;
-            color: #20c997;
-            text-align: center;
-          }
-
-          .posting_author {
-            width: 100px;
+          .posting_author_prototype {
             margin-left: auto;
-            font-size: 14px;
-            display: block;
-            overflow-x: hidden;
-            text-align: center;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            margin-right: 10px;
           }
 
-          .posting_date {
-            width: 75px;
-            font-size: 14px;
-            display: block;
-            overflow-x: hidden;
-            text-align: center;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+          .posting_date_prototype {
+            margin-left: 8%;
           }
 
           &:hover {
@@ -106,7 +79,7 @@ const ListStyle = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      flex-direction: row;
       margin: 20px 0;
       color: #babfc7;
 
@@ -134,9 +107,9 @@ export default function FreeListPostingList({ freeBoard }) {
           <ul>
             <li>
               <div className="top">
-                <div className="posting_name">제목</div>
-                <div className="posting_author">작성자</div>
-                <div className="posting_date">작성일</div>
+                <TxtFreeGridTopName />
+                <TxtFreeGridTopAuthor />
+                <TxtFreeGridTopDate />
               </div>
             </li>
             {freeBoard.map((posting, index) => {
@@ -153,18 +126,21 @@ export default function FreeListPostingList({ freeBoard }) {
                   >
                     <div className="posting_btn">
                       <div className="name_and_postingtype">
-                        <div className="posting_name">{posting.title}</div>
+                        <TxtPostingTitle>{posting.title}</TxtPostingTitle>
                         <div className="posting_isImageExist">
                           {posting.imagesUrl.length > 0 && <FiImage />}
                         </div>
                       </div>
-                      <div className="comment_amount">
-                        {posting.comments.length > 0 &&
-                          `[${posting.comments.length}]`}
+                      {posting.comments.length > 0 && (
+                        <TxtCommentAmount>
+                          {posting.imagesUrl.length}
+                        </TxtCommentAmount>
+                      )}
+                      <div className="posting_author_prototype">
+                        <TxtPostingAuthor4List author={posting.author} />
                       </div>
-                      <div className="posting_author">{posting.author}</div>
-                      <div className="posting_date">
-                        {posting.date.substring(5, 16)}
+                      <div className="posting_date_prototype">
+                        <TxtPostingDate4List date={posting.date} />
                       </div>
                     </div>
                   </div>
@@ -174,10 +150,8 @@ export default function FreeListPostingList({ freeBoard }) {
           </ul>
         ) : (
           <div className="list_empty">
-            <div className="empty_icon">
-              <AiOutlineSmile />
-            </div>
-            <div className="empty_text">아직 게시판이 비어 있어요</div>
+            <IcoListEmpty />
+            <TxtListEmpty />
           </div>
         )}
       </div>

@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
+import IcoPagingLeft from '../../../../components/Atoms/IcoPagingLeft';
+import IcoPagingRight from '../../../../components/Atoms/IcoPagingRight';
+import TxtPagingNumber from '../../../../components/Atoms/TxtPagingNumber';
+import TxtPagingNumberSelected from '../../../../components/Atoms/TxtPagingNumberSelected';
 
 const Styles = styled.div`
   display: flex;
@@ -8,19 +11,6 @@ const Styles = styled.div`
   flex-direction: row;
   color: #20c997;
   font-size: 15px;
-
-  .prev_next_btn {
-    position: relative;
-    top: 1px;
-  }
-
-  .page_btn {
-    margin 0 5px;
-    .page_btn_selected {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-  }
 `;
 
 export default function PageBtn({ photoLen, page, setNowPage }) {
@@ -30,33 +20,19 @@ export default function PageBtn({ photoLen, page, setNowPage }) {
 
   return (
     <Styles>
-      <div className="prev_next_btn">
-        <AiOutlineArrowLeft />
-      </div>
+      <IcoPagingLeft />
       {[...Array(pageBtnAmount)].map((num, index) => {
         if (index + 1 === parseInt(page)) {
-          return (
-            <div className="page_btn" key={index}>
-              <div className="page_btn_selected" key={index}>
-                {index + 1}
-              </div>
-            </div>
-          );
+          return <TxtPagingNumberSelected number={index + 1} />;
         } else {
           return (
-            <div
-              className="page_btn"
-              key={index}
-              onClick={() => setNowPage(index + 1)}
-            >
-              {index + 1}
+            <div onClick={() => setNowPage(index + 1)}>
+              <TxtPagingNumber number={index + 1} />
             </div>
           );
         }
       })}
-      <div className="prev_next_btn">
-        <AiOutlineArrowRight />
-      </div>
+      <IcoPagingRight />
     </Styles>
   );
 }

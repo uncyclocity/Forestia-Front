@@ -9,7 +9,6 @@ import BtnGotoBoard4Home from '../../../components/Atoms/BtnGotoBoard4Home';
 import IcoListEmpty from '../../../components/Atoms/IcoListEmpty';
 import TxtListEmpty from '../../../components/Atoms/TxtListEmpty';
 import TxtPostingTitle from '../../../components/Atoms/TxtPostingTitle';
-import IcoComment from '../../../components/Atoms/IcoComment';
 import TxtCommentAmount from '../../../components/Atoms/TxtCommentAmount';
 import LblImgThumbnail from '../../../components/Atoms/LblImgThumbnail';
 
@@ -55,7 +54,7 @@ const ContentListLayoutStyle = styled.div`
           display: flex;
           flex-direction: row;
           align-items: center;
-          margin: 10px 0 0 2px;
+          margin-top: 10px;
           width: 100%;
 
           .comment_amount {
@@ -129,7 +128,6 @@ export default function PhotoBox({ photoBoard }) {
                       <div className="name_and_content">
                         <TxtPostingTitle>{post.title}</TxtPostingTitle>
                         <div className="comment_amount">
-                          <IcoComment />
                           <TxtCommentAmount>
                             {post.comments.length}
                           </TxtCommentAmount>
