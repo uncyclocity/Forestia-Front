@@ -4,6 +4,7 @@ const ImageStyle = styled.div`
   img {
     border-radius: 5px;
     border: 1px solid #e9ecef;
+    max-width: 640px;
   }
 `;
 
@@ -16,7 +17,7 @@ export default function ImageView({ nowPostingEleObj }) {
         imagesUrl.map((imageUrl, index) => {
           return (
             <ImageStyle key={index}>
-              <img src={imageUrl} alt={index} width="640px" />
+              <img src={imageUrl} alt={index} />
             </ImageStyle>
           );
         })}
