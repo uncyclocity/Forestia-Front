@@ -1,12 +1,11 @@
-import { AiOutlineEdit } from 'react-icons/ai';
+import IcoBoardTitle from '../../../../components/Atoms/IcoBoardTitle';
+import TxtBoardTitle from '../../../../components/Atoms/TxtBoardTitle';
 
 export default function InEditPostingBoardTitle() {
   return (
     <>
-      <div className="icon">
-        <AiOutlineEdit />
-      </div>
-      <div className="title_name">포스트 수정</div>
+      <IcoBoardTitle nowPage="editing" />
+      <TxtBoardTitle nowPage="editing" />
     </>
   );
 }

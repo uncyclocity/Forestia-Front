@@ -16,7 +16,7 @@ export default function PostingCreating() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    mountAnimation(dispatch, 'posting');
+    mountAnimation(dispatch, 'creating');
   }, [dispatch]);
 
   return (

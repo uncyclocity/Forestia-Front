@@ -1,12 +1,11 @@
-import { AiOutlineCloud } from 'react-icons/ai';
+import IcoBoardTitle from '../../../../components/Atoms/IcoBoardTitle';
+import TxtBoardTitle from '../../../../components/Atoms/TxtBoardTitle';
 
 export default function InFreeListBoardTitle() {
   return (
     <>
-      <div className="icon">
-        <AiOutlineCloud />
-      </div>
-      <div className="title_name">자게</div>
+      <IcoBoardTitle nowPage="free" />
+      <TxtBoardTitle nowPage="free" />
     </>
   );
 }

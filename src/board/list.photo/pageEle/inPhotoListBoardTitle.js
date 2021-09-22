@@ -1,12 +1,11 @@
-import { AiOutlineCamera } from 'react-icons/ai';
+import IcoBoardTitle from '../../../../components/Atoms/IcoBoardTitle';
+import TxtBoardTitle from '../../../../components/Atoms/TxtBoardTitle';
 
 export default function InPhotoListBoardTitle() {
   return (
     <>
-      <div className="icon">
-        <AiOutlineCamera />
-      </div>
-      <div className="title_name">짤게</div>
+      <IcoBoardTitle nowPage="photo" />
+      <TxtBoardTitle nowPage="photo" />
     </>
   );
 }

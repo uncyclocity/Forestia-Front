@@ -26,7 +26,7 @@ export default function Title() {
   return (
     <Styles>
       <LblCatchphrase />
-      {nowPage === 'posting' ? (
+      {nowPage === 'creating' ? (
         <div onClick={() => unmountAnimation(0, dispatch, homeUrl)}>
           <BtnGotoPosting btnText="포스팅 취소">
             <AiOutlineClose />

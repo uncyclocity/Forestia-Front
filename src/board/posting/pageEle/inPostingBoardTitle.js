@@ -1,6 +1,10 @@
-import { AiOutlineCamera, AiOutlineCloud } from 'react-icons/ai';
 import { BiTime } from 'react-icons/bi';
 import styled from 'styled-components';
+import IcoBoardTitle from '../../../../components/Atoms/IcoBoardTitle';
+import IcoPostingDate from '../../../../components/Atoms/IcoPostingDate';
+import TxtBoardTitle from '../../../../components/Atoms/TxtBoardTitle';
+import TxtPostingAuthor from '../../../../components/Atoms/TxtPostingAuthor';
+import TxtPostingDate from '../../../../components/Atoms/TxtPostingDate';
 
 const AuthorAndDateStyle = styled.div`
   display: flex;
@@ -27,18 +31,23 @@ const AuthorAndDateStyle = styled.div`
 export default function InPostingBoardTitle({ nowPostingEleObj }) {
   return (
     <>
-      <div className="icon">
-        {nowPostingEleObj.board_type === 'free' && <AiOutlineCloud />}
-        {nowPostingEleObj.board_type === 'photo' && <AiOutlineCamera />}
-      </div>
-      <div className="title_name">{nowPostingEleObj.title}</div>
+      {nowPostingEleObj.board_type === 'free' && (
+        <>
+          <IcoBoardTitle nowPage="free" />
+          <TxtBoardTitle nowPage="free" title={nowPostingEleObj.title} />
+        </>
+      )}
+      {nowPostingEleObj.board_type === 'photo' && (
+        <>
+          <IcoBoardTitle nowPage="photo" />
+          <TxtBoardTitle nowPage="photo" title={nowPostingEleObj.title} />
+        </>
+      )}
       <AuthorAndDateStyle>
-        <div className="author">{nowPostingEleObj.author}</div>
+        <TxtPostingAuthor author={nowPostingEleObj.author} />
         <div className="date">
-          <div className="date_icon">
-            <BiTime />
-          </div>
-          {nowPostingEleObj.date}
+          <IcoPostingDate />
+          <TxtPostingDate date={nowPostingEleObj.date} />
         </div>
       </AuthorAndDateStyle>
     </>

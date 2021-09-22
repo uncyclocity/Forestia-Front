@@ -1,12 +1,12 @@
 import { RiDeleteBin7Line } from 'react-icons/ri';
+import IcoBoardTitle from '../../../../components/Atoms/IcoBoardTitle';
+import TxtBoardTitle from '../../../../components/Atoms/TxtBoardTitle';
 
 export default function InCommDeletingBoardTitle() {
   return (
     <>
-      <div className="icon">
-        <RiDeleteBin7Line />
-      </div>
-      <div className="title_name">댓글 삭제 중</div>
+      <IcoBoardTitle nowPage="deleting" />
+      <TxtBoardTitle nowPage="deleting" />
     </>
   );
 }
