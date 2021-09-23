@@ -5,6 +5,10 @@ import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
 import { useDispatch, useReducerState } from '../../../common/context';
 import getImagesUrlArr from '../etcFunc/getImagesUrlArr';
 import letsDoUploadPosting from '../etcFunc/letsDoUploadPosting';
+import LblLineBetweenTitleContent from '../../../../components/Atoms/LblLineBetweenTitleContent';
+import LblUploadedImagePreview from '../../../../components/Atoms/LblUploadedImagePreview';
+import BtnImgUpload from '../../../../components/Atoms/BtnImgUpload';
+import TxtImgUpload from '../../../../components/Atoms/TxtImgUpload';
 
 const ContentInputStyle = styled.div`
   flex-direction: column;
@@ -58,14 +62,8 @@ const ContentInputStyle = styled.div`
     margin-bottom: 10px;
 
     .uploadimg_btn_area {
-      .uploadimg_text {
-        color: #20c997;
-        font-weight: bold;
-      }
-
-      .uploadimg_btn {
-        width: 200px;
-      }
+      display: flex;
+      flex-direction: column;
     }
 
     .uploadedimg_list {
@@ -73,15 +71,6 @@ const ContentInputStyle = styled.div`
       overflow-x: scroll;
       scrollbar-width: thin;
       border-radius: 3px;
-
-      img {
-        &:not(:last-child) {
-          margin-right: 7px;
-        }
-        border-radius: 3px;
-        border: 1px solid #d1d8de;
-        margin-bottom: 3px;
-      }
     }
   }
 `;
@@ -110,7 +99,7 @@ export default function PostingContentInput() {
             setPostingEle({ ...postingEle, title: e.target.value })
           }
         />
-        <hr className="title_content_line" align="left" />
+        <LblLineBetweenTitleContent />
         <textarea
           className="content_input_box"
           style={{ resize: 'none' }}
@@ -122,10 +111,9 @@ export default function PostingContentInput() {
         />
         <div className="upload_image_area">
           <div className="uploadimg_btn_area">
-            <div className="uploadimg_text">이미지 업로드</div>
+            <TxtImgUpload />
             <input
               type="file"
-              className="uploadimg_btn"
               ref={images}
               accept="image/*"
               onChange={() =>
@@ -141,7 +129,10 @@ export default function PostingContentInput() {
             {postingEle.imagesUrlArr.length > 0 &&
               postingEle.imagesUrlArr.map((imageUrl, index) => {
                 return (
-                  <img src={imageUrl} key={index} alt={index} height="44" />
+                  <LblUploadedImagePreview
+                    key={index}
+                    imageUrl={postingEle.imagesUrlArr[0]}
+                  />
                 );
               })}
           </div>

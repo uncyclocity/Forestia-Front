@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
+import LblLineBetweenTitleContent from '../../../../components/Atoms/LblLineBetweenTitleContent';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { postPosting } from '../../../doApi/doApi';
@@ -64,7 +65,7 @@ export default function PostingEditContentInput() {
           value={editEle.title}
           onChange={(e) => setEditEle({ ...editEle, title: e.target.value })}
         />
-        <hr className="title_content_line" align="left" />
+        <LblLineBetweenTitleContent />
         <textarea
           className="content_input_box"
           style={{ resize: 'none' }}
