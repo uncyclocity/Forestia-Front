@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import InCreatePostingBoardTitle from '../../../src/board/update_posting.creating/pageEle/InCreatePostingBoardTitle';
 import PostingContentInput from '../../../src/board/update_posting.creating/pageEle/postingContentInput';
+import setNowPostingEle from '../../../src/common/setNowPostingEle';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -17,6 +18,7 @@ export default function PostingCreating() {
 
   useEffect(() => {
     mountAnimation(dispatch, 'creating');
+    setNowPostingEle(dispatch, {});
   }, [dispatch]);
 
   return (

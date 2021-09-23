@@ -159,7 +159,6 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
               <ul>
                 <li
                   onClick={() => {
-                    dispatch({ type: 'editpost_data', nowPostingEleObj });
                     unmountAnimation(
                       0,
                       dispatch,
@@ -175,7 +174,6 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
                 <li
                   onClick={() => {
                     if (!postCnt && confirm('정말로 삭제하시겠습니까')) {
-                      dispatch({ type: 'editpost_data', nowPostingEleObj });
                       unmountAnimation(
                         0,
                         dispatch,

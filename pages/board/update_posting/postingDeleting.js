@@ -7,6 +7,7 @@ import DeleteSign from '../../../src/board/update_posting.deleting/pageEle/delet
 import styled from 'styled-components';
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import letsDeletePostingAndImage from '../../../src/board/update_posting.deleting/etcFunc/letsDeletePostingAndImage';
+import setNowPostingEle from '../../../src/common/setNowPostingEle';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -20,7 +21,7 @@ export default function PostingDeleting() {
     mountAnimation(dispatch, 'deleting');
     letsDeletePostingAndImage(nowPostingEleObj, dispatch);
     return () => {
-      dispatch({ type: 'editpost_data', editData: {} });
+      setNowPostingEle(dispatch, {});
     };
   }, [dispatch, nowPostingEleObj]);
 

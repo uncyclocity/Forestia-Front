@@ -7,6 +7,7 @@ import FreePhotoSign from '../../../src/board/update_posting.editing/pageEle/fre
 import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
 import PostingEditContentInput from '../../../src/board/update_posting.editing/pageEle/postingEditContentInput';
 import styled from 'styled-components';
+import setNowPostingEle from '../../../src/common/setNowPostingEle';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -20,7 +21,7 @@ export default function PostingEditing() {
   useEffect(() => {
     mountAnimation(dispatch, 'editing');
     return () => {
-      dispatch({ type: 'editpost_data', editData: {} });
+      setNowPostingEle(dispatch, {});
     };
   }, [dispatch]);
 

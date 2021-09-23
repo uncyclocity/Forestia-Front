@@ -15,6 +15,7 @@ import ContentView from '../../../src/board/posting/pageEle/contentView';
 import { mountAnimation } from '../../../src/common/animationController';
 import ImageView from '../../../src/board/posting/pageEle/imageView';
 import { getPosting } from '../../../src/doApi/doApi';
+import setNowPostingEle from '../../../src/common/setNowPostingEle';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -28,11 +29,12 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
 
   useEffect(() => {
     mountAnimation(dispatch, board_type);
+    setNowPostingEle(dispatch, nowPostingEleObjRaw);
     postPageSwitchOn(dispatch);
     return () => {
       postPageSwitchOff(dispatch);
     };
-  }, [board_type, dispatch]);
+  }, [board_type, dispatch, nowPostingEleObjRaw]);
 
   return (
     <FourAnimationedBox>
