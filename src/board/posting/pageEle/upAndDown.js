@@ -1,10 +1,7 @@
-import {
-  AiFillDislike,
-  AiFillLike,
-  AiOutlineDislike,
-  AiOutlineLike,
-} from 'react-icons/ai';
 import styled from 'styled-components';
+import IcoDown from '../../../../components/Atoms/IcoDown';
+import IcoUp from '../../../../components/Atoms/IcoUp';
+import TxtUpDownAmount from '../../../../components/Atoms/TxtUpDownAmount';
 import { useDispatch, useReducerState } from '../../../common/context';
 import getDoUpdateUDdata from '../etcFunc/getDoUpdateUDdata';
 
@@ -49,8 +46,8 @@ const UpAndDownBtnStyle = styled.div`
 
 export default function UpAndDown({ nowPostingEleObj, setNowPostingEleObj }) {
   const state = useReducerState();
-  const userName = state.userName;
   const postCnt = state.postCnt;
+  const userName = state.userName;
   const dispatch = useDispatch();
 
   return (
@@ -70,20 +67,8 @@ export default function UpAndDown({ nowPostingEleObj, setNowPostingEleObj }) {
               );
           }}
         >
-          <div className="icon">
-            <div className="up">
-              {nowPostingEleObj.up.clicker.find(
-                (clickUser) => clickUser === userName,
-              ) ? (
-                <AiFillLike />
-              ) : (
-                <AiOutlineLike />
-              )}
-            </div>
-          </div>
-          <div className="amount">
-            <div className="up">{nowPostingEleObj.up.amount}</div>
-          </div>
+          <IcoUp clicker={nowPostingEleObj.up.clicker} />
+          <TxtUpDownAmount amount={nowPostingEleObj.up.amount} />
         </div>
 
         <div
@@ -100,20 +85,8 @@ export default function UpAndDown({ nowPostingEleObj, setNowPostingEleObj }) {
               );
           }}
         >
-          <div className="icon">
-            <div className="down">
-              {nowPostingEleObj.down.clicker.find(
-                (clickUser) => clickUser === userName,
-              ) ? (
-                <AiFillDislike />
-              ) : (
-                <AiOutlineDislike />
-              )}
-            </div>
-          </div>
-          <div className="amount">
-            <div className="down">{nowPostingEleObj.down.amount}</div>
-          </div>
+          <IcoDown clicker={nowPostingEleObj.down.clicker} />
+          <TxtUpDownAmount amount={nowPostingEleObj.down.amount} />
         </div>
       </UpAndDownBtnStyle>
     </UpAndDownAreaStyle>

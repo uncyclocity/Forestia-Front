@@ -6,6 +6,12 @@ import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';
 import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
 import { BtnCommentPost } from '../../../../components/Atoms/BtnCommentPost';
+import TxtComment from '../../../../components/Atoms/TxtComment';
+import TxtCommentAmount from '../../../../components/Atoms/TxtCommentAmount';
+import TxtCommentAuthor from '../../../../components/Atoms/TxtCommentAuthor';
+import TxtCommentDate from '../../../../components/Atoms/TxtCommentDate';
+import BtnCommentEditDel from '../../../../components/Atoms/BtnCommentEditDel';
+import TxtCommentContent from '../../../../components/Atoms/TxtCommentContent';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -23,46 +29,13 @@ const CommAmountAreaStyle = styled.div`
   display: flex;
   flex-direction: row;
   padding-bottom: 10px;
-
-  font-size: 17px;
-  font-weight: bold;
-  color: #828c99;
-
   border-bottom: 1px solid #e9ecef;
-
-  .amount {
-    margin-left: 7px;
-    color: #20c997;
-  }
 `;
 
 const CommInfoAndBtnAreaStyle = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 5px;
-
-  .cand_author {
-    margin-right: 10px;
-    font-weight: bold;
-    font-size: 15px;
-  }
-
-  .cand_date {
-    margin-right: 10px;
-    position: relative;
-    top: 1px;
-    color: #828c99;
-    font-size: 14px;
-  }
-
-  .cand_edit_und_del {
-    color: #20c997;
-    font-size: 14px;
-    cursor: pointer;
-    &:not(:last-child) {
-      margin-right: 7px;
-    }
-  }
 `;
 
 const CommContentAreaStyle = styled.div`
@@ -122,28 +95,24 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
   return (
     <CommListAreaStyle>
       <CommAmountAreaStyle>
-        <div>댓글</div>
-        <div className="amount">{nowPostingEleObj.comments.length}</div>
+        <TxtComment />
+        <TxtCommentAmount amount={nowPostingEleObj.comments.length} />
       </CommAmountAreaStyle>
       <ul>
         {nowPostingEleObj.comments.map((comment, index) => {
           return (
             <li key={index}>
               <CommInfoAndBtnAreaStyle>
-                <div className="cand_author">{comment.author}</div>
-                <div className="cand_date">{comment.date}</div>
+                <TxtCommentAuthor author={comment.author} />
+                <TxtCommentDate date={comment.date} />
                 {userName === '백괴' && (
                   <>
                     {editCommObj.id === comment.id ? (
-                      <div
-                        className="cand_edit_und_del"
-                        onClick={() => setEditCommObj(false)}
-                      >
-                        수정취소
+                      <div onClick={() => setEditCommObj(false)}>
+                        <BtnCommentEditDel text="수정취소" />
                       </div>
                     ) : (
                       <div
-                        className="cand_edit_und_del"
                         onClick={() =>
                           setEditCommObj({
                             id: comment.id,
@@ -151,17 +120,16 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                           })
                         }
                       >
-                        수정
+                        <BtnCommentEditDel text="수정" />
                       </div>
                     )}
 
                     <div
-                      className="cand_edit_und_del"
                       onClick={() =>
                         gotoCommDelPage(nowPostingEleObj, comment.id, dispatch)
                       }
                     >
-                      삭제
+                      <BtnCommentEditDel text="삭제" />
                     </div>
                   </>
                 )}
@@ -199,13 +167,11 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                         }
                       }}
                     >
-                      <BtnCommentPost>
-                        <IoIosSend />
-                      </BtnCommentPost>
+                      <BtnCommentPost />
                     </div>
                   </div>
                 ) : (
-                  <a>{comment.content}</a>
+                  <TxtCommentContent content={comment.content} />
                 )}
               </CommContentAreaStyle>
             </li>

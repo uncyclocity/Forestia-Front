@@ -92,9 +92,7 @@ export default function CommentInput({
           }
         }}
       >
-        <BtnCommentPost>
-          <IoIosSend />
-        </BtnCommentPost>
+        <BtnCommentPost />
       </div>
     </CommInputAreaStyle>
   );

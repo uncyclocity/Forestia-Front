@@ -9,8 +9,8 @@ import BtnGotoBoard4Home from '../../../components/Atoms/BtnGotoBoard4Home';
 import IcoListEmpty from '../../../components/Atoms/IcoListEmpty';
 import TxtListEmpty from '../../../components/Atoms/TxtListEmpty';
 import TxtPostingTitle from '../../../components/Atoms/TxtPostingTitle';
-import TxtCommentAmount from '../../../components/Atoms/TxtCommentAmount';
-import LblImgThumbnail from '../../../components/Atoms/LblImgThumbnail';
+import TxtCommentAmount4List from '../../../components/Atoms/TxtCommentAmount4List';
+import ImgThumbnail from '../../../components/Atoms/ImgThumbnail';
 
 const BoardTitleLayoutStyle = styled.div`
   width: 100%;
@@ -124,13 +124,13 @@ export default function PhotoBox({ photoBoard }) {
                     }
                   >
                     <div className="photo_posting">
-                      <LblImgThumbnail imageUrl={post.imagesUrl[0]} />
+                      <ImgThumbnail imageUrl={post.imagesUrl[0]} />
                       <div className="name_and_content">
                         <TxtPostingTitle>{post.title}</TxtPostingTitle>
                         <div className="comment_amount">
-                          <TxtCommentAmount>
+                          <TxtCommentAmount4List>
                             {post.comments.length}
-                          </TxtCommentAmount>
+                          </TxtCommentAmount4List>
                         </div>
                       </div>
                     </div>

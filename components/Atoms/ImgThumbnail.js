@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-// LblImgThumbnail
-// 분류 : 레이블
-// 용도 : 썸네일로 쓰이는 이미지가 표시 됨
+// ImgThumbnail
+// 분류 : 이미지
+// 용도 : 썸네일로 쓰이는 이미지
 
-export default function LblImgThumbnail({ imageUrl }) {
+export default function ImgThumbnail({ imageUrl }) {
   const Styles = styled.div`
     display: flex;
     justify-content: center;

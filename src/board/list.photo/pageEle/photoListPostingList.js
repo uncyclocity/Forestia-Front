@@ -1,9 +1,9 @@
 import { unmountAnimation } from '../../../common/animationController';
 import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
-import LblImgThumbnail from '../../../../components/Atoms/LblImgThumbnail';
+import ImgThumbnail from '../../../../components/Atoms/ImgThumbnail';
 import TxtPostingTitle from '../../../../components/Atoms/TxtPostingTitle';
-import TxtCommentAmount from '../../../../components/Atoms/TxtCommentAmount';
+import TxtCommentAmount4List from '../../../../components/Atoms/TxtCommentAmount4List';
 import TxtPostingAuthor4List from '../../../../components/Atoms/TxtPostingAuthor4List';
 import TxtPostingDate4List from '../../../../components/Atoms/TxtPostingDate4List';
 import IcoListEmpty from '../../../../components/Atoms/IcoListEmpty';
@@ -125,13 +125,13 @@ export default function PhotoListPostingList({ photoBoard }) {
                 className="photo_posting"
                 key={index}
               >
-                <LblImgThumbnail imageUrl={posting.imagesUrl[0]} />
+                <ImgThumbnail imageUrl={posting.imagesUrl[0]} />
                 <div className="name_and_comment">
                   <TxtPostingTitle>{posting.title}</TxtPostingTitle>
                   <div className="posting_comment_amount">
-                    <TxtCommentAmount>
+                    <TxtCommentAmount4List>
                       {posting.imagesUrl.length}
-                    </TxtCommentAmount>
+                    </TxtCommentAmount4List>
                   </div>
                 </div>
                 <div className="date_and_author">

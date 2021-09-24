@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import BtnGotoBoard4Home from '../../../components/Atoms/BtnGotoBoard4Home';
 import TxtPostingTitle from '../../../components/Atoms/TxtPostingTitle';
 import isImgExist from '../etcFunc/isImgExist';
-import TxtCommentAmount from '../../../components/Atoms/TxtCommentAmount';
+import TxtCommentAmount4List from '../../../components/Atoms/TxtCommentAmount4List';
 import IcoComment from '../../../components/Atoms/IcoComment';
 import TxtBoard4Home from '../../../components/Atoms/TxtBoard4Home';
 import IcoBoard4Home from '../../../components/Atoms/IcoBoard4Home';
@@ -123,9 +123,9 @@ export default function FreeBox({ freeBoard }) {
                     <IcoExistImg isImgExist={isImgExist(post.imagesUrl)} />
                     <div className="comment_amount">
                       <IcoComment />
-                      <TxtCommentAmount>
+                      <TxtCommentAmount4List>
                         {post.comments.length}
-                      </TxtCommentAmount>
+                      </TxtCommentAmount4List>
                     </div>
                   </div>
                 </li>

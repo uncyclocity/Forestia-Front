@@ -1,10 +1,11 @@
+import { IoIosSend } from 'react-icons/io';
 import styled from 'styled-components';
 
 // BtnComment
 // 분류 : 버튼
 // 용도 : 댓글 업데이트에 관련 된 POST 작업에서 사용된다.
 
-export const BtnCommentPost = ({ children }) => {
+export const BtnCommentPost = () => {
   const Styles = styled.div`
     background: #20c997;
     color: white;
@@ -29,5 +30,9 @@ export const BtnCommentPost = ({ children }) => {
     }
   `;
 
-  return <Styles>{children}</Styles>;
+  return (
+    <Styles>
+      <IoIosSend />
+    </Styles>
+  );
 };

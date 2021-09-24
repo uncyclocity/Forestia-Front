@@ -5,7 +5,7 @@ import { FiImage } from 'react-icons/fi';
 import IcoListEmpty from '../../../../components/Atoms/IcoListEmpty';
 import TxtListEmpty from '../../../../components/Atoms/TxtListEmpty';
 import TxtPostingTitle from '../../../../components/Atoms/TxtPostingTitle';
-import TxtCommentAmount from '../../../../components/Atoms/TxtCommentAmount';
+import TxtCommentAmount4List from '../../../../components/Atoms/TxtCommentAmount4List';
 import TxtPostingAuthor4List from '../../../../components/Atoms/TxtPostingAuthor4List';
 import TxtPostingDate4List from '../../../../components/Atoms/TxtPostingDate4List';
 import TxtFreeGridTopName from '../../../../components/Atoms/TxtFreeGridTopName';
@@ -132,9 +132,9 @@ export default function FreeListPostingList({ freeBoard }) {
                         </div>
                       </div>
                       {posting.comments.length > 0 && (
-                        <TxtCommentAmount>
+                        <TxtCommentAmount4List>
                           {posting.imagesUrl.length}
-                        </TxtCommentAmount>
+                        </TxtCommentAmount4List>
                       )}
                       <div className="posting_author_prototype">
                         <TxtPostingAuthor4List author={posting.author} />
