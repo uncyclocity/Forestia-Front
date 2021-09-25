@@ -6,7 +6,6 @@ import { useDispatch, useReducerState } from './context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { slideLeft, slideRight } from '../../styles/keyframes/slide';
-import { spin_90, spin_90_r } from '../../styles/keyframes/spin';
 import { unmountAnimation } from './animationController';
 
 const Styles = styled.div`
@@ -49,10 +48,12 @@ const Styles = styled.div`
       ${({ isOMAnimation }) =>
         isOMAnimation
           ? css`
-              animation: ${spin_90} 0.25s ease 0s 1 normal forwards;
+              transition: transform 0.2s linear;
+              transform: rotate(90deg);
             `
           : css`
-              animation: ${spin_90_r} 0.25s ease 0s 1 normal forwards;
+              transition: transform 0.2s linear;
+              transform: rotate(0deg);
             `}
     }
 
