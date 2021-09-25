@@ -86,7 +86,7 @@ export default function PostingContentInput() {
     imagesUrlArr: [],
   });
   const [selBoard, setSelBoard] = useState('free');
-  const images = useRef(null);
+  const [files, setFiles] = useState([]);
 
   return (
     <>
@@ -109,23 +109,20 @@ export default function PostingContentInput() {
           <div className="uploadimg_btn_area">
             <TxtImgUpload />
             <BtnImgUpload
-              onChange={() =>
+              onChange={(e) => {
+                setFiles(e.target.files);
                 setPostingEle({
                   ...postingEle,
-                  imagesUrlArr: getImagesUrlArr(images.current.files),
-                })
-              }
-              ref={images}
+                  imagesUrlArr: getImagesUrlArr(e.target.files),
+                });
+              }}
             />
           </div>
           <div className="uploadedimg_list">
             {postingEle.imagesUrlArr.length > 0 &&
               postingEle.imagesUrlArr.map((imageUrl, index) => {
                 return (
-                  <LblUploadedImagePreview
-                    key={index}
-                    imageUrl={postingEle.imagesUrlArr[0]}
-                  />
+                  <LblUploadedImagePreview key={index} imageUrl={imageUrl} />
                 );
               })}
           </div>
@@ -144,7 +141,7 @@ export default function PostingContentInput() {
                     selBoard,
                     postingEle.title,
                     postingEle.content,
-                    images.current.files,
+                    files,
                     dispatch,
                   );
                 }

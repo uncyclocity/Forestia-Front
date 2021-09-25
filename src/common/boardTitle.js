@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components';
-import { IoIosArrowBack } from 'react-icons/io';
-import { FiMoreHorizontal } from 'react-icons/fi';
 import { FiEdit } from 'react-icons/fi';
 import { useDispatch, useReducerState } from './context';
 import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { slideLeft, slideRight } from '../../styles/keyframes/slide';
 import { unmountAnimation } from './animationController';
+import BtnPostingMore from '../../components/Atoms/BtnPostingMore';
+import BtnPostingBack from '../../components/Atoms/BtnPostingBack';
+import IcoMoreEditPosting from '../../components/Atoms/IcoMoreEditPosting';
+import IcoMoreDeletePosting from '../../components/Atoms/IcoMoreDeletePosting';
+import TxtMoreArea from '../../components/Atoms/TxtMoreArea';
+import BtnMore from '../../components/Atoms/BtnMore';
 
 const Styles = styled.div`
   display: flex;
@@ -37,16 +41,9 @@ const Styles = styled.div`
 
   .lr_btn {
     position: relative;
-    cursor: pointer;
-    width: 35px;
-    font-size: 30px;
-
     .more_icon {
-      width: 30px;
-      height: 30px;
-
-      ${({ isOMAnimation }) =>
-        isOMAnimation
+      ${({ isOpenMoreAnimation }) =>
+        isOpenMoreAnimation
           ? css`
               transition: transform 0.2s linear;
               transform: rotate(90deg);
@@ -65,8 +62,8 @@ const Styles = styled.div`
       left: 70px;
 
       .ctxmenu {
-        ${({ isOMAnimation }) =>
-          isOMAnimation
+        ${({ isOpenMoreAnimation }) =>
+          isOpenMoreAnimation
             ? css`
                 animation: 0.25s ease 0s ${slideRight};
               `
@@ -79,34 +76,9 @@ const Styles = styled.div`
           padding-left: 0;
           height: 100%;
           li {
-            cursor: pointer;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            border-radius: 10px;
-            background: #20c997;
-            color: white;
-            box-shadow: 0 0 5px #dedede;
             list-style-type: none;
-
-            padding: 5px;
-
             &:not(:last-child) {
               margin-bottom: 8px;
-            }
-
-            .ctx_icon {
-              position: relative;
-              top: 2px;
-
-              font-size: 20px;
-            }
-
-            .ctx_text {
-              margin-left: 3px;
-              font-size: 18px;
             }
           }
         }
@@ -124,15 +96,15 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
   const postCnt = state.postCnt;
 
   const [isOpenMore, setIsOpenMore] = useState(false);
-  const [isOMAnimation, setIsOMAnimation] = useState(false);
+  const [isOpenMoreAnimation, setisOpenMoreAnimation] = useState(false);
 
   return (
-    <Styles isOMAnimation={isOMAnimation}>
+    <Styles isOpenMoreAnimation={isOpenMoreAnimation}>
       <div className="lr_btn">
         {backURL && (
-          <div onClick={() => unmountAnimation(0, dispatch, backURL)}>
-            <IoIosArrowBack />
-          </div>
+          <BtnPostingBack
+            onClick={() => unmountAnimation(0, dispatch, backURL)}
+          />
         )}
       </div>
       <div className="board_info">{children}</div>
@@ -141,52 +113,52 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
           <div
             className="more_icon"
             onClick={() => {
-              if (isOMAnimation) {
+              if (isOpenMoreAnimation) {
                 setTimeout(() => {
                   setIsOpenMore(!isOpenMore);
                 }, 250);
               } else {
                 setIsOpenMore(!isOpenMore);
               }
-              setIsOMAnimation(!isOMAnimation);
+              setisOpenMoreAnimation(!isOpenMoreAnimation);
             }}
           >
-            <FiMoreHorizontal />
+            <BtnPostingMore />
           </div>
         )}
         <div className="more">
           {isOpenMore && (
             <div className="ctxmenu">
               <ul>
-                <li
-                  onClick={() => {
-                    unmountAnimation(
-                      0,
-                      dispatch,
-                      `/board/update_posting/postingEditing`,
-                    );
-                  }}
-                >
-                  <div className="ctx_icon">
-                    <FiEdit />
-                  </div>
-                  <div className="ctx_text">수정</div>
-                </li>
-                <li
-                  onClick={() => {
-                    if (!postCnt && confirm('정말로 삭제하시겠습니까')) {
+                <li>
+                  <BtnMore
+                    onClick={() => {
                       unmountAnimation(
                         0,
                         dispatch,
-                        `/board/update_posting/postingDeleting`,
+                        `/board/update_posting/postingEditing`,
                       );
-                    }
-                  }}
-                >
-                  <div className="ctx_icon">
-                    <RiDeleteBin7Line />
-                  </div>
-                  <div className="ctx_text">삭제</div>
+                    }}
+                  >
+                    <IcoMoreEditPosting />
+                    <TxtMoreArea text="수정" />
+                  </BtnMore>
+                </li>
+                <li>
+                  <BtnMore
+                    onClick={() => {
+                      if (!postCnt && confirm('정말로 삭제하시겠습니까')) {
+                        unmountAnimation(
+                          0,
+                          dispatch,
+                          `/board/update_posting/postingDeleting`,
+                        );
+                      }
+                    }}
+                  >
+                    <IcoMoreDeletePosting />
+                    <TxtMoreArea text="삭제" />
+                  </BtnMore>
                 </li>
               </ul>
             </div>

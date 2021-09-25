@@ -5,20 +5,14 @@ import getImagesUrlArr from '../../src/board/update_posting.creating/etcFunc/get
 // 분류 : 버튼
 // 용도 : 포스팅 작성 페이지에서 이미지를 업로드하는데 쓰이는 버튼
 
-export default function BtnImgUpload({ onChange, ref }) {
-  const Styles = styled.div`
-    width: 300px;
-  `;
+const Styles = styled.div`
+  width: 300px;
+`;
 
+export default function BtnImgUpload({ onChange }) {
   return (
     <Styles>
-      <input
-        type="file"
-        ref={ref}
-        accept="image/*"
-        onChange={onChange}
-        multiple
-      />
+      <input type="file" accept="image/*" onChange={onChange} multiple />
     </Styles>
   );
 }
