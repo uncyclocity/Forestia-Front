@@ -13,7 +13,6 @@ const Styles = styled.div`
 
 export default function IcoUp({ clicker }) {
   const userName = useReducerState().userName;
-  console.log(userName);
 
   return (
     <Styles>

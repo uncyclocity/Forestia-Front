@@ -9,6 +9,8 @@ import LblLineBetweenTitleContent from '../../../../components/Atoms/LblLineBetw
 import LblUploadedImagePreview from '../../../../components/Atoms/LblUploadedImagePreview';
 import BtnImgUpload from '../../../../components/Atoms/BtnImgUpload';
 import TxtImgUpload from '../../../../components/Atoms/TxtImgUpload';
+import IptTitle from '../../../../components/Atoms/IptTitle';
+import IptContent from '../../../../components/Atoms/IptContent';
 
 const ContentInputStyle = styled.div`
   flex-direction: column;
@@ -90,39 +92,30 @@ export default function PostingContentInput() {
     <>
       <BtnFreePhotoSwitch selBoard={selBoard} setSelBoard={setSelBoard} />
       <ContentInputStyle>
-        <input
-          type="text"
-          className="content_title_input_box"
-          placeholder="제목을 입력하세요"
-          value={postingEle.title}
+        <IptTitle
           onChange={(e) =>
             setPostingEle({ ...postingEle, title: e.target.value })
           }
+          value={postingEle.title}
         />
         <LblLineBetweenTitleContent />
-        <textarea
-          className="content_input_box"
-          style={{ resize: 'none' }}
-          placeholder="내용을 입력하세요"
-          value={postingEle.content}
+        <IptContent
           onChange={(e) =>
             setPostingEle({ ...postingEle, content: e.target.value })
           }
+          value={postingEle.content}
         />
         <div className="upload_image_area">
           <div className="uploadimg_btn_area">
             <TxtImgUpload />
-            <input
-              type="file"
-              ref={images}
-              accept="image/*"
+            <BtnImgUpload
               onChange={() =>
                 setPostingEle({
                   ...postingEle,
                   imagesUrlArr: getImagesUrlArr(images.current.files),
                 })
               }
-              multiple
+              ref={images}
             />
           </div>
           <div className="uploadedimg_list">
