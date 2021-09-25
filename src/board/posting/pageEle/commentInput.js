@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { IoIosSend } from 'react-icons/io';
 import styled from 'styled-components';
 import { BtnCommentPost } from '../../../../components/Atoms/BtnCommentPost';
+import IptComment from '../../../../components/Atoms/IptComment';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';
@@ -67,11 +67,9 @@ export default function CommentInput({
   return (
     <CommInputAreaStyle>
       <CommTextareaStyle>
-        <textarea
-          style={{ resize: 'none' }}
-          className="commTextarea"
-          value={comment}
+        <IptComment
           onChange={(e) => setComment(e.target.value)}
+          value={comment}
         />
       </CommTextareaStyle>
       <div

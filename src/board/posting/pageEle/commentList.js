@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { IoIosSend } from 'react-icons/io';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
@@ -12,6 +11,7 @@ import TxtCommentAuthor from '../../../../components/Atoms/TxtCommentAuthor';
 import TxtCommentDate from '../../../../components/Atoms/TxtCommentDate';
 import BtnCommentEditDel from '../../../../components/Atoms/BtnCommentEditDel';
 import TxtCommentContent from '../../../../components/Atoms/TxtCommentContent';
+import IptComment from '../../../../components/Atoms/IptComment';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -46,23 +46,6 @@ const CommContentAreaStyle = styled.div`
     flex-direction: row;
 
     .comm_edit_input_box {
-      width: 570px;
-      height: 50px;
-
-      margin-right: 15px;
-
-      border: none;
-      border-radius: 5px;
-
-      font-family: inherit;
-      font-size: 15px;
-
-      border: 1px solid #e9ecef;
-      color: #525252;
-
-      &:focus {
-        outline: none;
-      }
     }
   }
 `;
@@ -137,9 +120,7 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
               <CommContentAreaStyle>
                 {editCommObj.id === comment.id ? (
                   <div className="comm_edit_area">
-                    <textarea
-                      style={{ resize: 'none' }}
-                      value={editCommObj.content}
+                    <IptComment
                       onChange={(e) =>
                         !postCnt &&
                         setEditCommObj({
@@ -147,7 +128,7 @@ export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
                           content: e.target.value,
                         })
                       }
-                      className="comm_edit_input_box"
+                      value={editCommObj.content}
                     />
                     <div
                       onClick={async () => {

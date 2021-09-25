@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
+import IptContent from '../../../../components/Atoms/IptContent';
+import IptTitle from '../../../../components/Atoms/IptTitle';
 import LblLineBetweenTitleContent from '../../../../components/Atoms/LblLineBetweenTitleContent';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
@@ -58,20 +60,14 @@ export default function PostingEditContentInput() {
   return (
     <ContentInputStyle>
       <div className="content_input">
-        <input
-          type="text"
-          className="content_title_input_box"
-          placeholder="제목을 입력하세요"
-          value={editEle.title}
+        <IptTitle
           onChange={(e) => setEditEle({ ...editEle, title: e.target.value })}
+          value={editEle.title}
         />
         <LblLineBetweenTitleContent />
-        <textarea
-          className="content_input_box"
-          style={{ resize: 'none' }}
-          placeholder="내용을 입력하세요"
-          value={editEle.content}
+        <IptContent
           onChange={(e) => setEditEle({ ...editEle, content: e.target.value })}
+          value={editEle.content}
         />
         <div
           onClick={async () => {
