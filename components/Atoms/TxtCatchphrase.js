@@ -1,8 +1,8 @@
 import { RiLeafLine } from 'react-icons/ri';
 import styled from 'styled-components';
 
-// LblCatchphrase
-// 분류 : 레이블
+// TxtCatchphrase
+// 분류 : 텍스트
 // 용도 : 헤더에 입력되어 있는 캐치프레이즈
 
 const Styles = styled.div`
@@ -12,7 +12,7 @@ const Styles = styled.div`
   font-size: 25px;
 `;
 
-export default function LblCatchphrase() {
+export default function TxtCatchphrase() {
   return (
     <Styles>
       풀내음이 함께하는

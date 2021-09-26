@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-// LblUploadedImagePreview
-// 분류 : 레이블
+// ImgUploadedImagePreview
+// 분류 : 이미지
 // 용도 : 포스팅 작성 페이지에서 업로드한 이미지들의 미리 보기
 
 const Styles = styled.div`
@@ -13,7 +13,7 @@ const Styles = styled.div`
   margin-bottom: 3px;
 `;
 
-export default function LblUploadedImagePreview({ imageUrl }) {
+export default function ImgUploadedImagePreview({ imageUrl }) {
   return (
     <Styles>
       <img src={imageUrl} alt={imageUrl} height="44" />

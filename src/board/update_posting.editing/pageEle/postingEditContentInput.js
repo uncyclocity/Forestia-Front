@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
 import IptContent from '../../../../components/Atoms/IptContent';
 import IptTitle from '../../../../components/Atoms/IptTitle';
-import LblLineBetweenTitleContent from '../../../../components/Atoms/LblLineBetweenTitleContent';
+import LinBetweenTitleContent from '../../../../components/Atoms/LinBetweenTitleContent';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { postPosting } from '../../../doApi/doApi';
@@ -64,7 +64,7 @@ export default function PostingEditContentInput() {
           onChange={(e) => setEditEle({ ...editEle, title: e.target.value })}
           value={editEle.title}
         />
-        <LblLineBetweenTitleContent />
+        <LinBetweenTitleContent />
         <IptContent
           onChange={(e) => setEditEle({ ...editEle, content: e.target.value })}
           value={editEle.content}

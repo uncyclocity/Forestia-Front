@@ -1,12 +1,12 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { BtnFreePhotoSwitch } from '../../../../components/Atoms/BtnFreePhotoSwitch';
 import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
 import { useDispatch, useReducerState } from '../../../common/context';
 import getImagesUrlArr from '../etcFunc/getImagesUrlArr';
 import letsDoUploadPosting from '../etcFunc/letsDoUploadPosting';
-import LblLineBetweenTitleContent from '../../../../components/Atoms/LblLineBetweenTitleContent';
-import LblUploadedImagePreview from '../../../../components/Atoms/LblUploadedImagePreview';
+import LinBetweenTitleContent from '../../../../components/Atoms/LinBetweenTitleContent';
+import ImgUploadedImagePreview from '../../../../components/Atoms/ImgUploadedImagePreview';
 import BtnImgUpload from '../../../../components/Atoms/BtnImgUpload';
 import TxtImgUpload from '../../../../components/Atoms/TxtImgUpload';
 import IptTitle from '../../../../components/Atoms/IptTitle';
@@ -98,7 +98,7 @@ export default function PostingContentInput() {
           }
           value={postingEle.title}
         />
-        <LblLineBetweenTitleContent />
+        <LinBetweenTitleContent />
         <IptContent
           onChange={(e) =>
             setPostingEle({ ...postingEle, content: e.target.value })
@@ -122,7 +122,7 @@ export default function PostingContentInput() {
             {postingEle.imagesUrlArr.length > 0 &&
               postingEle.imagesUrlArr.map((imageUrl, index) => {
                 return (
-                  <LblUploadedImagePreview key={index} imageUrl={imageUrl} />
+                  <ImgUploadedImagePreview key={index} imageUrl={imageUrl} />
                 );
               })}
           </div>

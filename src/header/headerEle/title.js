@@ -3,7 +3,7 @@ import { useDispatch, useReducerState } from '../../common/context';
 import styled from 'styled-components';
 import { unmountAnimation } from '../../common/animationController';
 import BtnGotoPosting from '../../../components/Atoms/BtnGotoPosting';
-import LblCatchphrase from '../../../components/Atoms/LblCatchphrase';
+import TxtCatchphrase from '../../../components/Atoms/TxtCatchphrase';
 
 const Styles = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ export default function Title() {
 
   return (
     <Styles>
-      <LblCatchphrase />
+      <TxtCatchphrase />
       {nowPage === 'creating' ? (
         <div onClick={() => unmountAnimation(0, dispatch, homeUrl)}>
           <BtnGotoPosting btnText="포스팅 취소">
