@@ -9,11 +9,12 @@ const Styles = styled.div`
   cursor: pointer;
   height: 20px;
   margin-left: 5px;
+  font-size: 20px;
 `;
 
-export default function BtnGotoBoard4Home() {
+export default function BtnGotoBoard4Home({ onClick }) {
   return (
-    <Styles>
+    <Styles onClick={onClick}>
       <BiChevronRight />
     </Styles>
   );

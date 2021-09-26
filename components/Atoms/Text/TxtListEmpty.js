@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
   margin: 0 5px;
   font-size: 19px;
+  color: #babfc7;
 `;
 
 export default function TxtListEmpty() {

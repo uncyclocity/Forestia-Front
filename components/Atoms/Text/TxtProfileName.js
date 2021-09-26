@@ -7,6 +7,8 @@ import styled from 'styled-components';
 const Styles = styled.div`
   display: flex;
   flex-direction: row;
+  font-size: 20px;
+  color: #828c99;
 `;
 
 export default function TxtProfileName({ userName }) {

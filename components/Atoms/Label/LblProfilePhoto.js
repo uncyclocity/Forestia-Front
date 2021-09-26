@@ -9,7 +9,7 @@ const Styles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 167.5px;
   height: 165px;
   color: white;
   background: #20c997;

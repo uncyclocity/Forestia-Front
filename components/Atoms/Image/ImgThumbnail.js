@@ -9,7 +9,7 @@ const Styles = styled.div`
   justify-content: center;
   border: 1px solid #e9ecef;
   border-radius: 5px;
-  width: 210px;
+  width: 200px;
   height: 120px;
   overflow: hidden;
   background: #f4f4f4;

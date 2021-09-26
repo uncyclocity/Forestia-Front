@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { useDispatch } from '../../src/common/context';
 import { getPosting } from '../../src/doApi/doApi';
 import FourAnimationedBox from '../../src/boxEle/FourAnimationdBox';
-import ProfileBox from '../../src/Home/pageEle/profile';
 import FreeBox from '../../src/Home/pageEle/free';
 import PhotoBox from '../../src/Home/pageEle/photo';
+import HomeProfileBox from '../../components/Organisms/HomeProfileBox';
 
 const BoxLayoutStyle = styled.div`
   display: flex;
@@ -51,11 +51,7 @@ export default function Home({ freeBoard, photoBoard }) {
   return (
     <BoxLayoutStyle>
       <div className="maxwidth">
-        <FourAnimationedBox>
-          <BoxStyle1F>
-            <ProfileBox />
-          </BoxStyle1F>
-        </FourAnimationedBox>
+        <HomeProfileBox />
         <div className="margin_space" />
         <FourAnimationedBox>
           <BoxStyle1F>

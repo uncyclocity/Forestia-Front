@@ -9,6 +9,7 @@ const Styles = styled.div`
   width: 60px;
   height: 60px;
   font-size: 60px;
+  color: #babfc7;
 `;
 
 export default function IcoListEmpty() {

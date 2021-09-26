@@ -3,24 +3,13 @@ import { unmountAnimation } from '../../common/animationController';
 import { useDispatch } from '../../common/context';
 import setTop3 from '../etcFunc/setTop3';
 import styled from 'styled-components';
-import IcoBoard4Home from '../../../components/Atoms/Icon/IcoBoard4Home';
-import TxtBoard4Home from '../../../components/Atoms/Text/TxtBoard4Home';
-import BtnGotoBoard4Home from '../../../components/Atoms/Button/BtnGotoBoard4Home';
-import IcoListEmpty from '../../../components/Atoms/Icon/IcoListEmpty';
-import TxtListEmpty from '../../../components/Atoms/Text/TxtListEmpty';
 import TxtPostingTitle from '../../../components/Atoms/Text/TxtPostingTitle';
 import TxtCommentAmount4List from '../../../components/Atoms/Text/TxtCommentAmount4List';
 import ImgThumbnail from '../../../components/Atoms/Image/ImgThumbnail';
-
-const BoardTitleLayoutStyle = styled.div`
-  width: 100%;
-  color: #20c997;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  font-size: 20px;
-`;
+import HomeBorderTitle from '../../../components/MoleCules/HomeBorderTitle';
+import ListEmpty from '../../../components/MoleCules/ListEmpty';
+import HomePhotoPostingButton from '../../../components/MoleCules/HomePhotoPostingButton';
+import HomePhotoList from '../../../components/MoleCules/HomePhotoList';
 
 const PhotoBoxStyle = styled.div`
   display: flex;
@@ -37,7 +26,7 @@ const ContentListLayoutStyle = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 180px;
+  height: 150px;
 
   ul {
     padding: 0px;
@@ -81,69 +70,22 @@ const ContentListLayoutStyle = styled.div`
       }
     }
   }
-
-  .list_empty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin: 20px 0;
-    color: #babfc7;
-  }
 `;
 
 export default function PhotoBox({ photoBoard }) {
-  const dispatch = useDispatch();
-  const bak = useRef([]);
-  const [photoTop3] = useState(setTop3(photoBoard, bak));
-  const photoListUrl = `/board/board_list/photo?page=1`;
+  const boardName = 'photo';
+  const listUrl = '/board/board_list/photo?page=1';
 
   return (
     <PhotoBoxStyle>
-      <BoardTitleLayoutStyle>
-        <IcoBoard4Home boardName="photo" />
-        <TxtBoard4Home boardName="photo" />
-        <div onClick={() => unmountAnimation(0, dispatch, photoListUrl)}>
-          <BtnGotoBoard4Home />
-        </div>
-      </BoardTitleLayoutStyle>
-
+      <HomeBorderTitle boardName={boardName} listUrl={listUrl} />
       <ContentListLayoutStyle>
-        {photoTop3.length > 0 ? (
+        {photoBoard.length > 0 ? (
           <ul>
-            {photoTop3.map((posting, index) => {
-              return (
-                <li key={index}>
-                  <div
-                    onClick={() =>
-                      unmountAnimation(
-                        0,
-                        dispatch,
-                        `/board/posting?board_type=photo&post_id=${posting.id}`,
-                      )
-                    }
-                  >
-                    <div className="photo_posting">
-                      <ImgThumbnail imageUrl={posting.imagesUrl[0]} />
-                      <div className="name_and_content">
-                        <TxtPostingTitle title={posting.title} />
-                        <div className="comment_amount">
-                          <TxtCommentAmount4List
-                            amount={posting.imagesUrl.length}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
+            <HomePhotoList photoBoard={photoBoard} />
           </ul>
         ) : (
-          <div className="list_empty">
-            <IcoListEmpty />
-            <TxtListEmpty />
-          </div>
+          <ListEmpty />
         )}
       </ContentListLayoutStyle>
     </PhotoBoxStyle>

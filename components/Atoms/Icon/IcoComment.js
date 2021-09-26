@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
   font-size: 12px;
   margin: 0 3px;
+  color: #20c997;
 `;
 
 export default function IcoComment() {

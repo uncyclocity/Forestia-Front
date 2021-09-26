@@ -24,5 +24,5 @@ const Styles = styled.div`
 `;
 
 export const BtnPosting = ({ text }) => {
-  return <Styles>{Text}</Styles>;
+  return <Styles>{text}</Styles>;
 };
