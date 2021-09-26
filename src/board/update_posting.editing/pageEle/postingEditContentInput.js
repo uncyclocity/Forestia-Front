@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
-import IptContent from '../../../../components/Atoms/IptContent';
-import IptTitle from '../../../../components/Atoms/IptTitle';
-import LinBetweenTitleContent from '../../../../components/Atoms/LinBetweenTitleContent';
+import { BtnPosting } from '../../../../components/Atoms/Button/BtnPosting';
+import IptContent from '../../../../components/Atoms/Input/IptContent';
+import IptTitle from '../../../../components/Atoms/Input/IptTitle';
+import LinBetweenTitleContent from '../../../../components/Atoms/Line/LinBetweenTitleContent';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { postPosting } from '../../../doApi/doApi';
@@ -88,7 +88,7 @@ export default function PostingEditContentInput() {
             }
           }}
         >
-          <BtnPosting>업로드</BtnPosting>
+          <BtnPosting text="수정" />
         </div>
       </div>
     </ContentInputStyle>

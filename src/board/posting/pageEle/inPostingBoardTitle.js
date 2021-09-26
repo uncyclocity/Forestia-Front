@@ -1,10 +1,10 @@
 import { BiTime } from 'react-icons/bi';
 import styled from 'styled-components';
-import IcoBoardTitle from '../../../../components/Atoms/IcoBoardTitle';
-import IcoPostingDate from '../../../../components/Atoms/IcoPostingDate';
-import TxtBoardTitle from '../../../../components/Atoms/TxtBoardTitle';
-import TxtPostingAuthor from '../../../../components/Atoms/TxtPostingAuthor';
-import TxtPostingDate from '../../../../components/Atoms/TxtPostingDate';
+import IcoBoardTitle from '../../../../components/Atoms/Icon/IcoBoardTitle';
+import IcoPostingDate from '../../../../components/Atoms/Icon/IcoPostingDate';
+import TxtBoardTitle from '../../../../components/Atoms/Text/TxtBoardTitle';
+import TxtPostingAuthor from '../../../../components/Atoms/Text/TxtPostingAuthor';
+import TxtPostingDate from '../../../../components/Atoms/Text/TxtPostingDate';
 
 const AuthorAndDateStyle = styled.div`
   display: flex;

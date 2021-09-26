@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import IcoDown from '../../../../components/Atoms/IcoDown';
-import IcoUp from '../../../../components/Atoms/IcoUp';
-import TxtUpDownAmount from '../../../../components/Atoms/TxtUpDownAmount';
+import IcoDown from '../../../../components/Atoms/Icon/IcoDown';
+import IcoUp from '../../../../components/Atoms/Icon/IcoUp';
+import TxtUpDownAmount from '../../../../components/Atoms/Text/TxtUpDownAmount';
 import { useDispatch, useReducerState } from '../../../common/context';
 import getDoUpdateUDdata from '../etcFunc/getDoUpdateUDdata';
 

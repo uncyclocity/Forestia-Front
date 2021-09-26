@@ -1,4 +1,4 @@
-import CtnBox from '../../components/Atoms/CtnBox';
+import CtnBox from '../../components/Atoms/Container/CtnBox';
 import {
   BoxAnimation,
   box_empty,

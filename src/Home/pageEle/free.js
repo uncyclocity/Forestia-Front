@@ -3,16 +3,16 @@ import { unmountAnimation } from '../../common/animationController';
 import { useDispatch } from '../../common/context';
 import setTop3 from '../etcFunc/setTop3';
 import styled from 'styled-components';
-import BtnGotoBoard4Home from '../../../components/Atoms/BtnGotoBoard4Home';
-import TxtPostingTitle from '../../../components/Atoms/TxtPostingTitle';
+import BtnGotoBoard4Home from '../../../components/Atoms/Button/BtnGotoBoard4Home';
+import TxtPostingTitle from '../../../components/Atoms/Text/TxtPostingTitle';
 import isImgExist from '../etcFunc/isImgExist';
-import TxtCommentAmount4List from '../../../components/Atoms/TxtCommentAmount4List';
-import IcoComment from '../../../components/Atoms/IcoComment';
-import TxtBoard4Home from '../../../components/Atoms/TxtBoard4Home';
-import IcoBoard4Home from '../../../components/Atoms/IcoBoard4Home';
-import IcoExistImg from '../../../components/Atoms/IcoExistImg';
-import IcoListEmpty from '../../../components/Atoms/IcoListEmpty';
-import TxtListEmpty from '../../../components/Atoms/TxtListEmpty';
+import TxtCommentAmount4List from '../../../components/Atoms/Text/TxtCommentAmount4List';
+import IcoComment from '../../../components/Atoms/Icon/IcoComment';
+import TxtBoard4Home from '../../../components/Atoms/Text/TxtBoard4Home';
+import IcoBoard4Home from '../../../components/Atoms/Icon/IcoBoard4Home';
+import IcoExistImg from '../../../components/Atoms/Icon/IcoExistImg';
+import IcoListEmpty from '../../../components/Atoms/Icon/IcoListEmpty';
+import TxtListEmpty from '../../../components/Atoms/Text/TxtListEmpty';
 
 const BoardTitleLayoutStyle = styled.div`
   width: 100%;
@@ -106,7 +106,7 @@ export default function FreeBox({ freeBoard }) {
       <ContentListLayoutStyle>
         {freeTop3.length > 0 ? (
           <ul>
-            {freeTop3.map((post, index) => {
+            {freeTop3.map((posting, index) => {
               return (
                 <li key={index}>
                   <div
@@ -114,18 +114,18 @@ export default function FreeBox({ freeBoard }) {
                       unmountAnimation(
                         0,
                         dispatch,
-                        `/board/posting?board_type=free&post_id=${post.id}`,
+                        `/board/posting?board_type=free&post_id=${posting.id}`,
                       )
                     }
                     className="posting_btn"
                   >
-                    <TxtPostingTitle>{post.title}</TxtPostingTitle>
-                    <IcoExistImg isImgExist={isImgExist(post.imagesUrl)} />
+                    <TxtPostingTitle title={posting.title} />
+                    <IcoExistImg isImgExist={isImgExist(posting.imagesUrl)} />
                     <div className="comment_amount">
                       <IcoComment />
-                      <TxtCommentAmount4List>
-                        {post.comments.length}
-                      </TxtCommentAmount4List>
+                      <TxtCommentAmount4List
+                        amount={posting.imagesUrl.length}
+                      />
                     </div>
                   </div>
                 </li>

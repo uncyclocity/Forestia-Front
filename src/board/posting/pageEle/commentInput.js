@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { BtnCommentPost } from '../../../../components/Atoms/BtnCommentPost';
-import IptComment from '../../../../components/Atoms/IptComment';
+import { BtnCommentPost } from '../../../../components/Atoms/Button/BtnCommentPost';
+import IptComment from '../../../../components/Atoms/Input/IptComment';
 import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';

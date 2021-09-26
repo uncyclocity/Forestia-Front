@@ -37,9 +37,7 @@ export default function PageBtn({ freeLen, page, setNowPage }) {
         if (index + 1 === parseInt(page)) {
           return (
             <div className="page_btn" key={index}>
-              <div className="page_btn_selected" key={index}>
-                {index + 1}
-              </div>
+              <div className="page_btn_selected">{index + 1}</div>
             </div>
           );
         } else {

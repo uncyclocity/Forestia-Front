@@ -1,5 +1,5 @@
-import IcoBoardTitle from '../../../../components/Atoms/IcoBoardTitle';
-import TxtBoardTitle from '../../../../components/Atoms/TxtBoardTitle';
+import IcoBoardTitle from '../../../../components/Atoms/Icon/IcoBoardTitle';
+import TxtBoardTitle from '../../../../components/Atoms/Text/TxtBoardTitle';
 
 export default function InPhotoListBoardTitle() {
   return (

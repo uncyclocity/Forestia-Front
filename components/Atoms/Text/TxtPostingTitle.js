@@ -11,6 +11,6 @@ const Styles = styled.div`
   white-space: nowrap;
 `;
 
-export default function TxtPostingTitle({ children }) {
-  return <Styles>{children}</Styles>;
+export default function TxtPostingTitle({ title }) {
+  return <Styles>{title}</Styles>;
 }

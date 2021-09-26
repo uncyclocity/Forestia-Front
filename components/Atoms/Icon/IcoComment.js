@@ -10,7 +10,7 @@ const Styles = styled.div`
   margin: 0 3px;
 `;
 
-export default function IcoComment({ children }) {
+export default function IcoComment() {
   return (
     <Styles>
       <FaRegCommentAlt />

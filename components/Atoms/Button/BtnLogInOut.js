@@ -24,6 +24,6 @@ const Styles = styled.div`
   }
 `;
 
-export const BtnLogInOut = ({ children }) => {
-  return <Styles>{children}</Styles>;
+export const BtnLogInOut = ({ text }) => {
+  return <Styles>{text}</Styles>;
 };

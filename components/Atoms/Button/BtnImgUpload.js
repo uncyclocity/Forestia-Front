@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import getImagesUrlArr from '../../src/board/update_posting.creating/etcFunc/getImagesUrlArr';
 
 // BtnImgUpload
 // 분류 : 버튼

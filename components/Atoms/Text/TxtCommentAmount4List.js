@@ -13,6 +13,6 @@ const AmountStyle = styled.div`
   color: #20c997;
 `;
 
-export default function TxtCommentAmount4List({ children }) {
-  return <AmountStyle>[{children}]</AmountStyle>;
+export default function TxtCommentAmount4List({ amount }) {
+  return <AmountStyle>[{amount}]</AmountStyle>;
 }

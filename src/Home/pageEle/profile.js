@@ -1,8 +1,8 @@
 import { useReducerState } from '../../common/context';
 import styled from 'styled-components';
-import { BtnLogInOut } from '../../../components/Atoms/BtnLogInOut';
-import LblProfilePhoto from '../../../components/Atoms/LblProfilePhoto';
-import TxtProfileName from '../../../components/Atoms/TxtProfileName';
+import { BtnLogInOut } from '../../../components/Atoms/Button/BtnLogInOut';
+import LblProfilePhoto from '../../../components/Atoms/Label/LblProfilePhoto';
+import TxtProfileName from '../../../components/Atoms/Text/TxtProfileName';
 
 const LayoutStyle = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export default function ProfileBox() {
       <LblProfilePhoto />
       <ProfileNameAndBtnStyle>
         <TxtProfileName userName={userName} />
-        <BtnLogInOut>로그아웃</BtnLogInOut>
+        <BtnLogInOut text="로그아웃" />
       </ProfileNameAndBtnStyle>
     </LayoutStyle>
   );

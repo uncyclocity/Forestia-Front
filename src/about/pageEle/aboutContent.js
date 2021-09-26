@@ -1,5 +1,5 @@
-import IcoNextjs from '../../../components/Atoms/IcoNextjs';
-import TxtLineAboutDescription from '../../../components/Atoms/TxtLineAboutDescription';
+import IcoNextjs from '../../../components/Atoms/Icon/IcoNextjs';
+import TxtLineAboutDescription from '../../../components/Atoms/Text/TxtLineAboutDescription';
 
 export default function AboutContent() {
   return (

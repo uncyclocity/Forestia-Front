@@ -1,5 +1,5 @@
 import { useReducerState } from '../../../common/context';
-import LblFreePhoto from '../../../../components/Atoms/LblFreePhoto';
+import LblFreePhoto from '../../../../components/Atoms/Label/LblFreePhoto';
 
 export default function FreePhotoSign() {
   const { board_type } = useReducerState().nowPostingEleObj;

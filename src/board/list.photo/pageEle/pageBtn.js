@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import IcoPagingLeft from '../../../../components/Atoms/IcoPagingLeft';
-import IcoPagingRight from '../../../../components/Atoms/IcoPagingRight';
-import TxtPagingNumber from '../../../../components/Atoms/TxtPagingNumber';
-import TxtPagingNumberSelected from '../../../../components/Atoms/TxtPagingNumberSelected';
+import IcoPagingLeft from '../../../../components/Atoms/Icon/IcoPagingLeft';
+import IcoPagingRight from '../../../../components/Atoms/Icon/IcoPagingRight';
+import TxtPagingNumber from '../../../../components/Atoms/Text/TxtPagingNumber';
+import TxtPagingNumberSelected from '../../../../components/Atoms/Text/TxtPagingNumberSelected';
 
 const Styles = styled.div`
   display: flex;

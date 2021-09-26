@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { slideLeft, slideRight } from '../../styles/keyframes/slide';
 import { unmountAnimation } from './animationController';
-import BtnPostingMore from '../../components/Atoms/BtnPostingMore';
-import BtnPostingBack from '../../components/Atoms/BtnPostingBack';
-import IcoMoreEditPosting from '../../components/Atoms/IcoMoreEditPosting';
-import IcoMoreDeletePosting from '../../components/Atoms/IcoMoreDeletePosting';
-import TxtMoreArea from '../../components/Atoms/TxtMoreArea';
-import BtnMore from '../../components/Atoms/BtnMore';
+import BtnPostingMore from '../../components/Atoms/Button/BtnPostingMore';
+import BtnPostingBack from '../../components/Atoms/Button/BtnPostingBack';
+import IcoMoreEditPosting from '../../components/Atoms/Icon/IcoMoreEditPosting';
+import IcoMoreDeletePosting from '../../components/Atoms/Icon/IcoMoreDeletePosting';
+import TxtMoreArea from '../../components/Atoms/Text/TxtMoreArea';
+import BtnMore from '../../components/Atoms/Button/BtnMore';
 
 const Styles = styled.div`
   display: flex;

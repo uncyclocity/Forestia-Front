@@ -23,6 +23,6 @@ const Styles = styled.div`
   }
 `;
 
-export const BtnPosting = ({ children }) => {
-  return <Styles>{children}</Styles>;
+export const BtnPosting = ({ text }) => {
+  return <Styles>{Text}</Styles>;
 };

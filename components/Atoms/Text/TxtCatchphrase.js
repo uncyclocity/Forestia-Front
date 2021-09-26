@@ -10,6 +10,7 @@ const Styles = styled.div`
   margin-left: 10px;
   font-weight: bold;
   font-size: 25px;
+  color: white;
 `;
 
 export default function TxtCatchphrase() {

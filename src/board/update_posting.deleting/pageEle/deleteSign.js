@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import IcoLoadingRing from '../../../../components/Atoms/IcoLoadingRing';
+import IcoLoadingRing from '../../../../components/Atoms/Icon/IcoLoadingRing';
 
 const Styles = styled.div`
   margin: 20px 0;

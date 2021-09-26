@@ -4,14 +4,14 @@ import { useDispatch, useReducerState } from '../../../common/context';
 import postCntSwitcher from '../../../common/postCntSwitcher';
 import { getPosting, postComm } from '../../../doApi/doApi';
 import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
-import { BtnCommentPost } from '../../../../components/Atoms/BtnCommentPost';
-import TxtComment from '../../../../components/Atoms/TxtComment';
-import TxtCommentAmount from '../../../../components/Atoms/TxtCommentAmount';
-import TxtCommentAuthor from '../../../../components/Atoms/TxtCommentAuthor';
-import TxtCommentDate from '../../../../components/Atoms/TxtCommentDate';
-import BtnCommentEditDel from '../../../../components/Atoms/BtnCommentEditDel';
-import TxtCommentContent from '../../../../components/Atoms/TxtCommentContent';
-import IptComment from '../../../../components/Atoms/IptComment';
+import { BtnCommentPost } from '../../../../components/Atoms/Button/BtnCommentPost';
+import TxtComment from '../../../../components/Atoms/Text/TxtComment';
+import TxtCommentAmount from '../../../../components/Atoms/Text/TxtCommentAmount';
+import TxtCommentAuthor from '../../../../components/Atoms/Text/TxtCommentAuthor';
+import TxtCommentDate from '../../../../components/Atoms/Text/TxtCommentDate';
+import BtnCommentEditDel from '../../../../components/Atoms/Button/BtnCommentEditDel';
+import TxtCommentContent from '../../../../components/Atoms/Text/TxtCommentContent';
+import IptComment from '../../../../components/Atoms/Input/IptComment';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;

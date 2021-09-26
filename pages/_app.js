@@ -1,4 +1,4 @@
-import Header from '../src/header/header';
+import Header from '../components/Templates/header';
 import Context from '../src/common/context';
 
 export default function MyApp({ Component, pageProps, freeBoard, photoBoard }) {

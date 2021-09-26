@@ -3,14 +3,14 @@ import { unmountAnimation } from '../../common/animationController';
 import { useDispatch } from '../../common/context';
 import setTop3 from '../etcFunc/setTop3';
 import styled from 'styled-components';
-import IcoBoard4Home from '../../../components/Atoms/IcoBoard4Home';
-import TxtBoard4Home from '../../../components/Atoms/TxtBoard4Home';
-import BtnGotoBoard4Home from '../../../components/Atoms/BtnGotoBoard4Home';
-import IcoListEmpty from '../../../components/Atoms/IcoListEmpty';
-import TxtListEmpty from '../../../components/Atoms/TxtListEmpty';
-import TxtPostingTitle from '../../../components/Atoms/TxtPostingTitle';
-import TxtCommentAmount4List from '../../../components/Atoms/TxtCommentAmount4List';
-import ImgThumbnail from '../../../components/Atoms/ImgThumbnail';
+import IcoBoard4Home from '../../../components/Atoms/Icon/IcoBoard4Home';
+import TxtBoard4Home from '../../../components/Atoms/Text/TxtBoard4Home';
+import BtnGotoBoard4Home from '../../../components/Atoms/Button/BtnGotoBoard4Home';
+import IcoListEmpty from '../../../components/Atoms/Icon/IcoListEmpty';
+import TxtListEmpty from '../../../components/Atoms/Text/TxtListEmpty';
+import TxtPostingTitle from '../../../components/Atoms/Text/TxtPostingTitle';
+import TxtCommentAmount4List from '../../../components/Atoms/Text/TxtCommentAmount4List';
+import ImgThumbnail from '../../../components/Atoms/Image/ImgThumbnail';
 
 const BoardTitleLayoutStyle = styled.div`
   width: 100%;
@@ -111,7 +111,7 @@ export default function PhotoBox({ photoBoard }) {
       <ContentListLayoutStyle>
         {photoTop3.length > 0 ? (
           <ul>
-            {photoTop3.map((post, index) => {
+            {photoTop3.map((posting, index) => {
               return (
                 <li key={index}>
                   <div
@@ -119,18 +119,18 @@ export default function PhotoBox({ photoBoard }) {
                       unmountAnimation(
                         0,
                         dispatch,
-                        `/board/posting?board_type=photo&post_id=${post.id}`,
+                        `/board/posting?board_type=photo&post_id=${posting.id}`,
                       )
                     }
                   >
                     <div className="photo_posting">
-                      <ImgThumbnail imageUrl={post.imagesUrl[0]} />
+                      <ImgThumbnail imageUrl={posting.imagesUrl[0]} />
                       <div className="name_and_content">
-                        <TxtPostingTitle>{post.title}</TxtPostingTitle>
+                        <TxtPostingTitle title={posting.title} />
                         <div className="comment_amount">
-                          <TxtCommentAmount4List>
-                            {post.comments.length}
-                          </TxtCommentAmount4List>
+                          <TxtCommentAmount4List
+                            amount={posting.imagesUrl.length}
+                          />
                         </div>
                       </div>
                     </div>

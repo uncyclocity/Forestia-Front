@@ -1,13 +1,13 @@
 import { unmountAnimation } from '../../../common/animationController';
 import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
-import ImgThumbnail from '../../../../components/Atoms/ImgThumbnail';
-import TxtPostingTitle from '../../../../components/Atoms/TxtPostingTitle';
-import TxtCommentAmount4List from '../../../../components/Atoms/TxtCommentAmount4List';
-import TxtPostingAuthor4List from '../../../../components/Atoms/TxtPostingAuthor4List';
-import TxtPostingDate4List from '../../../../components/Atoms/TxtPostingDate4List';
-import IcoListEmpty from '../../../../components/Atoms/IcoListEmpty';
-import TxtListEmpty from '../../../../components/Atoms/TxtListEmpty';
+import ImgThumbnail from '../../../../components/Atoms/Image/ImgThumbnail';
+import TxtPostingTitle from '../../../../components/Atoms/Text/TxtPostingTitle';
+import TxtCommentAmount4List from '../../../../components/Atoms/Text/TxtCommentAmount4List';
+import TxtPostingAuthor4List from '../../../../components/Atoms/Text/TxtPostingAuthor4List';
+import TxtPostingDate4List from '../../../../components/Atoms/Text/TxtPostingDate4List';
+import IcoListEmpty from '../../../../components/Atoms/Icon/IcoListEmpty';
+import TxtListEmpty from '../../../../components/Atoms/Text/TxtListEmpty';
 
 const ListStyle = styled.div`
   margin: 15px 0 10px 0;
@@ -127,11 +127,9 @@ export default function PhotoListPostingList({ photoBoard }) {
               >
                 <ImgThumbnail imageUrl={posting.imagesUrl[0]} />
                 <div className="name_and_comment">
-                  <TxtPostingTitle>{posting.title}</TxtPostingTitle>
+                  <TxtPostingTitle title={posting.title} />
                   <div className="posting_comment_amount">
-                    <TxtCommentAmount4List>
-                      {posting.imagesUrl.length}
-                    </TxtCommentAmount4List>
+                    <TxtCommentAmount4List amount={posting.imagesUrl.length} />
                   </div>
                 </div>
                 <div className="date_and_author">

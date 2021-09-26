@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { BtnFreePhotoSwitch } from '../../../../components/Atoms/BtnFreePhotoSwitch';
-import { BtnPosting } from '../../../../components/Atoms/BtnPosting';
+import { BtnFreePhotoSwitch } from '../../../../components/Atoms/Button/BtnFreePhotoSwitch';
+import { BtnPosting } from '../../../../components/Atoms/Button/BtnPosting';
 import { useDispatch, useReducerState } from '../../../common/context';
 import getImagesUrlArr from '../etcFunc/getImagesUrlArr';
 import letsDoUploadPosting from '../etcFunc/letsDoUploadPosting';
-import LinBetweenTitleContent from '../../../../components/Atoms/LinBetweenTitleContent';
-import ImgUploadedImagePreview from '../../../../components/Atoms/ImgUploadedImagePreview';
-import BtnImgUpload from '../../../../components/Atoms/BtnImgUpload';
-import TxtImgUpload from '../../../../components/Atoms/TxtImgUpload';
-import IptTitle from '../../../../components/Atoms/IptTitle';
-import IptContent from '../../../../components/Atoms/IptContent';
+import LinBetweenTitleContent from '../../../../components/Atoms/Line/LinBetweenTitleContent';
+import ImgUploadedImagePreview from '../../../../components/Atoms/Image/ImgUploadedImagePreview';
+import BtnImgUpload from '../../../../components/Atoms/Button/BtnImgUpload';
+import TxtImgUpload from '../../../../components/Atoms/Text/TxtImgUpload';
+import IptTitle from '../../../../components/Atoms/Input/IptTitle';
+import IptContent from '../../../../components/Atoms/Input/IptContent';
 
 const ContentInputStyle = styled.div`
   flex-direction: column;
@@ -151,7 +151,7 @@ export default function PostingContentInput() {
             }
           }}
         >
-          <BtnPosting>업로드</BtnPosting>
+          <BtnPosting text="업로드" />
         </div>
       </ContentInputStyle>
     </>

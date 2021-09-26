@@ -2,15 +2,15 @@ import { unmountAnimation } from '../../../common/animationController';
 import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
 import { FiImage } from 'react-icons/fi';
-import IcoListEmpty from '../../../../components/Atoms/IcoListEmpty';
-import TxtListEmpty from '../../../../components/Atoms/TxtListEmpty';
-import TxtPostingTitle from '../../../../components/Atoms/TxtPostingTitle';
-import TxtCommentAmount4List from '../../../../components/Atoms/TxtCommentAmount4List';
-import TxtPostingAuthor4List from '../../../../components/Atoms/TxtPostingAuthor4List';
-import TxtPostingDate4List from '../../../../components/Atoms/TxtPostingDate4List';
-import TxtFreeGridTopName from '../../../../components/Atoms/TxtFreeGridTopName';
-import TxtFreeGridTopAuthor from '../../../../components/Atoms/TxtFreeGridTopAuthor';
-import TxtFreeGridTopDate from '../../../../components/Atoms/TxtFreeGridTopDate';
+import IcoListEmpty from '../../../../components/Atoms/Icon/IcoListEmpty';
+import TxtListEmpty from '../../../../components/Atoms/Text/TxtListEmpty';
+import TxtPostingTitle from '../../../../components/Atoms/Text/TxtPostingTitle';
+import TxtCommentAmount4List from '../../../../components/Atoms/Text/TxtCommentAmount4List';
+import TxtPostingAuthor4List from '../../../../components/Atoms/Text/TxtPostingAuthor4List';
+import TxtPostingDate4List from '../../../../components/Atoms/Text/TxtPostingDate4List';
+import TxtFreeGridTopName from '../../../../components/Atoms/Text/TxtFreeGridTopName';
+import TxtFreeGridTopAuthor from '../../../../components/Atoms/Text/TxtFreeGridTopAuthor';
+import TxtFreeGridTopDate from '../../../../components/Atoms/Text/TxtFreeGridTopDate';
 
 const ListStyle = styled.div`
   .content_list {
@@ -126,15 +126,15 @@ export default function FreeListPostingList({ freeBoard }) {
                   >
                     <div className="posting_btn">
                       <div className="name_and_postingtype">
-                        <TxtPostingTitle>{posting.title}</TxtPostingTitle>
+                        <TxtPostingTitle title={posting.title} />
                         <div className="posting_isImageExist">
                           {posting.imagesUrl.length > 0 && <FiImage />}
                         </div>
                       </div>
                       {posting.comments.length > 0 && (
-                        <TxtCommentAmount4List>
-                          {posting.imagesUrl.length}
-                        </TxtCommentAmount4List>
+                        <TxtCommentAmount4List
+                          amount={posting.imagesUrl.length}
+                        />
                       )}
                       <div className="posting_author_prototype">
                         <TxtPostingAuthor4List author={posting.author} />
