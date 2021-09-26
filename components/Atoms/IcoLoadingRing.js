@@ -6,15 +6,15 @@ import { spin_360 } from '../../styles/keyframes/spin';
 // 분류 : 아이콘
 // 용도 : 댓글 및 포스팅 삭제 시 표시되는 로딩 링
 
-export default function IcoLoadingRing() {
-  const Styles = styled.div`
-    width: 70px;
-    height: 70px;
-    font-size: 70px;
-    color: #20c997;
-    animation: ${spin_360} infinite 5s linear;
-  `;
+const Styles = styled.div`
+  width: 70px;
+  height: 70px;
+  font-size: 70px;
+  color: #20c997;
+  animation: ${spin_360} infinite 5s linear;
+`;
 
+export default function IcoLoadingRing() {
   return (
     <Styles>
       <AiOutlineLoading3Quarters />

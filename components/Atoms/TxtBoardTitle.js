@@ -4,13 +4,13 @@ import styled from 'styled-components';
 // 분류 : 텍스트
 // 용도 : BoardTitle에서 현제 페이지를 가리키는 텍스트
 
-export default function TxtBoardTitle({ nowPage, title = null }) {
-  const Styles = styled.div`
-    color: #20c997;
-    font-size: 20px;
-    font-weight: bold;
-  `;
+const Styles = styled.div`
+  color: #20c997;
+  font-size: 20px;
+  font-weight: bold;
+`;
 
+export default function TxtBoardTitle({ nowPage, title = null }) {
   return (
     <Styles>
       {nowPage === 'about' && '게시판 소게'}

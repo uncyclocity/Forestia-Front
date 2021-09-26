@@ -5,12 +5,12 @@ import styled from 'styled-components';
 // 분류 : 아이콘
 // 용도 : 포스팅 페이지에서 포스팅 날짜 옆의 아이콘
 
-export default function IcoPostingDate() {
-  const Styles = styled.div`
-    position: relative;
-    top: 1.5px;
-  `;
+const Styles = styled.div`
+  position: relative;
+  top: 1.5px;
+`;
 
+export default function IcoPostingDate() {
   return (
     <Styles>
       <BiTime />

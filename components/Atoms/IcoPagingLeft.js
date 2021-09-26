@@ -5,12 +5,12 @@ import styled from 'styled-components';
 // 분류 : 아이콘
 // 용도 : 리스트 페이징 왼쪽 화살표
 
-export default function IcoPagingLeft() {
-  const Styles = styled.div`
-    position: relative;
-    top: 1px;
-  `;
+const Styles = styled.div`
+  position: relative;
+  top: 1px;
+`;
 
+export default function IcoPagingLeft() {
   return (
     <Styles>
       <AiOutlineLeft />
