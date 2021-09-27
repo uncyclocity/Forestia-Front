@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FourAnimationedBox from '../../src/boxEle/FourAnimationdBox';
+import CtnBox from '../Atoms/Container/CtnBox';
 import LblProfilePhoto from '../Atoms/Label/LblProfilePhoto';
 import HomeUserNameArea from '../MoleCules/HomeUserNameArea';
 
@@ -12,11 +12,11 @@ const BoxStyle = styled.div`
 
 export default function HomeProfileBox() {
   return (
-    <FourAnimationedBox>
+    <CtnBox>
       <BoxStyle>
         <LblProfilePhoto />
         <HomeUserNameArea />
       </BoxStyle>
-    </FourAnimationedBox>
+    </CtnBox>
   );
 }

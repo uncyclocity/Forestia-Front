@@ -1,7 +1,7 @@
 import BoardTitle from '../../src/common/boardTitle';
 import { useEffect } from 'react';
 import { useDispatch } from '../../src/common/context';
-import FourAnimationedBox from '../../src/boxEle/FourAnimationdBox';
+import CtnBox from '../../components/Atoms/Container/CtnBox';
 import styled from 'styled-components';
 import { mountAnimation } from '../../src/common/animationController';
 import InAboutBoardTitle from '../../src/about/pageEle/inAboutBoardTitle';
@@ -44,13 +44,13 @@ export default function About() {
   }, [dispatch]);
 
   return (
-    <FourAnimationedBox>
+    <CtnBox>
       <Styles>
         <BoardTitle backURL="/home">
           <InAboutBoardTitle />
         </BoardTitle>
         <AboutContent />
       </Styles>
-    </FourAnimationedBox>
+    </CtnBox>
   );
 }

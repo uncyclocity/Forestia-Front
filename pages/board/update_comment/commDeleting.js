@@ -6,7 +6,7 @@ import { mountAnimation } from '../../../src/common/animationController';
 import InCommDeletingBoardTitle from '../../../src/board/update_comment.deleting/pageEle/inCommDeletingBoardTitle';
 import CommDeleteSign from '../../../src/board/update_comment.deleting/pageEle/commDeleteSign';
 import styled from 'styled-components';
-import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import letsDeleteComm from '../../../src/board/update_comment.deleting/etcFunc/letsDeleteComm';
 
 const BoxStyles = styled.div`
@@ -24,13 +24,13 @@ export default function CommDeleting() {
   }, [dispatch, router.query]);
 
   return (
-    <FourAnimationedBox>
+    <CtnBox>
       <BoxStyles>
         <BoardTitle>
           <InCommDeletingBoardTitle />
         </BoardTitle>
         <CommDeleteSign />
       </BoxStyles>
-    </FourAnimationedBox>
+    </CtnBox>
   );
 }

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import styled from 'styled-components';
-import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import InCreatePostingBoardTitle from '../../../src/board/update_posting.creating/pageEle/InCreatePostingBoardTitle';
 import PostingContentInput from '../../../src/board/update_posting.creating/pageEle/postingContentInput';
 import setNowPostingEle from '../../../src/common/setNowPostingEle';
@@ -22,13 +22,13 @@ export default function PostingCreating() {
   }, [dispatch]);
 
   return (
-    <FourAnimationedBox>
+    <CtnBox>
       <BoxStyles>
         <BoardTitle backURL="/home">
           <InCreatePostingBoardTitle />
         </BoardTitle>
         <PostingContentInput />
       </BoxStyles>
-    </FourAnimationedBox>
+    </CtnBox>
   );
 }

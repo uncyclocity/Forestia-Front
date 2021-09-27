@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
 import styled from 'styled-components';
-import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import InPhotoListBoardTitle from '../../../src/board/list.photo/pageEle/inPhotoListBoardTitle';
 import PhotoListPostingList from '../../../src/board/list.photo/pageEle/photoListPostingList';
 import PageBtn from '../../../src/board/list.photo/pageEle/pageBtn';
@@ -36,7 +36,7 @@ export default function Photo({ photoBoard, page, photoLen }) {
   }, [changeList, nowPage]);
 
   return (
-    <FourAnimationedBox>
+    <CtnBox>
       <BoxStyles>
         <BoardTitle backURL="/home">
           <InPhotoListBoardTitle />
@@ -46,7 +46,7 @@ export default function Photo({ photoBoard, page, photoLen }) {
           <PageBtn photoLen={photoLen} page={nowPage} setNowPage={setNowPage} />
         )}
       </BoxStyles>
-    </FourAnimationedBox>
+    </CtnBox>
   );
 }
 

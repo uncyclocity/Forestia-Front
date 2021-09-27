@@ -2,7 +2,7 @@ import BoardTitle from '../../../src/common/boardTitle';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
-import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import styled from 'styled-components';
 import InFreeListBoardTitle from '../../../src/board/list.free/pageEle/inFreeListBoardTitle';
 import FreeListPostingList from '../../../src/board/list.free/pageEle/freeListPostingList';
@@ -36,7 +36,7 @@ export default function Free({ freeBoard, page, freeLen }) {
   }, [changeList, nowPage]);
 
   return (
-    <FourAnimationedBox>
+    <CtnBox>
       <BoxStyles>
         <BoardTitle backURL="/home">
           <InFreeListBoardTitle />
@@ -46,7 +46,7 @@ export default function Free({ freeBoard, page, freeLen }) {
           <PageBtn freeLen={freeLen} page={nowPage} setNowPage={setNowPage} />
         )}
       </BoxStyles>
-    </FourAnimationedBox>
+    </CtnBox>
   );
 }
 

@@ -1,11 +1,14 @@
-import Header from '../components/Templates/header';
+import HeaderTemplate from '../components/Templates/HeaderTemplate';
 import Context from '../src/common/context';
+import { AppAnimation } from '../src/boxEle/boxAnimation';
 
 export default function MyApp({ Component, pageProps, freeBoard, photoBoard }) {
   return (
-    <Context freeBoard={freeBoard} photoBoard={photoBoard}>
-      <Header />
-      <Component {...pageProps} />
-    </Context>
+    <AppAnimation>
+      <Context freeBoard={freeBoard} photoBoard={photoBoard}>
+        <HeaderTemplate />
+        <Component {...pageProps} />
+      </Context>
+    </AppAnimation>
   );
 }

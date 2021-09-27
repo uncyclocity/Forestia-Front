@@ -5,7 +5,7 @@ import { mountAnimation } from '../../../src/common/animationController';
 import InDeletePostingBoardTitle from '../../../src/board/update_posting.deleting/pageEle/inDeletePostingBoardTitle';
 import DeleteSign from '../../../src/board/update_posting.deleting/pageEle/deleteSign';
 import styled from 'styled-components';
-import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import letsDeletePostingAndImage from '../../../src/board/update_posting.deleting/etcFunc/letsDeletePostingAndImage';
 import setNowPostingEle from '../../../src/common/setNowPostingEle';
 
@@ -26,13 +26,13 @@ export default function PostingDeleting() {
   }, [dispatch, nowPostingEleObj]);
 
   return (
-    <FourAnimationedBox>
+    <CtnBox>
       <BoxStyles>
         <BoardTitle>
           <InDeletePostingBoardTitle />
         </BoardTitle>
         <DeleteSign />
       </BoxStyles>
-    </FourAnimationedBox>
+    </CtnBox>
   );
 }

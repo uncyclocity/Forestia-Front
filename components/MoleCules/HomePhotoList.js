@@ -49,7 +49,7 @@ export default function HomePhotoList({ photoBoard }) {
                 <div className="name_and_content">
                   <TxtPostingTitle title={posting.title} />
                   <div className="comment_amount">
-                    <TxtCommentAmount4List amount={posting.imagesUrl.length} />
+                    <TxtCommentAmount4List amount={posting.comments.length} />
                   </div>
                 </div>
               </HomePhotoPostingButton>

@@ -10,7 +10,7 @@ import InPostingBoardTitle from '../../../src/board/posting/pageEle/inPostingBoa
 import CommentInput from '../../../src/board/posting/pageEle/commentInput';
 import CommentList from '../../../src/board/posting/pageEle/commentList';
 import styled from 'styled-components';
-import FourAnimationedBox from '../../../src/boxEle/FourAnimationdBox';
+import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import ContentView from '../../../src/board/posting/pageEle/contentView';
 import { mountAnimation } from '../../../src/common/animationController';
 import ImageView from '../../../src/board/posting/pageEle/imageView';
@@ -37,7 +37,7 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
   }, [board_type, dispatch, nowPostingEleObjRaw]);
 
   return (
-    <FourAnimationedBox>
+    <CtnBox>
       <BoxStyles>
         <BoardTitle backURL={backURL} nowPostingEleObj={nowPostingEleObj}>
           <InPostingBoardTitle nowPostingEleObj={nowPostingEleObj} />
@@ -57,7 +57,7 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
           setNowPostingEleObj={setNowPostingEleObj}
         />
       </BoxStyles>
-    </FourAnimationedBox>
+    </CtnBox>
   );
 }
 
