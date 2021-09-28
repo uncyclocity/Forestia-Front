@@ -6,6 +6,8 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   font-size: 13px;
+  width: auto;
+  text-align: center;
 `;
 
 export default function TxtPostingDate4List({ date }) {

@@ -5,7 +5,13 @@ import styled from 'styled-components';
 // 용도 : 자게 리스트 그리드 최상단 텍스트 "제목"
 
 const Styles = styled.div`
-  width: 400px;
+  height: 30px;
+  width: 428px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #828c99;
 `;
 
 export default function TxtFreeGridTopName() {
