@@ -23,10 +23,10 @@ export default function PageBtn({ photoLen, page, setNowPage }) {
       <IcoPagingLeft />
       {[...Array(pageBtnAmount)].map((num, index) => {
         if (index + 1 === parseInt(page)) {
-          return <TxtPagingNumberSelected number={index + 1} />;
+          return <TxtPagingNumberSelected key={index} number={index + 1} />;
         } else {
           return (
-            <div onClick={() => setNowPage(index + 1)}>
+            <div onClick={() => setNowPage(index + 1)} key={index}>
               <TxtPagingNumber number={index + 1} />
             </div>
           );
