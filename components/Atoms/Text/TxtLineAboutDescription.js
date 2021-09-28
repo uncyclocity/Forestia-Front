@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
   display: flex;
   flex-direction: row;
+  color: #5d5d5d;
   .bold {
     color: #20c997;
     font-weight: bold;
