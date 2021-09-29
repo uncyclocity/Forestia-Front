@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
-import { FiEdit } from 'react-icons/fi';
 import { useDispatch, useReducerState } from './context';
 import { useState } from 'react';
-import { RiDeleteBin7Line } from 'react-icons/ri';
 import { slideLeft, slideRight } from '../../styles/keyframes/slide';
 import { unmountAnimation } from './animationController';
 import BtnPostingMore from '../../components/Atoms/Button/BtnPostingMore';
@@ -11,6 +9,7 @@ import IcoMoreEditPosting from '../../components/Atoms/Icon/IcoMoreEditPosting';
 import IcoMoreDeletePosting from '../../components/Atoms/Icon/IcoMoreDeletePosting';
 import TxtMoreArea from '../../components/Atoms/Text/TxtMoreArea';
 import BtnMore from '../../components/Atoms/Button/BtnMore';
+import BoardTitleBoardInfo from '../../components/MoleCules/BoardTitleBoardInfo';
 
 const Styles = styled.div`
   display: flex;
@@ -22,22 +21,6 @@ const Styles = styled.div`
 
   padding-bottom: 20px;
   border-bottom: 1px solid #e9ecef;
-
-  .board_info {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-
-    .icon {
-      font-size: 35px;
-    }
-
-    .title_name {
-      font-size: 20px;
-      font-weight: bold;
-    }
-  }
 
   .lr_btn {
     position: relative;
@@ -87,14 +70,12 @@ const Styles = styled.div`
   }
 `;
 
-export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
+export default function BoardTitle({ backURL, children }) {
   const dispatch = useDispatch();
   const state = useReducerState();
-
   const isPostPage = state.isPostPage;
   const user = state.userName;
   const postCnt = state.postCnt;
-
   const [isOpenMore, setIsOpenMore] = useState(false);
   const [isOpenMoreAnimation, setisOpenMoreAnimation] = useState(false);
 
@@ -107,7 +88,7 @@ export default function BoardTitle({ backURL, nowPostingEleObj, children }) {
           />
         )}
       </div>
-      <div className="board_info">{children}</div>
+      <BoardTitleBoardInfo>{children}</BoardTitleBoardInfo>
       <div className="lr_btn">
         {isPostPage && user === '백괴' && (
           <div
