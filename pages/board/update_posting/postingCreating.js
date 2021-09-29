@@ -1,4 +1,3 @@
-import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
@@ -7,6 +6,7 @@ import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import InCreatePostingBoardTitle from '../../../src/board/update_posting.creating/pageEle/InCreatePostingBoardTitle';
 import PostingContentInput from '../../../src/board/update_posting.creating/pageEle/postingContentInput';
 import setNowPostingEle from '../../../src/common/setNowPostingEle';
+import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -24,9 +24,9 @@ export default function PostingCreating() {
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitle backURL="/home">
+        <BoardTitleTemplate backURL="/home">
           <InCreatePostingBoardTitle />
-        </BoardTitle>
+        </BoardTitleTemplate>
         <PostingContentInput />
       </BoxStyles>
     </CtnBox>

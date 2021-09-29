@@ -1,4 +1,3 @@
-import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from '../../../src/common/context';
@@ -8,6 +7,7 @@ import CommDeleteSign from '../../../src/board/update_comment.deleting/pageEle/c
 import styled from 'styled-components';
 import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import letsDeleteComm from '../../../src/board/update_comment.deleting/etcFunc/letsDeleteComm';
+import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -26,9 +26,9 @@ export default function CommDeleting() {
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitle>
+        <BoardTitleTemplate>
           <InCommDeletingBoardTitle />
-        </BoardTitle>
+        </BoardTitleTemplate>
         <CommDeleteSign />
       </BoxStyles>
     </CtnBox>

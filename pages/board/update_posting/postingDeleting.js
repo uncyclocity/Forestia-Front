@@ -1,4 +1,3 @@
-import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect } from 'react';
 import { useDispatch, useReducerState } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
@@ -8,6 +7,7 @@ import styled from 'styled-components';
 import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import letsDeletePostingAndImage from '../../../src/board/update_posting.deleting/etcFunc/letsDeletePostingAndImage';
 import setNowPostingEle from '../../../src/common/setNowPostingEle';
+import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -28,9 +28,9 @@ export default function PostingDeleting() {
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitle>
+        <BoardTitleTemplate>
           <InDeletePostingBoardTitle />
-        </BoardTitle>
+        </BoardTitleTemplate>
         <DeleteSign />
       </BoxStyles>
     </CtnBox>

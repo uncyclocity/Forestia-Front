@@ -7,8 +7,10 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   cursor: pointer;
-  width: 35px;
+  width: 30px;
+  height: 30px;
   font-size: 30px;
+  color: #20c997;
 `;
 
 export default function BtnPostingBack({ onClick }) {

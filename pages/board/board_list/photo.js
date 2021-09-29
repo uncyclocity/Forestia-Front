@@ -1,4 +1,3 @@
-import BoardTitle from '../../../src/common/boardTitle';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
@@ -9,6 +8,7 @@ import PhotoListPostingList from '../../../src/board/list.photo/pageEle/photoLis
 import PageBtn from '../../../src/board/list.photo/pageEle/pageBtn';
 import postCntSwitcher from '../../../src/common/postCntSwitcher';
 import { getPosting } from '../../../src/doApi/doApi';
+import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -38,9 +38,9 @@ export default function Photo({ photoBoard, page, photoLen }) {
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitle backURL="/home">
+        <BoardTitleTemplate backURL="/home">
           <InPhotoListBoardTitle />
-        </BoardTitle>
+        </BoardTitleTemplate>
         <PhotoListPostingList page={nowPage} photoBoard={nowList} />
         {photoLen > 0 && (
           <PageBtn photoLen={photoLen} page={nowPage} setNowPage={setNowPage} />

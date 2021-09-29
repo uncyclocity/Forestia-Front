@@ -1,8 +1,8 @@
 import CtnBox from '../../components/Atoms/Container/CtnBox';
 import AboutBoardTitle from '../Organisms/AboutBoardTitle';
-import BoardTitle from '../../src/common/boardTitle';
 import styled from 'styled-components';
 import AboutPage from '../Organisms/AboutPage';
+import BoardTitleTemplate from './BoardTitleTemplate';
 
 const Styles = styled.div`
   padding: 20px 30px 5px 30px;
@@ -14,9 +14,9 @@ export default function AboutTemplate() {
   return (
     <CtnBox>
       <Styles>
-        <BoardTitle backURL={homeUrl}>
+        <BoardTitleTemplate backURL={homeUrl}>
           <AboutBoardTitle />
-        </BoardTitle>
+        </BoardTitleTemplate>
         <AboutPage />
       </Styles>
     </CtnBox>

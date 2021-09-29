@@ -10,6 +10,7 @@ const Styles = styled.div`
   color: white;
   box-shadow: 0 0 5px #dedede;
   padding: 5px;
+  width: 70px;
 `;
 
 export default function BtnMore({ onClick, children }) {

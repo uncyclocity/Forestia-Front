@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
   position: relative;
   top: 1.5px;
+  color: #20c997;
 `;
 
 export default function IcoPostingDate() {

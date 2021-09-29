@@ -1,4 +1,3 @@
-import BoardTitle from '../../../src/common/boardTitle';
 import { useDispatch } from '../../../src/common/context';
 import { useEffect, useState } from 'react';
 import {
@@ -16,6 +15,7 @@ import { mountAnimation } from '../../../src/common/animationController';
 import ImageView from '../../../src/board/posting/pageEle/imageView';
 import { getPosting } from '../../../src/doApi/doApi';
 import setNowPostingEle from '../../../src/common/setNowPostingEle';
+import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -39,9 +39,12 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitle backURL={backURL} nowPostingEleObj={nowPostingEleObj}>
+        <BoardTitleTemplate
+          backURL={backURL}
+          nowPostingEleObj={nowPostingEleObj}
+        >
           <InPostingBoardTitle nowPostingEleObj={nowPostingEleObj} />
-        </BoardTitle>
+        </BoardTitleTemplate>
         <ContentView nowPostingEleObj={nowPostingEleObj} />
         <ImageView nowPostingEleObj={nowPostingEleObj} />
         <UpAndDown

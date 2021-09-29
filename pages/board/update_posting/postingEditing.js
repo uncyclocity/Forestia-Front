@@ -1,4 +1,3 @@
-import BoardTitle from '../../../src/common/boardTitle';
 import { useEffect } from 'react';
 import { useDispatch, useReducerState } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
@@ -8,6 +7,7 @@ import CtnBox from '../../../components/Atoms/Container/CtnBox';
 import PostingEditContentInput from '../../../src/board/update_posting.editing/pageEle/postingEditContentInput';
 import styled from 'styled-components';
 import setNowPostingEle from '../../../src/common/setNowPostingEle';
+import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -28,11 +28,11 @@ export default function PostingEditing() {
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitle
+        <BoardTitleTemplate
           backURL={`/board/posting?board_type=${board_type}&post_id=${id}`}
         >
           <InEditPostingBoardTitle />
-        </BoardTitle>
+        </BoardTitleTemplate>
         <FreePhotoSign />
         <PostingEditContentInput />
       </BoxStyles>

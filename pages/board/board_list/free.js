@@ -1,4 +1,3 @@
-import BoardTitle from '../../../src/common/boardTitle';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
@@ -9,6 +8,7 @@ import FreeListPostingList from '../../../src/board/list.free/pageEle/freeListPo
 import PageBtn from '../../../src/board/list.free/pageEle/pageBtn';
 import { getPosting } from '../../../src/doApi/doApi';
 import postCntSwitcher from '../../../src/common/postCntSwitcher';
+import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -38,9 +38,9 @@ export default function Free({ freeBoard, page, freeLen }) {
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitle backURL="/home">
+        <BoardTitleTemplate backURL="/home">
           <InFreeListBoardTitle />
-        </BoardTitle>
+        </BoardTitleTemplate>
         <FreeListPostingList page={nowPage} freeBoard={nowList} />
         {freeLen > 0 && (
           <PageBtn freeLen={freeLen} page={nowPage} setNowPage={setNowPage} />
