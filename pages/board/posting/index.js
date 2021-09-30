@@ -1,31 +1,16 @@
 import { useDispatch } from '../../../src/common/context';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   postPageSwitchOff,
   postPageSwitchOn,
 } from '../../../src/board/posting/etcFunc/postpageSwitching';
-import UpAndDown from '../../../src/board/posting/pageEle/upAndDown';
-import InPostingBoardTitle from '../../../src/board/posting/pageEle/inPostingBoardTitle';
-import CommentInput from '../../../src/board/posting/pageEle/commentInput';
-import CommentList from '../../../src/board/posting/pageEle/commentList';
-import styled from 'styled-components';
-import CtnBox from '../../../components/Atoms/Container/CtnBox';
-import ContentView from '../../../src/board/posting/pageEle/contentView';
 import { mountAnimation } from '../../../src/common/animationController';
-import ImageView from '../../../src/board/posting/pageEle/imageView';
 import { getPosting } from '../../../src/doApi/doApi';
 import setNowPostingEle from '../../../src/common/setNowPostingEle';
-import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
-
-const BoxStyles = styled.div`
-  color: #525252;
-  padding: 20px 30px 5px 30px;
-`;
+import PostingTemplate from '../../../components/Templates/PostingTemplate';
 
 export default function Post({ nowPostingEleObjRaw, board_type }) {
   const dispatch = useDispatch();
-  const backURL = `/board/board_list/${board_type}?page=1`;
-  const [nowPostingEleObj, setNowPostingEleObj] = useState(nowPostingEleObjRaw);
 
   useEffect(() => {
     mountAnimation(dispatch, board_type);
@@ -37,30 +22,10 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
   }, [board_type, dispatch, nowPostingEleObjRaw]);
 
   return (
-    <CtnBox>
-      <BoxStyles>
-        <BoardTitleTemplate
-          backURL={backURL}
-          nowPostingEleObj={nowPostingEleObj}
-        >
-          <InPostingBoardTitle nowPostingEleObj={nowPostingEleObj} />
-        </BoardTitleTemplate>
-        <ContentView nowPostingEleObj={nowPostingEleObj} />
-        <ImageView nowPostingEleObj={nowPostingEleObj} />
-        <UpAndDown
-          nowPostingEleObj={nowPostingEleObj}
-          setNowPostingEleObj={setNowPostingEleObj}
-        />
-        <CommentList
-          nowPostingEleObj={nowPostingEleObj}
-          setNowPostingEleObj={setNowPostingEleObj}
-        />
-        <CommentInput
-          nowPostingEleObj={nowPostingEleObj}
-          setNowPostingEleObj={setNowPostingEleObj}
-        />
-      </BoxStyles>
-    </CtnBox>
+    <PostingTemplate
+      nowPostingEleObjRaw={nowPostingEleObjRaw}
+      board_type={board_type}
+    />
   );
 }
 

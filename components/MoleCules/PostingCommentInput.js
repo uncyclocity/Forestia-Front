@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { BtnCommentPost } from '../../../../components/Atoms/Button/BtnCommentPost';
-import IptComment from '../../../../components/Atoms/Input/IptComment';
-import { useDispatch, useReducerState } from '../../../common/context';
-import postCntSwitcher from '../../../common/postCntSwitcher';
-import { getPosting, postComm } from '../../../doApi/doApi';
+import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
+import IptComment from '../Atoms/Input/IptComment';
+import { useDispatch, useReducerState } from '../../src/common/context';
+import postCntSwitcher from '../../src/common/postCntSwitcher';
+import { getPosting, postComm } from '../../src/doApi/doApi';
 
 const CommInputAreaStyle = styled.div`
   display: flex;
@@ -54,7 +54,7 @@ const UpdateNowPostingEleObj = async (
   postCntSwitcher(dispatch, false);
 };
 
-export default function CommentInput({
+export default function PostingCommentInput({
   nowPostingEleObj,
   setNowPostingEleObj,
 }) {
@@ -83,6 +83,7 @@ export default function CommentInput({
                 setNowPostingEleObj,
                 dispatch,
               );
+              setComment('');
               postCntSwitcher(dispatch, false);
             } else {
               alert('댓글을 입력하세요');

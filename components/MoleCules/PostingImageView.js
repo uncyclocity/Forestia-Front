@@ -1,6 +1,6 @@
-import ImgView from '../../../../components/Atoms/Image/ImgView';
+import ImgView from '../Atoms/Image/ImgView';
 
-export default function ImageView({ nowPostingEleObj }) {
+export default function PostingImageView({ nowPostingEleObj }) {
   const imagesUrl = nowPostingEleObj.imagesUrl;
 
   return (

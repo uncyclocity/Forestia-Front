@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import IcoDown from '../../../../components/Atoms/Icon/IcoDown';
-import IcoUp from '../../../../components/Atoms/Icon/IcoUp';
-import TxtUpDownAmount from '../../../../components/Atoms/Text/TxtUpDownAmount';
-import { useDispatch, useReducerState } from '../../../common/context';
-import getDoUpdateUDdata from '../etcFunc/getDoUpdateUDdata';
+import IcoDown from '../Atoms/Icon/IcoDown';
+import IcoUp from '../Atoms/Icon/IcoUp';
+import TxtUpDownAmount from '../Atoms/Text/TxtUpDownAmount';
+import { useDispatch, useReducerState } from '../../src/common/context';
+import getDoUpdateUDdata from '../../src/board/posting/etcFunc/getDoUpdateUDdata';
 
 const UpAndDownAreaStyle = styled.div`
   width: 100%;
@@ -44,7 +44,10 @@ const UpAndDownBtnStyle = styled.div`
   }
 `;
 
-export default function UpAndDown({ nowPostingEleObj, setNowPostingEleObj }) {
+export default function PostingUpAndDown({
+  nowPostingEleObj,
+  setNowPostingEleObj,
+}) {
   const state = useReducerState();
   const postCnt = state.postCnt;
   const userName = state.userName;

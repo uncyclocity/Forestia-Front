@@ -1,34 +1,23 @@
-import { BiTime } from 'react-icons/bi';
 import styled from 'styled-components';
-import IcoBoardTitle from '../../../../components/Atoms/Icon/IcoBoardTitle';
-import IcoPostingDate from '../../../../components/Atoms/Icon/IcoPostingDate';
-import TxtBoardTitle from '../../../../components/Atoms/Text/TxtBoardTitle';
-import TxtPostingAuthor from '../../../../components/Atoms/Text/TxtPostingAuthor';
-import TxtPostingDate from '../../../../components/Atoms/Text/TxtPostingDate';
+import IcoBoardTitle from '../Atoms/Icon/IcoBoardTitle';
+import IcoPostingDate from '../Atoms/Icon/IcoPostingDate';
+import TxtBoardTitle from '../Atoms/Text/TxtBoardTitle';
+import TxtPostingAuthor from '../Atoms/Text/TxtPostingAuthor';
+import TxtPostingDate from '../Atoms/Text/TxtPostingDate';
 
 const AuthorAndDateStyle = styled.div`
   display: flex;
   flex-direction: row;
-
   margin-top: 10px;
-
-  .author {
-    padding: 0 5px;
-    font-weight: bold;
-  }
-
-  .date {
-    display: flex;
-    flex-direction: row;
-    padding: 0 5px;
-
-    .date_icon {
-      transform: translateY(1px);
-    }
-  }
 `;
 
-export default function InPostingBoardTitle({ nowPostingEleObj }) {
+const DateStyle = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 0 5px;
+`;
+
+export default function PostingBoardTitle({ nowPostingEleObj }) {
   return (
     <>
       {nowPostingEleObj.board_type === 'free' && (
@@ -45,10 +34,10 @@ export default function InPostingBoardTitle({ nowPostingEleObj }) {
       )}
       <AuthorAndDateStyle>
         <TxtPostingAuthor author={nowPostingEleObj.author} />
-        <div className="date">
+        <DateStyle>
           <IcoPostingDate />
           <TxtPostingDate date={nowPostingEleObj.date} />
-        </div>
+        </DateStyle>
       </AuthorAndDateStyle>
     </>
   );

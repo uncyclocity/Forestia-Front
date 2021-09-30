@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../../common/context';
-import postCntSwitcher from '../../../common/postCntSwitcher';
-import { getPosting, postComm } from '../../../doApi/doApi';
-import gotoCommDelPage from '../etcFunc/gotoCommDelPage';
-import { BtnCommentPost } from '../../../../components/Atoms/Button/BtnCommentPost';
-import TxtComment from '../../../../components/Atoms/Text/TxtComment';
-import TxtCommentAmount from '../../../../components/Atoms/Text/TxtCommentAmount';
-import TxtCommentAuthor from '../../../../components/Atoms/Text/TxtCommentAuthor';
-import TxtCommentDate from '../../../../components/Atoms/Text/TxtCommentDate';
-import BtnCommentEditDel from '../../../../components/Atoms/Button/BtnCommentEditDel';
-import TxtCommentContent from '../../../../components/Atoms/Text/TxtCommentContent';
-import IptComment from '../../../../components/Atoms/Input/IptComment';
+import { useDispatch, useReducerState } from '../../src/common/context';
+import postCntSwitcher from '../../src/common/postCntSwitcher';
+import { getPosting, postComm } from '../../src/doApi/doApi';
+import gotoCommDelPage from '../../src/board/posting/etcFunc/gotoCommDelPage';
+import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
+import TxtComment from '../Atoms/Text/TxtComment';
+import TxtCommentAmount from '../Atoms/Text/TxtCommentAmount';
+import TxtCommentAuthor from '../Atoms/Text/TxtCommentAuthor';
+import TxtCommentDate from '../Atoms/Text/TxtCommentDate';
+import BtnCommentEditDel from '../Atoms/Button/BtnCommentEditDel';
+import TxtCommentContent from '../Atoms/Text/TxtCommentContent';
+import IptComment from '../Atoms/Input/IptComment';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -68,7 +68,10 @@ const UpdateNowPostingEleObj = async (
   postCntSwitcher(dispatch, false);
 };
 
-export default function CommentList({ nowPostingEleObj, setNowPostingEleObj }) {
+export default function PostingCommentList({
+  nowPostingEleObj,
+  setNowPostingEleObj,
+}) {
   const state = useReducerState();
   const userName = state.userName;
   const postCnt = state.postCnt;

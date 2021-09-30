@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import { useReducerState } from '../../src/common/context';
+import { unmountAnimation } from '../../src/common/animationController';
+import { useDispatch, useReducerState } from '../../src/common/context';
 import { slideLeft, slideRight } from '../../styles/keyframes/slide';
 import BtnMore from '../Atoms/Button/BtnMore';
 import IcoMoreDeletePosting from '../Atoms/Icon/IcoMoreDeletePosting';
@@ -39,6 +40,7 @@ const Styles = styled.div`
 
 export default function BoardTitleMoreMenu({ isOpenMoreAnimation }) {
   const postCnt = useReducerState().postCnt;
+  const dispatch = useDispatch();
 
   return (
     <Styles isOpenMoreAnimation={isOpenMoreAnimation}>
