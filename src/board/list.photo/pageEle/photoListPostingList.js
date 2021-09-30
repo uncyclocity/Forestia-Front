@@ -8,6 +8,7 @@ import TxtPostingAuthor4List from '../../../../components/Atoms/Text/TxtPostingA
 import TxtPostingDate4List from '../../../../components/Atoms/Text/TxtPostingDate4List';
 import IcoListEmpty from '../../../../components/Atoms/Icon/IcoListEmpty';
 import TxtListEmpty from '../../../../components/Atoms/Text/TxtListEmpty';
+import ListEmpty from '../../../../components/MoleCules/ListEmpty';
 
 const ListStyle = styled.div`
   margin: 15px 0 10px 0;
@@ -83,13 +84,6 @@ const ListStyle = styled.div`
         color: #828c99;
       }
     }
-  }
-  .list_empty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-  }
 `;
 
 export default function PhotoListPostingList({ photoBoard }) {
@@ -130,10 +124,7 @@ export default function PhotoListPostingList({ photoBoard }) {
           })}
         </div>
       ) : (
-        <div className="list_empty">
-          <IcoListEmpty />
-          <TxtListEmpty />
-        </div>
+        <ListEmpty />
       )}
     </ListStyle>
   );

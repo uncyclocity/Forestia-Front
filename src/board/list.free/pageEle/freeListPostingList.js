@@ -1,8 +1,7 @@
 import { unmountAnimation } from '../../../common/animationController';
 import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
-import IcoListEmpty from '../../../../components/Atoms/Icon/IcoListEmpty';
-import TxtListEmpty from '../../../../components/Atoms/Text/TxtListEmpty';
+import ListEmpty from '../../../../components/MoleCules/ListEmpty';
 import TxtPostingTitle from '../../../../components/Atoms/Text/TxtPostingTitle';
 import TxtCommentAmount4List from '../../../../components/Atoms/Text/TxtCommentAmount4List';
 import TxtPostingAuthor4List from '../../../../components/Atoms/Text/TxtPostingAuthor4List';
@@ -16,6 +15,12 @@ const ListStyle = styled.div`
   table {
     width: 640px;
 
+    tr {
+      &:not(.top) {
+        cursor: pointer;
+      }
+    }
+
     .posting_title_area {
       display: flex;
       flex-direction: row;
@@ -24,13 +29,6 @@ const ListStyle = styled.div`
     .top_list_line {
       border-top: 1px solid #20c997;
     }
-  }
-
-  .list_empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
   }
 `;
 
@@ -83,10 +81,7 @@ export default function FreeListPostingList({ freeBoard }) {
           })}
         </table>
       ) : (
-        <div className="list_empty">
-          <IcoListEmpty />
-          <TxtListEmpty />
-        </div>
+        <ListEmpty />
       )}
     </ListStyle>
   );
