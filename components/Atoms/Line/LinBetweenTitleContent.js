@@ -6,8 +6,10 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   hr {
+    border: 0;
+    background: #20c997;
     width: 50px;
-    border: 2px solid #20c997;
+    height: 4px;
     margin: 20px 0 20px 2px;
   }
 `;
@@ -15,7 +17,7 @@ const Styles = styled.div`
 export default function LinBetweenTitleContent() {
   return (
     <Styles>
-      <hr className="title_content_line" align="left" />
+      <hr align="left" />
     </Styles>
   );
 }

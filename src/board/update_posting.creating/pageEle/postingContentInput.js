@@ -28,12 +28,6 @@ const ContentInputStyle = styled.div`
     }
   }
 
-  .title_content_line {
-    width: 50px;
-    border: 2px solid #20c997;
-    margin: 20px 0 20px 2px;
-  }
-
   .content_input_box {
     width: 640px;
     height: 300px;

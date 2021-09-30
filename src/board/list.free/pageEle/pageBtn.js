@@ -8,6 +8,7 @@ const Styles = styled.div`
   flex-direction: row;
   color: #20c997;
   font-size: 15px;
+  margin: 15px 0;
 
   .prev_next_btn {
     position: relative;

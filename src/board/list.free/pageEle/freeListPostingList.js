@@ -3,7 +3,8 @@ import { useDispatch } from '../../../common/context';
 import styled from 'styled-components';
 import ListEmpty from '../../../../components/MoleCules/ListEmpty';
 import ListFreeTableTop from '../../../../components/MoleCules/ListFreeTableTop';
-import ListFreeTableTds from '../../../../components/MoleCules/ListFreeTableTds';
+import ListLine from '../../../../components/MoleCules/ListLine';
+import ListFreePostingBtn from '../../../../components/MoleCules/ListFreePostingBtn';
 
 const ListStyle = styled.div`
   table {
@@ -22,10 +23,10 @@ export default function FreeListPostingList({ freeBoard }) {
       {freeBoard.length > 0 ? (
         <table>
           <ListFreeTableTop />
-          <td colSpan="3" className="top_list_line" />
+          <ListLine />
           {freeBoard.map((posting, index) => {
             return (
-              <ListFreeTableTds
+              <ListFreePostingBtn
                 key={index}
                 posting={posting}
                 onClick={() =>
