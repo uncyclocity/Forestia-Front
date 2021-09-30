@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import IcoLoadingRing from '../../../../components/Atoms/Icon/IcoLoadingRing';
+import IcoLoadingRing from '../Atoms/Icon/IcoLoadingRing';
 
 const Styles = styled.div`
   margin: 20px 0;
@@ -8,7 +8,7 @@ const Styles = styled.div`
   align-items: center;
 `;
 
-export default function DeleteSign() {
+export default function DeletingLoadingRing() {
   return (
     <Styles>
       <IcoLoadingRing />

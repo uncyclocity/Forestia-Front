@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { unmountAnimation } from '../../src/common/animationController';
 import { useDispatch, useReducerState } from '../../src/common/context';
 import BtnPostingBack from '../Atoms/Button/BtnPostingBack';
 import BtnPostingMore from '../Atoms/Button/BtnPostingMore';

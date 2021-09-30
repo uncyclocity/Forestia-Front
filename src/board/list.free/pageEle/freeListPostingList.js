@@ -25,6 +25,13 @@ const ListStyle = styled.div`
       border-top: 1px solid #20c997;
     }
   }
+
+  .list_empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
 `;
 
 export default function FreeListPostingList({ freeBoard }) {

@@ -88,20 +88,7 @@ const ListStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
     margin: 20px 0;
-    color: #babfc7;
-
-    .empty_icon {
-      width: 80px;
-      height: 80px;
-      font-size: 80px;
-    }
-
-    .empty_text {
-      margin-top: 20px;
-      font-size: 20px;
-    }
   }
 `;
 
@@ -129,7 +116,7 @@ export default function PhotoListPostingList({ photoBoard }) {
                 <div className="name_and_comment">
                   <TxtPostingTitle title={posting.title} />
                   <div className="posting_comment_amount">
-                    <TxtCommentAmount4List amount={posting.imagesUrl.length} />
+                    <TxtCommentAmount4List amount={posting.comments.length} />
                   </div>
                 </div>
                 <div className="date_and_author">
