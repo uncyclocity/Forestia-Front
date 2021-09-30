@@ -10,9 +10,7 @@ const BoxStyle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   color: #525252;
-
   width: 700px;
 `;
 
@@ -22,6 +20,7 @@ const ContentListLayoutStyle = styled.div`
   align-items: center;
   width: 110%;
   padding-bottom: 7px;
+  height: 173px;
 
   ul {
     padding: 0px;
