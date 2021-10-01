@@ -23,6 +23,6 @@ const Styles = styled.div`
   }
 `;
 
-export const BtnPosting = ({ text }) => {
-  return <Styles>{text}</Styles>;
+export const BtnPosting = ({ text, onClick }) => {
+  return <Styles onClick={onClick}>{text}</Styles>;
 };

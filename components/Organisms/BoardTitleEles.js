@@ -8,10 +8,11 @@ import BoardTitleBoardInfo from '../MoleCules/BoardTitleBoardInfo';
 import BoardTitleMoreMenu from '../MoleCules/BoardTitleMoreMenu';
 
 const LeftBtnStyle = styled.div`
-  position: relative;
+  width: 30px;
 `;
 
 const RightBtnStyle = styled.div`
+  width: 30px;
   position: relative;
 
   .more_icon {
