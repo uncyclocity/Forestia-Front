@@ -2,7 +2,8 @@ import CtnBox from '../Atoms/Container/CtnBox';
 import styled from 'styled-components';
 import BoardTitleTemplate from './BoardTitleTemplate';
 import FreeListBoardTitle from '../Organisms/FreeListBoardTitle';
-import FreeListPage from '../Organisms/FreeListPage';
+import FreeListPostingList from '../Organisms/FreeListPostingList';
+import ListPageBtn from '../MoleCules/ListPageBtn';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -21,12 +22,14 @@ export default function FreeListTemplate({
         <BoardTitleTemplate backURL="/home">
           <FreeListBoardTitle />
         </BoardTitleTemplate>
-        <FreeListPage
-          freeLen={freeLen}
-          nowPage={nowPage}
-          nowList={nowList}
-          setNowPage={setNowPage}
-        />
+        <FreeListPostingList page={nowPage} freeBoard={nowList} />
+        {freeLen > 0 && (
+          <ListPageBtn
+            listLen={freeLen}
+            page={nowPage}
+            setNowPage={setNowPage}
+          />
+        )}
       </BoxStyles>
     </CtnBox>
   );

@@ -1,8 +1,9 @@
 import CtnBox from '../Atoms/Container/CtnBox';
 import PhotoListBoardTitle from '../Organisms/PhotoListBoardTitle';
-import PhotoListPage from '../Organisms/PhotoListPage';
 import BoardTitleTemplate from './BoardTitleTemplate';
 import styled from 'styled-components';
+import PhotoListPostingList from '../Organisms/PhotoListPostingList';
+import ListPageBtn from '../MoleCules/ListPageBtn';
 
 const BoxStyles = styled.div`
   color: #525252;
@@ -21,12 +22,14 @@ export default function PhotoListTemplate({
         <BoardTitleTemplate backURL="/home">
           <PhotoListBoardTitle />
         </BoardTitleTemplate>
-        <PhotoListPage
-          photoLen={photoLen}
-          nowPage={nowPage}
-          nowList={nowList}
-          setNowPage={setNowPage}
-        />
+        <PhotoListPostingList page={nowPage} photoBoard={nowList} />
+        {photoLen > 0 && (
+          <ListPageBtn
+            listLen={photoLen}
+            page={nowPage}
+            setNowPage={setNowPage}
+          />
+        )}
       </BoxStyles>
     </CtnBox>
   );

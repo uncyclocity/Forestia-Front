@@ -7,7 +7,7 @@ const Styles = styled.tr`
   cursor: pointer;
 `;
 
-export default function ListFreeTableTop() {
+export default function FreeListTableTop() {
   return (
     <Styles>
       <td>

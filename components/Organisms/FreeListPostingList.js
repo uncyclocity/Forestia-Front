@@ -1,10 +1,10 @@
 import { unmountAnimation } from '../../src/common/animationController';
 import { useDispatch } from '../../src/common/context';
 import styled from 'styled-components';
-import ListEmpty from './ListEmpty';
-import ListFreeTableTop from './ListFreeTableTop';
-import ListLine from './ListLine';
-import ListFreePostingBtn from './ListFreePostingBtn';
+import ListEmpty from '../MoleCules/ListEmpty';
+import FreeListTableTop from '../MoleCules/FreeListTableTop';
+import ListLine from '../MoleCules/ListLine';
+import FreeListPostingBtn from '../MoleCules/FreeListPostingBtn';
 
 const ListStyle = styled.div`
   table {
@@ -22,11 +22,11 @@ export default function FreeListPostingList({ freeBoard }) {
     <ListStyle>
       {freeBoard.length > 0 ? (
         <table>
-          <ListFreeTableTop />
+          <FreeListTableTop />
           <ListLine />
           {freeBoard.map((posting, index) => {
             return (
-              <ListFreePostingBtn
+              <FreeListPostingBtn
                 key={index}
                 posting={posting}
                 onClick={() =>

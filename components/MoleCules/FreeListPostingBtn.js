@@ -5,8 +5,18 @@ import TxtPostingAuthor4List from '../Atoms/Text/TxtPostingAuthor4List';
 import TxtPostingDate4List from '../Atoms/Text/TxtPostingDate4List';
 import TxtPostingTitle from '../Atoms/Text/TxtPostingTitle';
 
-const PostingBtnStyle = styled.tr`
+const LayoutStyle = styled.tr`
   cursor: pointer;
+
+  &:hover {
+    transition: 0.15s all ease-in;
+    color: #20c997;
+  }
+
+  &:not(:hover) {
+    transition: 0.15s all ease-in;
+    color: #828c99;
+  }
 `;
 
 const PostingTitleStyle = styled.td`
@@ -14,9 +24,9 @@ const PostingTitleStyle = styled.td`
   flex-direction: row;
 `;
 
-export default function ListFreePostingBtn({ posting, onClick }) {
+export default function FreeListPostingBtn({ posting, onClick }) {
   return (
-    <PostingBtnStyle onClick={onClick}>
+    <LayoutStyle onClick={onClick}>
       <PostingTitleStyle>
         <TxtPostingTitle title={posting.title} />
         {posting.imagesUrl.length > 0 && <IcoImagePosting />}
@@ -30,6 +40,6 @@ export default function ListFreePostingBtn({ posting, onClick }) {
       <td>
         <TxtPostingDate4List date={posting.date} />
       </td>
-    </PostingBtnStyle>
+    </LayoutStyle>
   );
 }
