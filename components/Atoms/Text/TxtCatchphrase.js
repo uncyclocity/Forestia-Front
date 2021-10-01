@@ -18,7 +18,7 @@ export default function TxtCatchphrase() {
     <Styles>
       풀내음이 함께하는
       <br />
-      자취 이야기를 들려주세요&nbsp;
+      이야기를 들려주세요&nbsp;
       <RiLeafLine />
     </Styles>
   );
