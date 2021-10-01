@@ -24,7 +24,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function PageBtn({ freeLen, page, setNowPage }) {
+export default function ListPageBtn({ freeLen, page, setNowPage }) {
   const postingAmountDivided = freeLen / 15;
   const padInt = parseInt(postingAmountDivided);
   const pageBtnAmount = padInt < postingAmountDivided ? padInt + 1 : padInt;

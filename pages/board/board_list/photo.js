@@ -1,19 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/common/context';
 import { mountAnimation } from '../../../src/common/animationController';
-import styled from 'styled-components';
-import CtnBox from '../../../components/Atoms/Container/CtnBox';
-import InPhotoListBoardTitle from '../../../src/board/list.photo/pageEle/inPhotoListBoardTitle';
-import PhotoListPostingList from '../../../src/board/list.photo/pageEle/photoListPostingList';
-import PageBtn from '../../../src/board/list.photo/pageEle/pageBtn';
 import postCntSwitcher from '../../../src/common/postCntSwitcher';
 import { getPosting } from '../../../src/doApi/doApi';
-import BoardTitleTemplate from '../../../components/Templates/BoardTitleTemplate';
-
-const BoxStyles = styled.div`
-  color: #525252;
-  padding: 20px 30px 5px 30px;
-`;
+import PhotoListTemplate from '../../../components/Templates/PhotoListTemplate';
 
 export default function Photo({ photoBoard, page, photoLen }) {
   const dispatch = useDispatch();
@@ -36,17 +26,12 @@ export default function Photo({ photoBoard, page, photoLen }) {
   }, [changeList, nowPage]);
 
   return (
-    <CtnBox>
-      <BoxStyles>
-        <BoardTitleTemplate backURL="/home">
-          <InPhotoListBoardTitle />
-        </BoardTitleTemplate>
-        <PhotoListPostingList page={nowPage} photoBoard={nowList} />
-        {photoLen > 0 && (
-          <PageBtn photoLen={photoLen} page={nowPage} setNowPage={setNowPage} />
-        )}
-      </BoxStyles>
-    </CtnBox>
+    <PhotoListTemplate
+      photoLen={photoLen}
+      nowPage={nowPage}
+      nowList={nowList}
+      setNowPage={setNowPage}
+    />
   );
 }
 

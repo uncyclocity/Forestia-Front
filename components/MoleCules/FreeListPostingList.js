@@ -1,10 +1,10 @@
-import { unmountAnimation } from '../../../common/animationController';
-import { useDispatch } from '../../../common/context';
+import { unmountAnimation } from '../../src/common/animationController';
+import { useDispatch } from '../../src/common/context';
 import styled from 'styled-components';
-import ListEmpty from '../../../../components/MoleCules/ListEmpty';
-import ListFreeTableTop from '../../../../components/MoleCules/ListFreeTableTop';
-import ListLine from '../../../../components/MoleCules/ListLine';
-import ListFreePostingBtn from '../../../../components/MoleCules/ListFreePostingBtn';
+import ListEmpty from './ListEmpty';
+import ListFreeTableTop from './ListFreeTableTop';
+import ListLine from './ListLine';
+import ListFreePostingBtn from './ListFreePostingBtn';
 
 const ListStyle = styled.div`
   table {
