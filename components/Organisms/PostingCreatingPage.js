@@ -3,12 +3,49 @@ import styled from 'styled-components';
 import { BtnFreePhotoSwitch } from '../Atoms/Button/BtnFreePhotoSwitch';
 import { BtnPosting } from '../Atoms/Button/BtnPosting';
 import { useDispatch, useReducerState } from '../../src/common/context';
-import getImagesUrlArr from '../../src/board/update_posting.creating/etcFunc/getImagesUrlArr';
-import letsDoUploadPosting from '../../src/board/update_posting.creating/etcFunc/letsDoUploadPosting';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import IptContent from '../Atoms/Input/IptContent';
 import PostingCreatingImgUploadArea from '../MoleCules/PostingCreatingImgUploadArea';
+import { getPosting, postPosting } from '../../src/doApi/doApi';
+import postCntSwitcher from '../../src/common/postCntSwitcher';
+
+const letsDoUploadPosting = async (
+  selBoard,
+  title,
+  content,
+  imagesArr,
+  dispatch,
+) => {
+  postCntSwitcher(dispatch, true);
+  const boardLen = await getPosting.doGetLength(selBoard);
+
+  var id = '0';
+
+  const formData = new FormData();
+
+  if (boardLen > 0) {
+    const maxId = await getPosting.doGetLatestId(selBoard);
+    id = parseInt(maxId) + 1;
+  }
+
+  for (var i = 0; i < imagesArr.length; i++) {
+    formData.append('images', imagesArr[i]);
+  }
+
+  const res = await postPosting.doPostCreateImage(formData, selBoard, dispatch);
+  await postPosting.doPostCreate(selBoard, id, title, content, res, dispatch);
+  postCntSwitcher(dispatch, false);
+};
+
+const getImagesUrlArr = (files) => {
+  const imagesUrlArr = [];
+  for (var i = 0; i < files.length; i++) {
+    const imageUrl = window.URL.createObjectURL(files[i]);
+    imagesUrlArr.push(imageUrl);
+  }
+  return imagesUrlArr;
+};
 
 const LayoutStyle = styled.div`
   margin-bottom: 15px;

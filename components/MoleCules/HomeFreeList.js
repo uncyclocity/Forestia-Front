@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 import { unmountAnimation } from '../../src/common/animationController';
 import { useDispatch } from '../../src/common/context';
-import isImgExist from '../../src/Home/etcFunc/isImgExist';
 import IcoExistImg from '../Atoms/Icon/IcoExistImg';
 import TxtCommentAmount4List from '../Atoms/Text/TxtCommentAmount4List';
 import TxtPostingTitle from '../Atoms/Text/TxtPostingTitle';
 import HomeFreePostingButton from './HomeFreePostingButton';
+
+const isImgExist = (imagesUrlArr) => {
+  if (imagesUrlArr.length > 0) return true;
+  else return false;
+};
 
 const Styles = styled.div`
   ul {

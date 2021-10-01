@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../src/common/context';
 import postCntSwitcher from '../../src/common/postCntSwitcher';
 import { getPosting, postComm } from '../../src/doApi/doApi';
-import gotoCommDelPage from '../../src/board/posting/etcFunc/gotoCommDelPage';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import TxtComment from '../Atoms/Text/TxtComment';
 import TxtCommentAmount from '../Atoms/Text/TxtCommentAmount';
@@ -12,6 +11,35 @@ import TxtCommentDate from '../Atoms/Text/TxtCommentDate';
 import BtnCommentEditDel from '../Atoms/Button/BtnCommentEditDel';
 import TxtCommentContent from '../Atoms/Text/TxtCommentContent';
 import IptComment from '../Atoms/Input/IptComment';
+import { unmountAnimation } from '../../src/common/animationController';
+
+const gotoCommDelPage = (nowPostingEleObj, comment_id, dispatch) => {
+  if (confirm('정말로 삭제하시겠습니까')) {
+    unmountAnimation(
+      0,
+      dispatch,
+      `/board/update_comment/commDeleting?board_type=${nowPostingEleObj.board_type}&post_id=${nowPostingEleObj.id}&comment_id=${comment_id}`,
+    );
+  }
+};
+
+const UpdateNowPostingEleObj = async (
+  nowPostingEleObj,
+  setNowPostingEleObj,
+  dispatch,
+) => {
+  postCntSwitcher(dispatch, true);
+  const getPostingEle = await getPosting.doGetNowPostingEleObj(
+    nowPostingEleObj.board_type,
+    nowPostingEleObj.id,
+  );
+  const nowPostingEleObjUpdated = {
+    ...getPostingEle,
+    board_type: nowPostingEleObj.board_type,
+  };
+  setNowPostingEleObj(nowPostingEleObjUpdated);
+  postCntSwitcher(dispatch, false);
+};
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -49,24 +77,6 @@ const CommContentAreaStyle = styled.div`
     }
   }
 `;
-
-const UpdateNowPostingEleObj = async (
-  nowPostingEleObj,
-  setNowPostingEleObj,
-  dispatch,
-) => {
-  postCntSwitcher(dispatch, true);
-  const getPostingEle = await getPosting.doGetNowPostingEleObj(
-    nowPostingEleObj.board_type,
-    nowPostingEleObj.id,
-  );
-  const nowPostingEleObjUpdated = {
-    ...getPostingEle,
-    board_type: nowPostingEleObj.board_type,
-  };
-  setNowPostingEleObj(nowPostingEleObjUpdated);
-  postCntSwitcher(dispatch, false);
-};
 
 export default function PostingCommentList({
   nowPostingEleObj,
