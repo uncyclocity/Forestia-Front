@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer } from 'react';
 export const StateCtx = createContext(null);
 export const DispatchCtx = createContext(null);
 
-export default function Context({ children, freeBoard, photoBoard }) {
+export default function Context({ children }) {
   const initState = {
     userName: '백괴',
     nowPage: null,

@@ -1,9 +1,9 @@
 import HeaderTemplate from '../components/Templates/HeaderTemplate';
 import Context from '../src/context';
 
-export default function MyApp({ Component, pageProps, freeBoard, photoBoard }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <Context freeBoard={freeBoard} photoBoard={photoBoard}>
+    <Context>
       <HeaderTemplate />
       <Component {...pageProps} />
     </Context>
