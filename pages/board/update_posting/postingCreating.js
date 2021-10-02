@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
-import { useDispatch } from '../../../src/common/context';
-import { mountAnimation } from '../../../src/common/animationController';
-import setNowPostingEle from '../../../src/common/setNowPostingEle';
+import { useDispatch } from '../../../src/context';
 import PostingCreatingTemplate from '../../../components/Templates/PostingCreatingTemplate';
 
 export default function PostingCreating() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    mountAnimation(dispatch, 'creating');
-    setNowPostingEle(dispatch, {});
+    dispatch({
+      type: 'initiate',
+      nowPage: 'creating',
+    });
+    dispatch({ type: 'editpost_data', nowPostingEleObj: {} });
   }, [dispatch]);
 
   return <PostingCreatingTemplate />;

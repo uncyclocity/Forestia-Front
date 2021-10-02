@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import BtnErrorPageGreen from '../Atoms/Button/BtnErrorPageGreen';
 import BtnErrorPageWhite from '../Atoms/Button/BtnErrorPageWhite';
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch } from '../../src/common/context';
+import { useDispatch } from '../../src/context';
+import Router from 'next/router';
 
 const Styles = styled.div`
   padding: 20px 10px 20px 20px;
@@ -16,14 +16,8 @@ export default function ErrorPageBtns() {
 
   return (
     <Styles>
-      <BtnErrorPageGreen
-        text="뒤로"
-        onClick={() => unmountAnimation(1, dispatch)}
-      />
-      <BtnErrorPageWhite
-        text="홈"
-        onClick={() => unmountAnimation(0, dispatch, '/home')}
-      />
+      <BtnErrorPageGreen text="뒤로" onClick={() => Router.back()} />
+      <BtnErrorPageWhite text="홈" onClick={() => Router.push('/home')} />
     </Styles>
   );
 }

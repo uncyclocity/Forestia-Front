@@ -2,13 +2,12 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { BtnFreePhotoSwitch } from '../Atoms/Button/BtnFreePhotoSwitch';
 import { BtnPosting } from '../Atoms/Button/BtnPosting';
-import { useDispatch, useReducerState } from '../../src/common/context';
+import { useDispatch, useReducerState } from '../../src/context';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import IptContent from '../Atoms/Input/IptContent';
 import PostingCreatingImgUploadArea from '../MoleCules/PostingCreatingImgUploadArea';
-import { getPosting, postPosting } from '../../src/doApi/doApi';
-import postCntSwitcher from '../../src/common/postCntSwitcher';
+import { getPosting, postPosting } from '../../src/doApi';
 
 const letsDoUploadPosting = async (
   selBoard,
@@ -17,7 +16,10 @@ const letsDoUploadPosting = async (
   imagesArr,
   dispatch,
 ) => {
-  postCntSwitcher(dispatch, true);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: true,
+  });
   const boardLen = await getPosting.doGetLength(selBoard);
 
   var id = '0';
@@ -33,9 +35,12 @@ const letsDoUploadPosting = async (
     formData.append('images', imagesArr[i]);
   }
 
-  const res = await postPosting.doPostCreateImage(formData, selBoard, dispatch);
-  await postPosting.doPostCreate(selBoard, id, title, content, res, dispatch);
-  postCntSwitcher(dispatch, false);
+  const res = await postPosting.doPostCreateImage(formData, selBoard);
+  await postPosting.doPostCreate(selBoard, id, title, content, res);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: false,
+  });
 };
 
 const getImagesUrlArr = (files) => {

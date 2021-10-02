@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch } from '../../src/common/context';
 import IcoLogo from '../Atoms/Icon/IcoLogo';
+import Router from 'next/router';
 
 const Styles = styled.div`
   margin: 30px auto;
@@ -12,11 +11,10 @@ const Styles = styled.div`
 `;
 
 export default function HeaderLogoArea() {
-  const dispatch = useDispatch();
   const homeUrl = '/home';
 
   return (
-    <Styles onClick={() => unmountAnimation(0, dispatch, homeUrl)}>
+    <Styles onClick={() => Router.push(homeUrl)}>
       <IcoLogo />
     </Styles>
   );

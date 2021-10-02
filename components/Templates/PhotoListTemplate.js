@@ -12,9 +12,9 @@ const BoxStyles = styled.div`
 
 export default function PhotoListTemplate({
   photoLen,
-  nowPage,
+  nowPageCnt,
   nowList,
-  setNowPage,
+  setNowPageCnt,
 }) {
   return (
     <CtnBox>
@@ -22,12 +22,12 @@ export default function PhotoListTemplate({
         <BoardTitleTemplate backURL="/home">
           <PhotoListBoardTitle />
         </BoardTitleTemplate>
-        <PhotoListPostingList page={nowPage} photoBoard={nowList} />
+        <PhotoListPostingList page={nowPageCnt} photoBoard={nowList} />
         {photoLen > 0 && (
           <ListPageBtn
             listLen={photoLen}
             page={nowPage}
-            setNowPage={setNowPage}
+            setNowPageCnt={setNowPageCnt}
           />
         )}
       </BoxStyles>

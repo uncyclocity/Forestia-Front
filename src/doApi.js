@@ -1,6 +1,6 @@
 import moment from 'moment';
-import instance from '../common/instance';
-import { unmountAnimation } from '../common/animationController';
+import Router from 'next/router';
+import instance from './instance';
 
 const newCommId = (nowPostingEleObj) => {
   const commArr = nowPostingEleObj.comments;
@@ -42,7 +42,7 @@ export const postComm = {
       setEditCommObj(false);
     });
   },
-  doPostDelete: async (board_type, post_id, comment_id, dispatch) => {
+  doPostDelete: async (board_type, post_id, comment_id) => {
     await instance({
       method: 'POST',
       url: '/api/post_comment/postDeleteComm',
@@ -52,11 +52,7 @@ export const postComm = {
         comment_id,
       },
     }).then(async () => {
-      unmountAnimation(
-        0,
-        dispatch,
-        `/board/posting?board_type=${board_type}&post_id=${post_id}`,
-      );
+      Router.push(`/board/posting?board_type=${board_type}&post_id=${post_id}`);
     });
   },
 };
@@ -70,7 +66,7 @@ export const postPosting = {
       data,
     });
   },
-  doPostCreate: async (board_type, id, title, content, pathArr, dispatch) => {
+  doPostCreate: async (board_type, id, title, content, pathArr) => {
     const apiUrl = '/api/post_posting/postCreatePosting';
     await instance({
       method: 'POST',
@@ -86,11 +82,7 @@ export const postPosting = {
         imagesUrl: pathArr,
       },
     }).then(async () => {
-      unmountAnimation(
-        0,
-        dispatch,
-        `/board/posting?board_type=${board_type}&post_id=${id}`,
-      );
+      Router.push(`/board/posting?board_type=${board_type}&post_id=${id}`);
     });
   },
   doPostCreateImage: async (formData, board_type) => {
@@ -125,7 +117,7 @@ export const postPosting = {
       data: { imagesUrl },
     });
   },
-  doPostEdit: async (board_type, id, title, content, dispatch) => {
+  doPostEdit: async (board_type, id, title, content) => {
     await instance({
       method: 'POST',
       url: '/api/post_posting/postEditPosting',
@@ -136,11 +128,7 @@ export const postPosting = {
         content,
       },
     }).then(async () => {
-      unmountAnimation(
-        0,
-        dispatch,
-        `/board/posting?board_type=${board_type}&post_id=${id}`,
-      );
+      Router.push(`/board/posting?board_type=${board_type}&post_id=${id}`);
     });
   },
 };

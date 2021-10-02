@@ -14,7 +14,7 @@ const Styles = styled.div`
   margin: 15px 0;
 `;
 
-export default function ListPageBtn({ listLen, page, setNowPage }) {
+export default function ListPageBtn({ listLen, page, setNowPageCnt }) {
   const postingAmountDivided = listLen / 15;
   const padInt = parseInt(postingAmountDivided);
   const pageBtnAmount = padInt < postingAmountDivided ? padInt + 1 : padInt;
@@ -27,7 +27,7 @@ export default function ListPageBtn({ listLen, page, setNowPage }) {
           return <TxtPagingNumberSelected key={index} number={index + 1} />;
         } else {
           return (
-            <div onClick={() => setNowPage(index + 1)} key={index}>
+            <div onClick={() => setNowPageCnt(index + 1)} key={index}>
               <TxtPagingNumber number={index + 1} />
             </div>
           );

@@ -2,9 +2,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import IptComment from '../Atoms/Input/IptComment';
-import { useDispatch, useReducerState } from '../../src/common/context';
-import postCntSwitcher from '../../src/common/postCntSwitcher';
-import { getPosting, postComm } from '../../src/doApi/doApi';
+import { useDispatch, useReducerState } from '../../src/context';
+import { getPosting, postComm } from '../../src/doApi';
 
 const CommInputAreaStyle = styled.div`
   display: flex;
@@ -41,7 +40,10 @@ const UpdateNowPostingEleObj = async (
   setNowPostingEleObj,
   dispatch,
 ) => {
-  postCntSwitcher(dispatch, true);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: true,
+  });
   const getPostingEle = await getPosting.doGetNowPostingEleObj(
     nowPostingEleObj.board_type,
     nowPostingEleObj.id,
@@ -51,7 +53,10 @@ const UpdateNowPostingEleObj = async (
     board_type: nowPostingEleObj.board_type,
   };
   setNowPostingEleObj(nowPostingEleObjUpdated);
-  postCntSwitcher(dispatch, false);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: false,
+  });
 };
 
 export default function PostingCommentInput({
@@ -76,7 +81,10 @@ export default function PostingCommentInput({
         onClick={async () => {
           if (!postCnt) {
             if (comment) {
-              postCntSwitcher(dispatch, true);
+              dispatch({
+                type: 'postcnt_switcher',
+                sw: true,
+              });
               await postComm.doPostCreate(nowPostingEleObj, comment, userName);
               await UpdateNowPostingEleObj(
                 nowPostingEleObj,
@@ -84,7 +92,10 @@ export default function PostingCommentInput({
                 dispatch,
               );
               setComment('');
-              postCntSwitcher(dispatch, false);
+              dispatch({
+                type: 'postcnt_switcher',
+                sw: false,
+              });
             } else {
               alert('댓글을 입력하세요');
             }

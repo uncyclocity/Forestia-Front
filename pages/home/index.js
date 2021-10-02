@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
-import { mountAnimation } from '../../src/common/animationController';
-import { useDispatch } from '../../src/common/context';
-import { getPosting } from '../../src/doApi/doApi';
+import { useDispatch } from '../../src/context';
+import { getPosting } from '../../src/doApi';
 import HomeTemplate from '../../components/Templates/HomeTemplate';
 
 export default function Home({ freeBoard, photoBoard }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    mountAnimation(dispatch, 'home');
+    dispatch({
+      type: 'initiate',
+      nowPage: 'home',
+    });
   }, [dispatch]);
 
   return <HomeTemplate freeBoard={freeBoard} photoBoard={photoBoard} />;

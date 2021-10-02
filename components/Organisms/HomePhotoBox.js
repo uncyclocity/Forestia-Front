@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getPosting } from '../../src/doApi/doApi';
+import { getPosting } from '../../src/doApi';
 import CtnBox from '../Atoms/Container/CtnBox';
 import HomeBorderTitle from '../MoleCules/HomeBorderTitle';
 import HomePhotoList from '../MoleCules/HomePhotoList';

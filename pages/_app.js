@@ -1,5 +1,5 @@
 import HeaderTemplate from '../components/Templates/HeaderTemplate';
-import Context from '../src/common/context';
+import Context from '../src/context';
 
 export default function MyApp({ Component, pageProps, freeBoard, photoBoard }) {
   return (

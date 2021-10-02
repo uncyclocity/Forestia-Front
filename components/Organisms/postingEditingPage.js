@@ -5,9 +5,8 @@ import IptContent from '../Atoms/Input/IptContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import LblFreePhoto from '../Atoms/Label/LblFreePhoto';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
-import { useDispatch, useReducerState } from '../../src/common/context';
-import postCntSwitcher from '../../src/common/postCntSwitcher';
-import { postPosting } from '../../src/doApi/doApi';
+import { useDispatch, useReducerState } from '../../src/context';
+import { postPosting } from '../../src/doApi';
 
 const ContentInputStyle = styled.div`
   margin: 20px 0 15px 0;
@@ -37,15 +36,20 @@ export default function PostingEditingPage() {
           onClick={async () => {
             if (!postCnt) {
               if (editEle.title && editEle.content) {
-                postCntSwitcher(dispatch, true);
+                dispatch({
+                  type: 'postcnt_switcher',
+                  sw: true,
+                });
                 await postPosting.doPostEdit(
                   board_type,
                   id,
                   editEle.title,
                   editEle.content,
-                  dispatch,
                 );
-                postCntSwitcher(dispatch, false);
+                dispatch({
+                  type: 'postcnt_switcher',
+                  sw: false,
+                });
               } else {
                 alert('제목 및 내용을 입력하세요');
               }

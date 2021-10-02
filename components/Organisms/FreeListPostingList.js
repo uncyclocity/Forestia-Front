@@ -1,10 +1,9 @@
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch } from '../../src/common/context';
 import styled from 'styled-components';
 import ListEmpty from '../MoleCules/ListEmpty';
 import FreeListTableTop from '../MoleCules/FreeListTableTop';
 import ListLine from '../MoleCules/ListLine';
 import FreeListPostingBtn from '../MoleCules/FreeListPostingBtn';
+import Router from 'next/router';
 
 const ListStyle = styled.div`
   table {
@@ -16,8 +15,6 @@ const ListStyle = styled.div`
 `;
 
 export default function FreeListPostingList({ freeBoard }) {
-  const dispatch = useDispatch();
-
   return (
     <ListStyle>
       {freeBoard.length > 0 ? (
@@ -30,9 +27,7 @@ export default function FreeListPostingList({ freeBoard }) {
                 key={index}
                 posting={posting}
                 onClick={() =>
-                  unmountAnimation(
-                    0,
-                    dispatch,
+                  Router.push(
                     `/board/posting?board_type=free&post_id=${posting.id}`,
                   )
                 }

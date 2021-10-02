@@ -7,7 +7,6 @@ export default function Context({ children, freeBoard, photoBoard }) {
   const initState = {
     userName: '백괴',
     nowPage: null,
-    animation: 5,
     isPostPage: false,
     nowPostingEleObj: {},
     postCnt: false,
@@ -19,13 +18,6 @@ export default function Context({ children, freeBoard, photoBoard }) {
         return {
           ...state,
           nowPage: action.nowPage,
-          animation: action.animation,
-        };
-      }
-      case 'change_animation': {
-        return {
-          ...state,
-          animation: action.animation,
         };
       }
       case 'postpage_switcher': {

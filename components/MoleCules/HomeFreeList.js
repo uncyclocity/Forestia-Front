@@ -1,6 +1,5 @@
+import Router from 'next/router';
 import styled from 'styled-components';
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch } from '../../src/common/context';
 import IcoExistImg from '../Atoms/Icon/IcoExistImg';
 import TxtCommentAmount4List from '../Atoms/Text/TxtCommentAmount4List';
 import TxtPostingTitle from '../Atoms/Text/TxtPostingTitle';
@@ -38,8 +37,6 @@ const Styles = styled.div`
 `;
 
 export default function HomeFreeList({ freeBoard }) {
-  const dispatch = useDispatch();
-
   return (
     <Styles>
       <ul>
@@ -48,9 +45,7 @@ export default function HomeFreeList({ freeBoard }) {
             <li key={index}>
               <HomeFreePostingButton
                 onClick={() =>
-                  unmountAnimation(
-                    0,
-                    dispatch,
+                  Router.push(
                     `/board/posting?board_type=free&post_id=${posting.id}`,
                   )
                 }

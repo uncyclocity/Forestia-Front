@@ -1,36 +1,43 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from '../../../src/common/context';
-import { mountAnimation } from '../../../src/common/animationController';
-import { getPosting } from '../../../src/doApi/doApi';
-import postCntSwitcher from '../../../src/common/postCntSwitcher';
+import { useDispatch } from '../../../src/context';
+import { getPosting } from '../../../src/doApi';
 import FreeListTemplate from '../../../components/Templates/FreeListTemplate';
 
 export default function Free({ freeBoard, page, freeLen }) {
   const dispatch = useDispatch();
-  const [nowPage, setNowPage] = useState(page);
+  const [nowPageCnt, setNowPageCnt] = useState(page);
   const [nowList, setNowList] = useState(freeBoard);
 
   const changeList = useCallback(async () => {
-    postCntSwitcher(dispatch, true);
-    const freeBoard = await getPosting.doGetForList(nowPage, 'free');
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: true,
+    });
+    const freeBoard = await getPosting.doGetForList(nowPageCnt, 'free');
     setNowList(freeBoard);
-    postCntSwitcher(dispatch, false);
-  }, [dispatch, nowPage]);
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: false,
+    });
+  }, [dispatch, nowPageCnt]);
 
   useEffect(() => {
-    mountAnimation(dispatch, 'free');
+    dispatch({
+      type: 'initiate',
+      nowPage: 'free',
+    });
   }, [dispatch]);
 
   useEffect(() => {
     changeList();
-  }, [changeList, nowPage]);
+  }, [changeList]);
 
   return (
     <FreeListTemplate
       freeLen={freeLen}
-      nowPage={nowPage}
+      nowPageCnt={nowPageCnt}
       nowList={nowList}
-      setNowPage={setNowPage}
+      setNowPageCnt={setNowPageCnt}
     />
   );
 }

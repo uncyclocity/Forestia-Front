@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../src/common/context';
-import postCntSwitcher from '../../src/common/postCntSwitcher';
-import { getPosting, postComm } from '../../src/doApi/doApi';
+import { useDispatch, useReducerState } from '../../src/context';
+import { getPosting, postComm } from '../../src/doApi';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import TxtComment from '../Atoms/Text/TxtComment';
 import TxtCommentAmount from '../Atoms/Text/TxtCommentAmount';
@@ -11,13 +10,11 @@ import TxtCommentDate from '../Atoms/Text/TxtCommentDate';
 import BtnCommentEditDel from '../Atoms/Button/BtnCommentEditDel';
 import TxtCommentContent from '../Atoms/Text/TxtCommentContent';
 import IptComment from '../Atoms/Input/IptComment';
-import { unmountAnimation } from '../../src/common/animationController';
+import Router from 'next/router';
 
 const gotoCommDelPage = (nowPostingEleObj, comment_id, dispatch) => {
   if (confirm('정말로 삭제하시겠습니까')) {
-    unmountAnimation(
-      0,
-      dispatch,
+    Router.push(
       `/board/update_comment/commDeleting?board_type=${nowPostingEleObj.board_type}&post_id=${nowPostingEleObj.id}&comment_id=${comment_id}`,
     );
   }
@@ -28,7 +25,10 @@ const UpdateNowPostingEleObj = async (
   setNowPostingEleObj,
   dispatch,
 ) => {
-  postCntSwitcher(dispatch, true);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: true,
+  });
   const getPostingEle = await getPosting.doGetNowPostingEleObj(
     nowPostingEleObj.board_type,
     nowPostingEleObj.id,
@@ -38,7 +38,10 @@ const UpdateNowPostingEleObj = async (
     board_type: nowPostingEleObj.board_type,
   };
   setNowPostingEleObj(nowPostingEleObjUpdated);
-  postCntSwitcher(dispatch, false);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: false,
+  });
 };
 
 const CommListAreaStyle = styled.div`
@@ -146,7 +149,10 @@ export default function PostingCommentList({
                     <div
                       onClick={async () => {
                         if (!postCnt) {
-                          postCntSwitcher(dispatch, true);
+                          dispatch({
+                            type: 'postcnt_switcher',
+                            sw: true,
+                          });
                           await postComm.doPostEdit(
                             nowPostingEleObj,
                             editCommObj,
@@ -157,7 +163,10 @@ export default function PostingCommentList({
                             setNowPostingEleObj,
                             dispatch,
                           );
-                          postCntSwitcher(dispatch, false);
+                          dispatch({
+                            type: 'postcnt_switcher',
+                            sw: false,
+                          });
                         }
                       }}
                     >

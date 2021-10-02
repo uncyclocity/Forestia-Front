@@ -1,20 +1,23 @@
 import { useEffect } from 'react';
-import { useDispatch, useReducerState } from '../../../src/common/context';
-import { mountAnimation } from '../../../src/common/animationController';
-import setNowPostingEle from '../../../src/common/setNowPostingEle';
+import { useDispatch, useReducerState } from '../../../src/context';
 import DeletingTemplate from '../../../components/Templates/DeletingTemplate';
-import { unmountAnimation } from '../../../src/common/animationController';
-import postCntSwitcher from '../../../src/common/postCntSwitcher';
-import { postPosting } from '../../../src/doApi/doApi';
+import { postPosting } from '../../../src/doApi';
+import Router from 'next/router';
 
 const letsDeletePostingAndImage = async (nowPostingEleObj, dispatch) => {
   const { board_type, id, imagesUrl } = nowPostingEleObj;
 
-  postCntSwitcher(dispatch, true);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: true,
+  });
   await postPosting.doPostDelete(board_type, id);
   imagesUrl.length > 0 && (await postPosting.doPostDeleteImage(imagesUrl));
-  unmountAnimation(0, dispatch, `/board/board_list/${board_type}?page=1`);
-  postCntSwitcher(dispatch, false);
+  Router.push(`/board/board_list/${board_type}?page=1`);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: false,
+  });
 };
 
 export default function PostingDeleting() {
@@ -22,10 +25,13 @@ export default function PostingDeleting() {
   const nowPostingEleObj = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
-    mountAnimation(dispatch, 'deleting');
+    dispatch({
+      type: 'initiate',
+      nowPage: 'deleting',
+    });
     letsDeletePostingAndImage(nowPostingEleObj, dispatch);
     return () => {
-      setNowPostingEle(dispatch, {});
+      dispatch({ type: 'editpost_data', nowPostingEleObj: {} });
     };
   }, [dispatch, nowPostingEleObj]);
 

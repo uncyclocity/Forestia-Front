@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch } from '../../src/common/context';
 import ImgThumbnail from '../Atoms/Image/ImgThumbnail';
 import TxtCommentAmount4List from '../Atoms/Text/TxtCommentAmount4List';
 import TxtPostingTitle from '../Atoms/Text/TxtPostingTitle';
 import HomePhotoPostingButton from './HomePhotoPostingButton';
+import Router from 'next/router';
 
 const Styles = styled.div`
   ul {
@@ -28,8 +27,6 @@ const Styles = styled.div`
 `;
 
 export default function HomePhotoList({ photoBoard }) {
-  const dispatch = useDispatch();
-
   return (
     <Styles>
       <ul>
@@ -38,9 +35,7 @@ export default function HomePhotoList({ photoBoard }) {
             <li key={index}>
               <HomePhotoPostingButton
                 onClick={() =>
-                  unmountAnimation(
-                    0,
-                    dispatch,
+                  Router.push(
                     `/board/posting?board_type=photo&post_id=${posting.id}`,
                   )
                 }

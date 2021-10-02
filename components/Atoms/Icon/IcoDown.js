@@ -1,6 +1,6 @@
 import { AiFillDislike, AiOutlineDislike } from 'react-icons/ai';
 import styled from 'styled-components';
-import { useReducerState } from '../../../src/common/context';
+import { useReducerState } from '../../../src/context';
 
 // IcoDown
 // 분류 : 아이콘

@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch, useReducerState } from '../../src/common/context';
+import { useDispatch, useReducerState } from '../../src/context';
 import { slideLeft, slideRight } from '../../styles/keyframes/slide';
 import BtnMore from '../Atoms/Button/BtnMore';
 import IcoMoreDeletePosting from '../Atoms/Icon/IcoMoreDeletePosting';
 import IcoMoreEditPosting from '../Atoms/Icon/IcoMoreEditPosting';
 import TxtMoreArea from '../Atoms/Text/TxtMoreArea';
+import Router from 'next/router';
 
 const Styles = styled.div`
   cursor: default;
@@ -40,7 +40,6 @@ const Styles = styled.div`
 
 export default function BoardTitleMoreMenu({ isOpenMoreAnimation }) {
   const postCnt = useReducerState().postCnt;
-  const dispatch = useDispatch();
 
   return (
     <Styles isOpenMoreAnimation={isOpenMoreAnimation}>
@@ -49,11 +48,7 @@ export default function BoardTitleMoreMenu({ isOpenMoreAnimation }) {
           <li>
             <BtnMore
               onClick={() => {
-                unmountAnimation(
-                  0,
-                  dispatch,
-                  `/board/update_posting/postingEditing`,
-                );
+                Router.push(`/board/update_posting/postingEditing`);
               }}
             >
               <IcoMoreEditPosting />
@@ -64,11 +59,7 @@ export default function BoardTitleMoreMenu({ isOpenMoreAnimation }) {
             <BtnMore
               onClick={() => {
                 if (!postCnt && confirm('정말로 삭제하시겠습니까')) {
-                  unmountAnimation(
-                    0,
-                    dispatch,
-                    `/board/update_posting/postingDeleting`,
-                  );
+                  Router.push(`/board/update_posting/postingDeleting`);
                 }
               }}
             >

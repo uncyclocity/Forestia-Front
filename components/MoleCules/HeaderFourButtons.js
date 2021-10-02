@@ -1,13 +1,13 @@
+import Router from 'next/router';
 import {
   AiOutlineCamera,
   AiOutlineCloud,
   AiOutlineHome,
   AiOutlineInfoCircle,
 } from 'react-icons/ai';
-import styled from 'styled-components';
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch, useReducerState } from '../../src/common/context';
+import { useReducerState } from '../../src/context';
 import BtnHeader from '../Atoms/Button/BtnHeader';
+import styled from 'styled-components';
 
 const LayoutStyle = styled.div`
   display: flex;
@@ -65,7 +65,6 @@ const menuIconReturner = (headerMenu, isSelected) => {
 
 export default function HeaderFourButtons() {
   const nowPage = useReducerState().nowPage;
-  const dispatch = useDispatch();
 
   const HMUrlArr = [
     '/home',
@@ -84,11 +83,7 @@ export default function HeaderFourButtons() {
                 {nowPage === headerMenu ? (
                   menuIconReturner(headerMenu, true)
                 ) : (
-                  <div
-                    onClick={() =>
-                      unmountAnimation(0, dispatch, HMUrlArr[index])
-                    }
-                  >
+                  <div onClick={() => Router.push(HMUrlArr[index])}>
                     {menuIconReturner(headerMenu, false)}
                   </div>
                 )}

@@ -1,36 +1,43 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from '../../../src/common/context';
-import { mountAnimation } from '../../../src/common/animationController';
-import postCntSwitcher from '../../../src/common/postCntSwitcher';
-import { getPosting } from '../../../src/doApi/doApi';
+import { useDispatch } from '../../../src/context';
+import { getPosting } from '../../../src/doApi';
 import PhotoListTemplate from '../../../components/Templates/PhotoListTemplate';
 
 export default function Photo({ photoBoard, page, photoLen }) {
   const dispatch = useDispatch();
-  const [nowPage, setNowPage] = useState(page);
+  const [nowPageCnt, setNowPageCnt] = useState(page);
   const [nowList, setNowList] = useState(photoBoard);
 
   const changeList = useCallback(async () => {
-    postCntSwitcher(dispatch, true);
-    const photoBoard = await getPosting.doGetForList(nowPage, 'photo');
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: true,
+    });
+    const photoBoard = await getPosting.doGetForList(nowPageCnt, 'photo');
     setNowList(photoBoard);
-    postCntSwitcher(dispatch, false);
-  }, [dispatch, nowPage]);
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: false,
+    });
+  }, [dispatch, nowPageCnt]);
 
   useEffect(() => {
-    mountAnimation(dispatch, 'photo');
+    dispatch({
+      type: 'initiate',
+      nowPage: 'photo',
+    });
   }, [dispatch]);
 
   useEffect(() => {
     changeList();
-  }, [changeList, nowPage]);
+  }, [changeList]);
 
   return (
     <PhotoListTemplate
       photoLen={photoLen}
-      nowPage={nowPage}
+      nowPageCnt={nowPageCnt}
       nowList={nowList}
-      setNowPage={setNowPage}
+      setNowPageCnt={setNowPageCnt}
     />
   );
 }

@@ -1,5 +1,4 @@
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch } from '../../src/common/context';
+import Router from 'next/router';
 import styled from 'styled-components';
 import ListEmpty from '../MoleCules/ListEmpty';
 import PhotoListPostingBtn from '../MoleCules/PhotoListPostingBtn';
@@ -14,8 +13,6 @@ const ListStyle = styled.div`
 `;
 
 export default function PhotoListPostingList({ photoBoard }) {
-  const dispatch = useDispatch();
-
   return (
     <LayoutStyle>
       {photoBoard.length > 0 ? (
@@ -25,9 +22,7 @@ export default function PhotoListPostingList({ photoBoard }) {
               key={index}
               posting={posting}
               onClick={() =>
-                unmountAnimation(
-                  0,
-                  dispatch,
+                Router.push(
                   `/board/posting?board_type=photo&post_id=${posting.id}`,
                 )
               }

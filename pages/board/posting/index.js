@@ -1,10 +1,7 @@
-import { useDispatch } from '../../../src/common/context';
+import { useDispatch } from '../../../src/context';
 import { useEffect } from 'react';
-import { mountAnimation } from '../../../src/common/animationController';
-import { getPosting } from '../../../src/doApi/doApi';
-import setNowPostingEle from '../../../src/common/setNowPostingEle';
+import { getPosting } from '../../../src/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
-import postCntSwitcher from '../../../src/common/postCntSwitcher';
 
 const getDoUpdateUDdata = async (
   udType,
@@ -24,7 +21,10 @@ const getDoUpdateUDdata = async (
   const udClickerArr = nowPostingEleObj[udType].clicker;
   const revUdClickerArr = nowPostingEleObj[revUdType].clicker;
 
-  postCntSwitcher(dispatch, true);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: true,
+  });
 
   if (udClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
@@ -59,7 +59,10 @@ const getDoUpdateUDdata = async (
 
   setNowPostingEleObj(nowPostingEleObjUpdated);
 
-  postCntSwitcher(dispatch, false);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: false,
+  });
 };
 
 const postPageSwitchOn = (dispatch) => {
@@ -80,8 +83,11 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    mountAnimation(dispatch, board_type);
-    setNowPostingEle(dispatch, nowPostingEleObjRaw);
+    dispatch({
+      type: 'initiate',
+      nowPage: board_type,
+    });
+    dispatch({ type: 'editpost_data', nowPostingEleObj: nowPostingEleObjRaw });
     postPageSwitchOn(dispatch);
     return () => {
       postPageSwitchOff(dispatch);

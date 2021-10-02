@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useDispatch } from '../../src/common/context';
+import { useDispatch } from '../../src/context';
 import BtnGotoPostingCreating from '../Atoms/Button/BtnGotoPostingCreating';
 import IcoBoard4Home from '../Atoms/Icon/IcoBoard4Home';
 import TxtBoard4Home from '../Atoms/Text/TxtBoard4Home';

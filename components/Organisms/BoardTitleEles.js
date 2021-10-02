@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { unmountAnimation } from '../../src/common/animationController';
-import { useDispatch, useReducerState } from '../../src/common/context';
+import { useReducerState } from '../../src/context';
 import BtnPostingBack from '../Atoms/Button/BtnPostingBack';
 import BtnPostingMore from '../Atoms/Button/BtnPostingMore';
 import BoardTitleBoardInfo from '../MoleCules/BoardTitleBoardInfo';
 import BoardTitleMoreMenu from '../MoleCules/BoardTitleMoreMenu';
+import Router from 'next/router';
 
 const LeftBtnStyle = styled.div`
   width: 30px;
@@ -32,7 +32,6 @@ const RightBtnStyle = styled.div`
 `;
 
 export default function BoardTitleEles({ backURL, children }) {
-  const dispatch = useDispatch();
   const state = useReducerState();
   const isPostPage = state.isPostPage;
   const user = state.userName;
@@ -42,11 +41,7 @@ export default function BoardTitleEles({ backURL, children }) {
   return (
     <>
       <LeftBtnStyle>
-        {backURL && (
-          <BtnPostingBack
-            onClick={() => unmountAnimation(0, dispatch, backURL)}
-          />
-        )}
+        {backURL && <BtnPostingBack onClick={() => Router.push(backURL)} />}
       </LeftBtnStyle>
       <BoardTitleBoardInfo>{children}</BoardTitleBoardInfo>
       <RightBtnStyle isOpenMoreAnimation={isOpenMoreAnimation}>

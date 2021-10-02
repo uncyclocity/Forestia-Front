@@ -12,9 +12,9 @@ const BoxStyles = styled.div`
 
 export default function FreeListTemplate({
   freeLen,
-  nowPage,
+  nowPageCnt,
   nowList,
-  setNowPage,
+  setNowPageCnt,
 }) {
   return (
     <CtnBox>
@@ -22,12 +22,12 @@ export default function FreeListTemplate({
         <BoardTitleTemplate backURL="/home">
           <FreeListBoardTitle />
         </BoardTitleTemplate>
-        <FreeListPostingList page={nowPage} freeBoard={nowList} />
+        <FreeListPostingList page={nowPageCnt} freeBoard={nowList} />
         {freeLen > 0 && (
           <ListPageBtn
             listLen={freeLen}
-            page={nowPage}
-            setNowPage={setNowPage}
+            page={nowPageCnt}
+            setNowPageCnt={setNowPageCnt}
           />
         )}
       </BoxStyles>

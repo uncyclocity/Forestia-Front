@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import setNowPostingEle from '../../src/common/setNowPostingEle';
 import CtnBox from '../Atoms/Container/CtnBox';
 import PostingBoardTitle from '../Organisms/PostingBoardTitle';
 import PostingComment from '../Organisms/PostingComment';

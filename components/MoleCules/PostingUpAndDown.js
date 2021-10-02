@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoUp from '../Atoms/Icon/IcoUp';
 import TxtUpDownAmount from '../Atoms/Text/TxtUpDownAmount';
-import { useDispatch, useReducerState } from '../../src/common/context';
-import postCntSwitcher from '../../src/common/postCntSwitcher';
-import { getPosting, postPosting } from '../../src/doApi/doApi';
+import { useDispatch, useReducerState } from '../../src/context';
+import { getPosting, postPosting } from '../../src/doApi';
 
 const getDoUpdateUDdata = async (
   udType,
@@ -24,7 +23,10 @@ const getDoUpdateUDdata = async (
   const udClickerArr = nowPostingEleObj[udType].clicker;
   const revUdClickerArr = nowPostingEleObj[revUdType].clicker;
 
-  postCntSwitcher(dispatch, true);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: true,
+  });
 
   if (udClickerArr.find((clickUser) => clickUser === userName)) {
     const data = {
@@ -59,7 +61,10 @@ const getDoUpdateUDdata = async (
 
   setNowPostingEleObj(nowPostingEleObjUpdated);
 
-  postCntSwitcher(dispatch, false);
+  dispatch({
+    type: 'postcnt_switcher',
+    sw: false,
+  });
 };
 
 const UpAndDownAreaStyle = styled.div`
