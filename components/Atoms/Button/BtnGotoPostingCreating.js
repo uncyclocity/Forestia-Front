@@ -21,7 +21,7 @@ const Styles = styled.div`
 
   .posting_text {
     font-size: 16px;
-    font-weight: bold;
+    font-family: 'NanumSquareR';
   }
 `;
 
