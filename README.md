@@ -50,14 +50,14 @@ yarn run start
 
 ## 📸 간단한 시연
 
-- 홈 페이지
-  <img src="./readme_src/main.PNG"></img>
+- 홈 페이지 <br>
+  <img src="./readme_src/main.PNG" width="700px"></img>
 
-- 게시글 작성
-  <img src="./readme_src/postingCreating.gif"></img>
+- 게시글 작성 <br>
+  <img src="./readme_src/postingCreating.gif" width="700px"></img>
 
-- 좋아요 및 댓글 작성
-  <img src="./readme_src/commentCreating.gif"></img>
+- 좋아요 및 댓글 작성 <br>
+  <img src="./readme_src/commentCreating.gif" width="700px"></img>
 
-- 게시글 삭제
-  <img src="./readme_src/postingDeleting.gif"></img>
+- 게시글 삭제 <br>
+  <img src="./readme_src/postingDeleting.gif" width="700px"></img>
