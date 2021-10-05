@@ -7,18 +7,21 @@ import Head from 'next/head';
 
 const letsDeletePostingAndImage = async (nowPostingEleObj, dispatch) => {
   const { board_type, id, imagesUrl } = nowPostingEleObj;
-
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: true,
-  });
-  await postPosting.doPostDelete(board_type, id);
-  imagesUrl.length > 0 && (await postPosting.doPostDeleteImage(imagesUrl));
-  Router.push(`/board/board_list/${board_type}?page=1`);
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: false,
-  });
+  if (board_type && id && imagesUrl) {
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: true,
+    });
+    await postPosting.doPostDelete(board_type, id);
+    imagesUrl.length > 0 && (await postPosting.doPostDeleteImage(imagesUrl));
+    Router.push(`/board/board_list/${board_type}?page=1`);
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: false,
+    });
+  } else {
+    Router.push('/404');
+  }
 };
 
 export default function PostingDeleting() {

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { useDispatch } from '../../../src/context';
 import DeletingTemplate from '../../../components/Templates/DeletingTemplate';
 import { postComm } from '../../../src/doApi';
@@ -9,15 +9,19 @@ const letsDeleteComm = async (
   dispatch,
   { board_type, post_id, comment_id },
 ) => {
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: true,
-  });
-  await postComm.doPostDelete(board_type, post_id, comment_id);
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: false,
-  });
+  if (board_type && post_id && comment_id) {
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: true,
+    });
+    await postComm.doPostDelete(board_type, post_id, comment_id);
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: false,
+    });
+  } else {
+    Router.push('/404');
+  }
 };
 
 export default function CommDeleting() {

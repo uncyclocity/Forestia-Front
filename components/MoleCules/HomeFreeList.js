@@ -53,7 +53,7 @@ export default function HomeFreeList({ freeBoard }) {
                 <TxtPostingTitle title={posting.title} />
                 <IcoExistImg isImgExist={isImgExist(posting.imagesUrl)} />
                 <div className="comment_amount">
-                  <TxtCommentAmount4List amount={posting.imagesUrl.length} />
+                  <TxtCommentAmount4List amount={posting.comments.length} />
                 </div>
               </HomeFreePostingButton>
             </li>
