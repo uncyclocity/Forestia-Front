@@ -26,7 +26,7 @@ export default function PhotoListTemplate({
         {photoLen > 0 && (
           <ListPageBtn
             listLen={photoLen}
-            page={nowPage}
+            page={nowPageCnt}
             setNowPageCnt={setNowPageCnt}
           />
         )}
