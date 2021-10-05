@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // 용도 : 박스 형태의 컨테이너
 
 const BoxStyles = styled.div`
-  max-width: 700px;
+  width: 700px;
 
   margin: 15px auto;
 

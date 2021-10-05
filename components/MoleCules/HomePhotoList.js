@@ -12,6 +12,7 @@ const Styles = styled.div`
 
     li {
       list-style-type: none;
+      max-width: 200px;
 
       &:hover {
         transition: 0.15s all ease-in;

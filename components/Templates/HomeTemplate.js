@@ -16,9 +16,7 @@ const BoxLayoutStyle = styled.div`
   .maxwidth {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    max-width: 700px;
+    width: 700px;
   }
 `;
 
