@@ -33,20 +33,24 @@ export default function ListPageBtn({ listLen, page, setNowPageCnt }) {
           }
         }}
       />
-      {[...Array(pageBtnAmount)].map((num, index) => {
-        if (index + 1 === parseInt(page)) {
-          return <TxtPagingNumberSelected key={index} number={index + 1} />;
-        } else {
-          return (
-            <div onClick={() => setNowPageCnt(index + 1)} key={index}>
-              <TxtPagingNumber number={index + 1} />
-            </div>
-          );
+      {[...Array(20)].map((num, index) => {
+        const pageDivided = parseInt((page - 1) / 20) * 20;
+        const nowPageCnt = pageDivided + index + 1;
+        if (nowPageCnt <= pageBtnAmount) {
+          if (nowPageCnt === parseInt(page)) {
+            return <TxtPagingNumberSelected key={index} number={nowPageCnt} />;
+          } else {
+            return (
+              <div onClick={() => setNowPageCnt(nowPageCnt)} key={index}>
+                <TxtPagingNumber number={nowPageCnt} />
+              </div>
+            );
+          }
         }
       })}
       <IcoPagingRight
         onClick={() => {
-          const pageDivided = parseInt(page / 20);
+          const pageDivided = parseInt((page - 1) / 20);
           const goPage = (pageDivided + 1) * 20 + 1;
           console.log(pageDivided);
           if (goPage <= pageBtnAmount) {
