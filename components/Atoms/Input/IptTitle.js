@@ -8,7 +8,7 @@ const Styles = styled.div`
   input {
     width: 640px;
     font-size: 25px;
-    font-weight: bold;
+    font-family: 'NanumSquareEB';
     color: #464646;
     border: none;
     outline: none;

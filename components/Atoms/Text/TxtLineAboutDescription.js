@@ -10,7 +10,7 @@ const Styles = styled.div`
   color: #5d5d5d;
   .bold {
     color: #20c997;
-    font-weight: bold;
+    font-family: 'NanumSquareEB';
   }
   &:not(:last-child) {
     margin-bottom: 3px;

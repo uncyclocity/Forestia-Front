@@ -69,39 +69,45 @@ export default function PostingCommentInput({
   const userName = state.userName;
   const postCnt = state.postCnt;
 
+  const uploadComm = async () => {
+    if (!postCnt) {
+      if (comment) {
+        dispatch({
+          type: 'postcnt_switcher',
+          sw: true,
+        });
+        await postComm.doPostCreate(nowPostingEleObj, comment, userName);
+        await UpdateNowPostingEleObj(
+          nowPostingEleObj,
+          setNowPostingEleObj,
+          dispatch,
+        );
+        setComment('');
+        dispatch({
+          type: 'postcnt_switcher',
+          sw: false,
+        });
+      } else {
+        alert('댓글을 입력하세요');
+      }
+    }
+  };
+
   return (
     <CommInputAreaStyle>
       <CommTextareaStyle>
         <IptComment
           onChange={(e) => setComment(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.keyCode === 13 && e.shiftKey == false) {
+              e.preventDefault();
+              uploadComm();
+            }
+          }}
           value={comment}
         />
       </CommTextareaStyle>
-      <div
-        onClick={async () => {
-          if (!postCnt) {
-            if (comment) {
-              dispatch({
-                type: 'postcnt_switcher',
-                sw: true,
-              });
-              await postComm.doPostCreate(nowPostingEleObj, comment, userName);
-              await UpdateNowPostingEleObj(
-                nowPostingEleObj,
-                setNowPostingEleObj,
-                dispatch,
-              );
-              setComment('');
-              dispatch({
-                type: 'postcnt_switcher',
-                sw: false,
-              });
-            } else {
-              alert('댓글을 입력하세요');
-            }
-          }
-        }}
-      >
+      <div onClick={uploadComm}>
         <BtnCommentPost />
       </div>
     </CommInputAreaStyle>

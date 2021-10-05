@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
   margin-left: 5px;
   font-size: 20px;
-  font-weight: bold;
+  font-family: 'NanumSquareEB';
   width: 100%;
 `;
 

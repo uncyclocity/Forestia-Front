@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   color: #20c997;
-  font-weight: bold;
+  font-family: 'NanumSquareEB';
 `;
 
 export default function TxtImgUpload() {

@@ -10,7 +10,7 @@ const Styles = styled.div`
   justify-content: center;
   align-items: center;
   width: 99px;
-  font-weight: bold;
+  font-family: 'NanumSquareEB';
   color: #828c99;
 `;
 

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   font-size: 17px;
-  font-weight: bold;
+  font-family: 'NanumSquareEB';
   color: #828c99;
 `;
 

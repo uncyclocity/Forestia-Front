@@ -91,6 +91,25 @@ export default function PostingCommentList({
   const dispatch = useDispatch();
   const [editCommObj, setEditCommObj] = useState(false);
 
+  const editComm = async () => {
+    if (!postCnt) {
+      dispatch({
+        type: 'postcnt_switcher',
+        sw: true,
+      });
+      await postComm.doPostEdit(nowPostingEleObj, editCommObj, setEditCommObj);
+      await UpdateNowPostingEleObj(
+        nowPostingEleObj,
+        setNowPostingEleObj,
+        dispatch,
+      );
+      dispatch({
+        type: 'postcnt_switcher',
+        sw: false,
+      });
+    }
+  };
+
   return (
     <CommListAreaStyle>
       <CommAmountAreaStyle>
@@ -144,32 +163,15 @@ export default function PostingCommentList({
                           content: e.target.value,
                         })
                       }
-                      value={editCommObj.content}
-                    />
-                    <div
-                      onClick={async () => {
-                        if (!postCnt) {
-                          dispatch({
-                            type: 'postcnt_switcher',
-                            sw: true,
-                          });
-                          await postComm.doPostEdit(
-                            nowPostingEleObj,
-                            editCommObj,
-                            setEditCommObj,
-                          );
-                          await UpdateNowPostingEleObj(
-                            nowPostingEleObj,
-                            setNowPostingEleObj,
-                            dispatch,
-                          );
-                          dispatch({
-                            type: 'postcnt_switcher',
-                            sw: false,
-                          });
+                      onKeyDown={(e) => {
+                        if (e.keyCode === 13 && e.shiftKey == false) {
+                          e.preventDefault();
+                          editComm();
                         }
                       }}
-                    >
+                      value={editCommObj.content}
+                    />
+                    <div onClick={editComm}>
                       <BtnCommentPost />
                     </div>
                   </div>

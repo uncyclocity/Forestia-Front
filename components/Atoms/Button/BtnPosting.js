@@ -16,7 +16,7 @@ const Styles = styled.div`
   margin-left: 87%;
   cursor: pointer;
   font-size: 18px;
-  font-weight: bold;
+  font-family: 'NanumSquareEB';
 
   &:hover {
     background: #37dfad;

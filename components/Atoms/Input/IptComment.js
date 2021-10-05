@@ -20,16 +20,27 @@ const Styles = styled.div`
     border: 1px solid #e9ecef;
     color: #525252;
 
+    &::placeholder {
+      color: #aaaaaa;
+      font-style: italic;
+    }
+
     &:focus {
       outline: none;
     }
   }
 `;
 
-export default function IptComment({ onChange, value }) {
+export default function IptComment({ onChange, onKeyDown, value }) {
   return (
     <Styles>
-      <textarea style={{ resize: 'none' }} value={value} onChange={onChange} />
+      <textarea
+        style={{ resize: 'none' }}
+        value={value}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        placeholder="댓글을 입력하세요"
+      />
     </Styles>
   );
 }

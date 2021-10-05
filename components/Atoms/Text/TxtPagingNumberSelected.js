@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
     margin 0 5px;
-    font-weight: bold;
+    font-family: 'NanumSquareEB';
   `;
 
 export default function TxtPagingNumberSelected({ number }) {

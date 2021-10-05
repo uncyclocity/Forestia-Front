@@ -7,7 +7,7 @@ import TxtBoard4Home from '../Atoms/Text/TxtBoard4Home';
 const Styles = styled.div`
   width: 100%;
   color: #20c997;
-  padding: 15px;
+  padding: 10px 15px;
   display: flex;
   align-items: center;
   flex-direction: row;

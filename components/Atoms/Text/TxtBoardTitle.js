@@ -7,13 +7,13 @@ import styled from 'styled-components';
 const Styles = styled.div`
   color: #20c997;
   font-size: 20px;
-  font-weight: bold;
+  font-family: 'NanumSquareEB';
 `;
 
 export default function TxtBoardTitle({ nowPage, title = null }) {
   return (
     <Styles>
-      {nowPage === 'about' && '게시판 소게'}
+      {nowPage === 'about' && '게시판 소개'}
       {nowPage === 'free' && title && <>{title}</>}
       {nowPage === 'photo' && title && <>{title}</>}
       {nowPage === 'free' && !title && '자게'}
