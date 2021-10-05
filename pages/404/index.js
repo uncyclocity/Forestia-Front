@@ -1,6 +1,7 @@
 import { useDispatch } from '../../src/context';
 import { useEffect } from 'react';
 import Error404Template from '../../components/Templates/Error404Template';
+import Head from 'next/head';
 
 export default function NotFoundPage() {
   const dispatch = useDispatch();
@@ -12,5 +13,12 @@ export default function NotFoundPage() {
     });
   }, [dispatch]);
 
-  return <Error404Template />;
+  return (
+    <>
+      <Head>
+        <title>404 Error</title>
+      </Head>
+      <Error404Template />
+    </>
+  );
 }

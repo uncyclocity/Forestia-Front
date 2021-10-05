@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useDispatch } from '../../../src/context';
 import DeletingTemplate from '../../../components/Templates/DeletingTemplate';
 import { postComm } from '../../../src/doApi';
+import Head from 'next/head';
 
 const letsDeleteComm = async (
   dispatch,
@@ -31,5 +32,12 @@ export default function CommDeleting() {
     letsDeleteComm(dispatch, router.query);
   }, [dispatch, router.query]);
 
-  return <DeletingTemplate />;
+  return (
+    <>
+      <Head>
+        <title>댓글 삭제 중</title>
+      </Head>
+      <DeletingTemplate />
+    </>
+  );
 }

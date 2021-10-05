@@ -2,6 +2,7 @@ import { useDispatch } from '../../../src/context';
 import { useEffect } from 'react';
 import { getPosting } from '../../../src/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
+import Head from 'next/head';
 
 const postPageSwitchOn = (dispatch) => {
   dispatch({
@@ -33,10 +34,15 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
   }, [board_type, dispatch, nowPostingEleObjRaw]);
 
   return (
-    <PostingTemplate
-      nowPostingEleObjRaw={nowPostingEleObjRaw}
-      board_type={board_type}
-    />
+    <>
+      <Head>
+        <title>{nowPostingEleObjRaw.title}</title>
+      </Head>
+      <PostingTemplate
+        nowPostingEleObjRaw={nowPostingEleObjRaw}
+        board_type={board_type}
+      />
+    </>
   );
 }
 

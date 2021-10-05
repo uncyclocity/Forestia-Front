@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/context';
 import { getPosting } from '../../../src/doApi';
 import FreeListTemplate from '../../../components/Templates/FreeListTemplate';
+import Head from 'next/head';
 
 export default function Free({ freeBoard, page, freeLen }) {
   const dispatch = useDispatch();
@@ -33,12 +34,17 @@ export default function Free({ freeBoard, page, freeLen }) {
   }, [changeList]);
 
   return (
-    <FreeListTemplate
-      freeLen={freeLen}
-      nowPageCnt={nowPageCnt}
-      nowList={nowList}
-      setNowPageCnt={setNowPageCnt}
-    />
+    <>
+      <Head>
+        <title>자게</title>
+      </Head>
+      <FreeListTemplate
+        freeLen={freeLen}
+        nowPageCnt={nowPageCnt}
+        nowList={nowList}
+        setNowPageCnt={setNowPageCnt}
+      />
+    </>
   );
 }
 

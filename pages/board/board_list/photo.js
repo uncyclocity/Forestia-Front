@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/context';
 import { getPosting } from '../../../src/doApi';
 import PhotoListTemplate from '../../../components/Templates/PhotoListTemplate';
+import Head from 'next/head';
 
 export default function Photo({ photoBoard, page, photoLen }) {
   const dispatch = useDispatch();
@@ -33,12 +34,17 @@ export default function Photo({ photoBoard, page, photoLen }) {
   }, [changeList]);
 
   return (
-    <PhotoListTemplate
-      photoLen={photoLen}
-      nowPageCnt={nowPageCnt}
-      nowList={nowList}
-      setNowPageCnt={setNowPageCnt}
-    />
+    <>
+      <Head>
+        <title>짤게</title>
+      </Head>
+      <PhotoListTemplate
+        photoLen={photoLen}
+        nowPageCnt={nowPageCnt}
+        nowList={nowList}
+        setNowPageCnt={setNowPageCnt}
+      />
+    </>
   );
 }
 

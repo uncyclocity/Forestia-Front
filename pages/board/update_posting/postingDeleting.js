@@ -3,6 +3,7 @@ import { useDispatch, useReducerState } from '../../../src/context';
 import DeletingTemplate from '../../../components/Templates/DeletingTemplate';
 import { postPosting } from '../../../src/doApi';
 import Router from 'next/router';
+import Head from 'next/head';
 
 const letsDeletePostingAndImage = async (nowPostingEleObj, dispatch) => {
   const { board_type, id, imagesUrl } = nowPostingEleObj;
@@ -35,5 +36,12 @@ export default function PostingDeleting() {
     };
   }, [dispatch, nowPostingEleObj]);
 
-  return <DeletingTemplate />;
+  return (
+    <>
+      <Head>
+        <title>게시글 삭제 중</title>
+      </Head>
+      <DeletingTemplate />
+    </>
+  );
 }
