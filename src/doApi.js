@@ -51,7 +51,7 @@ export const postComm = {
         post_id,
         comment_id,
       },
-    }).then(async () => {
+    }).then(() => {
       Router.push(`/board/posting?board_type=${board_type}&post_id=${post_id}`);
     });
   },

@@ -5,7 +5,7 @@ import Photo from '../../../models/Photo';
 const handler = async (req, res) => {
   if (req.method === 'POST') {
     const { board_type, post_id, comment_id } = req.body;
-    if (comment_id >= 0 && post_id >= 0 && board_type) {
+    if (parseInt(comment_id) >= 0 && parseInt(post_id) >= 0 && board_type) {
       try {
         if (board_type === 'free') {
           var post = await Free.findOne({ id: post_id });
@@ -20,6 +20,8 @@ const handler = async (req, res) => {
       } catch (error) {
         return res.status(500).send(error.message);
       }
+    } else if (!comment_id) {
+      return res.end();
     } else {
       res.status(422).send('data_incomplete');
     }
