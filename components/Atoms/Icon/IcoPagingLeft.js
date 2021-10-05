@@ -10,9 +10,9 @@ const Styles = styled.div`
   top: 1px;
 `;
 
-export default function IcoPagingLeft() {
+export default function IcoPagingLeft({ onClick }) {
   return (
-    <Styles>
+    <Styles onClick={onClick}>
       <AiOutlineLeft />
     </Styles>
   );

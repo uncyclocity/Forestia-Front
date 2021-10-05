@@ -21,7 +21,18 @@ export default function ListPageBtn({ listLen, page, setNowPageCnt }) {
 
   return (
     <Styles>
-      <IcoPagingLeft />
+      <IcoPagingLeft
+        onClick={() => {
+          const pageDivided = parseInt((page - 1) / 20);
+          const goPage = pageDivided * 20;
+          console.log(pageDivided);
+          if (goPage >= 1) {
+            setNowPageCnt(goPage);
+          } else {
+            setNowPageCnt(1);
+          }
+        }}
+      />
       {[...Array(pageBtnAmount)].map((num, index) => {
         if (index + 1 === parseInt(page)) {
           return <TxtPagingNumberSelected key={index} number={index + 1} />;
@@ -33,7 +44,18 @@ export default function ListPageBtn({ listLen, page, setNowPageCnt }) {
           );
         }
       })}
-      <IcoPagingRight />
+      <IcoPagingRight
+        onClick={() => {
+          const pageDivided = parseInt(page / 20);
+          const goPage = (pageDivided + 1) * 20 + 1;
+          console.log(pageDivided);
+          if (goPage <= pageBtnAmount) {
+            setNowPageCnt(goPage);
+          } else {
+            setNowPageCnt(pageBtnAmount);
+          }
+        }}
+      />
     </Styles>
   );
 }

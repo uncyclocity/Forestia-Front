@@ -1,7 +1,7 @@
 import { AiOutlineRight } from 'react-icons/ai';
 import styled from 'styled-components';
 
-// IcoPagingLeft
+// IcoPagingRight
 // 분류 : 아이콘
 // 용도 : 리스트 페이징 오른쪽 화살표
 
@@ -10,9 +10,9 @@ const Styles = styled.div`
   top: 1px;
 `;
 
-export default function IcoPagingRight() {
+export default function IcoPagingRight({ onClick }) {
   return (
-    <Styles>
+    <Styles onClick={onClick}>
       <AiOutlineRight />
     </Styles>
   );
