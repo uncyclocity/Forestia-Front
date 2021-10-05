@@ -9,6 +9,7 @@ const Styles = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 198px;
 `;
 
 export default function TxtPostingTitle({ title }) {
