@@ -14,9 +14,8 @@ const Styles = styled.div`
 
 export default function HomeLoginArea() {
   const dispatch = useDispatch();
-
-  const clientId =
-    '965623177308-nmtq198c9s7aebtklsj2k4bs9pic0ti4.apps.googleusercontent.com';
+  const clientId = process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID;
+  console.log(process.env);
 
   const onSuccess = async (res) => {
     console.log(res);
