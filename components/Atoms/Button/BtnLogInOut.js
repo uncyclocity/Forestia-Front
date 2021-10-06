@@ -24,6 +24,6 @@ const Styles = styled.div`
   }
 `;
 
-export const BtnLogInOut = ({ text }) => {
-  return <Styles>{text}</Styles>;
+export const BtnLogInOut = ({ text, onClick }) => {
+  return <Styles onClick={onClick}>{text}</Styles>;
 };

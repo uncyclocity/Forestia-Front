@@ -12,11 +12,11 @@ const Styles = styled.div`
 `;
 
 export default function IcoUp({ clicker }) {
-  const userName = useReducerState().userName;
+  const userEmail = useReducerState().user.userEmail;
 
   return (
     <Styles>
-      {clicker.find((clickUser) => clickUser === userName) ? (
+      {clicker.find((clickUser) => clickUser === userEmail) ? (
         <AiFillLike />
       ) : (
         <AiOutlineLike />

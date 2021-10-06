@@ -15,6 +15,7 @@ const letsDoUploadPosting = async (
   content,
   imagesArr,
   dispatch,
+  userObj,
 ) => {
   dispatch({
     type: 'postcnt_switcher',
@@ -36,7 +37,7 @@ const letsDoUploadPosting = async (
   }
 
   const res = await postPosting.doPostCreateImage(formData, selBoard);
-  await postPosting.doPostCreate(selBoard, id, title, content, res);
+  await postPosting.doPostCreate(selBoard, id, title, content, res, userObj);
   dispatch({
     type: 'postcnt_switcher',
     sw: false,
@@ -57,7 +58,9 @@ const LayoutStyle = styled.div`
 `;
 
 export default function PostingCreatingPage() {
-  const postCnt = useReducerState().postCnt;
+  const state = useReducerState();
+  const postCnt = state.postCnt;
+  const userObj = state.user;
   const dispatch = useDispatch();
   const [postingEle, setPostingEle] = useState({
     title: '',
@@ -111,6 +114,7 @@ export default function PostingCreatingPage() {
                     postingEle.content,
                     files,
                     dispatch,
+                    userObj,
                   );
                 }
               } else {

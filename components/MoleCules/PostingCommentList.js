@@ -86,7 +86,7 @@ export default function PostingCommentList({
   setNowPostingEleObj,
 }) {
   const state = useReducerState();
-  const userName = state.userName;
+  const userEmail = state.user.userEmail;
   const postCnt = state.postCnt;
   const dispatch = useDispatch();
   const [editCommObj, setEditCommObj] = useState(false);
@@ -123,7 +123,7 @@ export default function PostingCommentList({
               <CommInfoAndBtnAreaStyle>
                 <TxtCommentAuthor author={comment.author} />
                 <TxtCommentDate date={comment.date} />
-                {userName === '백괴' && (
+                {userEmail === comment.authorEmail && (
                   <>
                     {editCommObj.id === comment.id ? (
                       <div onClick={() => setEditCommObj(false)}>

@@ -9,7 +9,7 @@ const getDoUpdateUDdata = async (
   udType,
   revUdType,
   nowPostingEleObj,
-  userName,
+  userEmail,
   dispatch,
   setNowPostingEleObj,
 ) => {
@@ -17,7 +17,7 @@ const getDoUpdateUDdata = async (
     board_type: nowPostingEleObj.board_type,
     post_id: nowPostingEleObj.id,
     ud_type: udType,
-    userName,
+    userEmail,
   };
 
   const udClickerArr = nowPostingEleObj[udType].clicker;
@@ -28,13 +28,13 @@ const getDoUpdateUDdata = async (
     sw: true,
   });
 
-  if (udClickerArr.find((clickUser) => clickUser === userName)) {
+  if (udClickerArr.find((clickUser) => clickUser === userEmail)) {
     const data = {
       ...defaultData,
       operation: 'sub',
     };
     await postPosting.doPostEditUpDown(data);
-  } else if (revUdClickerArr.find((clickUser) => clickUser === userName)) {
+  } else if (revUdClickerArr.find((clickUser) => clickUser === userEmail)) {
     const data = {
       ...defaultData,
       rev_ud_type: revUdType,
@@ -112,7 +112,7 @@ export default function PostingUpAndDown({
 }) {
   const state = useReducerState();
   const postCnt = state.postCnt;
-  const userName = state.userName;
+  const userEmail = state.user.userEmail;
   const dispatch = useDispatch();
 
   return (
@@ -126,7 +126,7 @@ export default function PostingUpAndDown({
                 'up',
                 'down',
                 nowPostingEleObj,
-                userName,
+                userEmail,
                 dispatch,
                 setNowPostingEleObj,
               );
@@ -144,7 +144,7 @@ export default function PostingUpAndDown({
                 'down',
                 'up',
                 nowPostingEleObj,
-                userName,
+                userEmail,
                 dispatch,
                 setNowPostingEleObj,
               );

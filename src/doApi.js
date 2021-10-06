@@ -10,7 +10,7 @@ const newCommId = (nowPostingEleObj) => {
 };
 
 export const postComm = {
-  doPostCreate: async (nowPostingEleObj, comment, userName) => {
+  doPostCreate: async (nowPostingEleObj, comment, userObj) => {
     const apiUrl = '/api/post_comment/postCreateComm';
     const comment_id = newCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -21,7 +21,8 @@ export const postComm = {
         board_type: nowPostingEleObj.board_type,
         post_id: nowPostingEleObj.id,
         comment_id,
-        author: userName,
+        author: userObj.userName,
+        authorEmail: userObj.userEmail,
         date: nowDate,
         content: comment,
       },
@@ -66,7 +67,7 @@ export const postPosting = {
       data,
     });
   },
-  doPostCreate: async (board_type, id, title, content, pathArr) => {
+  doPostCreate: async (board_type, id, title, content, pathArr, userObj) => {
     const apiUrl = '/api/post_posting/postCreatePosting';
     await instance({
       method: 'POST',
@@ -74,7 +75,8 @@ export const postPosting = {
       data: {
         board_type,
         id,
-        author: '백괴',
+        author: userObj.userName,
+        authorEmail: userObj.userEmail,
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
         title,
         content,

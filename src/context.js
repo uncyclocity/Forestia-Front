@@ -5,7 +5,10 @@ export const DispatchCtx = createContext(null);
 
 export default function Context({ children }) {
   const initState = {
-    userName: '백괴',
+    user: {
+      userName: '',
+      userEmail: '',
+    },
     nowPage: null,
     isPostPage: false,
     nowPostingEleObj: {},
@@ -36,6 +39,24 @@ export default function Context({ children }) {
         return {
           ...state,
           postCnt: action.sw,
+        };
+      }
+      case 'login_google': {
+        return {
+          ...state,
+          user: {
+            userName: action.userName,
+            userEmail: action.userEmail,
+          },
+        };
+      }
+      case 'logout': {
+        return {
+          ...state,
+          user: {
+            userName: '',
+            userEmail: '',
+          },
         };
       }
       default:

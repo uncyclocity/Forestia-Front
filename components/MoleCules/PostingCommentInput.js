@@ -66,7 +66,7 @@ export default function PostingCommentInput({
   const dispatch = useDispatch();
   const state = useReducerState();
   const [comment, setComment] = useState('');
-  const userName = state.userName;
+  const userObj = state.user;
   const postCnt = state.postCnt;
 
   const uploadComm = async () => {
@@ -76,7 +76,7 @@ export default function PostingCommentInput({
           type: 'postcnt_switcher',
           sw: true,
         });
-        await postComm.doPostCreate(nowPostingEleObj, comment, userName);
+        await postComm.doPostCreate(nowPostingEleObj, comment, userObj);
         await UpdateNowPostingEleObj(
           nowPostingEleObj,
           setNowPostingEleObj,

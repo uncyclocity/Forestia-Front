@@ -4,12 +4,25 @@ import Photo from '../../../models/Photo';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { board_type, post_id, comment_id, author, date, content } = req.body;
-    if (comment_id >= 0 && author && date && content) {
+    const {
+      board_type,
+      post_id,
+      comment_id,
+      author,
+      authorEmail,
+      date,
+      content,
+    } = req.body;
+    if (
+      (board_type,
+      post_id,
+      comment_id >= 0 && author && authorEmail && date && content)
+    ) {
       try {
         var newComment = {
           id: comment_id,
           author,
+          authorEmail,
           date,
           content,
         };
