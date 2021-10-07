@@ -8,9 +8,9 @@ const Styles = styled.div`
   border: 1px solid #20c997;
   border-radius: 5px;
   padding: 5px;
-  margin-top: 10px;
   cursor: pointer;
   font-size: 12px;
+  text-align: center;
 
   &:hover {
     transition: 0.3s all ease-out;
@@ -24,6 +24,6 @@ const Styles = styled.div`
   }
 `;
 
-export const BtnLogInOut = ({ text, onClick }) => {
+export default function BtnLogInOut({ text, onClick }) {
   return <Styles onClick={onClick}>{text}</Styles>;
-};
+}

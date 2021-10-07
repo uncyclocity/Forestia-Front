@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useDispatch } from '../../src/context';
 import GoogleLogin from 'react-google-login';
+import { getUser } from '../../src/doApi';
+import Router from 'next/router';
 
 const Styles = styled.div`
   width: 167.5px;
@@ -15,15 +17,25 @@ const Styles = styled.div`
 export default function HomeLoginArea() {
   const dispatch = useDispatch();
   const clientId = process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID;
-  console.log(process.env);
 
   const onSuccess = async (res) => {
-    console.log(res);
     const {
-      profileObj: { email: userEmail, name: userName },
+      profileObj: { googleId: id, email },
     } = res;
 
-    dispatch({ type: 'login_google', userName, userEmail });
+    const user = await getUser.doGetUserById(id);
+
+    if (!user) {
+      dispatch({ type: 'login', userName: '', userEmail: email, userId: id });
+      Router.push('/signup');
+    } else {
+      dispatch({
+        type: 'login',
+        userName: user.nickname,
+        userEmail: user.email,
+        userid: user.id,
+      });
+    }
   };
 
   const onFailure = (error) => {

@@ -8,6 +8,7 @@ export default function Context({ children }) {
     user: {
       userName: '',
       userEmail: '',
+      userId: '',
     },
     nowPage: null,
     isPostPage: false,
@@ -41,12 +42,13 @@ export default function Context({ children }) {
           postCnt: action.sw,
         };
       }
-      case 'login_google': {
+      case 'login': {
         return {
           ...state,
           user: {
             userName: action.userName,
             userEmail: action.userEmail,
+            userId: action.userId,
           },
         };
       }
@@ -56,6 +58,7 @@ export default function Context({ children }) {
           user: {
             userName: '',
             userEmail: '',
+            userId: '',
           },
         };
       }

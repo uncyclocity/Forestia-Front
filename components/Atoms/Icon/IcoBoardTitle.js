@@ -3,6 +3,7 @@ import {
   AiOutlineCloud,
   AiOutlineEdit,
   AiOutlineInfoCircle,
+  AiOutlineLogin,
 } from 'react-icons/ai';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import styled from 'styled-components';
@@ -24,6 +25,7 @@ export default function IcoBoardTitle({ nowPage }) {
       {nowPage === 'photo' && <AiOutlineCamera />}
       {nowPage === 'deleting' && <RiDeleteBin7Line />}
       {(nowPage === 'editing' || nowPage === 'creating') && <AiOutlineEdit />}
+      {nowPage === 'signup' && <AiOutlineLogin />}
     </Styles>
   );
 }

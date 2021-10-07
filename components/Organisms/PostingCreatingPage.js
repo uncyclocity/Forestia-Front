@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { BtnFreePhotoSwitch } from '../Atoms/Button/BtnFreePhotoSwitch';
-import { BtnPosting } from '../Atoms/Button/BtnPosting';
+import BtnPosting from '../Atoms/Button/BtnPosting';
 import { useDispatch, useReducerState } from '../../src/context';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import IptTitle from '../Atoms/Input/IptTitle';

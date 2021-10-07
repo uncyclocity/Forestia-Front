@@ -167,3 +167,32 @@ export const getPosting = {
     return res.data;
   },
 };
+
+export const getUser = {
+  doGetUserById: async (id) => {
+    const res = await instance.get(`/api/get_users/getUserById?id=${id}`);
+    return res.data;
+  },
+  doGetUserByNickName: async (nickName) => {
+    const res = await instance.get(
+      `/api/get_users/getUserByNickName?nickName=${nickName}`,
+    );
+    return res.data;
+  },
+};
+
+export const postUser = {
+  doPostUser: async (id, email, nickName) => {
+    await instance({
+      method: 'POST',
+      url: '/api/post_users/postUser',
+      data: {
+        id,
+        email,
+        nickName,
+      },
+    }).then(async () => {
+      Router.push('/home');
+    });
+  },
+};

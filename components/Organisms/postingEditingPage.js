@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { BtnPosting } from '../Atoms/Button/BtnPosting';
+import BtnPosting from '../Atoms/Button/BtnPosting';
 import IptContent from '../Atoms/Input/IptContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import LblFreePhoto from '../Atoms/Label/LblFreePhoto';

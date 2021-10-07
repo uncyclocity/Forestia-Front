@@ -21,6 +21,7 @@ export default function TxtBoardTitle({ nowPage, title = null }) {
       {nowPage === 'creating' && '게시글 작성'}
       {nowPage === 'deleting' && '삭제 중'}
       {nowPage === 'editing' && '게시글 수정'}
+      {nowPage === 'signup' && '회원가입'}
     </Styles>
   );
 }

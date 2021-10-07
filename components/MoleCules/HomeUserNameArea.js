@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../src/context';
-import { BtnLogInOut } from '../Atoms/Button/BtnLogInOut';
+import BtnLogInOut from '../Atoms/Button/BtnLogInOut';
 import TxtProfileName from '../Atoms/Text/TxtProfileName';
 
 const Styles = styled.div`
@@ -10,6 +10,9 @@ const Styles = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  div:last-child {
+    margin-top: 15px;
+  }
 `;
 
 export default function HomeUserNameArea() {
