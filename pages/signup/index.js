@@ -22,7 +22,6 @@ export default function SignUp() {
 
   const [nickName, setNickName] = useState('');
   const [isOverLap, setIsOverLap] = useState(false);
-  const [isPassed, setIsPassed] = useState(false);
 
   const signUpProcess = async () => {
     if (nickName) {
@@ -30,8 +29,10 @@ export default function SignUp() {
       if (isNickOverlapVal) {
         setIsOverLap(true);
       } else {
+        alert(
+          '회원 가입이 완료되었습니다.\n해당 구글 계정으로 재로그인 후 사용가능합니다.',
+        );
         setIsOverLap(false);
-        setIsPassed(true);
         postUser.doPostUser(id, email, nickName);
         Router.push('/home');
       }
@@ -46,11 +47,9 @@ export default function SignUp() {
       nowPage: 'signup',
     });
     return () => {
-      if (!isPassed) {
-        dispatch({ type: 'logout' });
-      }
+      dispatch({ type: 'logout' });
     };
-  }, [dispatch, isPassed]);
+  }, [dispatch]);
 
   return (
     <>
