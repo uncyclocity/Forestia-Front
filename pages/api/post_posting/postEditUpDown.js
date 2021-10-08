@@ -2,28 +2,28 @@ import connectDB from '../../../middleware/mongodb';
 import Free from '../../../models/Free';
 import Photo from '../../../models/Photo';
 
-const addition = (post, userEmail, ud_type) => {
+const addition = (post, userId, ud_type) => {
   post[ud_type].amount = parseInt(post[ud_type].amount) + 1;
-  post[ud_type].clicker.push(userEmail);
+  post[ud_type].clicker.push(userId);
 };
 
-const substract = (post, userEmail, ud_type) => {
+const substract = (post, userId, ud_type) => {
   post[ud_type].amount = parseInt(post[ud_type].amount) - 1;
   post[ud_type].clicker = post[ud_type].clicker.filter(
-    (clickUser) => clickUser !== userEmail,
+    (clickUser) => clickUser !== userId,
   );
 };
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { board_type, post_id, ud_type, operation, userEmail, rev_ud_type } =
+    const { board_type, post_id, ud_type, operation, userId, rev_ud_type } =
       req.body;
     if (
       board_type &&
       parseInt(post_id) >= 0 &&
       ud_type &&
       operation &&
-      userEmail
+      userId
     ) {
       try {
         if (board_type === 'free') {
@@ -32,12 +32,12 @@ const handler = async (req, res) => {
           var post = await Photo.findOne({ id: post_id });
         }
         if (operation === 'add') {
-          addition(post, userEmail, ud_type);
+          addition(post, userId, ud_type);
         } else if (operation === 'sub') {
-          substract(post, userEmail, ud_type);
+          substract(post, userId, ud_type);
         } else if (operation === 'addsub') {
-          substract(post, userEmail, rev_ud_type);
-          addition(post, userEmail, ud_type);
+          substract(post, userId, rev_ud_type);
+          addition(post, userId, ud_type);
         }
         var postupdated = await post.save();
         return res.status(200).send(postupdated);

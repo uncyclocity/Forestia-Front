@@ -34,8 +34,8 @@ const RightBtnStyle = styled.div`
 export default function BoardTitleEles({ backURL, children }) {
   const state = useReducerState();
   const isPostPage = state.isPostPage;
-  const userEmail = state.user.userEmail;
-  const { authorEmail: nowPostingAuthorEmail } = state.nowPostingEleObj;
+  const userId = state.user.userId;
+  const { authorId: nowPostingAuthorId } = state.nowPostingEleObj;
   const [isOpenMore, setIsOpenMore] = useState(false);
   const [isOpenMoreAnimation, setisOpenMoreAnimation] = useState(false);
 
@@ -46,7 +46,7 @@ export default function BoardTitleEles({ backURL, children }) {
       </LeftBtnStyle>
       <BoardTitleBoardInfo>{children}</BoardTitleBoardInfo>
       <RightBtnStyle isOpenMoreAnimation={isOpenMoreAnimation}>
-        {isPostPage && userEmail === nowPostingAuthorEmail && (
+        {isPostPage && userId === nowPostingAuthorId && (
           <div
             className="more_icon"
             onClick={() => {

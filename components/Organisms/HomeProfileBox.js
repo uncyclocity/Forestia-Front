@@ -13,13 +13,13 @@ const BoxStyle = styled.div`
 `;
 
 export default function HomeProfileBox() {
-  const userEmail = useReducerState().user.userEmail;
+  const userId = useReducerState().user.userId;
 
   return (
     <CtnBox>
       <BoxStyle>
         <LblProfilePhoto />
-        {userEmail ? <HomeUserNameArea /> : <HomeLoginArea />}
+        {userId ? <HomeUserNameArea /> : <HomeLoginArea />}
       </BoxStyle>
     </CtnBox>
   );

@@ -8,7 +8,7 @@ const photo = new Schema({
 
   author: String,
 
-  authorEmail: String,
+  authorId: String,
 
   date: {
     type: String,
@@ -33,7 +33,7 @@ const photo = new Schema({
     {
       id: String,
       author: String,
-      authorEmail: String,
+      authorId: String,
       date: {
         type: String,
         default: Date.now,

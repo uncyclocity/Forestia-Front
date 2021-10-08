@@ -9,7 +9,7 @@ const handler = async (req, res) => {
       board_type,
       id,
       author,
-      authorEmail,
+      authorId,
       date,
       title,
       content,
@@ -19,7 +19,7 @@ const handler = async (req, res) => {
     if (
       id >= 0 &&
       author &&
-      authorEmail &&
+      authorId &&
       date &&
       title &&
       content &&
@@ -31,7 +31,7 @@ const handler = async (req, res) => {
           _id: new mongoose.Types.ObjectId(),
           id,
           author,
-          authorEmail,
+          authorId,
           date,
           title,
           content,

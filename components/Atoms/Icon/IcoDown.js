@@ -12,11 +12,11 @@ const Styles = styled.div`
 `;
 
 export default function IcoDown({ clicker }) {
-  const userEmail = useReducerState().user.userEmail;
+  const userId = useReducerState().user.userId;
 
   return (
     <Styles>
-      {clicker.find((clickUser) => clickUser === userEmail) ? (
+      {clicker.find((clickUser) => clickUser === userId) ? (
         <AiFillDislike />
       ) : (
         <AiOutlineDislike />

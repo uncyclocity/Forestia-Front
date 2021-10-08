@@ -25,6 +25,8 @@ export default function HomeLoginArea() {
 
     const user = await getUser.doGetUserById(id);
 
+    console.log(user);
+
     if (!user) {
       dispatch({ type: 'login', userName: '', userEmail: email, userId: id });
       Router.push('/signup');
@@ -33,7 +35,7 @@ export default function HomeLoginArea() {
         type: 'login',
         userName: user.nickname,
         userEmail: user.email,
-        userid: user.id,
+        userId: user.id,
       });
     }
   };
