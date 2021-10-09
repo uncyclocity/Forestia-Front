@@ -51,6 +51,7 @@ export default function HomeLoginArea() {
         responseType={'id_token'}
         onSuccess={onSuccess}
         onFailure={onFailure}
+        cookiePolicy={'single_host_origin'}
       />
     </Styles>
   );
