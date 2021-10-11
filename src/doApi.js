@@ -182,7 +182,7 @@ export const getUser = {
 };
 
 export const postUser = {
-  doPostUser: async (id, email, nickName) => {
+  doPostUser: async (id, email, nickName, token) => {
     await instance({
       method: 'POST',
       url: '/api/post_users/postUser',
@@ -190,6 +190,7 @@ export const postUser = {
         id,
         email,
         nickName,
+        token,
       },
     }).then(async () => {
       Router.push('/home');

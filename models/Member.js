@@ -9,6 +9,8 @@ const member = new Schema({
   email: String,
 
   nickname: String,
+
+  token: String,
 });
 
 module.exports = mongoose.models.Member || mongoose.model('Member', member);

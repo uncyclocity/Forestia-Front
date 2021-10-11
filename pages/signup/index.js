@@ -4,6 +4,8 @@ import Head from 'next/head';
 import SignUpTemplate from '../../components/Templates/SignUpTemplate';
 import { getUser, postUser } from '../../src/doApi';
 import Router from 'next/router';
+import jwt from 'jsonwebtoken';
+import instance from '../../src/instance';
 
 const isNickNameOverlap = async (nickName) => {
   const user = await getUser.doGetUserByNickName(nickName);
@@ -29,11 +31,18 @@ export default function SignUp() {
       if (isNickOverlapVal) {
         setIsOverLap(true);
       } else {
+        const token = jwt.sign(
+          {
+            id,
+            email,
+          },
+          process.env.NEXT_PUBLIC_JWT_SECRET,
+        );
+        postUser.doPostUser(id, email, nickName, token);
         alert(
           '회원 가입이 완료되었습니다.\n해당 구글 계정으로 재로그인 후 사용가능합니다.',
         );
         setIsOverLap(false);
-        postUser.doPostUser(id, email, nickName);
         Router.push('/home');
       }
     } else {

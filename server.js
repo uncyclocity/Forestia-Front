@@ -7,6 +7,7 @@ const handle = app.getRequestHandler();
 
 const imageCrRouter = require('./pages/api/post_posting/postCreateImage');
 const imageDelRouter = require('./pages/api/post_posting/postDeleteImage');
+const auth = require('./pages/api/post_auth/auth');
 
 app
   .prepare()
@@ -20,6 +21,8 @@ app
     server.use('/api/post_posting/postDeleteImage', imageDelRouter);
 
     server.use('/uploads', express.static('public/uploads'));
+
+    server.use('/post_auth/auth', auth);
 
     server.get('*', (req, res) => {
       return handle(req, res);

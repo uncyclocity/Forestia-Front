@@ -1,20 +1,13 @@
 import connectDB from '../../../middleware/mongodb';
 import Member from '../../../models/Member';
-import mongoose from 'mongoose';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { id, email, nickName, token } = req.body;
-    if (id && email && nickName) {
+    const { id, token } = req.body;
+    if (id && token) {
       try {
-        var user_obj = {
-          _id: new mongoose.Types.ObjectId(),
-          id,
-          email,
-          nickname: nickName,
-          token,
-        };
-        var user = new Member(user_obj);
+        var user = await Member.findOne({ id });
+        user.token = token;
         var usercreated = await user.save();
         return res.status(200).send(usercreated);
       } catch (error) {
