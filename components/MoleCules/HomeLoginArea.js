@@ -37,9 +37,11 @@ export default function HomeLoginArea() {
         },
         process.env.NEXT_PUBLIC_JWT_SECRET,
       );
+
       postUser.doPostUserToken(id, token);
+
       localStorage.setItem('token', token);
-      localStorage.setItem('id', user.id);
+
       dispatch({
         type: 'login',
         userName: user.nickname,
@@ -60,7 +62,6 @@ export default function HomeLoginArea() {
         responseType={'id_token'}
         onSuccess={onSuccess}
         onFailure={onFailure}
-        cookiePolicy={'single_host_origin'}
       />
     </Styles>
   );

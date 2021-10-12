@@ -4,7 +4,7 @@
 
 > ⚒ 작업 중 ⚒
 
-<center><img src="./readme_src/logo.png" width="500px"></img></center>
+<img src="./readme_src/logo.png" width="500px"></img>
 
 ## 📃 개요
 
@@ -17,13 +17,13 @@
 - Front-End
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black"/> <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white"/> <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
 - Back-End
-  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"/> <img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white"/> <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"/> <img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white"/> <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"/> <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white"/>
 
 ## 📜 간략한 프로젝트 설명
 
 - 간단한 게시판 사이트입니다. 게시글 및 댓글의 작성/수정/삭제가 가능합니다.
 - 본 레포에는 Client단과 Server단이 통합되어 있습니다.
-- 로그인의 경우 현재 Google OAuth2 및 JWT 토큰을 이용하여 **구현중**에 있습니다.
+- 로그인의 경우 **Google OAuth2** 및 **JWT**를 통해 이루어집니다.
 - 게시판은 **자게/짤게** 두 분류로 나뉘어져 있으며, 짤게의 경우 **이미지 업로드가 필수**입니다.
 - DB의 경우 **MongoDB Atlas**를 이용하였으며, **Axios**를 통한 API 통신이 이루어집니다.
 - Express 연동을 통해 서버단에 저장되는 이미지의 로딩 및 삭제가 이루어집니다.
