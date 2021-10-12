@@ -5,7 +5,6 @@ import SignUpTemplate from '../../components/Templates/SignUpTemplate';
 import { getUser, postUser } from '../../src/doApi';
 import Router from 'next/router';
 import jwt from 'jsonwebtoken';
-import instance from '../../src/instance';
 
 const isNickNameOverlap = async (nickName) => {
   const user = await getUser.doGetUserByNickName(nickName);

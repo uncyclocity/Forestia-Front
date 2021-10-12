@@ -196,4 +196,14 @@ export const postUser = {
       Router.push('/home');
     });
   },
+  doPostUserToken: async (id, token) => {
+    await instance({
+      method: 'POST',
+      url: '/api/post_users/postUserToken',
+      data: {
+        id,
+        token,
+      },
+    }).then(async () => {});
+  },
 };

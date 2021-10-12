@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { useDispatch } from '../../src/context';
 import GoogleLogin from 'react-google-login';
-import { getUser } from '../../src/doApi';
+import { getUser, postUser } from '../../src/doApi';
 import Router from 'next/router';
 import jwt from 'jsonwebtoken';
-import instance from '../../src/instance';
 
 const Styles = styled.div`
   width: 167.5px;
@@ -15,27 +14,6 @@ const Styles = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-
-const signinProcess = (payload) => {
-  const {
-    profileObj: { googleId: id, email },
-  } = payload;
-  const token = jwt.sign(
-    {
-      id,
-      email,
-    },
-    process.env.NEXT_PUBLIC_JWT_SECRET,
-  );
-  instance({
-    method: 'POST',
-    url: '/api/post_users/postUserToken',
-    data: {
-      id,
-      token,
-    },
-  });
-};
 
 export default function HomeLoginArea() {
   const dispatch = useDispatch();
@@ -48,13 +26,20 @@ export default function HomeLoginArea() {
 
     const user = await getUser.doGetUserById(id);
 
-    console.log(user);
-
     if (!user) {
       dispatch({ type: 'login', userName: '', userEmail: email, userId: id });
       Router.push('/signup');
     } else {
-      signinProcess(res);
+      const token = jwt.sign(
+        {
+          id,
+          email,
+        },
+        process.env.NEXT_PUBLIC_JWT_SECRET,
+      );
+      postUser.doPostUserToken(id, token);
+      localStorage.setItem('token', token);
+      localStorage.setItem('id', user.id);
       dispatch({
         type: 'login',
         userName: user.nickname,

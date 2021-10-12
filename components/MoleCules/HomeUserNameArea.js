@@ -24,9 +24,13 @@ export default function HomeUserNameArea() {
       <TxtProfileName userName={userName} />
       <BtnLogInOut
         text="로그아웃"
-        onClick={() =>
-          confirm('로그아웃하시겠습니까?') && dispatch({ type: 'logout' })
-        }
+        onClick={() => {
+          if (confirm('로그아웃하시겠습니까?')) {
+            dispatch({ type: 'logout' });
+            localStorage.removeItem('token');
+            localStorage.removeItem('id');
+          }
+        }}
       />
     </Styles>
   );
