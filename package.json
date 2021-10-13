@@ -6,6 +6,7 @@
     "dev": "node server.js",
     "build": "cross-env NODE_ENV=production next build",
     "start": "cross-env NODE_ENV=production node server.js",
+    "heroku-postbuild": "yarn run build",
     "lint": "next lint"
   },
   "dependencies": {
