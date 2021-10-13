@@ -31,9 +31,9 @@ app
       return handle(req, res);
     });
 
-    server.listen($PORT, (err) => {
+    server.listen(3000, (err) => {
       if (err) throw err;
-      console.log('$PORT번 포트에서 대기 중');
+      console.log('3000번 포트에서 대기 중');
     });
   })
   .catch((ex) => {
