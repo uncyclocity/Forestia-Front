@@ -13,8 +13,6 @@ app
   .then(() => {
     const server = express();
 
-    server.use(cors());
-
     server.use(express.json());
 
     server.use('/api/post_posting/postCreateImage', imageCrRouter);
