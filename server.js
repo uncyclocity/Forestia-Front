@@ -1,5 +1,6 @@
 const express = require('express');
 const next = require('next');
+const cors = require('cors');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -7,6 +8,8 @@ const handle = app.getRequestHandler();
 
 const imageCrRouter = require('./pages/api/post_posting/postCreateImage');
 const imageDelRouter = require('./pages/api/post_posting/postDeleteImage');
+
+app.use(cors());
 
 app
   .prepare()
