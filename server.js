@@ -9,12 +9,12 @@ const handle = app.getRequestHandler();
 const imageCrRouter = require('./pages/api/post_posting/postCreateImage');
 const imageDelRouter = require('./pages/api/post_posting/postDeleteImage');
 
-app.use(cors());
-
 app
   .prepare()
   .then(() => {
     const server = express();
+
+    server.use(cors());
 
     server.use(express.json());
 
@@ -32,9 +32,9 @@ app
       return handle(req, res);
     });
 
-    server.listen(9229, (err) => {
+    server.listen(3000, (err) => {
       if (err) throw err;
-      console.log('9229번 포트에서 대기 중');
+      console.log('3000번 포트에서 대기 중');
     });
   })
   .catch((ex) => {
