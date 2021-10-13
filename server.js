@@ -32,9 +32,9 @@ app
       return handle(req, res);
     });
 
-    server.listen(3000, (err) => {
+    server.listen(9229, (err) => {
       if (err) throw err;
-      console.log('3000번 포트에서 대기 중');
+      console.log('9229번 포트에서 대기 중');
     });
   })
   .catch((ex) => {
