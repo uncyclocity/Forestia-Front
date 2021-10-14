@@ -8,6 +8,8 @@ const handle = app.getRequestHandler();
 const imageCrRouter = require('./pages/api/post_posting/postCreateImage');
 const imageDelRouter = require('./pages/api/post_posting/postDeleteImage');
 
+console.log(__dirname);
+
 app
   .prepare()
   .then(() => {
