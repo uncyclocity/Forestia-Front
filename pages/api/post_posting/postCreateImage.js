@@ -24,6 +24,7 @@ fs.readdir('public/uploads', (error) => {
 
 router.post('/', upload, (req, res) => {
   const pathArr = [];
+  console.log(__dirname);
   for (var i = 0; i < req.files.length; i++) {
     pathArr.push(`/uploads/${req.query.board_type}/${req.files[i].filename}`);
   }
