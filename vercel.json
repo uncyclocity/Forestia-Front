@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "pages/api/post_posting/postCreateImage.js": {
+      "includeFiles": "_files/**"
+    },
+    "pages/api/post_posting/postDeleteImage.js": {
+      "includeFiles": "_files/**"
+    }
+  }
+}
