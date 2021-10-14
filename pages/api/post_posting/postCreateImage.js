@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, `/public/uploads/${req.query.board_type}`);
+    cb(null, `/var/task/public/uploads/${req.query.board_type}`);
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}_${file.originalname}`);
@@ -14,11 +14,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }).array('images');
 
-fs.readdir('/public/uploads', (error) => {
+fs.readdir('/var/task/public/uploads', (error) => {
   if (error) {
-    fs.mkdirSync('/public/uploads');
-    fs.mkdirSync('/public/uploads/free');
-    fs.mkdirSync('/public/uploads/photo');
+    fs.mkdirSync('/var/task/public/uploads');
+    fs.mkdirSync('/var/task/public/uploads/free');
+    fs.mkdirSync('/var/task/public/uploads/photo');
   }
 });
 
