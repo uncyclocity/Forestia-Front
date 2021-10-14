@@ -3,8 +3,6 @@ const router = express.Router();
 const multer = require('multer');
 const fs = require('fs');
 
-console.log(__dirname);
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, `public/uploads/${req.query.board_type}`);
@@ -18,6 +16,7 @@ const upload = multer({ storage }).array('images');
 
 fs.readdir('public/uploads', (error) => {
   if (error) {
+    fs.mkdirSync(__dirname);
     fs.mkdirSync('public/uploads');
     fs.mkdirSync('public/uploads/free');
     fs.mkdirSync('public/uploads/photo');
