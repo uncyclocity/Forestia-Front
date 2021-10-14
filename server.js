@@ -19,7 +19,7 @@ app
 
     server.use('/api/post_posting/postDeleteImage', imageDelRouter);
 
-    server.use('/uploads', express.static('/var/task/public/uploads'));
+    server.use('/uploads', express.static('/public/uploads'));
 
     server.get('*', (req, res) => {
       return handle(req, res);
@@ -29,9 +29,9 @@ app
       return handle(req, res);
     });
 
-    server.listen(process.env.$PORT, (err) => {
+    server.listen(3000, (err) => {
       if (err) throw err;
-      console.log(process.env.$PORT + '번 포트에서 대기 중');
+      console.log('3000번 포트에서 대기 중');
     });
   })
   .catch((ex) => {
