@@ -30,7 +30,7 @@ const ListStyle = styled.div`
     }
 `;
 
-const headerMenuArr = ['home', 'about', 'free', 'photo'];
+const headerMenuArr = ['index', 'about', 'free', 'photo'];
 
 const menuIconReturner = (headerMenu, isSelected) => {
   switch (headerMenu) {
@@ -67,7 +67,7 @@ export default function HeaderFourButtons() {
   const nowPage = useReducerState().nowPage;
 
   const HMUrlArr = [
-    '/home',
+    '/',
     '/about',
     '/board/board_list/free?page=1',
     '/board/board_list/photo?page=1',

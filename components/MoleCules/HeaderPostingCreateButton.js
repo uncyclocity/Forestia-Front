@@ -10,7 +10,7 @@ const Styles = styled.div`
 
 export default function HeaderPostingCreateButton() {
   const nowPage = useReducerState().nowPage;
-  const homeUrl = '/home';
+  const homeUrl = '/';
   const postingCreatingUrl = '/board/update_posting/postingCreating';
 
   return (

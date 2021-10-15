@@ -193,7 +193,7 @@ export const postUser = {
         token,
       },
     }).then(async () => {
-      Router.push('/home');
+      Router.push('/');
     });
   },
   doPostUserToken: async (id, token) => {

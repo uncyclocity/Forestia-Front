@@ -13,7 +13,7 @@ export default function PostingCreatingTemplate() {
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitleTemplate backURL="/home">
+        <BoardTitleTemplate backURL="/">
           <PostingCreatingBoardTitle />
         </BoardTitleTemplate>
         <PostingCreatingPage />

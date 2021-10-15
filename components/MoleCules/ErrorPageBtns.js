@@ -17,7 +17,7 @@ export default function ErrorPageBtns() {
   return (
     <Styles>
       <BtnErrorPageGreen text="뒤로" onClick={() => Router.back()} />
-      <BtnErrorPageWhite text="홈" onClick={() => Router.push('/home')} />
+      <BtnErrorPageWhite text="홈" onClick={() => Router.push('/')} />
     </Styles>
   );
 }

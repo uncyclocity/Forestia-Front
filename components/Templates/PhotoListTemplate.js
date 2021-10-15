@@ -19,7 +19,7 @@ export default function PhotoListTemplate({
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitleTemplate backURL="/home">
+        <BoardTitleTemplate backURL="/">
           <PhotoListBoardTitle />
         </BoardTitleTemplate>
         <PhotoListPostingList page={nowPageCnt} photoBoard={nowList} />

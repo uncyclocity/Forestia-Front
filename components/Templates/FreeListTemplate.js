@@ -19,7 +19,7 @@ export default function FreeListTemplate({
   return (
     <CtnBox>
       <BoxStyles>
-        <BoardTitleTemplate backURL="/home">
+        <BoardTitleTemplate backURL="/">
           <FreeListBoardTitle />
         </BoardTitleTemplate>
         <FreeListPostingList page={nowPageCnt} freeBoard={nowList} />

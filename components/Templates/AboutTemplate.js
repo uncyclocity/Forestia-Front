@@ -9,7 +9,7 @@ const Styles = styled.div`
 `;
 
 export default function AboutTemplate() {
-  const homeUrl = '/home';
+  const homeUrl = '/';
 
   return (
     <CtnBox>

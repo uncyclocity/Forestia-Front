@@ -11,7 +11,7 @@ const Styles = styled.div`
 `;
 
 export default function HeaderLogoArea() {
-  const homeUrl = '/home';
+  const homeUrl = '/';
 
   return (
     <Styles onClick={() => Router.push(homeUrl)}>

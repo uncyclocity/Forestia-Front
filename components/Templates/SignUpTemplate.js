@@ -15,7 +15,7 @@ export default function SignUpTemplate({
   isOverLap,
   email,
 }) {
-  const homeUrl = '/home';
+  const homeUrl = '/';
 
   return (
     <CtnBox>
