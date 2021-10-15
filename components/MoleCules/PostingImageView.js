@@ -9,7 +9,7 @@ export default function PostingImageView({ nowPostingEleObj }) {
         imagesUrl.map((imageUrl, index) => {
           return (
             <ImgView
-              imageUrl={'https://forestia.vercel.app' + imageUrl}
+              imageUrl={'https://forestia.herokuapp.com' + imageUrl}
               key={index}
             />
           );
