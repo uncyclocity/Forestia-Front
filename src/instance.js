@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://forestia.vercel.app',
   headers: {
     'Content-Type': 'application/json',
   },
