@@ -27,5 +27,6 @@ export default function Home({ freeBoard, photoBoard }) {
 Home.getInitialProps = async () => {
   const freeBoard = await getPosting.doGetTop3('free');
   const photoBoard = await getPosting.doGetTop3('photo');
+  console.log(freeBoard);
   return { freeBoard, photoBoard };
 };
