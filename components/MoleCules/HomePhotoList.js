@@ -41,7 +41,12 @@ export default function HomePhotoList({ photoBoard }) {
                   )
                 }
               >
-                <ImgThumbnail imageUrl={posting.imagesUrl[0]} />
+                <ImgThumbnail
+                  imageUrl={
+                    'https://forestiaishere.s3.ap-northeast-2.amazonaws.com/' +
+                    posting.imagesUrl[0]
+                  }
+                />
                 <div className="name_and_content">
                   <TxtPostingTitle title={posting.title} />
                   <div className="comment_amount">

@@ -51,7 +51,12 @@ const LayoutStyle = styled.div`
 export default function PhotoListPostingBtn({ posting, onClick }) {
   return (
     <LayoutStyle onClick={onClick}>
-      <ImgThumbnail imageUrl={posting.imagesUrl[0]} />
+      <ImgThumbnail
+        imageUrl={
+          'https://forestiaishere.s3.ap-northeast-2.amazonaws.com/' +
+          posting.imagesUrl[0]
+        }
+      />
       <NameAndCommentAreaStyle>
         <TxtPostingTitle title={posting.title} />
         <div className="posting_comment_amount">
