@@ -9,10 +9,7 @@ export default function PostingImageView({ nowPostingEleObj }) {
         imagesUrl.map((imageUrl, index) => {
           return (
             <ImgView
-              imageUrl={
-                'https://forestiaishere.s3.ap-northeast-2.amazonaws.com/' +
-                imageUrl
-              }
+              imageUrl={process.env.NEXT_PUBLIC_IMAGE_URL + imageUrl}
               key={index}
             />
           );

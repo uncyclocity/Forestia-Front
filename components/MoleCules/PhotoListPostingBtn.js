@@ -52,10 +52,7 @@ export default function PhotoListPostingBtn({ posting, onClick }) {
   return (
     <LayoutStyle onClick={onClick}>
       <ImgThumbnail
-        imageUrl={
-          'https://forestiaishere.s3.ap-northeast-2.amazonaws.com/' +
-          posting.imagesUrl[0]
-        }
+        imageUrl={process.env.NEXT_PUBLIC_IMAGE_URL + posting.imagesUrl[0]}
       />
       <NameAndCommentAreaStyle>
         <TxtPostingTitle title={posting.title} />
