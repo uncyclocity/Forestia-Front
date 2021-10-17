@@ -7,12 +7,7 @@ export default function PostingImageView({ nowPostingEleObj }) {
     <div className="imageview_area">
       {imagesUrl &&
         imagesUrl.map((imageUrl, index) => {
-          return (
-            <ImgView
-              imageUrl={'https://forestia.herokuapp.com' + imageUrl}
-              key={index}
-            />
-          );
+          return <ImgView imageUrl={imageUrl} key={index} />;
         })}
     </div>
   );
