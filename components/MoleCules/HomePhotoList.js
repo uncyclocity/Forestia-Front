@@ -28,6 +28,8 @@ const Styles = styled.div`
 `;
 
 export default function HomePhotoList({ photoBoard }) {
+  const { NEXT_PUBLIC_IMAGE_URL } = process.env;
+
   return (
     <Styles>
       <ul>
@@ -42,9 +44,7 @@ export default function HomePhotoList({ photoBoard }) {
                 }
               >
                 <ImgThumbnail
-                  imageUrl={
-                    process.env.NEXT_PUBLIC_IMAGE_URL + posting.imagesUrl[0]
-                  }
+                  imageUrl={NEXT_PUBLIC_IMAGE_URL + posting.imagesUrl[0]}
                 />
                 <div className="name_and_content">
                   <TxtPostingTitle title={posting.title} />

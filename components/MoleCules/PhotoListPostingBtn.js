@@ -49,11 +49,11 @@ const LayoutStyle = styled.div`
 `;
 
 export default function PhotoListPostingBtn({ posting, onClick }) {
+  const { NEXT_PUBLIC_IMAGE_URL } = process.env;
+
   return (
     <LayoutStyle onClick={onClick}>
-      <ImgThumbnail
-        imageUrl={process.env.NEXT_PUBLIC_IMAGE_URL + posting.imagesUrl[0]}
-      />
+      <ImgThumbnail imageUrl={NEXT_PUBLIC_IMAGE_URL + posting.imagesUrl[0]} />
       <NameAndCommentAreaStyle>
         <TxtPostingTitle title={posting.title} />
         <div className="posting_comment_amount">
