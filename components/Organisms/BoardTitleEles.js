@@ -35,7 +35,7 @@ export default function BoardTitleEles({ backURL, children }) {
   const state = useReducerState();
   const isPostPage = state.isPostPage;
   const userId = state.user.userId;
-  const { authorId: nowPostingAuthorId } = state.nowPostingEleObj;
+  const authorId = state.nowPostingEleObj.authorId;
   const [isOpenMore, setIsOpenMore] = useState(false);
   const [isOpenMoreAnimation, setisOpenMoreAnimation] = useState(false);
 
@@ -46,7 +46,7 @@ export default function BoardTitleEles({ backURL, children }) {
       </LeftBtnStyle>
       <BoardTitleBoardInfo>{children}</BoardTitleBoardInfo>
       <RightBtnStyle isOpenMoreAnimation={isOpenMoreAnimation}>
-        {isPostPage && userId === nowPostingAuthorId && (
+        {isPostPage && userId === authorId && (
           <div
             className="more_icon"
             onClick={() => {

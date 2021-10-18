@@ -1,4 +1,4 @@
-import { useDispatch } from '../../../src/context';
+import { useDispatch, useReducerState } from '../../../src/context';
 import { useEffect } from 'react';
 import { getPosting } from '../../../src/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
@@ -20,6 +20,7 @@ const postPageSwitchOff = (dispatch) => {
 
 export default function Post({ nowPostingEleObjRaw, board_type }) {
   const dispatch = useDispatch();
+  const nowPostingEleObj = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     dispatch({
@@ -31,7 +32,7 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
     return () => {
       postPageSwitchOff(dispatch);
     };
-  }, [board_type, dispatch, nowPostingEleObjRaw]);
+  }, [board_type, dispatch, nowPostingEleObjRaw, nowPostingEleObj]);
 
   return (
     <>

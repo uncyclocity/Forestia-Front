@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // 용도 : 포스팅 페이지에서 내용을 띄움
 
 const Styles = styled.div`
-  padding: 20px 0 30px 0;
+  padding: 20px 0 20px 0;
   color: #525252;
 `;
 
