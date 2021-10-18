@@ -116,7 +116,9 @@ export default function PostingCommentList({
         <TxtComment />
         <TxtCommentAmount amount={nowPostingEleObj.comments.length} />
       </CommAmountAreaStyle>
-      <LinCommentBetweenAmountAndList />
+      {nowPostingEleObj.comments.length > 0 && (
+        <LinCommentBetweenAmountAndList />
+      )}
       <ul>
         {nowPostingEleObj.comments.map((comment, index) => {
           return (
