@@ -11,6 +11,7 @@ import BtnCommentEditDel from '../Atoms/Button/BtnCommentEditDel';
 import TxtCommentContent from '../Atoms/Text/TxtCommentContent';
 import IptComment from '../Atoms/Input/IptComment';
 import Router from 'next/router';
+import LinCommentBetweenAmountAndList from '../Atoms/Line/LinCommentBetweenAmountAndList';
 
 const gotoCommDelPage = (nowPostingEleObj, comment_id) => {
   if (confirm('정말로 삭제하시겠습니까')) {
@@ -60,7 +61,6 @@ const CommAmountAreaStyle = styled.div`
   display: flex;
   flex-direction: row;
   padding-bottom: 10px;
-  border-bottom: 1px solid #e9ecef;
 `;
 
 const CommInfoAndBtnAreaStyle = styled.div`
@@ -116,6 +116,7 @@ export default function PostingCommentList({
         <TxtComment />
         <TxtCommentAmount amount={nowPostingEleObj.comments.length} />
       </CommAmountAreaStyle>
+      <LinCommentBetweenAmountAndList />
       <ul>
         {nowPostingEleObj.comments.map((comment, index) => {
           return (
