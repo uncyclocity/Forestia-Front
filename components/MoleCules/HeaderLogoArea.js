@@ -4,6 +4,9 @@ import Router from 'next/router';
 
 const Styles = styled.div`
   margin: 30px auto;
+  @media screen and (max-width: 700px) {
+    margin: 10px auto;
+  }
   display: flex;
   align-items: center;
   justify-content: center;
