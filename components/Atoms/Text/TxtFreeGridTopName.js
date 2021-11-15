@@ -7,6 +7,10 @@ import styled from 'styled-components';
 const Styles = styled.div`
   height: 30px;
   width: 428px;
+  @media screen and (max-width: 700px) {
+    height: 20px;
+    width: 120px;
+  }
   display: flex;
   justify-content: center;
   align-items: center;

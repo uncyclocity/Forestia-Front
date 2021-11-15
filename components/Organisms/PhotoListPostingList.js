@@ -10,6 +10,9 @@ const LayoutStyle = styled.div`
 
 const ListStyle = styled.div`
   width: 650px;
+  @media screen and (max-width: 700px) {
+    width: 300px;
+  }
 `;
 
 export default function PhotoListPostingList({ photoBoard }) {

@@ -6,10 +6,14 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   height: 30px;
+  width: 99px;
+  @media screen and (max-width: 700px) {
+    height: 20px;
+    width: 50px;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 99px;
   font-family: 'NanumSquareEB';
   color: #828c99;
 `;
