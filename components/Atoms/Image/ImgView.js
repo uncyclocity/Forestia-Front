@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import styled from 'styled-components';
 
 // ImgView
@@ -18,7 +19,7 @@ const Styles = styled.div`
 
 export default function ImgView({ imageUrl }) {
   return (
-    <Styles>
+    <Styles onClick={() => Router.push(imageUrl)}>
       <img src={imageUrl} alt={imageUrl} />
     </Styles>
   );
