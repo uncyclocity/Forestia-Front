@@ -10,9 +10,6 @@ const BoxStyle = styled.div`
   flex-direction: row;
   width: 335px;
   height: 165px;
-  @media screen and (max-width: 700px) {
-    height: 100px;
-  }
 `;
 
 export default function HomeProfileBox() {

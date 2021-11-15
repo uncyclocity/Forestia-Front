@@ -14,11 +14,9 @@ const Styles = styled.div`
   color: white;
   background: #20c997;
   border-radius: 25px 0 0 25px;
-  font-size: 70px;
+  font-size: 60px;
 
   @media screen and (max-width: 700px) {
-    height: 100px;
-    font-size: 60px;
     border-radius: 20px 0 0 20px;
   }
 `;
