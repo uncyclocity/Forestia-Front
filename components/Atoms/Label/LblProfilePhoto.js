@@ -9,7 +9,7 @@ const Styles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 167.5px;
+  width: 100%;
   height: 165px;
   color: white;
   background: #20c997;
@@ -17,7 +17,7 @@ const Styles = styled.div`
   font-size: 60px;
 
   @media screen and (max-width: 700px) {
-    border-radius: 20px 0 0 20px;
+    border-radius: 0;
   }
 `;
 

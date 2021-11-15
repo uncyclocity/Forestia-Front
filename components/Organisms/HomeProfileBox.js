@@ -8,7 +8,7 @@ import HomeUserNameArea from '../MoleCules/HomeUserNameArea';
 const BoxStyle = styled.div`
   display: flex;
   flex-direction: row;
-  width: 335px;
+  width: 100%;
   height: 165px;
 `;
 

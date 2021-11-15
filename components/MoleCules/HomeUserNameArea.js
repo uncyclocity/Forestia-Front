@@ -4,7 +4,7 @@ import BtnLogInOut from '../Atoms/Button/BtnLogInOut';
 import TxtProfileName from '../Atoms/Text/TxtProfileName';
 
 const Styles = styled.div`
-  width: 167.5px;
+  width: 100%;
   height: 165px;
   display: flex;
   align-items: center;

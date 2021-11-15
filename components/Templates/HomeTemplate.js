@@ -20,7 +20,7 @@ const BoxLayoutStyle = styled.div`
 
     @media screen and (max-width: 700px) {
       flex-direction: column;
-      width: 335px;
+      width: 100%;
     }
   }
 `;

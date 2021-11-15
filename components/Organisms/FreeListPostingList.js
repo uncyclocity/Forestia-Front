@@ -9,7 +9,7 @@ const ListStyle = styled.div`
   table {
     width: 640px;
     @media screen and (max-width: 700px) {
-      width: 279px;
+      width: 315px;
     }
     .top_list_line {
       border-top: 1px solid #20c997;
@@ -19,7 +19,7 @@ const ListStyle = styled.div`
     }
     @media screen and (max-width: 700px) {
       td {
-        max-width: 120px;
+        max-width: 149px;
       }
     }
   }

@@ -38,7 +38,6 @@ export default function HomePhotoList({ photoBoard }) {
   const [postingArr, setPostingArr] = useState(photoBoard);
 
   const slicePostingArr = () => {
-    console.log('안녕');
     if (window.innerWidth < 700) {
       setPostingArr(photoBoard.slice(0, 2));
     } else {

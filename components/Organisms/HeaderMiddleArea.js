@@ -15,7 +15,7 @@ const Styles = styled.div`
 
   @media screen and (max-width: 700px) {
     padding: 15px 20px 10px 20px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 0;
     height: 90px;
   }
 `;

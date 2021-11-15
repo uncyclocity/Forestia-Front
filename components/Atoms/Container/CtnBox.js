@@ -15,8 +15,8 @@ const BoxStyles = styled.div`
   box-shadow: 0px 5px 5px #dedede;
 
   @media screen and (max-width: 700px) {
-    width: 335px;
-    border-radius: 20px;
+    width: 100%;
+    border-radius: 0px;
   }
 `;
 
