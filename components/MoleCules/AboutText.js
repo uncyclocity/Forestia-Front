@@ -4,6 +4,11 @@ import TxtLineAboutDescription from '../Atoms/Text/TxtLineAboutDescription';
 const Styles = styled.div`
   border-left: 1px solid #e9ecef;
   padding-left: 40px;
+  @media screen and (max-width: 700px) {
+    border-left: 0px;
+    padding-left: 0px;
+    font-size: 15px;
+  }
 `;
 
 export default function AboutText() {

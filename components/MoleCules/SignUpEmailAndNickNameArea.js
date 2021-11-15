@@ -10,6 +10,9 @@ const LayoutStyle = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: 30px;
+  @media screen and (max-width: 700px) {
+    margin: 30px 0;
+  }
   width: 100%;
 `;
 

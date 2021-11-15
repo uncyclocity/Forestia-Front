@@ -6,6 +6,9 @@ const Styles = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export default function SignUpPage({

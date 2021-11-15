@@ -11,6 +11,9 @@ const Styles = styled.div`
   div:last-child {
     margin-top: 20px;
   }
+  @media screen and (max-width: 700px) {
+    margin: 30px 0;
+  }
 `;
 
 export default function SignUpMessage() {

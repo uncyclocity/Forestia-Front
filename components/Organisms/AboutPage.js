@@ -8,6 +8,9 @@ const Styles = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export default function AboutPage() {
