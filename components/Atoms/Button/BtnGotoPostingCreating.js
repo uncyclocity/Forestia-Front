@@ -23,6 +23,17 @@ const Styles = styled.div`
     font-size: 16px;
     font-family: 'NanumSquareR';
   }
+
+  @media screen and (max-width: 700px) {
+    .posting_icon {
+      font-size: 25px;
+    }
+
+    .posting_text {
+      font-size: 13px;
+      font-family: 'NanumSquareR';
+    }
+  }
 `;
 
 export default function BtnGotoPostingCreating({ btnText, children }) {

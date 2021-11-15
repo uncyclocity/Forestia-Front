@@ -12,6 +12,12 @@ const Styles = styled.div`
   padding: 30px 20px 20px 20px;
   background: #20c997;
   border-radius: 25px 25px 0 0;
+
+  @media screen and (max-width: 700px) {
+    padding: 15px 20px 15px 20px;
+    border-radius: 20px 20px 0 0;
+    height: 90px;
+  }
 `;
 
 export default function HeaderMiddleArea() {

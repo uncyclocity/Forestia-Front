@@ -13,7 +13,7 @@ const Styles = styled.div`
   color: white;
 
   @media screen and (max-width: 700px) {
-    font-size: 22px;
+    font-size: 20px;
   }
 `;
 

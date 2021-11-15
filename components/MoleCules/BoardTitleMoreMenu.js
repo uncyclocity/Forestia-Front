@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { useDispatch, useReducerState } from '../../src/context';
+import { useReducerState } from '../../src/context';
 import { slideLeft, slideRight } from '../../styles/keyframes/slide';
 import BtnMore from '../Atoms/Button/BtnMore';
 import IcoMoreDeletePosting from '../Atoms/Icon/IcoMoreDeletePosting';

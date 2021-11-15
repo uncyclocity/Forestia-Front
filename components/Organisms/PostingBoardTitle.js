@@ -11,7 +11,7 @@ const AuthorAndDateStyle = styled.div`
   margin-top: 10px;
 
   @media screen and (max-width: 700px) {
-    font-size: 15px;
+    font-size: 14px;
   }
 `;
 

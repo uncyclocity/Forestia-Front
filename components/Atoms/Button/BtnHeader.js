@@ -18,6 +18,19 @@ const Styles = styled.div`
     font-size: 13px;
   }
 
+  @media screen and (max-width: 700px) {
+    .menu_icon {
+      font-size: 25px;
+      margin-bottom: 0.5px;
+    }
+
+    .menu_name {
+      display: flex;
+      justify-content: center;
+      font-size: 11px;
+    }
+  }
+
   ${(props) =>
     props.isSelected
       ? css`

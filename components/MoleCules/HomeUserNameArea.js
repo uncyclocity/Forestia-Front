@@ -13,6 +13,13 @@ const Styles = styled.div`
   div:last-child {
     margin-top: 15px;
   }
+
+  @media screen and (max-width: 700px) {
+    height: 100px;
+    div:last-child {
+      margin-top: 10px;
+    }
+  }
 `;
 
 export default function HomeUserNameArea() {

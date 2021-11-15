@@ -11,6 +11,9 @@ const Styles = styled.div`
   height: 30px;
   font-size: 30px;
   color: #20c997;
+  @media screen and (max-width: 700px) {
+    font-size: 25px;
+  }
 `;
 
 export default function BtnPostingBack({ onClick }) {

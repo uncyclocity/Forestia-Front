@@ -7,7 +7,11 @@ import styled from 'styled-components';
 const Styles = styled.div`
   color: #20c997;
   font-size: 20px;
+  @media screen and (max-width: 700px) {
+    font-size: 18px;
+  }
   font-family: 'NanumSquareEB';
+  text-align: center;
 `;
 
 export default function TxtBoardTitle({ nowPage, title = null }) {

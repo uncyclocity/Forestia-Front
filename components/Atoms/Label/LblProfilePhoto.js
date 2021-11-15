@@ -15,6 +15,12 @@ const Styles = styled.div`
   background: #20c997;
   border-radius: 25px 0 0 25px;
   font-size: 70px;
+
+  @media screen and (max-width: 700px) {
+    height: 100px;
+    font-size: 60px;
+    border-radius: 20px 0 0 20px;
+  }
 `;
 
 export default function LblProfilePhoto() {

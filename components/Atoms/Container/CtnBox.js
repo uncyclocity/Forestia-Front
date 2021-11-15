@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const BoxStyles = styled.div`
   width: 700px;
 
-  margin: 15px auto;
+  margin: 10px auto;
 
   background: white;
   border-radius: 25px;
@@ -16,6 +16,7 @@ const BoxStyles = styled.div`
 
   @media screen and (max-width: 700px) {
     width: 335px;
+    border-radius: 20px;
   }
 `;
 

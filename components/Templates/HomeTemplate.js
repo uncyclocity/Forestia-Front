@@ -10,7 +10,7 @@ const BoxLayoutStyle = styled.div`
   flex-direction: column;
 
   .margin_space {
-    width: 30px;
+    width: 25px;
   }
 
   .maxwidth {
