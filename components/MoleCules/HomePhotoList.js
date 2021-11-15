@@ -38,6 +38,7 @@ export default function HomePhotoList({ photoBoard }) {
   const [postingArr, setPostingArr] = useState(photoBoard);
 
   const slicePostingArr = () => {
+    console.log('안녕');
     if (window.innerWidth < 700) {
       setPostingArr(photoBoard.slice(0, 2));
     } else {
@@ -46,6 +47,7 @@ export default function HomePhotoList({ photoBoard }) {
   };
 
   useEffect(() => {
+    window.addEventListener('load', slicePostingArr);
     window.addEventListener('resize', slicePostingArr);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
