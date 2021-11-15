@@ -19,6 +19,10 @@ const Styles = styled.div`
       width: 300px;
       list-style-type: none;
 
+      @media screen and (max-width: 700px) {
+        width: 100%;
+      }
+
       &:not(:first-child) {
         margin-top: 10px;
       }

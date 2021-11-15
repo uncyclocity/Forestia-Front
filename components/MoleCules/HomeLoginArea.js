@@ -6,7 +6,7 @@ import Router from 'next/router';
 import jwt from 'jsonwebtoken';
 
 const Styles = styled.div`
-  width: 167.5px;
+  width: 96.4%;
   height: 165px;
   padding: 10px;
   display: flex;
