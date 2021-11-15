@@ -9,6 +9,10 @@ const Styles = styled.div`
     border-radius: 5px;
     border: 1px solid #e9ecef;
     max-width: 640px;
+
+    @media screen and (max-width: 700px) {
+      max-width: 275px;
+    }
   }
 `;
 

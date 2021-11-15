@@ -7,6 +7,11 @@ import styled from 'styled-components';
 const Styles = styled.div`
   textarea {
     width: 570px;
+
+    @media screen and (max-width: 700px) {
+      width: 200px;
+    }
+
     height: 50px;
 
     margin-right: 15px;

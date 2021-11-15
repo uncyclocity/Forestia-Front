@@ -9,8 +9,15 @@ const Styles = styled.div`
   justify-content: center;
   border: 1px solid #e9ecef;
   border-radius: 5px;
+
   width: 205px;
   height: 120px;
+
+  @media screen and (max-width: 700px) {
+    width: 132px;
+    height: 100px;
+  }
+
   overflow: hidden;
   background: #f4f4f4;
 

@@ -9,11 +9,12 @@ const Styles = styled.div`
   color: white;
   border-radius: 5px;
   display: flex;
+  width: 80px;
   height: 35px;
+  margin: 0 0 0 auto;
   align-items: center;
   justify-content: center;
   font-size: 30px;
-  margin-left: 87%;
   cursor: pointer;
   font-size: 18px;
   font-family: 'NanumSquareEB';

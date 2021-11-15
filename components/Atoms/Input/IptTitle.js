@@ -7,6 +7,11 @@ import styled from 'styled-components';
 const Styles = styled.div`
   input {
     width: 640px;
+
+    @media screen and (max-width: 700px) {
+      width: 275px;
+    }
+
     font-size: 25px;
     font-family: 'NanumSquareEB';
     color: #464646;

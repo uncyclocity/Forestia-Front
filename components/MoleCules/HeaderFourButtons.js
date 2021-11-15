@@ -26,6 +26,10 @@ const ListStyle = styled.div`
 
       &:not(:last-child) {
         padding-right: 80px;
+
+        @media screen and (max-width: 700px) {
+          padding-right: 50px;
+        }
       }
     }
 `;

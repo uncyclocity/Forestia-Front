@@ -11,7 +11,6 @@ const BoxStyle = styled.div`
   align-items: center;
   justify-content: center;
   color: #525252;
-  width: 700px;
 `;
 
 const ContentListLayoutStyle = styled.div`
@@ -24,45 +23,6 @@ const ContentListLayoutStyle = styled.div`
 
   ul {
     padding: 0px;
-    margin: 5px 20px;
-
-    li {
-      float: left;
-      list-style-type: none;
-
-      .photo_posting {
-        cursor: pointer;
-
-        .name_and_content {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          margin-top: 10px;
-          width: 100%;
-
-          .comment_amount {
-            display: flex;
-            flex-direction: row;
-            color: #20c997;
-            margin-left: auto;
-          }
-        }
-      }
-
-      &:not(:first-child) {
-        margin-left: 20px;
-      }
-
-      &:hover {
-        transition: 0.15s all ease-in;
-        color: #20c997;
-      }
-
-      &:not(:hover) {
-        transition: 0.15s all ease-in;
-        color: #828c99;
-      }
-    }
   }
 `;
 

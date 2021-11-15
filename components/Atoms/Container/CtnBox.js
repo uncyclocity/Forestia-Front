@@ -13,6 +13,10 @@ const BoxStyles = styled.div`
   border-radius: 25px;
 
   box-shadow: 0px 5px 5px #dedede;
+
+  @media screen and (max-width: 700px) {
+    width: 335px;
+  }
 `;
 
 export default function CtnBox({ children }) {

@@ -7,10 +7,14 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   width: 100%;
-  margin-left: 10px;
+  min-width: 245px;
   font-family: 'NanumSquareRoundEB';
   font-size: 25px;
   color: white;
+
+  @media screen and (max-width: 700px) {
+    font-size: 22px;
+  }
 `;
 
 export default function TxtCatchphrase() {

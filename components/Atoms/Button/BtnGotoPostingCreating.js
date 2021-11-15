@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // 용도 : 포스팅 작성 / 작성 취소 버튼에 쓰인다.
 
 const Styles = styled.div`
-  width: 120px;
+  width: 80px;
   height: 35px;
 
   display: flex;
