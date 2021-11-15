@@ -17,7 +17,7 @@ const ContentListLayoutStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 110%;
+  width: 100%;
   padding-bottom: 7px;
   height: 173px;
 
