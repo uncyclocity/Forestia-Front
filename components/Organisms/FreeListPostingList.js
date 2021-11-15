@@ -14,6 +14,14 @@ const ListStyle = styled.div`
     .top_list_line {
       border-top: 1px solid #20c997;
     }
+    td {
+      max-width: 428px;
+    }
+    @media screen and (max-width: 700px) {
+      td {
+        max-width: 120px;
+      }
+    }
   }
 `;
 
