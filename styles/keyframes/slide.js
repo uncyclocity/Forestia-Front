@@ -1,5 +1,16 @@
 import { keyframes } from 'styled-components';
 
+export const slideUpInit = keyframes`
+  from { 
+    transform: translateY(5px);
+    opacity: 0;
+   }
+  to { 
+    transform: translateY(0px);
+    opacity: 1;
+   }
+`;
+
 export const slideUp = keyframes`
   from { 
     transform: translateY(0px);

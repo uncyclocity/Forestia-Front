@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { slideUp } from '../styles/keyframes/slide';
+import { slideUpInit } from '../styles/keyframes/slide';
 
 const Styles = styled.div`
-  animation: 0.2s ${slideUp};
+  animation: 0.2s ${slideUpInit};
 `;
 
 export default function AppAnimation({ children }) {
