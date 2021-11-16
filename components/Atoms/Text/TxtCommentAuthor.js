@@ -8,6 +8,9 @@ const Styles = styled.div`
   margin-right: 10px;
   font-family: 'NanumSquareEB';
   font-size: 15px;
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 
 export default function TxtCommentAuthor({ author }) {

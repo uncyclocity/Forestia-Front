@@ -7,6 +7,10 @@ import styled from 'styled-components';
 const Styles = styled.div`
   padding: 20px 0 20px 0;
   color: #525252;
+
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 
 export default function TxtPostingContentView({ content }) {

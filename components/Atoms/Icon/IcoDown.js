@@ -9,6 +9,9 @@ import { useReducerState } from '../../../src/context';
 const Styles = styled.div`
   font-size: 30px;
   height: 30px;
+  @media screen and (max-width: 700px) {
+    font-size: 25px;
+  }
 `;
 
 export default function IcoDown({ clicker }) {

@@ -6,6 +6,9 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   font-size: 20px;
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 
 export default function TxtUpDownAmount({ amount }) {

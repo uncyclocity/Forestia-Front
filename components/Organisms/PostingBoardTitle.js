@@ -17,6 +17,8 @@ const AuthorAndDateStyle = styled.div`
 
 const DateStyle = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
   padding: 0 5px;
 `;

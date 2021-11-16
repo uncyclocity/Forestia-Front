@@ -6,9 +6,10 @@ import styled from 'styled-components';
 // 용도 : 포스팅 페이지에서 포스팅 날짜 옆의 아이콘
 
 const Styles = styled.div`
-  position: relative;
-  top: 1.5px;
+  display: flex;
+  align-items: center;
   color: #20c997;
+  height: 17px;
 `;
 
 export default function IcoPostingDate() {

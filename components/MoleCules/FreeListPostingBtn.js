@@ -31,7 +31,7 @@ export default function FreeListPostingBtn({ posting, onClick }) {
         <TxtPostingTitle title={posting.title} />
         {posting.imagesUrl.length > 0 && <IcoImagePosting />}
         {posting.comments.length > 0 && (
-          <TxtCommentAmount4List amount={posting.imagesUrl.length} />
+          <TxtCommentAmount4List amount={posting.comments.length} />
         )}
       </PostingTitleStyle>
       <td>

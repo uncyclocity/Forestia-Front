@@ -12,7 +12,7 @@ const Styles = styled.div`
     max-width: 640px;
 
     @media screen and (max-width: 700px) {
-      max-width: 275px;
+      max-width: 315px;
     }
   }
 `;

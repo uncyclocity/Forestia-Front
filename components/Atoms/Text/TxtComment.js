@@ -8,6 +8,9 @@ const Styles = styled.div`
   font-size: 17px;
   font-family: 'NanumSquareEB';
   color: #828c99;
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 `;
 
 export default function TxtComment() {

@@ -8,7 +8,7 @@ const Styles = styled.div`
   color: #20c997;
   font-size: 20px;
   @media screen and (max-width: 700px) {
-    font-size: 18px;
+    font-size: 17px;
   }
   font-family: 'NanumSquareEB';
   text-align: center;

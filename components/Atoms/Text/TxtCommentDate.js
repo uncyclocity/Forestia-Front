@@ -10,6 +10,9 @@ const Styles = styled.div`
   top: 1px;
   color: #828c99;
   font-size: 14px;
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+  }
 `;
 
 export default function TxtCommentDate({ date }) {

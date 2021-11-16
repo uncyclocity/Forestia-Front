@@ -9,6 +9,9 @@ const Styles = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-right: 7px;
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+  }
 `;
 
 export default function BtnCommentEditDel({ text }) {
