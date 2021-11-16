@@ -1,14 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import BtnImgUpload from '../Atoms/Button/BtnImgUpload';
 import ImgUploadedImagePreview from '../Atoms/Image/ImgUploadedImagePreview';
 import TxtImgUpload from '../Atoms/Text/TxtImgUpload';
 
 const Styles = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  height: 60px;
-  padding-bottom: 10px;
+  ${({ imagesUrlArrLen }) =>
+    imagesUrlArrLen > 0
+      ? css`
+          height: 115px;
+        `
+      : css`
+          height: 60px;
+        `}
   border-bottom: 1px solid #e9ecef;
   margin-bottom: 10px;
 
@@ -18,26 +24,33 @@ const Styles = styled.div`
   }
 
   .uploadedimg_list {
+    width: 300px;
     display: flex;
     overflow-x: scroll;
+    overflow-y: hidden;
     scrollbar-width: thin;
     border-radius: 3px;
+    margin: 10px 0;
   }
 `;
 
 export default function PostingCreatingImgUploadArea({ onChange, postingEle }) {
   return (
-    <Styles>
+    <Styles imagesUrlArrLen={postingEle.imagesUrlArr.length}>
       <div className="uploadimg_btn_area">
         <TxtImgUpload />
         <BtnImgUpload onChange={onChange} />
       </div>
-      <div className="uploadedimg_list">
-        {postingEle.imagesUrlArr.length > 0 &&
-          postingEle.imagesUrlArr.map((imageUrl, index) => {
-            return <ImgUploadedImagePreview key={index} imageUrl={imageUrl} />;
-          })}
-      </div>
+      {postingEle.imagesUrlArr.length > 0 && (
+        <div className="uploadedimg_list">
+          {postingEle.imagesUrlArr.length > 0 &&
+            postingEle.imagesUrlArr.map((imageUrl, index) => {
+              return (
+                <ImgUploadedImagePreview key={index} imageUrl={imageUrl} />
+              );
+            })}
+        </div>
+      )}
     </Styles>
   );
 }
