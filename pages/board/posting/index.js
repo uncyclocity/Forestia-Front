@@ -27,6 +27,15 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
       type: 'initiate',
       nowPage: board_type,
     });
+
+    setTimeout(
+      () =>
+        dispatch({
+          type: 'postcnt_switcher',
+          sw: false,
+        }),
+      1000,
+    );
     dispatch({ type: 'editpost_data', nowPostingEleObj: nowPostingEleObjRaw });
     postPageSwitchOn(dispatch);
     return () => {

@@ -23,7 +23,6 @@ const GaugeStyle = styled.div`
 `;
 
 export default function Progress(props) {
-  console.log(props.progress);
   if (props.active) {
     return (
       <BgStyle>

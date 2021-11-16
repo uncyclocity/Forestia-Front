@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { BtnFreePhotoSwitch } from '../Atoms/Button/BtnFreePhotoSwitch';
 import BtnPosting from '../Atoms/Button/BtnPosting';
+import BtnDisabledPosting from '../Atoms/Button/BtnDisabledPosting';
 import { useDispatch, useReducerState } from '../../src/context';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import IptTitle from '../Atoms/Input/IptTitle';
@@ -21,6 +22,7 @@ const letsDoUploadPosting = async (
     type: 'postcnt_switcher',
     sw: true,
   });
+
   const boardLen = await getPosting.doGetLength(selBoard);
 
   var id = '0';
@@ -38,10 +40,6 @@ const letsDoUploadPosting = async (
 
   const res = await postPosting.doPostCreateImage(formData, selBoard);
   await postPosting.doPostCreate(selBoard, id, title, content, res, userObj);
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: false,
-  });
 };
 
 const getImagesUrlArr = (files) => {
@@ -97,32 +95,36 @@ export default function PostingCreatingPage() {
           }}
           postingEle={postingEle}
         />
-        <BtnPosting
-          text="업로드"
-          onClick={() => {
-            if (!postCnt) {
-              if (postingEle.content && postingEle.title) {
-                if (
-                  selBoard === 'photo' &&
-                  postingEle.imagesUrlArr.length <= 0
-                ) {
-                  alert('짤게는 이미지 업로드가 필수입니다.');
+        {postCnt ? (
+          <BtnDisabledPosting text="로딩중.." />
+        ) : (
+          <BtnPosting
+            text="업로드"
+            onClick={() => {
+              if (!postCnt) {
+                if (postingEle.content && postingEle.title) {
+                  if (
+                    selBoard === 'photo' &&
+                    postingEle.imagesUrlArr.length <= 0
+                  ) {
+                    alert('짤게는 이미지 업로드가 필수입니다.');
+                  } else {
+                    letsDoUploadPosting(
+                      selBoard,
+                      postingEle.title,
+                      postingEle.content,
+                      files,
+                      dispatch,
+                      userObj,
+                    );
+                  }
                 } else {
-                  letsDoUploadPosting(
-                    selBoard,
-                    postingEle.title,
-                    postingEle.content,
-                    files,
-                    dispatch,
-                    userObj,
-                  );
+                  alert('제목 및 내용을 입력하세요');
                 }
-              } else {
-                alert('제목 및 내용을 입력하세요');
               }
-            }
-          }}
-        />
+            }}
+          />
+        )}
       </LayoutStyle>
     </>
   );
