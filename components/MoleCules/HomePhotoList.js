@@ -46,7 +46,7 @@ export default function HomePhotoList({ photoBoard }) {
   };
 
   useEffect(() => {
-    window.addEventListener('load', slicePostingArr);
+    slicePostingArr();
     window.addEventListener('resize', slicePostingArr);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
