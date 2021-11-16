@@ -9,7 +9,7 @@ const BgStyle = styled.div`
   background: #a3e7d8;
 `;
 
-const GageStyle = styled.div`
+const GaugeStyle = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -23,10 +23,11 @@ const GageStyle = styled.div`
 `;
 
 export default function Progress(props) {
+  console.log(props.progress);
   if (props.active) {
     return (
       <BgStyle>
-        <GageStyle progress={props.progress} />
+        <GaugeStyle progress={props.progress} />
       </BgStyle>
     );
   } else return <></>;

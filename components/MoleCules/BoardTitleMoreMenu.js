@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 import { useReducerState } from '../../src/context';
-import { slideLeft, slideRight } from '../../styles/keyframes/slide';
+import {
+  slideLeft,
+  slideRight,
+  slideDown,
+  slideUp,
+} from '../../styles/keyframes/slide';
 import BtnMore from '../Atoms/Button/BtnMore';
 import IcoMoreDeletePosting from '../Atoms/Icon/IcoMoreDeletePosting';
 import IcoMoreEditPosting from '../Atoms/Icon/IcoMoreEditPosting';
@@ -34,6 +39,21 @@ const Styles = styled.div`
           margin-bottom: 8px;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    top: 30px;
+    left: -20px;
+    .ctxmenu {
+      ${({ isOpenMoreAnimation }) =>
+        isOpenMoreAnimation
+          ? css`
+              animation: 0.25s ease 0s ${slideDown};
+            `
+          : css`
+              animation: 0.25s ease 0s ${slideUp};
+            `}
     }
   }
 `;
