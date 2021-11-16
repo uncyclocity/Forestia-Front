@@ -6,9 +6,6 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   color: #525252;
-  @media screen and (max-width: 700px) {
-    font-size: 14px;
-  }
 `;
 
 export default function TxtCommentContent({ content }) {

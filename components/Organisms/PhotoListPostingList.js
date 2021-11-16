@@ -9,6 +9,7 @@ const LayoutStyle = styled.div`
 `;
 
 const ListStyle = styled.div`
+  margin: 0 auto;
   width: 650px;
   @media screen and (max-width: 700px) {
     width: 300px;

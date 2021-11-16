@@ -7,7 +7,6 @@ const Styles = styled.div`
   @media screen and (max-width: 700px) {
     border-left: 0px;
     padding-left: 0px;
-    font-size: 15px;
   }
 `;
 

@@ -9,10 +9,6 @@ const AuthorAndDateStyle = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 10px;
-
-  @media screen and (max-width: 700px) {
-    font-size: 14px;
-  }
 `;
 
 const DateStyle = styled.div`

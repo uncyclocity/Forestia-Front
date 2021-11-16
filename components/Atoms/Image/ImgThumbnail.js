@@ -13,24 +13,27 @@ const Styles = styled.div`
   width: 205px;
   height: 120px;
 
-  @media screen and (max-width: 700px) {
-    width: 132px;
-    height: 100px;
+  img {
+    max-width: initial;
+    height: 120px;
   }
 
   overflow: hidden;
   background: #f4f4f4;
 
-  img {
-    max-width: initial;
-    height: 120px;
+  @media screen and (max-width: 700px) {
+    width: 140px;
+    height: 80px;
+    img {
+      height: 80px;
+    }
   }
 `;
 
 export default function ImgThumbnail({ imageUrl }) {
   return (
     <Styles>
-      <img src={imageUrl} alt={imageUrl} height="44" />
+      <img src={imageUrl} alt={imageUrl} />
     </Styles>
   );
 }

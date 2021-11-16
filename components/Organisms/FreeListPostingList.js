@@ -6,6 +6,7 @@ import FreeListPostingBtn from '../MoleCules/FreeListPostingBtn';
 import Router from 'next/router';
 
 const ListStyle = styled.div`
+  margin: 0 auto;
   table {
     width: 640px;
     @media screen and (max-width: 700px) {

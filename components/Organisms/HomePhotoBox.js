@@ -21,6 +21,10 @@ const ContentListLayoutStyle = styled.div`
   padding-bottom: 7px;
   height: 173px;
 
+  @media screen and (max-width: 700px) {
+    height: 120px;
+  }
+
   ul {
     padding: 0px;
   }

@@ -9,6 +9,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     overflow-y: scroll;
 
+    @media screen and (max-width: 700px) {
+      font-size: 14px;
+    }
+
     /* FireFox Scrollbar */
     scrollbar-width: thin;
     scrollbar-color: #20c997 transparent;
