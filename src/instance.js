@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const instance = axios.create({
-  baseURL: 'https://forestia.herokuapp.com',
+  baseURL: 'http://146.56.105.130:3050',
   headers: {
     'Content-Type': 'application/json',
   },
