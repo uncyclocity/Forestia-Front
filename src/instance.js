@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const instance = axios.create({
-  baseURL: 'http://uncyclocity.tech:3050',
+  baseURL: 'https://forestia-back.xyz',
   headers: {
     'Content-Type': 'application/json',
   },
