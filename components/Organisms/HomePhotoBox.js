@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getPosting } from '../../src/doApi';
+import { doPosting, getPosting } from '../../src/doApi';
 import CtnBox from '../Atoms/Container/CtnBox';
 import HomeBorderTitle from '../MoleCules/HomeBorderTitle';
 import HomePhotoList from '../MoleCules/HomePhotoList';
@@ -53,6 +53,6 @@ export default function HomePhotoBox({ photoBoard }) {
 }
 
 HomePhotoBox.getInitialProps = async () => {
-  const photoBoard = await getPosting.doGetTop3('photo');
+  const photoBoard = await doPosting.get.top3('photo');
   return { photoBoard };
 };

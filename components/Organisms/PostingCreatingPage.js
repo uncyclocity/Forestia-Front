@@ -8,7 +8,7 @@ import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import IptContent from '../Atoms/Input/IptContent';
 import PostingCreatingImgUploadArea from '../MoleCules/PostingCreatingImgUploadArea';
-import { getPosting, postPosting } from '../../src/doApi';
+import { doImage, doPosting } from '../../src/doApi';
 
 const letsDoUploadPosting = async (
   selBoard,
@@ -23,14 +23,14 @@ const letsDoUploadPosting = async (
     sw: true,
   });
 
-  const boardLen = await getPosting.doGetLength(selBoard);
+  const boardLen = await doPosting.get.length(selBoard);
 
   var id = '0';
 
   const formData = new FormData();
 
   if (boardLen > 0) {
-    const maxId = await getPosting.doGetLatestId(selBoard);
+    const maxId = await doPosting.get.latestId(selBoard);
     id = parseInt(maxId) + 1;
   }
 
@@ -38,8 +38,8 @@ const letsDoUploadPosting = async (
     formData.append('images', imagesArr[i]);
   }
 
-  const res = await postPosting.doPostCreateImage(formData, selBoard);
-  await postPosting.doPostCreate(selBoard, id, title, content, res, userObj);
+  const res = await doImage.post(formData, selBoard);
+  await doPosting.post(selBoard, id, title, content, res, userObj);
 };
 
 const getImagesUrlArr = (files) => {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../src/context';
-import { getPosting, postComm } from '../../src/doApi';
+import { doComment, doPosting } from '../../src/doApi';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import TxtComment from '../Atoms/Text/TxtComment';
 import TxtCommentAmount from '../Atoms/Text/TxtCommentAmount';
@@ -30,7 +30,7 @@ const UpdateNowPostingEleObj = async (
     type: 'postcnt_switcher',
     sw: true,
   });
-  const getPostingEle = await getPosting.doGetNowPostingEleObj(
+  const getPostingEle = await doPosting.get.ele(
     nowPostingEleObj.board_type,
     nowPostingEleObj.id,
   );
@@ -97,7 +97,7 @@ export default function PostingCommentList({
         type: 'postcnt_switcher',
         sw: true,
       });
-      await postComm.doPostEdit(nowPostingEleObj, editCommObj, setEditCommObj);
+      await doComment.put(nowPostingEleObj, editCommObj, setEditCommObj);
       await UpdateNowPostingEleObj(
         nowPostingEleObj,
         setNowPostingEleObj,

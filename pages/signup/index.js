@@ -2,12 +2,12 @@ import { useDispatch, useReducerState } from '../../src/context';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import SignUpTemplate from '../../components/Templates/SignUpTemplate';
-import { getUser, postUser } from '../../src/doApi';
+import { doUser } from '../../src/doApi';
 import Router from 'next/router';
 import jwt from 'jsonwebtoken';
 
 const isNickNameOverlap = async (nickName) => {
-  const user = await getUser.doGetUserByNickName(nickName);
+  const user = await doUser.get.byNickName(nickName);
   if (user == '') {
     return false;
   } else {
@@ -37,7 +37,7 @@ export default function SignUp() {
           },
           process.env.NEXT_PUBLIC_JWT_SECRET,
         );
-        postUser.doPostUser(id, email, nickName, token);
+        doUser.post(id, email, nickName, token);
         alert(
           '회원 가입이 완료되었습니다.\n해당 구글 계정으로 재로그인 후 사용가능합니다.',
         );

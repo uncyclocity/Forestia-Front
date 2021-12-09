@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/context';
-import { getPosting } from '../../../src/doApi';
+import { doPosting } from '../../../src/doApi';
 import FreeListTemplate from '../../../components/Templates/FreeListTemplate';
 import Head from 'next/head';
 
@@ -14,7 +14,7 @@ export default function Free({ freeBoard, page, freeLen }) {
       type: 'postcnt_switcher',
       sw: true,
     });
-    const freeBoard = await getPosting.doGetForList(nowPageCnt, 'free');
+    const freeBoard = await doPosting.get.list(nowPageCnt, 'free');
     setNowList(freeBoard);
     dispatch({
       type: 'postcnt_switcher',
@@ -50,7 +50,7 @@ export default function Free({ freeBoard, page, freeLen }) {
 
 Free.getInitialProps = async () => {
   const page = 1;
-  const freeBoard = await getPosting.doGetForList(page, 'free');
-  const freeLen = await getPosting.doGetLength('free');
+  const freeBoard = await doPosting.get.list(page, 'free');
+  const freeLen = await doPosting.get.length('free');
   return { freeBoard, page, freeLen };
 };

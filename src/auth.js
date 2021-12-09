@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from './context';
-import { getUser } from './doApi';
+import { doUser } from './doApi';
 import jwt from 'jsonwebtoken';
 
 const getStoredUser = (dispatch) => {
@@ -16,7 +16,7 @@ const getStoredUser = (dispatch) => {
             return;
           }
           const { id, email } = decoded;
-          const user = await getUser.doGetUserById(id);
+          const user = await doUser.get.byId(id);
           if (user !== '') {
             dispatch({
               type: 'login',

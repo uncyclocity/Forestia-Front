@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useDispatch } from '../../src/context';
 import GoogleLogin from 'react-google-login';
-import { getUser, postUser } from '../../src/doApi';
+import { doUser, doUserToken } from '../../src/doApi';
 import Router from 'next/router';
 import jwt from 'jsonwebtoken';
 
@@ -24,7 +24,7 @@ export default function HomeLoginArea() {
       profileObj: { googleId: id, email },
     } = res;
 
-    const user = await getUser.doGetUserById(id);
+    const user = await doUser.get.byId(id);
 
     if (!user) {
       dispatch({ type: 'login', userName: '', userEmail: email, userId: id });
@@ -38,7 +38,7 @@ export default function HomeLoginArea() {
         process.env.NEXT_PUBLIC_JWT_SECRET,
       );
 
-      postUser.doPostUserToken(id, token);
+      doUserToken.post(id, token);
 
       localStorage.setItem('token', token);
 

@@ -6,7 +6,7 @@ import IptTitle from '../Atoms/Input/IptTitle';
 import LblFreePhoto from '../Atoms/Label/LblFreePhoto';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import { useDispatch, useReducerState } from '../../src/context';
-import { postPosting } from '../../src/doApi';
+import { doPosting } from '../../src/doApi';
 
 const ContentInputStyle = styled.div`
   margin: 20px 0 15px 0;
@@ -40,7 +40,7 @@ export default function PostingEditingPage() {
                   type: 'postcnt_switcher',
                   sw: true,
                 });
-                await postPosting.doPostEdit(
+                await doPosting.put(
                   board_type,
                   id,
                   editEle.title,

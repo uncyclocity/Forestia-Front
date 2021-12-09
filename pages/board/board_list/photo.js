@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from '../../../src/context';
-import { getPosting } from '../../../src/doApi';
+import { doPosting } from '../../../src/doApi';
 import PhotoListTemplate from '../../../components/Templates/PhotoListTemplate';
 import Head from 'next/head';
 
@@ -14,7 +14,7 @@ export default function Photo({ photoBoard, page, photoLen }) {
       type: 'postcnt_switcher',
       sw: true,
     });
-    const photoBoard = await getPosting.doGetForList(nowPageCnt, 'photo');
+    const photoBoard = await doPosting.get.list(nowPageCnt, 'photo');
     setNowList(photoBoard);
     dispatch({
       type: 'postcnt_switcher',
@@ -50,7 +50,7 @@ export default function Photo({ photoBoard, page, photoLen }) {
 
 Photo.getInitialProps = async () => {
   const page = 1;
-  const photoBoard = await getPosting.doGetForList(page, 'photo');
-  const photoLen = await getPosting.doGetLength('photo');
+  const photoBoard = await doPosting.get.list(page, 'photo');
+  const photoLen = await doPosting.get.length('photo');
   return { photoBoard, page, photoLen };
 };

@@ -1,6 +1,6 @@
 import { useDispatch, useReducerState } from '../../../src/context';
 import { useEffect } from 'react';
-import { getPosting } from '../../../src/doApi';
+import { doPosting } from '../../../src/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
 import Head from 'next/head';
 
@@ -58,7 +58,7 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
 
 Post.getInitialProps = async (ctx) => {
   const { board_type, post_id } = ctx.query;
-  const getPostingEle = await getPosting.doGetNowPostingEleObj(
+  const getPostingEle = await doPosting.get.ele(
     board_type,
     post_id,
   );

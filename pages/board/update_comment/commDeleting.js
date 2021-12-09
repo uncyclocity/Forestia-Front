@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import { useDispatch } from '../../../src/context';
 import DeletingTemplate from '../../../components/Templates/DeletingTemplate';
-import { postComm } from '../../../src/doApi';
+import { doComment } from '../../../src/doApi';
 import Head from 'next/head';
 
 const letsDeleteComm = async (
@@ -14,7 +14,7 @@ const letsDeleteComm = async (
       type: 'postcnt_switcher',
       sw: true,
     });
-    await postComm.doPostDelete(board_type, post_id, comment_id);
+    await doComment.delete(board_type, post_id, comment_id);
     dispatch({
       type: 'postcnt_switcher',
       sw: false,

@@ -39,3 +39,5 @@ mongosh.exe
 
 # image storage
 /public/uploads/
+
+/styles/fonts

@@ -3,7 +3,7 @@ import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoUp from '../Atoms/Icon/IcoUp';
 import TxtUpDownAmount from '../Atoms/Text/TxtUpDownAmount';
 import { useDispatch, useReducerState } from '../../src/context';
-import { getPosting, postPosting } from '../../src/doApi';
+import { doPosting, doUpDown } from '../../src/doApi';
 
 const getDoUpdateUDdata = async (
   udType,
@@ -33,23 +33,23 @@ const getDoUpdateUDdata = async (
       ...defaultData,
       operation: 'sub',
     };
-    await postPosting.doPostEditUpDown(data);
+    await doUpDown.put(data);
   } else if (revUdClickerArr.find((clickUser) => clickUser === userId)) {
     const data = {
       ...defaultData,
       rev_ud_type: revUdType,
       operation: 'addsub',
     };
-    await postPosting.doPostEditUpDown(data);
+    await doUpDown.put(data);
   } else {
     const data = {
       ...defaultData,
       operation: 'add',
     };
-    await postPosting.doPostEditUpDown(data);
+    await doUpDown.put(data);
   }
 
-  const getPostingEle = await getPosting.doGetNowPostingEleObj(
+  const getPostingEle = await doPosting.get.ele(
     nowPostingEleObj.board_type,
     nowPostingEleObj.id,
   );

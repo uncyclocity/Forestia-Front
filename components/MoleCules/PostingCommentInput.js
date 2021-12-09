@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import IptComment from '../Atoms/Input/IptComment';
 import { useDispatch, useReducerState } from '../../src/context';
-import { getPosting, postComm } from '../../src/doApi';
+import { doComment, doPosting } from '../../src/doApi';
 
 const CommInputAreaStyle = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ const UpdateNowPostingEleObj = async (
     type: 'postcnt_switcher',
     sw: true,
   });
-  const getPostingEle = await getPosting.doGetNowPostingEleObj(
+  const getPostingEle = await doPosting.get.ele(
     nowPostingEleObj.board_type,
     nowPostingEleObj.id,
   );
@@ -76,7 +76,7 @@ export default function PostingCommentInput({
           type: 'postcnt_switcher',
           sw: true,
         });
-        await postComm.doPostCreate(nowPostingEleObj, comment, userObj);
+        await doComment.post(nowPostingEleObj, comment, userObj);
         await UpdateNowPostingEleObj(
           nowPostingEleObj,
           setNowPostingEleObj,
