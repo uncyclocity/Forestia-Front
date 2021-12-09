@@ -7,14 +7,14 @@ import Head from 'next/head';
 
 const letsDeleteComm = async (
   dispatch,
-  { board_type, post_id, comment_id },
+  { boardtype: boardType, postid: postId, commentid: commentId },
 ) => {
-  if (board_type || post_id || comment_id) {
+  if (boardType || postId || commentId) {
     dispatch({
       type: 'postcnt_switcher',
       sw: true,
     });
-    await doComment.delete(board_type, post_id, comment_id);
+    await doComment.delete(boardType, postId, commentId);
     dispatch({
       type: 'postcnt_switcher',
       sw: false,
@@ -27,7 +27,6 @@ const letsDeleteComm = async (
 export default function Delete() {
   const router = useRouter();
   const dispatch = useDispatch();
-  console.log(router);
   useEffect(() => {
     dispatch({
       type: 'initiate',

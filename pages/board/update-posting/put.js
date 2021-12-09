@@ -6,28 +6,28 @@ import Router from 'next/router';
 
 export default function Put() {
   const dispatch = useDispatch();
-  const { board_type, id } = useReducerState().nowPostingEleObj;
+  const { boardType, id } = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
       nowPage: 'put',
     });
-    if (!board_type || !id) {
+    if (!boardType || !id) {
       Router.push('/404');
     }
 
     return () => {
       dispatch({ type: 'editpost_data', nowPostingEleObj: {} });
     };
-  }, [board_type, dispatch, id]);
+  }, [boardType, dispatch, id]);
 
   return (
     <>
       <Head>
         <title>게시글 수정</title>
       </Head>
-      <PostingPutTemplate board_type={board_type} id={id} />
+      <PostingPutTemplate boardType={boardType} id={id} />
     </>
   );
 }

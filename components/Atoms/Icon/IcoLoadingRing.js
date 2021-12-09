@@ -1,6 +1,6 @@
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import styled from 'styled-components';
-import { spin_360 } from '../../../styles/keyframes/spin';
+import { spin360 } from '../../../styles/keyframes/spin';
 
 // IcoLoadingRing
 // 분류 : 아이콘
@@ -11,7 +11,7 @@ const Styles = styled.div`
   height: 70px;
   font-size: 70px;
   color: #20c997;
-  animation: ${spin_360} infinite 5s linear;
+  animation: ${spin360} infinite 5s linear;
 `;
 
 export default function IcoLoadingRing() {

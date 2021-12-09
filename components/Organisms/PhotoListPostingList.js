@@ -27,7 +27,7 @@ export default function PhotoListPostingList({ photoBoard }) {
               posting={posting}
               onClick={() =>
                 Router.push(
-                  `/board/posting?board_type=photo&post_id=${posting.id}`,
+                  `/board/posting?boardtype=photo&postid=${posting.id}`,
                 )
               }
             />

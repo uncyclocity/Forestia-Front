@@ -6,15 +6,15 @@ import Router from 'next/router';
 import Head from 'next/head';
 
 const letsDeletePostingAndImage = async (nowPostingEleObj, dispatch) => {
-  const { board_type, id, imagesUrl } = nowPostingEleObj;
-  if (board_type && id && imagesUrl) {
+  const { boardType, id, imagesUrl } = nowPostingEleObj;
+  if (boardType && id && imagesUrl) {
     dispatch({
       type: 'postcnt_switcher',
       sw: true,
     });
-    await doPosting.delete(board_type, id);
+    await doPosting.delete(boardType, id);
     imagesUrl.length > 0 && (await doImage.delete(imagesUrl));
-    Router.push(`/board/boardlist/${board_type}?page=1`);
+    Router.push(`/board/boardlist/${boardType}?page=1`);
     dispatch({
       type: 'postcnt_switcher',
       sw: false,

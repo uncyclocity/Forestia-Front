@@ -25,7 +25,6 @@ export default function ListPageBtn({ listLen, page, setNowPageCnt }) {
         onClick={() => {
           const pageDivided = parseInt((page - 1) / 20);
           const goPage = pageDivided * 20;
-          console.log(pageDivided);
           if (goPage >= 1) {
             setNowPageCnt(goPage);
           } else {
@@ -52,7 +51,6 @@ export default function ListPageBtn({ listLen, page, setNowPageCnt }) {
         onClick={() => {
           const pageDivided = parseInt((page - 1) / 20);
           const goPage = (pageDivided + 1) * 20 + 1;
-          console.log(pageDivided);
           if (goPage <= pageBtnAmount) {
             setNowPageCnt(goPage);
           } else {

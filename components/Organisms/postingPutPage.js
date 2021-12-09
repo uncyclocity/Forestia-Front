@@ -15,12 +15,12 @@ const ContentInputStyle = styled.div`
 export default function PostingPutPage() {
   const dispatch = useDispatch();
   const postCnt = useReducerState().postCnt;
-  const { board_type, id, title, content } = useReducerState().nowPostingEleObj;
+  const { boardType, id, title, content } = useReducerState().nowPostingEleObj;
   const [editEle, setEditEle] = useState({ title, content });
 
   return (
     <>
-      <LblFreePhoto board_type={board_type} />
+      <LblFreePhoto boardType={boardType} />
       <ContentInputStyle>
         <IptTitle
           onChange={(e) => setEditEle({ ...editEle, title: e.target.value })}
@@ -41,7 +41,7 @@ export default function PostingPutPage() {
                   sw: true,
                 });
                 await doPosting.put(
-                  board_type,
+                  boardType,
                   id,
                   editEle.title,
                   editEle.content,

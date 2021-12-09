@@ -22,13 +22,13 @@ const DateStyle = styled.div`
 export default function PostingBoardTitle({ nowPostingEleObj }) {
   return (
     <>
-      {nowPostingEleObj.board_type === 'free' && (
+      {nowPostingEleObj.boardType === 'free' && (
         <>
           <IcoBoardTitle nowPage="free" />
           <TxtBoardTitle nowPage="free" title={nowPostingEleObj.title} />
         </>
       )}
-      {nowPostingEleObj.board_type === 'photo' && (
+      {nowPostingEleObj.boardType === 'photo' && (
         <>
           <IcoBoardTitle nowPage="photo" />
           <TxtBoardTitle nowPage="photo" title={nowPostingEleObj.title} />

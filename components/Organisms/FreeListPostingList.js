@@ -41,7 +41,7 @@ export default function FreeListPostingList({ freeBoard }) {
                 posting={posting}
                 onClick={() =>
                   Router.push(
-                    `/board/posting?board_type=free&post_id=${posting.id}`,
+                    `/board/posting?boardtype=free&postid=${posting.id}`,
                   )
                 }
               />

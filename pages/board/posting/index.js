@@ -18,14 +18,14 @@ const postPageSwitchOff = (dispatch) => {
   });
 };
 
-export default function Post({ nowPostingEleObjRaw, board_type }) {
+export default function Post({ nowPostingEleObjRaw, boardType }) {
   const dispatch = useDispatch();
   const nowPostingEleObj = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
-      nowPage: board_type,
+      nowPage: boardType,
     });
 
     setTimeout(
@@ -41,7 +41,7 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
     return () => {
       postPageSwitchOff(dispatch);
     };
-  }, [board_type, dispatch, nowPostingEleObjRaw, nowPostingEleObj]);
+  }, [boardType, dispatch, nowPostingEleObjRaw, nowPostingEleObj]);
 
   return (
     <>
@@ -50,18 +50,18 @@ export default function Post({ nowPostingEleObjRaw, board_type }) {
       </Head>
       <PostingTemplate
         nowPostingEleObjRaw={nowPostingEleObjRaw}
-        board_type={board_type}
+        boardType={boardType}
       />
     </>
   );
 }
 
 Post.getInitialProps = async (ctx) => {
-  const { board_type, post_id } = ctx.query;
+  const { boardtype: boardType, postid: postId } = ctx.query;
   const getPostingEle = await doPosting.get.ele(
-    board_type,
-    post_id,
+    boardType,
+    postId,
   );
-  const nowPostingEleObjRaw = { ...getPostingEle, board_type };
-  return { nowPostingEleObjRaw, board_type };
+  const nowPostingEleObjRaw = { ...getPostingEle, boardType };
+  return { nowPostingEleObjRaw, boardType };
 };

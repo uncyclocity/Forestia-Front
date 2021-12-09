@@ -59,7 +59,7 @@ export default function HomePhotoList({ photoBoard }) {
             <HomePhotoPostingButton
               onClick={() =>
                 Router.push(
-                  `/board/posting?board_type=photo&post_id=${posting.id}`,
+                  `/board/posting?boardtype=photo&postid=${posting.id}`,
                 )
               }
             >

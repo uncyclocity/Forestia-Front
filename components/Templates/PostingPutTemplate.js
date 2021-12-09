@@ -9,8 +9,8 @@ const BoxStyles = styled.div`
   padding: 20px 30px 5px 30px;
 `;
 
-export default function PostingPutTemplate({ board_type, id }) {
-  const posting = `/board/posting?board_type=${board_type}&post_id=${id}`;
+export default function PostingPutTemplate({ boardType, id }) {
+  const posting = `/board/posting?boardtype=${boardType}&postid=${id}`;
 
   return (
     <CtnBox>

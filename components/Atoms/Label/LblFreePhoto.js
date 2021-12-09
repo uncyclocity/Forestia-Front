@@ -30,16 +30,16 @@ const Styles = styled.div`
   }
 `;
 
-export default function LblFreePhoto({ board_type }) {
+export default function LblFreePhoto({ boardType }) {
   return (
     <Styles>
-      {board_type === 'free' && (
+      {boardType === 'free' && (
         <div className="board_sign">
           <AiOutlineCloud />
           <div className="board_name">자게</div>
         </div>
       )}
-      {board_type === 'photo' && (
+      {boardType === 'photo' && (
         <div className="board_sign">
           <AiOutlineCamera />
           <div className="board_name">짤게</div>

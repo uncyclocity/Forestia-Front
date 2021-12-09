@@ -45,12 +45,12 @@ const UpdateNowPostingEleObj = async (
     sw: true,
   });
   const getPostingEle = await doPosting.get.ele(
-    nowPostingEleObj.board_type,
+    nowPostingEleObj.boardType,
     nowPostingEleObj.id,
   );
   const nowPostingEleObjUpdated = {
     ...getPostingEle,
-    board_type: nowPostingEleObj.board_type,
+    boardType: nowPostingEleObj.boardType,
   };
   setNowPostingEleObj(nowPostingEleObjUpdated);
   dispatch({

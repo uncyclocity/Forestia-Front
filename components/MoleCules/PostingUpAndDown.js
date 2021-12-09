@@ -14,9 +14,9 @@ const getDoUpdateUDdata = async (
   setNowPostingEleObj,
 ) => {
   const defaultData = {
-    board_type: nowPostingEleObj.board_type,
-    post_id: nowPostingEleObj.id,
-    ud_type: udType,
+    boardType: nowPostingEleObj.boardType,
+    postId: nowPostingEleObj.id,
+    udType,
     userId,
   };
 
@@ -37,7 +37,7 @@ const getDoUpdateUDdata = async (
   } else if (revUdClickerArr.find((clickUser) => clickUser === userId)) {
     const data = {
       ...defaultData,
-      rev_ud_type: revUdType,
+      revUdType,
       operation: 'addsub',
     };
     await doUpDown.put(data);
@@ -50,13 +50,13 @@ const getDoUpdateUDdata = async (
   }
 
   const getPostingEle = await doPosting.get.ele(
-    nowPostingEleObj.board_type,
+    nowPostingEleObj.boardType,
     nowPostingEleObj.id,
   );
 
   const nowPostingEleObjUpdated = {
     ...getPostingEle,
-    board_type: nowPostingEleObj.board_type,
+    boardType: nowPostingEleObj.boardType,
   };
 
   setNowPostingEleObj(nowPostingEleObjUpdated);

@@ -13,42 +13,42 @@ export const doPosting = {
   get: {
     list: async (nowPage, boardType) => {
       const res = await instance.get(
-        `/get/postings-4-List?page=${nowPage}&board_type=${boardType}`,
+        `/get/postings-4-List?page=${nowPage}&boardtype=${boardType}`,
       );
       return res.data;
     },
-    ele: async (boardType, id) => {
+    ele: async (boardType, postId) => {
       const res = await instance.get(
-        `/get/posting-ele?id=${id}&board_type=${boardType}`,
+        `/get/posting-ele?postid=${postId}&boardtype=${boardType}`,
       );
       return res.data;
     },
     latestId: async (boardType) => {
       const res = await instance.get(
-        `/get/latest-posting-id?board_type=${boardType}`,
+        `/get/latest-posting-id?boardtype=${boardType}`,
       );
       return res.data;
     },
     length: async (boardType) => {
       const res = await instance.get(
-        `/get/postings-len?board_type=${boardType}`,
+        `/get/postings-len?boardtype=${boardType}`,
       );
       return res.data;
     },
     top3: async (boardType) => {
       const res = await instance.get(
-        `/get/postings-top3?board_type=${boardType}`,
+        `/get/postings-top3?boardtype=${boardType}`,
       );
       return res.data;
     }
   },
-  post: async (board_type, id, title, content, pathArr, userObj) => {
+  post: async (boardType, id, title, content, pathArr, userObj) => {
     const apiUrl = '/post/posting';
     await instance({
       method: 'POST',
       url: apiUrl,
       data: {
-        board_type,
+        boardType,
         id,
         author: userObj.userName,
         authorId: userObj.userId,
@@ -59,30 +59,30 @@ export const doPosting = {
         imagesUrl: pathArr,
       },
     }).then(async () => {
-      Router.push(`/board/posting?board_type=${board_type}&post_id=${id}`);
+      Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
     });
   },
-  put: async (board_type, id, title, content) => {
+  put: async (boardType, id, title, content) => {
     await instance({
       method: 'PUT',
       url: '/put/posting',
       data: {
-        board_type,
+        boardType,
         id,
         title,
         content,
       },
     }).then(async () => {
-      Router.push(`/board/posting?board_type=${board_type}&post_id=${id}`);
+      Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
     });
   },
-  delete: async (board_type, id) => {
+  delete: async (boardType, id) => {
     const apiUrl = '/delete/posting';
     await instance({
       method: 'DELETE',
       url: apiUrl,
       data: {
-        board_type,
+        boardType,
         id,
       },
     });
@@ -92,15 +92,15 @@ export const doPosting = {
 export const doComment = {
   post: async (nowPostingEleObj, comment, userObj) => {
     const apiUrl = '/post/comment';
-    const comment_id = newCommId(nowPostingEleObj);
+    const commentId = newCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
     await instance({
       method: 'POST',
       url: apiUrl,
       data: {
-        board_type: nowPostingEleObj.board_type,
-        post_id: nowPostingEleObj.id,
-        comment_id,
+        boardType: nowPostingEleObj.boardType,
+        postId: nowPostingEleObj.id,
+        commentId,
         author: userObj.userName,
         authorId: userObj.userId,
         date: nowDate,
@@ -114,33 +114,33 @@ export const doComment = {
       method: 'PUT',
       url: apiUrl,
       data: {
-        board_type: nowPostingEleObj.board_type,
-        post_id: nowPostingEleObj.id,
-        comment_id: editCommObj.id,
+        boardType: nowPostingEleObj.boardType,
+        postId: nowPostingEleObj.id,
+        commentId: editCommObj.id,
         content: editCommObj.content,
       },
     }).then(async () => {
       setEditCommObj(false);
     });
   },
-  delete: async (board_type, post_id, comment_id) => {
+  delete: async (boardType, postId, commentId) => {
     await instance({
       method: 'DELETE',
       url: '/delete/comment',
       data: {
-        board_type,
-        post_id,
-        comment_id,
+        boardType,
+        postId,
+        commentId,
       },
     }).then(() => {
-      Router.push(`/board/posting?board_type=${board_type}&post_id=${post_id}`);
+      Router.push(`/board/posting?boardtype=${boardType}&postid=${postId}`);
     });
   }
 }
 
 export const doImage = {
-  post: async (formData, board_type) => {
-    const apiUrl = `/post/image?board_type=${board_type}`;
+  post: async (formData, boardType) => {
+    const apiUrl = `/post/image?boardtype=${boardType}`;
     var pathArr = [];
     await instance({
       method: 'POST',

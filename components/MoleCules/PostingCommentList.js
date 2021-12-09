@@ -13,10 +13,10 @@ import IptComment from '../Atoms/Input/IptComment';
 import Router from 'next/router';
 import LinCommentBetweenAmountAndList from '../Atoms/Line/LinCommentBetweenAmountAndList';
 
-const gotoCommDelPage = (nowPostingEleObj, comment_id) => {
+const gotoCommDelPage = (nowPostingEleObj, commentId) => {
   if (confirm('정말로 삭제하시겠습니까')) {
     Router.push(
-      `/board/update-comment/delete?board_type=${nowPostingEleObj.board_type}&post_id=${nowPostingEleObj.id}&comment_id=${comment_id}`,
+      `/board/update-comment/delete?boardtype=${nowPostingEleObj.boardType}&postid=${nowPostingEleObj.id}&commentid=${commentId}`,
     );
   }
 };
@@ -31,12 +31,12 @@ const UpdateNowPostingEleObj = async (
     sw: true,
   });
   const getPostingEle = await doPosting.get.ele(
-    nowPostingEleObj.board_type,
+    nowPostingEleObj.boardType,
     nowPostingEleObj.id,
   );
   const nowPostingEleObjUpdated = {
     ...getPostingEle,
-    board_type: nowPostingEleObj.board_type,
+    boardType: nowPostingEleObj.boardType,
   };
   setNowPostingEleObj(nowPostingEleObjUpdated);
   dispatch({
