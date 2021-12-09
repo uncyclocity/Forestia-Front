@@ -1,22 +1,22 @@
 import CtnBox from '../Atoms/Container/CtnBox';
 import styled from 'styled-components';
 import BoardTitleTemplate from './BoardTitleTemplate';
-import PostingCreatingBoardTitle from '../Organisms/PostingCreatingBoardTitle';
-import PostingCreatingPage from '../Organisms/PostingCreatingPage';
+import PostingPostBoardTitle from '../Organisms/PostingPostBoardTitle';
+import PostingPostPage from '../Organisms/PostingPostPage';
 
 const BoxStyles = styled.div`
   color: #525252;
   padding: 20px 30px 5px 30px;
 `;
 
-export default function PostingCreatingTemplate() {
+export default function PostingPostTemplate() {
   return (
     <CtnBox>
       <BoxStyles>
         <BoardTitleTemplate backURL="/">
-          <PostingCreatingBoardTitle />
+          <PostingPostBoardTitle />
         </BoardTitleTemplate>
-        <PostingCreatingPage />
+        <PostingPostPage />
       </BoxStyles>
     </CtnBox>
   );

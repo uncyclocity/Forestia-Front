@@ -68,7 +68,7 @@ export default function BoardTitleMoreMenu({ isOpenMoreAnimation }) {
           <li>
             <BtnMore
               onClick={() => {
-                Router.push(`/board/update_posting/postingEditing`);
+                Router.push(`/board/update-posting/put`);
               }}
             >
               <IcoMoreEditPosting />
@@ -79,7 +79,7 @@ export default function BoardTitleMoreMenu({ isOpenMoreAnimation }) {
             <BtnMore
               onClick={() => {
                 if (!postCnt && confirm('정말로 삭제하시겠습니까')) {
-                  Router.push(`/board/update_posting/postingDeleting`);
+                  Router.push(`/board/update-posting/delete`);
                 }
               }}
             >

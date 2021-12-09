@@ -32,7 +32,7 @@ const ContentListLayoutStyle = styled.div`
 
 export default function HomePhotoBox({ photoBoard }) {
   const boardName = 'photo';
-  const listUrl = '/board/board_list/photo?page=1';
+  const listUrl = '/board/boardlist/photo?page=1';
 
   return (
     <CtnBox>

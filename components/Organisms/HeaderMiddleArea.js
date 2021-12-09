@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useReducerState } from '../../src/context';
 import TxtCatchphrase from '../Atoms/Text/TxtCatchphrase';
-import HeaderPostingCreateButton from '../MoleCules/HeaderPostingCreateButton';
+import HeaderPostingPostButton from '../MoleCules/HeaderPostingPostButton';
 
 const Styles = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ export default function HeaderMiddleArea() {
   return (
     <Styles>
       <TxtCatchphrase />
-      {userName && <HeaderPostingCreateButton />}
+      {userName && <HeaderPostingPostButton />}
     </Styles>
   );
 }

@@ -23,8 +23,8 @@ export default function IcoBoardTitle({ nowPage }) {
       {nowPage === 'about' && <AiOutlineInfoCircle />}
       {nowPage === 'free' && <AiOutlineCloud />}
       {nowPage === 'photo' && <AiOutlineCamera />}
-      {nowPage === 'deleting' && <RiDeleteBin7Line />}
-      {(nowPage === 'editing' || nowPage === 'creating') && <AiOutlineEdit />}
+      {nowPage === 'delete' && <RiDeleteBin7Line />}
+      {(nowPage === 'put' || nowPage === 'post') && <AiOutlineEdit />}
       {nowPage === 'signup' && <AiOutlineLogin />}
     </Styles>
   );

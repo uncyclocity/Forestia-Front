@@ -13,7 +13,7 @@ const BoxStyles = styled.div`
 
 export default function PostingTemplate({ nowPostingEleObjRaw, board_type }) {
   const [nowPostingEleObj, setNowPostingEleObj] = useState(nowPostingEleObjRaw);
-  const backURL = `/board/board_list/${board_type}?page=1`;
+  const backURL = `/board/boardlist/${board_type}?page=1`;
 
   return (
     <CtnBox>

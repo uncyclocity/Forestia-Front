@@ -34,7 +34,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function PostingCreatingImgUploadArea({ onChange, postingEle }) {
+export default function PostingPostImgUploadArea({ onChange, postingEle }) {
   return (
     <Styles imagesUrlArrLen={postingEle.imagesUrlArr.length}>
       <div className="uploadimg_btn_area">

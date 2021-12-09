@@ -73,8 +73,8 @@ export default function HeaderFourButtons() {
   const HMUrlArr = [
     '/',
     '/about',
-    '/board/board_list/free?page=1',
-    '/board/board_list/photo?page=1',
+    '/board/boardlist/free?page=1',
+    '/board/boardlist/photo?page=1',
   ];
 
   return (

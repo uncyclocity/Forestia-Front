@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import { useDispatch } from '../../../src/context';
-import DeletingTemplate from '../../../components/Templates/DeletingTemplate';
+import DeleteTemplate from '../../../components/Templates/DeleteTemplate';
 import { doComment } from '../../../src/doApi';
 import Head from 'next/head';
 
@@ -24,14 +24,14 @@ const letsDeleteComm = async (
   }
 };
 
-export default function CommDeleting() {
+export default function Delete() {
   const router = useRouter();
   const dispatch = useDispatch();
   console.log(router);
   useEffect(() => {
     dispatch({
       type: 'initiate',
-      nowPage: 'commDeleting',
+      nowPage: 'delete',
     });
 
     letsDeleteComm(dispatch, router.query);
@@ -42,7 +42,7 @@ export default function CommDeleting() {
       <Head>
         <title>댓글 삭제 중</title>
       </Head>
-      <DeletingTemplate />
+      <DeleteTemplate />
     </>
   );
 }

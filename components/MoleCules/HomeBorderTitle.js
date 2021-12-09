@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useDispatch } from '../../src/context';
-import BtnGotoPostingCreating from '../Atoms/Button/BtnGotoPostingCreating';
+import BtnGotoPostingPost from '../Atoms/Button/BtnGotoPostingPost';
 import IcoBoard4Home from '../Atoms/Icon/IcoBoard4Home';
 import TxtBoard4Home from '../Atoms/Text/TxtBoard4Home';
 
@@ -20,7 +20,7 @@ export default function HomeBorderTitle({ boardName, listUrl }) {
     <Styles>
       <IcoBoard4Home boardName={boardName} />
       <TxtBoard4Home boardName={boardName} />
-      <BtnGotoPostingCreating
+      <BtnGotoPostingPost
         onClick={() => unmountAnimation(0, dispatch, listUrl)}
       />
     </Styles>

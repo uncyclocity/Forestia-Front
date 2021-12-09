@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useReducerState } from '../../../src/context';
-import PostingEditingTemplate from '../../../components/Templates/PostingEditingTemplate';
+import PostingPutTemplate from '../../../components/Templates/PostingPutTemplate';
 import Head from 'next/head';
 import Router from 'next/router';
 
-export default function PostingEditing() {
+export default function Put() {
   const dispatch = useDispatch();
   const { board_type, id } = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
-      nowPage: 'editing',
+      nowPage: 'put',
     });
     if (!board_type || !id) {
       Router.push('/404');
@@ -27,7 +27,7 @@ export default function PostingEditing() {
       <Head>
         <title>게시글 수정</title>
       </Head>
-      <PostingEditingTemplate board_type={board_type} id={id} />
+      <PostingPutTemplate board_type={board_type} id={id} />
     </>
   );
 }

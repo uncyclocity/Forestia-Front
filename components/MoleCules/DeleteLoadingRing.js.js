@@ -8,7 +8,7 @@ const Styles = styled.div`
   align-items: center;
 `;
 
-export default function DeletingLoadingRing() {
+export default function DeleteLoadingRing() {
   return (
     <Styles>
       <IcoLoadingRing />

@@ -20,7 +20,7 @@ const ContentListLayoutStyle = styled.div`
 
 export default function HomeFreeBox({ freeBoard }) {
   const boardName = 'free';
-  const listUrl = '/board/board_list/free?page=1';
+  const listUrl = '/board/boardlist/free?page=1';
 
   return (
     <CtnBox>

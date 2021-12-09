@@ -1,11 +1,11 @@
 import IcoBoardTitle from '../Atoms/Icon/IcoBoardTitle';
 import TxtBoardTitle from '../Atoms/Text/TxtBoardTitle';
 
-export default function DeletingBoardTitle() {
+export default function PostingPutBoardTitle() {
   return (
     <>
-      <IcoBoardTitle nowPage="deleting" />
-      <TxtBoardTitle nowPage="deleting" />
+      <IcoBoardTitle nowPage="put" />
+      <TxtBoardTitle nowPage="put" />
     </>
   );
 }

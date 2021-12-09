@@ -16,7 +16,7 @@ import LinCommentBetweenAmountAndList from '../Atoms/Line/LinCommentBetweenAmoun
 const gotoCommDelPage = (nowPostingEleObj, comment_id) => {
   if (confirm('정말로 삭제하시겠습니까')) {
     Router.push(
-      `/board/update_comment/commDeleting?board_type=${nowPostingEleObj.board_type}&post_id=${nowPostingEleObj.id}&comment_id=${comment_id}`,
+      `/board/update-comment/delete?board_type=${nowPostingEleObj.board_type}&post_id=${nowPostingEleObj.id}&comment_id=${comment_id}`,
     );
   }
 };

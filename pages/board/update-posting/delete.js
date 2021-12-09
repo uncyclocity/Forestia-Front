@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useReducerState } from '../../../src/context';
-import DeletingTemplate from '../../../components/Templates/DeletingTemplate';
+import DeleteTemplate from '../../../components/Templates/DeleteTemplate';
 import { doImage, doPosting } from '../../../src/doApi';
 import Router from 'next/router';
 import Head from 'next/head';
@@ -14,7 +14,7 @@ const letsDeletePostingAndImage = async (nowPostingEleObj, dispatch) => {
     });
     await doPosting.delete(board_type, id);
     imagesUrl.length > 0 && (await doImage.delete(imagesUrl));
-    Router.push(`/board/board_list/${board_type}?page=1`);
+    Router.push(`/board/boardlist/${board_type}?page=1`);
     dispatch({
       type: 'postcnt_switcher',
       sw: false,
@@ -24,14 +24,14 @@ const letsDeletePostingAndImage = async (nowPostingEleObj, dispatch) => {
   }
 };
 
-export default function PostingDeleting() {
+export default function Delete() {
   const dispatch = useDispatch();
   const nowPostingEleObj = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
-      nowPage: 'deleting',
+      nowPage: 'delete',
     });
     letsDeletePostingAndImage(nowPostingEleObj, dispatch);
     return () => {
@@ -44,7 +44,7 @@ export default function PostingDeleting() {
       <Head>
         <title>게시글 삭제 중</title>
       </Head>
-      <DeletingTemplate />
+      <DeleteTemplate />
     </>
   );
 }

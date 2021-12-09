@@ -12,7 +12,7 @@ const ContentInputStyle = styled.div`
   margin: 20px 0 15px 0;
 `;
 
-export default function PostingEditingPage() {
+export default function PostingPutPage() {
   const dispatch = useDispatch();
   const postCnt = useReducerState().postCnt;
   const { board_type, id, title, content } = useReducerState().nowPostingEleObj;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// BtnGotoPostingCreating
+// BtnGotoPostingPost
 // 분류 : 버튼
 // 용도 : 포스팅 작성 / 작성 취소 버튼에 쓰인다.
 
@@ -36,7 +36,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function BtnGotoPostingCreating({ btnText, children }) {
+export default function BtnGotoPostingPost({ btnText, children }) {
   return (
     <Styles>
       <div className="posting_icon">{children}</div>

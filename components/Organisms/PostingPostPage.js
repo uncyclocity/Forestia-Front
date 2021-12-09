@@ -7,7 +7,7 @@ import { useDispatch, useReducerState } from '../../src/context';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import IptContent from '../Atoms/Input/IptContent';
-import PostingCreatingImgUploadArea from '../MoleCules/PostingCreatingImgUploadArea';
+import PostingPostImgUploadArea from '../MoleCules/PostingPostImgUploadArea';
 import { doImage, doPosting } from '../../src/doApi';
 
 const letsDoUploadPosting = async (
@@ -55,7 +55,7 @@ const LayoutStyle = styled.div`
   margin-bottom: 15px;
 `;
 
-export default function PostingCreatingPage() {
+export default function PostingPostPage() {
   const state = useReducerState();
   const postCnt = state.postCnt;
   const userObj = state.user;
@@ -85,7 +85,7 @@ export default function PostingCreatingPage() {
           }
           value={postingEle.content}
         />
-        <PostingCreatingImgUploadArea
+        <PostingPostImgUploadArea
           onChange={(e) => {
             setFiles(e.target.files);
             setPostingEle({

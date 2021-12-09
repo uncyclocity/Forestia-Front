@@ -22,9 +22,9 @@ export default function TxtBoardTitle({ nowPage, title = null }) {
       {nowPage === 'photo' && title && <>{title}</>}
       {nowPage === 'free' && !title && '자게'}
       {nowPage === 'photo' && !title && '짤게'}
-      {nowPage === 'creating' && '게시글 작성'}
-      {nowPage === 'deleting' && '삭제 중'}
-      {nowPage === 'editing' && '게시글 수정'}
+      {nowPage === 'post' && '게시글 작성'}
+      {nowPage === 'delete' && '삭제 중'}
+      {nowPage === 'put' && '게시글 수정'}
       {nowPage === 'signup' && '회원가입'}
     </Styles>
   );

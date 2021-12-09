@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch } from '../../../src/context';
-import PostingCreatingTemplate from '../../../components/Templates/PostingCreatingTemplate';
+import PostingPostTemplate from '../../../components/Templates/PostingPostTemplate';
 import Head from 'next/head';
 
-export default function PostingCreating() {
+export default function Post() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
-      nowPage: 'creating',
+      nowPage: 'post',
     });
     dispatch({ type: 'editpost_data', nowPostingEleObj: {} });
   }, [dispatch]);
@@ -19,7 +19,7 @@ export default function PostingCreating() {
       <Head>
         <title>게시글 작성</title>
       </Head>
-      <PostingCreatingTemplate />
+      <PostingPostTemplate />
     </>
   );
 }
