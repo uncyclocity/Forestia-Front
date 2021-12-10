@@ -48,9 +48,9 @@ export default function Free({ freeBoard, page, freeLen }) {
   );
 }
 
-Free.getInitialProps = async () => {
+export const getServerSideProps = async () => {
   const page = 1;
   const freeBoard = await doPosting.get.list(page, 'free');
   const freeLen = await doPosting.get.length('free');
-  return { freeBoard, page, freeLen };
+  return { props: { freeBoard, page, freeLen } };
 };
