@@ -56,7 +56,7 @@ export default function Post({ nowPostingEleObjRaw, boardType }) {
   );
 }
 
-export const getServerSideProps = async (ctx) => {
+Post.getIntialProps = async (ctx) => {
   const { boardtype: boardType, postid: postId } = ctx.query;
   const getPostingEle = await doPosting.get.ele(boardType, postId);
   const nowPostingEleObjRaw = { ...getPostingEle, boardType };

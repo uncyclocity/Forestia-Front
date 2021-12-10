@@ -48,7 +48,7 @@ export default function Photo({ photoBoard, page, photoLen }) {
   );
 }
 
-export const getServerSideProps = async () => {
+Photo.getInitialProps = async () => {
   const page = 1;
   const photoBoard = await doPosting.get.list(page, 'photo');
   const photoLen = await doPosting.get.length('photo');

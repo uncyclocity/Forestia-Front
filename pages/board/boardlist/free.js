@@ -48,7 +48,7 @@ export default function Free({ freeBoard, page, freeLen }) {
   );
 }
 
-export const getServerSideProps = async () => {
+Free.getInitialProps = async () => {
   const page = 1;
   const freeBoard = await doPosting.get.list(page, 'free');
   const freeLen = await doPosting.get.length('free');
