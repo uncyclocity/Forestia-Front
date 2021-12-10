@@ -37,6 +37,7 @@ export default function Free({ freeBoard, page, freeLen }) {
     <>
       <Head>
         <title>자게</title>
+        <meta name="description" content="자게 페이지입니다." />
       </Head>
       <FreeListTemplate
         freeLen={freeLen}

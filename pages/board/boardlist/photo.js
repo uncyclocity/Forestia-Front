@@ -37,6 +37,7 @@ export default function Photo({ photoBoard, page, photoLen }) {
     <>
       <Head>
         <title>짤게</title>
+        <meta name="description" content="짤게 페이지입니다." />
       </Head>
       <PhotoListTemplate
         photoLen={photoLen}

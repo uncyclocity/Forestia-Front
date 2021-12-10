@@ -40,6 +40,7 @@ export default function Delete() {
     <>
       <Head>
         <title>댓글 삭제 중</title>
+        <meta name="description" content="댓글 삭제중 페이지입니다." />
       </Head>
       <DeleteTemplate />
     </>

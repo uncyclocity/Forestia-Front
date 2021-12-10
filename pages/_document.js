@@ -77,13 +77,12 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          {this.props.styleTags}
-          <body>
-            <Main />
-            <NextScript />
-          </body>
-        </Head>
+        {this.props.styleTags}
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
       </Html>
     );
   }

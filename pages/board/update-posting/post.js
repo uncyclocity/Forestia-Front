@@ -18,6 +18,7 @@ export default function Post() {
     <>
       <Head>
         <title>게시글 작성</title>
+        <meta name="description" content="게시글 작성 페이지입니다." />
       </Head>
       <PostingPostTemplate />
     </>

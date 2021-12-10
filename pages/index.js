@@ -18,6 +18,7 @@ export default function Home({ freeBoard, photoBoard }) {
     <>
       <Head>
         <title>It&#39;s Forestia</title>
+        <meta name="description" content="인덱스 페이지입니다." />
       </Head>
       <HomeTemplate freeBoard={freeBoard} photoBoard={photoBoard} />
     </>

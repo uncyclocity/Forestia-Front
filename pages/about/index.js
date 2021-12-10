@@ -17,6 +17,7 @@ export default function About() {
     <>
       <Head>
         <title>About us</title>
+        <meta name="description" content="about 페이지입니다." />
       </Head>
       <AboutTemplate />
     </>

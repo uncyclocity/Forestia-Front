@@ -17,6 +17,7 @@ export default function NotFoundPage() {
     <>
       <Head>
         <title>404 Error</title>
+        <meta name="description" content="404 에러 페이지입니다." />
       </Head>
       <Error404Template />
     </>
