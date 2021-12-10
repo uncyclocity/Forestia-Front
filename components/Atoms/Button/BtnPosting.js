@@ -17,7 +17,7 @@ const Styles = styled.div`
   font-size: 30px;
   cursor: pointer;
   font-size: 18px;
-  font-family: 'NanumSquareEB';
+  font-weight: bold;
 
   &:hover {
     background: #37dfad;

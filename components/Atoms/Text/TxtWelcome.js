@@ -5,8 +5,8 @@ import styled from 'styled-components';
 // 용도 : 회원가입 페이지의 환영 메세지
 
 const Styles = styled.div`
-  font-family: 'NanumSquareRoundEB';
   font-size: 30px;
+  font-weight: bold;
   color: #20c997;
 `;
 

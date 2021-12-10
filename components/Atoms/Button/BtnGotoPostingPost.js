@@ -21,7 +21,6 @@ const Styles = styled.div`
 
   .posting_text {
     font-size: 16px;
-    font-family: 'NanumSquareR';
   }
 
   @media screen and (max-width: 700px) {
@@ -31,7 +30,6 @@ const Styles = styled.div`
 
     .posting_text {
       font-size: 13px;
-      font-family: 'NanumSquareR';
     }
   }
 `;

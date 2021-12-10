@@ -1,14 +1,1 @@
-@font-face {
-  font-family: NanumSquareEB;
-  src: url(./fonts/NanumSquareEB.woff);
-}
-
-@font-face {
-  font-family: NanumSquareR;
-  src: url(./fonts/NanumSquareR.woff);
-}
-
-@font-face {
-  font-family: NanumSquareRoundEB;
-  src: url(./fonts/NanumSquareRoundEB.woff);
-}
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);

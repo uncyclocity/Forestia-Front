@@ -10,7 +10,7 @@ const Styles = styled.div`
   @media screen and (max-width: 700px) {
     font-size: 17px;
   }
-  font-family: 'NanumSquareEB';
+  font-weight: bold;
   text-align: center;
 `;
 

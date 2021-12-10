@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
   width: 100%;
   min-width: 215px;
-  font-family: 'NanumSquareRoundEB';
+  font-weight: bold;
   font-size: 25px;
   color: white;
 

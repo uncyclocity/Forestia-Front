@@ -7,7 +7,6 @@ import styled from 'styled-components';
 const Styles = styled.div`
   display: flex;
   flex-direction: row;
-  font-family: 'NanumSquareR';
   font-size: 20px;
   color: #5d5d5d;
 `;

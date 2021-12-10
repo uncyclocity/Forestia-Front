@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   width: 100%;
-  font-family: 'NanumSquareR';
   font-size: 21px;
   color: #5d5d5d;
 `;

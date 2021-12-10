@@ -8,7 +8,6 @@ import { ImCancelCircle } from 'react-icons/im';
 const Styles = styled.div`
   display: flex;
   flex-direction: row;
-  font-family: 'NanumSquareR';
   font-size: 13px;
   color: #bd001d;
 `;

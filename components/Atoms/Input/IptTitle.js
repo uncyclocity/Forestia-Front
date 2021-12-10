@@ -13,7 +13,7 @@ const Styles = styled.div`
     }
 
     font-size: 25px;
-    font-family: 'NanumSquareEB';
+    font-weight: bold;
     color: #464646;
     border: none;
     outline: none;

@@ -8,7 +8,7 @@ import Auth from '../src/auth';
 import ProgressContainer from '../src/MyProgressContainer';
 
 const FontStyle = styled.div`
-  font-family: 'NanumSquareR';
+  font-family: 'Spoqa Han Sans Neo';
 `;
 
 export default function MyApp({ Component, pageProps }) {

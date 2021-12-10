@@ -16,7 +16,7 @@ const Styles = styled.div`
   justify-content: center;
   font-size: 30px;
   font-size: 18px;
-  font-family: 'NanumSquareEB';
+  font-weight: bold;
 `;
 
 export default function BtnDisabledPosting({ text }) {

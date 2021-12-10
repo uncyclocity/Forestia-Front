@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   margin-right: 10px;
-  font-family: 'NanumSquareEB';
+  font-weight: bold;
   font-size: 15px;
   @media screen and (max-width: 700px) {
     font-size: 14px;
