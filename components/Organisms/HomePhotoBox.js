@@ -52,7 +52,7 @@ export default function HomePhotoBox({ photoBoard }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const photoBoard = await doPosting.get.top3('photo');
-  return { props: photoBoard, revalidate: 20 };
+  return { props: photoBoard };
 };
