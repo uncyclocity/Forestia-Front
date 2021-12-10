@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import TxtMyEmail from '../Atoms/Text/TxtMyEmail';
 import TxtMyNickName from '../Atoms/Text/TxtMyNickName';
 import IptNickName from '../Atoms/Input/IptNickName';
-import BtnLogInOut from '../Atoms/Button/BtnLogInOut';
+import BtnProfileBox from '../Atoms/Button/BtnProfileBox';
 import TxtSameNickName from '../Atoms/Text/TxtSameNickName';
 
 const LayoutStyle = styled.div`
@@ -52,7 +52,7 @@ export default function SignUpEmailAndNickNameArea({
       </NickNameInputStyle>
       <SigninBtnStyle>
         {isOverLap && <TxtSameNickName />}
-        <BtnLogInOut text="회원가입" onClick={signUpProcess} />
+        <BtnProfileBox text="회원가입" onClick={signUpProcess} />
       </SigninBtnStyle>
     </LayoutStyle>
   );

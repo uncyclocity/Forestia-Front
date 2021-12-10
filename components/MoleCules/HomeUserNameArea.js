@@ -1,24 +1,26 @@
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../../src/context';
-import BtnLogInOut from '../Atoms/Button/BtnLogInOut';
+import BtnProfileBox from '../Atoms/Button/BtnProfileBox';
+import IcoAccountSetting from '../Atoms/Icon/IcoAccountSetting';
 import TxtProfileName from '../Atoms/Text/TxtProfileName';
 
-const Styles = styled.div`
+const LayoutStyle = styled.div`
   width: 100%;
   height: 165px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  div:last-child {
-    margin-top: 15px;
-  }
 
-  @media screen and (max-width: 700px) {
-    div:last-child {
-      margin-top: 10px;
-    }
+  & > * + * {
+    margin-top: 10px;
   }
+`;
+
+const BtnsStyle = styled.div`
+  display: flex;
+  width: 90px;
+  justify-content: space-between;
 `;
 
 export default function HomeUserNameArea() {
@@ -26,18 +28,21 @@ export default function HomeUserNameArea() {
   const dispatch = useDispatch();
 
   return (
-    <Styles>
+    <LayoutStyle>
       <TxtProfileName userName={userName} />
-      <BtnLogInOut
-        text="로그아웃"
-        onClick={() => {
-          if (confirm('로그아웃하시겠습니까?')) {
-            dispatch({ type: 'logout' });
-            localStorage.removeItem('token');
-            localStorage.removeItem('id');
-          }
-        }}
-      />
-    </Styles>
+      <BtnsStyle>
+        <BtnProfileBox
+          text="로그아웃"
+          onClick={() => {
+            if (confirm('로그아웃하시겠습니까?')) {
+              dispatch({ type: 'logout' });
+              localStorage.removeItem('token');
+              localStorage.removeItem('id');
+            }
+          }}
+        />
+        <BtnProfileBox text={<IcoAccountSetting />} onClick={() => {}} />
+      </BtnsStyle>
+    </LayoutStyle>
   );
 }

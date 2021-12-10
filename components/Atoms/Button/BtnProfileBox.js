@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-// BtnLogInOut
+// BtnProfileBox
 // 분류 : 버튼
-// 설명 : 로그인/아웃 버튼에 사용된다.
+// 설명 : 인덱스 페이지의 프로필 박스에서 사용된다.
 
 const Styles = styled.div`
   border: 1px solid #20c997;
@@ -24,6 +24,6 @@ const Styles = styled.div`
   }
 `;
 
-export default function BtnLogInOut({ text, onClick }) {
+export default function BtnProfileBox({ text, onClick }) {
   return <Styles onClick={onClick}>{text}</Styles>;
 }

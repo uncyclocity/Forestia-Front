@@ -14,6 +14,7 @@ export default function Context({ children }) {
     isPostPage: false,
     nowPostingEleObj: {},
     postCnt: false,
+    modal: '',
   };
 
   const reducer = (state, action) => {
@@ -60,6 +61,12 @@ export default function Context({ children }) {
             userEmail: '',
             userId: '',
           },
+        };
+      }
+      case 'modal': {
+        return {
+          ...state,
+          modal: action.modalContent,
         };
       }
       default:
