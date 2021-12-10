@@ -52,5 +52,5 @@ Photo.getInitialProps = async () => {
   const page = 1;
   const photoBoard = await doPosting.get.list(page, 'photo');
   const photoLen = await doPosting.get.length('photo');
-  return { props: { photoBoard, page, photoLen } };
+  return { photoBoard, page, photoLen };
 };

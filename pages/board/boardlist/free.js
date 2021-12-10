@@ -52,5 +52,5 @@ Free.getInitialProps = async () => {
   const page = 1;
   const freeBoard = await doPosting.get.list(page, 'free');
   const freeLen = await doPosting.get.length('free');
-  return { props: { freeBoard, page, freeLen } };
+  return { freeBoard, page, freeLen };
 };

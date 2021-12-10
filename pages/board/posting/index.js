@@ -18,7 +18,7 @@ const postPageSwitchOff = (dispatch) => {
   });
 };
 
-export default function Post({ nowPostingEleObjRaw, boardType }) {
+export default function Posting({ nowPostingEleObjRaw, boardType }) {
   const dispatch = useDispatch();
   const nowPostingEleObj = useReducerState().nowPostingEleObj;
 
@@ -56,9 +56,9 @@ export default function Post({ nowPostingEleObjRaw, boardType }) {
   );
 }
 
-Post.getIntialProps = async (ctx) => {
+Posting.getInitialProps = async (ctx) => {
   const { boardtype: boardType, postid: postId } = ctx.query;
   const getPostingEle = await doPosting.get.ele(boardType, postId);
   const nowPostingEleObjRaw = { ...getPostingEle, boardType };
-  return { props: { nowPostingEleObjRaw, boardType } };
+  return { nowPostingEleObjRaw, boardType };
 };
