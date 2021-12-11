@@ -14,7 +14,10 @@ export default function Context({ children }) {
     isPostPage: false,
     nowPostingEleObj: {},
     postCnt: false,
-    modal: '',
+    modal: {
+      title: '',
+      content: '',
+    },
   };
 
   const reducer = (state, action) => {
@@ -66,7 +69,10 @@ export default function Context({ children }) {
       case 'modal': {
         return {
           ...state,
-          modal: action.modalContent,
+          modal: {
+            title: action.title,
+            content: action.content,
+          },
         };
       }
       default:

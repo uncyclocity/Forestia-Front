@@ -3,6 +3,7 @@ import { useDispatch } from '../src/context';
 import { doPosting } from '../src/doApi';
 import HomeTemplate from '../components/Templates/HomeTemplate';
 import Head from 'next/head';
+import ModalAccountSettings from '../components/Organisms/ModalAcountSettings';
 
 export default function Home({ freeBoard, photoBoard }) {
   const dispatch = useDispatch();
@@ -14,13 +15,32 @@ export default function Home({ freeBoard, photoBoard }) {
     });
   }, [dispatch]);
 
+  const deleteAccount = () => {
+    if (confirm('정말로 삭제하시겠습니까?')) {
+    }
+  };
+
+  const accountSettings = () => {
+    const title = '계정 설정';
+    const content = <ModalAccountSettings deleteAccount={deleteAccount} />;
+    dispatch({
+      type: 'modal',
+      title,
+      content,
+    });
+  };
+
   return (
     <>
       <Head>
         <title>It&#39;s Forestia</title>
         <meta name="description" content="인덱스 페이지입니다." />
       </Head>
-      <HomeTemplate freeBoard={freeBoard} photoBoard={photoBoard} />
+      <HomeTemplate
+        freeBoard={freeBoard}
+        photoBoard={photoBoard}
+        accountSettings={accountSettings}
+      />
     </>
   );
 }

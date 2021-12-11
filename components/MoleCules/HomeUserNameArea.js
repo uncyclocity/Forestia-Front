@@ -23,7 +23,7 @@ const BtnsStyle = styled.div`
   justify-content: space-between;
 `;
 
-export default function HomeUserNameArea() {
+export default function HomeUserNameArea({ accountSettings }) {
   const userName = useReducerState().user.userName;
   const dispatch = useDispatch();
 
@@ -41,7 +41,7 @@ export default function HomeUserNameArea() {
             }
           }}
         />
-        <BtnProfileBox text={<IcoAccountSetting />} onClick={() => {}} />
+        <BtnProfileBox text={<IcoAccountSetting />} onClick={accountSettings} />
       </BtnsStyle>
     </LayoutStyle>
   );

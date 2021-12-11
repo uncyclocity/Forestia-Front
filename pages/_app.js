@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import '../styles/Font.css';
 import Auth from '../src/auth';
 import ProgressContainer from '../src/MyProgressContainer';
+import Modal from '../src/modal';
 
 const FontStyle = styled.div`
   font-family: 'Spoqa Han Sans Neo';
@@ -23,6 +24,7 @@ export default function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
             </TransitionLayout>
           </AppAnimation>
+          <Modal />
         </Auth>
       </Context>
     </FontStyle>

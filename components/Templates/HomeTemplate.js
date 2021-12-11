@@ -25,11 +25,11 @@ const BoxLayoutStyle = styled.div`
   }
 `;
 
-export default function Home({ freeBoard, photoBoard }) {
+export default function Home({ freeBoard, photoBoard, accountSettings }) {
   return (
     <BoxLayoutStyle>
       <div className="maxwidth">
-        <HomeProfileBox />
+        <HomeProfileBox accountSettings={accountSettings} />
         <div className="margin_space" />
         <HomeFreeBox freeBoard={freeBoard} />
       </div>

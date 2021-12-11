@@ -12,14 +12,18 @@ const BoxStyle = styled.div`
   height: 165px;
 `;
 
-export default function HomeProfileBox() {
+export default function HomeProfileBox({ accountSettings }) {
   const userId = useReducerState().user.userId;
 
   return (
     <CtnBox>
       <BoxStyle>
         <LblProfilePhoto />
-        {userId ? <HomeUserNameArea /> : <HomeLoginArea />}
+        {userId ? (
+          <HomeUserNameArea accountSettings={accountSettings} />
+        ) : (
+          <HomeLoginArea />
+        )}
       </BoxStyle>
     </CtnBox>
   );
