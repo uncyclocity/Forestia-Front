@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
-import { useDispatch } from '../src/context';
-import { doPosting } from '../src/doApi';
+import { useDispatch, useReducerState } from '../src/context';
+import { doPosting, doUser } from '../src/doApi';
 import HomeTemplate from '../components/Templates/HomeTemplate';
 import Head from 'next/head';
 import ModalAccountSettings from '../components/Organisms/ModalAcountSettings';
 
 export default function Home({ freeBoard, photoBoard }) {
+  const user = useReducerState().user;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,8 +16,11 @@ export default function Home({ freeBoard, photoBoard }) {
     });
   }, [dispatch]);
 
-  const deleteAccount = () => {
+  const deleteAccount = async () => {
     if (confirm('정말로 삭제하시겠습니까?')) {
+      await doUser.delete(user.userId);
+      dispatch({ type: 'logout' });
+      dispatch({ type: 'modal', title: '', content: '' });
     }
   };
 

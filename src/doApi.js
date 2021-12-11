@@ -40,7 +40,7 @@ export const doPosting = {
         `/get/postings-top3?boardtype=${boardType}`,
       );
       return res.data;
-    }
+    },
   },
   post: async (boardType, id, title, content, pathArr, userObj) => {
     const apiUrl = '/post/posting';
@@ -86,8 +86,8 @@ export const doPosting = {
         id,
       },
     });
-  }
-}
+  },
+};
 
 export const doComment = {
   post: async (nowPostingEleObj, comment, userObj) => {
@@ -135,8 +135,8 @@ export const doComment = {
     }).then(() => {
       Router.push(`/board/posting?boardtype=${boardType}&postid=${postId}`);
     });
-  }
-}
+  },
+};
 
 export const doImage = {
   post: async (formData, boardType) => {
@@ -159,8 +159,8 @@ export const doImage = {
       url: apiUrl,
       data: { imagesUrl },
     });
-  }
-}
+  },
+};
 
 export const doUpDown = {
   put: async (data) => {
@@ -184,7 +184,7 @@ export const doUser = {
         `/get/user-by-nickname?nickName=${nickName}`,
       );
       return res.data;
-    }
+    },
   },
   post: async (id, email, nickName, token) => {
     await instance({
@@ -199,8 +199,17 @@ export const doUser = {
     }).then(async () => {
       Router.push('/');
     });
-  }
-}
+  },
+  delete: async (id) => {
+    await instance({
+      method: 'DELETE',
+      url: '/delete/user',
+      data: {
+        id,
+      },
+    }).then(async () => {});
+  },
+};
 
 export const doUserToken = {
   post: async (id, token) => {
@@ -212,5 +221,5 @@ export const doUserToken = {
         token,
       },
     }).then(async () => {});
-  }
-}
+  },
+};

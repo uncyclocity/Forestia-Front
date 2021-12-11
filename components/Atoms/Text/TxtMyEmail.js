@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: 20px;
   color: #5d5d5d;
   .email {
@@ -17,7 +17,8 @@ const Styles = styled.div`
 export default function TxtMyEmail({ email }) {
   return (
     <Styles>
-      이메일 :&nbsp;<div className="email">{email}</div>
+      <div>이메일 :</div>
+      <div className="email">{email}</div>
     </Styles>
   );
 }
