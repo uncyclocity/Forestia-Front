@@ -10,6 +10,11 @@ const Styles = styled.div`
   height: 25px;
   color: #20c997;
   cursor: pointer;
+
+  @media screen and (max-width: 700px) {
+    font-size: 18px;
+    height: 18px;
+  }
 `;
 
 export default function BtnCloseModal({ onClick }) {

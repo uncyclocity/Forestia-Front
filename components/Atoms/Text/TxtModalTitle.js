@@ -7,6 +7,10 @@ import styled from 'styled-components';
 const Styles = styled.div`
   font-weight: bold;
   font-size: 20px;
+
+  @media screen and (max-width: 700px) {
+    font-size: 15px;
+  }
 `;
 
 export default function TxtModalTitle({ title }) {

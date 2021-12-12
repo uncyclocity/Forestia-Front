@@ -12,6 +12,10 @@ const Styles = styled.div`
   &:hover {
     color: rgb(255, 135, 135);
   }
+
+  @media screen and (max-width: 700px) {
+    font-size: 15px;
+  }
 `;
 
 export default function BtnDeleteAccount({ onClick }) {

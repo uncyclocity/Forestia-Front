@@ -9,6 +9,11 @@ const Styles = styled.div`
   padding: 20px;
   background: white;
   width: 400px;
+
+  @media screen and (max-width: 700px) {
+    width: 300px;
+    padding: 15px;
+  }
 `;
 
 export default function CtnModalWindow({ children }) {
