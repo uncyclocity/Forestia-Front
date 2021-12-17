@@ -1,32 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from '../Contexts/context';
 import { doUser } from '../../utils/doApi';
-import jwt from 'jsonwebtoken';
 
-const getStoredUser = (dispatch) => {
+const getStoredUser = async (dispatch) => {
   if (typeof window !== 'undefined') {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
-      jwt.verify(
-        storedToken,
-        process.env.NEXT_PUBLIC_JWT_SECRET,
-        async (err, decoded) => {
-          if (err) {
-            console.error(err);
-            return;
-          }
-          const { id, email } = decoded;
-          const user = await doUser.get.byId(id);
-          if (user !== '') {
-            dispatch({
-              type: 'login',
-              userName: user.nickname,
-              userEmail: email,
-              userId: id,
-            });
-          }
-        },
-      );
+      const { id, email } = await doUser.get.byToken(storedToken);
+      const user = await doUser.get.byId(id);
+      if (user !== '') {
+        dispatch({
+          type: 'login',
+          userName: user.nickname,
+          userEmail: email,
+          userId: id,
+        });
+      }
     }
   }
 };

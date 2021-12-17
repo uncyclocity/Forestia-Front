@@ -185,6 +185,10 @@ export const doUser = {
       );
       return res.data;
     },
+    byToken: async (token) => {
+      const res = await instance.get(`/get/user-by-token?token=${token}`);
+      return res.data;
+    },
   },
   post: async (id, email, nickName, token) => {
     await instance({
@@ -212,6 +216,13 @@ export const doUser = {
 };
 
 export const doUserToken = {
+  get: async (id, email) => {
+    const res = await instance({
+      method: 'GET',
+      url: `/get/user-token?id=${id}&email=${email}`,
+    });
+    return res.data;
+  },
   post: async (id, token) => {
     await instance({
       method: 'POST',

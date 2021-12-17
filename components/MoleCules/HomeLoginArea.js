@@ -3,7 +3,6 @@ import { useDispatch } from '../Contexts/context';
 import GoogleLogin from 'react-google-login';
 import { doUser, doUserToken } from '../../utils/doApi';
 import Router from 'next/router';
-import jwt from 'jsonwebtoken';
 
 const Styles = styled.div`
   width: 96.4%;
@@ -30,18 +29,9 @@ export default function HomeLoginArea() {
       dispatch({ type: 'login', userName: '', userEmail: email, userId: id });
       Router.push('/signup');
     } else {
-      const token = jwt.sign(
-        {
-          id,
-          email,
-        },
-        process.env.NEXT_PUBLIC_JWT_SECRET,
-      );
-
+      const token = await doUserToken.get(id, email);
       doUserToken.post(id, token);
-
       localStorage.setItem('token', token);
-
       dispatch({
         type: 'login',
         userName: user.nickname,
@@ -52,7 +42,7 @@ export default function HomeLoginArea() {
   };
 
   const onFailure = (error) => {
-    console.log(error);
+    console.error(error);
   };
 
   return (
