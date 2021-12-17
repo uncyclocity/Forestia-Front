@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     overflow-y: scroll;
+    font-family: 'Spoqa Han Sans Neo';
 
     @media screen and (max-width: 700px) {
       font-size: 14px;
