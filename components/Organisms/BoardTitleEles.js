@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { useReducerState } from '../../src/context';
+import { useReducerState } from '../Contexts/context';
 import BtnPostingBack from '../Atoms/Button/BtnPostingBack';
 import BtnPostingMore from '../Atoms/Button/BtnPostingMore';
 import BoardTitleBoardInfo from '../MoleCules/BoardTitleBoardInfo';

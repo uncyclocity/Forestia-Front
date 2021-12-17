@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { useReducerState } from '../../src/context';
+import { useReducerState } from '../Contexts/context';
 import {
   slideLeft,
   slideRight,

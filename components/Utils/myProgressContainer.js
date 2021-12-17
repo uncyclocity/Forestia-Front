@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Progress from './Progress';
+import Progress from './progress';
 
 class ProgressContainer extends Component {
   constructor(props) {

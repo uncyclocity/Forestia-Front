@@ -1,7 +1,7 @@
-import ModalTitleBar from '../components/MoleCules/ModalTitleBar';
-import { useReducerState } from './context';
+import ModalTitleBar from '../MoleCules/ModalTitleBar';
+import { useReducerState } from '../Contexts/context';
 import styled from 'styled-components';
-import CtnModalWindow from '../components/Atoms/Container/CtnModalWindow';
+import CtnModalWindow from '../Atoms/Container/CtnModalWindow';
 
 const ModalBgStyle = styled.div`
   position: fixed;

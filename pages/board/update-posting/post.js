@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from '../../../src/context';
+import { useDispatch } from '../../../components/Contexts/context';
 import PostingPostTemplate from '../../../components/Templates/PostingPostTemplate';
 import Head from 'next/head';
 

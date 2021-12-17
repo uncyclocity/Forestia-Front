@@ -1,6 +1,6 @@
 import { AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
 import styled from 'styled-components';
-import { useReducerState } from '../../src/context';
+import { useReducerState } from '../Contexts/context';
 import BtnGotoPostingPost from '../Atoms/Button/BtnGotoPostingPost';
 import Router from 'next/router';
 

@@ -1,6 +1,6 @@
-import { useDispatch, useReducerState } from '../../../src/context';
+import { useDispatch, useReducerState } from '../../../components/Contexts/context';
 import { useEffect } from 'react';
-import { doPosting } from '../../../src/doApi';
+import { doPosting } from '../../../utils/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
 import Head from 'next/head';
 

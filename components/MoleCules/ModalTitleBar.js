@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useDispatch } from '../../src/context';
+import { useDispatch } from '../Contexts/context';
 import BtnCloseModal from '../Atoms/Button/BtnCloseModal';
 import TxtModalTitle from '../Atoms/Text/TxtModalTitle';
 

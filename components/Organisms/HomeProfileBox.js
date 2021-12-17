@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useReducerState } from '../../src/context';
+import { useReducerState } from '../Contexts/context';
 import CtnBox from '../Atoms/Container/CtnBox';
 import LblProfilePhoto from '../Atoms/Label/LblProfilePhoto';
 import HomeLoginArea from '../MoleCules/HomeLoginArea';

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
-import { useDispatch } from '../../../src/context';
+import { useDispatch } from '../../../components/Contexts/context';
 import DeleteTemplate from '../../../components/Templates/DeleteTemplate';
-import { doComment } from '../../../src/doApi';
+import { doComment } from '../../../utils/doApi';
 import Head from 'next/head';
 
 const letsDeleteComm = async (

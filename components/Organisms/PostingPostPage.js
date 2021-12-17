@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { BtnFreePhotoSwitch } from '../Atoms/Button/BtnFreePhotoSwitch';
 import BtnPosting from '../Atoms/Button/BtnPosting';
 import BtnDisabledPosting from '../Atoms/Button/BtnDisabledPosting';
-import { useDispatch, useReducerState } from '../../src/context';
+import { useDispatch, useReducerState } from '../Contexts/context';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import IptContent from '../Atoms/Input/IptContent';
 import PostingPostImgUploadArea from '../MoleCules/PostingPostImgUploadArea';
-import { doImage, doPosting } from '../../src/doApi';
+import { doImage, doPosting } from '../../utils/doApi';
 
 const letsDoUploadPosting = async (
   selBoard,

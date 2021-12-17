@@ -1,7 +1,7 @@
 import PostingContentView from '../MoleCules/PostingContentView';
 import PostingImageView from '../MoleCules/PostingImageView';
 import PostingUpAndDown from '../MoleCules/PostingUpAndDown';
-import { useReducerState } from '../../src/context';
+import { useReducerState } from '../Contexts/context';
 import styled from 'styled-components';
 
 const EmptyUpDown = styled.div`

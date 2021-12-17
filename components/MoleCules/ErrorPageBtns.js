@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import BtnErrorPageGreen from '../Atoms/Button/BtnErrorPageGreen';
 import BtnErrorPageWhite from '../Atoms/Button/BtnErrorPageWhite';
-import { useDispatch } from '../../src/context';
+import { useDispatch } from '../Contexts/context';
 import Router from 'next/router';
 
 const Styles = styled.div`

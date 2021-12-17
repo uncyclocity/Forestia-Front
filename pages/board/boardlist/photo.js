@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from '../../../src/context';
-import { doPosting } from '../../../src/doApi';
+import { useDispatch } from '../../../components/Contexts/context';
+import { doPosting } from '../../../utils/doApi';
 import PhotoListTemplate from '../../../components/Templates/PhotoListTemplate';
 import Head from 'next/head';
 

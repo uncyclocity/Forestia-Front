@@ -5,7 +5,7 @@ import {
   AiOutlineHome,
   AiOutlineInfoCircle,
 } from 'react-icons/ai';
-import { useReducerState } from '../../src/context';
+import { useReducerState } from '../Contexts/context';
 import BtnHeader from '../Atoms/Button/BtnHeader';
 import styled from 'styled-components';
 

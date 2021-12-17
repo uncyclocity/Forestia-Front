@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from '../../../src/context';
-import { doPosting } from '../../../src/doApi';
+import { useDispatch } from '../../../components/Contexts/context';
+import { doPosting } from '../../../utils/doApi';
 import FreeListTemplate from '../../../components/Templates/FreeListTemplate';
 import Head from 'next/head';
 

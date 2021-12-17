@@ -1,4 +1,4 @@
-import { useReducerState } from '../../src/context';
+import { useReducerState } from '../Contexts/context';
 import PostingCommentInput from '../MoleCules/PostingCommentInput';
 import PostingCommentList from '../MoleCules/PostingCommentList';
 

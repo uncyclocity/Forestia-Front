@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../src/context';
+import { useDispatch, useReducerState } from '../Contexts/context';
 import BtnProfileBox from '../Atoms/Button/BtnProfileBox';
 import IcoAccountSetting from '../Atoms/Icon/IcoAccountSetting';
 import TxtProfileName from '../Atoms/Text/TxtProfileName';

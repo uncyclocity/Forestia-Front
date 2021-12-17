@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { useDispatch } from '../../src/context';
+import { useDispatch } from '../Contexts/context';
 import GoogleLogin from 'react-google-login';
-import { doUser, doUserToken } from '../../src/doApi';
+import { doUser, doUserToken } from '../../utils/doApi';
 import Router from 'next/router';
 import jwt from 'jsonwebtoken';
 

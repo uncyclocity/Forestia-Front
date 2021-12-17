@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoUp from '../Atoms/Icon/IcoUp';
 import TxtUpDownAmount from '../Atoms/Text/TxtUpDownAmount';
-import { useDispatch, useReducerState } from '../../src/context';
-import { doPosting, doUpDown } from '../../src/doApi';
+import { useDispatch, useReducerState } from '../Contexts/context';
+import { doPosting, doUpDown } from '../../utils/doApi';
 
 const getDoUpdateUDdata = async (
   udType,

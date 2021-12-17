@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from './context';
-import { doUser } from './doApi';
+import { useDispatch } from '../Contexts/context';
+import { doUser } from '../../utils/doApi';
 import jwt from 'jsonwebtoken';
 
 const getStoredUser = (dispatch) => {

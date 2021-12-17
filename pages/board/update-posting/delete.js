@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch, useReducerState } from '../../../src/context';
+import { useDispatch, useReducerState } from '../../../components/Contexts/context';
 import DeleteTemplate from '../../../components/Templates/DeleteTemplate';
-import { doImage, doPosting } from '../../../src/doApi';
+import { doImage, doPosting } from '../../../utils/doApi';
 import Router from 'next/router';
 import Head from 'next/head';
 

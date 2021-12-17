@@ -1,4 +1,4 @@
-import { useDispatch } from '../../src/context';
+import { useDispatch } from '../../components/Contexts/context';
 import { useEffect } from 'react';
 import Error404Template from '../../components/Templates/Error404Template';
 import Head from 'next/head';

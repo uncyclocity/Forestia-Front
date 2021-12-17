@@ -2,8 +2,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import IptComment from '../Atoms/Input/IptComment';
-import { useDispatch, useReducerState } from '../../src/context';
-import { doComment, doPosting } from '../../src/doApi';
+import { useDispatch, useReducerState } from '../Contexts/context';
+import { doComment, doPosting } from '../../utils/doApi';
 
 const CommInputAreaStyle = styled.div`
   display: flex;

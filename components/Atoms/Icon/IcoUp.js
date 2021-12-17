@@ -1,6 +1,6 @@
 import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import styled from 'styled-components';
-import { useReducerState } from '../../../src/context';
+import { useReducerState } from '../../Contexts/context';
 
 // IcoUp
 // 분류 : 아이콘

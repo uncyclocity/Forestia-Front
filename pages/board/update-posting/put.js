@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useReducerState } from '../../../src/context';
+import { useDispatch, useReducerState } from '../../../components/Contexts/context';
 import PostingPutTemplate from '../../../components/Templates/PostingPutTemplate';
 import Head from 'next/head';
 import Router from 'next/router';

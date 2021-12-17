@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useReducerState } from '../../src/context';
+import { useReducerState } from '../Contexts/context';
 import TxtCatchphrase from '../Atoms/Text/TxtCatchphrase';
 import HeaderPostingPostButton from '../MoleCules/HeaderPostingPostButton';
 

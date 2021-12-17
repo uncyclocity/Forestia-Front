@@ -5,8 +5,8 @@ import IptContent from '../Atoms/Input/IptContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import LblFreePhoto from '../Atoms/Label/LblFreePhoto';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
-import { useDispatch, useReducerState } from '../../src/context';
-import { doPosting } from '../../src/doApi';
+import { useDispatch, useReducerState } from '../Contexts/context';
+import { doPosting } from '../../utils/doApi';
 
 const ContentInputStyle = styled.div`
   margin: 20px 0 15px 0;

@@ -1,8 +1,8 @@
-import { useDispatch, useReducerState } from '../../src/context';
+import { useDispatch, useReducerState } from '../../components/Contexts/context';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import SignUpTemplate from '../../components/Templates/SignUpTemplate';
-import { doUser } from '../../src/doApi';
+import { doUser } from '../../utils/doApi';
 import Router from 'next/router';
 import jwt from 'jsonwebtoken';
 

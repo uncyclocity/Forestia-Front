@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useReducerState } from '../../src/context';
-import { doComment, doPosting } from '../../src/doApi';
+import { useDispatch, useReducerState } from '../Contexts/context';
+import { doComment, doPosting } from '../../utils/doApi';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import TxtComment from '../Atoms/Text/TxtComment';
 import TxtCommentAmount from '../Atoms/Text/TxtCommentAmount';
