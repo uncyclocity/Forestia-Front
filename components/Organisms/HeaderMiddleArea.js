@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useReducerState } from '../Contexts/context';
 import TxtCatchphrase from '../Atoms/Text/TxtCatchphrase';
 import HeaderPostingPostButton from '../MoleCules/HeaderPostingPostButton';
 
@@ -21,12 +20,10 @@ const Styles = styled.div`
 `;
 
 export default function HeaderMiddleArea() {
-  const userName = useReducerState().user.userName;
-
   return (
     <Styles>
       <TxtCatchphrase />
-      {userName && <HeaderPostingPostButton />}
+      <HeaderPostingPostButton />
     </Styles>
   );
 }
