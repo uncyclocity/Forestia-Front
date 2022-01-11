@@ -18,17 +18,19 @@ export default function HeaderPostingPostButton() {
   return (
     <Styles>
       {nowPage === 'post' ? (
-        <div
-          onClick={() =>
-            userName ? Router.push(homeUrl) : alert('로그인이 필요합니다.')
-          }
-        >
+        <div onClick={() => Router.push(homeUrl)}>
           <BtnGotoPostingPost btnText="포스팅 취소">
             <AiOutlineClose />
           </BtnGotoPostingPost>
         </div>
       ) : (
-        <div onClick={() => Router.push(postingPostUrl)}>
+        <div
+          onClick={() =>
+            userName
+              ? Router.push(postingPostUrl)
+              : alert('로그인이 필요합니다.')
+          }
+        >
           <BtnGotoPostingPost btnText="포스팅">
             <AiOutlineEdit />
           </BtnGotoPostingPost>
