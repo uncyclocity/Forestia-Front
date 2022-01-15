@@ -51,8 +51,3 @@ export default function HomePhotoBox({ photoBoard }) {
     </CtnBox>
   );
 }
-
-export const getStaticProps = async () => {
-  const photoBoard = await doPosting.get.top3('photo');
-  return { props: photoBoard, revalidate: 20 };
-};

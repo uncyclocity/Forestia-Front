@@ -49,8 +49,8 @@ export default function Home({ freeBoard, photoBoard }) {
   );
 }
 
-export const getStaticProps = async () => {
+Home.getInitialProps = async () => {
   const freeBoard = await doPosting.get.top3('free');
   const photoBoard = await doPosting.get.top3('photo');
-  return { props: { freeBoard, photoBoard }, revalidate: 20 };
+  return { freeBoard, photoBoard };
 };
