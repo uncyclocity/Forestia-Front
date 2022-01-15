@@ -5,7 +5,7 @@ import IcoAccountSetting from '../Atoms/Icon/IcoAccountSetting';
 import TxtProfileName from '../Atoms/Text/TxtProfileName';
 
 const LayoutStyle = styled.div`
-  width: 100%;
+  width: 106%;
   height: 165px;
   display: flex;
   align-items: center;
