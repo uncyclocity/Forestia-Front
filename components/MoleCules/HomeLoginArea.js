@@ -5,7 +5,7 @@ import { doUser, doUserToken } from '../../utils/doApi';
 import Router from 'next/router';
 
 const Styles = styled.div`
-  width: 96.4%;
+  width: 100%;
   height: 165px;
   padding: 10px;
   display: flex;
