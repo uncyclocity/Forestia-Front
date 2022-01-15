@@ -133,7 +133,11 @@ export const doComment = {
         commentId,
       },
     }).then(() => {
-      Router.push(`/board/posting?boardtype=${boardType}&postid=${postId}`);
+      setTimeout(
+        () =>
+          Router.push(`/board/posting?boardtype=${boardType}&postid=${postId}`),
+        300,
+      );
     });
   },
 };
