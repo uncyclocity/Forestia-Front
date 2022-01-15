@@ -101,13 +101,17 @@ export default function PostingCommentInput({
           onKeyDown={(e) => {
             if (e.keyCode === 13 && e.shiftKey == false) {
               e.preventDefault();
-              uploadComm();
+              userObj.userId ? uploadComm() : alert('로그인이 필요합니다.');
             }
           }}
           value={comment}
         />
       </CommTextareaStyle>
-      <div onClick={uploadComm}>
+      <div
+        onClick={() =>
+          userObj.userId ? uploadComm() : alert('로그인이 필요합니다.')
+        }
+      >
         <BtnCommentPost />
       </div>
     </CommInputAreaStyle>

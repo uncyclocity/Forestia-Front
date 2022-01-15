@@ -121,15 +121,20 @@ export default function PostingUpAndDown({
         <div
           className="ud_btn_area"
           onClick={() => {
-            !postCnt &&
-              getDoUpdateUDdata(
-                'up',
-                'down',
-                nowPostingEleObj,
-                userId,
-                dispatch,
-                setNowPostingEleObj,
-              );
+            if (userId) {
+              if (!postCnt) {
+                getDoUpdateUDdata(
+                  'up',
+                  'down',
+                  nowPostingEleObj,
+                  userId,
+                  dispatch,
+                  setNowPostingEleObj,
+                );
+              }
+            } else {
+              alert('로그인이 필요합니다.');
+            }
           }}
         >
           <IcoUp clicker={nowPostingEleObj.up.clicker} />
@@ -139,15 +144,20 @@ export default function PostingUpAndDown({
         <div
           className="ud_btn_area"
           onClick={() => {
-            !postCnt &&
-              getDoUpdateUDdata(
-                'down',
-                'up',
-                nowPostingEleObj,
-                userId,
-                dispatch,
-                setNowPostingEleObj,
-              );
+            if (userId) {
+              if (!postCnt) {
+                getDoUpdateUDdata(
+                  'down',
+                  'up',
+                  nowPostingEleObj,
+                  userId,
+                  dispatch,
+                  setNowPostingEleObj,
+                );
+              }
+            } else {
+              alert('로그인이 필요합니다.');
+            }
           }}
         >
           <IcoDown clicker={nowPostingEleObj.down.clicker} />

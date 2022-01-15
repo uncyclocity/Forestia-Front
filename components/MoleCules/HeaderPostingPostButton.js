@@ -9,7 +9,9 @@ const Styles = styled.div`
 `;
 
 export default function HeaderPostingPostButton() {
-  const nowPage = useReducerState().nowPage;
+  const state = useReducerState();
+  const nowPage = state.nowPage;
+  const userName = state.user.userName;
   const homeUrl = '/';
   const postingPostUrl = '/board/update-posting/post';
 
@@ -22,7 +24,13 @@ export default function HeaderPostingPostButton() {
           </BtnGotoPostingPost>
         </div>
       ) : (
-        <div onClick={() => Router.push(postingPostUrl)}>
+        <div
+          onClick={() =>
+            userName
+              ? Router.push(postingPostUrl)
+              : alert('로그인이 필요합니다.')
+          }
+        >
           <BtnGotoPostingPost btnText="포스팅">
             <AiOutlineEdit />
           </BtnGotoPostingPost>
