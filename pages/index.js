@@ -5,7 +5,7 @@ import HomeTemplate from '../components/Templates/HomeTemplate';
 import Head from 'next/head';
 import ModalAccountSettings from '../components/Organisms/ModalAcountSettings';
 
-export default function Home({ freeBoard, photoBoard }) {
+export default function Index({ freeBoard, photoBoard }) {
   const user = useReducerState().user;
   const dispatch = useDispatch();
 
@@ -49,7 +49,7 @@ export default function Home({ freeBoard, photoBoard }) {
   );
 }
 
-Home.getInitialProps = async () => {
+Index.getInitialProps = async () => {
   const freeBoard = await doPosting.get.top3('free');
   const photoBoard = await doPosting.get.top3('photo');
   return { freeBoard, photoBoard };
