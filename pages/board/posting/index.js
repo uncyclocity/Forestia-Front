@@ -23,7 +23,7 @@ const postPageSwitchOff = (dispatch) => {
 };
 
 export default function Posting({ nowPostingEleObjRaw, boardType }) {
-  const { page } = useRouter().query;
+  const page = useRouter().query.page || 1;
   const dispatch = useDispatch();
   const nowPostingEleObj = useReducerState().nowPostingEleObj;
 

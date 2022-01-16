@@ -16,17 +16,20 @@ const Styles = styled.div`
 `;
 
 export default function ListPageBtn({ boardSort, listLen, page }) {
-  const postingAmountDivided = listLen / 15;
+  const onePageListAmount = 20;
+  const oneListPostingAmount = 15;
+
+  const postingAmountDivided = listLen / oneListPostingAmount;
   const padInt = parseInt(postingAmountDivided);
   const pageBtnAmount = padInt < postingAmountDivided ? padInt + 1 : padInt;
+  const pageDivided = parseInt((page - 1) / onePageListAmount);
   const Router = useRouter();
 
   return (
     <Styles>
       <BtnPagingLeft
         onClick={() => {
-          const pageDivided = parseInt((page - 1) / 20);
-          const goPage = pageDivided * 20;
+          const goPage = pageDivided * onePageListAmount;
           if (goPage >= 1) {
             Router.push(`/board/boardlist/${boardSort}?page=${goPage}`);
           } else {
@@ -34,9 +37,8 @@ export default function ListPageBtn({ boardSort, listLen, page }) {
           }
         }}
       />
-      {[...Array(20)].map((num, index) => {
-        const pageDivided = parseInt((page - 1) / 20) * 20;
-        const nowPageCnt = pageDivided + index + 1;
+      {[...Array(onePageListAmount)].map((num, index) => {
+        const nowPageCnt = pageDivided * onePageListAmount + (index + 1);
         if (nowPageCnt <= pageBtnAmount) {
           if (nowPageCnt === parseInt(page)) {
             return <TxtPagingNumberSelected key={index} number={nowPageCnt} />;
@@ -58,8 +60,7 @@ export default function ListPageBtn({ boardSort, listLen, page }) {
       })}
       <BtnPagingRight
         onClick={() => {
-          const pageDivided = parseInt((page - 1) / 20);
-          const goPage = (pageDivided + 1) * 20 + 1;
+          const goPage = (pageDivided + 1) * onePageListAmount + 1;
           if (goPage <= pageBtnAmount) {
             Router.push(`/board/boardlist/${boardSort}?page=${goPage}`);
           } else {
