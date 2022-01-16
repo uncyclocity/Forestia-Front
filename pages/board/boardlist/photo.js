@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from '../../../components/Contexts/context';
 import { doPosting } from '../../../utils/doApi';
 import PhotoListTemplate from '../../../components/Templates/PhotoListTemplate';
@@ -6,21 +6,6 @@ import Head from 'next/head';
 
 export default function Photo({ photoBoard, page, photoLen }) {
   const dispatch = useDispatch();
-  const [nowPageCnt, setNowPageCnt] = useState(page);
-  const [nowList, setNowList] = useState(photoBoard);
-
-  const changeList = useCallback(async () => {
-    dispatch({
-      type: 'postcnt_switcher',
-      sw: true,
-    });
-    const photoBoard = await doPosting.get.list(nowPageCnt, 'photo');
-    setNowList(photoBoard);
-    dispatch({
-      type: 'postcnt_switcher',
-      sw: false,
-    });
-  }, [dispatch, nowPageCnt]);
 
   useEffect(() => {
     dispatch({
@@ -29,28 +14,19 @@ export default function Photo({ photoBoard, page, photoLen }) {
     });
   }, [dispatch]);
 
-  useEffect(() => {
-    changeList();
-  }, [changeList]);
-
   return (
     <>
       <Head>
         <title>짤게</title>
         <meta name="description" content="짤게 페이지입니다." />
       </Head>
-      <PhotoListTemplate
-        photoLen={photoLen}
-        nowPageCnt={nowPageCnt}
-        nowList={nowList}
-        setNowPageCnt={setNowPageCnt}
-      />
+      <PhotoListTemplate photoLen={photoLen} page={page} nowList={photoBoard} />
     </>
   );
 }
 
-Photo.getInitialProps = async () => {
-  const page = 1;
+Photo.getInitialProps = async (ctx) => {
+  const page = ctx.query.page || 1;
   const photoBoard = await doPosting.get.list(page, 'photo');
   const photoLen = await doPosting.get.length('photo');
   return { photoBoard, page, photoLen };

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import IcoPagingLeft from '../Atoms/Icon/IcoPagingLeft';
+import BtnPagingLeft from '../Atoms/Button/BtnPagingLeft';
 import TxtPagingNumberSelected from '../Atoms/Text/TxtPagingNumberSelected';
-import TxtPagingNumber from '../Atoms/Text/TxtPagingNumber';
-import IcoPagingRight from '../Atoms/Icon/IcoPagingRight';
+import BtnPagingNumber from '../Atoms/Button/BtnPagingNumber';
+import BtnPagingRight from '../Atoms/Button/BtnPagingRight';
+import { useRouter } from 'next/router';
 
 const Styles = styled.div`
   display: flex;
@@ -14,21 +15,22 @@ const Styles = styled.div`
   margin: 15px 0;
 `;
 
-export default function ListPageBtn({ listLen, page, setNowPageCnt }) {
+export default function ListPageBtn({ boardSort, listLen, page }) {
   const postingAmountDivided = listLen / 15;
   const padInt = parseInt(postingAmountDivided);
   const pageBtnAmount = padInt < postingAmountDivided ? padInt + 1 : padInt;
+  const Router = useRouter();
 
   return (
     <Styles>
-      <IcoPagingLeft
+      <BtnPagingLeft
         onClick={() => {
           const pageDivided = parseInt((page - 1) / 20);
           const goPage = pageDivided * 20;
           if (goPage >= 1) {
-            setNowPageCnt(goPage);
+            Router.push(`/board/boardlist/${boardSort}?page=${goPage}`);
           } else {
-            setNowPageCnt(1);
+            Router.push(`/board/boardlist/${boardSort}?page=${1}`);
           }
         }}
       />
@@ -40,21 +42,28 @@ export default function ListPageBtn({ listLen, page, setNowPageCnt }) {
             return <TxtPagingNumberSelected key={index} number={nowPageCnt} />;
           } else {
             return (
-              <div onClick={() => setNowPageCnt(nowPageCnt)} key={index}>
-                <TxtPagingNumber number={nowPageCnt} />
+              <div
+                onClick={() =>
+                  Router.push(
+                    `/board/boardlist/${boardSort}?page=${nowPageCnt}`,
+                  )
+                }
+                key={index}
+              >
+                <BtnPagingNumber number={nowPageCnt} />
               </div>
             );
           }
         }
       })}
-      <IcoPagingRight
+      <BtnPagingRight
         onClick={() => {
           const pageDivided = parseInt((page - 1) / 20);
           const goPage = (pageDivided + 1) * 20 + 1;
           if (goPage <= pageBtnAmount) {
-            setNowPageCnt(goPage);
+            Router.push(`/board/boardlist/${boardSort}?page=${goPage}`);
           } else {
-            setNowPageCnt(pageBtnAmount);
+            Router.push(`/board/boardlist/${boardSort}?page=${pageBtnAmount}`);
           }
         }}
       />

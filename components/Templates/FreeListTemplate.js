@@ -10,25 +10,16 @@ const BoxStyles = styled.div`
   padding: 20px 30px 5px 30px;
 `;
 
-export default function FreeListTemplate({
-  freeLen,
-  nowPageCnt,
-  nowList,
-  setNowPageCnt,
-}) {
+export default function FreeListTemplate({ freeLen, page, nowList }) {
   return (
     <CtnBox>
       <BoxStyles>
         <BoardTitleTemplate backURL="/">
           <FreeListBoardTitle />
         </BoardTitleTemplate>
-        <FreeListPostingList page={nowPageCnt} freeBoard={nowList} />
+        <FreeListPostingList freeBoard={nowList} page={page} />
         {freeLen > 0 && (
-          <ListPageBtn
-            listLen={freeLen}
-            page={nowPageCnt}
-            setNowPageCnt={setNowPageCnt}
-          />
+          <ListPageBtn boardSort="free" listLen={freeLen} page={page} />
         )}
       </BoxStyles>
     </CtnBox>

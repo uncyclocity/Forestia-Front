@@ -16,7 +16,7 @@ const ListStyle = styled.div`
   }
 `;
 
-export default function PhotoListPostingList({ photoBoard }) {
+export default function PhotoListPostingList({ photoBoard, page }) {
   return (
     <LayoutStyle>
       {photoBoard.length > 0 ? (
@@ -27,7 +27,7 @@ export default function PhotoListPostingList({ photoBoard }) {
               posting={posting}
               onClick={() =>
                 Router.push(
-                  `/board/posting?boardtype=photo&postid=${posting.id}`,
+                  `/board/posting?boardtype=photo&postid=${posting.id}&page=${page}`,
                 )
               }
             />

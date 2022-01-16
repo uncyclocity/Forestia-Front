@@ -1,8 +1,12 @@
-import { useDispatch, useReducerState } from '../../../components/Contexts/context';
+import {
+  useDispatch,
+  useReducerState,
+} from '../../../components/Contexts/context';
 import { useEffect } from 'react';
 import { doPosting } from '../../../utils/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const postPageSwitchOn = (dispatch) => {
   dispatch({
@@ -19,6 +23,7 @@ const postPageSwitchOff = (dispatch) => {
 };
 
 export default function Posting({ nowPostingEleObjRaw, boardType }) {
+  const { page } = useRouter().query;
   const dispatch = useDispatch();
   const nowPostingEleObj = useReducerState().nowPostingEleObj;
 
@@ -52,6 +57,7 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
       <PostingTemplate
         nowPostingEleObjRaw={nowPostingEleObjRaw}
         boardType={boardType}
+        page={page}
       />
     </>
   );

@@ -10,25 +10,16 @@ const BoxStyles = styled.div`
   padding: 20px 30px 5px 30px;
 `;
 
-export default function PhotoListTemplate({
-  photoLen,
-  nowPageCnt,
-  nowList,
-  setNowPageCnt,
-}) {
+export default function PhotoListTemplate({ photoLen, page, nowList }) {
   return (
     <CtnBox>
       <BoxStyles>
         <BoardTitleTemplate backURL="/">
           <PhotoListBoardTitle />
         </BoardTitleTemplate>
-        <PhotoListPostingList page={nowPageCnt} photoBoard={nowList} />
+        <PhotoListPostingList photoBoard={nowList} page={page} />
         {photoLen > 0 && (
-          <ListPageBtn
-            listLen={photoLen}
-            page={nowPageCnt}
-            setNowPageCnt={setNowPageCnt}
-          />
+          <ListPageBtn boardSort="photo" listLen={photoLen} page={page} />
         )}
       </BoxStyles>
     </CtnBox>

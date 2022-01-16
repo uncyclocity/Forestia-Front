@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from '../../../components/Contexts/context';
 import { doPosting } from '../../../utils/doApi';
 import FreeListTemplate from '../../../components/Templates/FreeListTemplate';
@@ -6,21 +6,6 @@ import Head from 'next/head';
 
 export default function Free({ freeBoard, page, freeLen }) {
   const dispatch = useDispatch();
-  const [nowPageCnt, setNowPageCnt] = useState(page);
-  const [nowList, setNowList] = useState(freeBoard);
-
-  const changeList = useCallback(async () => {
-    dispatch({
-      type: 'postcnt_switcher',
-      sw: true,
-    });
-    const freeBoard = await doPosting.get.list(nowPageCnt, 'free');
-    setNowList(freeBoard);
-    dispatch({
-      type: 'postcnt_switcher',
-      sw: false,
-    });
-  }, [dispatch, nowPageCnt]);
 
   useEffect(() => {
     dispatch({
@@ -29,28 +14,19 @@ export default function Free({ freeBoard, page, freeLen }) {
     });
   }, [dispatch]);
 
-  useEffect(() => {
-    changeList();
-  }, [changeList]);
-
   return (
     <>
       <Head>
         <title>자게</title>
         <meta name="description" content="자게 페이지입니다." />
       </Head>
-      <FreeListTemplate
-        freeLen={freeLen}
-        nowPageCnt={nowPageCnt}
-        nowList={nowList}
-        setNowPageCnt={setNowPageCnt}
-      />
+      <FreeListTemplate freeLen={freeLen} page={page} nowList={freeBoard} />
     </>
   );
 }
 
-Free.getInitialProps = async () => {
-  const page = 1;
+Free.getInitialProps = async (ctx) => {
+  const page = ctx.query.page || 1;
   const freeBoard = await doPosting.get.list(page, 'free');
   const freeLen = await doPosting.get.length('free');
   return { freeBoard, page, freeLen };
