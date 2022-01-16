@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Progress from './progress';
 
-class ProgressContainer extends Component {
+class MyProgressContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,4 +47,4 @@ class ProgressContainer extends Component {
   }
 }
 
-export default ProgressContainer;
+export default MyProgressContainer;

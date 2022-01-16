@@ -3,13 +3,13 @@ import HeaderTemplate from '../Templates/HeaderTemplate';
 import AppAnimation from './appAnimation';
 import Auth from './auth';
 import Modal from './modal';
-import ProgressContainer from './myProgressContainer';
+import MyProgressContainer from './myProgressContainer';
 import TransitionLayout from './transitionLayout';
 
 export default function Import2AppComponent({ children }) {
   return (
     <>
-      <ProgressContainer />
+      <MyProgressContainer />
       <Context>
         <Auth>
           <AppAnimation>
