@@ -145,7 +145,7 @@ export const doComment = {
 export const doImage = {
   post: async (formData, boardType) => {
     const apiUrl = `/post/image?boardtype=${boardType}`;
-    var pathArr = [];
+    let pathArr = [];
     await instance({
       method: 'POST',
       url: apiUrl,

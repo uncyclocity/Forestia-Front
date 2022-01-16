@@ -25,7 +25,7 @@ const letsDoUploadPosting = async (
 
   const boardLen = await doPosting.get.length(selBoard);
 
-  var id = '0';
+  let id = '0';
 
   const formData = new FormData();
 
@@ -34,8 +34,8 @@ const letsDoUploadPosting = async (
     id = parseInt(maxId) + 1;
   }
 
-  for (var i = 0; i < imagesArr.length; i++) {
-    formData.append('images', imagesArr[i]);
+  for (let image of imagesArr) {
+    formData.append('images', image);
   }
 
   const res = await doImage.post(formData, selBoard);
@@ -44,8 +44,8 @@ const letsDoUploadPosting = async (
 
 const getImagesUrlArr = (files) => {
   const imagesUrlArr = [];
-  for (var i = 0; i < files.length; i++) {
-    const imageUrl = window.URL.createObjectURL(files[i]);
+  for (let file of files) {
+    const imageUrl = window.URL.createObjectURL(file);
     imagesUrlArr.push(imageUrl);
   }
   return imagesUrlArr;
