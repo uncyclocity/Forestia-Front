@@ -7,27 +7,13 @@ const instance = axios.create({
   },
 });
 
-let progress = 0;
-let timerId = null;
-
 const setProgress = (value) => {
-  progress = value;
-  typeof window !== 'undefined' && window.progressbar.onChange(progress);
-};
-
-const timer = () => {
-  if (progress < 98) {
-    const diff = 100 - progress;
-    const inc = diff / (10 + progress * (1 + progress / 100));
-    setProgress(progress + inc);
-  }
-  timerId = setTimeout(timer, 50);
+  typeof window !== 'undefined' && window.progressbarChange(value);
 };
 
 instance.interceptors.request.use(
   (config) => {
-    setProgress(0);
-    timer();
+    setProgress(10);
     return config;
   },
   (error) => {
@@ -37,10 +23,6 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response) => {
-    if (timerId) {
-      clearTimeout(timerId);
-      timerId = null;
-    }
     setProgress(100);
     return response;
   },

@@ -1,50 +1,28 @@
-import React, { Component } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Progress from './progress';
 
-class MyProgressContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      progress: 0,
-      active: false,
-    };
-  }
+export default function MyProgressContainer() {
+  const [progress, setProgress] = useState(0);
+  const [active, setActive] = useState(false);
 
-  componentDidMount() {
-    window.progressbar = this;
-  }
-
-  onChange = (value) => {
+  const onChange = useCallback((value) => {
+    setProgress(value);
+    setActive(true);
     if (value === 100) {
-      this.setState(
-        {
-          progress: value,
-          active: true,
-        },
-        this.initProgress,
-      );
-    } else {
-      this.setState({
-        progress: value,
-        active: true,
-      });
+      initProgress();
     }
-  };
+  }, []);
 
-  initProgress = () => {
+  const initProgress = () => {
     setTimeout(() => {
-      this.setState({
-        active: false,
-        progress: 0,
-      });
+      setProgress(0);
+      setActive(false);
     }, 1000);
   };
 
-  render() {
-    return (
-      <Progress active={this.state.active} progress={this.state.progress} />
-    );
-  }
-}
+  useEffect(() => {
+    window.progressbarChange = onChange;
+  }, [onChange]);
 
-export default MyProgressContainer;
+  return <Progress active={active} progress={progress} />;
+}
