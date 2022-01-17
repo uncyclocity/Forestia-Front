@@ -78,8 +78,10 @@ export default function BoardTitleMoreMenu({ isOpenMoreAnimation }) {
           <li>
             <BtnMore
               onClick={() => {
-                if (!postCnt && confirm('정말로 삭제하시겠습니까')) {
-                  Router.push(`/board/update-posting/delete`);
+                if (!postCnt) {
+                  if (confirm('정말로 삭제하시겠습니까')) {
+                    Router.push(`/board/update-posting/delete`);
+                  }
                 }
               }}
             >

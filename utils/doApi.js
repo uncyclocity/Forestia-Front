@@ -85,6 +85,8 @@ export const doPosting = {
         boardType,
         id,
       },
+    }).then(async () => {
+      Router.push(`/board/boardlist/${boardType}?page=1`);
     });
   },
 };

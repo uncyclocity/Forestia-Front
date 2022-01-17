@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import IptComment from '../Atoms/Input/IptComment';
 import { useDispatch, useReducerState } from '../Contexts/context';
-import { doComment, doPosting } from '../../utils/doApi';
+import { postComment } from '../../utils/updateFunc/comment/postComment';
 
 const CommInputAreaStyle = styled.div`
   display: flex;
@@ -35,30 +35,6 @@ const CommTextareaStyle = styled.div`
   }
 `;
 
-const UpdateNowPostingEleObj = async (
-  nowPostingEleObj,
-  setNowPostingEleObj,
-  dispatch,
-) => {
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: true,
-  });
-  const getPostingEle = await doPosting.get.ele(
-    nowPostingEleObj.boardType,
-    nowPostingEleObj.id,
-  );
-  const nowPostingEleObjUpdated = {
-    ...getPostingEle,
-    boardType: nowPostingEleObj.boardType,
-  };
-  setNowPostingEleObj(nowPostingEleObjUpdated);
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: false,
-  });
-};
-
 export default function PostingCommentInput({
   nowPostingEleObj,
   setNowPostingEleObj,
@@ -69,30 +45,6 @@ export default function PostingCommentInput({
   const userObj = state.user;
   const postCnt = state.postCnt;
 
-  const uploadComm = async () => {
-    if (!postCnt) {
-      if (comment) {
-        dispatch({
-          type: 'postcnt_switcher',
-          sw: true,
-        });
-        await doComment.post(nowPostingEleObj, comment, userObj);
-        await UpdateNowPostingEleObj(
-          nowPostingEleObj,
-          setNowPostingEleObj,
-          dispatch,
-        );
-        setComment('');
-        dispatch({
-          type: 'postcnt_switcher',
-          sw: false,
-        });
-      } else {
-        alert('댓글을 입력하세요');
-      }
-    }
-  };
-
   return (
     <CommInputAreaStyle>
       <CommTextareaStyle>
@@ -101,7 +53,17 @@ export default function PostingCommentInput({
           onKeyDown={(e) => {
             if (e.keyCode === 13 && e.shiftKey == false) {
               e.preventDefault();
-              userObj.userId ? uploadComm() : alert('로그인이 필요합니다.');
+              userObj.userId
+                ? postComment({
+                    dispatch,
+                    postCnt,
+                    comment,
+                    setComment,
+                    nowPostingEleObj,
+                    setNowPostingEleObj,
+                    userObj,
+                  })
+                : alert('로그인이 필요합니다.');
             }
           }}
           value={comment}
@@ -109,7 +71,17 @@ export default function PostingCommentInput({
       </CommTextareaStyle>
       <div
         onClick={() =>
-          userObj.userId ? uploadComm() : alert('로그인이 필요합니다.')
+          userObj.userId
+            ? postComment({
+                dispatch,
+                postCnt,
+                comment,
+                setComment,
+                nowPostingEleObj,
+                setNowPostingEleObj,
+                userObj,
+              })
+            : alert('로그인이 필요합니다.')
         }
       >
         <BtnCommentPost />

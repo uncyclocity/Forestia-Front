@@ -2,39 +2,28 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import { useDispatch } from '../../../components/Contexts/context';
 import DeleteTemplate from '../../../components/Templates/DeleteTemplate';
-import { doComment } from '../../../utils/doApi';
 import Head from 'next/head';
-
-const letsDeleteComm = async (
-  dispatch,
-  { boardtype: boardType, postid: postId, commentid: commentId },
-) => {
-  if (boardType || postId || commentId) {
-    dispatch({
-      type: 'postcnt_switcher',
-      sw: true,
-    });
-    await doComment.delete(boardType, postId, commentId);
-    dispatch({
-      type: 'postcnt_switcher',
-      sw: false,
-    });
-  } else {
-    Router.push('/404');
-  }
-};
+import { deleteComment } from '../../../utils/updateFunc/comment/deleteComment';
 
 export default function Delete() {
-  const router = useRouter();
+  const {
+    boardtype: boardType,
+    postid: postId,
+    commentid: commentId,
+  } = useRouter().query;
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch({
       type: 'initiate',
       nowPage: 'delete',
     });
-
-    letsDeleteComm(dispatch, router.query);
-  }, [dispatch, router.query]);
+    if (boardType || postId || commentId) {
+      deleteComment({ boardType, postId, commentId, dispatch });
+    } else {
+      Router.push('/404');
+    }
+  }, [boardType, commentId, dispatch, postId]);
 
   return (
     <>

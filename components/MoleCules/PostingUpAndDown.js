@@ -1,71 +1,9 @@
 import styled from 'styled-components';
+import { putUpDown } from '../../utils/updateFunc/updown/putUpDown';
 import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoUp from '../Atoms/Icon/IcoUp';
 import TxtUpDownAmount from '../Atoms/Text/TxtUpDownAmount';
 import { useDispatch, useReducerState } from '../Contexts/context';
-import { doPosting, doUpDown } from '../../utils/doApi';
-
-const getDoUpdateUDdata = async (
-  udType,
-  revUdType,
-  nowPostingEleObj,
-  userId,
-  dispatch,
-  setNowPostingEleObj,
-) => {
-  const defaultData = {
-    boardType: nowPostingEleObj.boardType,
-    postId: nowPostingEleObj.id,
-    udType,
-    userId,
-  };
-
-  const udClickerArr = nowPostingEleObj[udType].clicker;
-  const revUdClickerArr = nowPostingEleObj[revUdType].clicker;
-
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: true,
-  });
-
-  if (udClickerArr.find((clickUser) => clickUser === userId)) {
-    const data = {
-      ...defaultData,
-      operation: 'sub',
-    };
-    await doUpDown.put(data);
-  } else if (revUdClickerArr.find((clickUser) => clickUser === userId)) {
-    const data = {
-      ...defaultData,
-      revUdType,
-      operation: 'addsub',
-    };
-    await doUpDown.put(data);
-  } else {
-    const data = {
-      ...defaultData,
-      operation: 'add',
-    };
-    await doUpDown.put(data);
-  }
-
-  const getPostingEle = await doPosting.get.ele(
-    nowPostingEleObj.boardType,
-    nowPostingEleObj.id,
-  );
-
-  const nowPostingEleObjUpdated = {
-    ...getPostingEle,
-    boardType: nowPostingEleObj.boardType,
-  };
-
-  setNowPostingEleObj(nowPostingEleObjUpdated);
-
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: false,
-  });
-};
 
 const UpAndDownAreaStyle = styled.div`
   width: 100%;
@@ -123,14 +61,13 @@ export default function PostingUpAndDown({
           onClick={() => {
             if (userId) {
               if (!postCnt) {
-                getDoUpdateUDdata(
-                  'up',
-                  'down',
+                putUpDown({
+                  udType: 'up',
                   nowPostingEleObj,
                   userId,
                   dispatch,
                   setNowPostingEleObj,
-                );
+                });
               }
             } else {
               alert('로그인이 필요합니다.');
@@ -146,14 +83,13 @@ export default function PostingUpAndDown({
           onClick={() => {
             if (userId) {
               if (!postCnt) {
-                getDoUpdateUDdata(
-                  'down',
-                  'up',
+                putUpDown({
+                  udType: 'down',
                   nowPostingEleObj,
                   userId,
                   dispatch,
                   setNowPostingEleObj,
-                );
+                });
               }
             } else {
               alert('로그인이 필요합니다.');

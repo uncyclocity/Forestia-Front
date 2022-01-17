@@ -6,7 +6,7 @@ import IptTitle from '../Atoms/Input/IptTitle';
 import LblFreePhoto from '../Atoms/Label/LblFreePhoto';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import { useDispatch, useReducerState } from '../Contexts/context';
-import { doPosting } from '../../utils/doApi';
+import { putPosting } from '../../utils/updateFunc/posting/putPosting';
 
 const ContentInputStyle = styled.div`
   margin: 20px 0 15px 0;
@@ -33,28 +33,9 @@ export default function PostingPutPage() {
         />
         <BtnPosting
           text="수정"
-          onClick={async () => {
-            if (!postCnt) {
-              if (editEle.title && editEle.content) {
-                dispatch({
-                  type: 'postcnt_switcher',
-                  sw: true,
-                });
-                await doPosting.put(
-                  boardType,
-                  id,
-                  editEle.title,
-                  editEle.content,
-                );
-                dispatch({
-                  type: 'postcnt_switcher',
-                  sw: false,
-                });
-              } else {
-                alert('제목 및 내용을 입력하세요');
-              }
-            }
-          }}
+          onClick={() =>
+            putPosting({ postCnt, editEle, dispatch, boardType, id })
+          }
         />
       </ContentInputStyle>
     </>

@@ -8,39 +8,11 @@ import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import IptTitle from '../Atoms/Input/IptTitle';
 import IptContent from '../Atoms/Input/IptContent';
 import PostingPostImgUploadArea from '../MoleCules/PostingPostImgUploadArea';
-import { doImage, doPosting } from '../../utils/doApi';
+import { postPosting } from '../../utils/updateFunc/posting/postPosting';
 
-const letsDoUploadPosting = async (
-  selBoard,
-  title,
-  content,
-  imagesArr,
-  dispatch,
-  userObj,
-) => {
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: true,
-  });
-
-  const boardLen = await doPosting.get.length(selBoard);
-
-  let id = '0';
-
-  const formData = new FormData();
-
-  if (boardLen > 0) {
-    const maxId = await doPosting.get.latestId(selBoard);
-    id = parseInt(maxId) + 1;
-  }
-
-  for (let image of imagesArr) {
-    formData.append('images', image);
-  }
-
-  const res = await doImage.post(formData, selBoard);
-  await doPosting.post(selBoard, id, title, content, res, userObj);
-};
+const LayoutStyle = styled.div`
+  margin-bottom: 15px;
+`;
 
 const getImagesUrlArr = (files) => {
   const imagesUrlArr = [];
@@ -50,10 +22,6 @@ const getImagesUrlArr = (files) => {
   }
   return imagesUrlArr;
 };
-
-const LayoutStyle = styled.div`
-  margin-bottom: 15px;
-`;
 
 export default function PostingPostPage() {
   const state = useReducerState();
@@ -109,14 +77,14 @@ export default function PostingPostPage() {
                   ) {
                     alert('짤게는 이미지 업로드가 필수입니다.');
                   } else {
-                    letsDoUploadPosting(
+                    postPosting({
                       selBoard,
-                      postingEle.title,
-                      postingEle.content,
-                      files,
+                      title: postingEle.title,
+                      content: postingEle.content,
+                      imagesArr: files,
                       dispatch,
                       userObj,
-                    );
+                    });
                   }
                 } else {
                   alert('제목 및 내용을 입력하세요');

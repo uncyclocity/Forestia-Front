@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useReducerState } from '../Contexts/context';
-import { doComment, doPosting } from '../../utils/doApi';
 import { BtnCommentPost } from '../Atoms/Button/BtnCommentPost';
 import TxtComment from '../Atoms/Text/TxtComment';
 import TxtCommentAmount from '../Atoms/Text/TxtCommentAmount';
@@ -12,38 +11,7 @@ import TxtCommentContent from '../Atoms/Text/TxtCommentContent';
 import IptComment from '../Atoms/Input/IptComment';
 import Router from 'next/router';
 import LinCommentBetweenAmountAndList from '../Atoms/Line/LinCommentBetweenAmountAndList';
-
-const gotoCommDelPage = (nowPostingEleObj, commentId) => {
-  if (confirm('정말로 삭제하시겠습니까')) {
-    Router.push(
-      `/board/update-comment/delete?boardtype=${nowPostingEleObj.boardType}&postid=${nowPostingEleObj.id}&commentid=${commentId}`,
-    );
-  }
-};
-
-const UpdateNowPostingEleObj = async (
-  nowPostingEleObj,
-  setNowPostingEleObj,
-  dispatch,
-) => {
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: true,
-  });
-  const getPostingEle = await doPosting.get.ele(
-    nowPostingEleObj.boardType,
-    nowPostingEleObj.id,
-  );
-  const nowPostingEleObjUpdated = {
-    ...getPostingEle,
-    boardType: nowPostingEleObj.boardType,
-  };
-  setNowPostingEleObj(nowPostingEleObjUpdated);
-  dispatch({
-    type: 'postcnt_switcher',
-    sw: false,
-  });
-};
+import { putComment } from '../../utils/updateFunc/comment/putComment';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -91,25 +59,6 @@ export default function PostingCommentList({
   const dispatch = useDispatch();
   const [editCommObj, setEditCommObj] = useState(false);
 
-  const editComm = async () => {
-    if (!postCnt) {
-      dispatch({
-        type: 'postcnt_switcher',
-        sw: true,
-      });
-      await doComment.put(nowPostingEleObj, editCommObj, setEditCommObj);
-      await UpdateNowPostingEleObj(
-        nowPostingEleObj,
-        setNowPostingEleObj,
-        dispatch,
-      );
-      dispatch({
-        type: 'postcnt_switcher',
-        sw: false,
-      });
-    }
-  };
-
   return (
     <CommListAreaStyle>
       <CommAmountAreaStyle>
@@ -146,9 +95,15 @@ export default function PostingCommentList({
                     )}
 
                     <div
-                      onClick={() =>
-                        gotoCommDelPage(nowPostingEleObj, comment.id)
-                      }
+                      onClick={() => {
+                        if (!postCnt) {
+                          if (confirm('정말로 삭제하시겠습니까')) {
+                            Router.push(
+                              `/board/update-comment/delete?boardtype=${nowPostingEleObj.boardType}&postid=${nowPostingEleObj.id}&commentid=${comment.id}`,
+                            );
+                          }
+                        }
+                      }}
                     >
                       <BtnCommentEditDel text="삭제" />
                     </div>
@@ -169,12 +124,30 @@ export default function PostingCommentList({
                       onKeyDown={(e) => {
                         if (e.keyCode === 13 && e.shiftKey == false) {
                           e.preventDefault();
-                          editComm();
+                          putComment({
+                            dispatch,
+                            nowPostingEleObj,
+                            setNowPostingEleObj,
+                            setEditCommObj,
+                            editCommObj,
+                            postCnt,
+                          });
                         }
                       }}
                       value={editCommObj.content}
                     />
-                    <div onClick={editComm}>
+                    <div
+                      onClick={() =>
+                        putComment({
+                          dispatch,
+                          nowPostingEleObj,
+                          setNowPostingEleObj,
+                          setEditCommObj,
+                          editCommObj,
+                          postCnt,
+                        })
+                      }
+                    >
                       <BtnCommentPost />
                     </div>
                   </div>
