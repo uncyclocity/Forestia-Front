@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
-import { useDispatch, useReducerState } from '../../../components/Contexts/context';
+import {
+  useDispatch,
+  useReducerState,
+} from '../../../components/Contexts/context';
 import PostingPutTemplate from '../../../components/Templates/PostingPutTemplate';
 import Head from 'next/head';
 import Router from 'next/router';
@@ -16,10 +19,6 @@ export default function Put() {
     if (!boardType || !id) {
       Router.push('/404');
     }
-
-    return () => {
-      dispatch({ type: 'editpost_data', nowPostingEleObj: {} });
-    };
   }, [boardType, dispatch, id]);
 
   return (

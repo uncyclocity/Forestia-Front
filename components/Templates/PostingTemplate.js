@@ -12,11 +12,11 @@ const BoxStyles = styled.div`
 `;
 
 export default function PostingTemplate({
-  nowPostingEleObjRaw,
+  nowPostingEleObj,
+  setNowPostingEleObj,
   boardType,
   page,
 }) {
-  const [nowPostingEleObj, setNowPostingEleObj] = useState(nowPostingEleObjRaw);
   const backURL = `/board/boardlist/${boardType}?page=${page}`;
 
   return (

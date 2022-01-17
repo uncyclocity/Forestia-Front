@@ -1,5 +1,5 @@
 import { useDispatch } from '../../../components/Contexts/context';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { doPosting } from '../../../utils/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
 import Head from 'next/head';
@@ -22,27 +22,29 @@ const postingPageSwitchOff = (dispatch) => {
 export default function Posting({ nowPostingEleObjRaw, boardType }) {
   const page = useRouter().query.page || 1;
   const dispatch = useDispatch();
+  const [nowPostingEleObj, setNowPostingEleObj] = useState(nowPostingEleObjRaw);
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
       nowPage: boardType,
     });
-    dispatch({ type: 'editpost_data', nowPostingEleObj: nowPostingEleObjRaw });
+    dispatch({ type: 'editpost_data', nowPostingEleObj });
     postingPageSwitchOn(dispatch);
     return () => {
       postingPageSwitchOff(dispatch);
     };
-  }, [boardType, dispatch, nowPostingEleObjRaw]);
+  }, [boardType, dispatch, nowPostingEleObj]);
 
   return (
     <>
       <Head>
-        <title>{nowPostingEleObjRaw.title}</title>
+        <title>{nowPostingEleObj.title}</title>
         <meta name="description" content="게시글 페이지입니다." />
       </Head>
       <PostingTemplate
-        nowPostingEleObjRaw={nowPostingEleObjRaw}
+        nowPostingEleObj={nowPostingEleObj}
+        setNowPostingEleObj={setNowPostingEleObj}
         boardType={boardType}
         page={page}
       />

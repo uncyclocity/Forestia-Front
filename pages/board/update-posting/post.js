@@ -11,7 +11,6 @@ export default function Post() {
       type: 'initiate',
       nowPage: 'post',
     });
-    dispatch({ type: 'editpost_data', nowPostingEleObj: {} });
   }, [dispatch]);
 
   return (

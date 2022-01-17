@@ -24,9 +24,6 @@ export default function Delete() {
     } else {
       Router.push('/404');
     }
-    return () => {
-      dispatch({ type: 'editpost_data', nowPostingEleObj: {} });
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
