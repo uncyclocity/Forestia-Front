@@ -11,7 +11,7 @@ export default function Context({ children }) {
       userId: '',
     },
     nowPage: null,
-    isPostPage: false,
+    isPostingPage: false,
     nowPostingEleObj: {},
     postCnt: false,
     modal: {
@@ -28,10 +28,10 @@ export default function Context({ children }) {
           nowPage: action.nowPage,
         };
       }
-      case 'postpage_switcher': {
+      case 'posting_page_switcher': {
         return {
           ...state,
-          isPostPage: action.isPostPage,
+          isPostingPage: action.isPostingPage,
         };
       }
       case 'editpost_data': {

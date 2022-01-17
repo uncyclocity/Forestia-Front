@@ -8,17 +8,17 @@ import PostingTemplate from '../../../components/Templates/PostingTemplate';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-const postPageSwitchOn = (dispatch) => {
+const postingPageSwitchOn = (dispatch) => {
   dispatch({
-    type: 'postpage_switcher',
-    isPostPage: true,
+    type: 'posting_page_switcher',
+    isPostingPage: true,
   });
 };
 
-const postPageSwitchOff = (dispatch) => {
+const postingPageSwitchOff = (dispatch) => {
   dispatch({
-    type: 'postpage_switcher',
-    isPostPage: false,
+    type: 'posting_page_switcher',
+    isPostingPage: false,
   });
 };
 
@@ -33,9 +33,9 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
       nowPage: boardType,
     });
     dispatch({ type: 'editpost_data', nowPostingEleObj: nowPostingEleObjRaw });
-    postPageSwitchOn(dispatch);
+    postingPageSwitchOn(dispatch);
     return () => {
-      postPageSwitchOff(dispatch);
+      postingPageSwitchOff(dispatch);
     };
   }, [boardType, dispatch, nowPostingEleObjRaw, nowPostingEleObj]);
 
