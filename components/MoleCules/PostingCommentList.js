@@ -99,7 +99,7 @@ export default function PostingCommentList({
                         if (!postCnt) {
                           if (confirm('정말로 삭제하시겠습니까')) {
                             Router.push(
-                              `/board/update-comment/delete?boardtype=${nowPostingEleObj.boardType}&postid=${nowPostingEleObj.id}&commentid=${comment.id}`,
+                              `/board/update-comment/delete?boardtype=${nowPostingEleObj.boardType}&postid=${nowPostingEleObj.id}&commentid=${comment.id}&authorid=${comment.authorId}`,
                             );
                           }
                         }

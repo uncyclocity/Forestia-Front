@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
-import { useDispatch } from '../../../components/Contexts/context';
+import {
+  useDispatch,
+  useReducerState,
+} from '../../../components/Contexts/context';
 import DeleteTemplate from '../../../components/Templates/DeleteTemplate';
 import Head from 'next/head';
 import { deleteComment } from '../../../utils/updateFunc/comment/deleteComment';
@@ -10,20 +13,23 @@ export default function Delete() {
     boardtype: boardType,
     postid: postId,
     commentid: commentId,
+    authorid: authorId,
   } = useRouter().query;
   const dispatch = useDispatch();
+  const { userId } = useReducerState().user;
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
       nowPage: 'delete',
     });
-    if (boardType || postId || commentId) {
+    if (boardType && postId && commentId && authorId === userId) {
       deleteComment({ boardType, postId, commentId, dispatch });
     } else {
       Router.push('/404');
     }
-  }, [boardType, commentId, dispatch, postId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

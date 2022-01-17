@@ -1,7 +1,4 @@
-import {
-  useDispatch,
-  useReducerState,
-} from '../../../components/Contexts/context';
+import { useDispatch } from '../../../components/Contexts/context';
 import { useEffect } from 'react';
 import { doPosting } from '../../../utils/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
@@ -25,7 +22,6 @@ const postingPageSwitchOff = (dispatch) => {
 export default function Posting({ nowPostingEleObjRaw, boardType }) {
   const page = useRouter().query.page || 1;
   const dispatch = useDispatch();
-  const nowPostingEleObj = useReducerState().nowPostingEleObj;
 
   useEffect(() => {
     dispatch({
@@ -37,7 +33,7 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
     return () => {
       postingPageSwitchOff(dispatch);
     };
-  }, [boardType, dispatch, nowPostingEleObjRaw, nowPostingEleObj]);
+  }, [boardType, dispatch, nowPostingEleObjRaw]);
 
   return (
     <>

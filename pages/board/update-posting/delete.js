@@ -10,14 +10,16 @@ import { deletePosting } from '../../../utils/updateFunc/posting/deletePosting';
 
 export default function Delete() {
   const dispatch = useDispatch();
-  const { boardType, id, imagesUrl } = useReducerState().nowPostingEleObj;
+  const { boardType, id, imagesUrl, authorId } =
+    useReducerState().nowPostingEleObj;
+  const { userId } = useReducerState().user;
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
       nowPage: 'delete',
     });
-    if (boardType && id && imagesUrl) {
+    if (boardType && id && imagesUrl && userId === authorId) {
       deletePosting({ boardType, id, imagesUrl, dispatch });
     } else {
       Router.push('/404');
@@ -25,7 +27,8 @@ export default function Delete() {
     return () => {
       dispatch({ type: 'editpost_data', nowPostingEleObj: {} });
     };
-  }, [boardType, dispatch, id, imagesUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
