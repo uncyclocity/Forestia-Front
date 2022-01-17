@@ -30,5 +30,10 @@ export const postPosting = async ({
 
     const res = await doImage.post(formData, selBoard);
     await doPosting.post(selBoard, id, title, content, res, userObj);
+
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: false,
+    });
   }
 };
