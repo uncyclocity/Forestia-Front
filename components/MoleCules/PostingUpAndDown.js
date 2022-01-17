@@ -60,15 +60,14 @@ export default function PostingUpAndDown({
           className="ud_btn_area"
           onClick={() => {
             if (userId) {
-              if (!postCnt) {
-                putUpDown({
-                  udType: 'up',
-                  nowPostingEleObj,
-                  userId,
-                  dispatch,
-                  setNowPostingEleObj,
-                });
-              }
+              putUpDown({
+                udType: 'up',
+                nowPostingEleObj,
+                userId,
+                dispatch,
+                setNowPostingEleObj,
+                postCnt,
+              });
             } else {
               alert('로그인이 필요합니다.');
             }
@@ -82,15 +81,14 @@ export default function PostingUpAndDown({
           className="ud_btn_area"
           onClick={() => {
             if (userId) {
-              if (!postCnt) {
-                putUpDown({
-                  udType: 'down',
-                  nowPostingEleObj,
-                  userId,
-                  dispatch,
-                  setNowPostingEleObj,
-                });
-              }
+              putUpDown({
+                udType: 'down',
+                nowPostingEleObj,
+                userId,
+                dispatch,
+                setNowPostingEleObj,
+                postCnt,
+              });
             } else {
               alert('로그인이 필요합니다.');
             }

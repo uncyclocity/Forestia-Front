@@ -69,26 +69,25 @@ export default function PostingPostPage() {
           <BtnPosting
             text="업로드"
             onClick={() => {
-              if (!postCnt) {
-                if (postingEle.content && postingEle.title) {
-                  if (
-                    selBoard === 'photo' &&
-                    postingEle.imagesUrlArr.length <= 0
-                  ) {
-                    alert('짤게는 이미지 업로드가 필수입니다.');
-                  } else {
-                    postPosting({
-                      selBoard,
-                      title: postingEle.title,
-                      content: postingEle.content,
-                      imagesArr: files,
-                      dispatch,
-                      userObj,
-                    });
-                  }
+              if (postingEle.content && postingEle.title) {
+                if (
+                  selBoard === 'photo' &&
+                  postingEle.imagesUrlArr.length <= 0
+                ) {
+                  alert('짤게는 이미지 업로드가 필수입니다.');
                 } else {
-                  alert('제목 및 내용을 입력하세요');
+                  postPosting({
+                    selBoard,
+                    title: postingEle.title,
+                    content: postingEle.content,
+                    imagesArr: files,
+                    dispatch,
+                    userObj,
+                    postCnt,
+                  });
                 }
+              } else {
+                alert('제목 및 내용을 입력하세요');
               }
             }}
           />
