@@ -7,6 +7,7 @@ import Head from 'next/head';
 import SignUpTemplate from '../../components/Templates/SignUpTemplate';
 import { doUser, doUserToken } from '../../utils/doApi';
 import Router from 'next/router';
+import { postUser } from '../../utils/updateFunc/user/postUser';
 
 const isNickNameOverlap = async (nickName) => {
   const user = await doUser.get.byNickName(nickName);
@@ -22,26 +23,28 @@ export default function SignUp() {
   const state = useReducerState();
   const id = state.user.userId;
   const email = state.user.userEmail;
+  const postCnt = state.postCnt;
 
   const [nickName, setNickName] = useState('');
   const [isOverLap, setIsOverLap] = useState(false);
 
   const signUpProcess = async () => {
-    if (nickName) {
-      const isNickOverlapVal = await isNickNameOverlap(nickName);
-      if (isNickOverlapVal) {
-        setIsOverLap(true);
+    if (!postCnt) {
+      if (nickName) {
+        const isNickOverlapVal = await isNickNameOverlap(nickName);
+        if (isNickOverlapVal) {
+          setIsOverLap(true);
+        } else {
+          await postUser({ dispatch, id, email, nickName });
+          alert(
+            '회원 가입이 완료되었습니다.\n해당 구글 계정으로 재로그인 후 사용가능합니다.',
+          );
+          setIsOverLap(false);
+          Router.push('/');
+        }
       } else {
-        const token = await doUserToken.get(id, email);
-        doUser.post(id, email, nickName, token);
-        alert(
-          '회원 가입이 완료되었습니다.\n해당 구글 계정으로 재로그인 후 사용가능합니다.',
-        );
-        setIsOverLap(false);
-        Router.push('/');
+        alert('닉네임을 입력하세요');
       }
-    } else {
-      alert('닉네임을 입력하세요');
     }
   };
 
