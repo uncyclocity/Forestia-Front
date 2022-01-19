@@ -30,7 +30,6 @@ export default function IndexLoginArea() {
       Router.push('/signup');
     } else {
       const token = await doUserToken.get(id, email);
-      doUserToken.post(id, token);
       localStorage.setItem('token', token);
       dispatch({
         type: 'login',
