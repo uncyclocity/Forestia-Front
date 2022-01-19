@@ -24,9 +24,9 @@ export const postPosting = async ({
       id = parseInt(maxId) + 1;
     }
 
-    imagesArr.forEach((image) => {
+    for (let image of imagesArr) {
       formData.append('images', image);
-    });
+    }
 
     const res = await doImage.post(formData, selBoard);
     await doPosting.post(selBoard, id, title, content, res, userObj);
