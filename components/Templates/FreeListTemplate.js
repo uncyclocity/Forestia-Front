@@ -19,7 +19,7 @@ export default function FreeListTemplate({ freeLen, page, nowList }) {
         </BoardTitleTemplate>
         <FreeListPostingList freeBoard={nowList} page={page} />
         {freeLen > 0 && (
-          <ListPageBtn boardSort="free" listLen={freeLen} page={page} />
+          <ListPageBtn boardType="free" postingAmount={freeLen} page={page} />
         )}
       </BoxStyles>
     </CtnBox>

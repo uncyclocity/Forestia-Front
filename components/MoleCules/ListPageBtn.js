@@ -15,31 +15,31 @@ const Styles = styled.div`
   margin: 15px 0;
 `;
 
-export default function ListPageBtn({ boardSort, listLen, page }) {
-  const onePageListAmount = 20;
-  const oneListPostingAmount = 15;
-
-  const postingAmountDivided = listLen / oneListPostingAmount;
-  const padInt = parseInt(postingAmountDivided);
-  const pageBtnAmount = padInt < postingAmountDivided ? padInt + 1 : padInt;
-  const pageDivided = parseInt((page - 1) / onePageListAmount);
+export default function ListPageBtn({ boardType, postingAmount, page }) {
   const Router = useRouter();
+
+  const onePagePostingAmount = 15;
+  const oneLinePageAmount = 20;
+
+  const pageAmount = Math.ceil(postingAmount / onePagePostingAmount);
+
+  const pageDivided = parseInt((page - 1) / oneLinePageAmount);
 
   return (
     <Styles>
       <BtnPagingLeft
         onClick={() => {
-          const goPage = pageDivided * onePageListAmount;
+          const goPage = pageDivided * oneLinePageAmount;
           if (goPage >= 1) {
-            Router.push(`/board/boardlist/${boardSort}?page=${goPage}`);
+            Router.push(`/board/boardlist/${boardType}?page=${goPage}`);
           } else {
-            Router.push(`/board/boardlist/${boardSort}?page=${1}`);
+            Router.push(`/board/boardlist/${boardType}?page=${1}`);
           }
         }}
       />
-      {[...Array(onePageListAmount)].map((num, index) => {
-        const nowPageCnt = pageDivided * onePageListAmount + (index + 1);
-        if (nowPageCnt <= pageBtnAmount) {
+      {[...Array(oneLinePageAmount)].map((num, index) => {
+        const nowPageCnt = pageDivided * oneLinePageAmount + (index + 1);
+        if (nowPageCnt <= pageAmount) {
           if (nowPageCnt === parseInt(page)) {
             return <TxtPagingNumberSelected key={index} number={nowPageCnt} />;
           } else {
@@ -47,7 +47,7 @@ export default function ListPageBtn({ boardSort, listLen, page }) {
               <div
                 onClick={() =>
                   Router.push(
-                    `/board/boardlist/${boardSort}?page=${nowPageCnt}`,
+                    `/board/boardlist/${boardType}?page=${nowPageCnt}`,
                   )
                 }
                 key={index}
@@ -60,11 +60,11 @@ export default function ListPageBtn({ boardSort, listLen, page }) {
       })}
       <BtnPagingRight
         onClick={() => {
-          const goPage = (pageDivided + 1) * onePageListAmount + 1;
-          if (goPage <= pageBtnAmount) {
-            Router.push(`/board/boardlist/${boardSort}?page=${goPage}`);
+          const goPage = (pageDivided + 1) * oneLinePageAmount + 1;
+          if (goPage <= pageAmount) {
+            Router.push(`/board/boardlist/${boardType}?page=${goPage}`);
           } else {
-            Router.push(`/board/boardlist/${boardSort}?page=${pageBtnAmount}`);
+            Router.push(`/board/boardlist/${boardType}?page=${pageAmount}`);
           }
         }}
       />

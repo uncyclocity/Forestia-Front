@@ -22,14 +22,11 @@ const getStoredUser = async (dispatch) => {
 
 export default function Auth({ children }) {
   const dispatch = useDispatch();
-  const [firstMounted, setFirstMounted] = useState(false);
 
   useEffect(() => {
-    if (!firstMounted) {
-      getStoredUser(dispatch);
-      setFirstMounted(true);
-    }
-  }, [dispatch, firstMounted]);
+    getStoredUser(dispatch);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return <>{children}</>;
 }
