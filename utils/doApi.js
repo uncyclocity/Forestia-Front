@@ -58,9 +58,8 @@ export const doPosting = {
         comments: [],
         imagesUrl: pathArr,
       },
-    }).then(async () => {
-      Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
     });
+    Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
   },
   put: async (boardType, id, title, content) => {
     await instance({
@@ -72,9 +71,8 @@ export const doPosting = {
         title,
         content,
       },
-    }).then(async () => {
-      Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
     });
+    Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
   },
   delete: async (boardType, id) => {
     const apiUrl = '/delete/posting';
@@ -85,9 +83,8 @@ export const doPosting = {
         boardType,
         id,
       },
-    }).then(async () => {
-      Router.push(`/board/boardlist/${boardType}?page=1`);
     });
+    Router.push(`/board/boardlist/${boardType}?page=1`);
   },
 };
 
@@ -121,9 +118,8 @@ export const doComment = {
         commentId: editCommObj.id,
         content: editCommObj.content,
       },
-    }).then(async () => {
-      setEditCommObj(false);
     });
+    setEditCommObj(false);
   },
   delete: async (boardType, postId, commentId) => {
     await instance({
@@ -134,13 +130,12 @@ export const doComment = {
         postId,
         commentId,
       },
-    }).then(() => {
-      setTimeout(
-        () =>
-          Router.push(`/board/posting?boardtype=${boardType}&postid=${postId}`),
-        300,
-      );
     });
+    setTimeout(
+      () =>
+        Router.push(`/board/posting?boardtype=${boardType}&postid=${postId}`),
+      300,
+    );
   },
 };
 
@@ -217,7 +212,7 @@ export const doUser = {
       data: {
         id,
       },
-    }).then(async () => {});
+    });
   },
 };
 
@@ -237,6 +232,6 @@ export const doUserToken = {
         id,
         token,
       },
-    }).then(async () => {});
+    });
   },
 };
