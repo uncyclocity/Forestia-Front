@@ -14,7 +14,7 @@ const Styles = styled.div`
   flex-direction: column;
 `;
 
-export default function HomeLoginArea() {
+export default function IndexLoginArea() {
   const dispatch = useDispatch();
   const clientId = process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID;
 

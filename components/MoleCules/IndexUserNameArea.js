@@ -23,7 +23,7 @@ const BtnsStyle = styled.div`
   justify-content: space-between;
 `;
 
-export default function HomeUserNameArea({ accountSettings }) {
+export default function IndexUserNameArea({ accountSettings }) {
   const userName = useReducerState().user.userName;
   const dispatch = useDispatch();
 

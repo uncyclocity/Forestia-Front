@@ -10,6 +10,6 @@ const Styles = styled.div`
   }
 `;
 
-export default function HomeFreePostingButton({ onClick, children }) {
+export default function IndexFreePostingButton({ onClick, children }) {
   return <Styles onClick={onClick}>{children}</Styles>;
 }

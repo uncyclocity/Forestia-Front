@@ -16,6 +16,6 @@ const Styles = styled.div`
   }
 `;
 
-export default function HomePhotoPostingButton({ onClick, children }) {
+export default function IndexPhotoPostingButton({ onClick, children }) {
   return <Styles onClick={onClick}>{children}</Styles>;
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ImgThumbnail from '../Atoms/Image/ImgThumbnail';
 import TxtCommentAmount4List from '../Atoms/Text/TxtCommentAmount4List';
 import TxtPostingTitle from '../Atoms/Text/TxtPostingTitle';
-import HomePhotoPostingButton from './HomePhotoPostingButton';
+import IndexPhotoPostingButton from './IndexPhotoPostingButton';
 import Router from 'next/router';
 import { useState, useEffect } from 'react';
 
@@ -33,7 +33,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function HomePhotoList({ photoBoard }) {
+export default function IndexPhotoList({ photoBoard }) {
   const { NEXT_PUBLIC_IMAGE_URL } = process.env;
   const [postingArr, setPostingArr] = useState(photoBoard);
 
@@ -56,7 +56,7 @@ export default function HomePhotoList({ photoBoard }) {
       {postingArr.map((posting, index) => {
         return (
           <li key={index}>
-            <HomePhotoPostingButton
+            <IndexPhotoPostingButton
               onClick={() =>
                 Router.push(
                   `/board/posting?boardtype=photo&postid=${posting.id}`,
@@ -72,7 +72,7 @@ export default function HomePhotoList({ photoBoard }) {
                   <TxtCommentAmount4List amount={posting.comments.length} />
                 </div>
               </div>
-            </HomePhotoPostingButton>
+            </IndexPhotoPostingButton>
           </li>
         );
       })}

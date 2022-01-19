@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { doPosting, getPosting } from '../../utils/doApi';
 import CtnBox from '../Atoms/Container/CtnBox';
-import HomeBorderTitle from '../MoleCules/HomeBorderTitle';
-import HomePhotoList from '../MoleCules/HomePhotoList';
+import IndexBorderTitle from '../MoleCules/IndexBorderTitle';
+import IndexPhotoList from '../MoleCules/IndexPhotoList';
 import ListEmpty from '../MoleCules/ListEmpty';
 
 const BoxStyle = styled.div`
@@ -30,18 +29,18 @@ const ContentListLayoutStyle = styled.div`
   }
 `;
 
-export default function HomePhotoBox({ photoBoard }) {
+export default function IndexPhotoBox({ photoBoard }) {
   const boardName = 'photo';
   const listUrl = '/board/boardlist/photo?page=1';
 
   return (
     <CtnBox>
       <BoxStyle>
-        <HomeBorderTitle boardName={boardName} listUrl={listUrl} />
+        <IndexBorderTitle boardName={boardName} listUrl={listUrl} />
         <ContentListLayoutStyle>
           {photoBoard.length > 0 ? (
             <ul>
-              <HomePhotoList photoBoard={photoBoard} />
+              <IndexPhotoList photoBoard={photoBoard} />
             </ul>
           ) : (
             <ListEmpty />

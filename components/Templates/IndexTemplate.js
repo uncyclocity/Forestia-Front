@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import HomeProfileBox from '../../components/Organisms/HomeProfileBox';
-import HomeFreeBox from '../../components/Organisms/HomeFreeBox';
-import HomePhotoBox from '../../components/Organisms/HomePhotoBox';
+import IndexProfileBox from '../Organisms/IndexProfileBox';
+import IndexFreeBox from '../Organisms/IndexFreeBox';
+import IndexPhotoBox from '../Organisms/IndexPhotoBox';
 
 const BoxLayoutStyle = styled.div`
   display: flex;
@@ -25,15 +25,19 @@ const BoxLayoutStyle = styled.div`
   }
 `;
 
-export default function Home({ freeBoard, photoBoard, accountSettings }) {
+export default function IndexTemplate({
+  freeBoard,
+  photoBoard,
+  accountSettings,
+}) {
   return (
     <BoxLayoutStyle>
       <div className="maxwidth">
-        <HomeProfileBox accountSettings={accountSettings} />
+        <IndexProfileBox accountSettings={accountSettings} />
         <div className="margin_space" />
-        <HomeFreeBox freeBoard={freeBoard} />
+        <IndexFreeBox freeBoard={freeBoard} />
       </div>
-      <HomePhotoBox photoBoard={photoBoard} />
+      <IndexPhotoBox photoBoard={photoBoard} />
     </BoxLayoutStyle>
   );
 }

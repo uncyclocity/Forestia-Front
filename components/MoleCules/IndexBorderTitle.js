@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useDispatch } from '../Contexts/context';
 import BtnGotoPostingPost from '../Atoms/Button/BtnGotoPostingPost';
-import IcoBoard4Home from '../Atoms/Icon/IcoBoard4Home';
-import TxtBoard4Home from '../Atoms/Text/TxtBoard4Home';
+import IcoBoard4Index from '../Atoms/Icon/IcoBoard4Index';
+import TxtBoard4Index from '../Atoms/Text/TxtBoard4Index';
 
 const Styles = styled.div`
   width: 100%;
@@ -13,13 +13,13 @@ const Styles = styled.div`
   flex-direction: row;
 `;
 
-export default function HomeBorderTitle({ boardName, listUrl }) {
+export default function IndexBorderTitle({ boardName, listUrl }) {
   const dispatch = useDispatch();
 
   return (
     <Styles>
-      <IcoBoard4Home boardName={boardName} />
-      <TxtBoard4Home boardName={boardName} />
+      <IcoBoard4Index boardName={boardName} />
+      <TxtBoard4Index boardName={boardName} />
       <BtnGotoPostingPost
         onClick={() => unmountAnimation(0, dispatch, listUrl)}
       />

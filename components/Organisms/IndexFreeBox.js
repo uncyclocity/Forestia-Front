@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import CtnBox from '../Atoms/Container/CtnBox';
-import HomeBorderTitle from '../MoleCules/HomeBorderTitle';
-import HomeFreeList from '../MoleCules/HomeFreeList';
+import IndexBorderTitle from '../MoleCules/IndexBorderTitle';
+import IndexFreeList from '../MoleCules/IndexFreeList';
 import ListEmpty from '../MoleCules/ListEmpty';
 
 const BoxStyle = styled.div`
@@ -18,17 +18,17 @@ const ContentListLayoutStyle = styled.div`
   height: 105px;
 `;
 
-export default function HomeFreeBox({ freeBoard }) {
+export default function IndexFreeBox({ freeBoard }) {
   const boardName = 'free';
   const listUrl = '/board/boardlist/free?page=1';
 
   return (
     <CtnBox>
       <BoxStyle>
-        <HomeBorderTitle boardName={boardName} listUrl={listUrl} />
+        <IndexBorderTitle boardName={boardName} listUrl={listUrl} />
         <ContentListLayoutStyle>
           {freeBoard.length > 0 ? (
-            <HomeFreeList freeBoard={freeBoard} />
+            <IndexFreeList freeBoard={freeBoard} />
           ) : (
             <ListEmpty />
           )}

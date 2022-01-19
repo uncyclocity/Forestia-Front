@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// TxtBoard4Home
+// TxtBoard4Index
 // 분류 : 텍스트
 // 용도 : 홈 페이지에서의 각 게시판 이름을 나타냄
 
@@ -11,6 +11,6 @@ const Styles = styled.div`
   width: 100%;
 `;
 
-export default function TxtBoard4Home({ boardName }) {
+export default function TxtBoard4Index({ boardName }) {
   return <Styles>{boardName === 'free' ? '자게' : '짤게'}</Styles>;
 }

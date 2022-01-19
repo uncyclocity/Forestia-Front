@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useReducerState } from '../components/Contexts/context';
 import { doPosting, doUser } from '../utils/doApi';
-import HomeTemplate from '../components/Templates/HomeTemplate';
+import IndexTemplate from '../components/Templates/IndexTemplate';
 import Head from 'next/head';
 import ModalAccountSettings from '../components/Organisms/ModalAcountSettings';
 import { deleteUser } from '../utils/updateFunc/user/deleteUser';
@@ -45,7 +45,7 @@ export default function Index({ freeBoard, photoBoard }) {
         <title>It&#39;s Forestia</title>
         <meta name="description" content="인덱스 페이지입니다." />
       </Head>
-      <HomeTemplate
+      <IndexTemplate
         freeBoard={freeBoard}
         photoBoard={photoBoard}
         accountSettings={accountSettings}

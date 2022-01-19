@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { useReducerState } from '../Contexts/context';
 import CtnBox from '../Atoms/Container/CtnBox';
 import LblProfilePhoto from '../Atoms/Label/LblProfilePhoto';
-import HomeLoginArea from '../MoleCules/HomeLoginArea';
-import HomeUserNameArea from '../MoleCules/HomeUserNameArea';
+import IndexLoginArea from '../MoleCules/IndexLoginArea';
+import IndexUserNameArea from '../MoleCules/IndexUserNameArea';
 
 const BoxStyle = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const BoxStyle = styled.div`
   height: 165px;
 `;
 
-export default function HomeProfileBox({ accountSettings }) {
+export default function IndexProfileBox({ accountSettings }) {
   const userId = useReducerState().user.userId;
 
   return (
@@ -20,9 +20,9 @@ export default function HomeProfileBox({ accountSettings }) {
       <BoxStyle>
         <LblProfilePhoto />
         {userId ? (
-          <HomeUserNameArea accountSettings={accountSettings} />
+          <IndexUserNameArea accountSettings={accountSettings} />
         ) : (
-          <HomeLoginArea />
+          <IndexLoginArea />
         )}
       </BoxStyle>
     </CtnBox>

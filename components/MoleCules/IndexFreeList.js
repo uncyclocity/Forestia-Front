@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import IcoExistImg from '../Atoms/Icon/IcoExistImg';
 import TxtCommentAmount4List from '../Atoms/Text/TxtCommentAmount4List';
 import TxtPostingTitle from '../Atoms/Text/TxtPostingTitle';
-import HomeFreePostingButton from './HomeFreePostingButton';
+import IndexFreePostingButton from './IndexFreePostingButton';
 
 const isImgExist = (imagesUrlArr) => {
   if (imagesUrlArr.length > 0) return true;
@@ -40,14 +40,14 @@ const Styles = styled.div`
   }
 `;
 
-export default function HomeFreeList({ freeBoard }) {
+export default function IndexFreeList({ freeBoard }) {
   return (
     <Styles>
       <ul>
         {freeBoard.map((posting, index) => {
           return (
             <li key={index}>
-              <HomeFreePostingButton
+              <IndexFreePostingButton
                 onClick={() =>
                   Router.push(
                     `/board/posting?boardtype=free&postid=${posting.id}`,
@@ -59,7 +59,7 @@ export default function HomeFreeList({ freeBoard }) {
                 <div className="comment_amount">
                   <TxtCommentAmount4List amount={posting.comments.length} />
                 </div>
-              </HomeFreePostingButton>
+              </IndexFreePostingButton>
             </li>
           );
         })}
