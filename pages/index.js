@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useReducerState } from '../components/Contexts/context';
-import { doPosting, doUser } from '../utils/doApi';
+import { doPosting } from '../utils/doApi';
 import IndexTemplate from '../components/Templates/IndexTemplate';
 import Head from 'next/head';
 import ModalAccountSettings from '../components/Organisms/ModalAcountSettings';
