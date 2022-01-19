@@ -142,14 +142,11 @@ export const doComment = {
 export const doImage = {
   post: async (formData, boardType) => {
     const apiUrl = `/post/image?boardtype=${boardType}`;
-    let pathArr = [];
-    await instance({
+    const pathArr = await instance({
       method: 'POST',
       url: apiUrl,
       header: { 'content-type': 'multipart/form-data' },
       data: formData,
-    }).then((resPathArr) => {
-      pathArr = resPathArr;
     });
     return pathArr.data;
   },
@@ -201,9 +198,8 @@ export const doUser = {
         nickName,
         token,
       },
-    }).then(async () => {
-      Router.push('/');
     });
+    Router.push('/');
   },
   delete: async (id) => {
     await instance({
