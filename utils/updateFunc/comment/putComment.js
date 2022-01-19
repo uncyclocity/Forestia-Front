@@ -1,5 +1,4 @@
-import { doComment } from '../../doApi';
-import { UpdateNowPostingEleObj } from '../../updateNowPostingEleObj';
+import { doComment, doPosting } from '../../doApi';
 
 export const putComment = async ({
   dispatch,
@@ -14,12 +13,21 @@ export const putComment = async ({
       type: 'postcnt_switcher',
       sw: true,
     });
+
     await doComment.put(nowPostingEleObj, editCommObj, setEditCommObj);
-    await UpdateNowPostingEleObj(
-      nowPostingEleObj,
-      setNowPostingEleObj,
-      dispatch,
+
+    const getPostingEle = await doPosting.get.ele(
+      nowPostingEleObj.boardType,
+      nowPostingEleObj.id,
     );
+
+    const nowPostingEleObjUpdated = {
+      ...getPostingEle,
+      boardType: nowPostingEleObj.boardType,
+    };
+
+    setNowPostingEleObj(nowPostingEleObjUpdated);
+
     dispatch({
       type: 'postcnt_switcher',
       sw: false,

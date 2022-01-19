@@ -14,7 +14,12 @@ export const putUpDown = async ({
   postCnt,
 }) => {
   if (!postCnt) {
-    const defaultData = {
+    dispatch({
+      type: 'postcnt_switcher',
+      sw: true,
+    });
+
+    let data = {
       boardType: nowPostingEleObj.boardType,
       postId: nowPostingEleObj.id,
       udType,
@@ -24,31 +29,24 @@ export const putUpDown = async ({
     const udClickerArr = nowPostingEleObj[udType].clicker;
     const revUdClickerArr = nowPostingEleObj[revUdType[udType]].clicker;
 
-    dispatch({
-      type: 'postcnt_switcher',
-      sw: true,
-    });
-
     if (udClickerArr.find((clickUser) => clickUser === userId)) {
-      const data = {
-        ...defaultData,
+      data = {
+        ...data,
         operation: 'sub',
       };
-      await doUpDown.put(data);
     } else if (revUdClickerArr.find((clickUser) => clickUser === userId)) {
-      const data = {
-        ...defaultData,
+      data = {
+        ...data,
         revUdType: revUdType[udType],
         operation: 'addsub',
       };
-      await doUpDown.put(data);
     } else {
-      const data = {
-        ...defaultData,
+      data = {
+        ...data,
         operation: 'add',
       };
-      await doUpDown.put(data);
     }
+    await doUpDown.put(data);
 
     const getPostingEle = await doPosting.get.ele(
       nowPostingEleObj.boardType,
