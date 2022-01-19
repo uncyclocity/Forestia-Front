@@ -39,7 +39,6 @@ export default function SignUp() {
           alert(
             '회원 가입이 완료되었습니다.\n해당 구글 계정으로 재로그인 후 사용가능합니다.',
           );
-          setIsOverLap(false);
           Router.push('/');
         }
       } else {
