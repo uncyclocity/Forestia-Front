@@ -7,9 +7,9 @@ const revUdType = {
 
 export const putUpDown = async ({
   udType,
-  nowPostingEleObj,
   userId,
   dispatch,
+  nowPostingEleObj,
   setNowPostingEleObj,
   postCnt,
 }) => {
