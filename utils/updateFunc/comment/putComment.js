@@ -14,19 +14,23 @@ export const putComment = async ({
       sw: true,
     });
 
-    await doComment.put(nowPostingEleObj, editCommObj, setEditCommObj);
+    try {
+      await doComment.put(nowPostingEleObj, editCommObj, setEditCommObj);
 
-    const getPostingEle = await doPosting.get.ele(
-      nowPostingEleObj.boardType,
-      nowPostingEleObj.id,
-    );
+      const getPostingEle = await doPosting.get.ele(
+        nowPostingEleObj.boardType,
+        nowPostingEleObj.id,
+      );
 
-    const nowPostingEleObjUpdated = {
-      ...getPostingEle,
-      boardType: nowPostingEleObj.boardType,
-    };
+      const nowPostingEleObjUpdated = {
+        ...getPostingEle,
+        boardType: nowPostingEleObj.boardType,
+      };
 
-    setNowPostingEleObj(nowPostingEleObjUpdated);
+      setNowPostingEleObj(nowPostingEleObjUpdated);
+    } catch (e) {
+      console.error(e);
+    }
 
     dispatch({
       type: 'postcnt_switcher',

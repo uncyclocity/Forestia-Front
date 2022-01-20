@@ -16,18 +16,22 @@ export const postComment = async ({
         sw: true,
       });
 
-      await doComment.post(nowPostingEleObj, comment, userObj);
+      try {
+        await doComment.post(nowPostingEleObj, comment, userObj);
 
-      const nowPostingEleObjUpdated = await doPosting.get.ele(
-        nowPostingEleObj.boardType,
-        nowPostingEleObj.id,
-      );
+        const nowPostingEleObjUpdated = await doPosting.get.ele(
+          nowPostingEleObj.boardType,
+          nowPostingEleObj.id,
+        );
 
-      nowPostingEleObjUpdated.boardType = nowPostingEleObj.boardType;
+        nowPostingEleObjUpdated.boardType = nowPostingEleObj.boardType;
 
-      setNowPostingEleObj(nowPostingEleObjUpdated);
+        setNowPostingEleObj(nowPostingEleObjUpdated);
 
-      setComment('');
+        setComment('');
+      } catch (e) {
+        console.error(e);
+      }
 
       dispatch({
         type: 'postcnt_switcher',

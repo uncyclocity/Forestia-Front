@@ -15,21 +15,25 @@ export const postPosting = async ({
       sw: true,
     });
 
-    const boardLen = await doPosting.get.length(selBoard);
-    const formData = new FormData();
-    let id = '0';
+    try {
+      const boardLen = await doPosting.get.length(selBoard);
+      const formData = new FormData();
+      let id = '0';
 
-    if (boardLen > 0) {
-      const maxId = await doPosting.get.latestId(selBoard);
-      id = (parseInt(maxId) + 1).toString();
+      if (boardLen > 0) {
+        const maxId = await doPosting.get.latestId(selBoard);
+        id = (parseInt(maxId) + 1).toString();
+      }
+
+      for (let image of imagesArr) {
+        formData.append('images', image);
+      }
+
+      const res = await doImage.post(formData, selBoard);
+      await doPosting.post(selBoard, id, title, content, res, userObj);
+    } catch (e) {
+      console.error(e);
     }
-
-    for (let image of imagesArr) {
-      formData.append('images', image);
-    }
-
-    const res = await doImage.post(formData, selBoard);
-    await doPosting.post(selBoard, id, title, content, res, userObj);
 
     dispatch({
       type: 'postcnt_switcher',

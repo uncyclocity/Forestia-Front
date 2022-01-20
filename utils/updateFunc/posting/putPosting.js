@@ -13,7 +13,13 @@ export const putPosting = async ({
         type: 'postcnt_switcher',
         sw: true,
       });
-      await doPosting.put(boardType, id, editEle.title, editEle.content);
+
+      try {
+        await doPosting.put(boardType, id, editEle.title, editEle.content);
+      } catch (e) {
+        console.error(e);
+      }
+
       dispatch({
         type: 'postcnt_switcher',
         sw: false,

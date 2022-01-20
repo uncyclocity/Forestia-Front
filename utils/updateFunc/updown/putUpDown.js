@@ -37,16 +37,21 @@ export const putUpDown = async ({
     } else {
       data.operation = 'add';
     }
-    await doUpDown.put(data);
 
-    const nowPostingEleObjUpdated = await doPosting.get.ele(
-      nowPostingEleObj.boardType,
-      nowPostingEleObj.id,
-    );
+    try {
+      await doUpDown.put(data);
 
-    nowPostingEleObjUpdated.boardType = nowPostingEleObj.boardType;
+      const nowPostingEleObjUpdated = await doPosting.get.ele(
+        nowPostingEleObj.boardType,
+        nowPostingEleObj.id,
+      );
 
-    setNowPostingEleObj(nowPostingEleObjUpdated);
+      nowPostingEleObjUpdated.boardType = nowPostingEleObj.boardType;
+
+      setNowPostingEleObj(nowPostingEleObjUpdated);
+    } catch (e) {
+      console.error(e);
+    }
 
     dispatch({
       type: 'postcnt_switcher',

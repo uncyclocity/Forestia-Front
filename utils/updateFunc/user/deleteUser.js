@@ -5,7 +5,13 @@ export const deleteUser = async ({ dispatch, userId }) => {
     type: 'postcnt_switcher',
     sw: true,
   });
-  await doUser.delete(userId);
+
+  try {
+    await doUser.delete(userId);
+  } catch (e) {
+    console.error(e);
+  }
+
   dispatch({
     type: 'postcnt_switcher',
     sw: false,

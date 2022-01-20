@@ -10,7 +10,13 @@ export const deleteComment = async ({
     type: 'postcnt_switcher',
     sw: true,
   });
-  await doComment.delete(boardType, postId, commentId);
+
+  try {
+    await doComment.delete(boardType, postId, commentId);
+  } catch (e) {
+    console.error(e);
+  }
+
   dispatch({
     type: 'postcnt_switcher',
     sw: false,

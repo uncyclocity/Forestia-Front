@@ -5,8 +5,13 @@ export const deletePosting = async ({ boardType, id, imagesUrl, dispatch }) => {
     type: 'postcnt_switcher',
     sw: true,
   });
-  await doPosting.delete(boardType, id);
-  imagesUrl.length > 0 && (await doImage.delete(imagesUrl));
+
+  try {
+    await doPosting.delete(boardType, id);
+    imagesUrl.length > 0 && (await doImage.delete(imagesUrl));
+  } catch (e) {
+    console.error(e);
+  }
 
   dispatch({
     type: 'postcnt_switcher',
