@@ -1,4 +1,4 @@
-import { doUser, doUserToken } from '../../doApi';
+import { doUser } from '../../doApi';
 
 export const postUser = async ({ dispatch, id, email, nickName }) => {
   dispatch({
