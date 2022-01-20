@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BtnPosting from '../Atoms/Button/BtnPosting';
 import IptContent from '../Atoms/Input/IptContent';
 import IptTitle from '../Atoms/Input/IptTitle';
-import LblFreePhoto from '../Atoms/Label/LblFreePhoto';
+import IcoFreePhoto from '../Atoms/Label/IcoFreePhoto';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import { useDispatch, useReducerState } from '../Contexts/context';
 import { putPosting } from '../../utils/updateFunc/posting/putPosting';
@@ -20,7 +20,7 @@ export default function PostingPutPage() {
 
   return (
     <>
-      <LblFreePhoto boardType={boardType} />
+      <IcoFreePhoto boardType={boardType} />
       <ContentInputStyle>
         <IptTitle
           onChange={(e) => setEditEle({ ...editEle, title: e.target.value })}

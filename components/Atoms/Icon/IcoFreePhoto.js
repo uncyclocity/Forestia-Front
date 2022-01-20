@@ -1,8 +1,8 @@
 import { AiOutlineCamera, AiOutlineCloud } from 'react-icons/ai';
 import styled from 'styled-components';
 
-// LblFreePhoto
-// 분류 : 레이블
+// IcoFreePhoto
+// 분류 : 아이콘
 // 용도 : 포스팅 수정 페이지에 표시되는 게시판 종류
 
 const Styles = styled.div`
@@ -30,7 +30,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function LblFreePhoto({ boardType }) {
+export default function IcoFreePhoto({ boardType }) {
   return (
     <Styles>
       {boardType === 'free' && (

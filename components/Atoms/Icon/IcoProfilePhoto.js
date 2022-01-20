@@ -1,8 +1,8 @@
 import { BsPerson } from 'react-icons/bs';
 import styled from 'styled-components';
 
-// LblProfilePhoto
-// 분류 : 레이블
+// IcoProfilePhoto
+// 분류 : 아이콘
 // 용도 : 홈의 프로필 블럭에서 프로필 사진으로 표시
 
 const Styles = styled.div`
@@ -21,7 +21,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function LblProfilePhoto() {
+export default function IcoProfilePhoto() {
   return (
     <Styles>
       <BsPerson />

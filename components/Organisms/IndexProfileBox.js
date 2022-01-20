@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useReducerState } from '../Contexts/context';
 import CtnBox from '../Atoms/Container/CtnBox';
-import LblProfilePhoto from '../Atoms/Label/LblProfilePhoto';
+import IcoProfilePhoto from '../Atoms/Label/IcoProfilePhoto';
 import IndexLoginArea from '../MoleCules/IndexLoginArea';
 import IndexUserNameArea from '../MoleCules/IndexUserNameArea';
 
@@ -18,7 +18,7 @@ export default function IndexProfileBox({ accountSettings }) {
   return (
     <CtnBox>
       <BoxStyle>
-        <LblProfilePhoto />
+        <IcoProfilePhoto />
         {userId ? (
           <IndexUserNameArea accountSettings={accountSettings} />
         ) : (
