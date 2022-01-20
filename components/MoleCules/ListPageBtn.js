@@ -44,16 +44,15 @@ export default function ListPageBtn({ boardType, postingAmount, page }) {
             return <TxtPagingNumberSelected key={index} number={nowPageCnt} />;
           } else {
             return (
-              <div
+              <BtnPagingNumber
+                key={index}
                 onClick={() =>
                   Router.push(
                     `/board/boardlist/${boardType}?page=${nowPageCnt}`,
                   )
                 }
-                key={index}
-              >
-                <BtnPagingNumber number={nowPageCnt} />
-              </div>
+                number={nowPageCnt}
+              />
             );
           }
         }

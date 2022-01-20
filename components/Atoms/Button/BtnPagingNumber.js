@@ -9,6 +9,6 @@ const Styles = styled.div`
     cursor: pointer;
   `;
 
-export default function BtnPagingNumber({ number }) {
-  return <Styles>{number}</Styles>;
+export default function BtnPagingNumber({ onClick, number }) {
+  return <Styles onClick={onClick}>{number}</Styles>;
 }
