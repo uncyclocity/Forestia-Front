@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BtnPosting from '../Atoms/Button/BtnPosting';
 import IptContent from '../Atoms/Input/IptContent';
 import IptTitle from '../Atoms/Input/IptTitle';
-import IcoFreePhoto from '../Atoms/Label/IcoFreePhoto';
+import IcoFreePhoto from '../Atoms/Icon/IcoFreePhoto';
 import LinBetweenTitleContent from '../Atoms/Line/LinBetweenTitleContent';
 import { useDispatch, useReducerState } from '../Contexts/context';
 import { putPosting } from '../../utils/updateFunc/posting/putPosting';

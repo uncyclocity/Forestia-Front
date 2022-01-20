@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useReducerState } from '../Contexts/context';
 import CtnBox from '../Atoms/Container/CtnBox';
-import IcoProfilePhoto from '../Atoms/Label/IcoProfilePhoto';
+import IcoProfilePhoto from '../Atoms/Icon/IcoProfilePhoto';
 import IndexLoginArea from '../MoleCules/IndexLoginArea';
 import IndexUserNameArea from '../MoleCules/IndexUserNameArea';
 
