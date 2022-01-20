@@ -21,7 +21,7 @@ export const postPosting = async ({
 
     if (boardLen > 0) {
       const maxId = await doPosting.get.latestId(selBoard);
-      id = parseInt(maxId) + 1;
+      id = (parseInt(maxId) + 1).toString();
     }
 
     for (let image of imagesArr) {

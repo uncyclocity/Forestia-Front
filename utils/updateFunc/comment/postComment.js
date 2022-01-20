@@ -18,15 +18,12 @@ export const postComment = async ({
 
       await doComment.post(nowPostingEleObj, comment, userObj);
 
-      const getPostingEle = await doPosting.get.ele(
+      const nowPostingEleObjUpdated = await doPosting.get.ele(
         nowPostingEleObj.boardType,
         nowPostingEleObj.id,
       );
 
-      const nowPostingEleObjUpdated = {
-        ...getPostingEle,
-        boardType: nowPostingEleObj.boardType,
-      };
+      nowPostingEleObjUpdated.boardType = nowPostingEleObj.boardType;
 
       setNowPostingEleObj(nowPostingEleObjUpdated);
 
