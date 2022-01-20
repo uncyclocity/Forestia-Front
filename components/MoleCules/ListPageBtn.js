@@ -23,7 +23,7 @@ export default function ListPageBtn({ boardType, postingAmount, page }) {
 
   const pageAmount = Math.ceil(postingAmount / onePagePostingAmount);
 
-  const pageDivided = parseInt((page - 1) / oneLinePageAmount);
+  const pageDivided = parseInt((parseInt(page) - 1) / oneLinePageAmount);
 
   return (
     <Styles>
