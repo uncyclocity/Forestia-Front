@@ -7,7 +7,6 @@ export const postComment = async ({
   setComment,
   nowPostingEleObj,
   setNowPostingEleObj,
-  userObj,
 }) => {
   if (!postCnt) {
     if (comment) {
@@ -16,8 +15,10 @@ export const postComment = async ({
         sw: true,
       });
 
+      const token = localStorage.getItem('token');
+
       try {
-        await doComment.post(nowPostingEleObj, comment, userObj);
+        await doComment.post({ nowPostingEleObj, comment, token });
 
         const nowPostingEleObjUpdated = await doPosting.get.ele(
           nowPostingEleObj.boardType,

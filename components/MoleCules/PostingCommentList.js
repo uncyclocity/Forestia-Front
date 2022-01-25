@@ -131,6 +131,7 @@ export default function PostingCommentList({
                             setEditCommObj,
                             editCommObj,
                             postCnt,
+                            authorId: comment.authorId,
                           });
                         }
                       }}
@@ -145,6 +146,7 @@ export default function PostingCommentList({
                           setEditCommObj,
                           editCommObj,
                           postCnt,
+                          authorId: comment.authorId,
                         })
                       }
                     >

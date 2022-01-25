@@ -12,15 +12,14 @@ export default function Delete() {
   const dispatch = useDispatch();
   const { boardType, id, imagesUrl, authorId } =
     useReducerState().nowPostingEleObj;
-  const { userId } = useReducerState().user;
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
       nowPage: 'delete',
     });
-    if (boardType && id && imagesUrl && userId === authorId) {
-      deletePosting({ boardType, id, imagesUrl, dispatch });
+    if (boardType && id && imagesUrl && authorId) {
+      deletePosting({ boardType, id, imagesUrl, dispatch, authorId });
     } else {
       Router.push('/404');
     }

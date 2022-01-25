@@ -6,6 +6,7 @@ export const putPosting = async ({
   editEle,
   boardType,
   id,
+  authorId,
 }) => {
   if (!postCnt) {
     if (editEle.title && editEle.content) {
@@ -14,8 +15,17 @@ export const putPosting = async ({
         sw: true,
       });
 
+      const token = localStorage.getItem('token');
+
       try {
-        await doPosting.put(boardType, id, editEle.title, editEle.content);
+        await doPosting.put({
+          boardType,
+          id,
+          title: editEle.title,
+          content: editEle.content,
+          authorId,
+          token,
+        });
       } catch (e) {
         console.error(e);
       }

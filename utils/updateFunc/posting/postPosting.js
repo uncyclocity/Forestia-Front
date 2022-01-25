@@ -6,7 +6,6 @@ export const postPosting = async ({
   content,
   imagesArr,
   dispatch,
-  userObj,
   postCnt,
 }) => {
   if (!postCnt) {
@@ -14,6 +13,8 @@ export const postPosting = async ({
       type: 'postcnt_switcher',
       sw: true,
     });
+
+    const token = localStorage.getItem('token');
 
     try {
       const boardLen = await doPosting.get.length(selBoard);
@@ -30,7 +31,14 @@ export const postPosting = async ({
       }
 
       const res = await doImage.post(formData, selBoard);
-      await doPosting.post(selBoard, id, title, content, res, userObj);
+      await doPosting.post({
+        boardType: selBoard,
+        id,
+        title,
+        content,
+        pathArr: res,
+        token,
+      });
     } catch (e) {
       console.error(e);
     }

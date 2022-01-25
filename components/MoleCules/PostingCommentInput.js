@@ -61,7 +61,6 @@ export default function PostingCommentInput({
                     setComment,
                     nowPostingEleObj,
                     setNowPostingEleObj,
-                    userObj,
                   })
                 : alert('로그인이 필요합니다.');
             }
@@ -79,7 +78,6 @@ export default function PostingCommentInput({
                 setComment,
                 nowPostingEleObj,
                 setNowPostingEleObj,
-                userObj,
               })
             : alert('로그인이 필요합니다.')
         }

@@ -5,14 +5,17 @@ export const deleteComment = async ({
   postId,
   commentId,
   dispatch,
+  authorId,
 }) => {
   dispatch({
     type: 'postcnt_switcher',
     sw: true,
   });
 
+  const token = localStorage.getItem('token');
+
   try {
-    await doComment.delete(boardType, postId, commentId);
+    await doComment.delete({ boardType, postId, commentId, authorId, token });
   } catch (e) {
     console.error(e);
   }

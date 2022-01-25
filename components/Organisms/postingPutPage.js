@@ -15,7 +15,8 @@ const ContentInputStyle = styled.div`
 export default function PostingPutPage() {
   const dispatch = useDispatch();
   const postCnt = useReducerState().postCnt;
-  const { boardType, id, title, content } = useReducerState().nowPostingEleObj;
+  const { boardType, id, title, content, authorId } =
+    useReducerState().nowPostingEleObj;
   const [editEle, setEditEle] = useState({ title, content });
 
   return (
@@ -34,7 +35,7 @@ export default function PostingPutPage() {
         <BtnPosting
           text="수정"
           onClick={() =>
-            putPosting({ postCnt, editEle, dispatch, boardType, id })
+            putPosting({ postCnt, editEle, dispatch, boardType, id, authorId })
           }
         />
       </ContentInputStyle>

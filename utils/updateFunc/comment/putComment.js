@@ -7,6 +7,7 @@ export const putComment = async ({
   nowPostingEleObj,
   setNowPostingEleObj,
   postCnt,
+  authorId,
 }) => {
   if (!postCnt) {
     dispatch({
@@ -14,8 +15,16 @@ export const putComment = async ({
       sw: true,
     });
 
+    const token = localStorage.getItem('token');
+
     try {
-      await doComment.put(nowPostingEleObj, editCommObj, setEditCommObj);
+      await doComment.put({
+        nowPostingEleObj,
+        editCommObj,
+        setEditCommObj,
+        authorId,
+        token,
+      });
 
       const getPostingEle = await doPosting.get.ele(
         nowPostingEleObj.boardType,

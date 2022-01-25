@@ -82,7 +82,6 @@ export default function PostingPostPage() {
                     content: postingEle.content,
                     imagesArr: files,
                     dispatch,
-                    userObj,
                     postCnt,
                   });
                 }

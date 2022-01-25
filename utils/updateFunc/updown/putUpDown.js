@@ -7,9 +7,9 @@ const revUdType = {
 
 export const putUpDown = async ({
   udType,
-  userId,
   dispatch,
   postCnt,
+  userId,
   nowPostingEleObj,
   setNowPostingEleObj,
 }) => {
@@ -19,11 +19,13 @@ export const putUpDown = async ({
       sw: true,
     });
 
+    const token = localStorage.getItem('token');
+
     const data = {
       boardType: nowPostingEleObj.boardType,
       postId: nowPostingEleObj.id,
       udType,
-      userId,
+      token,
     };
 
     const udClickerArr = nowPostingEleObj[udType].clicker;

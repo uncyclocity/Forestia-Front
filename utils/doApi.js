@@ -42,7 +42,7 @@ export const doPosting = {
       return res.data;
     },
   },
-  post: async (boardType, id, title, content, pathArr, userObj) => {
+  post: async ({ boardType, id, title, content, pathArr, token }) => {
     const apiUrl = '/post/posting';
     await instance({
       method: 'POST',
@@ -50,8 +50,7 @@ export const doPosting = {
       data: {
         boardType,
         id,
-        author: userObj.userName,
-        authorId: userObj.userId,
+        token,
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
         title,
         content,
@@ -61,7 +60,7 @@ export const doPosting = {
     });
     Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
   },
-  put: async (boardType, id, title, content) => {
+  put: async ({ boardType, id, title, content, authorId, token }) => {
     await instance({
       method: 'PUT',
       url: '/put/posting',
@@ -70,11 +69,13 @@ export const doPosting = {
         id,
         title,
         content,
+        authorId,
+        token,
       },
     });
     Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
   },
-  delete: async (boardType, id) => {
+  delete: async ({ boardType, id, authorId, token }) => {
     const apiUrl = '/delete/posting';
     await instance({
       method: 'DELETE',
@@ -82,6 +83,8 @@ export const doPosting = {
       data: {
         boardType,
         id,
+        authorId,
+        token,
       },
     });
     Router.push(`/board/boardlist/${boardType}?page=1`);
@@ -89,7 +92,7 @@ export const doPosting = {
 };
 
 export const doComment = {
-  post: async (nowPostingEleObj, comment, userObj) => {
+  post: async ({ nowPostingEleObj, comment, token }) => {
     const apiUrl = '/post/comment';
     const commentId = newCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -100,14 +103,19 @@ export const doComment = {
         boardType: nowPostingEleObj.boardType,
         postId: nowPostingEleObj.id,
         commentId,
-        author: userObj.userName,
-        authorId: userObj.userId,
+        token,
         date: nowDate,
         content: comment,
       },
     });
   },
-  put: async (nowPostingEleObj, editCommObj, setEditCommObj) => {
+  put: async ({
+    nowPostingEleObj,
+    editCommObj,
+    setEditCommObj,
+    authorId,
+    token,
+  }) => {
     const apiUrl = '/put/comment';
     await instance({
       method: 'PUT',
@@ -117,11 +125,13 @@ export const doComment = {
         postId: nowPostingEleObj.id,
         commentId: editCommObj.id,
         content: editCommObj.content,
+        authorId,
+        token,
       },
     });
     setEditCommObj(false);
   },
-  delete: async (boardType, postId, commentId) => {
+  delete: async ({ boardType, postId, commentId, authorId, token }) => {
     await instance({
       method: 'DELETE',
       url: '/delete/comment',
@@ -129,6 +139,8 @@ export const doComment = {
         boardType,
         postId,
         commentId,
+        authorId,
+        token,
       },
     });
     setTimeout(
@@ -219,15 +231,5 @@ export const doUserToken = {
       url: `/get/user-token?id=${id}&email=${email}`,
     });
     return res.data;
-  },
-  post: async (id, token) => {
-    await instance({
-      method: 'POST',
-      url: '/post/user-token',
-      data: {
-        id,
-        token,
-      },
-    });
   },
 };

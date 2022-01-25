@@ -16,15 +16,14 @@ export default function Delete() {
     authorid: authorId,
   } = useRouter().query;
   const dispatch = useDispatch();
-  const { userId } = useReducerState().user;
 
   useEffect(() => {
     dispatch({
       type: 'initiate',
       nowPage: 'delete',
     });
-    if (boardType && postId && commentId && authorId === userId) {
-      deleteComment({ boardType, postId, commentId, dispatch });
+    if (boardType && postId && commentId && authorId) {
+      deleteComment({ boardType, postId, commentId, dispatch, authorId });
     } else {
       Router.push('/404');
     }

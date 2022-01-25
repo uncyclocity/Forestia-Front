@@ -63,10 +63,10 @@ export default function PostingUpAndDown({
               putUpDown({
                 udType: 'up',
                 nowPostingEleObj,
-                userId,
                 dispatch,
                 setNowPostingEleObj,
                 postCnt,
+                userId,
               });
             } else {
               alert('로그인이 필요합니다.');
@@ -84,10 +84,10 @@ export default function PostingUpAndDown({
               putUpDown({
                 udType: 'down',
                 nowPostingEleObj,
-                userId,
                 dispatch,
                 setNowPostingEleObj,
                 postCnt,
+                userId,
               });
             } else {
               alert('로그인이 필요합니다.');
