@@ -19,7 +19,7 @@ export default function PhotoListTemplate({ photoLen, page, nowList }) {
         </BoardTitleTemplate>
         <PhotoListPostingList photoBoard={nowList} page={page} />
         {photoLen > 0 && (
-          <ListPageBtn boardSort="photo" listLen={photoLen} page={page} />
+          <ListPageBtn boardType="photo" postingAmount={photoLen} page={page} />
         )}
       </BoxStyles>
     </CtnBox>
