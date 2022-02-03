@@ -187,7 +187,8 @@ export default function PostingCommentList({
                               <TxtCommentDate date={reply.date} />
                               {userId === reply.authorId && (
                                 <>
-                                  {editReplyObj.id === reply.id ? (
+                                  {editReplyObj.id === reply.id &&
+                                  editReplyObj.commId === comment.id ? (
                                     <div onClick={() => setEditReplyObj(false)}>
                                       <BtnCommentEditDel text="수정취소" />
                                     </div>
@@ -196,6 +197,7 @@ export default function PostingCommentList({
                                       onClick={() =>
                                         setEditReplyObj({
                                           id: reply.id,
+                                          commId: comment.id,
                                           content: reply.content,
                                         })
                                       }
@@ -222,7 +224,8 @@ export default function PostingCommentList({
                               )}
                             </CommInfoAndBtnAreaStyle>
                             <CommContentAreaStyle>
-                              {editReplyObj.id === reply.id ? (
+                              {editReplyObj.id === reply.id &&
+                              editReplyObj.commId === comment.id ? (
                                 <div className="comm_edit_reply_area">
                                   <IptComment
                                     onChange={(e) =>
