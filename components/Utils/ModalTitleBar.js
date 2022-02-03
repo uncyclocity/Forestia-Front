@@ -29,10 +29,16 @@ export default function ModalTitleBar({ title }) {
 
   const closeModal = () => {
     dispatch({
-      type: 'modal',
-      title: '',
-      content: '',
+      type: 'modal_close',
     });
+    setTimeout(() => {
+      dispatch({
+        type: 'modal',
+        active: false,
+        title: '',
+        content: '',
+      });
+    }, 250);
   };
 
   return (

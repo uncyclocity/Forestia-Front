@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components';
 
-export const slideUpInit = keyframes`
+export const slideUpAppear = keyframes`
   from { 
     transform: translateY(5px);
     opacity: 0;
@@ -11,7 +11,7 @@ export const slideUpInit = keyframes`
    }
 `;
 
-export const slideUp = keyframes`
+export const slideUpDisappear = keyframes`
   from { 
     transform: translateY(0px);
     opacity: 1;
@@ -22,7 +22,7 @@ export const slideUp = keyframes`
    }
 `;
 
-export const slideDown = keyframes`
+export const slideDownAppear = keyframes`
   from { 
     transform: translateY(-5px);
     opacity: 0;
@@ -33,7 +33,18 @@ export const slideDown = keyframes`
    }
 `;
 
-export const slideLeft = keyframes`
+export const slideDownDisappear = keyframes`
+  from { 
+    transform: translateY(0px);
+    opacity: 1;
+   }
+  to { 
+    transform: translateY(5px);
+    opacity: 0;
+   }
+`;
+
+export const slideLeftDisappear = keyframes`
   from {
     transform: translateX(0px);
     opacity: 1;
@@ -44,7 +55,7 @@ export const slideLeft = keyframes`
    }
 `;
 
-export const slideRight = keyframes`
+export const slideRightAppear = keyframes`
   from {
     transform: translateX(-5px);
     opacity: 0;

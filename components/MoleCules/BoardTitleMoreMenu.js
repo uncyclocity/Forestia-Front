@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { useReducerState } from '../Contexts/context';
 import {
-  slideLeft,
-  slideRight,
-  slideDown,
-  slideUp,
+  slideLeftDisappear,
+  slideRightAppear,
+  slideDownAppear,
+  slideUpDisappear,
 } from '../../styles/keyframes/slide';
 import BtnMore from '../Atoms/Button/BtnMore';
 import IcoMoreDeletePosting from '../Atoms/Icon/IcoMoreDeletePosting';
@@ -23,10 +23,10 @@ const Styles = styled.div`
     ${({ isOpenMoreAnimation }) =>
       isOpenMoreAnimation
         ? css`
-            animation: 0.25s ease 0s ${slideRight};
+            animation: 0.25s ease 0s ${slideRightAppear};
           `
         : css`
-            animation: 0.25s ease 0s ${slideLeft};
+            animation: 0.25s ease 0s ${slideLeftDisappear};
           `}
     animation-fill-mode: forwards;
 
@@ -49,10 +49,10 @@ const Styles = styled.div`
       ${({ isOpenMoreAnimation }) =>
         isOpenMoreAnimation
           ? css`
-              animation: 0.25s ease 0s ${slideDown};
+              animation: 0.25s ease 0s ${slideDownAppear};
             `
           : css`
-              animation: 0.25s ease 0s ${slideUp};
+              animation: 0.25s ease 0s ${slideUpDisappear};
             `}
     }
   }

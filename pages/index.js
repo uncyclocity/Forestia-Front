@@ -24,7 +24,12 @@ export default function Index({ freeBoard, photoBoard }) {
       if (confirm('정말로 삭제하시겠습니까?')) {
         await deleteUser({ dispatch, userId: user.userId });
         dispatch({ type: 'logout' });
-        dispatch({ type: 'modal', title: '', content: '' });
+        dispatch({ type: 'modal_close' });
+        setTimeout(
+          () =>
+            dispatch({ type: 'modal', active: false, title: '', content: '' }),
+          250,
+        );
       }
     }
   };
@@ -32,11 +37,7 @@ export default function Index({ freeBoard, photoBoard }) {
   const accountSettings = () => {
     const title = '계정 설정';
     const content = <ModalAccountSettings deleteAccount={deleteAccount} />;
-    dispatch({
-      type: 'modal',
-      title,
-      content,
-    });
+    dispatch({ type: 'modal', active: true, title, content });
   };
 
   return (

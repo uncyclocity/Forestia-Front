@@ -15,6 +15,8 @@ export default function Context({ children }) {
     nowPostingEleObj: {},
     postCnt: false,
     modal: {
+      active: false,
+      closeAnimation: false,
       title: '',
       content: '',
     },
@@ -70,8 +72,19 @@ export default function Context({ children }) {
         return {
           ...state,
           modal: {
+            active: action.active,
+            closeAnimation: false,
             title: action.title,
             content: action.content,
+          },
+        };
+      }
+      case 'modal_close': {
+        return {
+          ...state,
+          modal: {
+            ...state.modal,
+            closeAnimation: true,
           },
         };
       }
