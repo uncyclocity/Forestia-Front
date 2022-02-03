@@ -3,7 +3,7 @@ import Router, { useRouter } from 'next/router';
 import { useDispatch } from '../../../components/Contexts/context';
 import DeleteTemplate from '../../../components/Templates/DeleteTemplate';
 import Head from 'next/head';
-import { deleteComment } from '../../../utils/updateFunc/comment/deleteComment';
+import { deleteReply } from '../../../utils/updateFunc/reply/deleteReply';
 
 export default function Delete() {
   const {
@@ -11,6 +11,7 @@ export default function Delete() {
     postid: postId,
     commentid: commentId,
     authorid: authorId,
+    replyid: replyId,
   } = useRouter().query;
   const dispatch = useDispatch();
 
@@ -19,8 +20,15 @@ export default function Delete() {
       type: 'initiate',
       nowPage: 'delete',
     });
-    if (boardType && postId && commentId && authorId) {
-      deleteComment({ boardType, postId, commentId, dispatch, authorId });
+    if (boardType && postId && commentId && authorId && replyId) {
+      deleteReply({
+        boardType,
+        postId,
+        commentId,
+        dispatch,
+        authorId,
+        replyId,
+      });
     } else {
       Router.push('/404');
     }
@@ -30,8 +38,8 @@ export default function Delete() {
   return (
     <>
       <Head>
-        <title>댓글 삭제 중</title>
-        <meta name="description" content="댓글 삭제중 페이지입니다." />
+        <title>대댓글 삭제 중</title>
+        <meta name="description" content="대댓글 삭제중 페이지입니다." />
       </Head>
       <DeleteTemplate />
     </>

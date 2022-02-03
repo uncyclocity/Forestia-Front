@@ -9,6 +9,13 @@ const newCommId = (nowPostingEleObj) => {
   return commId;
 };
 
+const newReplyId = (replyArr) => {
+  const replyArrLen = replyArr.length;
+  const replyId =
+    replyArrLen > 0 ? parseInt(replyArr[replyArrLen - 1].id) + 1 : 0;
+  return replyId;
+};
+
 export const doPosting = {
   get: {
     list: async (nowPage, boardType) => {
@@ -141,6 +148,79 @@ export const doComment = {
         commentId,
         authorId,
         token,
+      },
+    });
+    setTimeout(
+      () =>
+        Router.push(`/board/posting?boardtype=${boardType}&postid=${postId}`),
+      300,
+    );
+  },
+};
+
+export const doReply = {
+  post: async ({ nowPostingEleObj, replyObj, token, replyArr }) => {
+    const apiUrl = '/post/reply';
+    const replyId = newReplyId(replyArr);
+    const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
+    await instance({
+      method: 'POST',
+      url: apiUrl,
+      data: {
+        boardType: nowPostingEleObj.boardType,
+        postId: nowPostingEleObj.id,
+        commentId: replyObj.commId,
+        replyId,
+        token,
+        date: nowDate,
+        content: replyObj.content,
+      },
+    });
+  },
+  put: async ({
+    nowPostingEleObj,
+    editReplyObj,
+    setEditReplyObj,
+    authorId,
+    token,
+    replyId,
+    commentId,
+  }) => {
+    const apiUrl = '/put/reply';
+    await instance({
+      method: 'PUT',
+      url: apiUrl,
+      data: {
+        boardType: nowPostingEleObj.boardType,
+        postId: nowPostingEleObj.id,
+        commentId: editReplyObj.id,
+        content: editReplyObj.content,
+        authorId,
+        token,
+        replyId,
+        commentId,
+      },
+    });
+    setEditReplyObj(false);
+  },
+  delete: async ({
+    boardType,
+    postId,
+    commentId,
+    authorId,
+    token,
+    replyId,
+  }) => {
+    await instance({
+      method: 'DELETE',
+      url: '/delete/reply',
+      data: {
+        boardType,
+        postId,
+        commentId,
+        authorId,
+        token,
+        replyId,
       },
     });
     setTimeout(

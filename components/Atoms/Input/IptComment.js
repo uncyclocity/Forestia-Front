@@ -6,10 +6,9 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   textarea {
-    width: 570px;
-
+    width: ${({ width }) => width}px;
     @media screen and (max-width: 700px) {
-      width: 260px;
+      width: ${({ width }) => width - 310}px;
     }
 
     height: 50px;
@@ -36,9 +35,9 @@ const Styles = styled.div`
   }
 `;
 
-export default function IptComment({ onChange, onKeyDown, value }) {
+export default function IptComment({ onChange, onKeyDown, value, width }) {
   return (
-    <Styles>
+    <Styles width={width}>
       <textarea
         style={{ resize: 'none' }}
         value={value}

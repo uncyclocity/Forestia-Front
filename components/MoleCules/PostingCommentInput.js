@@ -66,6 +66,7 @@ export default function PostingCommentInput({
             }
           }}
           value={comment}
+          width={570}
         />
       </CommTextareaStyle>
       <div

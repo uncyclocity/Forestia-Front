@@ -12,6 +12,9 @@ import IptComment from '../Atoms/Input/IptComment';
 import Router from 'next/router';
 import LinCommentBetweenAmountAndList from '../Atoms/Line/LinCommentBetweenAmountAndList';
 import { putComment } from '../../utils/updateFunc/comment/putComment';
+import { putReply } from '../../utils/updateFunc/reply/putReply';
+import { postReply } from '../../utils/updateFunc/reply/postReply';
+import IcoReply from '../Atoms/Icon/IcoReply';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -20,7 +23,7 @@ const CommListAreaStyle = styled.div`
     padding-left: 0;
     li {
       list-style-type: none;
-      margin-bottom: 15px;
+      margin: 10px 0;
     }
   }
 `;
@@ -40,13 +43,14 @@ const CommInfoAndBtnAreaStyle = styled.div`
 const CommContentAreaStyle = styled.div`
   font-size: 15px;
 
-  .comm_edit_area {
+  .comm_edit_reply_area {
     display: flex;
     flex-direction: row;
-
-    .comm_edit_input_box {
-    }
   }
+`;
+
+const ReplyAreaStyle = styled.div`
+  display: flex;
 `;
 
 export default function PostingCommentList({
@@ -58,6 +62,8 @@ export default function PostingCommentList({
   const postCnt = state.postCnt;
   const dispatch = useDispatch();
   const [editCommObj, setEditCommObj] = useState(false);
+  const [editReplyObj, setEditReplyObj] = useState(false);
+  const [replyObj, setReplyObj] = useState(false);
 
   return (
     <CommListAreaStyle>
@@ -93,7 +99,6 @@ export default function PostingCommentList({
                         <BtnCommentEditDel text="수정" />
                       </div>
                     )}
-
                     <div
                       onClick={() => {
                         if (!postCnt) {
@@ -109,10 +114,23 @@ export default function PostingCommentList({
                     </div>
                   </>
                 )}
+                {replyObj.commId === comment.id ? (
+                  <div onClick={() => setReplyObj(false)}>
+                    <BtnCommentEditDel text="답글 취소" />
+                  </div>
+                ) : (
+                  <div
+                    onClick={() =>
+                      setReplyObj({ commId: comment.id, content: '' })
+                    }
+                  >
+                    <BtnCommentEditDel text="답글" />
+                  </div>
+                )}
               </CommInfoAndBtnAreaStyle>
               <CommContentAreaStyle>
                 {editCommObj.id === comment.id ? (
-                  <div className="comm_edit_area">
+                  <div className="comm_edit_reply_area">
                     <IptComment
                       onChange={(e) =>
                         !postCnt &&
@@ -136,6 +154,7 @@ export default function PostingCommentList({
                         }
                       }}
                       value={editCommObj.content}
+                      width={570}
                     />
                     <div
                       onClick={() =>
@@ -155,6 +174,158 @@ export default function PostingCommentList({
                   </div>
                 ) : (
                   <TxtCommentContent content={comment.content} />
+                )}
+                <ul>
+                  {comment.replys.map((reply, index) => {
+                    return (
+                      <li key={index}>
+                        <ReplyAreaStyle>
+                          <IcoReply />
+                          <div>
+                            <CommInfoAndBtnAreaStyle>
+                              <TxtCommentAuthor author={reply.author} />
+                              <TxtCommentDate date={reply.date} />
+                              {userId === reply.authorId && (
+                                <>
+                                  {editReplyObj.id === reply.id ? (
+                                    <div onClick={() => setEditReplyObj(false)}>
+                                      <BtnCommentEditDel text="수정취소" />
+                                    </div>
+                                  ) : (
+                                    <div
+                                      onClick={() =>
+                                        setEditReplyObj({
+                                          id: reply.id,
+                                          content: reply.content,
+                                        })
+                                      }
+                                    >
+                                      <BtnCommentEditDel text="수정" />
+                                    </div>
+                                  )}
+                                  <div
+                                    onClick={() => {
+                                      if (!postCnt) {
+                                        if (
+                                          confirm('정말로 삭제하시겠습니까')
+                                        ) {
+                                          Router.push(
+                                            `/board/update-reply/delete?boardtype=${nowPostingEleObj.boardType}&postid=${nowPostingEleObj.id}&commentid=${comment.id}&authorid=${comment.authorId}&replyid=${reply.id}`,
+                                          );
+                                        }
+                                      }
+                                    }}
+                                  >
+                                    <BtnCommentEditDel text="삭제" />
+                                  </div>
+                                </>
+                              )}
+                            </CommInfoAndBtnAreaStyle>
+                            <CommContentAreaStyle>
+                              {editReplyObj.id === reply.id ? (
+                                <div className="comm_edit_reply_area">
+                                  <IptComment
+                                    onChange={(e) =>
+                                      !postCnt &&
+                                      setEditReplyObj({
+                                        ...editReplyObj,
+                                        content: e.target.value,
+                                      })
+                                    }
+                                    onKeyDown={(e) => {
+                                      if (
+                                        e.keyCode === 13 &&
+                                        e.shiftKey == false
+                                      ) {
+                                        e.preventDefault();
+                                        putReply({
+                                          dispatch,
+                                          nowPostingEleObj,
+                                          setNowPostingEleObj,
+                                          setEditReplyObj,
+                                          editReplyObj,
+                                          postCnt,
+                                          commentId: comment.id,
+                                          authorId: reply.authorId,
+                                          replyId: reply.id,
+                                        });
+                                      }
+                                    }}
+                                    value={editReplyObj.content}
+                                    width={537}
+                                  />
+                                  <div
+                                    onClick={() =>
+                                      putReply({
+                                        dispatch,
+                                        nowPostingEleObj,
+                                        setNowPostingEleObj,
+                                        setEditReplyObj,
+                                        editReplyObj,
+                                        postCnt,
+                                        commentId: comment.id,
+                                        authorId: reply.authorId,
+                                        replyId: reply.id,
+                                      })
+                                    }
+                                  >
+                                    <BtnCommentPost />
+                                  </div>
+                                </div>
+                              ) : (
+                                <TxtCommentContent content={reply.content} />
+                              )}
+                            </CommContentAreaStyle>
+                          </div>
+                        </ReplyAreaStyle>
+                      </li>
+                    );
+                  })}
+                </ul>
+                {replyObj.commId === comment.id && (
+                  <div className="comm_edit_reply_area">
+                    <IcoReply />
+                    <IptComment
+                      onChange={(e) =>
+                        !postCnt &&
+                        setReplyObj({
+                          ...replyObj,
+                          content: e.target.value,
+                        })
+                      }
+                      onKeyDown={(e) => {
+                        if (e.keyCode === 13 && e.shiftKey == false) {
+                          e.preventDefault();
+                          postReply({
+                            dispatch,
+                            nowPostingEleObj,
+                            setNowPostingEleObj,
+                            setReplyObj,
+                            replyObj,
+                            postCnt,
+                            comment,
+                          });
+                        }
+                      }}
+                      value={replyObj.content}
+                      width={537}
+                    />
+                    <div
+                      onClick={() =>
+                        postReply({
+                          dispatch,
+                          nowPostingEleObj,
+                          setNowPostingEleObj,
+                          setReplyObj,
+                          replyObj,
+                          postCnt,
+                          comment,
+                        })
+                      }
+                    >
+                      <BtnCommentPost />
+                    </div>
+                  </div>
                 )}
               </CommContentAreaStyle>
             </li>
