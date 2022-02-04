@@ -5,6 +5,7 @@ import TxtPostingTitle from '../Atoms/Text/TxtPostingTitle';
 import IndexPhotoPostingButton from './IndexPhotoPostingButton';
 import Router from 'next/router';
 import { useState, useEffect } from 'react';
+import getCommentLen from '../../utils/getCommentLen';
 
 const Styles = styled.div`
   li {
@@ -54,6 +55,7 @@ export default function IndexPhotoList({ photoBoard }) {
   return (
     <Styles>
       {postingArr.map((posting, index) => {
+        const commentAmount = getCommentLen(posting);
         return (
           <li key={index}>
             <IndexPhotoPostingButton
@@ -69,7 +71,7 @@ export default function IndexPhotoList({ photoBoard }) {
               <div className="name_and_content">
                 <TxtPostingTitle title={posting.title} />
                 <div className="comment_amount">
-                  <TxtCommentAmount4List amount={posting.comments.length} />
+                  <TxtCommentAmount4List amount={commentAmount} />
                 </div>
               </div>
             </IndexPhotoPostingButton>

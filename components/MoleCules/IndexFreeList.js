@@ -1,5 +1,7 @@
 import Router from 'next/router';
+import { useRef } from 'react';
 import styled from 'styled-components';
+import getCommentLen from '../../utils/getCommentLen';
 import IcoExistImg from '../Atoms/Icon/IcoExistImg';
 import TxtCommentAmount4List from '../Atoms/Text/TxtCommentAmount4List';
 import TxtPostingTitle from '../Atoms/Text/TxtPostingTitle';
@@ -45,6 +47,7 @@ export default function IndexFreeList({ freeBoard }) {
     <Styles>
       <ul>
         {freeBoard.map((posting, index) => {
+          const commentAmount = getCommentLen(posting);
           return (
             <li key={index}>
               <IndexFreePostingButton
@@ -57,7 +60,7 @@ export default function IndexFreeList({ freeBoard }) {
                 <TxtPostingTitle title={posting.title} />
                 <IcoExistImg isImgExist={isImgExist(posting.imagesUrl)} />
                 <div className="comment_amount">
-                  <TxtCommentAmount4List amount={posting.comments.length} />
+                  <TxtCommentAmount4List amount={commentAmount} />
                 </div>
               </IndexFreePostingButton>
             </li>
