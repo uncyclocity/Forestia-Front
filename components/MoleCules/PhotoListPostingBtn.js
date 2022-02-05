@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import getCommentLen from '../../utils/getCommentLen';
 import ImgThumbnail from '../Atoms/Image/ImgThumbnail';
 import TxtCommentAmount4List from '../Atoms/Text/TxtCommentAmount4List';
 import TxtPostingAuthor4List from '../Atoms/Text/TxtPostingAuthor4List';
@@ -50,6 +51,7 @@ const LayoutStyle = styled.div`
 
 export default function PhotoListPostingBtn({ posting, onClick }) {
   const { NEXT_PUBLIC_IMAGE_URL } = process.env;
+  const commentAmount = getCommentLen(posting);
 
   return (
     <LayoutStyle onClick={onClick}>
@@ -57,7 +59,7 @@ export default function PhotoListPostingBtn({ posting, onClick }) {
       <NameAndCommentAreaStyle>
         <TxtPostingTitle title={posting.title} />
         <div className="posting_comment_amount">
-          <TxtCommentAmount4List amount={posting.comments.length} />
+          <TxtCommentAmount4List amount={commentAmount} />
         </div>
       </NameAndCommentAreaStyle>
       <DateAndAuthorAreaStyle>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import getCommentLen from '../../utils/getCommentLen';
 import IcoImagePosting from '../Atoms/Icon/IcoImagePosting';
 import TxtCommentAmount4List from '../Atoms/Text/TxtCommentAmount4List';
 import TxtPostingAuthor4List from '../Atoms/Text/TxtPostingAuthor4List';
@@ -25,14 +26,14 @@ const PostingTitleStyle = styled.td`
 `;
 
 export default function FreeListPostingBtn({ posting, onClick }) {
+  const commentAmount = getCommentLen(posting);
+
   return (
     <LayoutStyle onClick={onClick}>
       <PostingTitleStyle>
         <TxtPostingTitle title={posting.title} />
         {posting.imagesUrl.length > 0 && <IcoImagePosting />}
-        {posting.comments.length > 0 && (
-          <TxtCommentAmount4List amount={posting.comments.length} />
-        )}
+        {commentAmount > 0 && <TxtCommentAmount4List amount={commentAmount} />}
       </PostingTitleStyle>
       <td>
         <TxtPostingAuthor4List author={posting.author} />

@@ -15,6 +15,7 @@ import { putComment } from '../../utils/updateFunc/comment/putComment';
 import { putReply } from '../../utils/updateFunc/reply/putReply';
 import { postReply } from '../../utils/updateFunc/reply/postReply';
 import IcoReply from '../Atoms/Icon/IcoReply';
+import getCommentLen from '../../utils/getCommentLen';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -64,16 +65,15 @@ export default function PostingCommentList({
   const [editCommObj, setEditCommObj] = useState(false);
   const [editReplyObj, setEditReplyObj] = useState(false);
   const [replyObj, setReplyObj] = useState(false);
+  const commentAmount = getCommentLen(nowPostingEleObj);
 
   return (
     <CommListAreaStyle>
       <CommAmountAreaStyle>
         <TxtComment />
-        <TxtCommentAmount amount={nowPostingEleObj.comments.length} />
+        <TxtCommentAmount amount={commentAmount} />
       </CommAmountAreaStyle>
-      {nowPostingEleObj.comments.length > 0 && (
-        <LinCommentBetweenAmountAndList />
-      )}
+      {commentAmount > 0 && <LinCommentBetweenAmountAndList />}
       <ul>
         {nowPostingEleObj.comments.map((comment, index) => {
           return (
