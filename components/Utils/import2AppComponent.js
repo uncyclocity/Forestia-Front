@@ -14,6 +14,8 @@ export default function Import2AppComponent({ children }) {
     <>
       <Head>
         <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <MyProgressContainer />
       <Context>
