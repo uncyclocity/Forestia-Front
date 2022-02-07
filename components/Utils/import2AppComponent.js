@@ -7,9 +7,12 @@ import MyProgressContainer from './myProgressContainer';
 import TransitionLayout from './transitionLayout';
 
 export default function Import2AppComponent({ children }) {
+  const ogImage = '/assets/embed.png';
+
   return (
     <>
       <MyProgressContainer />
+      <meta property="og:image" content={ogImage} />
       <Context>
         <Auth>
           <AppAnimation>
