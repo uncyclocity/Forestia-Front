@@ -7,6 +7,7 @@ import ModalAccountSettings from '../components/Organisms/ModalAcountSettings';
 import { deleteUser } from '../utils/updateFunc/user/deleteUser';
 
 export default function Index({ freeBoard, photoBoard }) {
+  const ogImage = '/assets/embed.png';
   const state = useReducerState();
   const user = state.user;
   const postCnt = state.postCnt;
@@ -37,7 +38,6 @@ export default function Index({ freeBoard, photoBoard }) {
   const accountSettings = () => {
     const title = '계정 설정';
     const content = <ModalAccountSettings deleteAccount={deleteAccount} />;
-    const ogImage = '/assets/embed.png';
     dispatch({ type: 'modal', active: true, title, content });
   };
 
