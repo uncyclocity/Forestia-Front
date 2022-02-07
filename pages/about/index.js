@@ -16,8 +16,8 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About us</title>
-        <meta name="description" content="about 페이지입니다." />
+        <meta property="og:title" content="About Forestia" />
+        <meta property="og:description" content="포레스티아를 소개합니다." />
       </Head>
       <AboutTemplate />
     </>

@@ -30,8 +30,7 @@ export default function Delete() {
   return (
     <>
       <Head>
-        <title>댓글 삭제 중</title>
-        <meta name="description" content="댓글 삭제중 페이지입니다." />
+        <meta property="og:title" content="댓글 삭제 중" />
       </Head>
       <DeleteTemplate />
     </>

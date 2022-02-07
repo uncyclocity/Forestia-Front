@@ -39,8 +39,8 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
   return (
     <>
       <Head>
-        <title>{nowPostingEleObj.title}</title>
-        <meta name="description" content="게시글 페이지입니다." />
+        <meta property="og:title" content={nowPostingEleObj.title} />
+        <meta property="og:description" content={nowPostingEleObj.content} />
       </Head>
       <PostingTemplate
         nowPostingEleObj={nowPostingEleObj}

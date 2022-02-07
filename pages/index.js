@@ -43,8 +43,11 @@ export default function Index({ freeBoard, photoBoard }) {
   return (
     <>
       <Head>
-        <title>It&#39;s Forestia</title>
-        <meta name="description" content="인덱스 페이지입니다." />
+        <meta property="og:title" content="It's Forestia" />
+        <meta
+          property="og:description"
+          content="풀내음나는 자취 커뮤니티 포레스티아입니다."
+        />
       </Head>
       <IndexTemplate
         freeBoard={freeBoard}

@@ -17,8 +17,11 @@ export default function Photo({ photoBoard, page, photoLen }) {
   return (
     <>
       <Head>
-        <title>짤게</title>
-        <meta name="description" content="짤게 페이지입니다." />
+        <meta property="og:title" content="포레스티아 자게" />
+        <meta
+          property="og:description"
+          content="사진이 주 목적인 글을 올려주세요 :)"
+        />
       </Head>
       <PhotoListTemplate photoLen={photoLen} page={page} nowList={photoBoard} />
     </>
