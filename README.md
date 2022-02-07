@@ -3,13 +3,13 @@
 **Next.js** 학습을 목적으로 제작하게 된 게시판 사이트 **Forestia**의 프론트엔드 단입니다. <br>
 <a href="https://forestia.me">이곳</a>에서 게시판을 직접 사용해보실 수 있습니다.
 
-<img src="./readme_src/logo.png" width="500px"></img>
+<img src="./public/assets/readme_src/logo.png" width="500px"></img>
 
 ## 📃 개요
 
 - SSR을 쉽게 구현할 수 있도록 하는 리액트 기반 프레임워크인 **Next.js**에 적응하기 위해 제작하게 된 커뮤니티 사이트입니다.
 - **숲세권 자취 이야기**라는 마이너한 컨셉으로 제작하였으며, 해당 컨셉에 알맞는 초록색을 퍼스널 컬러로 지정하였습니다.
-- **Forestia**라는 커뮤니티명은 경기도 성남시 수정구 신흥동에 위치한 <a href="https://www.lottecastle.co.kr/APT/AT00212/main/index.do">산성역 포레스티아</a> 아파트에서 따왔습니다.
+- **Forestia**라는 커뮤니티명은 경기도 성남시 수정구 신흥동에 위치한 <a href="http://www.forestia.kr/">산성역 포레스티아</a> 아파트에서 따왔습니다.
 - 백엔드에 대한 설명은 <a href="https://github.com/uncyclocity/Forestia-Back">Forestia-Back</a> 레포를 참고해주시기 바랍니다.
 
 ## 💻 사용 기술
@@ -27,13 +27,13 @@
 ## 📸 시연 동영상
 
 - 홈 페이지 <br>
-  <img src="./readme_src/main.PNG" width="700px"></img>
+  <img src="./public/assets/readme_src/main.PNG" width="700px"></img>
 
 - 게시글 작성 <br>
-  <img src="./readme_src/postingCreating.gif" width="700px"></img>
+  <img src="./public/assets/readme_src/postingCreating.gif" width="700px"></img>
 
 - 좋아요 및 댓글 작성 <br>
-  <img src="./readme_src/commentCreating.gif" width="700px"></img>
+  <img src="./public/assets/readme_src/commentCreating.gif" width="700px"></img>
 
 - 게시글 삭제 <br>
-  <img src="./readme_src/postingDeleting.gif" width="700px"></img>
+  <img src="./public/assets/readme_src/postingDeleting.gif" width="700px"></img>
