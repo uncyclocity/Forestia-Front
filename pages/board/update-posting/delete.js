@@ -9,6 +9,7 @@ import Head from 'next/head';
 import { deletePosting } from '../../../utils/updateFunc/posting/deletePosting';
 
 export default function Delete() {
+  const ogImage = '/assets/embed.png';
   const dispatch = useDispatch();
   const { boardType, id, imagesUrl, authorId } =
     useReducerState().nowPostingEleObj;
@@ -31,6 +32,9 @@ export default function Delete() {
       <Head>
         <title>게시글 삭제 중</title>
         <meta property="og:title" content="게시글 삭제 중" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <DeleteTemplate />
     </>

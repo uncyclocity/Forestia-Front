@@ -5,6 +5,7 @@ import PhotoListTemplate from '../../../components/Templates/PhotoListTemplate';
 import Head from 'next/head';
 
 export default function Photo({ photoBoard, page, photoLen }) {
+  const ogImage = '/assets/embed.png';
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +24,9 @@ export default function Photo({ photoBoard, page, photoLen }) {
           property="og:description"
           content="사진이 주 목적인 글을 올려주세요 :)"
         />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <PhotoListTemplate photoLen={photoLen} page={page} nowList={photoBoard} />
     </>

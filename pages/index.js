@@ -37,6 +37,7 @@ export default function Index({ freeBoard, photoBoard }) {
   const accountSettings = () => {
     const title = '계정 설정';
     const content = <ModalAccountSettings deleteAccount={deleteAccount} />;
+    const ogImage = '/assets/embed.png';
     dispatch({ type: 'modal', active: true, title, content });
   };
 
@@ -49,6 +50,9 @@ export default function Index({ freeBoard, photoBoard }) {
           property="og:description"
           content="풀내음나는 자취 커뮤니티 포레스티아입니다."
         />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <IndexTemplate
         freeBoard={freeBoard}

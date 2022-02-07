@@ -5,6 +5,7 @@ import FreeListTemplate from '../../../components/Templates/FreeListTemplate';
 import Head from 'next/head';
 
 export default function Free({ freeBoard, page, freeLen }) {
+  const ogImage = '/assets/embed.png';
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,6 +21,9 @@ export default function Free({ freeBoard, page, freeLen }) {
         <title>자게</title>
         <meta property="og:title" content="포레스티아 자게" />
         <meta property="og:description" content="자유롭게 글을 올려주세요 :)" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <FreeListTemplate freeLen={freeLen} page={page} nowList={freeBoard} />
     </>

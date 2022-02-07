@@ -8,15 +8,8 @@ import TransitionLayout from './transitionLayout';
 import Head from 'next/head';
 
 export default function Import2AppComponent({ children }) {
-  const ogImage = '/assets/embed.png';
-
   return (
     <>
-      <Head>
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://forestia.me" />
-      </Head>
       <MyProgressContainer />
       <Context>
         <Auth>

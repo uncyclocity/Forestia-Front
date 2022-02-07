@@ -20,6 +20,7 @@ const postingPageSwitchOff = (dispatch) => {
 };
 
 export default function Posting({ nowPostingEleObjRaw, boardType }) {
+  const ogImage = '/assets/embed.png';
   const page = useRouter().query.page || 1;
   const dispatch = useDispatch();
   const [nowPostingEleObj, setNowPostingEleObj] = useState(nowPostingEleObjRaw);
@@ -42,6 +43,9 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
         <title>{nowPostingEleObj.title}</title>
         <meta property="og:title" content={nowPostingEleObj.title} />
         <meta property="og:description" content={nowPostingEleObj.content} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <PostingTemplate
         nowPostingEleObj={nowPostingEleObj}

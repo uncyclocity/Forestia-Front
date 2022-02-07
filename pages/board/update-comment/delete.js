@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { deleteComment } from '../../../utils/updateFunc/comment/deleteComment';
 
 export default function Delete() {
+  const ogImage = '/assets/embed.png';
   const {
     boardtype: boardType,
     postid: postId,
@@ -32,6 +33,9 @@ export default function Delete() {
       <Head>
         <title>댓글 삭제 중</title>
         <meta property="og:title" content="댓글 삭제 중" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <DeleteTemplate />
     </>

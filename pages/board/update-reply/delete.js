@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { deleteReply } from '../../../utils/updateFunc/reply/deleteReply';
 
 export default function Delete() {
+  const ogImage = '/assets/embed.png';
   const {
     boardtype: boardType,
     postid: postId,
@@ -40,6 +41,9 @@ export default function Delete() {
       <Head>
         <title>답글 삭제 중</title>
         <meta property="og:title" content="답글 삭제 중" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <DeleteTemplate />
     </>

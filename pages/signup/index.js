@@ -8,6 +8,7 @@ import SignUpTemplate from '../../components/Templates/SignUpTemplate';
 import { postUser } from '../../utils/updateFunc/user/postUser';
 
 export default function SignUp() {
+  const ogImage = '/assets/embed.png';
   const dispatch = useDispatch();
   const { user: userObj, postCnt } = useReducerState();
 
@@ -29,6 +30,9 @@ export default function SignUp() {
       <Head>
         <title>회원가입</title>
         <meta property="og:title" content="회원가입" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://forestia.me" />
       </Head>
       <SignUpTemplate
         nickName={nickName}
