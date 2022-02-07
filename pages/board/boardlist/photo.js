@@ -17,7 +17,8 @@ export default function Photo({ photoBoard, page, photoLen }) {
   return (
     <>
       <Head>
-        <meta property="og:title" content="포레스티아 자게" />
+        <title>짤게</title>
+        <meta property="og:title" content="포레스티아 짤게" />
         <meta
           property="og:description"
           content="사진이 주 목적인 글을 올려주세요 :)"

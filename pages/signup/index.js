@@ -27,6 +27,7 @@ export default function SignUp() {
   return (
     <>
       <Head>
+        <title>회원가입</title>
         <meta property="og:title" content="회원가입" />
       </Head>
       <SignUpTemplate

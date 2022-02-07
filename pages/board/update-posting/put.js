@@ -24,6 +24,7 @@ export default function Put() {
   return (
     <>
       <Head>
+        <title>게시글 수정</title>
         <meta property="og:title" content="게시글 수정" />
       </Head>
       <PostingPutTemplate boardType={boardType} id={id} />

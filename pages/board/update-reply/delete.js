@@ -38,6 +38,7 @@ export default function Delete() {
   return (
     <>
       <Head>
+        <title>답글 삭제 중</title>
         <meta property="og:title" content="답글 삭제 중" />
       </Head>
       <DeleteTemplate />

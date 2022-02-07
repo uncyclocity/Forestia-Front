@@ -39,6 +39,7 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
   return (
     <>
       <Head>
+        <title>{nowPostingEleObj.title}</title>
         <meta property="og:title" content={nowPostingEleObj.title} />
         <meta property="og:description" content={nowPostingEleObj.content} />
       </Head>

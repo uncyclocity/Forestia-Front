@@ -16,6 +16,7 @@ export default function Post() {
   return (
     <>
       <Head>
+        <title>게시글 작성</title>
         <meta property="og:title" content="게시글 작성" />
       </Head>
       <PostingPostTemplate />

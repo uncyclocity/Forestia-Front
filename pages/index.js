@@ -43,6 +43,7 @@ export default function Index({ freeBoard, photoBoard }) {
   return (
     <>
       <Head>
+        <title>It&#39;s Forestia</title>
         <meta property="og:title" content="It's Forestia" />
         <meta
           property="og:description"

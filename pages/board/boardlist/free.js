@@ -17,6 +17,7 @@ export default function Free({ freeBoard, page, freeLen }) {
   return (
     <>
       <Head>
+        <title>자게</title>
         <meta property="og:title" content="포레스티아 자게" />
         <meta property="og:description" content="자유롭게 글을 올려주세요 :)" />
       </Head>
