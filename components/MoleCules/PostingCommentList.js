@@ -212,7 +212,7 @@ export default function PostingCommentList({
                                           confirm('정말로 삭제하시겠습니까')
                                         ) {
                                           Router.push(
-                                            `/board/update-reply/delete?boardtype=${nowPostingEleObj.boardType}&postid=${nowPostingEleObj.id}&commentid=${comment.id}&authorid=${comment.authorId}&replyid=${reply.id}`,
+                                            `/board/update-reply/delete?boardtype=${nowPostingEleObj.boardType}&postid=${nowPostingEleObj.id}&commentid=${comment.id}&authorid=${reply.authorId}&replyid=${reply.id}`,
                                           );
                                         }
                                       }
