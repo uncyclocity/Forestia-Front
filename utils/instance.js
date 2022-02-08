@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const instance = axios.create({
-  baseURL: 'https://forestia-back.xyz',
+  baseURL: 'https://api.forestia.me',
   headers: {
     'Content-Type': 'application/json',
   },
