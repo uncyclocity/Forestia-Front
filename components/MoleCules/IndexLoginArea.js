@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { useDispatch } from '../Contexts/context';
 import GoogleLogin from 'react-google-login';
-import { doUser, doUserToken } from '../../utils/doApi';
+import { doUser } from '../../utils/doApi';
 import Router from 'next/router';
+import { onLogin } from '../../utils/loginFunc';
 
 const Styles = styled.div`
   width: 100%;
@@ -29,8 +30,7 @@ export default function IndexLoginArea() {
       dispatch({ type: 'login', userName: '', userEmail: email, userId: id });
       Router.push('/signup');
     } else {
-      const token = await doUserToken.get(id, email);
-      localStorage.setItem('token', token);
+      onLogin(id, email);
       dispatch({
         type: 'login',
         userName: user.nickname,

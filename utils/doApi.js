@@ -275,8 +275,8 @@ export const doUser = {
       );
       return res.data;
     },
-    byToken: async (token) => {
-      const res = await instance.get(`/get/user-by-token?token=${token}`);
+    byToken: async () => {
+      const res = await instance.get(`/get/user-by-token`);
       return res.data;
     },
   },
@@ -311,5 +311,25 @@ export const doUserToken = {
       url: `/get/user-token?id=${id}&email=${email}`,
     });
     return res.data;
+  },
+};
+
+export const doRefreshToken = {
+  get: {
+    isValid: async () => {
+      const res = await instance({
+        method: 'GET',
+        url: `/get/refresh-token-is-valid`,
+      });
+      return res.data;
+    },
+  },
+  post: async (id) => {
+    await instance({
+      method: 'POST',
+      url: '/post/refresh-token',
+      data: { id },
+    });
+    Router.push('/');
   },
 };

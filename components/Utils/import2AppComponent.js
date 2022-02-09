@@ -5,7 +5,6 @@ import Auth from './auth';
 import Modal from './modal';
 import MyProgressContainer from './myProgressContainer';
 import TransitionLayout from './transitionLayout';
-import Head from 'next/head';
 
 export default function Import2AppComponent({ children }) {
   return (
