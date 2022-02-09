@@ -5,8 +5,9 @@ const instance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true,
 });
+
+axios.defaults.withCredentials = true;
 
 const setProgress = (value) => {
   typeof window !== 'undefined' && window.progressbarChange(value);
