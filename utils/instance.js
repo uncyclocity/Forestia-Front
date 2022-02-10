@@ -7,7 +7,7 @@ const instance = axios.create({
   },
 });
 
-axios.defaults.withCredentials = true;
+instance.defaults.withCredentials = true;
 
 const setProgress = (value) => {
   typeof window !== 'undefined' && window.progressbarChange(value);
