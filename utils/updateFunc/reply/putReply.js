@@ -17,15 +17,12 @@ export const putReply = async ({
       sw: true,
     });
 
-    const token = localStorage.getItem('token');
-
     try {
       await doReply.put({
         nowPostingEleObj,
         editReplyObj,
         setEditReplyObj,
         authorId,
-        token,
         replyId,
         commentId,
       });

@@ -12,10 +12,8 @@ export const deletePosting = async ({
     sw: true,
   });
 
-  const token = localStorage.getItem('token');
-
   try {
-    await doPosting.delete({ boardType, id, authorId, token });
+    await doPosting.delete({ boardType, id, authorId });
     imagesUrl.length > 0 && (await doImage.delete(imagesUrl));
   } catch (e) {
     console.error(e);

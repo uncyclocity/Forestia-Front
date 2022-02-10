@@ -16,13 +16,10 @@ export const postReply = async ({
         sw: true,
       });
 
-      const token = localStorage.getItem('token');
-
       try {
         await doReply.post({
           nowPostingEleObj,
           replyObj,
-          token,
           replyArr: comment.replys,
         });
 

@@ -19,13 +19,10 @@ export const putUpDown = async ({
       sw: true,
     });
 
-    const token = localStorage.getItem('token');
-
     const data = {
       boardType: nowPostingEleObj.boardType,
       postId: nowPostingEleObj.id,
       udType,
-      token,
     };
 
     const udClickerArr = nowPostingEleObj[udType].clicker;

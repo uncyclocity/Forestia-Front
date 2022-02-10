@@ -15,10 +15,8 @@ export const postComment = async ({
         sw: true,
       });
 
-      const token = localStorage.getItem('token');
-
       try {
-        await doComment.post({ nowPostingEleObj, comment, token });
+        await doComment.post({ nowPostingEleObj, comment });
 
         const nowPostingEleObjUpdated = await doPosting.get.ele(
           nowPostingEleObj.boardType,

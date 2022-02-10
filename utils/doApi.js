@@ -49,7 +49,7 @@ export const doPosting = {
       return res.data;
     },
   },
-  post: async ({ boardType, id, title, content, pathArr, token }) => {
+  post: async ({ boardType, id, title, content, pathArr }) => {
     const apiUrl = '/post/posting';
     await instance({
       method: 'POST',
@@ -57,7 +57,6 @@ export const doPosting = {
       data: {
         boardType,
         id,
-        token,
         date: moment().format('YYYY-MM-DD HH:mm:ss'),
         title,
         content,
@@ -67,7 +66,7 @@ export const doPosting = {
     });
     Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
   },
-  put: async ({ boardType, id, title, content, authorId, token }) => {
+  put: async ({ boardType, id, title, content, authorId }) => {
     await instance({
       method: 'PUT',
       url: '/put/posting',
@@ -77,12 +76,11 @@ export const doPosting = {
         title,
         content,
         authorId,
-        token,
       },
     });
     Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
   },
-  delete: async ({ boardType, id, authorId, token }) => {
+  delete: async ({ boardType, id, authorId }) => {
     const apiUrl = '/delete/posting';
     await instance({
       method: 'DELETE',
@@ -91,7 +89,6 @@ export const doPosting = {
         boardType,
         id,
         authorId,
-        token,
       },
     });
     Router.push(`/board/boardlist/${boardType}?page=1`);
@@ -99,7 +96,7 @@ export const doPosting = {
 };
 
 export const doComment = {
-  post: async ({ nowPostingEleObj, comment, token }) => {
+  post: async ({ nowPostingEleObj, comment }) => {
     const apiUrl = '/post/comment';
     const commentId = newCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -110,19 +107,12 @@ export const doComment = {
         boardType: nowPostingEleObj.boardType,
         postId: nowPostingEleObj.id,
         commentId,
-        token,
         date: nowDate,
         content: comment,
       },
     });
   },
-  put: async ({
-    nowPostingEleObj,
-    editCommObj,
-    setEditCommObj,
-    authorId,
-    token,
-  }) => {
+  put: async ({ nowPostingEleObj, editCommObj, setEditCommObj, authorId }) => {
     const apiUrl = '/put/comment';
     await instance({
       method: 'PUT',
@@ -133,12 +123,11 @@ export const doComment = {
         commentId: editCommObj.id,
         content: editCommObj.content,
         authorId,
-        token,
       },
     });
     setEditCommObj(false);
   },
-  delete: async ({ boardType, postId, commentId, authorId, token }) => {
+  delete: async ({ boardType, postId, commentId, authorId }) => {
     await instance({
       method: 'DELETE',
       url: '/delete/comment',
@@ -147,7 +136,6 @@ export const doComment = {
         postId,
         commentId,
         authorId,
-        token,
       },
     });
     setTimeout(
@@ -159,7 +147,7 @@ export const doComment = {
 };
 
 export const doReply = {
-  post: async ({ nowPostingEleObj, replyObj, token, replyArr }) => {
+  post: async ({ nowPostingEleObj, replyObj, replyArr }) => {
     const apiUrl = '/post/reply';
     const replyId = newReplyId(replyArr);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -171,7 +159,6 @@ export const doReply = {
         postId: nowPostingEleObj.id,
         commentId: replyObj.commId,
         replyId,
-        token,
         date: nowDate,
         content: replyObj.content,
       },
@@ -182,7 +169,6 @@ export const doReply = {
     editReplyObj,
     setEditReplyObj,
     authorId,
-    token,
     replyId,
     commentId,
   }) => {
@@ -196,21 +182,13 @@ export const doReply = {
         commentId: editReplyObj.id,
         content: editReplyObj.content,
         authorId,
-        token,
         replyId,
         commentId,
       },
     });
     setEditReplyObj(false);
   },
-  delete: async ({
-    boardType,
-    postId,
-    commentId,
-    authorId,
-    token,
-    replyId,
-  }) => {
+  delete: async ({ boardType, postId, commentId, authorId, replyId }) => {
     await instance({
       method: 'DELETE',
       url: '/delete/reply',
@@ -219,7 +197,6 @@ export const doReply = {
         postId,
         commentId,
         authorId,
-        token,
         replyId,
       },
     });

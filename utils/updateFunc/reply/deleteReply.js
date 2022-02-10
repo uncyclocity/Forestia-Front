@@ -13,15 +13,12 @@ export const deleteReply = async ({
     sw: true,
   });
 
-  const token = localStorage.getItem('token');
-
   try {
     await doReply.delete({
       boardType,
       postId,
       commentId,
       authorId,
-      token,
       replyId,
     });
   } catch (e) {

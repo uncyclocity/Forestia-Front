@@ -12,10 +12,8 @@ export const deleteComment = async ({
     sw: true,
   });
 
-  const token = localStorage.getItem('token');
-
   try {
-    await doComment.delete({ boardType, postId, commentId, authorId, token });
+    await doComment.delete({ boardType, postId, commentId, authorId });
   } catch (e) {
     console.error(e);
   }

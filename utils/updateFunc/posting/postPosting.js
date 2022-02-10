@@ -14,8 +14,6 @@ export const postPosting = async ({
       sw: true,
     });
 
-    const token = localStorage.getItem('token');
-
     try {
       const boardLen = await doPosting.get.length(selBoard);
       const formData = new FormData();
@@ -37,7 +35,6 @@ export const postPosting = async ({
         title,
         content,
         pathArr: res,
-        token,
       });
     } catch (e) {
       console.error(e);

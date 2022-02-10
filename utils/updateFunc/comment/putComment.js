@@ -15,15 +15,12 @@ export const putComment = async ({
       sw: true,
     });
 
-    const token = localStorage.getItem('token');
-
     try {
       await doComment.put({
         nowPostingEleObj,
         editCommObj,
         setEditCommObj,
         authorId,
-        token,
       });
 
       const getPostingEle = await doPosting.get.ele(

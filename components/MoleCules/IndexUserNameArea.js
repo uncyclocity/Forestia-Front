@@ -36,8 +36,8 @@ export default function IndexUserNameArea({ accountSettings }) {
           onClick={() => {
             if (confirm('로그아웃하시겠습니까?')) {
               dispatch({ type: 'logout' });
-              localStorage.removeItem('token');
-              localStorage.removeItem('id');
+              instance.defaults.headers.common['Authorization'] = '';
+              document.cookie = '';
             }
           }}
         />

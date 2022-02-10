@@ -15,8 +15,6 @@ export const putPosting = async ({
         sw: true,
       });
 
-      const token = localStorage.getItem('token');
-
       try {
         await doPosting.put({
           boardType,
@@ -24,7 +22,6 @@ export const putPosting = async ({
           title: editEle.title,
           content: editEle.content,
           authorId,
-          token,
         });
       } catch (e) {
         console.error(e);
