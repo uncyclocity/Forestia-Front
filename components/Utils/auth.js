@@ -13,7 +13,9 @@ const getStoredUser = async (dispatch) => {
       userEmail: user.email,
       userId: user.id,
     });
-  } catch (error) {}
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 export default function Auth({ children }) {
