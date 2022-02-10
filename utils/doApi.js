@@ -317,11 +317,15 @@ export const doUserToken = {
 export const doRefreshToken = {
   get: {
     isValid: async () => {
-      const res = await instance({
-        method: 'GET',
-        url: `/get/refresh-token-is-valid`,
-      });
-      return res.data;
+      try {
+        const res = await instance({
+          method: 'GET',
+          url: `/get/refresh-token-is-valid`,
+        });
+        return res.data;
+      } catch (error) {
+        return false;
+      }
     },
   },
   post: async (id) => {
