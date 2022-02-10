@@ -6,7 +6,7 @@ import { doUser } from '../../utils/doApi';
 const getStoredUser = async (dispatch) => {
   try {
     await onSilentRefresh();
-    const user = doUser.get.byToken();
+    const user = await doUser.get.byToken();
     dispatch({
       type: 'login',
       userName: user.nickname,
