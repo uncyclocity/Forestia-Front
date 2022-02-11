@@ -5,14 +5,14 @@ import styled from 'styled-components';
 // 용도 : 박스 형태의 컨테이너
 
 const BoxStyles = styled.div`
-  width: 700px;
+  width: 750px;
 
   margin: 10px auto;
 
   background: white;
-  border-radius: 25px;
+  border-radius: 30px;
 
-  box-shadow: 0px 5px 5px #dedede;
+  box-shadow: 0px 2px 3px #dedede;
 
   @media screen and (max-width: 700px) {
     width: 100%;

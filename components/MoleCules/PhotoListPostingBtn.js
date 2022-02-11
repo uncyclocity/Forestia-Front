@@ -32,11 +32,8 @@ const DateAndAuthorAreaStyle = styled.div`
 const LayoutStyle = styled.div`
   display: inline-block;
   cursor: pointer;
+  margin: 0 5px;
   margin-bottom: 15px;
-
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
 
   &:hover {
     transition: 0.15s all ease-in;

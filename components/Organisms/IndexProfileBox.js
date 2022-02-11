@@ -10,6 +10,7 @@ const BoxStyle = styled.div`
   flex-direction: row;
   width: 100%;
   height: 165px;
+  align-items: center;
 `;
 
 export default function IndexProfileBox({ accountSettings }) {

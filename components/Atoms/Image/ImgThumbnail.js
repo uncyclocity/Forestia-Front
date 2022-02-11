@@ -10,7 +10,7 @@ const Styles = styled.div`
   border: 1px solid #e9ecef;
   border-radius: 5px;
 
-  width: 205px;
+  width: 220px;
   height: 120px;
 
   img {

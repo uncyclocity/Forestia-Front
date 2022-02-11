@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   input {
-    width: 640px;
+    width: 100%;
 
     @media screen and (max-width: 700px) {
       width: 275px;

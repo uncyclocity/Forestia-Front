@@ -4,13 +4,13 @@ import ListEmpty from '../MoleCules/ListEmpty';
 import PhotoListPostingBtn from '../MoleCules/PhotoListPostingBtn';
 
 const LayoutStyle = styled.div`
+  margin: 0 auto;
   margin: 15px 0 10px 0;
-  max-width: 640px;
 `;
 
 const ListStyle = styled.div`
   margin: 0 auto;
-  width: 650px;
+  width: 100%;
   @media screen and (max-width: 700px) {
     width: 300px;
   }

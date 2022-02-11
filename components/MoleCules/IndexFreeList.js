@@ -18,7 +18,7 @@ const Styles = styled.div`
     margin: 0px;
 
     li {
-      width: 300px;
+      width: 100%;
       list-style-type: none;
 
       @media screen and (max-width: 700px) {

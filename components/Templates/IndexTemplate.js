@@ -16,7 +16,7 @@ const BoxLayoutStyle = styled.div`
   .maxwidth {
     display: flex;
     flex-direction: row;
-    width: 700px;
+    width: 750px;
 
     @media screen and (max-width: 700px) {
       flex-direction: column;
