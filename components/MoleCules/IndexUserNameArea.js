@@ -39,7 +39,7 @@ export default function IndexUserNameArea({ accountSettings }) {
               dispatch({ type: 'logout' });
               instance.defaults.headers.common['Authorization'] = '';
               document.cookie =
-                'refreshToken=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+                'refreshToken=; expires=Thu, 01 Jan 1999 00:00:10 GMT; domain=forestia.me; path=/;';
             }
           }}
         />
