@@ -1,4 +1,3 @@
-import { BsPerson } from 'react-icons/bs';
 import styled from 'styled-components';
 
 // IcoProfilePhoto
@@ -21,10 +20,6 @@ const Styles = styled.div`
   }
 `;
 
-export default function IcoProfilePhoto() {
-  return (
-    <Styles>
-      <BsPerson />
-    </Styles>
-  );
+export default function IcoProfilePhoto({ statusIcon }) {
+  return <Styles>{statusIcon}</Styles>;
 }
