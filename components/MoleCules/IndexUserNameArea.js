@@ -38,7 +38,8 @@ export default function IndexUserNameArea({ accountSettings }) {
             if (confirm('로그아웃하시겠습니까?')) {
               dispatch({ type: 'logout' });
               instance.defaults.headers.common['Authorization'] = '';
-              document.cookie = '';
+              document.cookie =
+                'refreshToken=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
             }
           }}
         />
