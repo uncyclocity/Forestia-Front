@@ -19,10 +19,12 @@ export const onSilentRefresh = async () => {
     if (data) {
       const accessToken = await doUserToken.get(data.id, data.email);
       onLoginSuccess(accessToken);
+      return true;
     } else {
       console.log(
         '유효한 리프레시 토큰이 없거나 오류가 발생했습니다. 다시 로그인을 진행해주시기 바랍니다.',
       );
+      return false;
     }
   } catch (error) {
     console.error(error);
