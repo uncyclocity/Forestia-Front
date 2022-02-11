@@ -1,7 +1,7 @@
 # 🌳 Forestia-Front
 
 **Next.js** 학습을 목적으로 제작하게 된 게시판 사이트 **Forestia**의 프론트엔드 단입니다. <br>
-<a href="https://forestia.me">이곳</a>에서 게시판을 직접 사용해보실 수 있습니다. (현재 점검 중입니다.)
+<a href="https://forestia.me">이곳</a>에서 게시판을 직접 사용해보실 수 있습니다.
 
 <img src="./public/assets/readme_src/logo.png" width="500px"></img>
 
