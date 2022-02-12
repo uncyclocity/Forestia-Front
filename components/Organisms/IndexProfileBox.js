@@ -4,6 +4,7 @@ import CtnBox from '../Atoms/Container/CtnBox';
 import IcoProfilePhoto from '../Atoms/Icon/IcoProfilePhoto';
 import IndexLoginArea from '../MoleCules/IndexLoginArea';
 import IndexUserNameArea from '../MoleCules/IndexUserNameArea';
+import { BiUser, BiUserX } from 'react-icons/bi';
 
 const BoxStyle = styled.div`
   display: flex;
@@ -18,14 +19,17 @@ export default function IndexProfileBox({ accountSettings }) {
 
   return (
     <CtnBox>
-      <BoxStyle>
-        <IcoProfilePhoto />
-        {userId ? (
+      {userId ? (
+        <BoxStyle>
+          <IcoProfilePhoto statusIcon={<BiUser />} />
           <IndexUserNameArea accountSettings={accountSettings} />
-        ) : (
+        </BoxStyle>
+      ) : (
+        <BoxStyle>
+          <IcoProfilePhoto statusIcon={<BiUserX />} />
           <IndexLoginArea />
-        )}
-      </BoxStyle>
+        </BoxStyle>
+      )}
     </CtnBox>
   );
 }
