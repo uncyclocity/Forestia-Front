@@ -11,12 +11,16 @@ const Styles = styled.div`
   border-radius: 3px;
   border: 1px solid #d1d8de;
   margin-bottom: 3px;
+
+  background: #f4f4f4;
+  background-image: url(${({ imageUrl }) => imageUrl});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  height: 44px;
 `;
 
 export default function ImgUploadedImagePreview({ imageUrl }) {
-  return (
-    <Styles>
-      <img src={imageUrl} alt={imageUrl} height="44" />
-    </Styles>
-  );
+  return <Styles imageUrl={imageUrl} />;
 }
