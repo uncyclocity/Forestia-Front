@@ -18,7 +18,8 @@ const Styles = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
 
-  height: 44px;
+  height: 40px;
+  width: 55px;
 `;
 
 export default function ImgUploadedImagePreview({ imageUrl }) {
