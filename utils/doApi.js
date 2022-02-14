@@ -50,7 +50,7 @@ export const doPosting = {
     },
   },
   post: async ({ boardType, id, title, content, pathArr }) => {
-    const apiUrl = '/post/posting';
+    const apiUrl = '/posting';
     await instance({
       method: 'POST',
       url: apiUrl,
@@ -67,9 +67,10 @@ export const doPosting = {
     Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
   },
   put: async ({ boardType, id, title, content, authorId }) => {
+    const apiUrl = '/posting';
     await instance({
       method: 'PUT',
-      url: '/put/posting',
+      url: apiUrl,
       data: {
         boardType,
         id,
@@ -81,7 +82,7 @@ export const doPosting = {
     Router.push(`/board/posting?boardtype=${boardType}&postid=${id}`);
   },
   delete: async ({ boardType, id, authorId }) => {
-    const apiUrl = '/delete/posting';
+    const apiUrl = '/posting';
     await instance({
       method: 'DELETE',
       url: apiUrl,
@@ -97,7 +98,7 @@ export const doPosting = {
 
 export const doComment = {
   post: async ({ nowPostingEleObj, comment }) => {
-    const apiUrl = '/post/comment';
+    const apiUrl = '/comment';
     const commentId = newCommId(nowPostingEleObj);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
     await instance({
@@ -113,7 +114,7 @@ export const doComment = {
     });
   },
   put: async ({ nowPostingEleObj, editCommObj, setEditCommObj, authorId }) => {
-    const apiUrl = '/put/comment';
+    const apiUrl = '/comment';
     await instance({
       method: 'PUT',
       url: apiUrl,
@@ -128,9 +129,10 @@ export const doComment = {
     setEditCommObj(false);
   },
   delete: async ({ boardType, postId, commentId, authorId }) => {
+    const apiUrl = '/comment';
     await instance({
       method: 'DELETE',
-      url: '/delete/comment',
+      url: apiUrl,
       data: {
         boardType,
         postId,
@@ -148,7 +150,7 @@ export const doComment = {
 
 export const doReply = {
   post: async ({ nowPostingEleObj, replyObj, replyArr }) => {
-    const apiUrl = '/post/reply';
+    const apiUrl = '/reply';
     const replyId = newReplyId(replyArr);
     const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
     await instance({
@@ -172,7 +174,7 @@ export const doReply = {
     replyId,
     commentId,
   }) => {
-    const apiUrl = '/put/reply';
+    const apiUrl = '/reply';
     await instance({
       method: 'PUT',
       url: apiUrl,
@@ -189,9 +191,10 @@ export const doReply = {
     setEditReplyObj(false);
   },
   delete: async ({ boardType, postId, commentId, authorId, replyId }) => {
+    const apiUrl = '/reply';
     await instance({
       method: 'DELETE',
-      url: '/delete/reply',
+      url: apiUrl,
       data: {
         boardType,
         postId,
@@ -210,7 +213,7 @@ export const doReply = {
 
 export const doImage = {
   post: async (formData, boardType) => {
-    const apiUrl = `/post/image?boardtype=${boardType}`;
+    const apiUrl = `/image?boardtype=${boardType}`;
     const pathArr = await instance({
       method: 'POST',
       url: apiUrl,
@@ -220,7 +223,7 @@ export const doImage = {
     return pathArr.data;
   },
   delete: async (imagesUrl) => {
-    const apiUrl = '/delete/image';
+    const apiUrl = '/image';
     await instance({
       method: 'DELETE',
       url: apiUrl,
@@ -231,7 +234,7 @@ export const doImage = {
 
 export const doUpDown = {
   put: async (data) => {
-    const apiUrl = '/put/updown';
+    const apiUrl = '/updown';
     await instance({
       method: 'PUT',
       url: apiUrl,
@@ -260,7 +263,7 @@ export const doUser = {
   post: async (id, email, nickName, token) => {
     await instance({
       method: 'POST',
-      url: '/post/user',
+      url: '/user',
       data: {
         id,
         email,
@@ -273,7 +276,7 @@ export const doUser = {
   delete: async (id) => {
     await instance({
       method: 'DELETE',
-      url: '/delete/user',
+      url: '/user',
       data: {
         id,
       },
@@ -308,7 +311,7 @@ export const doRefreshToken = {
   post: async (id) => {
     await instance({
       method: 'POST',
-      url: '/post/refresh-token',
+      url: '/refresh-token',
       data: { id },
     });
     Router.push('/');
