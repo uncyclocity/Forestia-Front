@@ -19,6 +19,7 @@ instance.interceptors.request.use(
     return config;
   },
   (error) => {
+    setProgress(100);
     return Promise.reject(error);
   },
 );
@@ -29,6 +30,7 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
+    setProgress(100);
     return Promise.reject(error);
   },
 );
