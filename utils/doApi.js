@@ -234,7 +234,7 @@ export const doImage = {
 
 export const doUpDown = {
   put: async (data) => {
-    const apiUrl = '/updown';
+    const apiUrl = '/up-down';
     await instance({
       method: 'PUT',
       url: apiUrl,
