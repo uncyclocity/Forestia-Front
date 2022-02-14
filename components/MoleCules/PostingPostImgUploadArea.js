@@ -30,7 +30,7 @@ const Styles = styled.div`
     overflow-y: hidden;
     scrollbar-width: thin;
     border-radius: 3px;
-    margin: 10px 0;
+    margin: 9px 0;
   }
 `;
 
