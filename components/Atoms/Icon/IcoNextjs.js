@@ -7,9 +7,9 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   color: #20c997;
-  height: 100px;
-  margin: 30px 40px 20px 40px;
-  font-size: 110px;
+  height: 110px;
+  margin: 30px 40px;
+  font-size: 90px;
 `;
 
 export default function IcoNextjs() {
