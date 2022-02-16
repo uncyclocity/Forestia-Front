@@ -20,31 +20,31 @@ export const doPosting = {
   get: {
     list: async (nowPage, boardType) => {
       const res = await instance.get(
-        `/get/postings-4-List?page=${nowPage}&boardtype=${boardType}`,
+        `/posting/postings-4-List?page=${nowPage}&boardtype=${boardType}`,
       );
       return res.data;
     },
     ele: async (boardType, postId) => {
       const res = await instance.get(
-        `/get/posting-ele?postid=${postId}&boardtype=${boardType}`,
+        `/posting/posting-ele?postid=${postId}&boardtype=${boardType}`,
       );
       return res.data;
     },
     latestId: async (boardType) => {
       const res = await instance.get(
-        `/get/latest-posting-id?boardtype=${boardType}`,
+        `/posting/latest-posting-id?boardtype=${boardType}`,
       );
       return res.data;
     },
     length: async (boardType) => {
       const res = await instance.get(
-        `/get/postings-len?boardtype=${boardType}`,
+        `/posting/postings-len?boardtype=${boardType}`,
       );
       return res.data;
     },
     top3: async (boardType) => {
       const res = await instance.get(
-        `/get/postings-top3?boardtype=${boardType}`,
+        `/posting/postings-top3?boardtype=${boardType}`,
       );
       return res.data;
     },
@@ -246,17 +246,17 @@ export const doUpDown = {
 export const doUser = {
   get: {
     byId: async (id) => {
-      const res = await instance.get(`/get/user-by-id?id=${id}`);
+      const res = await instance.get(`/user/user-by-id?id=${id}`);
       return res.data;
     },
     byNickName: async (nickName) => {
       const res = await instance.get(
-        `/get/user-by-nickname?nickName=${nickName}`,
+        `/user/user-by-nickname?nickName=${nickName}`,
       );
       return res.data;
     },
     byToken: async () => {
-      const res = await instance.get(`/get/user-by-token`);
+      const res = await instance.get(`/user/user-by-token`);
       return res.data;
     },
   },
@@ -288,7 +288,7 @@ export const doUserToken = {
   get: async (id, email) => {
     const res = await instance({
       method: 'GET',
-      url: `/get/user-token?id=${id}&email=${email}`,
+      url: `/user-token?id=${id}&email=${email}`,
     });
     return res.data;
   },
@@ -300,7 +300,7 @@ export const doRefreshToken = {
       try {
         const res = await instance({
           method: 'GET',
-          url: `/get/refresh-token-is-valid`,
+          url: `/refresh-token/refresh-token-is-valid`,
         });
         return res.data;
       } catch (error) {
