@@ -37,7 +37,5 @@ yarn-error.log*
 # mongo bashfile
 mongosh.exe
 
-# image storage
-/public/uploads/
-
-/styles/fonts
+# domain config
+/config/domain.js
