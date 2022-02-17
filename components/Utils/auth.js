@@ -12,6 +12,7 @@ const getStoredUser = async (dispatch) => {
         userName: user.nickname,
         userEmail: user.email,
         userId: user.id,
+        imageUrl: user.imageUrl,
       });
     }
   } catch (error) {
