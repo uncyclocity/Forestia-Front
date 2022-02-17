@@ -9,6 +9,7 @@ export default function Context({ children }) {
       userName: '',
       userEmail: '',
       userId: '',
+      imageUrl: '',
     },
     nowPage: null,
     isPostingPage: false,
@@ -55,6 +56,7 @@ export default function Context({ children }) {
             userName: action.userName,
             userEmail: action.userEmail,
             userId: action.userId,
+            imageUrl: action.imageUrl,
           },
         };
       }
@@ -65,6 +67,7 @@ export default function Context({ children }) {
             userName: '',
             userEmail: '',
             userId: '',
+            imageUrl: '',
           },
         };
       }

@@ -9,28 +9,45 @@ const Styles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   border-radius: 50px;
-  font-size: ${({ size }) => size}px;
-  padding: ${({ padding }) => padding}px;
   box-shadow: 0px 2px 3px #dedede;
 
-  ${({ isBtn }) =>
-    isBtn
+  ${({ imageUrl, size, bgColor, isBtn, padding }) =>
+    imageUrl
       ? css`
-          cursor: pointer;
-          &:hover {
-            transition: 0.15s all ease-in;
-            background: ${({ bgColor }) => lighten(0.1, bgColor)};
-          }
+          background-image: url(${imageUrl});
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          width: ${parseInt(size) + parseInt(padding) * 2}px;
+          height: ${parseInt(size) + parseInt(padding) * 2}px;
 
-          &:not(:hover) {
-            transition: 0.15s all ease-in;
-            background: ${({ bgColor }) => bgColor};
-          }
+          ${isBtn &&
+          css`
+            cursor: pointer;
+          `}
         `
       : css`
-          background: ${({ bgColor }) => bgColor};
+          color: white;
+          font-size: ${size}px;
+          padding: ${padding}px;
+
+          ${isBtn
+            ? css`
+                cursor: pointer;
+                &:hover {
+                  transition: 0.15s all ease-in;
+                  background: ${lighten(0.1, bgColor)};
+                }
+
+                &:not(:hover) {
+                  transition: 0.15s all ease-in;
+                  background: ${bgColor};
+                }
+              `
+            : css`
+                background: ${bgColor};
+              `}
         `}
 `;
 
@@ -40,6 +57,7 @@ export default function HicProfilePhoto({
   onClick,
   size,
   padding,
+  imageUrl,
 }) {
   if (onClick) {
     return (
@@ -49,14 +67,21 @@ export default function HicProfilePhoto({
         padding={padding}
         isBtn={true}
         onClick={onClick}
+        imageUrl={imageUrl}
       >
-        {statusIcon}
+        {!imageUrl && statusIcon}
       </Styles>
     );
   } else {
     return (
-      <Styles bgColor={bgColor} size={size} padding={padding} isBtn={false}>
-        {statusIcon}
+      <Styles
+        bgColor={bgColor}
+        size={size}
+        padding={padding}
+        isBtn={false}
+        imageUrl={imageUrl}
+      >
+        {!imageUrl && statusIcon}
       </Styles>
     );
   }

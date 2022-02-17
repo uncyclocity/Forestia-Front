@@ -39,7 +39,7 @@ const ProfileBtnStyle = styled.div`
 
 export default function HeaderLogoArea({ accountSettings }) {
   const homeUrl = '/';
-  const userId = useReducerState().user.userId;
+  const { userId, imageUrl } = useReducerState().user;
 
   return (
     <BgStyle>
@@ -56,7 +56,7 @@ export default function HeaderLogoArea({ accountSettings }) {
               size="26"
               padding="6"
               onClick={accountSettings}
-              isBtn={true}
+              imageUrl={imageUrl}
             />
           ) : (
             <HeaderLoginArea

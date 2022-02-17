@@ -10,13 +10,19 @@ export default function HeaderLoginArea({ style }) {
 
   const onSuccess = async (res) => {
     const {
-      profileObj: { googleId: id, email },
+      profileObj: { googleId: id, email, imageUrl },
     } = res;
 
     const user = await doUser.get.byId(id);
 
     if (!user) {
-      dispatch({ type: 'login', userName: '', userEmail: email, userId: id });
+      dispatch({
+        type: 'login',
+        userName: '',
+        userEmail: email,
+        userId: id,
+        imageUrl,
+      });
       Router.push('/signup');
     } else {
       onLogin(id, email);
@@ -25,6 +31,7 @@ export default function HeaderLoginArea({ style }) {
         userName: user.nickname,
         userEmail: user.email,
         userId: user.id,
+        imageUrl: user.imageUrl,
       });
     }
   };

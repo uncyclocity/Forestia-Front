@@ -13,7 +13,7 @@ const isNickNameOverlap = async (nickName) => {
 export const postUser = async ({
   dispatch,
   postCnt,
-  userObj: { userId, userEmail },
+  userObj: { userId, userEmail, imageUrl },
   nickName,
   setIsOverLap,
 }) => {
@@ -28,7 +28,7 @@ export const postUser = async ({
         if (await isNickNameOverlap(nickName)) {
           setIsOverLap(true);
         } else {
-          await doUser.post(userId, userEmail, nickName);
+          await doUser.post(userId, userEmail, nickName, imageUrl);
           alert(
             '회원 가입이 완료되었습니다.\n해당 구글 계정으로 재로그인 후 사용가능합니다.',
           );

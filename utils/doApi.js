@@ -260,7 +260,7 @@ export const doUser = {
       return res.data;
     },
   },
-  post: async (id, email, nickName, token) => {
+  post: async (id, email, nickName, imageUrl) => {
     await instance({
       method: 'POST',
       url: '/user',
@@ -268,7 +268,7 @@ export const doUser = {
         id,
         email,
         nickName,
-        token,
+        imageUrl,
       },
     });
     Router.push('/');

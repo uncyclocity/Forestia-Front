@@ -15,7 +15,6 @@ const Styles = styled.div`
 `;
 
 export default function ModalAccountSettingsProfile({ user }) {
-  console.log(user);
   return (
     <Styles>
       <HicProfilePhoto
@@ -23,6 +22,7 @@ export default function ModalAccountSettingsProfile({ user }) {
         bgColor="#20c997"
         size="70"
         padding="15"
+        imageUrl={user.imageUrl}
       />
       <TxtProfile userName={user.userName} color="#20c997" size="21" />
       <TxtProfile userName={user.userEmail} color="#828c99" size="15" />
