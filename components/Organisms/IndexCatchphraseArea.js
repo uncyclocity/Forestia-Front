@@ -3,7 +3,7 @@ import CtnBox from '../Atoms/Container/CtnBox';
 import IndexCpAreaProfileImgAndCp from '../MoleCules/IndexCpAreaProfileImgAndCp';
 import { lighten } from 'polished';
 import { useReducerState } from '../Contexts/context';
-import { Router } from 'express';
+import Router from 'next/router';
 
 const BgStyle = styled.div`
   display: flex;
