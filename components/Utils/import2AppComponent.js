@@ -14,6 +14,7 @@ export default function Import2AppComponent({ children }) {
   const dispatch = useDispatch();
   const user = state.user;
   const postCnt = state.postCnt;
+  const nowPage = state.nowPage;
 
   const logOutAccount = () => {
     if (confirm('로그아웃하시겠습니까?')) {
@@ -46,15 +47,17 @@ export default function Import2AppComponent({ children }) {
   };
 
   const accountSettings = () => {
-    const title = '계정 관리';
-    const content = (
-      <ModalAccountSettings
-        logOutAccount={logOutAccount}
-        deleteAccount={deleteAccount}
-        user={user}
-      />
-    );
-    dispatch({ type: 'modal', active: true, title, content });
+    if (nowPage !== 'signup') {
+      const title = '계정 관리';
+      const content = (
+        <ModalAccountSettings
+          logOutAccount={logOutAccount}
+          deleteAccount={deleteAccount}
+          user={user}
+        />
+      );
+      dispatch({ type: 'modal', active: true, title, content });
+    }
   };
 
   return (
