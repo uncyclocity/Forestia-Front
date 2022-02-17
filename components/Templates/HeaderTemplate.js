@@ -1,16 +1,20 @@
-import CtnBox from '../Atoms/Container/CtnBox';
+import styled from 'styled-components';
+import CtnHeaderBox from '../Atoms/Container/CtnHeaderBox';
 import HeaderFourButtons from '../MoleCules/HeaderFourButtons';
 import HeaderLogoArea from '../MoleCules/HeaderLogoArea';
-import HeaderMiddleArea from '../Organisms/HeaderMiddleArea';
 
-export default function HeaderTemplate() {
+const Styles = styled.div`
+  background: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+`;
+
+export default function HeaderTemplate({ accountSettings }) {
   return (
-    <>
-      <HeaderLogoArea />
-      <CtnBox>
-        <HeaderMiddleArea />
+    <Styles>
+      <HeaderLogoArea accountSettings={accountSettings} />
+      <CtnHeaderBox>
         <HeaderFourButtons />
-      </CtnBox>
-    </>
+      </CtnHeaderBox>
+    </Styles>
   );
 }

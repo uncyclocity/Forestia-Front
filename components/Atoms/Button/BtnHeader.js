@@ -1,69 +1,47 @@
 import styled, { css } from 'styled-components';
+import { lighten } from 'polished';
 
 // BtnHeader
 // 분류 : 버튼
 // 용도 : 헤더의 버튼
 
 const Styles = styled.div`
+  display: flex;
+  justify-content: center;
   cursor: pointer;
 
-  .menu_icon {
-    height: 30px;
-    margin-bottom: 3px;
+  font-size: ${({ size }) => size}px;
+
+  ${({ isSelected }) =>
+    isSelected
+      ? css`
+          font-weight: bold;
+        `
+      : css`
+          font-weight: normal;
+        `};
+
+  &:hover {
+    transition: 0.15s all ease-in;
+    color: ${({ color }) => lighten(0.1, color)};
   }
 
-  .menu_name {
-    display: flex;
-    justify-content: center;
-    font-size: 13px;
+  &:not(:hover) {
+    transition: 0.15s all ease-in;
+    color: ${({ color }) => color};
   }
 
   @media screen and (max-width: 700px) {
-    .menu_icon {
-      font-size: 25px;
-      margin-bottom: 0.5px;
-    }
-
-    .menu_name {
-      display: flex;
-      justify-content: center;
-      font-size: 11px;
-    }
+    display: flex;
+    justify-content: center;
+    font-size: ${({ mSize }) => mSize}px;
   }
-
-  ${(props) =>
-    props.isSelected
-      ? css`
-          color: #20c997;
-
-          &:hover {
-            transition: 0.15s all ease-in;
-            color: #6debac;
-          }
-
-          &:not(:hover) {
-            transition: 0.15s all ease-in;
-            color: #20c997;
-          }
-        `
-      : css`
-          &:hover {
-            transition: 0.15s all ease-in;
-            color: #6debac;
-          }
-
-          &:not(:hover) {
-            transition: 0.15s all ease-in;
-            color: #828c99;
-          }
-        `}
 `;
 
-export default function BtnHeader({ btnText, isSelected, children }) {
+export default function BtnHeader({ btnText, color, size, mSize, isSelected }) {
   return (
-    <Styles isSelected={isSelected}>
-      <div className="menu_icon">{children}</div>
-      <div className="menu_name">{btnText}</div>
+    <Styles color={color} size={size} mSize={mSize} isSelected={isSelected}>
+      {btnText}
     </Styles>
   );
 }

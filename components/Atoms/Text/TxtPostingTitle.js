@@ -11,7 +11,7 @@ const Styles = styled.div`
   white-space: nowrap;
 
   @media screen and (max-width: 700px) {
-    width: 127px;
+    max-width: 127px;
   }
 `;
 

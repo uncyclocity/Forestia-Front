@@ -1,16 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch, useReducerState } from '../components/Contexts/context';
+import { useDispatch } from '../components/Contexts/context';
 import { doPosting } from '../utils/doApi';
 import IndexTemplate from '../components/Templates/IndexTemplate';
 import Head from 'next/head';
-import ModalAccountSettings from '../components/Organisms/ModalAcountSettings';
-import { deleteUser } from '../utils/updateFunc/user/deleteUser';
 
 export default function Index({ freeBoard, photoBoard }) {
   const ogImage = '/assets/embed.png';
-  const state = useReducerState();
-  const user = state.user;
-  const postCnt = state.postCnt;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,27 +14,6 @@ export default function Index({ freeBoard, photoBoard }) {
       nowPage: 'index',
     });
   }, [dispatch]);
-
-  const deleteAccount = async () => {
-    if (!postCnt) {
-      if (confirm('정말로 삭제하시겠습니까?')) {
-        await deleteUser({ dispatch, userId: user.userId });
-        dispatch({ type: 'logout' });
-        dispatch({ type: 'modal_close' });
-        setTimeout(
-          () =>
-            dispatch({ type: 'modal', active: false, title: '', content: '' }),
-          250,
-        );
-      }
-    }
-  };
-
-  const accountSettings = () => {
-    const title = '계정 설정';
-    const content = <ModalAccountSettings deleteAccount={deleteAccount} />;
-    dispatch({ type: 'modal', active: true, title, content });
-  };
 
   return (
     <>
@@ -54,11 +28,7 @@ export default function Index({ freeBoard, photoBoard }) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://forestia.me" />
       </Head>
-      <IndexTemplate
-        freeBoard={freeBoard}
-        photoBoard={photoBoard}
-        accountSettings={accountSettings}
-      />
+      <IndexTemplate freeBoard={freeBoard} photoBoard={photoBoard} />
     </>
   );
 }

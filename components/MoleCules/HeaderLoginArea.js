@@ -1,21 +1,10 @@
-import styled from 'styled-components';
 import { useDispatch } from '../Contexts/context';
 import GoogleLogin from 'react-google-login';
 import { doUser } from '../../utils/doApi';
 import Router from 'next/router';
 import { onLogin } from '../../utils/loginFunc';
 
-const Styles = styled.div`
-  width: 100%;
-  height: 165px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-export default function IndexLoginArea() {
+export default function HeaderLoginArea({ style }) {
   const dispatch = useDispatch();
   const clientId = process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID;
 
@@ -45,13 +34,12 @@ export default function IndexLoginArea() {
   };
 
   return (
-    <Styles>
-      <GoogleLogin
-        clientId={clientId}
-        responseType={'id_token'}
-        onSuccess={onSuccess}
-        onFailure={onFailure}
-      />
-    </Styles>
+    <GoogleLogin
+      clientId={clientId}
+      responseType={'id_token'}
+      onSuccess={onSuccess}
+      onFailure={onFailure}
+      render={(renderProps) => <div onClick={renderProps.onClick}>{style}</div>}
+    />
   );
 }

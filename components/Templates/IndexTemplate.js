@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import IndexProfileBox from '../Organisms/IndexProfileBox';
 import IndexFreeBox from '../Organisms/IndexFreeBox';
 import IndexPhotoBox from '../Organisms/IndexPhotoBox';
+import IndexCatchphraseArea from '../Organisms/IndexCatchphraseArea';
 
 const BoxLayoutStyle = styled.div`
   display: flex;
@@ -9,34 +9,16 @@ const BoxLayoutStyle = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  .margin_space {
-    width: 45px;
-  }
-
-  .maxwidth {
-    display: flex;
-    flex-direction: row;
-    width: 750px;
-
-    @media screen and (max-width: 700px) {
-      flex-direction: column;
-      width: 100%;
-    }
+  @media screen and (max-width: 700px) {
+    display: block;
   }
 `;
 
-export default function IndexTemplate({
-  freeBoard,
-  photoBoard,
-  accountSettings,
-}) {
+export default function IndexTemplate({ freeBoard, photoBoard }) {
   return (
     <BoxLayoutStyle>
-      <div className="maxwidth">
-        <IndexProfileBox accountSettings={accountSettings} />
-        <div className="margin_space" />
-        <IndexFreeBox freeBoard={freeBoard} />
-      </div>
+      <IndexCatchphraseArea />
+      <IndexFreeBox freeBoard={freeBoard} />
       <IndexPhotoBox photoBoard={photoBoard} />
     </BoxLayoutStyle>
   );

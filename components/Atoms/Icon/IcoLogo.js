@@ -1,4 +1,3 @@
-import { CgTrees } from 'react-icons/cg';
 import styled from 'styled-components';
 
 // IcoLogo
@@ -9,16 +8,19 @@ const Styles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #20c997;
-  cursor: pointer;
-  height: 50px;
-  font-size: 50px;
+  color: ${({ color }) => color};
+  height: ${({ size }) => size}px;
+  font-size: ${({ size }) => size}px;
+
+  @media screen and (max-width: 700px) {
+    font-size: ${({ mSize }) => mSize}px;
+  }
 `;
 
-export default function IcoLogo() {
+export default function IcoLogo({ icon, color, size, mSize }) {
   return (
-    <Styles>
-      <CgTrees />
+    <Styles color={color} size={size} mSize={mSize}>
+      {icon}
     </Styles>
   );
 }
