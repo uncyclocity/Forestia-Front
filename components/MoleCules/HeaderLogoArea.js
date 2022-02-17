@@ -53,6 +53,8 @@ export default function HeaderLogoArea({ accountSettings }) {
             <HicProfilePhoto
               statusIcon={<BiUser />}
               bgColor="#20c997"
+              color="white"
+              shadowColor="#dedede"
               size="26"
               padding="6"
               onClick={accountSettings}
@@ -64,6 +66,8 @@ export default function HeaderLogoArea({ accountSettings }) {
                 <HicProfilePhoto
                   statusIcon={<BiUserX />}
                   bgColor="#828c99"
+                  color="white"
+                  shadowColor="#dedede"
                   size="26"
                   padding="6"
                   onClick={() => {}}

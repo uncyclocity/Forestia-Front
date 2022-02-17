@@ -10,9 +10,13 @@ const Styles = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-  box-shadow: 0px 2px 3px #dedede;
+  ${({ shadowColor }) =>
+    shadowColor &&
+    css`
+      box-shadow: 0px 2px 3px ${shadowColor};
+    `}
 
-  ${({ imageUrl, size, bgColor, isBtn, padding }) =>
+  ${({ imageUrl, size, bgColor, color, isBtn, padding }) =>
     imageUrl
       ? css`
           background-image: url(${imageUrl});
@@ -28,7 +32,7 @@ const Styles = styled.div`
           `}
         `
       : css`
-          color: white;
+          color: ${color};
           font-size: ${size}px;
           padding: ${padding}px;
 
@@ -54,6 +58,8 @@ const Styles = styled.div`
 export default function HicProfilePhoto({
   statusIcon,
   bgColor,
+  color,
+  shadowColor,
   onClick,
   size,
   padding,
@@ -63,6 +69,8 @@ export default function HicProfilePhoto({
     return (
       <Styles
         bgColor={bgColor}
+        color={color}
+        shadowColor={shadowColor}
         size={size}
         padding={padding}
         isBtn={true}
@@ -76,6 +84,8 @@ export default function HicProfilePhoto({
     return (
       <Styles
         bgColor={bgColor}
+        color={color}
+        shadowColor={shadowColor}
         size={size}
         padding={padding}
         isBtn={false}

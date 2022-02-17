@@ -1,5 +1,5 @@
 const domain = {
-  back: 'https://api.forestia.me',
+  back: 'https://forestia-back.xyz',
 };
 
 export default domain;

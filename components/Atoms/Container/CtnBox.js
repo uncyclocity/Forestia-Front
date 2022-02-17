@@ -10,9 +10,9 @@ const BoxStyles = styled.div`
   margin: 10px auto;
 
   background: white;
-  border-radius: 30px;
+  border-radius: 15px;
 
-  box-shadow: 0px 2px 3px #dedede;
+  box-shadow: 0px 2px 4px #dedede;
 
   @media screen and (max-width: 700px) {
     width: 100%;
