@@ -1,7 +1,8 @@
 const axios = require('axios');
+const { default: domain } = require('../config/domain');
 
 const instance = axios.create({
-  baseURL: 'https://api.forestia.me',
+  baseURL: domain.back,
   headers: {
     'Content-Type': 'application/json',
   },
