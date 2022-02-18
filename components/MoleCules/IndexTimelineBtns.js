@@ -39,25 +39,10 @@ const ImageAreaStyle = styled.div`
 
 export default function IndexTimelineBtns({ board }) {
   const { NEXT_PUBLIC_IMAGE_URL } = process.env;
-  const [postingArr, setPostingArr] = useState(board);
-
-  const slicePostingArr = () => {
-    if (window.innerWidth < 700) {
-      setPostingArr(board.slice(0, 2));
-    } else {
-      setPostingArr(board);
-    }
-  };
-
-  useEffect(() => {
-    slicePostingArr();
-    window.addEventListener('resize', slicePostingArr);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <Styles>
-      {postingArr.map((posting, index) => {
+      {board.map((posting, index) => {
         const commentAmount = getCommentLen(posting);
         return (
           <li key={index}>
@@ -115,26 +100,30 @@ export default function IndexTimelineBtns({ board }) {
                       <IcoUp
                         clicker={posting.up.clicker}
                         size="23"
-                        mSize="15"
+                        mSize="20"
                       />
                       <TxtUpDownCommAmount
                         amount={posting.up.amount}
                         size="18"
-                        mSize="14"
+                        mSize="15"
                       />
                       <IcoDown
                         clicker={posting.down.clicker}
                         size="23"
-                        mSize="15"
+                        mSize="20"
                       />
                       <TxtUpDownCommAmount
                         amount={posting.down.amount}
                         size="18"
-                        mSize="14"
+                        mSize="15"
                       />
                     </div>
                     <div className="comm">
-                      <IcoComment icon={<FaRegCommentAlt />} size="18" />
+                      <IcoComment
+                        icon={<FaRegCommentAlt />}
+                        size="18"
+                        mSize="12"
+                      />
                       <TxtUpDownCommAmount
                         amount={commentAmount}
                         size="18"

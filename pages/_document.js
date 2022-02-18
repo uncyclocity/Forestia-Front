@@ -6,7 +6,6 @@ const GlobalStyles = createGlobalStyle`
     background: #f6f6f6;
     height: 100%;
     padding: 0;
-    overflow-y: scroll;
     font-family: 'Spoqa Han Sans Neo';
 
     @media screen and (max-width: 700px) {

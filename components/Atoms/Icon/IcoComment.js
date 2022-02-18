@@ -8,11 +8,15 @@ const Styles = styled.div`
   font-size: ${({ size }) => size}px;
   height: ${({ size }) => parseInt(size) + 3}px;
   color: ${({ color }) => color};
+  @media screen and (max-width: 700px) {
+    font-size: ${({ mSize }) => mSize}px;
+    height: ${({ mSize }) => parseInt(mSize) + 3}px;
+  }
 `;
 
-export default function IcoComment({ icon, size, color }) {
+export default function IcoComment({ icon, size, color, mSize }) {
   return (
-    <Styles size={size} color={color}>
+    <Styles size={size} color={color} mSize={mSize}>
       {icon}
     </Styles>
   );
