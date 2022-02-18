@@ -4,7 +4,7 @@ import { doPosting } from '../utils/doApi';
 import IndexTemplate from '../components/Templates/IndexTemplate';
 import Head from 'next/head';
 
-export default function Index({ freeBoard, photoBoard }) {
+export default function Index({ board }) {
   const ogImage = '/assets/embed.png';
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ export default function Index({ freeBoard, photoBoard }) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://forestia.me" />
       </Head>
-      <IndexTemplate freeBoard={freeBoard} photoBoard={photoBoard} />
+      <IndexTemplate board={board} />
     </>
   );
 }
@@ -36,5 +36,21 @@ export default function Index({ freeBoard, photoBoard }) {
 Index.getInitialProps = async () => {
   const freeBoard = await doPosting.get.top3('free');
   const photoBoard = await doPosting.get.top3('photo');
-  return { freeBoard, photoBoard };
+  const unifiedBoard = [
+    ...freeBoard.map((posting) => {
+      return {
+        ...posting,
+        boardType: 'free',
+        dateVal: Date.parse(posting.date),
+      };
+    }),
+    ...photoBoard.map((posting) => {
+      return {
+        ...posting,
+        boardType: 'photo',
+        dateVal: Date.parse(posting.date),
+      };
+    }),
+  ].sort((a, b) => b.dateVal - a.dateVal);
+  return { board: unifiedBoard };
 };

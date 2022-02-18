@@ -5,10 +5,10 @@ import styled from 'styled-components';
 // 용도 : 포스팅 페이지에서 내용을 띄움
 
 const Styles = styled.div`
-  padding: 20px 0 20px 0;
-  color: #525252;
+  padding: 5px 0;
+  color: ${({ color }) => color};
 `;
 
-export default function TxtPostingContentView({ content }) {
-  return <Styles>{content}</Styles>;
+export default function TxtPostingContentView({ content, color }) {
+  return <Styles color={color}>{content}</Styles>;
 }

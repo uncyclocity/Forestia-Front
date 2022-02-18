@@ -2,11 +2,10 @@ import Document, { Html, Main, Head, NextScript } from 'next/document';
 import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-  html, body {
+  html {
     background: #f6f6f6;
     height: 100%;
     padding: 0;
-    margin: 0;
     overflow-y: scroll;
     font-family: 'Spoqa Han Sans Neo';
 
@@ -36,6 +35,11 @@ const GlobalStyles = createGlobalStyle`
       opacity: 0;
     }
     
+  }
+
+  body {
+    margin: 0 auto;
+    width: 900px;
   }
 
   * {

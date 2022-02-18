@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { putUpDown } from '../../utils/updateFunc/updown/putUpDown';
 import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoUp from '../Atoms/Icon/IcoUp';
-import TxtUpDownAmount from '../Atoms/Text/TxtUpDownAmount';
+import TxtUpDownCommAmount from '../Atoms/Text/TxtUpDownCommAmount';
 import { useDispatch, useReducerState } from '../Contexts/context';
 
 const UpAndDownAreaStyle = styled.div`
@@ -73,8 +73,12 @@ export default function PostingUpAndDown({
             }
           }}
         >
-          <IcoUp clicker={nowPostingEleObj.up.clicker} />
-          <TxtUpDownAmount amount={nowPostingEleObj.up.amount} />
+          <IcoUp clicker={nowPostingEleObj.up.clicker} size="30" mSize="25" />
+          <TxtUpDownCommAmount
+            amount={nowPostingEleObj.up.amount}
+            size="20"
+            mSize="15"
+          />
         </div>
 
         <div
@@ -94,8 +98,16 @@ export default function PostingUpAndDown({
             }
           }}
         >
-          <IcoDown clicker={nowPostingEleObj.down.clicker} />
-          <TxtUpDownAmount amount={nowPostingEleObj.down.amount} />
+          <IcoDown
+            clicker={nowPostingEleObj.down.clicker}
+            size="30"
+            mSize="25"
+          />
+          <TxtUpDownCommAmount
+            amount={nowPostingEleObj.down.amount}
+            size="20"
+            mSize="15"
+          />
         </div>
       </UpAndDownBtnStyle>
     </UpAndDownAreaStyle>

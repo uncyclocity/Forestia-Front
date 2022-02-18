@@ -16,7 +16,7 @@ const BgStyle = styled.div`
   .max-width {
     display: flex;
     justify-content: space-between;
-    width: 900px;
+    width: 100%;
 
     @media screen and (max-width: 700px) {
       width: 100%;

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import IndexFreeBox from '../Organisms/IndexFreeBox';
-import IndexPhotoBox from '../Organisms/IndexPhotoBox';
+import IndexTimeline from '../Organisms/IndexTimeline';
 import IndexCatchphraseArea from '../Organisms/IndexCatchphraseArea';
 
 const BoxLayoutStyle = styled.div`
@@ -14,12 +13,11 @@ const BoxLayoutStyle = styled.div`
   }
 `;
 
-export default function IndexTemplate({ freeBoard, photoBoard }) {
+export default function IndexTemplate({ board }) {
   return (
     <BoxLayoutStyle>
       <IndexCatchphraseArea />
-      <IndexFreeBox freeBoard={freeBoard} />
-      <IndexPhotoBox photoBoard={photoBoard} />
+      <IndexTimeline board={board} />
     </BoxLayoutStyle>
   );
 }

@@ -52,7 +52,11 @@ export default function PhotoListPostingBtn({ posting, onClick }) {
 
   return (
     <LayoutStyle onClick={onClick}>
-      <ImgThumbnail imageUrl={NEXT_PUBLIC_IMAGE_URL + posting.imagesUrl[0]} />
+      <ImgThumbnail
+        imageUrl={NEXT_PUBLIC_IMAGE_URL + posting.imagesUrl[0]}
+        width="200"
+        height="120"
+      />
       <NameAndCommentAreaStyle>
         <TxtPostingTitle title={posting.title} />
         <div className="posting_comment_amount">
@@ -60,7 +64,7 @@ export default function PhotoListPostingBtn({ posting, onClick }) {
         </div>
       </NameAndCommentAreaStyle>
       <DateAndAuthorAreaStyle>
-        <TxtPostingAuthor4List author={posting.author} />
+        <TxtPostingAuthor4List author={posting.author} color="#20c997" />
         <div className="posting_date_prototype">
           <TxtPostingDate4List date={posting.date} />
         </div>

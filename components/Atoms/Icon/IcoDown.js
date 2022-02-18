@@ -7,18 +7,19 @@ import { useReducerState } from '../../Contexts/context';
 // 용도 : 포스팅 페이지의 싫어요 아이콘
 
 const Styles = styled.div`
-  font-size: 30px;
-  height: 30px;
+  font-size: ${({ size }) => size}px;
+  height: ${({ size }) => parseInt(size) + 3}px;
   @media screen and (max-width: 700px) {
-    font-size: 25px;
+    font-size: ${({ mSize }) => mSize}px;
+    height: ${({ mSize }) => parseInt(mSize) + 3}px;
   }
 `;
 
-export default function IcoDown({ clicker }) {
+export default function IcoDown({ clicker, size, mSize }) {
   const userId = useReducerState().user.userId;
 
   return (
-    <Styles>
+    <Styles size={size} mSize={mSize}>
       {clicker.find((clickUser) => clickUser === userId) ? (
         <AiFillDislike />
       ) : (

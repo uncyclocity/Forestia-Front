@@ -35,10 +35,10 @@ export default function PostingBoardTitle({ nowPostingEleObj }) {
         </>
       )}
       <AuthorAndDateStyle>
-        <TxtPostingAuthor author={nowPostingEleObj.author} />
+        <TxtPostingAuthor author={nowPostingEleObj.author} color="#20c997" />
         <DateStyle>
           <IcoPostingDate />
-          <TxtPostingDate date={nowPostingEleObj.date} />
+          <TxtPostingDate date={nowPostingEleObj.date} color="#20c997" />
         </DateStyle>
       </AuthorAndDateStyle>
     </>

@@ -10,8 +10,8 @@ const Styles = styled.div`
   border: 1px solid #e9ecef;
   border-radius: 5px;
 
-  width: 200px;
-  height: 120px;
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
 
   overflow: hidden;
   background: #f4f4f4;
@@ -29,6 +29,6 @@ const Styles = styled.div`
   }
 `;
 
-export default function ImgThumbnail({ imageUrl }) {
-  return <Styles imageUrl={imageUrl} />;
+export default function ImgThumbnail({ imageUrl, width, height }) {
+  return <Styles imageUrl={imageUrl} width={width} height={height} />;
 }
