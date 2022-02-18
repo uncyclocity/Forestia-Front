@@ -142,15 +142,17 @@ export default function PostingCommentList({
                       onKeyDown={(e) => {
                         if (e.keyCode === 13 && e.shiftKey == false) {
                           e.preventDefault();
-                          putComment({
-                            dispatch,
-                            nowPostingEleObj,
-                            setNowPostingEleObj,
-                            setEditCommObj,
-                            editCommObj,
-                            postCnt,
-                            authorId: comment.authorId,
-                          });
+                          userId
+                            ? putComment({
+                                dispatch,
+                                nowPostingEleObj,
+                                setNowPostingEleObj,
+                                setEditCommObj,
+                                editCommObj,
+                                postCnt,
+                                authorId: comment.authorId,
+                              })
+                            : alert('로그인이 필요합니다.');
                         }
                       }}
                       value={editCommObj.content}
@@ -158,15 +160,17 @@ export default function PostingCommentList({
                     />
                     <div
                       onClick={() =>
-                        putComment({
-                          dispatch,
-                          nowPostingEleObj,
-                          setNowPostingEleObj,
-                          setEditCommObj,
-                          editCommObj,
-                          postCnt,
-                          authorId: comment.authorId,
-                        })
+                        userId
+                          ? putComment({
+                              dispatch,
+                              nowPostingEleObj,
+                              setNowPostingEleObj,
+                              setEditCommObj,
+                              editCommObj,
+                              postCnt,
+                              authorId: comment.authorId,
+                            })
+                          : alert('로그인이 필요합니다.')
                       }
                     >
                       <BtnCommentPost />
@@ -241,17 +245,19 @@ export default function PostingCommentList({
                                         e.shiftKey == false
                                       ) {
                                         e.preventDefault();
-                                        putReply({
-                                          dispatch,
-                                          nowPostingEleObj,
-                                          setNowPostingEleObj,
-                                          setEditReplyObj,
-                                          editReplyObj,
-                                          postCnt,
-                                          commentId: comment.id,
-                                          authorId: reply.authorId,
-                                          replyId: reply.id,
-                                        });
+                                        userId
+                                          ? putReply({
+                                              dispatch,
+                                              nowPostingEleObj,
+                                              setNowPostingEleObj,
+                                              setEditReplyObj,
+                                              editReplyObj,
+                                              postCnt,
+                                              commentId: comment.id,
+                                              authorId: reply.authorId,
+                                              replyId: reply.id,
+                                            })
+                                          : alert('로그인이 필요합니다.');
                                       }
                                     }}
                                     value={editReplyObj.content}
@@ -259,17 +265,19 @@ export default function PostingCommentList({
                                   />
                                   <div
                                     onClick={() =>
-                                      putReply({
-                                        dispatch,
-                                        nowPostingEleObj,
-                                        setNowPostingEleObj,
-                                        setEditReplyObj,
-                                        editReplyObj,
-                                        postCnt,
-                                        commentId: comment.id,
-                                        authorId: reply.authorId,
-                                        replyId: reply.id,
-                                      })
+                                      userId
+                                        ? putReply({
+                                            dispatch,
+                                            nowPostingEleObj,
+                                            setNowPostingEleObj,
+                                            setEditReplyObj,
+                                            editReplyObj,
+                                            postCnt,
+                                            commentId: comment.id,
+                                            authorId: reply.authorId,
+                                            replyId: reply.id,
+                                          })
+                                        : alert('로그인이 필요합니다.')
                                     }
                                   >
                                     <BtnCommentPost />
@@ -299,15 +307,17 @@ export default function PostingCommentList({
                       onKeyDown={(e) => {
                         if (e.keyCode === 13 && e.shiftKey == false) {
                           e.preventDefault();
-                          postReply({
-                            dispatch,
-                            nowPostingEleObj,
-                            setNowPostingEleObj,
-                            setReplyObj,
-                            replyObj,
-                            postCnt,
-                            comment,
-                          });
+                          userId
+                            ? postReply({
+                                dispatch,
+                                nowPostingEleObj,
+                                setNowPostingEleObj,
+                                setReplyObj,
+                                replyObj,
+                                postCnt,
+                                comment,
+                              })
+                            : alert('로그인이 필요합니다.');
                         }
                       }}
                       value={replyObj.content}
@@ -315,15 +325,17 @@ export default function PostingCommentList({
                     />
                     <div
                       onClick={() =>
-                        postReply({
-                          dispatch,
-                          nowPostingEleObj,
-                          setNowPostingEleObj,
-                          setReplyObj,
-                          replyObj,
-                          postCnt,
-                          comment,
-                        })
+                        userId
+                          ? postReply({
+                              dispatch,
+                              nowPostingEleObj,
+                              setNowPostingEleObj,
+                              setReplyObj,
+                              replyObj,
+                              postCnt,
+                              comment,
+                            })
+                          : alert('로그인이 필요합니다.')
                       }
                     >
                       <BtnCommentPost />
