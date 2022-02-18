@@ -9,10 +9,6 @@ const Styles = styled.div`
   width: 100%;
   padding-bottom: 7px;
 
-  @media screen and (max-width: 700px) {
-    height: 120px;
-  }
-
   ul {
     width: 100%;
     padding: 0;

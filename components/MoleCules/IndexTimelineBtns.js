@@ -21,12 +21,6 @@ const Styles = styled.div`
   li {
     list-style-type: none;
 
-    @media screen and (max-width: 700px) {
-      &:not(:first-child) {
-        margin-left: 10px;
-      }
-    }
-
     &:hover {
       transition: 0.15s all ease-in;
       color: #20c997;
