@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import SignUpTemplate from '../../components/Templates/SignUpTemplate';
 import { postUser } from '../../utils/updateFunc/user/postUser';
+import Router from 'next/router';
 
 export default function SignUp() {
   const ogImage = '/assets/embed.png';
@@ -20,10 +21,12 @@ export default function SignUp() {
       type: 'initiate',
       nowPage: 'signup',
     });
+    (userObj.userName || !userObj.userId) && Router.push('/404');
     return () => {
       dispatch({ type: 'logout' });
     };
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -34,15 +37,17 @@ export default function SignUp() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://forestia.me" />
       </Head>
-      <SignUpTemplate
-        nickName={nickName}
-        setNickName={setNickName}
-        signUpProcess={() =>
-          postUser({ dispatch, postCnt, userObj, nickName, setIsOverLap })
-        }
-        isOverLap={isOverLap}
-        email={userObj.userEmail}
-      />
+      {!userObj.userName && userObj.userId && (
+        <SignUpTemplate
+          nickName={nickName}
+          setNickName={setNickName}
+          signUpProcess={() =>
+            postUser({ dispatch, postCnt, userObj, nickName, setIsOverLap })
+          }
+          isOverLap={isOverLap}
+          email={userObj.userEmail}
+        />
+      )}
     </>
   );
 }
