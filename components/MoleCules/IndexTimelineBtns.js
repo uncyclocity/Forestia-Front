@@ -75,6 +75,7 @@ export default function IndexTimelineBtns({ board }) {
                     <TxtTimelineTitle
                       title={posting.title}
                       size="23"
+                      mSize="20"
                       color="#525252"
                     />
                     <TxtPostingContentView content={posting.content} />
@@ -122,12 +123,12 @@ export default function IndexTimelineBtns({ board }) {
                       <IcoComment
                         icon={<FaRegCommentAlt />}
                         size="18"
-                        mSize="12"
+                        mSize="14"
                       />
                       <TxtUpDownCommAmount
                         amount={commentAmount}
                         size="18"
-                        mSize="14"
+                        mSize="15"
                       />
                     </div>
                   </>

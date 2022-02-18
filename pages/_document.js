@@ -40,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 auto;
     width: 900px;
     @media screen and (max-width: 700px) {
-      width: 100vw;
+      width: 100%;
     }
   }
 

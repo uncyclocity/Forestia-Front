@@ -8,11 +8,15 @@ const Styles = styled.div`
   font-weight: bold;
   font-size: ${({ size }) => size}px;
   color: ${({ color }) => color};
+
+  @media screen and (max-width: 700px) {
+    font-size: ${({ mSize }) => mSize}px;
+  }
 `;
 
-export default function TxtTimelineTitle({ title, size, color }) {
+export default function TxtTimelineTitle({ title, size, color, mSize }) {
   return (
-    <Styles size={size} color={color}>
+    <Styles size={size} color={color} mSize={mSize}>
       {title}
     </Styles>
   );
