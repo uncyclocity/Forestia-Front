@@ -10,6 +10,8 @@ const GlobalStyles = createGlobalStyle`
 
     @media screen and (max-width: 700px) {
       font-size: 14px;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     /* FireFox Scrollbar */
@@ -41,6 +43,7 @@ const GlobalStyles = createGlobalStyle`
     width: 900px;
     @media screen and (max-width: 700px) {
       width: 100%;
+      overflow-x: hidden;
     }
   }
 
