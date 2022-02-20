@@ -68,7 +68,9 @@ export default function IndexTimelineBtns({ board, authorArr }) {
                       />
                     </div>
                     <div>
-                      <TxtPostingAuthor author={authorArr[index].nickname} />
+                      <TxtPostingAuthor
+                        author={authorArr[index].nickname || '탈퇴한 사용자'}
+                      />
                       <TxtPostingDate date={posting.date} />
                     </div>
                   </>
