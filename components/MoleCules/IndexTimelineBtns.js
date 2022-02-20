@@ -17,6 +17,7 @@ import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoComment from '../Atoms/Icon/IcoComment';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import IcoFreePhoto from '../Atoms/Icon/IcoFreePhoto';
+import { doUser } from '../../utils/doApi';
 
 const Styles = styled.div`
   li {
@@ -38,7 +39,7 @@ const ImageAreaStyle = styled.div`
   display: flex;
 `;
 
-export default function IndexTimelineBtns({ board }) {
+export default function IndexTimelineBtns({ board, authorArr }) {
   const { NEXT_PUBLIC_IMAGE_URL } = process.env;
 
   return (
@@ -63,10 +64,11 @@ export default function IndexTimelineBtns({ board }) {
                         color="white"
                         size="26"
                         padding="6"
+                        imageUrl={authorArr[index].imageUrl}
                       />
                     </div>
                     <div>
-                      <TxtPostingAuthor author={posting.author} />
+                      <TxtPostingAuthor author={authorArr[index].nickname} />
                       <TxtPostingDate date={posting.date} />
                     </div>
                   </>
