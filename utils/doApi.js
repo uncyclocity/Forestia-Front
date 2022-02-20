@@ -314,6 +314,5 @@ export const doRefreshToken = {
       url: '/refresh-token',
       data: { id },
     });
-    Router.push('/');
   },
 };

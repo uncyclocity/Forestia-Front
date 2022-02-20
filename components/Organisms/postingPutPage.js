@@ -21,7 +21,13 @@ export default function PostingPutPage() {
 
   return (
     <>
-      <IcoFreePhoto boardType={boardType} />
+      <IcoFreePhoto
+        boardType={boardType}
+        width="65"
+        height="35"
+        iconSize="20"
+        textSize="15"
+      />
       <ContentInputStyle>
         <IptTitle
           onChange={(e) => setEditEle({ ...editEle, title: e.target.value })}

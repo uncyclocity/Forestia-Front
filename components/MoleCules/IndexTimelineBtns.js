@@ -16,6 +16,7 @@ import TxtUpDownCommAmount from '../Atoms/Text/TxtUpDownCommAmount';
 import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoComment from '../Atoms/Icon/IcoComment';
 import { FaRegCommentAlt } from 'react-icons/fa';
+import IcoFreePhoto from '../Atoms/Icon/IcoFreePhoto';
 
 const Styles = styled.div`
   li {
@@ -72,12 +73,23 @@ export default function IndexTimelineBtns({ board }) {
                 }
                 content={
                   <>
-                    <TxtTimelineTitle
-                      title={posting.title}
-                      size="23"
-                      mSize="20"
-                      color="#525252"
-                    />
+                    <div className="boardtype-and-title">
+                      <IcoFreePhoto
+                        boardType={posting.boardType}
+                        width="60"
+                        height="27"
+                        iconSize="18"
+                        textSize="13"
+                      />
+                      <div className="title">
+                        <TxtTimelineTitle
+                          title={posting.title}
+                          size="23"
+                          mSize="20"
+                          color="#525252"
+                        />
+                      </div>
+                    </div>
                     <TxtPostingContentView content={posting.content} />
                     <ImageAreaStyle>
                       {posting.imagesUrl[0] &&
