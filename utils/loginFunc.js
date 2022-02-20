@@ -33,5 +33,5 @@ export const onSilentRefresh = async () => {
 
 export const onLoginSuccess = async (accessToken) => {
   instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-  setTimeout(onSilentRefresh, jwtExpTime - 60000);
+  setTimeout(onSilentRefresh, jwtExpTime);
 };
