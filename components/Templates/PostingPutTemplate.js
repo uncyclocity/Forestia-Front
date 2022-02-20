@@ -1,7 +1,7 @@
 import CtnBox from '../Atoms/Container/CtnBox';
 import styled from 'styled-components';
 import BoardTitleTemplate from './BoardTitleTemplate';
-import PostingPutPage from '../Organisms/PostingPutPage';
+import PostingPutPage from '../Organisms/postingPutPage';
 import PostingPutBoardTitle from '../Organisms/PostingPutBoardTitle';
 
 const BoxStyle = styled.div`
