@@ -173,6 +173,7 @@ export default function PostingCommentList({
                       }}
                       value={editCommObj.content}
                       width="775"
+                      mWidth="250"
                       placeholder="댓글을 입력하세요"
                     />
                     <div
@@ -279,6 +280,7 @@ export default function PostingCommentList({
                                     }}
                                     value={editReplyObj.content}
                                     width="740"
+                                    mWidth="214"
                                     placeholder="답글을 입력하세요"
                                   />
                                   <div
@@ -340,6 +342,7 @@ export default function PostingCommentList({
                       }}
                       value={replyObj.content}
                       width="740"
+                      mWidth="214"
                       placeholder="답글을 입력하세요"
                     />
                     <div

@@ -67,6 +67,7 @@ export default function PostingCommentInput({
           }}
           value={comment}
           width="775"
+          mWidth="250"
           placeholder="댓글을 입력하세요"
         />
       </CommTextareaStyle>

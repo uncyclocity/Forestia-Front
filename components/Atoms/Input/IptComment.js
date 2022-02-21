@@ -8,7 +8,7 @@ const Styles = styled.div`
   textarea {
     width: ${({ width }) => width}px;
     @media screen and (max-width: 700px) {
-      width: ${({ width }) => width - 310}px;
+      width: ${({ mWidth }) => mWidth}px;
     }
 
     height: 50px;
@@ -40,10 +40,11 @@ export default function IptComment({
   onKeyDown,
   value,
   width,
+  mWidth,
   placeholder,
 }) {
   return (
-    <Styles width={width}>
+    <Styles width={width} mWidth={mWidth}>
       <textarea
         style={{ resize: 'none' }}
         value={value}
