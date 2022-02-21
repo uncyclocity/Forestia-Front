@@ -10,6 +10,7 @@ const Styles = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50px;
+  height: ${({ size, padding }) => parseInt(size) + parseInt(padding) * 2}px;
   ${({ shadowColor }) =>
     shadowColor &&
     css`
@@ -24,7 +25,6 @@ const Styles = styled.div`
           background-repeat: no-repeat;
           background-position: center center;
           width: ${parseInt(size) + parseInt(padding) * 2}px;
-          height: ${parseInt(size) + parseInt(padding) * 2}px;
 
           ${isBtn &&
           css`
