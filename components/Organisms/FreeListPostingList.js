@@ -26,7 +26,7 @@ const ListStyle = styled.div`
   }
 `;
 
-export default function FreeListPostingList({ freeBoard, page }) {
+export default function FreeListPostingList({ freeBoard, page, authorArr }) {
   return (
     <ListStyle>
       {freeBoard.length > 0 ? (
@@ -38,6 +38,7 @@ export default function FreeListPostingList({ freeBoard, page }) {
               <FreeListPostingBtn
                 key={index}
                 posting={posting}
+                author={authorArr[index]}
                 onClick={() =>
                   Router.push(
                     `/board/posting?boardtype=free&postid=${posting.id}&page=${page}`,

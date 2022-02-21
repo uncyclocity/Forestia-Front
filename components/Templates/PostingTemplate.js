@@ -15,6 +15,7 @@ export default function PostingTemplate({
   nowPostingEleObj,
   setNowPostingEleObj,
   boardType,
+  author,
   page,
 }) {
   const backURL = `/board/boardlist/${boardType}?page=${page}`;
@@ -23,7 +24,10 @@ export default function PostingTemplate({
     <CtnBox>
       <BoxStyles>
         <BoardTitleTemplate backURL={backURL}>
-          <PostingBoardTitle nowPostingEleObj={nowPostingEleObj} />
+          <PostingBoardTitle
+            nowPostingEleObj={nowPostingEleObj}
+            author={author}
+          />
         </BoardTitleTemplate>
         <PostingContentAndUpDown
           nowPostingEleObj={nowPostingEleObj}

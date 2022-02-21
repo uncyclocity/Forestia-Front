@@ -46,7 +46,7 @@ const LayoutStyle = styled.div`
   }
 `;
 
-export default function PhotoListPostingBtn({ posting, onClick }) {
+export default function PhotoListPostingBtn({ posting, author, onClick }) {
   const { NEXT_PUBLIC_IMAGE_URL } = process.env;
   const commentAmount = getCommentLen(posting);
 
@@ -64,7 +64,10 @@ export default function PhotoListPostingBtn({ posting, onClick }) {
         </div>
       </NameAndCommentAreaStyle>
       <DateAndAuthorAreaStyle>
-        <TxtPostingAuthor4List author={posting.author} color="#20c997" />
+        <TxtPostingAuthor4List
+          author={author.nickname || '탈퇴한 사용자'}
+          color="#20c997"
+        />
         <div className="posting_date_prototype">
           <TxtPostingDate4List date={posting.date} />
         </div>

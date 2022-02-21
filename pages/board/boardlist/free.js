@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from '../../../components/Contexts/context';
-import { doPosting } from '../../../utils/doApi';
+import { doPosting, doUser } from '../../../utils/doApi';
 import FreeListTemplate from '../../../components/Templates/FreeListTemplate';
 import Head from 'next/head';
 
-export default function Free({ freeBoard, page, freeLen }) {
+export default function Free({ freeBoard, page, freeLen, authorArr }) {
   const ogImage = '/assets/embed.png';
   const dispatch = useDispatch();
 
@@ -25,7 +25,12 @@ export default function Free({ freeBoard, page, freeLen }) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://forestia.me" />
       </Head>
-      <FreeListTemplate freeLen={freeLen} page={page} nowList={freeBoard} />
+      <FreeListTemplate
+        freeLen={freeLen}
+        page={page}
+        nowList={freeBoard}
+        authorArr={authorArr}
+      />
     </>
   );
 }
@@ -34,5 +39,9 @@ Free.getInitialProps = async (ctx) => {
   const page = ctx.query.page || 1;
   const freeBoard = await doPosting.get.list(page, 'free');
   const freeLen = await doPosting.get.length('free');
-  return { freeBoard, page, freeLen };
+  const authorArr = [];
+  for (let i = 0; i < freeBoard.length; i++) {
+    authorArr[i] = await doUser.get.byId(freeBoard[i].authorId);
+  }
+  return { freeBoard, page, freeLen, authorArr };
 };

@@ -1,6 +1,6 @@
 import { useDispatch } from '../../../components/Contexts/context';
 import { useEffect, useState } from 'react';
-import { doPosting } from '../../../utils/doApi';
+import { doPosting, doUser } from '../../../utils/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -20,7 +20,7 @@ const postingPageSwitchOff = (dispatch) => {
   });
 };
 
-export default function Posting({ nowPostingEleObjRaw, boardType }) {
+export default function Posting({ nowPostingEleObjRaw, boardType, author }) {
   const ogImage = '/assets/embed.png';
   const page = useRouter().query.page || 1;
   const dispatch = useDispatch();
@@ -57,6 +57,7 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
           nowPostingEleObj={nowPostingEleObj}
           setNowPostingEleObj={setNowPostingEleObj}
           boardType={boardType}
+          author={author}
           page={page}
         />
       ) : (
@@ -70,5 +71,6 @@ Posting.getInitialProps = async (ctx) => {
   const { boardtype: boardType, postid: postId } = ctx.query;
   const getPostingEle = await doPosting.get.ele(boardType, postId);
   const nowPostingEleObjRaw = { ...getPostingEle, boardType };
-  return { nowPostingEleObjRaw, boardType };
+  const author = await doUser.get.byId(getPostingEle.authorId);
+  return { nowPostingEleObjRaw, boardType, author };
 };

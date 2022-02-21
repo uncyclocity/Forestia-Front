@@ -19,7 +19,7 @@ const DateStyle = styled.div`
   padding: 0 5px;
 `;
 
-export default function PostingBoardTitle({ nowPostingEleObj }) {
+export default function PostingBoardTitle({ nowPostingEleObj, author }) {
   return (
     <>
       {nowPostingEleObj.boardType === 'free' && (
@@ -35,7 +35,10 @@ export default function PostingBoardTitle({ nowPostingEleObj }) {
         </>
       )}
       <AuthorAndDateStyle>
-        <TxtPostingAuthor author={nowPostingEleObj.author} color="#20c997" />
+        <TxtPostingAuthor
+          author={author.nickname || '탈퇴한 사용자'}
+          color="#20c997"
+        />
         <DateStyle>
           <IcoPostingDate />
           <TxtPostingDate date={nowPostingEleObj.date} color="#20c997" />

@@ -25,7 +25,7 @@ const PostingTitleStyle = styled.td`
   flex-direction: row;
 `;
 
-export default function FreeListPostingBtn({ posting, onClick }) {
+export default function FreeListPostingBtn({ posting, author, onClick }) {
   const commentAmount = getCommentLen(posting);
 
   return (
@@ -36,7 +36,7 @@ export default function FreeListPostingBtn({ posting, onClick }) {
         {commentAmount > 0 && <TxtCommentAmount4List amount={commentAmount} />}
       </PostingTitleStyle>
       <td>
-        <TxtPostingAuthor4List author={posting.author} color="#20c997" />
+        <TxtPostingAuthor4List author={author.nickname || "탈퇴한 사용자"} color="#20c997" />
       </td>
       <td>
         <TxtPostingDate4List date={posting.date} />

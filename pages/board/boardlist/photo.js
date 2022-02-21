@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from '../../../components/Contexts/context';
-import { doPosting } from '../../../utils/doApi';
+import { doPosting, doUser } from '../../../utils/doApi';
 import PhotoListTemplate from '../../../components/Templates/PhotoListTemplate';
 import Head from 'next/head';
 
-export default function Photo({ photoBoard, page, photoLen }) {
+export default function Photo({ photoBoard, page, photoLen, authorArr }) {
   const ogImage = '/assets/embed.png';
   const dispatch = useDispatch();
 
@@ -28,7 +28,12 @@ export default function Photo({ photoBoard, page, photoLen }) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://forestia.me" />
       </Head>
-      <PhotoListTemplate photoLen={photoLen} page={page} nowList={photoBoard} />
+      <PhotoListTemplate
+        photoLen={photoLen}
+        page={page}
+        nowList={photoBoard}
+        authorArr={authorArr}
+      />
     </>
   );
 }
@@ -37,5 +42,9 @@ Photo.getInitialProps = async (ctx) => {
   const page = ctx.query.page || 1;
   const photoBoard = await doPosting.get.list(page, 'photo');
   const photoLen = await doPosting.get.length('photo');
-  return { photoBoard, page, photoLen };
+  const authorArr = [];
+  for (let i = 0; i < photoBoard.length; i++) {
+    authorArr[i] = await doUser.get.byId(photoBoard[i].authorId);
+  }
+  return { photoBoard, page, photoLen, authorArr };
 };
