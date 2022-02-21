@@ -16,6 +16,8 @@ import { putReply } from '../../utils/updateFunc/reply/putReply';
 import { postReply } from '../../utils/updateFunc/reply/postReply';
 import IcoReply from '../Atoms/Icon/IcoReply';
 import getCommentLen from '../../utils/getCommentLen';
+import HicProfilePhoto from '../Atoms/HybridIcon/HicProfilePhoto';
+import { BiUser } from 'react-icons/bi';
 
 const CommListAreaStyle = styled.div`
   margin-bottom: 5px;
@@ -39,6 +41,10 @@ const CommInfoAndBtnAreaStyle = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 5px;
+  align-items: center;
+  & > div {
+    margin-right: 8px;
+  }
 `;
 
 const CommContentAreaStyle = styled.div`
@@ -58,6 +64,7 @@ const ReplyAreaStyle = styled.div`
 export default function PostingCommentList({
   nowPostingEleObj,
   setNowPostingEleObj,
+  commentAuthorArr,
 }) {
   const state = useReducerState();
   const userId = state.user.userId;
@@ -80,7 +87,15 @@ export default function PostingCommentList({
           return (
             <li key={index}>
               <CommInfoAndBtnAreaStyle>
-                <TxtCommentAuthor author={comment.author} />
+                <HicProfilePhoto
+                  statusIcon={<BiUser />}
+                  bgColor="#20c997"
+                  color="white"
+                  size="18"
+                  padding="3"
+                  imageUrl={commentAuthorArr[index].imageUrl}
+                />
+                <TxtCommentAuthor author={commentAuthorArr[index].nickname} />
                 <TxtCommentDate date={comment.date} />
                 {userId === comment.authorId && (
                   <>

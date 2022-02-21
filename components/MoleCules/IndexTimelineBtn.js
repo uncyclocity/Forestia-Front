@@ -21,7 +21,7 @@ const ContentStyle = styled.div`
     display: flex;
     align-items: center;
     .title {
-      margin-left: 5px;
+      margin-left: 8px;
     }
   }
 `;

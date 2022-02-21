@@ -5,9 +5,6 @@ import styled from 'styled-components';
 // 용도 : 댓글 작성날짜
 
 const Styles = styled.div`
-  margin-right: 10px;
-  position: relative;
-  top: 1px;
   color: #828c99;
   font-size: 14px;
   @media screen and (max-width: 700px) {

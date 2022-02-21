@@ -5,7 +5,6 @@ import styled from 'styled-components';
 // 용도 : 댓글 작성자
 
 const Styles = styled.div`
-  margin-right: 10px;
   font-weight: bold;
   font-size: 15px;
   @media screen and (max-width: 700px) {

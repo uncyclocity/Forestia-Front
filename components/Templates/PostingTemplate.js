@@ -16,6 +16,7 @@ export default function PostingTemplate({
   setNowPostingEleObj,
   boardType,
   author,
+  commentAuthorArr,
   page,
 }) {
   const backURL = `/board/boardlist/${boardType}?page=${page}`;
@@ -36,6 +37,7 @@ export default function PostingTemplate({
         <PostingComment
           nowPostingEleObj={nowPostingEleObj}
           setNowPostingEleObj={setNowPostingEleObj}
+          commentAuthorArr={commentAuthorArr}
         />
       </BoxStyles>
     </CtnBox>

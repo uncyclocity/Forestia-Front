@@ -17,7 +17,6 @@ import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoComment from '../Atoms/Icon/IcoComment';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import IcoFreePhoto from '../Atoms/Icon/IcoFreePhoto';
-import { doUser } from '../../utils/doApi';
 
 const Styles = styled.div`
   li {

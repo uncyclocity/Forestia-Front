@@ -20,7 +20,12 @@ const postingPageSwitchOff = (dispatch) => {
   });
 };
 
-export default function Posting({ nowPostingEleObjRaw, boardType, author }) {
+export default function Posting({
+  nowPostingEleObjRaw,
+  boardType,
+  author,
+  commentAuthorArr,
+}) {
   const ogImage = '/assets/embed.png';
   const page = useRouter().query.page || 1;
   const dispatch = useDispatch();
@@ -58,6 +63,7 @@ export default function Posting({ nowPostingEleObjRaw, boardType, author }) {
           setNowPostingEleObj={setNowPostingEleObj}
           boardType={boardType}
           author={author}
+          commentAuthorArr={commentAuthorArr}
           page={page}
         />
       ) : (
@@ -72,5 +78,11 @@ Posting.getInitialProps = async (ctx) => {
   const getPostingEle = await doPosting.get.ele(boardType, postId);
   const nowPostingEleObjRaw = { ...getPostingEle, boardType };
   const author = await doUser.get.byId(getPostingEle.authorId);
-  return { nowPostingEleObjRaw, boardType, author };
+  const commentAuthorArr = [];
+  for (let i = 0; i < getPostingEle.comments.length; i++) {
+    commentAuthorArr[i] = await doUser.get.byId(
+      getPostingEle.comments[i].authorId,
+    );
+  }
+  return { nowPostingEleObjRaw, boardType, author, commentAuthorArr };
 };
