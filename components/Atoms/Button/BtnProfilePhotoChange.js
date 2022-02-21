@@ -17,6 +17,7 @@ const Styles = styled.div`
   opacity: 0.5;
   color: white;
   font-size: ${({ size }) => size}px;
+  text-align: center;
 `;
 
 export default function BtnProfilePhotoChange({

@@ -16,10 +16,19 @@ const Styles = styled.div`
   & > div {
     margin-bottom: 5px;
   }
+
+  .input-file {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
 `;
 
 export default function ModalAccountSettingsProfile({ user }) {
   const [isHover, setIsHover] = useState(false);
+  const [fileImage, setFileImage] = useState(user.imageUrl);
 
   return (
     <Styles>
@@ -29,11 +38,24 @@ export default function ModalAccountSettingsProfile({ user }) {
       >
         {isHover && (
           <BtnProfilePhotoChange
-            text="프로필 사진 변경"
+            text={
+              <>
+                <div>프로필 사진 변경</div>
+                <input
+                  name="imgUpload"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    console.log(e.target.files);
+                    setFileImage(URL.createObjectURL(e.target.files[0]));
+                  }}
+                  className="input-file"
+                />
+              </>
+            }
             size="14"
             width="100"
             height="100"
-            onClick={() => alert('준비중입니다.')}
           />
         )}
         <HicProfilePhoto
@@ -43,7 +65,7 @@ export default function ModalAccountSettingsProfile({ user }) {
           shadowColor="#dedede"
           size="70"
           padding="15"
-          imageUrl={user.imageUrl}
+          imageUrl={fileImage}
         />
       </div>
       <TxtProfile userName={user.userName} color="#20c997" size="21" />

@@ -284,6 +284,27 @@ export const doUser = {
   },
 };
 
+export const doUserProfileImage = {
+  post: async (formData) => {
+    const apiUrl = `/user-profile-image`;
+    const pathArr = await instance({
+      method: 'POST',
+      url: apiUrl,
+      header: { 'content-type': 'multipart/form-data' },
+      data: formData,
+    });
+    return pathArr.data;
+  },
+  delete: async (imagesUrl) => {
+    const apiUrl = '/image';
+    await instance({
+      method: 'DELETE',
+      url: apiUrl,
+      data: { imagesUrl },
+    });
+  },
+};
+
 export const doUserToken = {
   get: async (id, email) => {
     const res = await instance({
