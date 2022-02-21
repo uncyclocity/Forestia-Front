@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from '../components/Contexts/context';
-import { doPosting } from '../utils/doApi';
+import { doPosting, doUser } from '../utils/doApi';
 import IndexTemplate from '../components/Templates/IndexTemplate';
 import Head from 'next/head';
 
-export default function Index({ board }) {
+export default function Index({ board, authorArr }) {
   const ogImage = '/assets/embed.png';
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ export default function Index({ board }) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://forestia.me" />
       </Head>
-      <IndexTemplate board={board} />
+      <IndexTemplate board={board} authorArr={authorArr} />
     </>
   );
 }
@@ -36,6 +36,7 @@ export default function Index({ board }) {
 Index.getInitialProps = async () => {
   const freeBoard = await doPosting.get.top3('free');
   const photoBoard = await doPosting.get.top3('photo');
+  const authorArr = [];
   const unifiedBoard = [
     ...freeBoard.map((posting) => {
       return {
@@ -52,5 +53,8 @@ Index.getInitialProps = async () => {
       };
     }),
   ].sort((a, b) => b.dateVal - a.dateVal);
-  return { board: unifiedBoard };
+  for (let i = 0; i < unifiedBoard.length; i++) {
+    authorArr[i] = await doUser.get.byId(unifiedBoard[i].authorId);
+  }
+  return { board: unifiedBoard, authorArr };
 };

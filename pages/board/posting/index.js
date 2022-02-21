@@ -4,6 +4,7 @@ import { doPosting } from '../../../utils/doApi';
 import PostingTemplate from '../../../components/Templates/PostingTemplate';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Router from 'next/router';
 
 const postingPageSwitchOn = (dispatch) => {
   dispatch({
@@ -30,8 +31,12 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
       type: 'initiate',
       nowPage: boardType,
     });
-    dispatch({ type: 'editpost_data', nowPostingEleObj });
-    postingPageSwitchOn(dispatch);
+    if (nowPostingEleObj.id) {
+      dispatch({ type: 'editpost_data', nowPostingEleObj });
+      postingPageSwitchOn(dispatch);
+    } else {
+      Router.push('/404');
+    }
     return () => {
       postingPageSwitchOff(dispatch);
     };
@@ -47,12 +52,16 @@ export default function Posting({ nowPostingEleObjRaw, boardType }) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://forestia.me" />
       </Head>
-      <PostingTemplate
-        nowPostingEleObj={nowPostingEleObj}
-        setNowPostingEleObj={setNowPostingEleObj}
-        boardType={boardType}
-        page={page}
-      />
+      {nowPostingEleObj.id ? (
+        <PostingTemplate
+          nowPostingEleObj={nowPostingEleObj}
+          setNowPostingEleObj={setNowPostingEleObj}
+          boardType={boardType}
+          page={page}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 }

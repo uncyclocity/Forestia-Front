@@ -47,6 +47,7 @@ const CommContentAreaStyle = styled.div`
   .comm_edit_reply_area {
     display: flex;
     flex-direction: row;
+    margin: 10px 0;
   }
 `;
 
@@ -156,7 +157,8 @@ export default function PostingCommentList({
                         }
                       }}
                       value={editCommObj.content}
-                      width={570}
+                      width="775"
+                      placeholder="댓글을 입력하세요"
                     />
                     <div
                       onClick={() =>
@@ -261,7 +263,8 @@ export default function PostingCommentList({
                                       }
                                     }}
                                     value={editReplyObj.content}
-                                    width={537}
+                                    width="740"
+                                    placeholder="답글을 입력하세요"
                                   />
                                   <div
                                     onClick={() =>
@@ -321,7 +324,8 @@ export default function PostingCommentList({
                         }
                       }}
                       value={replyObj.content}
-                      width={537}
+                      width="740"
+                      placeholder="답글을 입력하세요"
                     />
                     <div
                       onClick={() =>

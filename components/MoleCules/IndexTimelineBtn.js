@@ -16,6 +16,16 @@ const ProfileStyle = styled.div`
   }
 `;
 
+const ContentStyle = styled.div`
+  .boardtype-and-title {
+    display: flex;
+    align-items: center;
+    .title {
+      margin-left: 5px;
+    }
+  }
+`;
+
 const UdAndCommStyle = styled.div`
   display: flex;
   justify-content: space-between;
@@ -47,7 +57,7 @@ export default function IndexTimelineBtn({
   return (
     <BgStyle onClick={onClick}>
       <ProfileStyle>{profile}</ProfileStyle>
-      {content}
+      <ContentStyle>{content}</ContentStyle>
       <UdAndCommStyle>{udAndComm}</UdAndCommStyle>
     </BgStyle>
   );

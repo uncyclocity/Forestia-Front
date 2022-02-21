@@ -35,7 +35,13 @@ const Styles = styled.div`
   }
 `;
 
-export default function IptComment({ onChange, onKeyDown, value, width }) {
+export default function IptComment({
+  onChange,
+  onKeyDown,
+  value,
+  width,
+  placeholder,
+}) {
   return (
     <Styles width={width}>
       <textarea
@@ -43,7 +49,7 @@ export default function IptComment({ onChange, onKeyDown, value, width }) {
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        placeholder="댓글을 입력하세요"
+        placeholder={placeholder}
       />
     </Styles>
   );

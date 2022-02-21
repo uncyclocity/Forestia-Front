@@ -16,6 +16,8 @@ import TxtUpDownCommAmount from '../Atoms/Text/TxtUpDownCommAmount';
 import IcoDown from '../Atoms/Icon/IcoDown';
 import IcoComment from '../Atoms/Icon/IcoComment';
 import { FaRegCommentAlt } from 'react-icons/fa';
+import IcoFreePhoto from '../Atoms/Icon/IcoFreePhoto';
+import { doUser } from '../../utils/doApi';
 
 const Styles = styled.div`
   li {
@@ -37,7 +39,7 @@ const ImageAreaStyle = styled.div`
   display: flex;
 `;
 
-export default function IndexTimelineBtns({ board }) {
+export default function IndexTimelineBtns({ board, authorArr }) {
   const { NEXT_PUBLIC_IMAGE_URL } = process.env;
 
   return (
@@ -62,22 +64,36 @@ export default function IndexTimelineBtns({ board }) {
                         color="white"
                         size="26"
                         padding="6"
+                        imageUrl={authorArr[index].imageUrl}
                       />
                     </div>
                     <div>
-                      <TxtPostingAuthor author={posting.author} />
+                      <TxtPostingAuthor
+                        author={authorArr[index].nickname || '탈퇴한 사용자'}
+                      />
                       <TxtPostingDate date={posting.date} />
                     </div>
                   </>
                 }
                 content={
                   <>
-                    <TxtTimelineTitle
-                      title={posting.title}
-                      size="23"
-                      mSize="20"
-                      color="#525252"
-                    />
+                    <div className="boardtype-and-title">
+                      <IcoFreePhoto
+                        boardType={posting.boardType}
+                        width="60"
+                        height="27"
+                        iconSize="18"
+                        textSize="13"
+                      />
+                      <div className="title">
+                        <TxtTimelineTitle
+                          title={posting.title}
+                          size="23"
+                          mSize="20"
+                          color="#525252"
+                        />
+                      </div>
+                    </div>
                     <TxtPostingContentView content={posting.content} />
                     <ImageAreaStyle>
                       {posting.imagesUrl[0] &&

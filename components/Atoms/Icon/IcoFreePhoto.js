@@ -6,16 +6,15 @@ import styled from 'styled-components';
 // 용도 : 포스팅 수정 페이지에 표시되는 게시판 종류
 
 const Styles = styled.div`
-  margin: 20px 0;
   .board_sign {
-    width: 65px;
-    height: 35px;
+    width: ${({ width }) => width}px;
+    height: ${({ height }) => height}px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font-size: 20px;
+    font-size: ${({ iconSize }) => iconSize}px;
 
     border: 2px solid #20c997;
     border-radius: 7px;
@@ -25,14 +24,25 @@ const Styles = styled.div`
 
     .board_name {
       margin-left: 5px;
-      font-size: 15px;
+      font-size: ${({ textSize }) => textSize}px;
     }
   }
 `;
 
-export default function IcoFreePhoto({ boardType }) {
+export default function IcoFreePhoto({
+  boardType,
+  width,
+  height,
+  iconSize,
+  textSize,
+}) {
   return (
-    <Styles>
+    <Styles
+      width={width}
+      height={height}
+      iconSize={iconSize}
+      textSize={textSize}
+    >
       {boardType === 'free' && (
         <div className="board_sign">
           <AiOutlineCloud />

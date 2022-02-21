@@ -20,12 +20,12 @@ const Styles = styled.div`
   }
 `;
 
-export default function IndexTimeline({ board }) {
+export default function IndexTimeline({ board, authorArr }) {
   return (
     <Styles>
       {board.length > 0 ? (
         <ul>
-          <IndexTimelineBtns board={board} />
+          <IndexTimelineBtns board={board} authorArr={authorArr} />
         </ul>
       ) : (
         <ListEmpty />
