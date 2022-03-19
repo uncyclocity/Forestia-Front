@@ -27,37 +27,31 @@ const Styles = styled.div`
 `;
 
 export default function ModalAccountSettingsProfile({ user }) {
-  const [isHover, setIsHover] = useState(false);
   const [fileImage, setFileImage] = useState(user.imageUrl);
 
   return (
     <Styles>
-      <div
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
-      >
-        {isHover && (
-          <BtnProfilePhotoChange
-            text={
-              <>
-                <div>프로필 사진 변경</div>
-                <input
-                  name="imgUpload"
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    console.log(e.target.files);
-                    setFileImage(URL.createObjectURL(e.target.files[0]));
-                  }}
-                  className="input-file"
-                />
-              </>
-            }
-            size="14"
-            width="100"
-            height="100"
-          />
-        )}
+      <div>
+        <BtnProfilePhotoChange
+          text={
+            <>
+              <div>프로필 사진 변경</div>
+              <input
+                name="imgUpload"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  console.log(e);
+                  setFileImage(URL.createObjectURL(e.target.files[0]));
+                }}
+                className="input-file"
+              />
+            </>
+          }
+          size="14"
+          width="100"
+          height="100"
+        />
         <HicProfilePhoto
           statusIcon={<BiUser />}
           bgColor="#20c997"
