@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "g": "^2.0.1",
     "google-auth-library": "^7.10.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "next": "12.1.0",
     "npm": "^7.20.1",
     "polished": "^4.1.4",
