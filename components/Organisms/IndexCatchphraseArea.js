@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import CtnBox from '../Atoms/Container/CtnBox';
 import IndexCpAreaProfileImgAndCp from '../MoleCules/IndexCpAreaProfileImgAndCp';
-import { lighten } from 'polished';
+import { darken } from 'polished';
 import { useReducerState } from '../Contexts/context';
 import Router from 'next/router';
 
@@ -16,7 +16,7 @@ const BgStyle = styled.div`
   cursor: pointer;
 
   &:hover {
-    background: ${lighten(0.1, '#20c997')};
+    background: ${darken(0.03, '#20c997')};
     transition: 0.15s all ease-in;
   }
 

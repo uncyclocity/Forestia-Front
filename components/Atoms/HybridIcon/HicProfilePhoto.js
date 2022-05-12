@@ -1,4 +1,4 @@
-import { lighten } from 'polished';
+import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 
 // HicProfilePhoto
@@ -41,7 +41,7 @@ const Styles = styled.div`
                 cursor: pointer;
                 &:hover {
                   transition: 0.15s all ease-in;
-                  background: ${lighten(0.1, bgColor)};
+                  background: ${darken(0.08, bgColor)};
                 }
 
                 &:not(:hover) {

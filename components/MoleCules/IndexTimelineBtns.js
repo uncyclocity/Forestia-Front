@@ -37,6 +37,7 @@ const Styles = styled.div`
 
 const ImageAreaStyle = styled.div`
   display: flex;
+  gap: 5px;
 `;
 
 export default function IndexTimelineBtns({ board, authorArr }) {
@@ -121,7 +122,7 @@ export default function IndexTimelineBtns({ board, authorArr }) {
                       />
                       <TxtUpDownCommAmount
                         amount={posting.up.amount}
-                        size="18"
+                        size="15"
                         mSize="15"
                       />
                       <IcoDown
@@ -131,7 +132,7 @@ export default function IndexTimelineBtns({ board, authorArr }) {
                       />
                       <TxtUpDownCommAmount
                         amount={posting.down.amount}
-                        size="18"
+                        size="15"
                         mSize="15"
                       />
                     </div>
@@ -143,7 +144,7 @@ export default function IndexTimelineBtns({ board, authorArr }) {
                       />
                       <TxtUpDownCommAmount
                         amount={commentAmount}
-                        size="18"
+                        size="15"
                         mSize="15"
                       />
                     </div>

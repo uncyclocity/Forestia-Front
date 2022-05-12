@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { lighten } from 'polished';
+import { darken } from 'polished';
 
 // BtnHeader
 // 분류 : 버튼
@@ -23,7 +23,7 @@ const Styles = styled.div`
 
   &:hover {
     transition: 0.15s all ease-in;
-    color: ${({ color }) => lighten(0.1, color)};
+    color: ${({ color }) => darken(0.1, color)};
   }
 
   &:not(:hover) {

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 // 용도 : 포스팅 페이지 좋아요 싫어요 댓글 개수
 
 const Styles = styled.div`
+  margin: 0 10px 0 5px;
   font-size: ${({ size }) => size}px;
   @media screen and (max-width: 700px) {
     font-size: ${({ mSize }) => mSize}px;

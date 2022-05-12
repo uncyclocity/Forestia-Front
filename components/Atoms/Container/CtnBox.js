@@ -10,7 +10,7 @@ const BoxStyles = styled.div`
   margin: 10px auto;
 
   background: white;
-  border-radius: 15px;
+  border-radius: 18px;
 
   box-shadow: 0px 2px 4px #dedede;
 
