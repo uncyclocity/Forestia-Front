@@ -18,7 +18,6 @@ const BoxLayoutStyle = styled.div`
 export default function IndexTemplate({ board, authorArr }) {
   return (
     <BoxLayoutStyle>
-      <IndexCatchphraseArea />
       <IndexTimeline board={board} authorArr={authorArr} />
     </BoxLayoutStyle>
   );
