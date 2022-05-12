@@ -21,6 +21,7 @@ import IcoFreePhoto from '../Atoms/Icon/IcoFreePhoto';
 const Styles = styled.div`
   li {
     list-style-type: none;
+    margin-bottom: 20px;
 
     &:hover {
       transition: 0.15s all ease-in;

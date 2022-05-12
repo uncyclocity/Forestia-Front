@@ -181,7 +181,6 @@ export const doReply = {
       data: {
         boardType: nowPostingEleObj.boardType,
         postId: nowPostingEleObj.id,
-        commentId: editReplyObj.id,
         content: editReplyObj.content,
         authorId,
         replyId,
